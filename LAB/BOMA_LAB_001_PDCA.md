@@ -136,6 +136,8 @@ The required infrastructure is defined in:
 
 `LAB/environment/LEAN_REPRODUCIBLE.md`
 
+The repository now pins a specific Lean toolchain and defines a dedicated CI check for B-001. The existence of the infrastructure does not itself constitute a successful verification result.
+
 The permitted verification states are:
 
 ```text
@@ -219,7 +221,8 @@ The mapping is recorded as **Implemented-by**, not **Equivalent**.
 
 | Step | BOMA action | Backend action | Result | Evidence |
 |---|---|---|---|---|
-| D-001 | Introduce B-001 | Create a Lean inductive declaration with initial and successor constructors | Artifact created; kernel result unavailable | `LAB/payloads/lean/B001.lean` |
+| D-001 | Introduce B-001 | Create a Lean inductive declaration with initial and successor constructors | Artifact created; kernel result pending CI | `LAB/payloads/lean/B001.lean` |
+| D-002 | Provision verification environment | Pin Lean `v4.32.1` and add dedicated GitHub Actions check | Infrastructure provisioned; execution result pending | `lean-toolchain`, `.github/workflows/boma-lean-pdca-001.yml` |
 
 ## D4. Observation log
 
@@ -228,27 +231,29 @@ The mapping is recorded as **Implemented-by**, not **Equivalent**.
 | O-001 | B-001 can be specified without importing an existing mathematical theory. | Empty-development construction is feasible at the specification level. | B-001 record |
 | O-002 | BOMA content can be stated independently of Lean syntax. | BOMA/backend separation is operationally possible. | B-001 record + Lean payload |
 | O-003 | A single Lean inductive declaration can represent the current B-001 target. | A one-to-one mapping is possible in this instance but remains unproven as a general rule. | `B001.lean` |
-| O-004 | The current execution environment has no Lean or Lake executable. | Formal Check cannot yet be observed. | Environment inspection |
-| O-005 | A backend declaration does not by itself establish BOMA Brick atomicity. | Atomicity must be tested architecturally, not inferred from syntax. | B-001 analysis |
+| O-004 | The initial laboratory environment had no Lean or Lake executable. | Direct local Formal Check could not be observed. | Initial environment inspection |
+| O-005 | A backend declaration does not by itself establish BOMA Brick atomicity. | Atomicity must be tested architecturally, not inferred from syntax. | `LAB/B001_ATOMICITY_ANALYSIS.md` |
 | O-006 | Verification infrastructure is itself a prerequisite for reproducible Formal Check. | The laboratory needs an explicit backend execution layer before claiming verified status. | O-004 |
+| O-007 | A pinned Lean toolchain and repository-defined CI check can now be specified independently of the BOMA mathematical payload. | Verification infrastructure can be treated as an explicit backend layer. | `lean-toolchain`, `.github/workflows/boma-lean-pdca-001.yml` |
 
 ## D5. Decision log
 
 No BOMA Decision Point was created. No genuine mathematical alternative was required to produce B-001.
 
-The choice of Lean syntax is a backend implementation decision, not a BOMA Decision Point.
+The choice of Lean syntax and the choice of CI mechanism are backend/infrastructure decisions, not BOMA Decision Points.
 
 ## D6. Correction log
 
 | Correction ID | Affected Brick/Block | Original state | Corrected state | Reason | Evidence |
 |---|---|---|---|---|---|
-| C-001 | B-001 | Verification expected to proceed immediately | Verification status set to `BLOCKED` pending a reproducible Lean toolchain | No `lean`/`lake` executable is available in the current laboratory environment | O-004 |
+| C-001 | B-001 | Verification expected to proceed immediately | Verification status set to `BLOCKED` pending a reproducible Lean execution result | No executable was available in the initial laboratory environment | O-004 |
+| C-002 | B-001 | Verification infrastructure was implicit | Pinned toolchain and dedicated CI check added | Reproducibility must be explicit and repository-defined | O-006 |
 
 ---
 
-# CHECK — PARTIAL / BLOCKED
+# CHECK — PARTIAL / PENDING EXECUTION
 
-The Check phase has begun but cannot be closed because the required Lean kernel verification has not been executed.
+The Check phase has progressed, but it cannot be closed until the new CI check produces an observed result.
 
 ## C1. Logical foundation
 
@@ -266,7 +271,7 @@ This is a record-level assessment, not a kernel verification result.
 
 **Preliminary pass.** At the BOMA level, `Depends_on: []`. The payload uses no imported mathematical library; backend infrastructure is not counted as BOMA mathematical content.
 
-This distinction remains provisional until a real Lean execution environment confirms the dependency closure.
+This distinction remains provisional until the actual Lean execution result is observed.
 
 ## C4. Backend separation
 
@@ -274,13 +279,20 @@ This distinction remains provisional until a real Lean execution environment con
 
 ## C5. Formal verification
 
-**Blocked.** No Lean executable or Lake executable is available in the current laboratory environment. Therefore no claim of successful kernel checking may be made.
-
-`VerificationStatus = BLOCKED` is the correct current state.
+**Pending.** The repository now has a pinned Lean toolchain and CI check, but no successful or failed workflow result has yet been observed for the current revision. Therefore `VerificationStatus = VERIFIED` is still prohibited.
 
 ## C6. Atomicity test
 
-**Open.** The fact that one Lean declaration represents B-001 does not prove that B-001 is one atomic BOMA Brick. The laboratory must test whether the initial object and successor constructor can be separated into independently meaningful BOMA units without losing the intended architectural role.
+**Open.** The fact that one Lean declaration represents B-001 does not prove that B-001 is one atomic BOMA Brick. A dedicated analysis has been added in `LAB/B001_ATOMICITY_ANALYSIS.md`.
+
+The candidate decomposition is currently:
+
+```text
+B-001a: minimal pointed object domain
+B-001b: successor structure
+```
+
+This is a test candidate, not a decision. The semantic independence of the two parts must be established before decomposition is accepted.
 
 ## C7. Epistemic classification
 
@@ -292,7 +304,7 @@ This distinction remains provisional until a real Lean execution environment con
 
 ## C8. Reproducibility
 
-**Blocked.** The artifact is recorded, but the current environment cannot reproduce the formal verification result because the Lean toolchain is absent.
+**Provisioned / pending result.** The repository now records a specific Lean toolchain and deterministic CI command. The result of executing that command remains the missing evidence.
 
 ---
 
@@ -307,16 +319,18 @@ This distinction remains provisional until a real Lean execution environment con
 | F-003 | Formal verification cannot be claimed without an executable backend environment. | Critical | Verification infrastructure must become an explicit laboratory dependency. |
 | F-004 | Brick atomicity cannot be inferred from backend syntax. | Critical | Atomicity requires an architectural test. |
 | F-005 | The intuitionistic trunk rule is a useful hypothesis but has not yet been tested against an actual logical obstruction. | Open | Do not promote it to normative status. |
+| F-006 | A repository can pin the Lean toolchain and define a deterministic CI verification command without importing mathematical libraries. | Positive | Keep backend infrastructure separate from BOMA mathematical content. |
 
 ## A2. Extracted requirements
 
 | Requirement | Evidence from B-001 | Action |
 |---|---|---|
-| R-001 | O-004 | Establish a reproducible Lean execution path before closing Formal Check. |
+| R-001 | O-004 | Establish a reproducible Lean execution path before closing Formal Check. **Provisioned; execution still pending.** |
 | R-002 | O-005 | Keep Brick-to-backend mapping explicit and typed; never infer equivalence from syntax. |
 | R-003 | O-006 | Treat verification infrastructure as an explicit laboratory prerequisite. |
-| R-004 | C6 | Add an explicit Brick atomicity test to the construction protocol. |
+| R-004 | C6 | Add an explicit Brick atomicity test to the construction protocol. **Done for B-001.** |
 | R-005 | C1 | Test the logical-core hypothesis before making it normative. |
+| R-006 | O-007 | Preserve toolchain/version provenance for backend verification evidence. |
 
 ## A3. Provisional rules
 
@@ -326,13 +340,20 @@ R-002: A BOMA Brick is not identified with a backend declaration by default.
 R-003: Backend infrastructure is not silently counted as BOMA mathematical content.
 R-004: Brick atomicity is an architectural property and must be tested independently of backend syntax.
 R-005: The trunk uses intuitionistic logic by default; any departure requires demonstrated necessity, minimality, transparency, and traceability.
+R-006: Backend verification evidence must retain toolchain/version provenance.
 ```
 
 ## A4. Gate to B-002
 
 **CLOSED.** B-002 is not admitted yet.
 
-The next cycle must first address the verification-environment requirement and the unresolved atomicity question. The logical-core probe must also establish what can legitimately be called the intuitionistic trunk before the project increases mathematical complexity.
+The next immediate gate is not another mathematical Brick. It is evidence closure for B-001:
+
+1. observe the Lean CI result;
+2. analyze B-001 atomicity using the dedicated tests;
+3. complete the logical-core probe;
+4. update the extracted specification from the evidence;
+5. only then decide whether B-001 remains one Brick or decomposes into B-001a/B-001b.
 
 ---
 
@@ -383,12 +404,14 @@ A rule that works for B-001 is not automatically a BOMA principle. Generalizatio
 
 # Cycle Status
 
-**Status:** DO COMPLETE → CHECK PARTIAL / BLOCKED → ACT INITIAL
+**Status:** DO COMPLETE → CHECK PENDING EXECUTION → ACT INITIAL
 
 **Cycle:** PDCA-001
 
 **Current development:** D-000 + B-001
 
-**Next action:** Establish a reproducible Lean verification path, execute the Logical Core Probe, and resolve the B-001 atomicity question before introducing B-002.
+**Infrastructure:** Lean `v4.32.1` pinned; dedicated CI check provisioned.
+
+**Next action:** Observe the CI verification result, complete the B-001 atomicity analysis, execute/complete the Logical Core Probe, and only then decide whether B-002 may be introduced.
 
 **Gate:** B-002 remains blocked.
