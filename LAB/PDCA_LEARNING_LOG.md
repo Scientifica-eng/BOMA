@@ -287,6 +287,44 @@ Analysis record:
 
 ---
 
+### L-016 — Declaration/inference mismatch probe
+
+**Question:** What should happen when declared and inferred logical requirements disagree?
+
+**Test:** Compare under-declaration, over-declaration, agreement, inconclusive inference, and genuine context conflict.
+
+**Result:** A mismatch cannot be reduced to `invalid`. The cases have different meanings:
+
+```text
+UNDER_DECLARED
+OVER_DECLARED
+AGREEMENT
+INFERENCE_INCONCLUSIVE
+CONTEXT_CONFLICT
+BACKEND_ENVIRONMENT_MISMATCH
+UNRESOLVED
+```
+
+**Correction / learning:** Preserve the layers independently:
+
+```text
+Declaration → provenance / author intent
+Inference   → formal evidence
+Backend     → implementation evidence
+Context     → compatibility domain
+Decision    → architectural judgment
+```
+
+A declaration must not silently overwrite an inference, and an inference must not silently rewrite the historical declaration. Likewise, backend configuration must not automatically be treated as a BOMA requirement.
+
+**Impact:** The future Brick record should preserve evidence and diagnostic status, rather than only a final Boolean verdict. An admissible Brick may legitimately carry a warning such as `OVER_DECLARED`; an unresolved inference must not be reported as proof of intuitionistic purity.
+
+Analysis record:
+
+`LAB/LOGICAL_REQUIREMENT_MISMATCH_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -329,6 +367,10 @@ A Brick can be independent of another Brick and still be compatible with it. A B
 
 A declared logical requirement records intent and provenance; inferred/verified requirements provide evidence. Neither should silently replace the other.
 
+### Lesson I — Preserve mismatches as first-class evidence
+
+A discrepancy between declaration and inference is itself useful experimental data. The correct response is diagnosis and provenance preservation, not silent normalization.
+
 ## 4. Required record discipline
 
 For future entries, use this structure:
@@ -363,6 +405,7 @@ PDCA-001
 ├── Conflict calculus               OPEN
 ├── Logic-relative admissibility    SUPPORTED PROVISIONALLY
 ├── Logical requirement model       HYBRID / PROVISIONAL
+├── Requirement mismatch handling   SUPPORTED PROVISIONALLY
 ├── Trunk/branch semantics          OPEN
 ├── B-001 decomposition             SUPPORTED / NOT ADOPTED
 └── Authoritative definition        SOURCE AUDITED
