@@ -18,6 +18,7 @@ This ledger is updated during the experiment, not only at cycle closure.
 | E-010 | Positive control for dependency | A candidate may depend on a prior unit and still have independent Brick identity when its new commitment is complete relative to that prerequisite. | **Provisional / Observed** |
 | E-011 | Authoritative BOMA I/II source audit | Supplied source commits establish Block as the formal architectural unit in BOMA I, Atomic Block as dependency-free root, Minimal Injection, intuitionistic default with classical commitments only when necessary, and BOMA II's Minimal-Brick Construction / Epistemic Status / machine-readable record machinery. | **Verified source evidence** |
 | E-012 | Brick/Block vocabulary probe | The proposed project vocabulary is compatible as a refinement in principle, but it is not identical to the source-level terminology and requires an explicit project definition. | **Provisional / Open** |
+| E-013 | DAG convergence probe | Independent Bricks can remain independent and later converge on a Brick that explicitly depends on both; construction order need not be encoded as semantic dependency. Necessity and dependency are distinct. Non-conflict remains a candidate validity condition, not yet a formal conflict calculus. | **Provisional / Supported** |
 
 ### E-005 — Formal verification evidence
 
@@ -203,6 +204,40 @@ Analysis record:
 
 `LAB/BRICK_VS_BLOCK_PROBE_001.md`
 
+### E-013 — DAG convergence evidence
+
+A small abstract graph was tested:
+
+```text
+A ─────┐
+       ├──→ C
+B ─────┘
+```
+
+with:
+
+```text
+A.depends_on = {}
+B.depends_on = {}
+C.depends_on = {A, B}
+```
+
+and compatibility assumptions that the commitments of `A` and `B` do not conflict, and `C` is compatible with both.
+
+The probe shows that:
+
+- independent Bricks can coexist without a dependency edge between them;
+- a later Brick can explicitly depend on both;
+- construction order can vary without changing the dependency graph;
+- a Brick may be necessary for a later construction without being a dependency of another Brick in the opposite direction;
+- non-conflict is conceptually distinct from dependency.
+
+This is not a formal proof of a general DAG architecture. It is evidence supporting the hypothesis that semantic dependency should not be used to encode construction order.
+
+Analysis record:
+
+`LAB/DAG_CONVERGENCE_PROBE_001.md`
+
 ## Current State
 
 The experiment remains open. B-002 remains blocked.
@@ -222,6 +257,9 @@ D-000
        ├── Positive dependency control  ✓ provisional
        ├── Source terminology audit     ✓
        ├── Brick/Block refinement       ✓ provisional
+       ├── DAG convergence              ✓ provisional
+       ├── Non-conflict criterion       HYPOTHESIS / OPEN
+       ├── Trunk/branch semantics       OPEN
        ├── Decomposition                SUPPORTED / NOT ADOPTED
        ├── Final Atomicity               OPEN
        └── Logical Core                  OPEN
@@ -230,11 +268,12 @@ D-000
 ## Immediate next gates
 
 1. Define the exact project-level semantics of `Brick` and `Block`, including whether `Block` is a composition object or remains a source-compatible alias at some layer.
-2. Test that definition against at least one positive and one negative concrete construction case.
-3. Re-evaluate `domain + initial` under the adopted terminology.
-4. Only then, if justified, create official `B-001a` / `B-001b` records.
-5. Continue the Logical Core Probe separately.
-6. Do not introduce B-002 before these gates are addressed.
+2. Formalize a minimal notion of `conflict`/`compatibility` sufficient for experiments without prematurely choosing a full consistency theory.
+3. Test the Brick definition against concrete positive and negative cases involving independent and dependent Bricks.
+4. Re-evaluate `domain + initial` under the adopted terminology.
+5. Only then, if justified, create official `B-001a` / `B-001b` records.
+6. Continue the Logical Core Probe separately.
+7. Do not introduce B-002 before these gates are addressed.
 
 ## Discipline
 
