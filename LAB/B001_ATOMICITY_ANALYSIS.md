@@ -81,17 +81,21 @@ Question:
 
 > Is a domain with only a distinguished initial object a coherent foundational unit for this experimental path?
 
-### Current result
+### Backend result
 
-**Backend coherence: provisionally YES. Architectural sufficiency: OPEN.**
+**VERIFIED.**
 
-A dedicated Lean probe now exists:
+A dedicated Lean probe exists at:
 
 `LAB/payloads/lean/B001_atomicity_probe.lean`
 
-It represents a minimal pointed object domain independently of the successor constructor. The probe is included in the PDCA-001 CI check.
+The PDCA-001 CI check accepted the probe together with the original B-001 artifact. Workflow Run `31480507673` completed successfully; the `Kernel/type check B-001 atomicity probe` step succeeded.
 
-This means the backend does not force `successor` to be introduced in the same formal declaration. It does **not** yet prove that BOMA should split the candidate.
+### Architectural interpretation
+
+**Architectural sufficiency remains OPEN.**
+
+The result establishes that `domain + initial` is a coherent independently representable backend artifact. It does not establish that this artifact deserves an independent BOMA Brick identity.
 
 ## 8. Test E — Successor as a Separate Extension
 
@@ -107,27 +111,54 @@ D-000
 
 The probe demonstrates that the first part can be represented independently. The remaining question is whether introducing successor as a later architectural commitment is semantically preferable rather than merely syntactically possible.
 
-## 9. First Experimental Finding
+## 9. Evidence Update — E-007
 
-The first atomicity probe establishes a useful distinction:
+**E-007 — Atomicity probe verified**
+
+The independent `domain + initial` backend probe passes the declared Lean check.
+
+```text
+Workflow:   BOMA Lean — PDCA-001
+Run:        31480507673
+Step:       Kernel/type check B-001 atomicity probe
+Result:     success
+Toolchain:  leanprover/lean4:v4.32.1
+```
+
+### What E-007 establishes
+
+- The candidate `domain + initial` can be represented independently in Lean.
+- The original B-001 artifact and the probe can be checked in the same pinned environment.
+- The current B-001 declaration is therefore not forced into one indivisible backend artifact by Lean.
+
+### What E-007 does not establish
+
+- that `domain + initial` is a BOMA Brick;
+- that `successor` should be a separate Brick;
+- that the decomposition is semantically minimal;
+- that the current B-001 candidate should be permanently split.
+
+## 10. First Experimental Finding
+
+The atomicity experiment now supports the distinction:
 
 ```text
 Backend separability  ≠  BOMA decomposability
 ```
 
-Lean can separate a candidate representation, but BOMA must decide whether the separated parts are independently meaningful and worth tracking as Bricks.
+This is an evidence-backed working distinction, but it is not yet promoted to a final normative BOMA rule.
 
-This is now recorded as an observation, not yet as a normative rule.
-
-## 10. Current Assessment
+## 11. Current Assessment
 
 **Do not finalize B-001 atomicity yet.**
 
-The current evidence weakens the argument that `initial + successor` must be one Brick merely because they appear in one Lean `inductive` declaration. It provides positive evidence that a decomposition is technically possible, while leaving its architectural justification unresolved.
+The evidence now shows more than syntactic possibility: a smaller candidate can actually pass the declared Lean verification path. This strengthens the case for testing a decomposition.
+
+However, the architectural decision still requires a semantic test: whether `domain + initial` has an independent BOMA identity and whether `successor` is a meaningful later extension rather than an artificial split.
 
 For the present cycle, B-001 remains a **candidate composite Brick** whose atomicity is unresolved.
 
-## 11. Evidence Required
+## 12. Evidence Required for Decision
 
 The final decision should cite:
 
@@ -137,7 +168,7 @@ The final decision should cite:
 4. whether decomposition improves traceability without creating artificial fragments;
 5. the verified backend behavior of both the original artifact and the atomicity probe.
 
-## 12. Decision Rule
+## 13. Decision Rule
 
 The laboratory should prefer the **smallest semantically meaningful unit**, not the smallest syntactic fragment.
 
@@ -150,6 +181,12 @@ backend separability ≠ BOMA decomposability
 
 A Brick is atomic relative to a declared BOMA architectural level, not relative to the parser of a verification backend.
 
-## 13. Next Test
+## 14. Next Test
 
-Run the updated CI and record whether the independent atomicity probe is accepted by Lean. Then examine whether the resulting candidate `domain + initial` has an independent BOMA identity sufficient to justify `B-001a`.
+The next test is no longer merely whether Lean can separate the pieces. That has now been demonstrated.
+
+The next question is:
+
+> **Does `domain + initial` have an independent BOMA identity worth recording as a Brick, or is it only a prerequisite fragment whose meaning is completed by the successor extension?**
+
+This question must be answered at the BOMA semantic/architectural level before B-001 is split.
