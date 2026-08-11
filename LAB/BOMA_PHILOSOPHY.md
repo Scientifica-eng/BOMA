@@ -45,31 +45,32 @@ A single BOMA unit may have zero, one, or several backend payloads. A backend ar
 
 ## 5. Logical Pluralism With a Conservative Trunk
 
-The laboratory proposes an **intuitionistic logical foundation for the trunk**.
-
-This is motivated by the desire to keep the common foundational development conservative and to make stronger logical commitments explicit rather than inherited silently by every branch.
+The laboratory proposes an **intuitionistic logical foundation for the trunk**, with a strict exception principle.
 
 The proposed default is:
 
-> **Trunk logic is intuitionistic.**
+> **The trunk shall use intuitionistic logic. No other logical regime shall be introduced into the trunk except under demonstrated necessity that is genuinely required to continue the foundational development.**
 
-A branch may adopt a stronger or otherwise different logical regime only through an explicit architectural decision and explicit dependency/injection accounting.
+Such an exception must not be justified merely by convenience, shorter proofs, backend defaults, available automation, or familiarity. The necessity, the alternatives considered, the exact additional logical commitment, and its consequences must be recorded with full transparency and traceability.
 
-The branch is not limited to the classical extension. The framework must remain open to other coherent logical regimes when they are useful and formally representable.
+The preferred rule is therefore not an absolute prohibition, but a **minimal-logical-extension principle**: if intuitionistic reasoning becomes genuinely insufficient, introduce the weakest precisely identified additional commitment that is sufficient, rather than silently switching to a stronger logic as a whole.
+
+A branch may adopt a stronger or otherwise different logical regime through an explicit architectural decision and explicit dependency/injection accounting. The branch is not limited to the classical extension; other coherent logical regimes remain admissible in principle.
 
 Thus:
 
 ```text
 Intuitionistic trunk
         |
-        +-- Branch A: intuitionistic
+        +-- Branch A: remains intuitionistic
         |
-        +-- Branch B: classical extension
+        +-- Branch B: explicit classical extension
         |
-        +-- Branch C: other explicitly declared logic
+        +-- Branch C: explicit other logical regime
+        |
+        `-- Exceptional trunk extension: only under demonstrated necessity,
+                                           with full traceability
 ```
-
-The list of possible branch logics is intentionally **not closed** to intuitionistic and classical logic.
 
 ## 6. Logic Is an Architectural Commitment
 
@@ -77,14 +78,16 @@ A logical principle is not treated merely as a backend configuration option when
 
 If a branch introduces a logical principle not available in the trunk, that introduction should be represented as an explicit architectural event, subject to the applicable BOMA rules for dependency, injection, epistemic status, and verification.
 
+If the trunk itself must introduce a non-intuitionistic commitment, the event receives an even higher evidential burden: necessity must be demonstrated, alternatives must be considered, and the affected trunk region and all downstream consequences must remain explicit.
+
 The laboratory must distinguish at least:
 
 - the underlying logical regime;
 - principles available in that regime;
-- principles explicitly injected into a branch;
+- principles explicitly injected into a branch or exceptional trunk step;
 - backend mechanisms used to realize those principles.
 
-For example, use of a classical principle in a branch should not be confused with the fact that a particular backend has classical automation or libraries available.
+For example, use of a classical principle should not be confused with the fact that a particular backend has classical automation or libraries available.
 
 ## 7. The Logic Is Not Assumed to Be Binary
 
@@ -94,7 +97,7 @@ The laboratory explicitly rejects the assumption that the space of logical regim
 
 Other families or regimes may be relevant, including modal, relevant, linear, paraconsistent, many-valued, constructive variants, and other systems, subject to precise definitions and actual experimental need.
 
-Their inclusion in the philosophy does **not** mean that BOMA endorses all such systems. It means that the branch architecture does not prohibit them merely because they are not classical.
+Their inclusion in the philosophy does **not** mean that BOMA endorses all such systems. It means that the architecture does not prohibit them merely because they are not classical.
 
 A branch must declare its logical regime sufficiently precisely for its dependencies and verification claims to be meaningful.
 
@@ -166,10 +169,12 @@ The following remain deliberately open and should be answered experimentally:
 2. When does a collection of Bricks acquire a Block-level identity?
 3. What is the minimal BOMA record required to describe a Brick independently of a backend?
 4. How should logical regime be represented in a Block/Brick record?
-5. Which logical extensions should count as ordinary branch alternatives and which require a distinct architectural mechanism?
-6. How should conservativity be stated when branches differ in logical strength?
-7. How should cross-backend equivalence be established without assuming that the systems share the same foundations?
-8. Which aspects of an Informal payload can count as verification evidence, and with what status?
+5. What constitutes genuine necessity for a non-intuitionistic extension of the trunk?
+6. How should the weakest sufficient logical extension be identified and justified?
+7. Which logical extensions should count as ordinary branch alternatives and which require a distinct architectural mechanism?
+8. How should conservativity be stated when branches differ in logical strength?
+9. How should cross-backend equivalence be established without assuming that the systems share the same foundations?
+10. Which aspects of an Informal payload can count as verification evidence, and with what status?
 
 ## 15. Status of This Philosophy
 
