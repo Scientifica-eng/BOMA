@@ -17,7 +17,11 @@ jobs:
         uses: leanprover/lean-action@v1
         with:
           auto-config: false
+          build: false
+          test: false
+          lint: false
           use-github-cache: false
+          use-mathlib-cache: false
 
       - name: Kernel/type check B-001
         run: lean LAB/payloads/lean/B001.lean
