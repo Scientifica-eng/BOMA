@@ -25,3 +25,6 @@ jobs:
 
       - name: Kernel/type check B-001
         run: lean LAB/payloads/lean/B001.lean
+
+      - name: Kernel/type check B-001 atomicity probe
+        run: lean LAB/payloads/lean/B001_atomicity_probe.lean
