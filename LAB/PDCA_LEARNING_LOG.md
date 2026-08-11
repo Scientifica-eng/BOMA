@@ -325,6 +325,49 @@ Analysis record:
 
 ---
 
+### L-017 — Trunk/branch admissibility probe
+
+**Question:** Can the same Brick be admissible in a branch while being inadmissible in the trunk without contradiction in either context?
+
+**Test:** Use an intuitionistic trunk `T`, a branch `B` with an explicit classical strengthening, and a control Brick `C` whose commitment requires that strengthening.
+
+**Result:** `C` is not contradictory in the intuitionistic trunk, but it is not admissible there under the current trunk policy because its declared/inferred requirement exceeds the trunk's active logical regime. The same `C` is admissible in the explicitly strengthened branch.
+
+**Important distinction:**
+
+```text
+Brick identity ≠ Brick admissibility
+Branch membership ≠ intrinsic Brick property
+```
+
+A branch-specific logical environment therefore changes the admissibility relation, not the mathematical identity of the Brick.
+
+**Convergence test:** A branch containing `C` cannot be merged back into the intuitionistic trunk while silently discarding the branch's additional logical commitment. The commitment must remain branch-local, be shown unnecessary for the merged result, or be explicitly promoted into the trunk under the exceptional-use policy.
+
+**Correction / learning:** Introduce a provisional three-layer model:
+
+```text
+Brick layer    → what is the Brick?
+Context layer  → what commitments are active here?
+Policy layer   → what may enter this context?
+```
+
+Provisional admissibility form:
+
+```text
+Admissible(B, Context, LogicRegime, Policy)
+```
+
+This does not establish a final BOMA schema.
+
+**Impact:** Trunk, branch, and convergence must be treated as contextual/governance structures rather than properties silently embedded into Brick identity. The experiment also reinforces that dependency and admissibility are independent relations.
+
+Analysis record:
+
+`LAB/TRUNK_BRANCH_ADMISSIBILITY_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -371,6 +414,10 @@ A declared logical requirement records intent and provenance; inferred/verified 
 
 A discrepancy between declaration and inference is itself useful experimental data. The correct response is diagnosis and provenance preservation, not silent normalization.
 
+### Lesson J — Admissibility is contextual
+
+The same Brick may be admissible in one context and inadmissible in another without contradiction. Branch membership should not become part of intrinsic Brick identity merely because the branch changes the logical environment.
+
 ## 4. Required record discipline
 
 For future entries, use this structure:
@@ -406,7 +453,10 @@ PDCA-001
 ├── Logic-relative admissibility    SUPPORTED PROVISIONALLY
 ├── Logical requirement model       HYBRID / PROVISIONAL
 ├── Requirement mismatch handling   SUPPORTED PROVISIONALLY
-├── Trunk/branch semantics          OPEN
+├── Trunk/branch admissibility      SUPPORTED PROVISIONALLY
+├── Branch merge semantics          OPEN
+├── Transitive requirement flow     OPEN
+├── Trunk/branch governance model   PROVISIONAL
 ├── B-001 decomposition             SUPPORTED / NOT ADOPTED
 └── Authoritative definition        SOURCE AUDITED
 ```
