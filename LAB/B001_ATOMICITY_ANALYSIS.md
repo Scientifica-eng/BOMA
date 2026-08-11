@@ -1,6 +1,6 @@
 # B-001 — Brick Atomicity Analysis
 
-**Status:** Proposed analysis
+**Status:** Active experimental analysis  
 **Cycle:** PDCA-001
 
 ## 1. Question
@@ -35,7 +35,11 @@ Question:
 
 > Can the object domain be introduced as a meaningful BOMA unit without committing to any constructor?
 
-If yes, domain formation may be a separate Brick. If no, it is evidence for keeping domain formation coupled to its minimal constructors.
+### Current result
+
+**Open at the BOMA semantic level.**
+
+The Lean backend can clearly represent a domain separately from constructors, but this only establishes representability, not that such a domain is a meaningful BOMA Brick. The architectural question therefore remains open.
 
 ## 5. Test B — Initial Without Domain
 
@@ -43,9 +47,13 @@ Question:
 
 > Can `initial` be a meaningful BOMA unit independently of the object domain that contains it?
 
-Expected answer: no. An initial object requires a carrier/domain in which it exists.
+### Current result
 
-This is evidence that the initial constructor is not independent of the domain.
+**Negative at the semantic level.**
+
+An initial object is typed as an element/object of some carrier/domain. Without a domain, the identity and typing of `initial` cannot be stated as the intended object-level commitment.
+
+This supports treating `initial` as dependent on domain formation rather than as an independent Brick.
 
 ## 6. Test C — Successor Without Domain
 
@@ -53,9 +61,19 @@ Question:
 
 > Can `successor` be a meaningful BOMA unit without a previously established object domain?
 
-Expected answer: no. Its type requires a domain and an input object from that domain.
+### Current result
 
-This is evidence that successor is dependent on the domain at the semantic level.
+**Negative at the semantic level.**
+
+The intended successor has the form:
+
+```text
+successor : BOMAObject → BOMAObject
+```
+
+It therefore presupposes both a domain and an input object in that domain. It is not an independent fragment in the absence of a carrier/domain.
+
+This establishes dependency, but dependency alone does not decide whether successor must belong to the same Brick as the domain.
 
 ## 7. Test D — Domain + Initial Without Successor
 
@@ -63,14 +81,17 @@ Question:
 
 > Is a domain with only a distinguished initial object a coherent foundational unit for this experimental path?
 
-If yes, then successor may be independently introduced as a later Brick. This would favor decomposition:
+### Current result
 
-```text
-B-001a: object domain + initial
-B-001b: successor structure
-```
+**Backend coherence: provisionally YES. Architectural sufficiency: OPEN.**
 
-If the experimental purpose specifically requires the successor structure to define the intended object domain, then coupling may still be justified, but that claim must be recorded rather than assumed.
+A dedicated Lean probe now exists:
+
+`LAB/payloads/lean/B001_atomicity_probe.lean`
+
+It represents a minimal pointed object domain independently of the successor constructor. The probe is included in the PDCA-001 CI check.
+
+This means the backend does not force `successor` to be introduced in the same formal declaration. It does **not** yet prove that BOMA should split the candidate.
 
 ## 8. Test E — Successor as a Separate Extension
 
@@ -81,20 +102,32 @@ D-000
   │
   └── B-001a: minimal pointed object domain
           │
-          └── B-001b: successor constructor
+          └── B-001b: successor structure
 ```
 
-This decomposition has an important advantage: it allows the laboratory to test whether the notion of a Brick corresponds to a semantically minimal commitment rather than a convenient Lean declaration.
+The probe demonstrates that the first part can be represented independently. The remaining question is whether introducing successor as a later architectural commitment is semantically preferable rather than merely syntactically possible.
 
-## 9. Current Assessment
+## 9. First Experimental Finding
+
+The first atomicity probe establishes a useful distinction:
+
+```text
+Backend separability  ≠  BOMA decomposability
+```
+
+Lean can separate a candidate representation, but BOMA must decide whether the separated parts are independently meaningful and worth tracking as Bricks.
+
+This is now recorded as an observation, not yet as a normative rule.
+
+## 10. Current Assessment
 
 **Do not finalize B-001 atomicity yet.**
 
-The single-declaration implementation is insufficient evidence. The decomposition tests above should be performed before B-002 is admitted.
+The current evidence weakens the argument that `initial + successor` must be one Brick merely because they appear in one Lean `inductive` declaration. It provides positive evidence that a decomposition is technically possible, while leaving its architectural justification unresolved.
 
 For the present cycle, B-001 remains a **candidate composite Brick** whose atomicity is unresolved.
 
-## 10. Evidence Required
+## 11. Evidence Required
 
 The final decision should cite:
 
@@ -102,9 +135,9 @@ The final decision should cite:
 2. the dependency relation among domain, initial, and successor;
 3. whether each candidate fragment has an independent architectural identity;
 4. whether decomposition improves traceability without creating artificial fragments;
-5. the verified backend behavior, once the Lean CI check has run.
+5. the verified backend behavior of both the original artifact and the atomicity probe.
 
-## 11. Decision Rule
+## 12. Decision Rule
 
 The laboratory should prefer the **smallest semantically meaningful unit**, not the smallest syntactic fragment.
 
@@ -112,6 +145,11 @@ Therefore:
 
 ```text
 syntactic atom ≠ architectural Brick
+backend separability ≠ BOMA decomposability
 ```
 
 A Brick is atomic relative to a declared BOMA architectural level, not relative to the parser of a verification backend.
+
+## 13. Next Test
+
+Run the updated CI and record whether the independent atomicity probe is accepted by Lean. Then examine whether the resulting candidate `domain + initial` has an independent BOMA identity sufficient to justify `B-001a`.
