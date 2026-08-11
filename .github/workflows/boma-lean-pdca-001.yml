@@ -1,0 +1,23 @@
+name: BOMA Lean — PDCA-001
+
+on:
+  push:
+    branches:
+      - lab/pdca-001
+  workflow_dispatch:
+
+jobs:
+  check-b001:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          use-github-cache: false
+
+      - name: Kernel/type check B-001
+        run: lean LAB/payloads/lean/B001.lean
