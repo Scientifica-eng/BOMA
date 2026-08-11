@@ -124,161 +124,163 @@ The schema remains provisional. A field is retained only if the experiment demon
 
 ---
 
-# DO
+# DO — EXECUTED
 
 ## D1. Construction protocol
 
-The development is constructed sequentially.
+The development was kept at one Brick only:
 
 ```text
 D-000
   │
   └── Brick B-001
         │
-        └── Check
+        └── Verification gate
 ```
 
-No second Brick is added until B-001 has been checked and the laboratory records what was learned from it.
+No B-002 was introduced.
 
-## D2. Construction log
+## D2. Constructed backend artifact
+
+The Lean payload is recorded at:
+
+`LAB/payloads/lean/B001.lean`
+
+Its essential declaration is:
+
+```lean
+inductive BOMAObject where
+  | initial : BOMAObject
+  | successor : BOMAObject → BOMAObject
+```
+
+The mapping is recorded as **Implemented-by**, not **Equivalent**.
+
+## D3. Construction log
 
 | Step | BOMA action | Backend action | Result | Evidence |
 |---|---|---|---|---|
-| D-001 | Introduce B-001 | TBD | TBD | TBD |
+| D-001 | Introduce B-001 | Create a Lean inductive declaration with initial and successor constructors | Artifact created; kernel result unavailable | `LAB/payloads/lean/B001.lean` |
 
-## D3. Observation log
+## D4. Observation log
 
 | ID | Observation | Consequence | Evidence |
 |---|---|---|---|
-| O-001 | | | |
-| O-002 | | | |
-| O-003 | | | |
+| O-001 | B-001 can be specified without importing an existing mathematical theory. | Empty-development construction is feasible at the specification level. | B-001 record |
+| O-002 | BOMA content can be stated independently of Lean syntax. | BOMA/backend separation is operationally possible. | B-001 record + Lean payload |
+| O-003 | A single Lean inductive declaration can represent the current B-001 target. | A one-to-one mapping is possible in this instance but remains unproven as a general rule. | `B001.lean` |
+| O-004 | The current execution environment has no Lean or Lake executable. | Formal Check cannot yet be observed. | Environment inspection |
+| O-005 | A backend declaration does not by itself establish BOMA Brick atomicity. | Atomicity must be tested architecturally, not inferred from syntax. | B-001 analysis |
+| O-006 | Verification infrastructure is itself a prerequisite for reproducible Formal Check. | The laboratory needs an explicit backend execution layer before claiming verified status. | O-004 |
 
-## D4. Decision log
+## D5. Decision log
 
-Only genuine alternatives are recorded as Decision Points. Implementation conveniences are not automatically Decision Points.
+No BOMA Decision Point was created. No genuine mathematical alternative was required to produce B-001.
 
-| Decision ID | Alternatives | Selected | Reason | Unchosen alternatives |
-|---|---|---|---|---|
-| D-001 | | | | |
+The choice of Lean syntax is a backend implementation decision, not a BOMA Decision Point.
 
-## D5. Correction log
-
-Corrections must not silently overwrite experimental history.
+## D6. Correction log
 
 | Correction ID | Affected Brick/Block | Original state | Corrected state | Reason | Evidence |
 |---|---|---|---|---|---|
-| C-001 | | | | | |
+| C-001 | B-001 | Verification expected to proceed immediately | Verification status set to `BLOCKED` pending a reproducible Lean toolchain | No `lean`/`lake` executable is available in the current laboratory environment | O-004 |
 
 ---
 
-# CHECK
+# CHECK — PARTIAL / BLOCKED
 
-The Check phase is performed before any additional mathematical Brick is admitted.
+The Check phase has begun but cannot be closed because the required Lean kernel verification has not been executed.
 
 ## C1. Mathematical content
 
-Does B-001 state exactly what it is intended to state, without importing unrecorded mathematical content?
+**Preliminary pass.** The payload introduces only the intended object domain, initial object, and successor constructor. No arithmetic operation or law is present in the artifact.
+
+This is a record-level assessment, not a kernel verification result.
 
 ## C2. Dependency integrity
 
-Check for:
+**Preliminary pass.** At the BOMA level, `Depends_on: []`. The payload uses no imported mathematical library; `import Init` is backend infrastructure and is not counted as BOMA mathematical content.
 
-- undeclared prerequisites;
-- hidden imported mathematical content;
-- backend dependencies mistaken for mathematical dependencies;
-- circularity.
+This distinction remains provisional until a real Lean execution environment confirms the dependency closure.
 
 ## C3. Backend separation
 
-Record which parts of B-001 are BOMA content and which are merely Lean representation.
+**Pass.** The BOMA record defines B-001 independently of the exact Lean syntax. The Lean declaration is explicitly classified as `Implemented-by`.
 
-A backend artifact may implement B-001 without defining what B-001 means in BOMA.
+## C4. Formal verification
 
-## C4. Verification
+**Blocked.** No Lean executable or Lake executable is available in the current laboratory environment. Therefore no claim of successful kernel checking may be made.
 
-Record the exact verification evidence supplied by the backend and distinguish it from the broader BOMA Verification status.
+`VerificationStatus = BLOCKED` is the correct current state.
 
 ## C5. Atomicity test
 
-Ask:
-
-> Can B-001 be divided into smaller independently meaningful BOMA Bricks without destroying the architectural purpose of the construction?
-
-If yes, Brick granularity is not yet settled and the result must be recorded as a finding.
+**Open.** The fact that one Lean declaration represents B-001 does not prove that B-001 is one atomic BOMA Brick. The laboratory must test whether the initial object and successor constructor can be separated into independently meaningful BOMA units without losing the intended architectural role.
 
 ## C6. Epistemic classification
 
-For every asserted component of B-001 determine whether it is:
+**Preliminary classification:**
 
-- Logical Necessity;
-- Foundational Necessity;
-- Architectural Necessity; or
-- Methodological Choice.
-
-If the classification is insufficient, record the failure rather than forcing a category.
+- the object-domain target is treated as a **Foundational Necessity** for this experimental path;
+- the choice to use an inductive presentation is currently a **Methodological Choice / backend representation choice**;
+- no claim is made that this particular object domain is a universal BOMA foundational necessity.
 
 ## C7. Reproducibility
 
-Another operator should be able to reconstruct B-001 from the laboratory record and obtain the same verified result.
+**Blocked.** The artifact is recorded, but the current environment cannot reproduce the formal verification result because the Lean toolchain is absent.
 
 ---
 
-# ACT
+# ACT — INITIAL
 
 ## A1. Findings
 
 | Finding ID | Finding | Severity | Architectural implication |
 |---|---|---|---|
-| F-001 | | | |
-| F-002 | | | |
-| F-003 | | | |
+| F-001 | A BOMA Brick can be specified independently of a backend artifact. | Positive | Preserve BOMA-first specification. |
+| F-002 | One backend declaration can represent the current Brick candidate. | Informative | Do not infer one-to-one Brick/declaration equivalence. |
+| F-003 | Formal verification cannot be claimed without an executable backend environment. | Critical | Verification infrastructure must become an explicit laboratory dependency. |
+| F-004 | Brick atomicity cannot be inferred from backend syntax. | Critical | Atomicity requires an architectural test. |
 
 ## A2. Extracted requirements
 
-Only evidence from B-001 may justify changes to the next cycle.
-
 | Requirement | Evidence from B-001 | Action |
 |---|---|---|
-| | | |
+| R-001 | O-004 | Establish a reproducible Lean execution path before closing Formal Check. |
+| R-002 | O-005 | Keep Brick-to-backend mapping explicit and typed; never infer equivalence from syntax. |
+| R-003 | O-006 | Treat verification infrastructure as an explicit laboratory prerequisite. |
+| R-004 | C5 | Add an explicit Brick atomicity test to the construction protocol. |
 
 ## A3. Provisional rules
 
 ```text
-R-001: [provisional rule]
-R-002: [provisional rule]
-R-003: [provisional rule]
+R-001: A backend verification claim requires an executable and reproducible backend environment.
+R-002: A BOMA Brick is not identified with a backend declaration by default.
+R-003: Backend infrastructure is not silently counted as BOMA mathematical content.
+R-004: Brick atomicity is an architectural property and must be tested independently of backend syntax.
 ```
 
 ## A4. Gate to B-002
 
-B-002 may not be introduced until:
+**CLOSED.** B-002 is not admitted yet.
 
-- B-001 has a stable record;
-- its backend mapping is explicit;
-- its verification evidence is recorded;
-- unresolved ambiguity is identified;
-- the laboratory has extracted the minimum changes required for the next construction.
+The next cycle must first address the verification-environment requirement and the unresolved atomicity question. Increasing mathematical complexity before resolving these would confound the experiment.
 
 ---
 
 # Data to Carry Forward
 
-The experiment will determine which of the following categories are actually necessary:
+The experiment has provided evidence for the continued usefulness of:
 
 1. Identity data.
 2. Content data.
 3. Dependency data.
 4. Epistemic data.
-5. Choice data.
-6. Branch data.
-7. Verification data.
-8. Correction data.
-9. Grouping data.
-10. Provenance data.
-11. Backend-mapping data.
+5. Verification data.
+6. Backend-mapping data.
+7. Provenance/correction data.
 
-These are **candidates**, not normative BOMA fields.
+Choice, branch, and grouping data remain untested and should not yet be promoted to required fields for a minimal Brick record.
 
 ---
 
@@ -308,12 +310,12 @@ A rule that works for B-001 is not automatically a BOMA principle. Generalizatio
 
 # Cycle Status
 
-**Status:** PLAN → READY FOR DO
+**Status:** DO COMPLETE → CHECK PARTIAL / BLOCKED → ACT INITIAL
 
 **Cycle:** PDCA-001
 
-**Current development:** D-000 (empty BOMA state)
+**Current development:** D-000 + B-001
 
-**Next action:** Construct and record B-001 only.
+**Next action:** Establish a reproducible Lean verification path and resolve the B-001 atomicity question before introducing B-002.
 
-**Gate:** No B-002 until B-001 completes Check and Act.
+**Gate:** B-002 remains blocked.
