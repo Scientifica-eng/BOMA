@@ -136,6 +136,35 @@ A Brick may depend on an earlier Brick when it introduces a distinct and complet
 
 ---
 
+### L-011 — Dependency-overconstraint detected
+
+**Initial assumption:** A Brick's independent commitment might be characterized relative to a prior Brick.
+
+**Challenge:** This formulation risks making dependency on a previous Brick an implicit condition of Brickhood. That can force an artificial linear construction order and make naturally branching structures appear sequential.
+
+**Correction:** Dependency is a relation of a Brick, not a necessary condition for Brickhood.
+
+**New hypothesis:** A Brick may have zero, one, or multiple dependencies. A dependency-free Brick is legitimate if it has its own identity and commitment.
+
+**Additional candidate condition:** A Brick introduced into an existing context should not conflict with commitments already in scope. This is a hypothesis under test, not yet a formal definition of consistency or compatibility.
+
+**Learning:** Keep these relations distinct:
+
+```text
+construction order
+≠ dependency
+≠ compatibility / non-conflict
+≠ necessity
+```
+
+**Open question:** How should trunk, branch, convergence, and shared/reusable structure be represented without imposing artificial linearization?
+
+Analysis record:
+
+`LAB/DEPENDENCY_INDEPENDENCE_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -166,6 +195,10 @@ An experimental pattern should remain marked `provisional` until it survives cro
 
 The output of PDCA-001 is not only `B-001`. It includes the construction method, the failure history, the evidence chain, and the corrections that will inform the next cycle.
 
+### Lesson F — Do not confuse the record with the law
+
+The learning log is a memory and reasoning aid for the experiment. Its entries are not automatically BOMA specification. A hypothesis may later be rejected, refined, or promoted only through explicit justification.
+
 ## 4. Required record discipline
 
 For future entries, use this structure:
@@ -194,6 +227,8 @@ PDCA-001
 ├── Corrections recorded        ✓
 ├── Lessons extracted           ✓
 ├── Brick criterion             PROVISIONAL
+├── Dependency requirement      REJECTED AS A NECESSARY CONDITION
+├── Non-conflict condition      HYPOTHESIS / OPEN
 ├── B-001 decomposition         SUPPORTED / NOT ADOPTED
-└── Authoritative definition    SOURCE GAP OPEN
+└── Authoritative definition    SOURCE AUDITED
 ```
