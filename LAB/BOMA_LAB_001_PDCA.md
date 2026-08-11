@@ -17,6 +17,7 @@ This ledger is updated during the experiment, not only at cycle closure.
 | E-009 | Cross-case identity criterion test | The provisional identity criterion rejects a backend-separable successor component when its BOMA meaning is incomplete without a carrier/domain. | **Provisional / Observed** |
 | E-010 | Positive control for dependency | A candidate may depend on a prior unit and still have independent Brick identity when its new commitment is complete relative to that prerequisite. | **Provisional / Observed** |
 | E-011 | Authoritative BOMA I/II source audit | Supplied source commits establish Block as the formal architectural unit in BOMA I, Atomic Block as dependency-free root, Minimal Injection, intuitionistic default with classical commitments only when necessary, and BOMA II's Minimal-Brick Construction / Epistemic Status / machine-readable record machinery. | **Verified source evidence** |
+| E-012 | Brick/Block vocabulary probe | The proposed project vocabulary is compatible as a refinement in principle, but it is not identical to the source-level terminology and requires an explicit project definition. | **Provisional / Open** |
 
 ### E-005 — Formal verification evidence
 
@@ -77,7 +78,7 @@ Analysis record:
 
 `LAB/B001_IDENTITY_ANALYSIS.md`
 
-### E-009 — Cross-case criterion evidence
+### E-009 — Cross-case identity criterion test
 
 The provisional identity criterion was applied to a structurally related control candidate:
 
@@ -175,6 +176,33 @@ Analysis record:
 
 `LAB/BOMA_SOURCE_AUDIT_001.md`
 
+### E-012 — Brick/Block vocabulary probe
+
+A controlled probe tested whether the project can use:
+
+```text
+Brick = smallest intentionally constructed semantic unit
+Block = explicit composition/grouping of Bricks
+```
+
+without destroying the relevant BOMA I/II architectural properties.
+
+Results:
+
+```text
+Minimal injection preservation      PASS provisionally
+Atomicity preservation              PASS conditionally
+Block-as-composition                PLAUSIBLE / OPEN
+BOMA II terminology compatibility  SUPPORTING EVIDENCE
+Formal source equivalence           NO
+```
+
+**Critical distinction:** this proposal is a project-level refinement. It is not equivalent to the source-level BOMA I statement that Block is the formal architectural unit.
+
+Analysis record:
+
+`LAB/BRICK_VS_BLOCK_PROBE_001.md`
+
 ## Current State
 
 The experiment remains open. B-002 remains blocked.
@@ -193,7 +221,7 @@ D-000
        ├── Criterion cross-case test    ✓ provisional
        ├── Positive dependency control  ✓ provisional
        ├── Source terminology audit     ✓
-       ├── Brick/Block refinement       OPEN
+       ├── Brick/Block refinement       ✓ provisional
        ├── Decomposition                SUPPORTED / NOT ADOPTED
        ├── Final Atomicity               OPEN
        └── Logical Core                  OPEN
@@ -201,8 +229,8 @@ D-000
 
 ## Immediate next gates
 
-1. Test the proposed `Brick` / `Block` terminology as a controlled refinement of BOMA I/II.
-2. Decide whether the refinement should be adopted for the project and define its exact relation to source-level `Block`.
+1. Define the exact project-level semantics of `Brick` and `Block`, including whether `Block` is a composition object or remains a source-compatible alias at some layer.
+2. Test that definition against at least one positive and one negative concrete construction case.
 3. Re-evaluate `domain + initial` under the adopted terminology.
 4. Only then, if justified, create official `B-001a` / `B-001b` records.
 5. Continue the Logical Core Probe separately.
