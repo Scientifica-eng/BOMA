@@ -165,6 +165,56 @@ Analysis record:
 
 ---
 
+### L-012 — DAG convergence validated provisionally
+
+**Test:** Use independent Bricks `A` and `B`, then a convergence Brick `C` with `C.depends_on = {A, B}`.
+
+**Result:** The graph is representable without inventing `A → B` or `B → A`. Construction order can vary while the semantic dependency graph remains unchanged.
+
+**Learning:** A branching/converging dependency structure should be permitted. Construction sequence must not be silently encoded as semantic dependency.
+
+Analysis record:
+
+`LAB/DAG_CONVERGENCE_PROBE_001.md`
+
+---
+
+### L-013 — Minimal conflict/compatibility probe
+
+**Question:** If dependency is optional, what prevents an independent Brick from introducing an incompatible commitment?
+
+**Test:** Use a deliberately tiny commitment language:
+
+```text
+A: P
+B: Q
+C: ¬P
+```
+
+**Results:**
+
+```text
+P + Q       compatible
+P + ¬P      conflict
+P + (P→Q)   compatible in the toy model
+```
+
+Dependency did not determine compatibility in either direction.
+
+**Correction / learning:** The condition suggested earlier should be retained, but carefully scoped:
+
+> A candidate Brick must be compatible with the commitments in its declared context.
+
+This is stronger than “does not depend on previous Bricks” and weaker than a complete global consistency theory.
+
+**Critical limitation:** The toy model does not define BOMA conflict generally. In particular, conflict may concern definitions, axioms, typing constraints, logical commitments, or architectural commitments. The experiment only demonstrates the conceptual distinction.
+
+Analysis record:
+
+`LAB/CONFLICT_COMPATIBILITY_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -199,6 +249,10 @@ The output of PDCA-001 is not only `B-001`. It includes the construction method,
 
 The learning log is a memory and reasoning aid for the experiment. Its entries are not automatically BOMA specification. A hypothesis may later be rejected, refined, or promoted only through explicit justification.
 
+### Lesson G — Keep dependency and compatibility separate
+
+A Brick can be independent of another Brick and still be compatible with it. A Brick can depend on another Brick and still conflict with an existing commitment. Neither relation determines the other.
+
 ## 4. Required record discipline
 
 For future entries, use this structure:
@@ -228,7 +282,10 @@ PDCA-001
 ├── Lessons extracted           ✓
 ├── Brick criterion             PROVISIONAL
 ├── Dependency requirement      REJECTED AS A NECESSARY CONDITION
-├── Non-conflict condition      HYPOTHESIS / OPEN
+├── DAG/convergence model       SUPPORTED PROVISIONALLY
+├── Non-conflict condition      SUPPORTED AS CANDIDATE / OPEN
+├── Conflict calculus           OPEN
+├── Trunk/branch semantics      OPEN
 ├── B-001 decomposition         SUPPORTED / NOT ADOPTED
 └── Authoritative definition    SOURCE AUDITED
 ```
