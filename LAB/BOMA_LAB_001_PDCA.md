@@ -16,6 +16,7 @@ This ledger is updated during the experiment, not only at cycle closure.
 | E-008 | Independent BOMA identity analysis | `domain + initial` passes provisional criteria for independent identity; decomposition is supported but not yet adopted. | **Provisional** |
 | E-009 | Cross-case identity criterion test | The provisional identity criterion rejects a backend-separable successor component when its BOMA meaning is incomplete without a carrier/domain. | **Provisional / Observed** |
 | E-010 | Positive control for dependency | A candidate may depend on a prior unit and still have independent Brick identity when its new commitment is complete relative to that prerequisite. | **Provisional / Observed** |
+| E-011 | Authoritative BOMA I/II source audit | Supplied source commits establish Block as the formal architectural unit in BOMA I, Atomic Block as dependency-free root, Minimal Injection, intuitionistic default with classical commitments only when necessary, and BOMA II's Minimal-Brick Construction / Epistemic Status / machine-readable record machinery. | **Verified source evidence** |
 
 ### E-005 — Formal verification evidence
 
@@ -131,6 +132,49 @@ Analysis record:
 
 **Interpretation:** dependency on a prior Brick is not itself disqualifying. A dependent candidate may have independent Brick identity when it introduces a distinct, complete architectural commitment relative to an explicit prerequisite.
 
+### E-011 — Authoritative source audit
+
+The supplied source commits were retrieved and examined:
+
+```text
+BOMA I
+commit 9596046d5448033e34b5d4d8361bf4548041b0cf
+file   BOMA_1/boma.tex
+
+BOMA II
+commit 0188185e731c36ae8310810e88f2ae1210154be6
+file   BOMA_2/boma_ii.tex
+```
+
+Source-backed findings:
+
+- BOMA I formally defines `Block` as the architectural unit.
+- BOMA I defines `Atomic Block` by empty dependency set.
+- BOMA I defines the Minimal Injection Principle.
+- BOMA I explicitly states that a logically minimal development defaults to intuitionistic logic and introduces classical commitments only when necessary.
+- BOMA I distinguishes object logic, framework logic, and meta-logic.
+- BOMA I makes local consistency the sole branch-validity criterion.
+- BOMA II defines Minimal-Brick Construction as a compliance property applied to Blocks.
+- BOMA II adds Vocabulary-Axiom Decoupling and Single-Purpose Commitment.
+- BOMA II introduces the four Epistemic Statuses: Logical Necessity, Foundational Necessity, Architectural Necessity, and Methodological Choice.
+- BOMA II's worked examples use labels such as `Brick_007`, `Brick_012`, and `Brick_015`, while the formal structural machinery remains Block-oriented.
+- BOMA II provides machine-readable Block records with fields including `Depends_on`, `Introduces`, `Exports`, `Injects`, `Derives`, `DecisionPoint`, `ErratumStatus`, and `FormalPayload`.
+
+**Critical interpretation:** the project's proposed terminology
+
+```text
+Brick = smallest construction unit
+Block = grouping/composition of Bricks
+```
+
+is a **project-level architectural refinement**, not a faithful restatement of the formal BOMA I definition. It must therefore be tested and explicitly adopted if retained; it must never be silently attributed to the source papers.
+
+**Logical consequence:** the project's intuitionistic-default trunk policy is source-supported by BOMA I. Any stronger rule about exceptional non-intuitionistic trunk logic remains a project-level refinement.
+
+Analysis record:
+
+`LAB/BOMA_SOURCE_AUDIT_001.md`
+
 ## Current State
 
 The experiment remains open. B-002 remains blocked.
@@ -139,27 +183,30 @@ The experiment remains open. B-002 remains blocked.
 D-000
   │
   └── B-001
-       ├── BOMA specification              ✓
-       ├── Lean representation             ✓
-       ├── CI execution                    ✓
-       ├── Kernel/type check               ✓
-       ├── Reproducibility evidence        ✓
-       ├── Backend separability            ✓
-       ├── Independent identity evidence  ✓ provisional
-       ├── Criterion cross-case test       ✓ provisional
-       ├── Positive dependency control     ✓ provisional
-       ├── Decomposition                  SUPPORTED / NOT ADOPTED
-       ├── Final Atomicity                 OPEN
-       └── Logical Core                    OPEN
+       ├── BOMA I/II source audit       ✓
+       ├── Lean representation          ✓
+       ├── CI execution                 ✓
+       ├── Kernel/type check            ✓
+       ├── Reproducibility evidence     ✓
+       ├── Backend separability         ✓
+       ├── Independent identity         ✓ provisional
+       ├── Criterion cross-case test    ✓ provisional
+       ├── Positive dependency control  ✓ provisional
+       ├── Source terminology audit     ✓
+       ├── Brick/Block refinement       OPEN
+       ├── Decomposition                SUPPORTED / NOT ADOPTED
+       ├── Final Atomicity               OPEN
+       └── Logical Core                  OPEN
 ```
 
 ## Immediate next gates
 
-1. Compare the accumulated evidence directly against the BOMA definition of Brick and the intended construction order.
-2. Decide whether `domain + initial` should become an adopted Brick boundary.
-3. Only then, if justified, create official `B-001a` / `B-001b` records.
-4. Continue the Logical Core Probe separately; do not infer logical conclusions from the atomicity experiment.
-5. Do not introduce B-002 before these gates are addressed.
+1. Test the proposed `Brick` / `Block` terminology as a controlled refinement of BOMA I/II.
+2. Decide whether the refinement should be adopted for the project and define its exact relation to source-level `Block`.
+3. Re-evaluate `domain + initial` under the adopted terminology.
+4. Only then, if justified, create official `B-001a` / `B-001b` records.
+5. Continue the Logical Core Probe separately.
+6. Do not introduce B-002 before these gates are addressed.
 
 ## Discipline
 
