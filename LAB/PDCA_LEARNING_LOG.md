@@ -215,6 +215,45 @@ Analysis record:
 
 ---
 
+### L-014 — Logic-relative admissibility hypothesis
+
+**Observation:** The status of a commitment such as `P ∨ ¬P` or `¬¬P → P` differs between intuitionistic and classical reasoning. A commitment not derivable intuitionistically is not thereby contradictory to intuitionistic logic.
+
+**Hypothesis:** Brick admissibility is not a unary property of the Brick. It is a relation involving the Brick, its existing context, and the active logical regime.
+
+Provisional form:
+
+```text
+Admissible(B, Context, LogicRegime)
+```
+
+**Critical distinction:**
+
+```text
+not derivable in L-I ≠ contradictory in L-I
+classical strengthening ≠ inconsistency
+```
+
+A classical-strengthening Brick may be a legitimate extension of an intuitionistic context, but its introduction should be represented as an explicit logical commitment. For the trunk, such a move remains subject to the project's existing requirement of necessity, transparency, and justification.
+
+**Learning:** We should distinguish at least:
+
+```text
+already derivable
+admissible but not derivable
+requires explicit logical strengthening
+contradictory with context
+unresolved
+```
+
+**Impact:** The `non-conflict` criterion should not be formalized independently of the logical regime. The next work must investigate what constitutes the minimal logical context required for local admissibility.
+
+Analysis record:
+
+`LAB/LOGIC_RELATIVE_ADMISSIBILITY_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -275,17 +314,18 @@ No failed experiment should be deleted merely because a later attempt succeeds. 
 
 ```text
 PDCA-001
-├── Decisions recorded          ✓
-├── Results recorded            ✓
-├── Failures recorded           ✓
-├── Corrections recorded        ✓
-├── Lessons extracted           ✓
-├── Brick criterion             PROVISIONAL
-├── Dependency requirement      REJECTED AS A NECESSARY CONDITION
-├── DAG/convergence model       SUPPORTED PROVISIONALLY
-├── Non-conflict condition      SUPPORTED AS CANDIDATE / OPEN
-├── Conflict calculus           OPEN
-├── Trunk/branch semantics      OPEN
-├── B-001 decomposition         SUPPORTED / NOT ADOPTED
-└── Authoritative definition    SOURCE AUDITED
+├── Decisions recorded              ✓
+├── Results recorded                ✓
+├── Failures recorded               ✓
+├── Corrections recorded            ✓
+├── Lessons extracted               ✓
+├── Brick criterion                 PROVISIONAL
+├── Dependency requirement          REJECTED AS A NECESSARY CONDITION
+├── DAG/convergence model           SUPPORTED PROVISIONALLY
+├── Non-conflict condition          SUPPORTED AS CANDIDATE / LOGIC-RELATIVE
+├── Conflict calculus               OPEN
+├── Logic-relative admissibility    SUPPORTED PROVISIONALLY
+├── Trunk/branch semantics          OPEN
+├── B-001 decomposition             SUPPORTED / NOT ADOPTED
+└── Authoritative definition        SOURCE AUDITED
 ```
