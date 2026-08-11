@@ -37,12 +37,19 @@ Can BOMA construct a minimal mathematical development from an explicitly empty B
 
 - mathematical content;
 - BOMA architecture;
+- logical regime;
 - Lean/backend representation;
 - verification evidence?
 
+A focused sub-question is:
+
+> **What is the smallest logical foundation required by the BOMA trunk before the first meaningful Brick can be accepted?**
+
+The trunk is proposed to use intuitionistic logic by default. Departure from intuitionistic logic is permitted only under demonstrated necessity, with explicit justification, minimality, and traceability. This is a laboratory hypothesis, not yet a normative BOMA rule.
+
 ## Scope constraint
 
-Cycle 001 remains deliberately microscopic. It will not attempt to build a complete theory. Its objective is to discover the minimum viable construction protocol.
+Cycle 001 remains deliberately microscopic. It will not attempt to build a complete theory. Its objective is to discover the minimum viable construction protocol and the minimum logical/verification information required to control it.
 
 Initial constraints:
 
@@ -51,7 +58,9 @@ Initial constraints:
 - do not introduce a Block unless the experiment demonstrates a need for grouping;
 - do not introduce a Decision Point unless a genuine alternative is encountered;
 - do not assume that a Lean declaration is a Brick;
-- do not import a ready-made mathematical theory merely to obtain content for the experiment.
+- do not import a ready-made mathematical theory merely to obtain content for the experiment;
+- do not claim formal verification without a reproducible backend execution;
+- do not introduce a non-intuitionistic principle merely for convenience.
 
 ---
 
@@ -61,8 +70,6 @@ Initial constraints:
 
 The baseline is the state against which the first Brick is introduced.
 
-It has two explicitly separated layers:
-
 ### BOMA baseline
 
 ```text
@@ -71,17 +78,49 @@ Bricks: none
 Blocks: none
 Decision Points: none
 Branches: none
+Logical Regime: proposed intuitionistic trunk
 ```
 
 ### Backend baseline
 
 The Lean environment necessarily contains trusted implementation infrastructure. This is **not** counted as BOMA mathematical content. Any backend facility used by the experiment must be named when it becomes relevant.
 
-## P2. First construction target
+## P2. Logical Core Probe
 
-The first Brick will establish the minimal mathematical object-domain required for subsequent construction.
+Before treating the first formal artifact as verified, the laboratory must identify the candidate logical foundation of the trunk and separate:
 
-For Cycle 001, the working target is:
+- logical regime;
+- logical primitives/rules;
+- derived principles;
+- backend infrastructure;
+- backend convenience/automation;
+- mathematical content introduced by BOMA.
+
+The focused probe is recorded in:
+
+`LAB/PDCA_001_LOGICAL_CORE_PROBE.md`
+
+The intended default is:
+
+```text
+Trunk = intuitionistic by default
+```
+
+If an apparent obstacle is encountered, the process is:
+
+```text
+Obstacle
+  -> necessity analysis
+  -> alternatives
+  -> exact logical commitment
+  -> minimality test
+  -> transparent decision
+  -> traceable introduction
+```
+
+## P3. First construction target
+
+The first Brick candidate remains:
 
 > **Brick B-001 — introduce a minimal inductive object domain with a distinguished initial object and a successor constructor.**
 
@@ -89,20 +128,39 @@ This is intentionally smaller than arithmetic. No addition, multiplication, indu
 
 The exact Lean representation is part of the experiment and must not be confused with the BOMA definition of B-001.
 
-## P3. Acceptance conditions for B-001
+## P4. Reproducible verification gate
+
+Formal verification is not considered complete until the backend can be executed reproducibly.
+
+The required infrastructure is defined in:
+
+`LAB/environment/LEAN_REPRODUCIBLE.md`
+
+The permitted verification states are:
+
+```text
+NOT_ATTEMPTED
+BLOCKED
+FAILED
+VERIFIED
+```
+
+## P5. Acceptance conditions for B-001
 
 B-001 can pass Check only if we can state explicitly:
 
 1. its mathematical content;
 2. its BOMA identity;
-3. its prerequisites;
-4. what it introduces;
-5. what the backend actually implements;
-6. what the backend verifies;
-7. which parts are mathematical necessity and which are implementation choices;
-8. whether the Brick is genuinely atomic at the chosen BOMA analysis level.
+3. its logical dependencies;
+4. its prerequisites;
+5. what it introduces;
+6. what the backend actually implements;
+7. what the backend verifies;
+8. which parts are mathematical necessity and which are implementation choices;
+9. whether the Brick is genuinely atomic at the chosen BOMA analysis level;
+10. whether the formal result is reproducible.
 
-## P4. Data to record
+## P6. Data to record
 
 For every construction step, record at minimum:
 
@@ -111,6 +169,7 @@ Brick:
   ID: ...
   Content: ...
   Depends_on: []
+  LogicalRegime: ...
   Introduces: []
   EpistemicStatus: ...
   VerificationStatus: ...
@@ -191,33 +250,39 @@ The choice of Lean syntax is a backend implementation decision, not a BOMA Decis
 
 The Check phase has begun but cannot be closed because the required Lean kernel verification has not been executed.
 
-## C1. Mathematical content
+## C1. Logical foundation
+
+**Preliminary / open.** The trunk is currently proposed to be intuitionistic. The logical-core probe is defined, but it has not yet produced sufficient evidence to promote the proposal to a validated rule.
+
+No non-intuitionistic principle has been introduced into the BOMA trunk in Cycle 001.
+
+## C2. Mathematical content
 
 **Preliminary pass.** The payload introduces only the intended object domain, initial object, and successor constructor. No arithmetic operation or law is present in the artifact.
 
 This is a record-level assessment, not a kernel verification result.
 
-## C2. Dependency integrity
+## C3. Dependency integrity
 
-**Preliminary pass.** At the BOMA level, `Depends_on: []`. The payload uses no imported mathematical library; `import Init` is backend infrastructure and is not counted as BOMA mathematical content.
+**Preliminary pass.** At the BOMA level, `Depends_on: []`. The payload uses no imported mathematical library; backend infrastructure is not counted as BOMA mathematical content.
 
 This distinction remains provisional until a real Lean execution environment confirms the dependency closure.
 
-## C3. Backend separation
+## C4. Backend separation
 
 **Pass.** The BOMA record defines B-001 independently of the exact Lean syntax. The Lean declaration is explicitly classified as `Implemented-by`.
 
-## C4. Formal verification
+## C5. Formal verification
 
 **Blocked.** No Lean executable or Lake executable is available in the current laboratory environment. Therefore no claim of successful kernel checking may be made.
 
 `VerificationStatus = BLOCKED` is the correct current state.
 
-## C5. Atomicity test
+## C6. Atomicity test
 
 **Open.** The fact that one Lean declaration represents B-001 does not prove that B-001 is one atomic BOMA Brick. The laboratory must test whether the initial object and successor constructor can be separated into independently meaningful BOMA units without losing the intended architectural role.
 
-## C6. Epistemic classification
+## C7. Epistemic classification
 
 **Preliminary classification:**
 
@@ -225,7 +290,7 @@ This distinction remains provisional until a real Lean execution environment con
 - the choice to use an inductive presentation is currently a **Methodological Choice / backend representation choice**;
 - no claim is made that this particular object domain is a universal BOMA foundational necessity.
 
-## C7. Reproducibility
+## C8. Reproducibility
 
 **Blocked.** The artifact is recorded, but the current environment cannot reproduce the formal verification result because the Lean toolchain is absent.
 
@@ -241,6 +306,7 @@ This distinction remains provisional until a real Lean execution environment con
 | F-002 | One backend declaration can represent the current Brick candidate. | Informative | Do not infer one-to-one Brick/declaration equivalence. |
 | F-003 | Formal verification cannot be claimed without an executable backend environment. | Critical | Verification infrastructure must become an explicit laboratory dependency. |
 | F-004 | Brick atomicity cannot be inferred from backend syntax. | Critical | Atomicity requires an architectural test. |
+| F-005 | The intuitionistic trunk rule is a useful hypothesis but has not yet been tested against an actual logical obstruction. | Open | Do not promote it to normative status. |
 
 ## A2. Extracted requirements
 
@@ -249,7 +315,8 @@ This distinction remains provisional until a real Lean execution environment con
 | R-001 | O-004 | Establish a reproducible Lean execution path before closing Formal Check. |
 | R-002 | O-005 | Keep Brick-to-backend mapping explicit and typed; never infer equivalence from syntax. |
 | R-003 | O-006 | Treat verification infrastructure as an explicit laboratory prerequisite. |
-| R-004 | C5 | Add an explicit Brick atomicity test to the construction protocol. |
+| R-004 | C6 | Add an explicit Brick atomicity test to the construction protocol. |
+| R-005 | C1 | Test the logical-core hypothesis before making it normative. |
 
 ## A3. Provisional rules
 
@@ -258,13 +325,14 @@ R-001: A backend verification claim requires an executable and reproducible back
 R-002: A BOMA Brick is not identified with a backend declaration by default.
 R-003: Backend infrastructure is not silently counted as BOMA mathematical content.
 R-004: Brick atomicity is an architectural property and must be tested independently of backend syntax.
+R-005: The trunk uses intuitionistic logic by default; any departure requires demonstrated necessity, minimality, transparency, and traceability.
 ```
 
 ## A4. Gate to B-002
 
 **CLOSED.** B-002 is not admitted yet.
 
-The next cycle must first address the verification-environment requirement and the unresolved atomicity question. Increasing mathematical complexity before resolving these would confound the experiment.
+The next cycle must first address the verification-environment requirement and the unresolved atomicity question. The logical-core probe must also establish what can legitimately be called the intuitionistic trunk before the project increases mathematical complexity.
 
 ---
 
@@ -275,10 +343,11 @@ The experiment has provided evidence for the continued usefulness of:
 1. Identity data.
 2. Content data.
 3. Dependency data.
-4. Epistemic data.
-5. Verification data.
-6. Backend-mapping data.
-7. Provenance/correction data.
+4. Logical-regime data.
+5. Epistemic data.
+6. Verification data.
+7. Backend-mapping data.
+8. Provenance/correction data.
 
 Choice, branch, and grouping data remain untested and should not yet be promoted to required fields for a minimal Brick record.
 
@@ -293,6 +362,10 @@ A rule written before construction is a hypothesis. An observed behavior is evid
 ### Mathematical content vs. representation
 
 The BOMA Brick is not defined by its Lean syntax. Lean is one possible backend representation.
+
+### Logical regime vs. backend configuration
+
+The BOMA logical regime is an architectural fact. Backend defaults, automation, imports, and implementation choices do not silently define it.
 
 ### Backend baseline vs. BOMA content
 
@@ -316,6 +389,6 @@ A rule that works for B-001 is not automatically a BOMA principle. Generalizatio
 
 **Current development:** D-000 + B-001
 
-**Next action:** Establish a reproducible Lean verification path and resolve the B-001 atomicity question before introducing B-002.
+**Next action:** Establish a reproducible Lean verification path, execute the Logical Core Probe, and resolve the B-001 atomicity question before introducing B-002.
 
 **Gate:** B-002 remains blocked.
