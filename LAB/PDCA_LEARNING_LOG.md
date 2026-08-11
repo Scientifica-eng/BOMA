@@ -254,6 +254,39 @@ Analysis record:
 
 ---
 
+### L-015 — Hybrid logical requirement model
+
+**Question:** Should each Brick explicitly declare its logical requirements, or should requirements be inferred from formal content?
+
+**Test:** Compare five cases: an intuitionistically derivable commitment; a classical-strengthening commitment; a direct contradiction; an unnecessarily strong declared requirement; and a formal payload that uses a classical principle while declaring none.
+
+**Result:** Neither explicit declaration nor inference alone is sufficient.
+
+- Declaration is valuable for architectural intent and provenance.
+- Formal analysis is required to detect or verify actual logical dependence.
+- A declaration cannot make an inconsistent Brick compatible with its context.
+- A stronger-than-necessary declaration is an architectural event that should remain visible and justified.
+- A hidden backend dependence makes an undeclared requirement incomplete.
+
+**Correction / learning:** Favor a **hybrid model**:
+
+```text
+Declared requirement  → provenance / intent
+Inferred requirement  → formal analysis
+Verified requirement  → checked result
+Context               → admissibility decision
+```
+
+No exact schema is adopted yet.
+
+**Impact:** A future Brick record may need to distinguish `declared`, `inferred`, and `verified` logical requirements. Backend configuration must remain evidence about the formal environment, not automatically the BOMA logical requirement.
+
+Analysis record:
+
+`LAB/LOGICAL_REQUIREMENT_DECLARATION_PROBE_001.md`
+
+---
+
 ## 3. Current lessons
 
 ### Lesson A — Preserve failures
@@ -292,6 +325,10 @@ The learning log is a memory and reasoning aid for the experiment. Its entries a
 
 A Brick can be independent of another Brick and still be compatible with it. A Brick can depend on another Brick and still conflict with an existing commitment. Neither relation determines the other.
 
+### Lesson H — Keep logical provenance and logical inference separate
+
+A declared logical requirement records intent and provenance; inferred/verified requirements provide evidence. Neither should silently replace the other.
+
 ## 4. Required record discipline
 
 For future entries, use this structure:
@@ -325,6 +362,7 @@ PDCA-001
 ├── Non-conflict condition          SUPPORTED AS CANDIDATE / LOGIC-RELATIVE
 ├── Conflict calculus               OPEN
 ├── Logic-relative admissibility    SUPPORTED PROVISIONALLY
+├── Logical requirement model       HYBRID / PROVISIONAL
 ├── Trunk/branch semantics          OPEN
 ├── B-001 decomposition             SUPPORTED / NOT ADOPTED
 └── Authoritative definition        SOURCE AUDITED
