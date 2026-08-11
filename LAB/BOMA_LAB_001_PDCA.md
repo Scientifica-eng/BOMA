@@ -15,6 +15,7 @@ This ledger is updated during the experiment, not only at cycle closure.
 | E-007 | Atomicity probe | `domain + initial` can be independently represented and checked in Lean. | **Validated** |
 | E-008 | Independent BOMA identity analysis | `domain + initial` passes provisional criteria for independent identity; decomposition is supported but not yet adopted. | **Provisional** |
 | E-009 | Cross-case identity criterion test | The provisional identity criterion rejects a backend-separable successor component when its BOMA meaning is incomplete without a carrier/domain. | **Provisional / Observed** |
+| E-010 | Positive control for dependency | A candidate may depend on a prior unit and still have independent Brick identity when its new commitment is complete relative to that prerequisite. | **Provisional / Observed** |
 
 ### E-005 — Formal verification evidence
 
@@ -103,6 +104,33 @@ Analysis record:
 
 `LAB/B001_IDENTITY_CRITERION_TEST.md`
 
+### E-010 — Positive dependency control
+
+A positive control tested the opposite boundary condition:
+
+```text
+P = prior established object-domain Brick
+S = new successor-forming commitment over P
+```
+
+The candidate `S` was judged to have:
+
+```text
+Identifiability       PASS
+Self-contained meaning PASS, conditional on P
+Traceable dependency  PASS
+Non-artificiality     PASS provisional
+Brick candidate       YES, provisionally
+```
+
+This is conceptual evidence; no new Brick record was created.
+
+Analysis record:
+
+`LAB/B001_POSITIVE_CONTROL.md`
+
+**Interpretation:** dependency on a prior Brick is not itself disqualifying. A dependent candidate may have independent Brick identity when it introduces a distinct, complete architectural commitment relative to an explicit prerequisite.
+
 ## Current State
 
 The experiment remains open. B-002 remains blocked.
@@ -119,6 +147,7 @@ D-000
        ├── Backend separability            ✓
        ├── Independent identity evidence  ✓ provisional
        ├── Criterion cross-case test       ✓ provisional
+       ├── Positive dependency control     ✓ provisional
        ├── Decomposition                  SUPPORTED / NOT ADOPTED
        ├── Final Atomicity                 OPEN
        └── Logical Core                    OPEN
@@ -126,7 +155,7 @@ D-000
 
 ## Immediate next gates
 
-1. Apply the criterion to a positive control that is genuinely dependent on a prior unit but may still deserve independent Brick status.
+1. Compare the accumulated evidence directly against the BOMA definition of Brick and the intended construction order.
 2. Decide whether `domain + initial` should become an adopted Brick boundary.
 3. Only then, if justified, create official `B-001a` / `B-001b` records.
 4. Continue the Logical Core Probe separately; do not infer logical conclusions from the atomicity experiment.
