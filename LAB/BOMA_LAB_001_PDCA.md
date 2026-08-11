@@ -14,6 +14,7 @@ This ledger is updated during the experiment, not only at cycle closure.
 | E-006 | Verification interpretation | Backend success proves acceptance of the current Lean artifact, not BOMA atomicity or semantic canonicity. | Adopted as working distinction |
 | E-007 | Atomicity probe | `domain + initial` can be independently represented and checked in Lean. | **Validated** |
 | E-008 | Independent BOMA identity analysis | `domain + initial` passes provisional criteria for independent identity; decomposition is supported but not yet adopted. | **Provisional** |
+| E-009 | Cross-case identity criterion test | The provisional identity criterion rejects a backend-separable successor component when its BOMA meaning is incomplete without a carrier/domain. | **Provisional / Observed** |
 
 ### E-005 — Formal verification evidence
 
@@ -74,6 +75,34 @@ Analysis record:
 
 `LAB/B001_IDENTITY_ANALYSIS.md`
 
+### E-009 — Cross-case criterion evidence
+
+The provisional identity criterion was applied to a structurally related control candidate:
+
+```text
+C-CTRL-001 — successor : X → X without an independently specified carrier/domain
+```
+
+The control was **not** given a Brick ID and was not added to `BRICKS/`.
+
+Results:
+
+```text
+Identifiability       FAIL
+Self-contained        FAIL
+Traceable dependency  PASS
+Non-artificiality     FAIL
+Brick candidate       NO
+```
+
+**Interpretation:** backend separability is not sufficient for Brick status. The criterion discriminates between a candidate with an independently meaningful identity (`domain + initial`) and a separable component whose intended BOMA meaning is incomplete without an unspecified carrier.
+
+**Non-claim:** this single control case does not validate the criterion universally. It only provides evidence that the criterion is non-vacuous and is not equivalent to backend separability.
+
+Analysis record:
+
+`LAB/B001_IDENTITY_CRITERION_TEST.md`
+
 ## Current State
 
 The experiment remains open. B-002 remains blocked.
@@ -89,6 +118,7 @@ D-000
        ├── Reproducibility evidence        ✓
        ├── Backend separability            ✓
        ├── Independent identity evidence  ✓ provisional
+       ├── Criterion cross-case test       ✓ provisional
        ├── Decomposition                  SUPPORTED / NOT ADOPTED
        ├── Final Atomicity                 OPEN
        └── Logical Core                    OPEN
@@ -96,7 +126,7 @@ D-000
 
 ## Immediate next gates
 
-1. Test whether the proposed identity/dependency criterion generalizes beyond B-001.
+1. Apply the criterion to a positive control that is genuinely dependent on a prior unit but may still deserve independent Brick status.
 2. Decide whether `domain + initial` should become an adopted Brick boundary.
 3. Only then, if justified, create official `B-001a` / `B-001b` records.
 4. Continue the Logical Core Probe separately; do not infer logical conclusions from the atomicity experiment.
