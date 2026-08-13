@@ -1,5 +1,17 @@
 # TCT-002 — Finite Configuration Formation and Canonical Last-Step Recovery
 
+## Architectural Identity
+
+- **Unit ID:** `TCT-002`
+- **Type:** `Block`
+- **Layer:** `L1 — explicit constructed structure`
+- **Parent:** `TCT-001`
+- **Graph position:** first vertical construction block above the kernel
+- **Consumes:** `ε`, `U`, `⊙`
+- **Produces:** finite normal-form configurations and terminal-recovery procedure
+- **Junction:** `TCT-J-001` for canonicality verification
+- **Sensitivity:** medium-high; representation changes may propagate to decomposition and later stage construction
+
 ## Status
 
 Transparent Construction Track — active.
@@ -155,6 +167,32 @@ The configurations are identified by their constructional form and structural eq
 - a numerical depth function;
 - a successor operation on a formal domain;
 - a completed family containing all generated configurations as a formal set/type.
+
+## Graph Relations
+
+```text
+TCT-001 --COMPOSES/DEPENDS_ON--> TCT-002
+TCT-002 --MEETS_AT-------------> TCT-J-001
+```
+
+The `TCT-J-001` junction is intentionally outside the block so that decomposition ambiguity cannot be hidden inside the formation block.
+
+## Sensitivity / Change Impact
+
+```text
+Change formation grammar
+  → retest normal forms
+  → retest terminal recovery
+  → retest decomposition
+  → retest future depth/successor construction
+
+Change only normal-form convention
+  → representation artifacts may change
+  → underlying construction must be rechecked for invariance
+
+Change structural equivalence
+  → high-impact retest of decomposition, depth, successor and formal-domain layers
+```
 
 ## Acceptance criterion
 
