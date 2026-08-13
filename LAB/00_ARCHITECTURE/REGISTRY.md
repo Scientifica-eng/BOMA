@@ -10,15 +10,15 @@ This file is the single navigation table for the active construction.
 
 ## Unit registry
 
-| ID | Type | Layer | Role | Status |
-|---|---|---|---|---|
-| TCT-BLOCK-001 | Block | L1 | Construction kernel | ACTIVE |
-| TCT-BLOCK-002 | Block | L1 | Finite configurations | ACTIVE |
-| TCT-J-001 | Junction | L1 | Canonicality gate | PENDING |
-| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | PENDING |
-| TCT-BLOCK-004 | Block | L1 | Construction depth | PENDING |
-| TCT-BLOCK-005 | Block | L1 | Successor | PENDING |
-| TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | PENDING |
+| ID | Type | Layer | Role | Status | Canonical path |
+|---|---|---|---|---|---|
+| TCT-BLOCK-001 | Block | L1 | Construction kernel | ACTIVE | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-001/UNIT.md` |
+| TCT-BLOCK-002 | Block | L1 | Finite configurations | ACTIVE | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-002/UNIT.md` |
+| TCT-J-001 | Junction | L1 | Canonicality gate | PENDING | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
+| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | PENDING | reserved |
+| TCT-BLOCK-004 | Block | L1 | Construction depth | PENDING | reserved |
+| TCT-BLOCK-005 | Block | L1 | Successor | PENDING | reserved |
+| TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | PENDING | reserved |
 
 ## Legacy correspondence
 
@@ -61,19 +61,23 @@ These are registry candidates only until individual unit records are created and
 5. No unit is marked PASS without its own verification record.
 6. A Junction remains PENDING until its compatibility condition is independently verified.
 7. Registry status must reflect the graph, not narrative convenience.
+8. Reserved units must not be presented as constructed.
 
 ## Current position
 
 ```text
-TCT-BLOCK-001  ACTIVE
-TCT-BLOCK-002  ACTIVE
-TCT-J-001      PENDING
+TCT-BLOCK-001  ACTIVE  ✓ canonical
+TCT-BLOCK-002  ACTIVE  ✓ canonical
+TCT-J-001      PENDING ✓ canonical
+TCT-BLOCK-003  PENDING / reserved
 ```
 
-Next active construction unit:
+Next active construction target:
 
 ```text
+TCT-J-001 verification
+        ↓
 TCT-BLOCK-003
 ```
 
-but only after `TCT-J-001` is independently resolved.
+`TCT-BLOCK-003` must not be treated as constructed until `TCT-J-001` is independently resolved.
