@@ -1,0 +1,462 @@
+# PDCA Learning Log
+
+**Cycle:** `PDCA-001`  
+**Purpose:** preserve decisions, failed attempts, corrections, and lessons learned while constructing BOMA from zero.
+
+## 1. Why this log exists
+
+This laboratory is deliberately a small PDCA learning cycle. Its objective is not only to obtain a successful artifact, but to learn how BOMA should be constructed.
+
+Therefore the experiment records four classes of events:
+
+1. **Decision** — what we intentionally chose and why;
+2. **Result** — what happened after the decision;
+3. **Error / mismatch** — where an assumption, implementation, or interpretation proved inadequate;
+4. **Correction / learning** — what changed and what should be carried forward.
+
+A failed attempt is evidence. It must not be erased merely because the final implementation succeeds.
+
+## 2. Learning entries
+
+### L-001 — Build from zero
+
+**Decision:** Do not retrofit an existing mathematical development. Construct BOMA incrementally, Brick by Brick.
+
+**Result:** `D-000` was treated as an empty starting state and `B-001` became the first experimental construction target.
+
+**Learning:** The laboratory itself must remain part of the architecture-development process, not merely a test suite for a finished architecture.
+
+---
+
+### L-002 — Use `Brick` as the atomic construction term
+
+**Decision:** Use `Brick` for the smallest BOMA construction unit. A collection of Bricks may later form a `Block` where that abstraction is useful.
+
+**Result:** The experimental records and terminology use `Brick` as the primary unit under investigation.
+
+**Learning:** `Block` must not silently replace `Brick` as the atomic term. Their relationship, if any, must be explicitly defined later.
+
+---
+
+### L-003 — Separate BOMA language from backend language
+
+**Decision:** BOMA concepts and Lean/Coq/Agda/Isabelle concepts must be distinguished internally even when a backend provides an implementation mapping.
+
+**Result:** `B-001` is recorded as a BOMA Brick and `B001.lean` as a Lean artifact, with an `Implemented-by` relation rather than identity.
+
+**Learning:** A successful proof-checker run must not automatically define BOMA semantics.
+
+---
+
+### L-004 — Initial CI failure
+
+**Decision:** Run the Lean verification path through the repository's CI environment.
+
+**Result:** The first CI attempt failed because the required Lake manifest/workspace setup was absent.
+
+**Correction:** Add the minimal Lean/Lake infrastructure required by the declared toolchain.
+
+**Learning:** Infrastructure failures must be recorded separately from mathematical or architectural failures. A green CI result after correction does not erase the fact that the original environment was incomplete.
+
+---
+
+### L-005 — First successful Lean verification
+
+**Decision:** Verify the first B-001 Lean artifact under a pinned Lean environment.
+
+**Result:** The kernel/type-check step succeeded.
+
+**Learning:** This establishes backend verification evidence only. It does not establish BOMA atomicity, semantic canonicity, or normative acceptance.
+
+---
+
+### L-006 — First atomicity assumption challenged
+
+**Initial assumption:** Because B-001 was represented as one Lean inductive declaration, treating it as one Brick was initially convenient.
+
+**Test:** Construct an independent probe for `domain + initial`.
+
+**Result:** The smaller candidate was accepted by Lean.
+
+**Correction:** Do not infer BOMA atomicity from backend syntactic unity.
+
+**Learning:**
+
+```text
+backend separability ≠ BOMA decomposability
+```
+
+---
+
+### L-007 — Semantic identity test
+
+**Decision:** Test whether `domain + initial` has an identity independent of successor.
+
+**Result:** The candidate provisionally passed identifiability, self-contained content, traceable dependency, and non-artificiality tests.
+
+**Learning:** Backend separability can become architectural evidence, but only after a semantic/architectural test.
+
+---
+
+### L-008 — Negative control
+
+**Decision:** Apply the emerging identity criterion to a related component: `successor : X → X` without an independently specified carrier/domain.
+
+**Result:** It failed independent identity and self-contained meaning despite being syntactically representable.
+
+**Learning:** The criterion is not equivalent to backend separability.
+
+---
+
+### L-009 — Positive control
+
+**Decision:** Test whether dependency on an established prior unit automatically disqualifies Brick status.
+
+**Result:** A successor extension over an already established domain was provisionally accepted as an independent architectural candidate.
+
+**Learning:**
+
+```text
+dependency ≠ non-atomicity
+```
+
+A Brick may depend on an earlier Brick when it introduces a distinct and complete commitment relative to that prerequisite.
+
+---
+
+### L-010 — Missing authoritative definition discovered
+
+**Decision:** Before promoting the experimental identity criterion into a BOMA rule, compare it with the project's authoritative BOMA/BOMA II definition of Brick.
+
+**Result:** The current repository branch did not expose a file that could safely be treated as that authoritative definition. The visible `README.md` is descriptive but insufficient for this purpose.
+
+**Correction:** Do not manufacture a normative Brick definition from the PDCA evidence. Record the gap and return to the source documents before architectural adoption.
+
+**Learning:** The laboratory may discover candidate principles, but it must distinguish **experimental inference** from **authoritative specification**.
+
+---
+
+### L-011 — Dependency-overconstraint detected
+
+**Initial assumption:** A Brick's independent commitment might be characterized relative to a prior Brick.
+
+**Challenge:** This formulation risks making dependency on a previous Brick an implicit condition of Brickhood. That can force an artificial linear construction order and make naturally branching structures appear sequential.
+
+**Correction:** Dependency is a relation of a Brick, not a necessary condition for Brickhood.
+
+**New hypothesis:** A Brick may have zero, one, or multiple dependencies. A dependency-free Brick is legitimate if it has its own identity and commitment.
+
+**Additional candidate condition:** A Brick introduced into an existing context should not conflict with commitments already in scope. This is a hypothesis under test, not yet a formal definition of consistency or compatibility.
+
+**Learning:** Keep these relations distinct:
+
+```text
+construction order
+≠ dependency
+≠ compatibility / non-conflict
+≠ necessity
+```
+
+**Open question:** How should trunk, branch, convergence, and shared/reusable structure be represented without imposing artificial linearization?
+
+Analysis record:
+
+`LAB/DEPENDENCY_INDEPENDENCE_PROBE_001.md`
+
+---
+
+### L-012 — DAG convergence validated provisionally
+
+**Test:** Use independent Bricks `A` and `B`, then a convergence Brick `C` with `C.depends_on = {A, B}`.
+
+**Result:** The graph is representable without inventing `A → B` or `B → A`. Construction order can vary while the semantic dependency graph remains unchanged.
+
+**Learning:** A branching/converging dependency structure should be permitted. Construction sequence must not be silently encoded as semantic dependency.
+
+Analysis record:
+
+`LAB/DAG_CONVERGENCE_PROBE_001.md`
+
+---
+
+### L-013 — Minimal conflict/compatibility probe
+
+**Question:** If dependency is optional, what prevents an independent Brick from introducing an incompatible commitment?
+
+**Test:** Use a deliberately tiny commitment language:
+
+```text
+A: P
+B: Q
+C: ¬P
+```
+
+**Results:**
+
+```text
+P + Q       compatible
+P + ¬P      conflict
+P + (P→Q)   compatible in the toy model
+```
+
+Dependency did not determine compatibility in either direction.
+
+**Correction / learning:** The condition suggested earlier should be retained, but carefully scoped:
+
+> A candidate Brick must be compatible with the commitments in its declared context.
+
+This is stronger than “does not depend on previous Bricks” and weaker than a complete global consistency theory.
+
+**Critical limitation:** The toy model does not define BOMA conflict generally. In particular, conflict may concern definitions, axioms, typing constraints, logical commitments, or architectural commitments. The experiment only demonstrates the conceptual distinction.
+
+Analysis record:
+
+`LAB/CONFLICT_COMPATIBILITY_PROBE_001.md`
+
+---
+
+### L-014 — Logic-relative admissibility hypothesis
+
+**Observation:** The status of a commitment such as `P ∨ ¬P` or `¬¬P → P` differs between intuitionistic and classical reasoning. A commitment not derivable intuitionistically is not thereby contradictory to intuitionistic logic.
+
+**Hypothesis:** Brick admissibility is not a unary property of the Brick. It is a relation involving the Brick, its existing context, and the active logical regime.
+
+Provisional form:
+
+```text
+Admissible(B, Context, LogicRegime)
+```
+
+**Critical distinction:**
+
+```text
+not derivable in L-I ≠ contradictory in L-I
+classical strengthening ≠ inconsistency
+```
+
+A classical-strengthening Brick may be a legitimate extension of an intuitionistic context, but its introduction should be represented as an explicit logical commitment. For the trunk, such a move remains subject to the project's existing requirement of necessity, transparency, and justification.
+
+**Learning:** We should distinguish at least:
+
+```text
+already derivable
+admissible but not derivable
+requires explicit logical strengthening
+contradictory with context
+unresolved
+```
+
+**Impact:** The `non-conflict` criterion should not be formalized independently of the logical regime. The next work must investigate what constitutes the minimal logical context required for local admissibility.
+
+Analysis record:
+
+`LAB/LOGIC_RELATIVE_ADMISSIBILITY_PROBE_001.md`
+
+---
+
+### L-015 — Hybrid logical requirement model
+
+**Question:** Should each Brick explicitly declare its logical requirements, or should requirements be inferred from formal content?
+
+**Test:** Compare five cases: an intuitionistically derivable commitment; a classical-strengthening commitment; a direct contradiction; an unnecessarily strong declared requirement; and a formal payload that uses a classical principle while declaring none.
+
+**Result:** Neither explicit declaration nor inference alone is sufficient.
+
+- Declaration is valuable for architectural intent and provenance.
+- Formal analysis is required to detect or verify actual logical dependence.
+- A declaration cannot make an inconsistent Brick compatible with its context.
+- A stronger-than-necessary declaration is an architectural event that should remain visible and justified.
+- A hidden backend dependence makes an undeclared requirement incomplete.
+
+**Correction / learning:** Favor a **hybrid model**:
+
+```text
+Declared requirement  → provenance / intent
+Inferred requirement  → formal analysis
+Verified requirement  → checked result
+Context               → admissibility decision
+```
+
+No exact schema is adopted yet.
+
+**Impact:** A future Brick record may need to distinguish `declared`, `inferred`, and `verified` logical requirements. Backend configuration must remain evidence about the formal environment, not automatically the BOMA logical requirement.
+
+Analysis record:
+
+`LAB/LOGICAL_REQUIREMENT_DECLARATION_PROBE_001.md`
+
+---
+
+### L-016 — Declaration/inference mismatch probe
+
+**Question:** What should happen when declared and inferred logical requirements disagree?
+
+**Test:** Compare under-declaration, over-declaration, agreement, inconclusive inference, and genuine context conflict.
+
+**Result:** A mismatch cannot be reduced to `invalid`. The cases have different meanings:
+
+```text
+UNDER_DECLARED
+OVER_DECLARED
+AGREEMENT
+INFERENCE_INCONCLUSIVE
+CONTEXT_CONFLICT
+BACKEND_ENVIRONMENT_MISMATCH
+UNRESOLVED
+```
+
+**Correction / learning:** Preserve the layers independently:
+
+```text
+Declaration → provenance / author intent
+Inference   → formal evidence
+Backend     → implementation evidence
+Context     → compatibility domain
+Decision    → architectural judgment
+```
+
+A declaration must not silently overwrite an inference, and an inference must not silently rewrite the historical declaration. Likewise, backend configuration must not automatically be treated as a BOMA requirement.
+
+**Impact:** The future Brick record should preserve evidence and diagnostic status, rather than only a final Boolean verdict. An admissible Brick may legitimately carry a warning such as `OVER_DECLARED`; an unresolved inference must not be reported as proof of intuitionistic purity.
+
+Analysis record:
+
+`LAB/LOGICAL_REQUIREMENT_MISMATCH_PROBE_001.md`
+
+---
+
+### L-017 — Trunk/branch admissibility probe
+
+**Question:** Can the same Brick be admissible in a branch while being inadmissible in the trunk without contradiction in either context?
+
+**Test:** Use an intuitionistic trunk `T`, a branch `B` with an explicit classical strengthening, and a control Brick `C` whose commitment requires that strengthening.
+
+**Result:** `C` is not contradictory in the intuitionistic trunk, but it is not admissible there under the current trunk policy because its declared/inferred requirement exceeds the trunk's active logical regime. The same `C` is admissible in the explicitly strengthened branch.
+
+**Important distinction:**
+
+```text
+Brick identity ≠ Brick admissibility
+Branch membership ≠ intrinsic Brick property
+```
+
+A branch-specific logical environment therefore changes the admissibility relation, not the mathematical identity of the Brick.
+
+**Convergence test:** A branch containing `C` cannot be merged back into the intuitionistic trunk while silently discarding the branch's additional logical commitment. The commitment must remain branch-local, be shown unnecessary for the merged result, or be explicitly promoted into the trunk under the exceptional-use policy.
+
+**Correction / learning:** Introduce a provisional three-layer model:
+
+```text
+Brick layer    → what is the Brick?
+Context layer  → what commitments are active here?
+Policy layer   → what may enter this context?
+```
+
+Provisional admissibility form:
+
+```text
+Admissible(B, Context, LogicRegime, Policy)
+```
+
+This does not establish a final BOMA schema.
+
+**Impact:** Trunk, branch, and convergence must be treated as contextual/governance structures rather than properties silently embedded into Brick identity. The experiment also reinforces that dependency and admissibility are independent relations.
+
+Analysis record:
+
+`LAB/TRUNK_BRANCH_ADMISSIBILITY_PROBE_001.md`
+
+---
+
+## 3. Current lessons
+
+### Lesson A — Preserve failures
+
+A failed CI setup, rejected decomposition, or abandoned assumption is part of the experiment's knowledge base.
+
+### Lesson B — Preserve decision provenance
+
+Every architectural change should answer:
+
+```text
+What did we believe?
+What did we test?
+What happened?
+What changed?
+Why did the conclusion change?
+```
+
+### Lesson C — Separate evidence from interpretation
+
+A successful Lean check is evidence about Lean acceptance. It becomes evidence about BOMA only through an explicit interpretation step.
+
+### Lesson D — Do not prematurely normalize
+
+An experimental pattern should remain marked `provisional` until it survives cross-case tests and is reconciled with the project's authoritative documents.
+
+### Lesson E — The laboratory is itself a learning artifact
+
+The output of PDCA-001 is not only `B-001`. It includes the construction method, the failure history, the evidence chain, and the corrections that will inform the next cycle.
+
+### Lesson F — Do not confuse the record with the law
+
+The learning log is a memory and reasoning aid for the experiment. Its entries are not automatically BOMA specification. A hypothesis may later be rejected, refined, or promoted only through explicit justification.
+
+### Lesson G — Keep dependency and compatibility separate
+
+A Brick can be independent of another Brick and still be compatible with it. A Brick can depend on another Brick and still conflict with an existing commitment. Neither relation determines the other.
+
+### Lesson H — Keep logical provenance and logical inference separate
+
+A declared logical requirement records intent and provenance; inferred/verified requirements provide evidence. Neither should silently replace the other.
+
+### Lesson I — Preserve mismatches as first-class evidence
+
+A discrepancy between declaration and inference is itself useful experimental data. The correct response is diagnosis and provenance preservation, not silent normalization.
+
+### Lesson J — Admissibility is contextual
+
+The same Brick may be admissible in one context and inadmissible in another without contradiction. Branch membership should not become part of intrinsic Brick identity merely because the branch changes the logical environment.
+
+## 4. Required record discipline
+
+For future entries, use this structure:
+
+```text
+ID
+Decision / assumption
+Action or test
+Observed result
+Error or mismatch (if any)
+Correction
+Learning
+Impact on BOMA
+Evidence reference
+```
+
+No failed experiment should be deleted merely because a later attempt succeeds. If an earlier record is wrong, append a correction with provenance instead of silently rewriting history.
+
+## 5. Current status
+
+```text
+PDCA-001
+├── Decisions recorded              ✓
+├── Results recorded                ✓
+├── Failures recorded               ✓
+├── Corrections recorded            ✓
+├── Lessons extracted               ✓
+├── Brick criterion                 PROVISIONAL
+├── Dependency requirement          REJECTED AS A NECESSARY CONDITION
+├── DAG/convergence model           SUPPORTED PROVISIONALLY
+├── Non-conflict condition          SUPPORTED AS CANDIDATE / LOGIC-RELATIVE
+├── Conflict calculus               OPEN
+├── Logic-relative admissibility    SUPPORTED PROVISIONALLY
+├── Logical requirement model       HYBRID / PROVISIONAL
+├── Requirement mismatch handling   SUPPORTED PROVISIONALLY
+├── Trunk/branch admissibility      SUPPORTED PROVISIONALLY
+├── Branch merge semantics          OPEN
+├── Transitive requirement flow     OPEN
+├── Trunk/branch governance model   PROVISIONAL
+├── B-001 decomposition             SUPPORTED / NOT ADOPTED
+└── Authoritative definition        SOURCE AUDITED
+```
