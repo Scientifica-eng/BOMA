@@ -1,5 +1,16 @@
 # TCT-001 — Construction Kernel: Empty Configuration + Elementary Block
 
+## Architectural Identity
+
+- **Unit ID:** `TCT-001`
+- **Type:** `Block`
+- **Layer:** `L1 — explicit constructed structure`
+- **Graph role:** root construction block
+- **Consumes:** declared starting choice from `REORIENTATION-001`
+- **Produces:** `ε`, `U`, `⊙`
+- **Downstream:** `TCT-002`
+- **Sensitivity:** high; changes may propagate through the full transparent construction track
+
 ## Status
 
 Transparent Construction Track — active.
@@ -182,8 +193,29 @@ Associativity                      TARGET / TO BE VERIFIED
 Natural numbers                    NOT YET INTRODUCED
 ```
 
+## Graph Relations
+
+```text
+REORIENTATION-001 --DEPENDS_ON--> TCT-001
+TCT-001            --COMPOSES----> TCT-002
+```
+
+## Sensitivity / Change Impact
+
+```text
+Change U
+  → retest concatenation
+  → retest finite formation
+  → retest decomposition
+  → retest depth and successor downstream
+
+Change ε
+  → retest empty behavior and all later identity-dependent constructions
+
+Change ⊙
+  → high-impact retest of the entire downstream graph
+```
+
 ## Plan position
 
 Transparent Construction Track — TCT-001.
-
-Next: **TCT-002 — Finite configuration formation and canonical decomposition**, with no natural-number indexing.
