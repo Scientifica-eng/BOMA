@@ -1,0 +1,25 @@
+name: BOMA N-Core R-B 001
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - '.github/workflows/boma-ncore-rb-001.yml'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+
+jobs:
+  verify-ncore-rb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+
+      - name: Verify fresh BOMA N-Core candidate
+        run: lake env lean LAB/payloads/lean/NCore/BOMANat.lean
