@@ -5,7 +5,7 @@
 - **Unit ID:** `TCT-BR-009`
 - **Type:** Brick
 - **Layer:** `L1 — explicit constructed structure`
-- **Status:** **DECLARED ADDITIONAL CONSTRAINT**
+- **Operational Status:** **ACTIVE**
 
 ## Purpose
 
@@ -35,9 +35,9 @@ P ≈ Q
 
 at the level of structural equivalence.
 
-## Epistemic status
+## Epistemic Status
 
-**DECLARED ADDITIONAL CONSTRAINT — NOT DERIVED FROM THE CURRENT SPECIFICATION OF `≈`**
+**DECLARED CHOICE — ADDITIONAL CONSTRAINT**
 
 The completed derivability test established that terminal-interface preservation cannot be inferred from the presently specified structural-equivalence relation because the current specification does not itself require preservation of boundary/interface data.
 
@@ -51,13 +51,15 @@ Primary result:
 
 `LAB/10_CONSTRUCTION/experiments/TCT-BR-009-DERIVABILITY-001.md`
 
-Recorded result:
+Recorded result at the time of the derivability audit:
 
 ```text
 TCT-BR-009 = DECLARED ADDITIONAL CONSTRAINT
 TCT-J-001   = CONDITIONAL / PENDING
 TCT-BLOCK-003 = RESERVED / NOT BUILT
 ```
+
+The phrase `DECLARED ADDITIONAL CONSTRAINT` in that historical result is interpreted here as an **epistemic classification**, not as an operational lifecycle status.
 
 ## What this Brick does not introduce
 
@@ -88,7 +90,8 @@ This question is assigned to the new PDSA TCT sequence.
 
 ```text
 RETAIN DECLARED CONSTRAINT
-    Keep the present status and make the dependency explicit in TCT-J-001.
+    Keep the present epistemic status and make the dependency explicit
+    in TCT-J-001.
 
 DERIVED UNDER REVISED ≈
     A later explicit definition of ≈ proves terminal preservation.
@@ -127,4 +130,4 @@ Status synchronization performed during:
 
 `PDSA-TCT-001 — Baseline Stabilization`
 
-The synchronization changes documentary status only. It does not close `TCT-J-001` and does not promote any downstream Block.
+The synchronization separates operational lifecycle status from epistemic classification. It does not close `TCT-J-001` and does not promote any downstream Block.
