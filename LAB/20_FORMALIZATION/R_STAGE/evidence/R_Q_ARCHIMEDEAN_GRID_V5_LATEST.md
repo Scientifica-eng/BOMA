@@ -1,7 +1,7 @@
 # R-stage Q Archimedean Grid V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `8bbd30224d423bc271311c704257593a550bd691`  
-**Workflow run ID:** `32185710216`  
+**Verified commit:** `264948650960e072354deb83c185ca11ee47dab0`  
+**Workflow run ID:** `32185834478`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
