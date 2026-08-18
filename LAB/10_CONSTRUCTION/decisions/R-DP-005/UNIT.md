@@ -1,9 +1,10 @@
 # R-DP-005 — Real Multiplication Sign Architecture
 
-- **Operational Status:** **OPEN — REPRESENTATION PROBES REQUIRED**
+- **Operational Status:** **RESOLVED — CANDIDATE A SELECTED FOR CANONICAL STAGE-I ROUTE**
 - **Epistemic Status:** **MATHEMATICAL / ARCHITECTURAL DECISION POINT**
 - **Input:** `R-ADD-GROUP-BLOCK-001`, selected Dedekind carrier `RBOMA`
 - **Targets:** `RA-04`, `RA-07`, `RA-09`, `RA-10`, later `RA-08`
+- **Resolution date:** 2026-08-18
 
 ## Decision question
 
@@ -18,99 +19,151 @@ field laws can be audited without importing built-in Real;
 Stage-II alternatives remain testable?
 ```
 
-## Candidate A — positive/negative-part decomposition
+## Selected route — Candidate A: positive/negative-part decomposition
 
-Define the nonnegative envelope of a cut by a union rather than a logical case split:
+Define the nonnegative envelope by union rather than a sign decision:
 
 ```text
 A⁺ := max(A,0)
     := A ∪ principalCut(0)
-
-A⁻ := max(-A,0)
 ```
 
-Then construct multiplication first for nonnegative cuts and define signed multiplication algebraically through:
+and use the already-defined negation for the negative envelope:
+
+```text
+A⁻ := max(-A,0).
+```
+
+Construct multiplication first on nonnegative envelopes, then define signed multiplication compositionally:
 
 ```text
 xy = x⁺y⁺ + x⁻y⁻ - x⁺y⁻ - x⁻y⁺.
 ```
 
-### Hypothesis
-
-This may keep the **operation definition** free of an unrestricted classical `if x≥0 then ... else ...`, while allowing order comparability to enter only in proofs that identify `x⁺/x⁻` with ordinary sign cases.
-
-### Required probes
+The selected Lean candidate is `rMulCandidate` in:
 
 ```text
-A1  max-with-zero cut is a valid LowerCut;
-A2  it respects CutEquiv and lifts to RBOMA;
-A3  nonnegative-cut multiplication is a valid LowerCut;
-A4  nonnegative multiplication respects identity;
-A5  signed decomposition preserves rational multiplication;
-A6  algebraic laws can be proved with localized logical provenance.
+LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean
+```
+
+The operation definition itself contains no proposition-valued sign `if`, no global sign selector, and no built-in `Real` multiplication.
+
+## Evidence supporting Candidate A
+
+The route was decomposed into independently audited layers.
+
+### A1/A2 — positive envelope
+
+`cutPosPart` is a valid lower cut, respects `CutEquiv`, lifts to `RBOMA`, and is above both zero and the original input.
+
+```text
+V5 run 32187088594 — PASS
+```
+
+### A3/A4 — nonnegative multiplication kernel
+
+`cutMulNonnegEnvelope` is a valid lower cut, respects `CutEquiv`, lifts to `RBOMA`, and is commutative.
+
+```text
+V5 run 32187257316 — PASS
+```
+
+### Shared Q multiplicative approximation
+
+A Q-level contribution was isolated instead of hiding approximation inside the real multiplication proof. It proves strict multiplication/cancellation and interior product witnesses using existential inverse witnesses and rational density.
+
+```text
+V5 run 32187796232 — PASS
+```
+
+### Nonnegative Q preservation
+
+For nonnegative rationals, the nonnegative-envelope real multiplication agrees exactly with principal-cut rational multiplication.
+
+```text
+V5 run 32187981163 — PASS
+```
+
+### A5 — signed Q preservation
+
+The signed candidate preserves rational multiplication for all four sign combinations while keeping sign splitting in the proof rather than the operation definition.
+
+```text
+V5 run 32189753112 — PASS
 ```
 
 ## Candidate B — direct sign-case multiplication
 
-Define raw multiplication by explicit cases according to the sign of the two inputs.
+Candidate B remains a legitimate Stage-II branch but is not selected for the canonical Stage-I route.
 
-### Advantage
+The decisive logical distinction is definition-level elimination. The available total-order comparison has proposition-valued output. Using it merely to prove sign-identification lemmas is local logical reasoning; using it to **define an `RBOMA` value by cases** generally requires a computational decision/selector such as classical decidability or an equivalent explicit commitment.
 
-Closer to textbook Dedekind-cut multiplication and may shorten local proofs.
+Thus Candidate B tends to place classical sign selection inside the definition of multiplication itself, whereas Candidate A keeps the operation definition compositional and confines sign comparison to proofs.
 
-### Risk
-
-If implemented by proposition-valued `if` / decidability of cut signs, classical reasoning becomes embedded inside the **definition of the operation**, making dependency provenance coarser and potentially contaminating later branch comparisons.
-
-Candidate B remains legitimate if its proof burden is substantially lower and the logical commitment can still be isolated transparently.
+This is not a claim that Candidate B is mathematically invalid. It is an architectural comparison about dependency localization, auditability, and later branch analysis.
 
 ## Candidate C — shift-to-positive multiplication
 
-For each pair, shift inputs by sufficiently large rationals/naturals into a positive region, multiply there, then algebraically subtract correction terms.
+Candidate C is retained as a non-canonical alternative for later branch testing. It was not selected because it would require additional shift-existence and shift-independence obligations and risks coupling multiplication prematurely to Archimedean/global approximation infrastructure.
 
-### Advantage
+## Decision
 
-May reuse a single positive multiplication kernel.
+**Select Candidate A for the canonical Stage-I construction.**
 
-### Risks
-
-```text
-requires a shift-existence theorem on arbitrary R;
-requires proof of independence from shift choice;
-may consume RA-13-like Archimedean structure prematurely;
-may create unnecessary coupling between multiplication and global approximation.
-```
-
-Candidate C is retained unless probes show the choice burden is clearly inferior.
-
-## Decision criteria
-
-Compare:
+The decision is based on the conjunction of:
 
 ```text
-definition-level logical commitments
-representative invariance
-proof reuse
-Q-embedding preservation cost
-law-proof complexity
-interaction with RA-08 inverse
-reverse-engineering clarity
-Stage-II branch value
+representative-invariant positive envelope;
+representative-invariant nonnegative product kernel;
+all-sign preservation of the accepted Q embedding;
+no sign-case selector in the multiplication definition;
+separable logical provenance;
+clear reusable Q-level approximation interface;
+strong reverse-engineering visibility.
 ```
 
-## Current preference
+## Scope of this resolution
 
-Candidate A is the primary probe because it may separate **constructive definition** from **classical sign identification**. This is only a working hypothesis.
+This decision selects the **architecture and candidate operation**. It does **not** yet certify the full ordered-field multiplication package.
 
-## Decision lock
-
-Do not promote a formal `rMul` until at least:
+Still pending after this decision:
 
 ```text
-1. Candidate A positive-part layer passes V5;
-2. a valid nonnegative multiplication kernel is tested;
-3. the logical commitments of Candidate B are recorded for comparison;
-4. Q-embedding preservation is demonstrated for the selected route or an explicit blocker is identified.
+multiplicative identity on arbitrary RBOMA;
+associativity;
+distributivity over rAdd;
+order compatibility / positivity laws;
+nonzero inverse construction;
+field-level RA-04 / RA-07 / RA-08 closure.
 ```
 
-No built-in Real multiplication may be used as a shortcut.
+Therefore `rMulCandidate` may be promoted as the selected multiplication definition interface, but RA-04/RA-07 must remain pending until law-level V5 gates pass.
+
+## Reverse-engineering significance
+
+`R-DP-005` is a mandatory node for `RE-R-001`.
+
+The later reverse-engineering pass must separately classify:
+
+```text
+positive-envelope construction;
+nonnegative multiplication kernel;
+Q multiplicative approximation contribution;
+sign-composition formula;
+proof-only use of sign totality;
+rejected-for-Stage-I definition-level classical sign selection;
+```
+
+and determine which are structurally necessary for a real-field realization and which are specific to the selected Dedekind route.
+
+## Stage-II branch value
+
+Retain at least these explicit alternatives:
+
+```text
+A  positive/negative-part decomposition — SELECTED Stage-I route;
+B  direct sign-case multiplication — retained branch;
+C  shift-to-positive multiplication — retained branch.
+```
+
+They are suitable later for controlled comparison of definition-level logic, proof burden, dependency propagation, and convergence to equivalent field interfaces.
