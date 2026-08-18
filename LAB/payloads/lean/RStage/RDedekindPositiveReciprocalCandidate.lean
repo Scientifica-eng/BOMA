@@ -13,6 +13,18 @@ open BOMA.R.DedekindNegationCandidate001
 open BOMA.R.QPositiveMultiplicativeApprox001
 open BOMA.R.QInverseOrder001
 
+/-- Local non-strict/strict transitivity used to keep this reciprocal gate
+independent of later R-stage helper files. -/
+theorem qle_lt_trans_recip {x y z : QBOMA}
+    (hxy : qLE x y) (hyz : qLT y z) : qLT x z := by
+  refine ⟨qle_trans hxy hyz.1, ?_⟩
+  intro hxz
+  have hzy : qLE z y := by
+    rw [← hxz]
+    exact hxy
+  have hyzEq : y = z := qle_antisymm hyz.1 hzy
+  exact hyz.2 hyzEq
+
 /-- Representation-level witness that a lower cut contains a strictly positive rational. -/
 def CutHasPositive (A : LowerCut) : Prop :=
   ∃ a : QBOMA, A.lower a ∧ qLT qZero a
@@ -43,8 +55,8 @@ def cutRecipPos (A : LowerCut) (hApos : CutHasPositive A) : LowerCut where
       qLT q rinv
   nonempty := by
     have hneg : qLT (qNeg qOne) qZero := by
-      have ht := qneg_strict_reverses qzero_lt_one
-      rw [qNeg_zero] at ht
+      have ht := qlt_add_right qzero_lt_one (qNeg qOne)
+      rw [qAdd_zero_left, qAdd_neg_right] at ht
       exact ht
     exact ⟨qNeg qOne, Or.inl hneg⟩
   proper := by
@@ -65,8 +77,8 @@ def cutRecipPos (A : LowerCut) (hApos : CutHasPositive A) : LowerCut where
   downward := by
     intro p q hq hpq
     rcases hq with hqNeg | ⟨r, rinv, hrOut, h0r, hrinv, hqInv⟩
-    · exact Or.inl (qle_lt_trans hpq hqNeg)
-    · exact Or.inr ⟨r, rinv, hrOut, h0r, hrinv, qle_lt_trans hpq hqInv⟩
+    · exact Or.inl (qle_lt_trans_recip hpq hqNeg)
+    · exact Or.inr ⟨r, rinv, hrOut, h0r, hrinv, qle_lt_trans_recip hpq hqInv⟩
   rounded := by
     intro q hq
     rcases hq with hqNeg | ⟨r, rinv, hrOut, h0r, hrinv, hqInv⟩
