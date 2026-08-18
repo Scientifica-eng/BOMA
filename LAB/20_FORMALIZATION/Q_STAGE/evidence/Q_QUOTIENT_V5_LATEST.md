@@ -1,7 +1,7 @@
 # Q Quotient Carrier V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `929d02d94fb45b77c051f925c01c21b958350347`  
-**Workflow run ID:** `32173496433`  
+**Verified commit:** `2d12ff6c42452660e3d49cfbb918c126e87eee20`  
+**Workflow run ID:** `32173821831`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 **Backend helper import:** `Init.Data.Quot`
 
