@@ -43,7 +43,7 @@ theorem rawLE_respects_left {x x' y : RawFrac}
     (zmul y.num (denZ x.den)) at h
   change zLE (zmul x'.num (denZ y.den))
     (zmul y.num (denZ x'.den))
-  have hm := zmul_mono_right_nonneg h (denZ x'.den) (denZ_nonneg x'.den)
+  have hm := zmul_mono_right_nonneg h (denZ_nonneg x'.den)
   have hleft :
       zmul (zmul x.num (denZ y.den)) (denZ x'.den) =
       zmul (zmul x'.num (denZ y.den)) (denZ x.den) := by
@@ -72,7 +72,7 @@ theorem rawLE_respects_right {x y y' : RawFrac}
     (zmul y.num (denZ x.den)) at h
   change zLE (zmul x.num (denZ y'.den))
     (zmul y'.num (denZ x.den))
-  have hm := zmul_mono_right_nonneg h (denZ y'.den) (denZ_nonneg y'.den)
+  have hm := zmul_mono_right_nonneg h (denZ_nonneg y'.den)
   have hleft :
       zmul (zmul x.num (denZ y.den)) (denZ y'.den) =
       zmul (zmul x.num (denZ y'.den)) (denZ y.den) :=
@@ -117,8 +117,8 @@ theorem rawLE_trans {x y w : RawFrac}
     (zmul w.num (denZ y.den)) at hyw
   change zLE (zmul x.num (denZ w.den))
     (zmul w.num (denZ x.den))
-  have h1 := zmul_mono_right_nonneg hxy (denZ w.den) (denZ_nonneg w.den)
-  have h2 := zmul_mono_right_nonneg hyw (denZ x.den) (denZ_nonneg x.den)
+  have h1 := zmul_mono_right_nonneg hxy (denZ_nonneg w.den)
+  have h2 := zmul_mono_right_nonneg hyw (denZ_nonneg x.den)
   rw [zmul_swap_last x.num (denZ y.den) (denZ w.den)] at h1
   rw [zmul_swap_last y.num (denZ x.den) (denZ w.den)] at h1
   rw [zmul_swap_last w.num (denZ y.den) (denZ x.den)] at h2
