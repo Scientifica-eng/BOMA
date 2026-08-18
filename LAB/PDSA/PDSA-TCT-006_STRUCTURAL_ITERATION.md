@@ -3,7 +3,8 @@
 **CycleID:** `PDSA-TCT-006`  
 **Track:** TCT  
 **Date opened:** 2026-08-18  
-**Status:** **ACTIVE — PLAN / HISTORICAL LEARNING INTAKE**  
+**Date closed:** 2026-08-18  
+**Status:** **CLOSED — TCT-BLOCK-004 STRUCTURAL ITERATION HISTORY ACTIVE**  
 **Cycle type:** Constructional-invariant / anti-circularity cycle
 
 ## ParentCycles / LearningInputs
@@ -35,7 +36,7 @@ Primary current input:
 
 What structural invariant can be constructed from **repeated canonical decomposition** before any numerical interpretation of depth, length, stage, or number of steps is introduced?
 
-The cycle must not begin by defining:
+The cycle explicitly prohibited beginning with:
 
 ```text
 depth(A) = n
@@ -44,170 +45,267 @@ number of U blocks
 number of recovery steps
 ```
 
-because this would reproduce the hidden-numerical failure mode identified by CAL-001.
-
-## Historical warning inherited from CAL-001
-
-The earlier path learned that terms such as:
-
-```text
-finite
-exactly one
-depth
-stage
-```
-
-can carry numerical commitments when they are used as object-level structure before number has been constructed.
-
-CAL-001 preferred:
-
-```text
-concrete construction history
-        ↓
-structural form of history
-        ↓
-constructional equivalence
-```
-
-instead of:
-
-```text
-history
-  ↓
-count steps
-  ↓
-numerical depth
-```
-
-This cycle adopts that learning as a hard constraint.
-
-## Candidate object of study
-
-### Decomposition History Witness
-
-For an explicitly supplied selected normal-form presentation, construct a meta-finite recovery history using the canonical decomposition guarantee.
-
-Use no numerical indices in the mathematical content.
-
-Schematic history forms:
-
-```text
-H-EMPTY
-halt at ε
-
-H-UNIT
-U  ↘  ε
-
-H-STEP
-A  ↘  P
-followed by a history beginning at P
-```
-
-where each `↘` is licensed by the canonical decomposition judgment of TCT-BLOCK-003.
-
-The history witness is initially meta-level proof/construction infrastructure.
-
-## Candidate structural invariant
-
-The first target is **history shape**, not numerical depth.
-
-Two supplied configurations should have the same current-path structural iteration profile when their canonical recovery histories correspond step-by-step modulo `≈` and terminate in the same empty base role.
-
-No quotient object of history shapes is assumed.
-
-## Required theorem candidate
-
-If:
-
-```text
-A ≈ B
-```
-
-then their canonical decomposition histories should correspond recursively:
-
-```text
-A ≈ B
-  ↓ canonical decomposition
-P ≈ Q
-  ↓ canonical decomposition
-...
-  ↓
-ε corresponds to ε
-```
-
-The theorem must be stated/proved through structural history witnesses, not through equality of natural-number-valued depths.
-
-## Acceptance outcomes
-
-```text
-PASS — canonical structural history invariant constructed
-REVISE — decomposition guarantee insufficient; add explicit history structure
-FAIL — hidden numerical/global assumptions unavoidable under proposal
-BRANCH — multiple materially different iteration notions appear
-```
-
-`TCT-BLOCK-004` remains RESERVED until this cycle produces and verifies a precise structural output.
+because this would repeat the CAL-001 hidden-numerical failure mode.
 
 ---
 
-# INITIAL DO — learning translation
+# DO
 
-## D1 — What the old depth attempt got wrong
+## D1 — Historical repair translated into the current architecture
 
-The issue was not that a finite construction history cannot be discussed externally.
-
-The issue was treating a numerical measure of that history as though it had already been constructed internally.
-
-The repaired question is therefore:
-
-> What information can the history itself carry before we map its shape to a number?
-
-## D2 — Candidate separation
-
-The cycle will distinguish:
+The old route:
 
 ```text
-HISTORY WITNESS
-an explicit meta-finite chain of canonical decomposition records
-
-HISTORY EQUIVALENCE / CORRESPONDENCE
-structural relation between such witnesses
-
-NUMERICAL INTERPRETATION
-future mapping of history structure into a formal number domain
+history → count steps → depth
 ```
 
-Only the first two are currently in scope.
-
-## D3 — Expected relation to future ℕ
-
-A later stage may prove that these linear history shapes admit a characterization equivalent/isomorphic to a natural-number structure.
-
-That future identification must not be used as the current construction recipe.
-
-This preserves the CAL-001 rule:
+was replaced by:
 
 ```text
-construct C first
-analyze C independently
-then test/realize C as ℕ
+selected configuration
+    ↓
+canonical decomposition
+    ↓
+explicit decomposition-history witness
+    ↓
+structural history correspondence
 ```
+
+## D2 — Dedicated experiment
+
+Created:
+
+`LAB/PDSA/experiments/PDSA-TCT-006-STRUCTURAL-HISTORY-001.md`
+
+The experiment introduced a meta-finite decomposition history witness:
+
+```text
+Hist(ε)      ≔ halt-at-ε
+Hist(U)      ≔ [U ↘ ε] followed by halt-at-ε
+Hist(P ⊙ U)  ≔ [P ⊙ U ↘ P] followed by Hist(P)
+```
+
+No numerical indices or depth values were introduced.
+
+## D3 — History correspondence
+
+A meta-level correspondence relation `~H` was defined so that corresponding history nodes preserve:
+
+```text
+current configuration equivalence
+predecessor equivalence
+terminal-role correspondence
+history-tail correspondence
+```
+
+## D4 — Derived results
+
+The experiment verified:
+
+```text
+history witness existence
+history determinism on selected NF
+history correspondence under ≈
+extension-tail relation
+reconstruction of selected NF from history witness
+```
+
+## D5 — Extension-tail relation
+
+For selected `A`:
+
+```text
+Hist(A ⊙ U)
+```
+
+is formed by prefixing:
+
+```text
+A ⊙ U ↘ A
+```
+
+before `Hist(A)`.
+
+This is the structural pre-numerical iteration relation that replaces the risky formula:
+
+```text
+depth(A ⊙ U) = depth(A) + 1.
+```
+
+## D6 — Canonical Block
+
+Created:
+
+`TCT-BLOCK-004 — Structural Iteration History`.
+
+The earlier planned role name “Construction Depth” was not retained as the canonical name.
 
 ---
 
-# Initial STUDY questions
+# STUDY
 
-1. Is a decomposition history merely meta-level evidence, or does some aspect need promotion to an object-level constructional structure?
-2. What is the weakest equivalence/correspondence on histories compatible with BR-010?
-3. Can history correspondence be proved recursively from TCT-BLOCK-003 without numerical counting?
-4. Is termination at `ε` a meta-finite presentation fact only, or does the downstream theorem require an object-level closure principle?
-5. Does calling the future Block “Construction Depth” create avoidable semantic drift, and should its canonical role be renamed “Structural Iteration Profile” until numerical interpretation exists?
-6. Which information from the ordered trace proof is reusable, and which would circularly duplicate a future numerical interpretation?
+## S1 — Depth was not needed
+
+The project can express the relevant iteration structure without assigning a magnitude.
+
+The crucial structure is:
+
+```text
+current recovery node
+      ↓
+canonical predecessor history tail
+```
+
+not a natural-number value.
+
+## S2 — The history is a derived view, not a new primitive magnitude
+
+A valid current-path history witness reconstructs the selected NF presentation, and the selected presentation determines the history witness.
+
+Thus the history is a derived structural view of the constructional ancestry.
+
+This is valuable downstream because it exposes iteration explicitly without adding a hidden quantity.
+
+## S3 — CAL-001 produced reusable methodology
+
+The earlier failure did more than reject B-013/B-014.
+
+It supplied a general working rule now successfully applied:
+
+> Replace premature numerical measurement by explicit structural history/invariant; delay numerical interpretation until a formal number domain has been legitimately introduced.
+
+## S4 — Terminology is an architectural control
+
+Retaining the title “Construction Depth” would make future readers likely to interpret the Block numerically.
+
+Renaming it `Structural Iteration History` is therefore not cosmetic. It preserves the current epistemic boundary.
+
+## S5 — Relationship to future successor
+
+The extension-tail result gives the next cycle a precise constructional fact:
+
+```text
+A ⊙ U
+```
+
+has canonical predecessor `A` and a history formed by prefixing the recovery record to `Hist(A)`.
+
+This is successor-like behavior, but it is not yet successor on a formal natural-number carrier.
+
+---
+
+# ERRORS / RISKS DETECTED
+
+1. Reintroducing the word `depth` could silently restore a numerical interpretation.
+2. A history witness could be mistaken for a completed global domain of all histories.
+3. Meta-finite termination could be mistaken for an object-level closure/induction principle.
+4. Because the history is reconstructible from NF, presenting it as a new primitive object would overstate the result.
+
+---
+
+# SUCCESSES
+
+1. The historical CAL-001 correction was concretely reused rather than merely cited.
+2. A non-numerical structural iteration view was constructed.
+3. Extension acquired a precise history-tail interpretation.
+4. Equivalent selected configurations have corresponding histories.
+5. No natural-number-valued measure was introduced.
+6. The canonical Block name now reflects the actual epistemic content.
+
+---
+
+# HUMAN / AI RESEARCH RECORD
+
+## Human contribution
+
+The human research authority explicitly required cumulative PDSA learning and preservation of errors/successes as a parallel project product.
+
+That requirement made CAL-001 an active design input rather than historical archive, preventing the current cycle from repeating the earlier depth shortcut.
+
+## AI contribution
+
+The AI research agent:
+
+- translated CAL-001's abstract warning into a current construction constraint;
+- proposed decomposition-history witnesses and history correspondence;
+- identified the extension-tail relation as the useful pre-numerical invariant;
+- recognized that the history is a derived reversible view rather than a new magnitude;
+- recommended and applied the canonical rename from Construction Depth to Structural Iteration History.
+
+## Verification status
+
+The results are documented mathematical/meta-structural derivations under the declared metatheory.
+
+They are not yet machine-formalized.
 
 ---
 
 # ACT
 
-PENDING.
+## Decision A — activate TCT-BLOCK-004
 
-No `depth`, successor, or natural-number object is introduced by opening this cycle.
+```text
+TCT-BLOCK-004
+Canonical Role: Structural Iteration History
+Operational Status: ACTIVE
+Epistemic Status: DERIVED STRUCTURAL VIEW / VERIFIED INVARIANT
+```
+
+## Decision B — prohibit numerical depth at this stage
+
+No `depth : ... → ℕ` or equivalent numerical measure is introduced.
+
+## Decision C — export structural iteration only
+
+The reusable contribution is:
+
+> selected configurations possess canonical decomposition-history witnesses; equivalence preserves history correspondence; and terminal extension prefixes the predecessor history.
+
+## Decision D — next cycle
+
+Open:
+
+```text
+PDSA-TCT-007 — Successor-Like Extension Structure
+```
+
+The next cycle must distinguish:
+
+```text
+constructional extension A ↦ A ⊙ U
+from
+successor on a formal natural-number carrier.
+```
+
+---
+
+# ConstructionGraphEffects
+
+```text
+TCT-BLOCK-003
+      ↓
+TCT-BLOCK-004 ACTIVE — Structural Iteration History
+      ↓
+TCT-BLOCK-005 RESERVED — Successor-Like Extension
+```
+
+---
+
+# LearningGraphEffects
+
+```text
+L-TCT-006-01  Replace premature numerical measures with structural history.
+L-TCT-006-02  Structural iteration can be expressed as a history-tail relation.
+L-TCT-006-03  Meta-finite termination is not object-level numerical depth.
+L-TCT-006-04  A reversible derived view should not be misclassified as a new primitive magnitude.
+L-TCT-006-05  Naming is part of epistemic control when terminology carries hidden mathematical commitments.
+L-TCT-006-06  CAL-001 is reusable method, not merely historical failure documentation.
+```
+
+---
+
+# Closure conclusion
+
+**PDSA-TCT-006 CLOSED — PASS.**
+
+The current canonical construction now contains a non-numerical structural iteration history. The next scientific question is which properties of terminal extension justify calling it successor-like, and which still require a later formal carrier/realization choice.
