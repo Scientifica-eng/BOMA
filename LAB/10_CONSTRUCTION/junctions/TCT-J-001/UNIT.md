@@ -5,133 +5,146 @@
 - **Unit ID:** `TCT-J-001`
 - **Type:** Junction
 - **Layer:** L1 — explicit constructed structure
-- **Operational Status:** **CONDITIONAL / PENDING**
-- **Epistemic Status:** **PENDING**
+- **Operational Status:** **PASS / RESOLVED**
+- **Epistemic Status:** **DERIVED / VERIFIED UNDER TCT-BR-010**
 
 ## Purpose
 
-Compatibility gate between finite normal-form configuration formation and canonical last-step decomposition under the active structural-equivalence specification.
+Compatibility gate between finite selected normal-form configuration formation and canonical last-step decomposition under the active structural-equivalence specification.
 
 ## Incoming
 
 ```text
-TCT-BLOCK-002   finite normal-form presentations + meta-level recovery procedure
+TCT-BLOCK-002   selected normal-form presentations + meta-level recovery procedure
 TCT-BR-010      active structural-equivalence definition ≈
+TCT-BR-009      terminal preservation theorem, derived under BR-010
 ```
-
-## Current constraint / discovered requirement
-
-`TCT-BR-009 — Terminal Interface Preservation`
 
 ## Outgoing
 
-`TCT-BLOCK-003` — RESERVED until this Junction passes.
+`TCT-BLOCK-003` — now **ADMISSIBLE TO CONSTRUCT**, but still RESERVED until its own PDSA construction cycle creates and verifies it.
 
 ## Junction question
 
 For a non-empty meta-finitely presented configuration in the selected normal form, can the final construction step be recovered in a way invariant under `TCT-BR-010` structural equivalence?
 
-## Recovery is not yet an ordered-pair-valued object function
+## Recovery is a meta-level inspection record
 
 The current `recover` notation denotes a meta-level inspection record, not a constructed ordered pair in the TCT object domain.
 
-Therefore the Junction does **not** use the ambiguous statement:
-
-```text
-recover(A) ≈ recover(B)
-```
-
-because `≈` is not defined on recovery meta-records.
+The Junction therefore tests predecessor equivalence and terminal-role correspondence directly.
 
 ## Required condition
 
-Let selected normal-form presentations be given by:
+For selected non-empty normal forms:
+
+```text
+U
+```
+
+or:
 
 ```text
 A ≡ P ⊙ U
 B ≡ Q ⊙ U
 ```
 
-with the base non-empty presentation `U` understood as having meta-level predecessor record `ε`.
-
-If:
+with `P,Q ∈ NF+`, if:
 
 ```text
 A ≈ B
 ```
 
-under `TCT-BR-010`, then canonical recovery requires both:
+under `TCT-BR-010`, then:
 
 ```text
-1. the recovered terminal role on each presentation corresponds to the
-   same distinguished U-role;
-
+1. the recovered terminal roles correspond to the same distinguished U-role;
 2. P ≈ Q.
 ```
 
-The core cancellation form to be proved/refuted is:
+The extension-extension core is:
 
 ```text
-P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q
+P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q.
 ```
 
-for the TCT-generated normal-form family.
+The base `U` case recovers predecessor `ε`; a base/extension cross-equivalence is excluded by the ordered-trace invariant proved in PDSA-TCT-004.
 
-## Acceptance states
+## Verification evidence
+
+Primary proof:
+
+`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
+
+The proof establishes:
+
+1. every `TCT-BR-010` derivation preserves an external ordered syntax trace;
+2. the refined selected normal-form grammar has injective trace presentation;
+3. final-marker cancellation at the meta level yields predecessor trace equality;
+4. predecessor trace equality yields selected-presentation identity, hence predecessor structural equivalence by SE-1;
+5. ordered trace preservation also preserves the structurally terminal `U` role.
+
+No object-level numerical counting, cardinality, natural-number length, completed quotient carrier, or ordered-pair ontology is used.
+
+## Acceptance result
 
 ```text
 PASS
-    The required condition is derived under TCT-BR-010 with independent evidence.
-
-CONDITIONAL
-    The condition is available only by retaining an explicit additional
-    constraint such as TCT-BR-009.
-
-FAIL
-    A countermodel exists under the selected ≈, requiring redesign or branch.
 ```
 
-Only PASS permits unconditional promotion of `TCT-BLOCK-003` on the current path.
+The required condition is **DERIVED under TCT-BR-010** for the current selected normal-form family.
 
-A deliberately conditional construction would require a separate architectural decision rather than silent promotion.
+## Historical progression
 
-## Current status
+```text
+initial normal-form recovery
+    ↓
+syntactically deterministic but ≈ unspecified
+    ↓
+TCT-J-001 CONDITIONAL
+    ↓
+TCT-BR-009 exposed as additional requirement
+    ↓
+TCT-BR-010 defines explicit restricted ≈
+    ↓
+PDSA-TCT-004 proves terminal preservation
+    ↓
+TCT-J-001 PASS / RESOLVED
+```
 
-**CONDITIONAL / PENDING VERIFICATION.**
+The earlier CONDITIONAL state remains valid historical evidence; it is not silently erased.
 
-Historical work established deterministic recovery inside the selected normal form and exposed `TCT-BR-009` as an additional requirement under the previous incomplete `≈` specification.
+## Consequence
 
-`PDSA-TCT-003` has now supplied the explicit current-path relation `TCT-BR-010` without building terminal preservation into its definition.
+The construction may now proceed to a dedicated canonical decomposition Block.
 
-The Junction must therefore be retested under that exact relation.
+However:
 
-## Next verification cycle
+```text
+TCT-J-001 PASS
+        ≠
+TCT-BLOCK-003 already constructed
+```
 
-`PDSA-TCT-004 — Terminal Recovery Theorem / Countermodel`
-
-Required discipline:
-
-- attempt a constructive derivation under `SE-1` through `SE-4` of TCT-BR-010;
-- search for a countermodel satisfying exactly those clauses but violating recovery;
-- distinguish a theorem about the specific generated relation from an invalid appeal to generic congruence;
-- do not use numerical counting as object-level content.
+`TCT-BLOCK-003` must be created, specified, and verified in `PDSA-TCT-005` before it becomes ACTIVE.
 
 ## Sensitivity
 
 Changes to any of the following reopen this Junction:
 
 ```text
-TCT-BLOCK-002 grammar or normal form
+TCT-BLOCK-002 grammar or selected normal form
 TCT-BR-010 generators / closure clauses
-TCT-BR-009 status or condition
 meta/object identity convention
+empty definitional convention
 terminal-role specification
+single-generator kernel assumptions relevant to the proof
 ```
 
-A change may affect decomposition, structural depth, successor, and formal-domain construction.
+A reopened Junction may affect decomposition, structural depth, successor, and formal-domain construction.
 
 ## Legacy source
 
 `LAB/BUILDING/reverse/TCT-J-001_CANONICAL_DECOMPOSITION_JUNCTION.md`
 
-Historical wording is preserved there. The present unit is the canonical interpretation after the PDSA equality/identity audit.
+Historical wording is preserved there. The present unit is the canonical state after the PDSA-TCT-003 and PDSA-TCT-004 studies.
