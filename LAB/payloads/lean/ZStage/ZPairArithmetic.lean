@@ -27,6 +27,14 @@ theorem z_add4_swap_last (a b c d : BOMANat) :
       congrArg (fun t => add (add a b) t) (add_comm c d)
     _ = add (add a d) (add b c) := z_add4_swap_middle a b d c
 
+/-- Left commutativity for accepted N multiplication, made explicit so the
+proof backend can normalize triple products without guessing an AC normal form. -/
+theorem z_mul_left_comm (a b c : BOMANat) : mul a (mul b c) = mul b (mul a c) := by
+  calc
+    mul a (mul b c) = mul (mul a b) c := (mul_assoc a b c).symm
+    _ = mul (mul b a) c := congrArg (fun t => mul t c) (mul_comm a b)
+    _ = mul b (mul a c) := mul_assoc b a c
+
 def pairZero : ZPair := ⟨z, z⟩
 def pairOne : ZPair := ⟨s z, z⟩
 def pairNeg (x : ZPair) : ZPair := ⟨x.n, x.p⟩
@@ -51,7 +59,11 @@ theorem pairAdd_assoc (x y w : ZPair) : pairAdd (pairAdd x y) w = pairAdd x (pai
   cases x <;> rfl
 
 theorem pairNeg_respects {x y : ZPair} (h : ZEquiv x y) : ZEquiv (pairNeg x) (pairNeg y) := by
-  exact h.symm
+  change add x.n y.p = add y.n x.p
+  calc
+    add x.n y.p = add y.p x.n := add_comm _ _
+    _ = add x.p y.n := h.symm
+    _ = add y.n x.p := add_comm _ _
 
 /-- Pair addition is well-defined modulo the explicit difference relation. -/
 theorem pairAdd_respects {x x' y y' : ZPair}
@@ -71,7 +83,7 @@ theorem pairAdd_respects {x x' y y' : ZPair}
               z_add4_swap_middle a e d h
             _ = add (add c b) (add e h) := congrArg (fun t => add t (add e h)) hx
             _ = add (add c b) (add g f) := congrArg (fun t => add (add c b) t) hy
-            _ = add (add c g) (add b f) := (z_add4_swap_middle c b g f).symm
+            _ = add (add c g) (add b f) := z_add4_swap_middle c b g f
 
 /-- Multiplication on pairs is exactly commutative before quotienting. -/
 theorem pairMul_comm (x y : ZPair) : pairMul x y = pairMul y x := by
@@ -113,8 +125,10 @@ theorem pairMul_respects_left {x x' y : ZPair}
             congrArg (fun t => add t (add (mul b f) (mul c f))) he
           _ = add (add (mul c e) (mul b e)) (add (mul d f) (mul a f)) :=
             congrArg (fun t => add (add (mul c e) (mul b e)) t) hf'
-          _ = add (add (mul c e) (mul d f)) (add (mul a f) (mul b e)) :=
+          _ = add (add (mul c e) (mul d f)) (add (mul b e) (mul a f)) :=
             z_add4_swap_middle (mul c e) (mul b e) (mul d f) (mul a f)
+          _ = add (add (mul c e) (mul d f)) (add (mul a f) (mul b e)) :=
+            congrArg (fun t => add (add (mul c e) (mul d f)) t) (add_comm _ _)
 
 /-- Respect in the second argument follows from exact pair multiplication commutativity. -/
 theorem pairMul_respects_right {x y y' : ZPair}
@@ -130,14 +144,14 @@ theorem pairMul_respects {x x' y y' : ZPair}
 /-- Raw pair multiplication is associative by the accepted N commutative-semiring laws. -/
 theorem pairMul_assoc (x y w : ZPair) : pairMul (pairMul x y) w = pairMul x (pairMul y w) := by
   cases x <;> cases y <;> cases w <;>
-    simp [pairMul, mul_add_left, mul_add_right, mul_assoc, mul_comm,
+    simp [pairMul, mul_add_left, mul_add_right, mul_assoc, mul_comm, z_mul_left_comm,
       add_assoc, add_comm, z_add_left_comm]
 
 /-- Raw pair multiplication distributes over raw pair addition. -/
 theorem pairMul_add_right (x y w : ZPair) :
     pairMul x (pairAdd y w) = pairAdd (pairMul x y) (pairMul x w) := by
   cases x <;> cases y <;> cases w <;>
-    simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_assoc, mul_comm,
+    simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_assoc, mul_comm, z_mul_left_comm,
       add_assoc, add_comm, z_add_left_comm]
 
 /-- Additive inverse is represented by coordinate swap. -/
