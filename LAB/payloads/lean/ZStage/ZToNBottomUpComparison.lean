@@ -87,10 +87,11 @@ theorem encode_mul (a b : BOMANat) :
   exact embedN_mul a b
 
 /-- The inherited cone order is exactly the accepted bottom-up N order under the
-comparison map. -/
+comparison map. Avoid unfolding coneEncodeN's proof field: only its value matters. -/
 theorem encode_order (a b : BOMANat) :
     coneLE (coneEncodeN a) (coneEncodeN b) ↔ LE a b := by
-  simpa [coneLE, coneEncodeN] using embedN_order a b
+  change zLE (embedN a) (embedN b) ↔ LE a b
+  exact embedN_order a b
 
 /-- Decoder also recognizes reverse successor. This theorem is representation-aware. -/
 theorem decode_succ (x : NFromZCone) :
@@ -111,7 +112,7 @@ theorem reach_encode (n : BOMANat) : ReachZ (coneEncodeN n).val := by
   | z => exact ReachZ.zero
   | s n ih =>
       have hs : ReachZ (coneSucc (coneEncodeN n)).val := ReachZ.succ ih
-      rw [← encode_succ n]
+      rw [encode_succ n]
       exact hs
 
 /-- Comparison-assisted converse: every nonnegative cone value is reachable.
