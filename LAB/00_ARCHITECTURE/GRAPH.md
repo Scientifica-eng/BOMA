@@ -41,17 +41,20 @@ The graph distinguishes **constructed/active units** from **conditional gates** 
           │ Canonicality Gate             │
           │ CONDITIONAL / PENDING         │
           └───────────────┬────────────────┘
-                          ▲
-                          │ CONSTRAINS current path
-                          │
-          ┌────────────────────────────────┐
-          │ TCT-BR-009                    │
-          │ Terminal Interface            │
-          │ Preservation                  │
-          │ Operational: ACTIVE           │
-          │ Epistemic: DECLARED CHOICE    │
-          │ — ADDITIONAL CONSTRAINT       │
-          └────────────────────────────────┘
+                    ▲             ▲
+                    │             │
+      DEFINES ≈ /   │             │ CONSTRAINS / current
+      CONSTRAINS    │             │ derivability retest
+                    │             │
+┌──────────────────────────┐  ┌──────────────────────────┐
+│ TCT-BR-010               │  │ TCT-BR-009               │
+│ Reassociation-Generated  │  │ Terminal Interface       │
+│ Structural Equivalence   │  │ Preservation             │
+│ Operational: ACTIVE      │  │ Operational: ACTIVE      │
+│ Epistemic: DECLARED      │  │ Epistemic: DECLARED      │
+│ IDENTITY SPECIFICATION   │  │ ADDITIONAL CONSTRAINT    │
+└──────────────────────────┘  │ retest under BR-010       │
+                              └──────────────────────────┘
                           │
                  gate unresolved
                           │
@@ -96,12 +99,22 @@ The actual mathematical frontier is:
 ```text
 TCT-BLOCK-002
       ↓
-TCT-J-001  ← constrained on the current path by TCT-BR-009
+TCT-BR-010  explicit current-path ≈
+      ↓
+TCT-J-001  ← TCT-BR-009 terminal-preservation question
 ```
 
 The project has **not** yet constructed `TCT-BLOCK-003` or any later node.
 
-The current research program must first specify the permitted metatheory and then define/study structural equivalence `≈` before attempting to resolve the Junction.
+`PDSA-TCT-003` selected `TCT-BR-010` without building terminal recovery into the equivalence definition.
+
+The active theorem/countermodel task is therefore:
+
+```text
+P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q
+```
+
+under exactly the BR-010 generation rules.
 
 Active execution plan:
 
@@ -120,6 +133,8 @@ CANDIDATE-A  ── ALTERNATIVE_TO ── CANDIDATE-B
 
 No alternative is deleted merely because another candidate is selected.
 
+The interface-preserving definition studied in `PDSA-TCT-003` remains a legitimate future alternative, but it is not the current canonical identity specification.
+
 ## Vertical structure
 
 A higher unit depends on outputs of lower units.
@@ -130,6 +145,8 @@ Example target view:
 Kernel
   ↓
 Finite configurations
+  ↓
+Structural equivalence / decomposition gate
   ↓
 Decomposition
   ↓
@@ -142,7 +159,7 @@ Formalization boundary
 Formal natural-number domain
 ```
 
-Only the first two Blocks are currently active constructed Blocks.
+Only the first two Blocks are currently active constructed Blocks. BR-010 is an active identity-specification Brick; it does not itself constitute a new downstream construction Block.
 
 ## Junction rule
 
@@ -164,9 +181,9 @@ A change to a unit propagates only along declared dependency/sensitivity edges. 
 Example:
 
 ```text
-Change TCT-BLOCK-001
+Change TCT-BR-010
         ↓
-retest TCT-BLOCK-002
+retest TCT-BR-009
         ↓
 retest TCT-J-001
         ↓
