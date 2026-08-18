@@ -1,13 +1,13 @@
 # R Completion Route Probes V5 Evidence
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `6b70d2eb1c4ebd8ac1036038e53679c2a5a8ee85`  
-**Workflow run ID:** `32179095462`  
+**Status:** PASS  
+**Verified commit:** `36737d7c89308f8ff837fb05fbd073b3b7cccfbd`  
+**Workflow run ID:** `32179389952`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
 | accepted N/Z/Q assembly | success |
-| shared strict-order / epsilon gateway | failure |
-| Dedekind LowerCut / CutEquiv probe | failure |
-| Cauchy QSeq / IsCauchy / CauchyEquiv probe | failure |
+| shared strict-order / epsilon gateway | success |
+| Dedekind LowerCut / CutEquiv probe | success |
+| Cauchy QSeq / IsCauchy / CauchyEquiv probe | success |
