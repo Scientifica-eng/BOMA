@@ -11,7 +11,7 @@ open BOMA.Z.Rep001.ZSigned
 theorem zadd_routes_converge (x y : ZSigned) : zaddD x y = zaddP x y := by
   cases x <;> cases y <;>
     simp [zaddD, zaddP, pairAdd, pairOfSigned, normalizePair,
-      diff, add_s_left, add_s_right]
+      diff, embedN, add_s_left, add_s_right]
 
 /-- Pair normalization of a natural product against zero is the direct embedded product. -/
 theorem normalize_positive_pair (n : BOMANat) :
@@ -28,6 +28,6 @@ theorem zmul_routes_converge (x y : ZSigned) : zmulD x y = zmulP x y := by
   cases x <;> cases y <;>
     simp [zmulD, zmulP, pairMul, pairOfSigned, normalizePair,
       normalize_positive_pair, normalize_negative_pair,
-      diff_nat_zero, diff_zero_nat]
+      diff_nat_zero, diff_zero_nat, embedN]
 
 end BOMA.Z.Arithmetic001
