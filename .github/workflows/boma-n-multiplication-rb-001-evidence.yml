@@ -1,0 +1,93 @@
+name: BOMA N-Multiplication R-B — Evidence V5
+permissions:
+  contents: write
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/NArithmetic/Mul*.lean'
+      - '.github/workflows/boma-n-multiplication-rb-001-evidence.yml'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+jobs:
+  verify-and-record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Route R
+        id: routeR
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean LAB/payloads/lean/NArithmetic/MulRight.lean > /tmp/MulRight.lean
+          lake env lean /tmp/MulRight.lean
+      - name: Route L
+        id: routeL
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean LAB/payloads/lean/NArithmetic/MulLeft.lean > /tmp/MulLeft.lean
+          lake env lean /tmp/MulLeft.lean
+      - name: Convergence
+        id: convergence
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean LAB/payloads/lean/NArithmetic/MulRight.lean LAB/payloads/lean/NArithmetic/MulLeft.lean LAB/payloads/lean/NArithmetic/MulConvergence.lean > /tmp/MulConvergence.lean
+          lake env lean /tmp/MulConvergence.lean
+      - name: Laws
+        id: laws
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean LAB/payloads/lean/NArithmetic/MulRight.lean LAB/payloads/lean/NArithmetic/MulLeft.lean LAB/payloads/lean/NArithmetic/MulConvergence.lean LAB/payloads/lean/NArithmetic/MulLaws.lean > /tmp/MulLaws.lean
+          lake env lean /tmp/MulLaws.lean
+      - name: Record evidence
+        if: always()
+        shell: bash
+        run: |
+          RESULT=PASS
+          for x in "${{ steps.setup.outcome }}" "${{ steps.routeR.outcome }}" "${{ steps.routeL.outcome }}" "${{ steps.convergence.outcome }}" "${{ steps.laws.outcome }}"; do if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi; done
+          git fetch origin main
+          git checkout -B mul-evidence origin/main
+          mkdir -p LAB/20_FORMALIZATION/N_ARITHMETIC/evidence
+          cat > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_MUL_V5_LATEST.md <<EOF
+          # N-Multiplication Claim-Level V5 Evidence
+          **Status:** ${RESULT}  
+          **Verified commit:** \`${GITHUB_SHA}\`  
+          **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
+          **Pinned toolchain:** \`$(cat lean-toolchain)\`
+
+          | Target | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | Route R | ${{ steps.routeR.outcome }} |
+          | Route L | ${{ steps.routeL.outcome }} |
+          | Convergence | ${{ steps.convergence.outcome }} |
+          | Laws | ${{ steps.laws.outcome }} |
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_MUL_V5_LATEST.md
+          if ! git diff --cached --quiet; then git commit -m "Record N-multiplication V5 run ${GITHUB_RUN_ID}"; git push origin HEAD:main; fi
+      - name: Enforce
+        if: always()
+        run: |
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.routeR.outcome }}" = success
+          test "${{ steps.routeL.outcome }}" = success
+          test "${{ steps.convergence.outcome }}" = success
+          test "${{ steps.laws.outcome }}" = success
