@@ -1,10 +1,10 @@
 # PDSA-R-006 — Rational Archimedean Approximation Gate
 
 **CycleID:** `PDSA-R-006`  
-**Status:** **ACTIVE — R-DP-004 OPEN**  
+**Status:** **CLOSED — ROUTE A SELECTED / BRACKETING PASS**  
 **Date:** 2026-08-18  
-**ParentCycles/LearningInputs:** `PDSA-R-005`, `PDSA-Q-004`, `BOMA-R-ACCEPT-001 / RG-01`  
-**Decision Point:** `R-DP-004`
+**ParentCycles/LearningInputs:** `PDSA-R-005`, accepted Q construction, `BOMA-R-ACCEPT-001 / RG-01`  
+**Decision Point:** `R-DP-004 RESOLVED`
 
 ## ResearchQuestion
 
@@ -12,121 +12,336 @@ What is the smallest transparent theorem about the accepted `QBOMA` that supplie
 
 ## PLAN
 
-Run two proof routes against a common acceptance interface.
-
-### Route A — reusable Q Archimedean theorem
-
-Derive a general property of the explicit accepted rational carrier from its N/Z/fraction construction, then derive cut bracketing.
-
-### Route B — direct cut bracketing
-
-Use the explicit fraction representation directly to produce the required inside/outside witnesses at width `< eps`.
-
-Compare the routes on:
+Compare:
 
 ```text
-new infrastructure
-reuse
-representation dependence
-proof size / robustness
-logical commitments
-future RA-12 / RA-13 value
+Route A — derive reusable Q Archimedean structure and then cut bracketing;
+Route B — derive cut bracketing directly from the explicit fraction representation.
 ```
 
-## DO — current state
-
-No route is yet promoted.
-
-The common target is approximately:
+Common acceptance target:
 
 ```text
 ∀ A eps,
   0 < eps →
-  ∃ a r,
-    A.lower a ∧
+  ∃ b r,
+    A.lower b ∧
     ¬ A.lower r ∧
-    0 < r-a ∧
-    r-a < eps.
+    0 < r-b ∧
+    r-b < eps.
 ```
 
-The exact theorem statement may be refined if a stronger reusable interface gives a cleaner proof, but any refinement must still discharge the additive-inverse need explicitly.
+## DO
+
+### A1 — rational natural upper bound
+
+Constructed:
+
+```text
+q_le_natural_upper :
+  ∀q : QBOMA, ∃n : N_BOMA, q ≤ qOfN(n)
+```
+
+from the explicit positive-denominator fraction representation.
+
+V5:
+
+```text
+32185265579 PASS
+```
+
+### A2 — Archimedean scaling
+
+Constructed:
+
+```text
+q_archimedean_scale :
+  ∀ gap delta,
+    0 < delta →
+    ∃ n : N_BOMA,
+      gap ≤ qOfN(n) * delta
+```
+
+using the already-accepted rational inverse only as an existential witness.
+
+V5:
+
+```text
+32185547400 PASS
+```
+
+### A3 — rational grid
+
+Constructed:
+
+```text
+qGrid(a,delta,n) = a + qOfN(n)*delta
+```
+
+with successor compatibility and an eventual-outside crossing theorem for proper lower cuts.
+
+An initial V5 failed because the namespace containing `qadd_mono_right` was guessed incorrectly. The actual namespace is:
+
+```text
+BOMA.Q.OrderedField001
+```
+
+The correction did not change any mathematical statement.
+
+Study also showed that the crossing theorem did not need an assumption that its grid base belongs to the cut. That unused hypothesis was removed, making the theorem strictly more general.
+
+### A4 — finite exit search
+
+Constructed a separate theorem that takes:
+
+```text
+base grid point inside A
+finite endpoint outside A
+```
+
+and returns an adjacent inside/outside pair.
+
+The finite search uses one explicit form of proposition-level excluded middle:
+
+```text
+Classical.em (A.lower (qGrid ... n))
+```
+
+This is isolated from the arithmetic Archimedean results.
+
+V5:
+
+```text
+32186080453 PASS
+```
+
+### A5 — cut bracketing
+
+Using rational density to choose
+
+```text
+0 < delta < eps
+```
+
+and the grid/finite-exit interfaces, constructed:
+
+```text
+cut_bracket_approx
+```
+
+producing `b∈A`, `r∉A`, and positive width `r-b < eps`.
+
+V5:
+
+```text
+32186209544 PASS
+```
 
 ## Observations
 
-Rational order density already proved in the Q→R gateway is not enough by itself to obtain arbitrarily small boundary brackets in an arbitrary dense ordered abelian group. The missing ingredient is Archimedean in nature.
+The needed approximation interface decomposes naturally into:
 
-This distinction was discovered during Study of `RA-05`, before a hidden dependency entered the construction graph.
+```text
+fraction representation
+  ↓
+natural upper bound
+  ↓
+Archimedean scaling
+  ↓
+finite rational grid crossing
+  ↓
+finite membership search
+  ↓
+arbitrarily fine cut bracket
+```
+
+This decomposition is substantially more informative than a direct monolithic proof of `A + (-A) = 0`.
 
 ## STUDY
 
-Questions to answer:
+### Main mathematical learning
 
-1. Can the accepted fraction representation yield a small positive rational below every positive `eps` in a reusable form?
-2. Can repeated rational steps be bounded against an arbitrary rational interval using the accepted N/Z structure?
-3. Which route exposes fewer representation-specific details to the R layer?
-4. Does the successful contribution later shorten RA-12 and RA-13?
-5. Does either route introduce a new logical principle beyond the already recorded quotient/classical-comparability commitments?
+Rational order density alone is insufficient for arbitrary boundary precision. The missing contribution is Archimedean scaling.
+
+However, **Archimedean arithmetic and logical cut-membership search are different dependencies**:
+
+```text
+natural upper bound        no Classical
+scaling                    no Classical
+arithmetic grid crossing   no Classical
+first exit from predicate  local Classical.em
+```
+
+Therefore the correct project statement is not “R Archimedean approximation is classical.”
+
+The correct statement is:
+
+> The selected Stage-One Dedekind bracketing theorem combines a constructive rational Archimedean arithmetic route with an isolated classical finite membership search over the arbitrary lower-cut predicate.
+
+### Route comparison
+
+Route A passed and produced reusable theorems expected to serve RA-12 and RA-13 later. Route B was therefore not required for the canonical Stage-One path.
+
+Route B remains a Stage-II branch candidate. No claim has been made that it is impossible or inferior in every formal regime.
 
 ## ErrorsDetected
 
-None yet. This cycle was opened because a mathematical dependency was detected before formalization, not because V5 failed.
+### E1 — zero proof normalization
+
+First natural-upper-bound probe left the goal `zLE 0 0` after simplification.
+
+Fix:
+
+```text
+zle_refl zzero
+```
+
+Classification:
+
+```text
+PROOF-ENGINEERING / NORMALIZATION
+```
+
+### E2 — wrong namespace
+
+The first grid proof attempted an incorrect namespace for `qadd_mono_right`.
+
+Fix:
+
+```text
+BOMA.Q.OrderedField001
+```
+
+Classification:
+
+```text
+FORMALIZATION API / NAMESPACE RESOLUTION
+```
+
+### E3 — over-specified theorem hypothesis
+
+The initial `qGrid_eventually_outside` statement included `a∈A`, but the proof did not consume it. The theorem was generalized by removing that hypothesis.
+
+Classification:
+
+```text
+SUCCESSFUL STUDY REFINEMENT / INTERFACE MINIMIZATION
+```
 
 ## Successes
 
-The dependency has been isolated before the real-negation theorem was written, preventing an Archimedean assumption from being smuggled into an apparently local cut proof.
+1. `RG-01` was honored: Archimedean approximation lemmas were reconstructed before use.
+2. No built-in `Rat`, `Real`, floor, or ceiling theorem was imported.
+3. The accepted Q inverse was consumed existentially; no Choice-based inverse selector was added.
+4. The only new classical step is named and isolated at finite predicate membership search.
+5. The common cut-bracketing target passed V5.
 
 ## HiddenAssumptions
 
-The following are forbidden unless explicitly reconstructed and recorded:
+Forbidden shortcuts remained unused:
 
 ```text
 built-in Rat Archimedean instance
 built-in Real
-prepackaged floor/ceiling
-untracked Choice-based boundary selection
+prepackaged floor / ceiling
+Choice-based global boundary selector
 ```
+
+The local `Classical.em` in finite membership search is explicit and is not to be treated as hidden background.
 
 ## HumanContributions
 
-The project requires forward construction to remain compatible with later reverse engineering. In this cycle that means the Q→R approximation dependency must be represented as its own gateway so that `RE-R-001` can later classify it as structurally necessary, route-specific, or replaceable.
+The project requirement that reverse engineering be performed at an architecturally useful time affected the design: the approximation contribution was split into independently classifiable dependencies so `RE-R-001` can later distinguish structural arithmetic from Dedekind-route logical search.
 
 ## AIContributions
 
-The AI identified that the additive-inverse proof needs a stronger approximation principle than mere order density and proposed separating a reusable Q Archimedean route from a direct Dedekind-bracketing route.
+The AI decomposed the approximation obligation into natural upper bounds, scaling, finite grids, finite membership search, and cut bracketing; implemented the Lean probes and V5 workflows; diagnosed proof-engineering failures; and minimized an over-specified theorem interface after linter/verification feedback.
 
 ## VerificationEvidence
 
-Pending route probes and claim-level V5.
+```text
+Q natural upper bound        32185265579 PASS
+Q Archimedean scaling        32185547400 PASS
+finite cut exit search       32186080453 PASS
+Dedekind cut bracketing      32186209544 PASS
+```
 
-## ACT candidates
+Toolchain:
 
 ```text
-A  promote a reusable Q Archimedean approximation block;
-B  promote a direct cut-bracketing block;
-C  retain both if both pass and differ materially in branch value;
-D  revise the negation realization if both routes expose unacceptable commitments.
+leanprover/lean4:v4.32.1
 ```
+
+## LessonsLearned
+
+```text
+L-R-ARCH-001:
+Density and Archimedean approximation are distinct mathematical contributions.
+
+L-R-ARCH-002:
+A route-specific proof can often be decomposed into reusable arithmetic plus a narrow representation-specific logical interface.
+
+L-R-ARCH-003:
+Unused hypotheses exposed by verification are architectural information; removing them can reveal a more reusable theorem.
+
+L-R-ARCH-004:
+Classical provenance should be attached to the smallest theorem that actually consumes excluded middle, not inherited by every downstream theorem indiscriminately.
+```
+
+## ACT
+
+```text
+R-DP-004 = RESOLVED
+Route A = SELECTED
+Route B = RETAINED FOR LATER BRANCH TESTING
+```
+
+Promote the successful approximation chain as a reusable certified construction block.
+
+Do not yet mark `RA-05` PASS: the additive-inverse theorem must consume `cut_bracket_approx` explicitly and pass its own V5 gate.
 
 ## ConstructionGraphEffects
 
-Pending. No accepted edge is added until a route passes.
+```text
+accepted QBOMA fraction structure
+       ↓
+Q natural upper bound
+       ↓
+Q Archimedean scaling
+       ↓
+Q finite grid crossing
+       ↓
+Dedekind finite membership exit  [local Classical.em]
+       ↓
+cut_bracket_approx
+       ↓
+RA-05 additive inverse proof  [next]
+```
 
 ## LearningGraphEffects
 
 ```text
-RA-05 attempted conceptually
-  ↓
-need for arbitrary boundary precision detected
-  ↓
-density distinguished from Archimedean approximation
-  ↓
-R-DP-004 / PDSA-R-006 opened
+hidden approximation need detected before formalization
+       ↓
+density distinguished from Archimedean scaling
+       ↓
+reusable Route A developed
+       ↓
+logical predicate search isolated
+       ↓
+common bracketing target PASS
+       ↓
+R-DP-004 resolved
 ```
 
 ## OpenQuestions
 
-Can the general Q theorem be made sufficiently small that it is clearly superior to a one-off direct proof?
+1. How much of this approximation block will transfer unchanged to the retained Cauchy branch?
+2. Can the local `Classical.em` finite membership search be eliminated under an alternative constructive cut interface?
+3. Which parts will be consumed directly by RA-12 and RA-13?
+
+These questions are specifically reserved for later Study and `RE-R-001`.
 
 ## NextCycleInputs
 
-In parallel, construct and verify the negation **candidate layer** that does not require the approximation theorem: valid `LowerCut`, `CutEquiv` respect, quotient lift, and preservation of rational negation. The additive-inverse theorem remains blocked by this cycle.
+Use `cut_bracket_approx` to prove the additive-inverse law for the already verified `rNeg` candidate. If that passes, close `RA-05` and the additive-group interface before starting real multiplication.
