@@ -87,7 +87,10 @@ theorem rational_half_exists :
   have hsum : qAdd h h = qOne := by
     unfold QInvRel at hh
     calc
-      qAdd h h = qAdd (qMul qOne h) (qMul qOne h) := by rfl
+      qAdd h h = qAdd (qMul qOne h) h :=
+        congrArg (fun t => qAdd t h) (qMul_one_left h).symm
+      _ = qAdd (qMul qOne h) (qMul qOne h) :=
+        congrArg (fun t => qAdd (qMul qOne h) t) (qMul_one_left h).symm
       _ = qMul (qAdd qOne qOne) h := (qMul_add_left qOne qOne h).symm
       _ = qMul qTwo h := rfl
       _ = qOne := hh
