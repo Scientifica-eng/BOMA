@@ -1,0 +1,124 @@
+name: BOMA R Dedekind Finite Exit Search — V5
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean'
+      - 'LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean'
+      - 'LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean'
+      - 'LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean'
+      - '.github/workflows/boma-r-dedekind-finite-exit-001.yml'
+      - 'lean-toolchain'
+
+jobs:
+  verify-and-record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Verify finite exit search
+        id: exitsearch
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat \
+            LAB/payloads/lean/NCore/NCoreRB001.lean \
+            LAB/payloads/lean/NArithmetic/AddRight.lean \
+            LAB/payloads/lean/NArithmetic/AddLeft.lean \
+            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
+            LAB/payloads/lean/NArithmetic/AddLaws.lean \
+            LAB/payloads/lean/NArithmetic/MulRight.lean \
+            LAB/payloads/lean/NArithmetic/MulLeft.lean \
+            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
+            LAB/payloads/lean/NArithmetic/MulLaws.lean \
+            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
+            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
+            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
+            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
+            LAB/payloads/lean/ZStage/ZSigned.lean \
+            LAB/payloads/lean/ZStage/ZPairs.lean \
+            LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean \
+            LAB/payloads/lean/ZStage/ZPairArithmetic.lean \
+            LAB/payloads/lean/ZStage/ZSignedArithmeticDirect.lean \
+            LAB/payloads/lean/ZStage/ZSignedArithmeticPair.lean \
+            LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean \
+            LAB/payloads/lean/ZStage/ZArithmeticLaws.lean \
+            LAB/payloads/lean/ZStage/ZOrderDirect.lean \
+            LAB/payloads/lean/ZStage/ZOrderPair.lean \
+            LAB/payloads/lean/ZStage/ZOrderConvergence.lean \
+            LAB/payloads/lean/ZStage/ZOrderLaws.lean \
+            LAB/payloads/lean/QStage/QGatewayCancellation.lean \
+            LAB/payloads/lean/QStage/QFractions.lean \
+            LAB/payloads/lean/QStage/QRawArithmetic.lean \
+            LAB/payloads/lean/QStage/QRawAdditiveLaws.lean \
+            LAB/payloads/lean/QStage/QRawMultiplicativeLaws.lean \
+            LAB/payloads/lean/QStage/QRawDistributiveLaw.lean \
+            LAB/payloads/lean/QStage/QQuotientCarrier.lean \
+            LAB/payloads/lean/QStage/QQuotientAdditiveLaws.lean \
+            LAB/payloads/lean/QStage/QQuotientMultiplicativeLaws.lean \
+            LAB/payloads/lean/QStage/QQuotientDistributiveLaw.lean \
+            LAB/payloads/lean/QStage/QInverseWitness.lean \
+            LAB/payloads/lean/QStage/QEmbeddingLaws.lean \
+            LAB/payloads/lean/QStage/QOrderCore.lean \
+            LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean \
+            LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean \
+            LAB/payloads/lean/RStage/RPreCompletionGateway.lean \
+            LAB/payloads/lean/RStage/RDedekindProbe.lean \
+            LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean \
+            LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean \
+            LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean \
+            LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean \
+            > /tmp/RDedekindFiniteExitSearch.lean
+          lake env lean /tmp/RDedekindFiniteExitSearch.lean
+      - name: Record evidence
+        if: always()
+        shell: bash
+        run: |
+          RESULT=PASS
+          for x in "${{ steps.setup.outcome }}" "${{ steps.exitsearch.outcome }}"; do
+            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
+          done
+          git fetch origin main
+          git checkout -B rfiniteexit-evidence origin/main
+          mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
+          cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_DEDEKIND_FINITE_EXIT_V5_LATEST.md <<EOF
+          # R Dedekind Finite Exit Search V5 Evidence
+          **Status:** ${RESULT}  
+          **Verified commit:** \`${GITHUB_SHA}\`  
+          **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
+          **Pinned toolchain:** \`$(cat lean-toolchain)\`
+
+          | Target | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | isolated Classical.em finite membership search for adjacent inside/outside grid pair | ${{ steps.exitsearch.outcome }} |
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/20_FORMALIZATION/R_STAGE/evidence/R_DEDEKIND_FINITE_EXIT_V5_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record R Dedekind finite-exit V5 run ${GITHUB_RUN_ID}"
+            git push origin HEAD:main
+          fi
+      - name: Enforce
+        if: always()
+        run: |
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.exitsearch.outcome }}" = success
