@@ -3,73 +3,75 @@
 **CycleID:** `PDSA-N-007`  
 **Track:** Natural Numbers / R-B Formal Verification  
 **Date opened:** 2026-08-18  
-**Status:** **ACTIVE — V5 EVIDENCE GATE**
+**Status:** **ACTIVE — CLAIM-LEVEL V5 EVIDENCE GATE**
 
 ## Inputs
 
 ```text
+canonical N-Core DAG
 N-RB-CAND-001
 BOMA-N-ACCEPT-001 v1.0
 BOMA-RB-FORMAL-001 v1.0
-PDSA-N-004 local obligation audit
-PDSA-N-005 faithful TCT bridge audit
-PDSA-N-006 characterization / standardness audit
+PDSA-N-004 local obligations
+PDSA-N-005 TCT bridge
+PDSA-N-006 characterization / standardness
+PDSA-N-008 topology decomposition
+PDSA-N-009 no-confusion reconvergence
 N-RB-CAND-001 preservation & commitment ledger
 ```
 
-Preferred unified backend payload:
+Preferred producer payload:
 
 `LAB/payloads/lean/NCore/NCoreRB001.lean`
 
-Dedicated CI workflow:
+Claim-level ownership manifest:
 
-`.github/workflows/boma-ncore-rb-003.yml`
+`LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`
+
+Current claim-level workflow:
+
+`.github/workflows/boma-ncore-rb-004.yml`
+
+The earlier `boma-ncore-rb-003.yml` remains provenance of the monolithic verification stage.
 
 ---
 
 # PLAN
 
-## ResearchQuestion
+## Research question
 
-Do the formal proof candidates for the fresh R-B N-Core candidate elaborate and check under the repository's pinned reproducible Lean environment without requiring undeclared logical/formal commitments?
+Do the formal claims owned by the canonical N-Bricks/Blocks/Junctions elaborate and check under the repository-pinned Lean environment without requiring undeclared commitments?
 
-## V5 acceptance requirements
-
-A successful V5 gate must provide machine evidence for the unified payload covering at least:
+## Verification granularity rule
 
 ```text
-fresh BOMANat carrier
-constructor disjointness
-constructor injectivity
-dependent eliminator / induction demonstration
-nondependent fold
-pointwise recursion uniqueness
-selected-NF TCT representation
-base/extension realization
-realize/reify inverse laws
-bridge faithfulness
-unary-algebra homomorphisms
-pointwise initiality
-pointwise-initial uniqueness theorem
+backend file PASS ≠ whole Block PASS by default
+Block PASS          ≠ Junction PASS by default
+Junction PASS       ≠ N-Core ACCEPTED
+```
+
+V5 evidence is assigned through `V5_THEOREM_OWNERSHIP.md`.
+
+## Required checked units
+
+```text
+N-BLOCK-001 formal unary kernel interfaces
+N-BLOCK-002 internal no-confusion
+N-BLOCK-003 induction/generatedness
+N-BLOCK-004 recursion/pointwise initiality
+N-BLOCK-005 TCT bridge
+N-BLOCK-006 pointwise standardness
+N-J-001 Route B independent constructional transfer
+N-J-001 convergence interface
 ```
 
 ## Toolchain requirement
 
-The run must use the repository-pinned Lean toolchain rather than an unspecified local installation.
-
-The current repository toolchain is expected to be resolved from:
-
-```text
-lean-toolchain
-```
-
-The exact version must be recorded in the verification evidence once a successful run is observed.
+Use the repository-pinned toolchain from `lean-toolchain` through the reproducible repository environment.
 
 ## Failure handling
 
-Any checker failure is a **Study result**.
-
-Classify failure as one of:
+Every checker failure is Study evidence and is attributed to the smallest affected unit when possible:
 
 ```text
 SYNTAX / ELABORATION
@@ -80,51 +82,101 @@ UNDECLARED FORMAL PRINCIPLE
 WORKFLOW / ENVIRONMENT
 ```
 
-Do not weaken the mathematical acceptance target merely to make the code compile.
-
-If the failure reveals a mathematical or formalization assumption, reopen the relevant contract/Decision Point.
-
-## Success handling
-
-A successful checker run upgrades the verified payload claims to V5 only within the exact declared formal regime/toolchain scope.
-
-It does **not** by itself:
-
-```text
-close NAC-15
-construct arithmetic
-prove cross-framework equivalence
-make Lean the canonical definition
-```
-
-After V5 success, perform a final NAC-01..NAC-14 closure audit before N-Core acceptance.
+A failure in one parallel branch does not automatically invalidate unrelated branches.
 
 ---
 
 # DO
 
-Backend files and workflows have been created.
+## D1 — Unified producer
 
-Current session has no local Lean executable, so no local V5 result is claimed.
+`NCoreRB001.lean` remains the preferred consolidated producer payload.
 
-CI evidence must be inspected rather than assumed.
+## D2 — Claim-level wrappers
+
+Created:
+
+```text
+Verify_N_BLOCK_001.lean
+Verify_N_BLOCK_002.lean
+Verify_N_BLOCK_003.lean
+Verify_N_BLOCK_004.lean
+Verify_N_BLOCK_005.lean
+Verify_N_BLOCK_006.lean
+Verify_N_J_001_RouteB.lean
+Verify_N_J_001.lean
+```
+
+## D3 — Claims made explicit
+
+Two previously implicit verification obligations now have named witnesses:
+
+```text
+N-BR-007 generatedness/no-junk
+  → Generated / all_generated
+
+N-BR-017 history ↔ constructor ancestry
+  → reify (s n) = extU (reify n)
+```
+
+These are backend verification witnesses only; they do not redefine the canonical object layer.
+
+## D4 — N-J-001 Route B
+
+The constructional Route B is encoded without invoking the internal Route-A theorem names `s_ne_z` or `s_injective`.
+
+The route uses selected TCT representation, bridge reflection, coverage/reconstruction, and base/extension realization.
+
+`Verify_N_J_001.lean` checks that Route A and Route B export the same formal no-confusion interface.
+
+## D5 — CI workflow
+
+Created `.github/workflows/boma-ncore-rb-004.yml` with separate checker steps for the producer, each Block wrapper, Route B, and the Junction wrapper.
+
+Primary experiment record:
+
+`LAB/PDSA/experiments/PDSA-N-007-CLAIM-LEVEL-V5-001.md`
 
 ---
 
 # STUDY
 
-OPEN — pending observed checker result.
+## S1 — Evidence observability limitation
+
+The connected GitHub interface currently returns no commit-status entries for the workflow-triggering commit, and its available commit-workflow-run action exposes pull-request-triggered runs only. Direct workflow-page retrieval is not supported by the connector route available in this session.
+
+Therefore:
+
+```text
+no visible status ≠ PASS
+no visible status ≠ FAIL
+```
+
+No V5 promotion is made without an observed checker result.
+
+## S2 — Architectural improvement already obtained
+
+Even before checker observation, the V5 preparation improved traceability:
+
+- theorem ownership is claim-level;
+- generatedness is no longer implicit;
+- history/ancestry correspondence has an explicit backend witness;
+- N-J-001 Route-B independence is machine-testable;
+- CI failure can be localized to a DAG branch rather than a monolithic file.
 
 ---
 
 # ACT
 
-PENDING.
-
-Until V5 evidence is recorded:
+Current action:
 
 ```text
-TCT-BLOCK-006 = CONDITIONAL / PENDING
-NAC-15        = NOT ELIGIBLE FOR CLOSURE
-N-Arithmetic  = BLOCKED
+KEEP V5 = PENDING OBSERVED CHECKER EVIDENCE
+KEEP N-J-001 = CONDITIONAL PASS
+KEEP N-J-002 = BLOCKED
+KEEP NAC-15 = NOT ELIGIBLE
 ```
+
+In parallel, prepare the N-J-002 NAC-01..NAC-14 integration matrix without promoting the Junction.
+
+Arithmetic remains blocked.
