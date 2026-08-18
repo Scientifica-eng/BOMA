@@ -1,10 +1,10 @@
 # R Signed Multiplication Basic Laws V5 Evidence
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `f8d1602db12e05e2b58c21f7329d2e5b4154c552`  
-**Workflow run ID:** `32190948050`  
+**Status:** PASS  
+**Verified commit:** `8d743adec249abe9044a2ee4814d8b1ce03d48f1`  
+**Workflow run ID:** `32191203164`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
-| signed multiplication commutativity + zero annihilation + one identity via positive-negative decomposition | failure |
+| signed multiplication commutativity + zero annihilation + one identity via positive-negative decomposition | success |
