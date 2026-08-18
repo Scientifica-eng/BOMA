@@ -56,7 +56,7 @@ theorem equiv_of_normalize_eq {x y : ZPair}
   have hx : ZEquiv x (pairOfSigned (normalizePair x)) := zeq_symm (pair_roundtrip x)
   have hy : ZEquiv (pairOfSigned (normalizePair y)) y := pair_roundtrip y
   have hc : ZEquiv (pairOfSigned (normalizePair x)) (pairOfSigned (normalizePair y)) := by
-    cases h
+    rw [h]
     exact zeq_refl _
   exact zeq_trans (zeq_trans hx hc) hy
 
