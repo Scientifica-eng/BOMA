@@ -11,6 +11,7 @@ on:
       - 'LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean'
       - 'LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean'
       - 'LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean'
+      - 'LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean'
       - '.github/workflows/boma-r-dedekind-signed-mul-basic-laws-001.yml'
       - 'lean-toolchain'
 
@@ -32,7 +33,7 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: false
-      - name: Verify signed multiplication commutativity and zero laws
+      - name: Verify signed multiplication commutativity, zero, and one laws
         id: laws
         if: steps.setup.outcome == 'success'
         continue-on-error: true
@@ -84,6 +85,8 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean \
             LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean \
             LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean \
+            LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean \
+            LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean \
             LAB/payloads/lean/RStage/RDedekindAddition.lean \
             LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean \
             LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean \
@@ -95,6 +98,7 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindCutBracketApprox.lean \
             LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean \
             LAB/payloads/lean/RStage/RDedekindPositivePart.lean \
+            LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean \
             LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean \
             LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean \
             LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean \
@@ -124,7 +128,7 @@ jobs:
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
-          | selected signed multiplication commutativity + left/right zero annihilation | ${{ steps.laws.outcome }} |
+          | signed multiplication commutativity + zero annihilation + one identity via positive-negative decomposition | ${{ steps.laws.outcome }} |
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
