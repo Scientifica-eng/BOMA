@@ -1,7 +1,7 @@
 # Z-J-001 — Integer Representation Convergence
 
-- **Operational Status:** **CONDITIONAL PASS — WRITTEN V4; V5 RECHECK ACTIVE**
-- **Epistemic Status:** **CROSS-REPRESENTATION AGREEMENT WRITTEN; MACHINE CONVERGENCE NOT YET PROMOTED**
+- **Operational Status:** **PASS / RESOLVED**
+- **Epistemic Status:** **DERIVED CROSS-REPRESENTATION AGREEMENT**
 - **Depends on:** signed-normal-form route, difference-pair route, accepted N-Arithmetic
 
 ## Incoming routes
@@ -11,25 +11,11 @@ Route S — signed canonical normal forms
 Route D — difference pairs + explicit equivalence ~
 ```
 
-The two routes are independently meaningful constructions. Neither is to be selected as canonical merely because it is easier for the backend.
+The two routes are independently meaningful constructions. Neither route is erased by convergence or by a later canonical representation choice.
 
-## Required convergence interface
+## Convergence interface
 
-PASS requires:
-
-```text
-1. signed route verified independently;
-2. difference-pair route verified independently;
-3. exact signed round trip;
-4. pair round trip up to ~;
-5. p ~ q ↔ normalize(p)=normalize(q);
-6. explicit provenance / commitment comparison;
-7. pinned-toolchain evidence for the convergence certificate.
-```
-
-## Written V4 result
-
-The mathematical audit establishes:
+The accepted cross-route result is:
 
 ```text
 normalizePair(pairOfSigned(z)) = z
@@ -37,35 +23,49 @@ pairOfSigned(normalizePair(p)) ~ p
 p ~ q ↔ normalizePair(p) = normalizePair(q)
 ```
 
-Thus the two representations agree extensionally at the written proof level.
+Thus signed normal forms classify difference-pair equivalence classes without requiring the project to define the Stage-One integer carrier as a quotient type.
 
-## First V5 result
+## V4 evidence
 
-Workflow run `32166470482` under Lean 4.32.1 produced:
+The written mathematical audit established exact signed round-trip, pair round-trip up to `~`, and the equivalence/normal-form characterization.
+
+## V5 evidence
+
+The first V5 run `32166470482` localized a proof-engineering failure to dependent equality elimination in the convergence certificate. Both independent routes already passed in that run.
+
+The corrected proof replaced dependent elimination by explicit equality rewriting.
+
+Fresh workflow run `32168105466` under Lean 4.32.1 then produced:
 
 ```text
+Lean setup                   PASS
 Signed route                 PASS
 Difference-pair route        PASS
-Representation convergence  FAIL
+Representation convergence  PASS
+Workflow enforcement         PASS
 ```
 
-Study localized the failure to equality transport inside the convergence proof:
+Repository evidence:
+
+`LAB/20_FORMALIZATION/Z_STAGE/evidence/Z_REP_V5_LATEST.md`
+
+## Export
+
+`Z-J-001` exports a reusable **Integer Representation Convergence Contribution**:
 
 ```text
-Dependent elimination failed
+signed normal forms        ↔        difference-pair equivalence classes
 ```
 
-This is not evidence against either representation. The failing proof step attempted dependent elimination on equality of normal forms. It has been replaced by explicit rewriting before applying equivalence reflexivity.
+with both production histories preserved.
 
-The corrected convergence certificate must receive a fresh successful V5 run before this Junction becomes unqualified PASS.
+## Decision-point effect
 
-## Decision-point lock
+`Z-DP-001 — Canonical Integer Representation` is now eligible to resolve.
 
-`Z-DP-001 — Canonical Integer Representation` remains BLOCKED while this Junction is conditional.
+A later selection is methodological/formalization-specific; it does not convert the non-selected route into a rejected mathematical construction.
 
-No canonical integer representation may be selected before V4 and V5 convergence both pass.
-
-## Reopening conditions after PASS
+## Reopening conditions
 
 Reopen if any of the following changes materially:
 
