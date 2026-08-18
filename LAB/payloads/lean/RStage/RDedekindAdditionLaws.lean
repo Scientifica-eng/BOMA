@@ -38,7 +38,7 @@ theorem cutAdd_zero_left_equiv (A : LowerCut) :
     have hxb : qLT x b := qlt_le_trans hxab hab
     exact A.downward hb hxb.1
   · intro hxA
-    rcases A.rounded x hxA with ⟨b, hbA, hxb⟩
+    rcases A.rounded hxA with ⟨b, hbA, hxb⟩
     have hx0 : qLT (qAdd x (qNeg b)) qZero := by
       have ht : qLT (qAdd x (qNeg b)) qZero := by
         have hz : qAdd qZero b = b := qAdd_zero_left b
