@@ -6,9 +6,7 @@
 
 ## Purpose
 
-This is the human-readable map of the active construction.
-
-The graph distinguishes constructed/active units from resolved gates and reserved downstream targets. A reserved node is shown for architectural planning only and must not be read as constructed.
+Human-readable map of the active construction. Mathematical construction nodes are distinguished from PDSA research/calibration/acceptance gates.
 
 ## Current graph
 
@@ -26,6 +24,7 @@ The graph distinguishes constructed/active units from resolved gates and reserve
                           ▼
                  ┌──────────────────┐
                  │ TCT-BLOCK-002    │
+                 │ Generated        │
                  │ Selected         │
                  │ Configurations   │
                  │ ACTIVE           │
@@ -36,15 +35,13 @@ The graph distinguishes constructed/active units from resolved gates and reserve
           │ TCT-BR-010                    │
           │ Structural Equivalence ≈      │
           │ ACTIVE — DECLARED IDENTITY    │
-          │ SPECIFICATION                 │
           └───────────────┬────────────────┘
                           │
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BR-009                    │
           │ Terminal Preservation         │
-          │ ACTIVE — DERIVED UNDER        │
-          │ BR-010                        │
+          │ ACTIVE — DERIVED              │
           └───────────────┬────────────────┘
                           │
                           ▼
@@ -75,9 +72,13 @@ The graph distinguishes constructed/active units from resolved gates and reserve
           │ ACTIVE                        │
           └───────────────┬────────────────┘
                           │
-          ───────── PRE-NUMERICAL ─────────
-             WHOLE-PATH CALIBRATION GATE
-                   PDSA-TCT-008
+          ═════ PDSA-TCT-008 CALIBRATION ═════
+             PASS WITH REFINEMENTS / CLOSED
+                          │
+                          ▼
+          ═══════ PDSA-N-001 ACCEPTANCE ═══════
+              NATURAL-NUMBER TARGET SPEC
+                       NEXT / REQUIRED
                           │
                           ▼
           ┌────────────────────────────────┐
@@ -93,122 +94,85 @@ The graph distinguishes constructed/active units from resolved gates and reserve
                          ℕ
 ```
 
-The PDSA-TCT-008 label above is a research/calibration gate, not a mathematical construction node.
+The PDSA labels are research gates, not mathematical construction units.
 
-## Current frontier
-
-The active mathematical construction now reaches:
+## Current mathematical frontier
 
 ```text
 TCT-BLOCK-005 — Successor-Like Extension Structure
 ```
 
-Its verified package includes:
+The pre-numerical path has passed its whole-path calibration. The next work is **not** construction of a formal carrier; it is definition of the acceptance specification that will tell us when a future realization is entitled to be called a natural-number structure.
+
+## Calibration result
+
+`PDSA-TCT-008`:
 
 ```text
-selected extension availability
-canonical predecessor
-injectivity modulo ≈
-ε excluded from extension image
-no structural fixed point
-history-tail extension
-acyclicity for explicit non-empty extension chains
+PASS WITH DOCUMENTARY / TERMINOLOGICAL REFINEMENTS
 ```
 
-This package does not establish a formal natural-number successor or carrier.
+Primary evidence:
 
-The immediate frontier is therefore the whole-path calibration gate, not `TCT-BLOCK-006` itself.
+`LAB/PDSA/experiments/PDSA-TCT-008-WHOLE-PATH-AUDIT-001.md`
 
-## Verification chain to the current frontier
+No unresolved hidden numerical/global/quotient/carrier commitment was identified at closure.
+
+## Verified construction chain
 
 ```text
+TCT-BLOCK-001
+      ↓
 TCT-BLOCK-002
       ↓
-TCT-BR-010  structural equivalence
+TCT-BR-010
       ↓
-TCT-BR-009  terminal preservation
+TCT-BR-009
       ↓
-TCT-J-001   canonical recovery PASS
+TCT-J-001 PASS
       ↓
-TCT-BLOCK-003 canonical decomposition
+TCT-BLOCK-003
       ↓
-TCT-BLOCK-004 structural iteration history
+TCT-BLOCK-004
       ↓
-TCT-BLOCK-005 successor-like extension
+TCT-BLOCK-005
 ```
 
-Key evidence:
+## What remains beyond the frontier
+
+The current path still lacks an explicitly accepted specification for:
 
 ```text
-LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
-LAB/PDSA/experiments/PDSA-TCT-005-CANONICAL-DECOMPOSITION-VERIFICATION-001.md
-LAB/PDSA/experiments/PDSA-TCT-006-STRUCTURAL-HISTORY-001.md
-LAB/PDSA/experiments/PDSA-TCT-007-SUCCESSOR-LIKE-VERIFICATION-001.md
+formal carrier/globality
+carrier equality/identity
+formal zero/base interpretation
+formal successor function
+no-junk/generatedness
+induction
+recursion/universal property
+realization/identification criterion
 ```
 
-## Anti-circularity boundary
-
-The project has constructed structural ancestry and successor-like extension properties without exporting:
-
-```text
-numeric depth
-cardinality
-natural-number indexing
-a completed global carrier
-object-level induction over ℕ
-```
-
-Before any formal natural-number realization, PDSA-TCT-008 must audit the full active path for silent imports of such structure.
+These are the subject of `PDSA-N-001` and later formalization-boundary work.
 
 ## Horizontal structure
 
-Alternative or parallel constructions are represented horizontally and retain distinct identities. No alternative is deleted merely because another candidate is selected.
-
-## Vertical target view
-
-```text
-Kernel
-  ↓
-Selected generated configurations
-  ↓
-Structural equivalence
-  ↓
-Canonical decomposition
-  ↓
-Structural iteration history
-  ↓
-Successor-like extension
-  ↓
-Pre-numerical whole-path calibration
-  ↓
-Formalization boundary / acceptance specification
-  ↓
-Formal natural-number realization
-```
-
-The path is currently active through Successor-Like Extension only.
-
-## Junction rule
-
-Every convergence or compatibility gate must explicitly state what is shared, translated, assumed, proved, what can fail, and what PDSA evidence resolved the gate.
+Alternative or parallel constructions retain distinct identities. No branch is deleted merely because another is selected for the Stage-One canonical route.
 
 ## Change propagation
 
-A change to BR-010 or the decomposition layer propagates through the active history and extension Blocks and all affected future descendants.
+A material change to BR-010, normal forms, decomposition, history, or successor-like extension requires re-running affected verification and the pre-numerical calibration before formal realization.
 
 ## Current and planned gates
 
 ```text
-TCT-J-001 → decomposition admissibility          PASS / RESOLVED
-PDSA-TCT-008 → pre-numerical whole-path audit    REQUIRED / NEXT
-TCT-J-002 → structural/formal correspondence     PLANNED / NOT YET ACTIVE
-TCT-J-003 → formal realization boundary          PLANNED / NOT YET ACTIVE
+TCT-J-001    decomposition admissibility          PASS / RESOLVED
+PDSA-TCT-008 pre-numerical whole-path audit       PASS / CLOSED
+PDSA-N-001   natural-number acceptance target     NEXT / REQUIRED
+TCT-J-002    structural/formal correspondence     PLANNED
+TCT-J-003    formal realization boundary          PLANNED
 ```
 
 ## PDSA relation
 
-The Construction Graph records what depends on what mathematically.
-
-PDSA records under `LAB/PDSA/` record how the project learned, tested, corrected, and decided.
-
-The two views are cross-linked but are not the same graph.
+The Construction Graph records mathematical dependency. PDSA records capture the experimental/learning path by which those dependencies and statuses were established.
