@@ -1,0 +1,51 @@
+name: BOMA N-Core R-B — Claim-Level V5
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/NCoreRB001.lean'
+      - 'LAB/payloads/lean/NCore/Verify_N_*.lean'
+      - 'LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md'
+      - '.github/workflows/boma-ncore-rb-004.yml'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+
+jobs:
+  verify-ncore-claims:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pinned Lean toolchain
+        uses: leanprover/lean-action@v1
+
+      - name: Verify unified producer payload
+        run: lake env lean LAB/payloads/lean/NCore/NCoreRB001.lean
+
+      - name: Verify N-BLOCK-001 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_001.lean
+
+      - name: Verify N-BLOCK-002 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_002.lean
+
+      - name: Verify N-BLOCK-003 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean
+
+      - name: Verify N-BLOCK-004 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_004.lean
+
+      - name: Verify N-BLOCK-005 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_005.lean
+
+      - name: Verify N-BLOCK-006 ownership
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_006.lean
+
+      - name: Verify N-J-001 independent Route B
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean
+
+      - name: Verify N-J-001 convergence interface
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001.lean
