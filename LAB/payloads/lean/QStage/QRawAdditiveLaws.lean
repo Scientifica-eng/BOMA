@@ -42,6 +42,50 @@ theorem rawAdd_comm_equiv (x y : RawFrac) :
 /-- Raw addition is associative modulo equivalence. -/
 theorem rawAdd_assoc_equiv (x y w : RawFrac) :
     FracEquiv (rawAdd (rawAdd x y) w) (rawAdd x (rawAdd y w)) := by
+  have hxTerm :
+      zmul (zmul x.num (denZ y.den)) (denZ w.den) =
+      zmul x.num (zmul (denZ y.den) (denZ w.den)) :=
+    zmul_assoc x.num (denZ y.den) (denZ w.den)
+
+  have hyTerm :
+      zmul (zmul y.num (denZ x.den)) (denZ w.den) =
+      zmul (zmul y.num (denZ w.den)) (denZ x.den) :=
+    zmul_swap_last y.num (denZ x.den) (denZ w.den)
+
+  have hwTerm :
+      zmul w.num (zmul (denZ x.den) (denZ y.den)) =
+      zmul (zmul w.num (denZ y.den)) (denZ x.den) := by
+    calc
+      zmul w.num (zmul (denZ x.den) (denZ y.den)) =
+          zmul (zmul w.num (denZ x.den)) (denZ y.den) :=
+        (zmul_assoc w.num (denZ x.den) (denZ y.den)).symm
+      _ = zmul (zmul w.num (denZ y.den)) (denZ x.den) :=
+        zmul_swap_last w.num (denZ x.den) (denZ y.den)
+
+  have hxyTerms :
+      zadd
+        (zmul (zmul x.num (denZ y.den)) (denZ w.den))
+        (zmul (zmul y.num (denZ x.den)) (denZ w.den)) =
+      zadd
+        (zmul x.num (zmul (denZ y.den) (denZ w.den)))
+        (zmul (zmul y.num (denZ w.den)) (denZ x.den)) := by
+    calc
+      zadd
+          (zmul (zmul x.num (denZ y.den)) (denZ w.den))
+          (zmul (zmul y.num (denZ x.den)) (denZ w.den)) =
+        zadd
+          (zmul x.num (zmul (denZ y.den) (denZ w.den)))
+          (zmul (zmul y.num (denZ x.den)) (denZ w.den)) :=
+        congrArg
+          (fun t => zadd t (zmul (zmul y.num (denZ x.den)) (denZ w.den)))
+          hxTerm
+      _ = zadd
+          (zmul x.num (zmul (denZ y.den) (denZ w.den)))
+          (zmul (zmul y.num (denZ w.den)) (denZ x.den)) :=
+        congrArg
+          (fun t => zadd (zmul x.num (zmul (denZ y.den) (denZ w.den))) t)
+          hyTerm
+
   have hnum :
       zadd
         (zmul
@@ -74,11 +118,21 @@ theorem rawAdd_assoc_equiv (x y w : RawFrac) :
           (zadd
             (zmul x.num (zmul (denZ y.den) (denZ w.den)))
             (zmul (zmul y.num (denZ w.den)) (denZ x.den)))
-          (zmul (zmul w.num (denZ y.den)) (denZ x.den)) := by
-        rw [zmul_assoc]
-        rw [zmul_swap_last y.num (denZ x.den) (denZ w.den)]
-        rw [← zmul_assoc w.num (denZ y.den) (denZ x.den)]
-        rw [zmul_swap_last w.num (denZ x.den) (denZ y.den)]
+          (zmul w.num (zmul (denZ x.den) (denZ y.den))) :=
+        congrArg
+          (fun t => zadd t (zmul w.num (zmul (denZ x.den) (denZ y.den))))
+          hxyTerms
+      _ = zadd
+          (zadd
+            (zmul x.num (zmul (denZ y.den) (denZ w.den)))
+            (zmul (zmul y.num (denZ w.den)) (denZ x.den)))
+          (zmul (zmul w.num (denZ y.den)) (denZ x.den)) :=
+        congrArg
+          (fun t => zadd
+            (zadd
+              (zmul x.num (zmul (denZ y.den) (denZ w.den)))
+              (zmul (zmul y.num (denZ w.den)) (denZ x.den))) t)
+          hwTerm
       _ = zadd
           (zmul x.num (zmul (denZ y.den) (denZ w.den)))
           (zadd
@@ -92,8 +146,13 @@ theorem rawAdd_assoc_equiv (x y w : RawFrac) :
           (zmul x.num (zmul (denZ y.den) (denZ w.den)))
           (zmul
             (zadd (zmul y.num (denZ w.den)) (zmul w.num (denZ y.den)))
-            (denZ x.den)) := by
-        rw [zmul_add_left]
+            (denZ x.den)) :=
+        congrArg
+          (fun t => zadd (zmul x.num (zmul (denZ y.den) (denZ w.den))) t)
+          (zmul_add_left
+            (zmul y.num (denZ w.den))
+            (zmul w.num (denZ y.den))
+            (denZ x.den)).symm
 
   have hden :
       denZ (denMul (denMul x.den y.den) w.den) =
@@ -116,21 +175,30 @@ theorem rawAdd_assoc_equiv (x y w : RawFrac) :
           (zadd (zmul y.num (denZ w.den)) (zmul w.num (denZ y.den)))
           (denZ x.den)))
       (denZ (denMul (denMul x.den y.den) w.den))
-  rw [denZ_mul, denZ_mul]
+  rw [denZ_mul x.den y.den, denZ_mul y.den w.den]
   rw [hnum, hden]
 
 /-- Raw negation supplies additive inverse modulo equivalence. -/
 theorem rawAdd_neg_equiv_zero (x : RawFrac) :
     FracEquiv (rawAdd x (rawNeg x)) rawZero := by
+  let a := zmul x.num (denZ x.den)
   change
     zmul
-      (zadd
-        (zmul x.num (denZ x.den))
-        (zmul (zneg x.num) (denZ x.den)))
+      (zadd a (zmul (zneg x.num) (denZ x.den)))
       zone =
     zmul zzero (denZ (denMul x.den x.den))
-  rw [BOMA.Q.Gateway001.zmul_neg_left]
-  rw [← zadd_neg_right (zmul x.num (denZ x.den))]
-  rw [zmul_zero_left, zmul_zero_left]
+  calc
+    zmul
+        (zadd a (zmul (zneg x.num) (denZ x.den)))
+        zone =
+      zmul (zadd a (zneg a)) zone :=
+        congrArg
+          (fun t => zmul (zadd a t) zone)
+          (BOMA.Q.Gateway001.zmul_neg_left x.num (denZ x.den))
+    _ = zmul zzero zone :=
+      congrArg (fun t => zmul t zone) (zadd_neg_right a)
+    _ = zzero := zmul_zero_left zone
+    _ = zmul zzero (denZ (denMul x.den x.den)) :=
+      (zmul_zero_left (denZ (denMul x.den x.den))).symm
 
 end BOMA.Q.Fraction001
