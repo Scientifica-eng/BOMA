@@ -1,22 +1,28 @@
 # N-Core Claim-Level V5 — Automated Evidence Record
 
-**Status:** PENDING AUTOMATED RUN EVIDENCE  
-**Workflow:** `.github/workflows/boma-ncore-rb-005-evidence.yml`
+**Status:** FAIL_OR_INCOMPLETE  
+**Verified commit:** `08c9ea0fb3bf2ac5cbc4a452cc4e6aac09f50552`  
+**Workflow run ID:** `32162999218`  
+**Pinned toolchain:** `leanprover/lean4:v4.32.1`  
+**Recorded at (UTC):** `2026-08-18T16:57:17Z`
 
-This file is an evidence sink. The dedicated CI workflow may replace its run section with observed checker outcomes.
+This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
 
-It is **not** an acceptance record and must never update N-Block/Junction/NAC status automatically.
+| Verification target | Outcome |
+|---|---|
+| Lean/toolchain setup | success |
+| unified producer payload | failure |
+| N-BLOCK-001 | failure |
+| N-BLOCK-002 | failure |
+| N-BLOCK-003 | failure |
+| N-BLOCK-004 | failure |
+| N-BLOCK-005 | failure |
+| N-BLOCK-006 | failure |
+| N-J-001 independent Route B | failure |
+| N-J-001 convergence interface | failure |
 
-```text
-verified commit: NONE RECORDED
-pinned toolchain: NONE RECORDED
-producer: PENDING
-N-BLOCK-001: PENDING
-N-BLOCK-002: PENDING
-N-BLOCK-003: PENDING
-N-BLOCK-004: PENDING
-N-BLOCK-005: PENDING
-N-BLOCK-006: PENDING
-N-J-001 Route B: PENDING
-N-J-001 convergence: PENDING
-```
+Interpretation must follow:
+
+`LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`
+
+A PASS here is machine evidence for the mapped claims under the recorded toolchain. It is not NAC-15 acceptance.
