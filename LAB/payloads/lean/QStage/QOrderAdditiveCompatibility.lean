@@ -1,6 +1,7 @@
 /- Additive compatibility of the Stage-One rational order. -/
 namespace BOMA.Q.OrderedField001
 
+open BOMA.Z.Rep001
 open BOMA.Z.Arithmetic001
 open BOMA.Z.Order001
 open BOMA.Q.Gateway001
