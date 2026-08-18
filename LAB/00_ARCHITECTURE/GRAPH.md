@@ -33,7 +33,21 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
                  │ ACTIVE           │
                  └────────┬─────────┘
                           │
-                       MEETS_AT
+                          ▼
+          ┌────────────────────────────────┐
+          │ TCT-BR-010                    │
+          │ Structural Equivalence ≈      │
+          │ ACTIVE — DECLARED IDENTITY    │
+          │ SPECIFICATION                 │
+          └───────────────┬────────────────┘
+                          │
+                          ▼
+          ┌────────────────────────────────┐
+          │ TCT-BR-009                    │
+          │ Terminal Preservation         │
+          │ ACTIVE — DERIVED UNDER        │
+          │ BR-010                        │
+          └───────────────┬────────────────┘
                           │
                           ▼
           ┌────────────────────────────────┐
@@ -41,34 +55,20 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
           │ Canonicality Gate             │
           │ PASS / RESOLVED               │
           └───────────────┬────────────────┘
-                    ▲             ▲
-                    │             │
-      DEFINES ≈ /   │             │ DERIVED RESULT
-      CONSTRAINS    │             │
-                    │             │
-┌──────────────────────────┐  ┌──────────────────────────┐
-│ TCT-BR-010               │  │ TCT-BR-009               │
-│ Reassociation-Generated  │  │ Terminal Interface       │
-│ Structural Equivalence   │  │ Preservation             │
-│ ACTIVE                   │  │ ACTIVE                   │
-│ DECLARED IDENTITY SPEC   │  │ DERIVED UNDER BR-010     │
-└──────────────────────────┘  └──────────────────────────┘
-                          │
-                    gate passed
                           │
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BLOCK-003                 │
           │ Canonical Decomposition       │
-          │ RESERVED — ADMISSIBLE NEXT    │
-          │ NOT YET CONSTRUCTED           │
+          │ ACTIVE                        │
           └───────────────┬────────────────┘
                           │
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BLOCK-004                 │
-          │ Construction Depth            │
-          │ RESERVED — NOT CONSTRUCTED    │
+          │ Structural Iteration / Depth  │
+          │ RESERVED — ADMISSIBLE NEXT    │
+          │ NOT YET CONSTRUCTED           │
           └───────────────┬────────────────┘
                           │
                           ▼
@@ -93,7 +93,23 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
 
 ## Current frontier
 
-The verified path now reaches the output side of `TCT-J-001`:
+The active mathematical construction now reaches:
+
+```text
+TCT-BLOCK-003 — Canonical Decomposition
+```
+
+The Block exports a representation-invariant decomposition guarantee but no quotient object and no global predecessor function.
+
+The next frontier is:
+
+```text
+TCT-BLOCK-004 — Structural Iteration / Pre-Numerical Depth
+```
+
+which remains RESERVED / NOT CONSTRUCTED.
+
+## Verification chain to the current frontier
 
 ```text
 TCT-BLOCK-002
@@ -104,18 +120,15 @@ TCT-BR-009  terminal preservation DERIVED
       ↓
 TCT-J-001   PASS / RESOLVED
       ↓
-TCT-BLOCK-003  RESERVED — next construction target
+TCT-BLOCK-003 ACTIVE
 ```
 
-The project has **not** yet constructed `TCT-BLOCK-003` or any later node.
+Key evidence:
 
-Verification evidence for the passed gate:
-
-`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
-
-The next cycle is:
-
-`PDSA-TCT-005 — Canonical Decomposition Block`.
+```text
+LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
+LAB/PDSA/experiments/PDSA-TCT-005-CANONICAL-DECOMPOSITION-VERIFICATION-001.md
+```
 
 ## Horizontal structure
 
@@ -130,20 +143,20 @@ CANDIDATE-A  ── ALTERNATIVE_TO ── CANDIDATE-B
 
 No alternative is deleted merely because another candidate is selected.
 
-The interface-preserving definition studied in `PDSA-TCT-003` remains a legitimate future alternative, but it is not the current canonical identity specification.
+The interface-preserving equivalence studied in PDSA-TCT-003 remains a legitimate future branch, but it is not the current canonical identity specification.
 
 ## Vertical structure
 
 A higher unit depends on outputs of lower units.
 
-Example target view:
+Target view:
 
 ```text
 Kernel
   ↓
-Finite configurations
+Selected finite configurations
   ↓
-Structural equivalence / decomposition gate
+Structural equivalence
   ↓
 Canonical decomposition
   ↓
@@ -156,7 +169,7 @@ Formalization boundary
 Formal natural-number domain
 ```
 
-Only the first two Blocks are currently active constructed Blocks. BR-010 is an active identity-specification Brick; BR-009 is a derived theorem Brick; J-001 is a resolved Junction.
+The path is currently active through Canonical Decomposition only.
 
 ## Junction rule
 
@@ -184,7 +197,7 @@ retest TCT-BR-009
         ↓
 reopen/retest TCT-J-001
         ↓
-retest TCT-BLOCK-003 if it exists at that time
+retest TCT-BLOCK-003
         ↓
 all affected descendants
 ```
@@ -193,7 +206,8 @@ all affected descendants
 
 ```text
 TCT-J-001 → decomposition admissibility          PASS / RESOLVED
-TCT-J-002 → depth / formal-stage correspondence  PLANNED / NOT YET ACTIVE
+TCT-J-002 → structural-iteration / formal-stage correspondence
+                                                   PLANNED / NOT YET ACTIVE
 TCT-J-003 → formal realization boundary           PLANNED / NOT YET ACTIVE
 ```
 
