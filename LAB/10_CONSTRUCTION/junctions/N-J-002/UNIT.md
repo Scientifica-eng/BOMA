@@ -1,8 +1,8 @@
 # N-J-002 — N-Core Integration Gate
 
-- **Operational Status:** **RESERVED / BLOCKED — PRE-AUDIT AVAILABLE**
-- **Epistemic Status:** **PENDING FINAL INTEGRATION**
-- **PDSA preparation:** `PDSA-N-010`
+- **Operational Status:** **PASS / RESOLVED**
+- **Epistemic Status:** **DERIVED ARCHITECTURAL INTEGRATION / SCOPE-QUALIFIED**
+- **PDSA:** `PDSA-N-010`
 
 ## Incoming
 
@@ -19,41 +19,98 @@ N-J-001      cross-route no-confusion convergence
 
 Are the independently produced N-Core contributions mutually compatible, verified at their required levels, faithful to TCT ancestry, and sufficient to discharge NAC-01..NAC-14 without hidden commitments?
 
-## Current pre-audit
+## Evidence
 
-The NAC-01..NAC-14 integration matrix is recorded in:
+Final integration audit:
 
 `LAB/PDSA/PDSA-N-010_N_CORE_INTEGRATION_PREAUDIT.md`
 
-Current result:
+Post-V5 preservation/commitment audit:
+
+`LAB/PDSA/PDSA-N-011_POST_V5_PRESERVATION_COMMITMENT_AUDIT.md`
+
+Claim-level formal evidence:
 
 ```text
-no new mathematical axiom currently identified as required
-substantial written/architectural coverage exists
-claim-level V5 evidence remains unobserved
-N-J-001 remains conditional on V5
-post-V5 NAC-13/NAC-14 re-audits remain mandatory
+workflow run:     32163771789
+verified commit:  5fb03a48e243697f49f1cbde30be986d73f2ff68
+Lean:             4.32.1
+result:           PASS
 ```
 
-## Hard blockers
-
-`N-J-002` must remain blocked until:
+Formal scope:
 
 ```text
-1. pinned-toolchain V5 evidence is observed;
-2. successful results are mapped claim-by-claim through V5_THEOREM_OWNERSHIP.md;
-3. N-J-001 receives an unqualified PASS;
-4. NAC-13 preservation is re-audited after checker results;
-5. NAC-14 commitments are re-audited for hidden principles;
-6. actual accepted universe/type scope is recorded.
+N-DP-002
+BOMA-RB-FORMAL-CORR-001
 ```
 
-## Rule
+## Integration result
 
-This Junction cannot PASS merely because one backend file type-checks. It requires unit-level evidence, dependency compatibility, bridge fidelity, commitment-ledger review, and closure of `N-J-001`.
+```text
+NAC-01  PASS
+NAC-02  PASS
+NAC-03  PASS
+NAC-04  PASS
+NAC-05  PASS
+NAC-06  PASS
+NAC-07  PASS
+NAC-08  PASS
+NAC-09  PASS
+NAC-10  PASS IN DECLARED SCOPE
+NAC-11  PASS
+NAC-12  PASS IN DECLARED R-B SCOPE
+NAC-13  PASS
+NAC-14  PASS
+```
 
-PASS would make the project eligible for the separate NAC-15 closure decision. It would not itself construct addition, multiplication, order, or integers.
+## Compatibility findings
 
-## Reopening / failure conditions
+The parallel branches are compatible and non-circular:
 
-If V5 exposes a new formal principle, invalid proof, scope restriction, or bridge failure, reopen the smallest affected Brick/Block and update this integration matrix before reconsidering the Junction.
+```text
+No-Confusion
+Induction / Generatedness
+Recursion / Initiality
+TCT Realization Bridge
+Pointwise Standardness
+```
+
+`N-J-001` additionally verifies that internal and TCT-ancestry no-confusion routes reconverge on the same exported formal interface while preserving distinct provenance.
+
+No new mathematical axiom was introduced by the integration gate itself.
+
+## Scope
+
+PASS is relative to the explicitly selected R-B Stage-One route and universe policy. It does not assert that every alternative foundation or universe policy must package natural numbers identically.
+
+## Export
+
+`N-J-002` exports:
+
+> **N-Core Integration Certificate — NAC-01 through NAC-14 satisfied under the recorded R-B scope.**
+
+This makes the project eligible for the separate `NAC-15` closure decision.
+
+It does **not** itself:
+
+```text
+declare N-Core ACCEPTED
+construct addition
+construct multiplication
+construct order
+construct integers
+```
+
+## Reopening conditions
+
+Reopen if:
+
+```text
+N-DP-001 or N-DP-002 changes
+any N-BLOCK-001..006 evidence is invalidated
+N-J-001 is reopened
+TCT-BLOCK-005 or BR-010 changes materially
+post-V5 commitment audit changes
+formal checker evidence is superseded by a failure affecting mapped claims
+```
