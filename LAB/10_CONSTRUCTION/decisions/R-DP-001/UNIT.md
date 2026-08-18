@@ -1,106 +1,188 @@
 # R-DP-001 — Stage-One Real Completion Route
 
-- **Operational Status:** **OPEN — PROBE REQUIRED BEFORE SELECTION**
+- **Operational Status:** **RESOLVED — ROUTE D SELECTED FOR STAGE ONE**
 - **Epistemic Status:** **METHODOLOGICAL / MATHEMATICAL CONSTRUCTION DECISION POINT**
 - **Input:** `Q-BLOCK-002`
 - **Target:** `BOMA-R-ACCEPT-001`
+- **Selected route:** **D — Dedekind-style lower cuts**
+- **Retained route:** **C — Cauchy completion / first-class later branch**
 
 ## Decision question
 
 Which completion route should provide the canonical Stage-One `R_BOMA` construction while keeping all new mathematical and formalization commitments explicit?
 
+## Evidence before decision
+
+### Shared representation probes
+
+V5 `32179389952`:
+
+```text
+qLT / qPos / qClose gateway        PASS
+Dedekind LowerCut / CutEquiv       PASS
+Cauchy QSeq / CauchyEquiv          PASS
+```
+
+### Shared rational density gateway
+
+V5 `32179943679`:
+
+```text
+strict translation
+nonzero multiplicative cancellation
+positive half construction
+internal Q order density
+```
+
+all PASS.
+
+### Rational embedding probes
+
+V5 `32180417291`:
+
+```text
+Cauchy constant-sequence embedding            PASS
+Dedekind principal-cut embedding              PASS
+Dedekind CutEquiv equality reflection         PASS
+```
+
+The Dedekind principal-cut route explicitly consumes the independently verified Q-density theorem for roundedness.
+
+### Dedekind completeness skeleton
+
+V5 `32180113386`:
+
+```text
+union of a nonempty bounded family of LowerCuts is a LowerCut
+all family members are below the union cut
+the union cut is below every common upper bound
+```
+
+PASS.
+
+This is a direct representation-level least-upper-bound certificate.
+
 ## Candidate D — Dedekind-style lower cuts
 
-Candidate representation:
+Representation:
 
 ```text
 lower : Q_BOMA → Prop
 nonempty
 proper
 downward closed
-no greatest element / rounded
+rounded / no greatest element
 ```
 
-### Expected strengths
+Identity probe:
 
 ```text
-order-completeness theorem is structurally direct
-supremum of bounded families can be represented by union/existential membership
-order is close to subset inclusion
-rational embedding is geometrically transparent once Q density is available
+CutEquiv A B := ∀q, A.lower q ↔ B.lower q
 ```
 
-### Expected costs to probe
+### Observed strengths
 
 ```text
-predicate-valued representation
-extensional identity / quotient choice
-Q-density lemma needed for principal-cut roundedness
-addition of cuts
+representation probe PASS
+principal Q embedding PASS
+Q equality reflection PASS
+principal-cut order reflection constructed
+shared Q density dependency explicit and PASS
+least-upper-bound-by-union skeleton PASS
+completion theorem architecture appears structurally direct
+```
+
+### Remaining costs
+
+```text
+formal real identity realization still to choose
+cut addition / negation
 sign-sensitive multiplication
-inverse construction
-possible extensionality commitments if raw predicate equality is used
+nonzero inverse
+lifting inclusion/order to formal carrier
+full ordered-field package
+Archimedean characterization
+final completeness theorem at formal carrier level
 ```
 
 ## Candidate C — Cauchy completion
 
-Candidate representation:
+Representation:
 
 ```text
 seq : N_BOMA → Q_BOMA
 Cauchy(seq)
 ```
 
-with identity by null difference / eventual ε-closeness.
+with asymptotic epsilon identity.
 
-### Expected strengths
+### Observed strengths
 
 ```text
-addition and multiplication follow pointwise patterns
-rational embedding by constant sequences is direct
-construction interfaces naturally with later analysis / sequences
+representation probe PASS
+constant-rational embedding PASS
+entry does not require Q density
+natural interface with later sequence analysis
 ```
 
-### Expected costs to probe
+### Remaining unbuilt costs
 
 ```text
-positive ε interface
-sequence quantification over accepted N
-Cauchy stability under multiplication
-nonzero inverse requires eventual separation from zero
-quotient identity for null difference
+prove CauchyEquiv equivalence laws
+formal identity carrier
+pointwise multiplication is Cauchy
 order on equivalence classes
-completeness proof requires a diagonal/approximation construction
+nonzero inverse via eventual separation or equivalent theorem
+complete the quotient via a diagonal/approximation construction
+relate resulting completeness to the accepted R contract
 ```
 
-## Candidate I — nested rational intervals
+These are forward costs, not negative theorems against Route C.
 
-May be studied later if it materially lowers commitment cost. It is not required for the initial D/C comparison.
+## ACT — selection
 
-## Mandatory comparison dimensions
+Stage One selects:
 
 ```text
-new Q lemmas required
-new N machinery required
-carrier identity cost
-logical/extensionality commitments
-field-operation construction burden
-ordered-field proof burden
-completeness proof burden
-rational density / Archimedean proof burden
-formal verification modularity
-Stage-II branch value
+Route D — Dedekind-style lower cuts
 ```
 
-## Decision lock
+because the defining new R obligation is a transparent completeness theorem and Route D already has a verified direct least-upper-bound construction skeleton while also supporting a verified faithful rational principal-cut embedding.
 
-Do not resolve this Decision Point until:
+This is a **construction-strategy choice**, not a mathematical claim that Dedekind cuts are uniquely necessary, more fundamental, or the only valid realization of the real numbers.
+
+## Retained branch
+
+Route C is retained as a first-class later branch:
 
 ```text
-1. a shared pre-real strict-order/positivity gateway is defined;
-2. a Dedekind representation probe type-checks independently;
-3. a Cauchy representation probe type-checks independently;
-4. PDSA Study records actual rather than assumed dependency costs.
+ALTERNATIVE_TO Route D
+status: RETAINED / NOT REJECTED
 ```
 
-No real carrier is canonical while this lock is open.
+High-value future comparison targets include:
+
+```text
+formal carrier equivalence
+ordered-field isomorphism
+Dedekind completeness ↔ Cauchy completeness under explicit assumptions
+proof/commitment cost
+N-dependency propagation
+representation identity cost
+formal-verification robustness
+```
+
+## Next mandatory subdecision
+
+Selecting Dedekind syntax does **not** yet select formal real equality.
+
+The next Decision Point must choose between at least:
+
+```text
+R-DP-002-A  Quotient LowerCut by CutEquiv
+R-DP-002-B  retain LowerCut syntax with external CutEquiv as real identity
+```
+
+Raw structure equality must not be adopted merely because `LowerCut` is a Lean structure: its predicate field makes extensional identity a substantive commitment.
+
+No real carrier is accepted yet.
