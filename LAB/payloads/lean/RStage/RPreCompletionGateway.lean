@@ -20,7 +20,9 @@ theorem qlt_of_le_of_ne {x y : QBOMA} (hxy : qLE x y) (hne : x ≠ y) : qLT x y 
 theorem qlt_trans {x y z : QBOMA} (hxy : qLT x y) (hyz : qLT y z) : qLT x z := by
   refine ⟨qle_trans hxy.1 hyz.1, ?_⟩
   intro hxz
-  have hzx : qLE z x := by rw [hxz]
+  have hzx : qLE z x := by
+    rw [hxz]
+    exact qle_refl z
   have hyx : qLE y x := qle_trans hyz.1 hzx
   have hy_eq_x : y = x := qle_antisymm hyx hxy.1
   apply hxy.2
