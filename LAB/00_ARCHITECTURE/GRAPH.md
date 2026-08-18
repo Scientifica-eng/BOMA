@@ -3,7 +3,8 @@
 **Status:** ACTIVE — Canonical human-readable graph  
 **Detailed topology:** `CONSTRUCTION_TOPOLOGY.md`  
 **N-Core:** `N_CORE_DAG.md`  
-**N-Arithmetic:** `N_ARITHMETIC_DAG.md`
+**N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
+**Q:** `Q_DAG.md`
 
 ## Pre-numerical trunk
 
@@ -138,6 +139,56 @@ not recovered from extensional Z:
   PDSA learning graph
 ```
 
+## Accepted rational path
+
+```text
+Z-BLOCK-002
+   │
+   ▼
+Q-GATE-BLOCK-001
+nonzero multiplication cancellation
+   │
+   ▼
+Q-F-BLOCK-001
+positive denominator + RawFrac + FracEquiv
+   │
+   ▼
+Q-F-BLOCK-002
+raw arithmetic respects FracEquiv
+   │
+   ▼
+Q-DP-001
+quotient/setoid identity selected
+reduced/external-setoid alternatives retained
+   │
+   ▼
+Q-BLOCK-001
+verified quotient carrier / identity / lifted operations
+   │
+   ├──────── additive / multiplicative / distributive field laws
+   ├──────── unique nonzero inverse witnesses
+   ├──────── faithful Z + coherent N embeddings
+   ├──────── integer-fraction generation
+   └──────── RawLE representative invariance → qLE total order
+                                                │
+                         ┌──────────────────────┴─────────────────────┐
+                         ▼                                            ▼
+              translation + negation                     nonnegative multiplication
+              order compatibility                        + positive inverse behavior
+                         └──────────────────────┬─────────────────────┘
+                                                ▼
+                                  QIntegrationCertificate PASS
+                                                ▼
+                                          Q-J-002 PASS
+                                                ▼
+                                          QA-23 ACCEPT
+                                                ▼
+                                         Q-BLOCK-002
+                                   Accepted Stage-One Q
+```
+
+QA-17 is deliberately not drawn as a second-carrier reconvergence: Stage One built one formal rational carrier after its raw syntax/equivalence production layer. Reduced fractions and other identity regimes remain later branch candidates.
+
 ## Verification evidence
 
 ```text
@@ -152,6 +203,20 @@ Z order convergence            32169832933
 Z ordered-ring laws            32170144944
 Z→N reverse core               32170817620
 Z→N bottom-up comparison       32171528363
+Q cancellation                 32172230166
+Q fraction equivalence         32172543345
+Q raw arithmetic               32173010564
+Q quotient carrier             32174050137
+Q additive laws                32174565823
+Q multiplicative laws          32176289914
+Q distributivity               32176439510
+Q inverse witness              32176692789
+Q embeddings                   32177123730
+Q generation                   32177245619
+Q order core                   32177345921
+Q order additive compatibility 32177896509
+Q order multiplicative compat  32178098823
+Q full integration             32178326013
 Lean                           4.32.1
 ```
 
@@ -164,9 +229,9 @@ BOMA N-Arithmetic                   ACCEPTED
 BOMA Z                              ACCEPTED
 post-Z reverse N experiment         CLOSED
   result                            INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
-Rationals                           NEXT / NOT YET CONSTRUCTED
-Reals                               NOT REACHED
+BOMA Q                              ACCEPTED
+Reals                               NEXT / NOT YET CONSTRUCTED
 Complex numbers                     NOT REACHED
 ```
 
-The next work is a representation-neutral rational acceptance specification followed by an explicit construction/equivalence architecture. No rational representation is canonical yet.
+The next work is a representation-neutral real-number acceptance specification and an explicit completion Decision Point. No Dedekind, Cauchy, or other completion regime is canonical yet.
