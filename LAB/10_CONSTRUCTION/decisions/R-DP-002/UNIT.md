@@ -1,9 +1,11 @@
 # R-DP-002 — Stage-One Dedekind Real Identity Realization
 
-- **Operational Status:** **OPEN — QUOTIENT IDENTITY PROBE REQUIRED**
+- **Operational Status:** **RESOLVED — QUOTIENT IDENTITY SELECTED**
 - **Epistemic Status:** **FORMALIZATION / METHODOLOGICAL DECISION POINT**
-- **Input:** `R-DP-001 — Route D selected`
+- **Input:** `R-DP-001 — Dedekind Route D selected`
 - **Representation:** `LowerCut` with external `CutEquiv`
+- **Selected identity:** `RBOMA := Quotient cutSetoid`
+- **Retained alternative:** external `CutEquiv` identity
 - **Target:** `BOMA-R-ACCEPT-001`
 
 ## Decision question
@@ -12,94 +14,122 @@ How should Stage One turn extensional Dedekind-cut identity into the formal iden
 
 ## Candidate A — explicit quotient carrier
 
-```text
-R_BOMA := LowerCut / CutEquiv
-```
-
-Expected benefits:
+Selected:
 
 ```text
-formal carrier equality matches extensional cut identity
-principal Q embedding can become an ordinary injective map
-field/order/completeness interfaces can use carrier equality
-raw predicate equality does not need to be adopted as the mathematical identity
+cutSetoid : Setoid LowerCut
+RBOMA := Quotient cutSetoid
 ```
 
-Commitment cost to measure:
+Verified interface:
 
 ```text
-Setoid / Quotient formation
-Quotient soundness / exactness / induction / lifting
-respect proofs for every promoted operation and order interface
+rmk A = rmk B ↔ CutEquiv A B
+rOfQ : QBOMA → RBOMA
+rOfQ injective
+CutLE respects CutEquiv
+rLE witness-based on quotient representatives
+rLE (rOfQ q) (rOfQ r) ↔ qLE q r
 ```
 
-The probe must check whether this route can avoid adding:
+V5:
 
 ```text
-function extensionality
-proposition extensionality
-Classical / Choice
+run 32180783725
+Lean 4.32.1
+PASS
 ```
 
-merely to form identity and order.
+## Measured commitment cost
+
+The identity probe uses the same explicit quotient mechanism already admitted at the Q stage:
+
+```text
+Setoid
+Quotient
+Quotient.sound / Quotient.exact
+quotient induction/lifting as needed downstream
+```
+
+A source audit of the active R payloads at decision time found no occurrence of:
+
+```text
+Classical
+Choice
+funext
+propext
+sorry
+axiom
+Real
+```
+
+Therefore the quotient identity itself does not require adding function extensionality, proposition extensionality, or Classical/Choice merely to form the carrier, reflect representative equality, or expose the rational order embedding.
 
 ## Candidate B — external extensional identity
 
-Keep:
+Retained, not rejected:
 
 ```text
 carrier syntax = LowerCut
 real identity = CutEquiv
 ```
 
-Benefits:
-
-```text
-minimal formal carrier machinery
-maximal representation transparency
-no quotient carrier commitment
-```
-
-Costs:
-
-```text
-every downstream theorem remains modulo CutEquiv
-field/order APIs have an external equality layer
-later C construction and branch comparison become more cumbersome
-formal real equality differs from Lean carrier equality
-```
+It has lower carrier-formalization cost but imposes a persistent setoid-relative interface on every downstream field/order/completeness theorem and later on complex-number construction.
 
 ## Candidate C — raw structure equality
 
-**Not admissible as a silent default.**
+Not selected.
 
-`LowerCut` contains a predicate field `QBOMA → Prop`. Raw structure equality would make the relation between predicate equality and extensional cut identity a substantive logical commitment. It may be studied only if its extensionality assumptions are explicitly declared.
+`LowerCut` contains a predicate field `QBOMA → Prop`, so raw structure equality would make predicate equality versus extensional equality a substantive logical issue. Stage One does not silently identify them.
 
-## Decision criteria
+## ACT — selection
 
-```text
-identity transparency
-new logical/formal commitments
-Q embedding injectivity
-order lifting cost
-operation lifting cost
-Dedekind supremum lifting cost
-future C-stage usability
-Stage-II comparison with Cauchy route
-V5 robustness
-```
-
-## Decision lock
-
-Do not resolve until the quotient probe establishes, at minimum:
+Stage One selects **Candidate A — explicit quotient identity** because:
 
 ```text
-CutEquiv packaged as a Setoid
-quotient carrier formation
-quotient equality ↔ CutEquiv on representatives
-principal Q embedding injective
-representative-invariant inclusion order at the quotient interface
-principal Q order reflected exactly
+its actual V5 probe passed;
+it gives formal equality exactly matching CutEquiv;
+it preserves a faithful/order-reflecting Q embedding;
+it avoids raw predicate equality;
+it introduces no additional extensionality/Classical commitment at the identity layer;
+it gives the downstream R and C stages ordinary carrier equality.
 ```
 
-No full real carrier is canonical while this Decision Point remains open.
+This is a formalization choice, not a claim that quotient identity is the unique mathematical presentation of Dedekind reals.
+
+## Retained branch
+
+The external-setoid realization remains a Stage-II branch target for measuring:
+
+```text
+formal commitment cost
+proof-interface overhead
+operation lifting burden
+completion theorem expression
+complex-stage propagation
+```
+
+## Next logical gate
+
+Identity is now resolved, but **total-order derivability is not yet resolved**.
+
+The current `LowerCut` probe has:
+
+```text
+nonempty
+proper
+downward
+rounded
+```
+
+and does not silently include a classical totality principle or a constructive locatedness package.
+
+Before `rLE` is promoted as a total real order, the project must test whether:
+
+```text
+CutLE A B ∨ CutLE B A
+```
+
+is derivable in the current declared logical regime, requires an explicit Classical/LEM commitment, or motivates a stronger constructive cut specification.
+
+This is a separate Decision Point; quotient identity PASS does not answer it.
