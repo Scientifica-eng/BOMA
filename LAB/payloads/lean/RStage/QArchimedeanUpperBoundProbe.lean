@@ -31,7 +31,8 @@ theorem rawFrac_le_natural (x : RawFrac) :
       | zero =>
           refine ⟨z, ?_⟩
           change zLE (zmul zzero zone) (zmul (embedN z) (denZ den))
-          simp
+          rw [zmul_zero_left, embedN_zero, zmul_zero_left]
+          exact zle_refl zzero
       | neg p =>
           refine ⟨z, ?_⟩
           change zLE (zmul (neg p) zone) (zmul (embedN z) (denZ den))
