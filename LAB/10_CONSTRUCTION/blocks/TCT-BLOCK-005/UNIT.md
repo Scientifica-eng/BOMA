@@ -74,9 +74,9 @@ The extension trace is the predecessor trace with a non-empty final marker suffi
 
 `Hist(A)` is the canonical tail of `Hist(ExtU(A))`, preceded by the recovery record for `ExtU(A) ↘ A`.
 
-### SL-7 — Acyclicity for explicit non-empty extension histories
+### SL-7 — Acyclicity for explicit non-empty meta-finite extension histories
 
-No explicitly witnessed meta-finite non-empty chain of repeated `ExtU` extensions can end at a presentation structurally equivalent to its start.
+No explicitly witnessed **meta-finite** non-empty chain of repeated `ExtU` extensions can end at a presentation structurally equivalent to its start.
 
 The proof uses a non-empty host-level trace suffix, not numerical chain length.
 
@@ -84,7 +84,7 @@ The proof uses a non-empty host-level trace suffix, not numerical chain length.
 
 The Block exports:
 
-> **Successor-Like Extension Guarantee:** terminal extension by `U` is available for supplied selected presentations, has canonical predecessor recovery, is injective modulo the active structural equivalence, never yields the empty configuration, has no structural fixed point, extends the canonical iteration history by prefixing the predecessor history, and is acyclic along explicit non-empty finite extension histories.
+> **Successor-Like Extension Guarantee:** terminal extension by `U` is available for supplied selected presentations, has canonical predecessor recovery, is injective modulo the active structural equivalence, never yields the empty configuration, has no structural fixed point, extends the canonical iteration history by prefixing the predecessor history, and is acyclic along explicitly witnessed non-empty meta-finite extension histories.
 
 ## Why “successor-like” is the correct current name
 
@@ -136,36 +136,24 @@ TCT-BLOCK-004 structural iteration history
 ## Acceptance result
 
 ```text
-selected extension availability     PASS
-canonical predecessor               PASS
-injective modulo ≈                  PASS
-ε not extension image               PASS
-no fixed point                      PASS
-history-tail extension              PASS
-explicit finite-chain acyclicity    PASS
-no numerical depth                  PASS
-no global carrier                   PASS
+selected extension availability              PASS
+canonical predecessor                        PASS
+injective modulo ≈                           PASS
+ε not extension image                        PASS
+no fixed point                               PASS
+history-tail extension                       PASS
+explicit meta-finite-chain acyclicity        PASS
+no numerical depth                           PASS
+no global carrier                            PASS
 ```
 
 **Block result: ACTIVE / VERIFIED on the current pre-numerical path.**
 
 ## Downstream boundary
 
-`TCT-BLOCK-006 — Formal Natural-Number Domain` remains RESERVED.
+`TCT-BLOCK-006 — Formal Natural-Number Domain` remains RESERVED / BLOCKED.
 
-Before any formal natural-number realization is activated, the project should run a dedicated pre-numerical calibration/audit over TCT-BLOCK-001 through TCT-BLOCK-005.
-
-That audit must answer whether any of the following entered silently:
-
-```text
-numerical counting
-completed global totality
-object-level induction
-strong equality assumptions
-quotient existence
-set/type carrier assumptions
-successor identification by analogy rather than theorem
-```
+The mandatory next step is `PDSA-TCT-008 — Pre-Numerical Whole-Path Calibration`, followed—if calibration passes—by an explicit natural-number acceptance/formalization specification rather than immediate carrier construction.
 
 ## Sensitivity
 
@@ -192,3 +180,5 @@ PDSA-TCT-005
 PDSA-TCT-006
 PDSA-TCT-007
 ```
+
+Meta-finite terminology and downstream boundary re-audited during `PDSA-TCT-008`.
