@@ -7,6 +7,7 @@ open BOMA.NArithmetic.Addition001
 open BOMA.Q.Quotient001
 open BOMA.Q.Embedding001
 open BOMA.Q.Order001
+open BOMA.Q.AdditiveOrder001
 open BOMA.R.Gateway001
 open BOMA.R.DedekindProbe001
 open BOMA.R.QArchimedeanScaling001
@@ -49,12 +50,13 @@ theorem qle_grid_of_gap_bound {a u delta : QBOMA} {n : BOMANat}
   rw [hleft, hright] at ht
   exact ht
 
-/-- Starting from any member a of a proper lower cut and any known outside point u,
+/-- From any base point a and any known outside point u of a proper lower cut,
 a positive rational step eventually reaches a grid point outside the cut.
+The base point need not itself be known inside for this purely crossing/bounding statement.
 No membership decision or Classical.em is used here. -/
 theorem qGrid_eventually_outside
     (A : LowerCut) (a u delta : QBOMA)
-    (ha : A.lower a) (hu : ¬ A.lower u)
+    (hu : ¬ A.lower u)
     (hdelta : qLT qZero delta) :
     ∃ n : BOMANat, ¬ A.lower (qGrid a delta n) := by
   rcases q_archimedean_scale (qAdd u (qNeg a)) delta hdelta with ⟨n, hn⟩
