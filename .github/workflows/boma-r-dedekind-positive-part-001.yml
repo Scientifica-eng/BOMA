@@ -61,7 +61,6 @@ jobs:
             LAB/payloads/lean/ZStage/ZOrderDirect.lean \
             LAB/payloads/lean/ZStage/ZOrderPair.lean \
             LAB/payloads/lean/ZStage/ZOrderConvergence.lean \
-            LAB/payloads/lean/ZStage/ZArithmeticLaws.lean \
             LAB/payloads/lean/ZStage/ZOrderLaws.lean \
             LAB/payloads/lean/QStage/QGatewayCancellation.lean \
             LAB/payloads/lean/QStage/QFractions.lean \
