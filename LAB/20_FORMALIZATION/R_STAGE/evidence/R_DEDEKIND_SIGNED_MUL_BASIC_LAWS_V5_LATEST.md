@@ -1,7 +1,7 @@
 # R Signed Multiplication Basic Laws V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `5f1c36a5a4653337264baf4a98d1d42831136c90`  
-**Workflow run ID:** `32190736742`  
+**Verified commit:** `d566039ba44d0854ac9968b5a595daa96d8888f1`  
+**Workflow run ID:** `32190837134`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
