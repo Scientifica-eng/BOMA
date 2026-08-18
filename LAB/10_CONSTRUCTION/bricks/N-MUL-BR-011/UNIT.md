@@ -1,4 +1,3 @@
 # N-MUL-BR-011 — Distributivity
-- **Status:** RESERVED
-
-Targets left and right distributivity of multiplication over canonical addition.
+- **Status:** ACTIVE / V4+V5 PASS
+Left and right distributivity over accepted addition.

@@ -1,4 +1,3 @@
 # N-MUL-BR-009 — Multiplication Successor Compatibility
-- **Status:** RESERVED
-
-Targets both recursive-side equations for canonical multiplication.
+- **Status:** ACTIVE / V4+V5 PASS
+Both recursive-side successor equations.

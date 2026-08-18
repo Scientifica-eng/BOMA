@@ -1,4 +1,3 @@
 # N-MUL-BR-012 — Multiplication Associativity
-- **Status:** RESERVED
-
-Target `(a*b)*c=a*(b*c)`, downstream of distributivity.
+- **Status:** ACTIVE / V4+V5 PASS
+`(a*b)*c=a*(b*c)`.

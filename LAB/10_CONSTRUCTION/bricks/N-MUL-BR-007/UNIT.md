@@ -1,5 +1,4 @@
 # N-MUL-BR-007 — Canonical Multiplication Export
-- **Status:** RESERVED — BLOCKED BY N-MUL-J-001
-- **Epistemic:** REPRESENTATIONAL CHOICE AFTER PROVED EQUIVALENCE
-
-Planned export `mul := mulR`.
+- **Status:** ACTIVE / V5 PASS
+- **Epistemic:** representational choice after proved equivalence
+Canonical `mul := mulR`; Route L provenance retained.
