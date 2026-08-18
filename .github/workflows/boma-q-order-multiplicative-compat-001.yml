@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean'
       - 'LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean'
       - '.github/workflows/boma-q-order-multiplicative-compat-001.yml'
       - 'lean-toolchain'
