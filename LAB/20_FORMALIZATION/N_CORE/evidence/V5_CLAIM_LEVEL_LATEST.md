@@ -1,10 +1,10 @@
 # N-Core Claim-Level V5 — Automated Evidence Record
 
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `09015c14515027c688f06a3ebe0c7e6d4efcb584`  
-**Workflow run ID:** `32163438917`  
+**Verified commit:** `374e8ad46e7068bb9f47a4e036a31452ee483f45`  
+**Workflow run ID:** `32163451683`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
-**Recorded at (UTC):** `2026-08-18T17:02:20Z`
+**Recorded at (UTC):** `2026-08-18T17:02:30Z`
 
 This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
 
