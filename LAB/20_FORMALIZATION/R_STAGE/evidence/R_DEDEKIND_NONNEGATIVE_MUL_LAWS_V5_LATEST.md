@@ -1,10 +1,10 @@
 # R Nonnegative Multiplication Laws V5 Evidence
 **Status:** PASS  
-**Verified commit:** `103f7492212b8d0f438105d31f174104781075f0`  
-**Workflow run ID:** `32190338590`  
+**Verified commit:** `c98632af16ee3625fd1d763a3cc9b8623520e828`  
+**Workflow run ID:** `32190372037`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
-| kernel zero annihilation + positive-envelope closure + associativity | success |
+| kernel zero annihilation + one-to-positive-envelope identity + positive-envelope closure + associativity | success |
