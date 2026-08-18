@@ -5,112 +5,108 @@
 
 Historical `PDCA` names are provenance only; governing method is PDSA.
 
-## Architecture / TCT
+## Architecture / pre-numerical
 
 - `PDSA-ARCH-001` CLOSED — canonical DAG/fork/reconvergence rules adopted.
-- `PDSA-TCT-001..008` CLOSED — calibrated pre-numerical path active through `TCT-BLOCK-005`.
+- `PDSA-TCT-001..008` CLOSED — calibrated pre-numerical path through `TCT-BLOCK-005`.
 
-## Natural-number cycles
+## Natural-number core
+
+`PDSA-N-001..012` completed the Stage-One R-B N-Core.
+
+```text
+N-J-001 PASS
+N-J-002 PASS
+NAC-01..14 PASS
+NAC-15 ACCEPT
+N-BLOCK-007 = accepted N-Core export
+V5 run 32163771789 / Lean 4.32.1
+```
+
+## Natural-number arithmetic
 
 | Cycle | Status | Main result |
 |---|---|---|
-| PDSA-N-001 | CLOSED | N acceptance specification v1.0 |
-| PDSA-N-002 | CLOSED | N-DP-001 selects R-B |
-| PDSA-N-003 | CLOSED | R-B formalization boundary |
-| PDSA-N-004..006 | retained producer/learning lineage | candidate, bridge, characterization decomposed into canonical DAG |
-| PDSA-N-007 | **CLOSED — PASS WITH SCOPE CORRECTION** | claim-level V5 run `32163771789` |
-| PDSA-N-008 | **CLOSED — PASS** | canonical N-Core DAG |
-| PDSA-N-009 | **CLOSED — PASS** | dual-route no-confusion reconvergence; N-J-001 PASS |
-| PDSA-N-010 | **CLOSED — PASS** | NAC-01..14 integration; N-J-002 criteria satisfied |
-| PDSA-N-011 | **CLOSED — PASS** | post-V5 NAC-13/NAC-14 audit |
-| PDSA-N-012 | **CLOSED — NAC-15 ACCEPT** | Stage-One R-B N-Core accepted |
+| PDSA-N-ARITH-001 | CLOSED | arithmetic acceptance target NAA-01..18 |
+| PDSA-N-ADD-001 | CLOSED — PASS | dual-recursion addition reconvergence + canonical laws |
+| PDSA-N-MUL-001 | CLOSED — PASS | dual-recursion multiplication reconvergence + canonical laws |
+| PDSA-N-ORD-001 | CLOSED — PASS | additive/inductive order reconvergence + compatibility |
+| PDSA-N-ARITH-002 | CLOSED — PASS | NAA-01..17 integration audit |
+| PDSA-N-ARITH-003 | CLOSED — NAA-18 ACCEPT | accepted N-Arithmetic package |
 
-## Current accepted N-Core
-
-Canonical topology:
-
-`LAB/00_ARCHITECTURE/N_CORE_DAG.md`
-
-Canonical downstream export:
-
-`LAB/10_CONSTRUCTION/blocks/N-BLOCK-007/UNIT.md`
-
-Acceptance state:
+Verification:
 
 ```text
-N-BLOCK-001..006       V5 mapped claims PASS
-N-J-001                PASS / RESOLVED
-N-J-002                PASS / RESOLVED
-NAC-01..14             PASS
-NAC-15                 ACCEPT
-BOMA Stage-One R-B N-Core  ACCEPTED
+Addition       run 32164861155  PASS
+Multiplication run 32165318266  PASS
+Order          run 32165691581  PASS
+Lean           4.32.1
 ```
 
-V5 evidence:
+Canonical arithmetic topology:
+
+`LAB/00_ARCHITECTURE/N_ARITHMETIC_DAG.md`
+
+Accepted downstream arithmetic interface:
+
+`LAB/10_CONSTRUCTION/blocks/N-ARITH-BLOCK-001/UNIT.md`
+
+Acceptance:
 
 ```text
-workflow run:     32163771789
-verified commit:  5fb03a48e243697f49f1cbde30be986d73f2ff68
-Lean:             4.32.1
+NAA-01..17       PASS
+N-ARITH-J-001    PASS / RESOLVED
+NAA-18           ACCEPT
+BOMA N-Arithmetic Package  ACCEPTED
 ```
 
-The failed V5 lineage remains documented and produced `N-DP-002` plus `BOMA-RB-FORMAL-CORR-001`.
+## Reconvergence learning
 
-## Scope
-
-The accepted core is relative to the selected R-B formalization:
+Three arithmetic experiments are now certified:
 
 ```text
-eliminator               Sort-polymorphic
-fold                     Type-u target polymorphic
-bomaAlg initiality       Type-0 unary-algebra scope
-standardness comparison  same-universe polymorphic
+addition:
+  recurse right ↔ recurse left
+
+multiplication:
+  recurse right ↔ recurse left
+
+order:
+  additive-gap witness ↔ inductive structural order
 ```
 
-It is not a claim that all alternative foundations must package natural numbers identically.
+The order result is especially important because the structural branch depends only on N-Core while the additive branch depends on arithmetic.
 
-## Current frontier — N-Arithmetic
+## Current frontier — Integers
 
-The accepted N-Core does not yet export:
+Integer construction is now permitted but **not yet constructed or accepted**.
+
+The next mandatory step is an integer acceptance specification and an explicit representation/formalization Decision Point before promoting any integer carrier.
+
+Candidate architectural questions include:
 
 ```text
-addition
-multiplication
-order
-semiring/arithmetic laws
+pair/difference representation and equivalence
+signed normal forms
+quotient versus canonical normalization
+embedding of N
+additive inverses
+integer arithmetic preservation
+order extension
+branch convergence between representations
 ```
 
-These are now permitted as the next transparent construction family.
+No rational, real, or complex-number work may be promoted before the integer stage closes its own acceptance gates.
 
-Preferred next architecture:
-
-```text
-Accepted N-Core
-   ├─ addition Route A
-   ├─ addition Route B
-   └─ explicit reconvergence
-        ↓
-   canonical addition
-        ↓
-   multiplication branches / reconvergence
-        ↓
-   order branches / reconvergence
-        ↓
-   N-Arithmetic integration gate
-```
-
-No integer-domain construction should be promoted until the intended N-Arithmetic package is itself stabilized and audited.
-
-## Current handoff
-
-Read in order:
+## Current handoff reading
 
 ```text
 README.md
 AGENTS.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/N_CORE_DAG.md
+LAB/00_ARCHITECTURE/N_ARITHMETIC_DAG.md
 LAB/00_ARCHITECTURE/REGISTRY.md
-LAB/PDSA/PDSA-N-012_N_CORE_CLOSURE.md
+LAB/PDSA/PDSA-N-ARITH-003_CLOSURE.md
 this status file
 ```
