@@ -24,8 +24,16 @@ theorem qOfZ_add (a b : ZSigned) :
   change
     zmul (zadd a b) (denZ (denMul oneDen oneDen)) =
     zmul (zadd (zmul a zone) (zmul b zone)) zone
-  rw [denZ_mul, denZ_one, zmul_one_left, zmul_one_right]
-  rw [zmul_one_right, zmul_one_right]
+  calc
+    zmul (zadd a b) (denZ (denMul oneDen oneDen)) =
+        zmul (zadd a b) (zmul zone zone) :=
+      congrArg (fun t => zmul (zadd a b) t) (denZ_mul oneDen oneDen)
+    _ = zmul (zadd a b) zone := by rw [zmul_one_left]
+    _ = zadd a b := zmul_one_right (zadd a b)
+    _ = zadd (zmul a zone) (zmul b zone) := by
+      rw [zmul_one_right a, zmul_one_right b]
+    _ = zmul (zadd (zmul a zone) (zmul b zone)) zone :=
+      (zmul_one_right _).symm
 
 /-- Integer multiplication is preserved by the rational embedding. -/
 theorem qOfZ_mul (a b : ZSigned) :
