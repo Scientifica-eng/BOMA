@@ -22,9 +22,9 @@ theorem raw_distrib_num_factor (x y w : RawFrac) :
         (zmul (zmul x.num (denZ x.den)) (zmul y.num (denZ w.den)))
         (zmul (zmul x.num (denZ x.den)) (zmul w.num (denZ y.den))) := by
       have h1 :=
-        (zmul4_swap_middle x.num y.num (denZ x.den) (denZ w.den)).symm
+        zmul4_swap_middle x.num y.num (denZ x.den) (denZ w.den)
       have h2 :=
-        (zmul4_swap_middle x.num w.num (denZ x.den) (denZ y.den)).symm
+        zmul4_swap_middle x.num w.num (denZ x.den) (denZ y.den)
       calc
         zadd
             (zmul (zmul x.num y.num) (zmul (denZ x.den) (denZ w.den)))
