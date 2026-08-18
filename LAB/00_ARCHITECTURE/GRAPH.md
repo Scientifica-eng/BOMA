@@ -2,102 +2,88 @@
 
 **Status:** ACTIVE — Canonical human-readable graph  
 **Detailed topology:** `CONSTRUCTION_TOPOLOGY.md`  
-**Detailed N graph:** `N_CORE_DAG.md`
+**N-Core:** `N_CORE_DAG.md`  
+**N-Arithmetic:** `N_ARITHMETIC_DAG.md`
 
 ## Pre-numerical trunk
 
 ```text
-TCT-BLOCK-001  Kernel
-      ↓
-TCT-BLOCK-002  Generated Selected Configurations
-      ↓
-TCT-BR-010     Structural Equivalence
-      ↓
-TCT-BR-009     Terminal Preservation
-      ↓
-TCT-J-001      PASS
-      ↓
-TCT-BLOCK-003  Canonical Decomposition
-      ↓
-TCT-BLOCK-004  Structural Iteration History
-      ↓
-TCT-BLOCK-005  Successor-Like Extension
-      ↓
-PDSA-TCT-008   Calibration PASS
-      ↓
+TCT-BLOCK-001 → TCT-BLOCK-002 → TCT-BR-010 → TCT-BR-009
+       → TCT-J-001 PASS → TCT-BLOCK-003 → TCT-BLOCK-004
+       → TCT-BLOCK-005 → PDSA-TCT-008 calibration PASS
+```
+
+## Natural-number formalization
+
+```text
 BOMA-N-ACCEPT-001
-      ↓
-N-DP-001       selects R-B
-      ↓
-N-DP-002       declares eliminator/universe scope
+   ↓
+N-DP-001 R-B
+N-DP-002 scope
+   ↓
+parallel N-Core DAG
+   ↓
+N-J-001 PASS
+N-J-002 PASS
+   ↓
+NAC-15 ACCEPT
+   ↓
+N-BLOCK-007 Accepted N-Core
 ```
 
-## Accepted N-Core DAG
+## Natural-number arithmetic
 
 ```text
-                         N-BLOCK-001
-                         Formal Unary Kernel
-                         /      |       |       \
-                        /       |       |        \
-                       ▼        ▼       ▼         ▼
-                N-BLOCK-002 N-BLOCK-003 N-BLOCK-004 N-BLOCK-005
-                No-Confusion Induction/    Recursion/   TCT Bridge
-                             Generatedness  Initiality      ▲
-                                                           │
-                                                   TCT-BLOCK-002..005
+N-BLOCK-007
+   │
+   ├─ addR ─┐
+   └─ addL ─┴─► N-ADD-J-001 PASS ─► canonical addition PASS
+                                                   │
+                                   ┌───────────────┴───────────────┐
+                                   ▼                               ▼
+                                mulR                             mulL
+                                   └───────────────┬───────────────┘
+                                                   ▼
+                                           N-MUL-J-001 PASS
+                                                   ▼
+                                           canonical multiplication PASS
 
-TCT-BLOCK-005 + N-BLOCK-005
-             ↓
-          N-BR-018
- Constructional No-Confusion
-             │
-N-BLOCK-002 ─┴──────► N-J-001  PASS / V4+V5
-
-N-BLOCK-004 ───────► N-BLOCK-006  Pointwise Standardness
-
-N-BLOCK-002 ─┐
-N-BLOCK-003 ─┤
-N-BLOCK-004 ─┤
-N-BLOCK-005 ─┼──► N-J-002  PASS / RESOLVED
-N-BLOCK-006 ─┤
-N-J-001     ─┘
-                       │
-                       ▼
-                 NAC-15 ACCEPT
-                       │
-                       ▼
-                N-BLOCK-007
-          Accepted Natural-Number Core
-                       │
-                       ▼
-               N-Arithmetic — NEXT
+N-BLOCK-007 ─────────────────────────► structural inductive order ─┐
+canonical addition ─────────────────► additive-witness order ─────┤
+                                                                  ▼
+                                                           N-ORD-J-001 PASS
+                                                                  ▼
+                                                           canonical order PASS
+                                                                  ▼
+                                                   arithmetic/order compatibility PASS
+                                                                  ▼
+                                                           N-ARITH-J-001 PASS
+                                                                  ▼
+                                                             NAA-18 ACCEPT
+                                                                  ▼
+                                                        N-ARITH-BLOCK-001
 ```
 
-## Verification
+## Verified arithmetic evidence
 
 ```text
-claim-level V5 run: 32163771789
-Lean:               4.32.1
-N-BLOCK-001..006:   mapped formal claims PASS
-N-J-001:            PASS
-N-J-002:            PASS
-NAC-15:             ACCEPT
+N-Core         32163771789
+Addition       32164861155
+Multiplication 32165318266
+Order          32165691581
+Lean           4.32.1
 ```
-
-## Critical interpretation
-
-The accepted N-Core was not a linear construction. The branches after `N-BLOCK-001` are parallel contributions. `N-J-001` preserves two independent production witnesses for no-confusion. `N-J-002` integrates the whole package only after V5 and preservation/commitment audits.
-
-`TCT-BLOCK-006` remains provenance only; `N-BLOCK-007` is the canonical downstream N-Core interface.
 
 ## Current frontier
 
 ```text
-BOMA Stage-One R-B N-Core: ACCEPTED
-addition:                      NOT YET CONSTRUCTED
-multiplication:                NOT YET CONSTRUCTED
-order:                         NOT YET CONSTRUCTED
-integers:                      NOT YET REACHED
+Pre-numerical layer         CALIBRATED
+BOMA N-Core                 ACCEPTED
+BOMA N-Arithmetic           ACCEPTED
+Integers                    NOT YET CONSTRUCTED
+Rationals                   NOT REACHED
+Reals                       NOT REACHED
+Complex numbers             NOT REACHED
 ```
 
-The next work is a separate auditable N-Arithmetic DAG; acceptance of the carrier must not silently create arithmetic operations.
+The next work is the integer acceptance/architecture stage. No integer representation is canonical yet.
