@@ -35,33 +35,13 @@ def qNeg : QBOMA → QBOMA :=
 
 /-- Lift raw addition through the verified binary respect proof. -/
 def qAdd : QBOMA → QBOMA → QBOMA :=
-  fun x y =>
-    Quotient.liftOn x
-      (fun a =>
-        Quotient.liftOn y
-          (fun b => qmk (rawAdd a b))
-          (fun b b' hb => qmk_sound (rawAdd_respects (frac_refl a) hb)))
-      (fun a a' ha => by
-        apply funext
-        intro qy
-        refine Quotient.inductionOn qy ?_
-        intro b
-        exact qmk_sound (rawAdd_respects ha (frac_refl b)))
+  Quotient.map₂ rawAdd
+    (fun _ _ _ _ ha hb => rawAdd_respects ha hb)
 
 /-- Lift raw multiplication through the verified binary respect proof. -/
 def qMul : QBOMA → QBOMA → QBOMA :=
-  fun x y =>
-    Quotient.liftOn x
-      (fun a =>
-        Quotient.liftOn y
-          (fun b => qmk (rawMul a b))
-          (fun b b' hb => qmk_sound (rawMul_respects (frac_refl a) hb)))
-      (fun a a' ha => by
-        apply funext
-        intro qy
-        refine Quotient.inductionOn qy ?_
-        intro b
-        exact qmk_sound (rawMul_respects ha (frac_refl b)))
+  Quotient.map₂ rawMul
+    (fun _ _ _ _ ha hb => rawMul_respects ha hb)
 
 /-- Quotient zero and one. -/
 def qZero : QBOMA := qmk rawZero
