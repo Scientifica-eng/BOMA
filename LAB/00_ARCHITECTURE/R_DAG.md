@@ -1,251 +1,242 @@
 # R DAG — Stage-One Real Construction (Current Frontier)
 
-**Status:** ACTIVE — multiplication-law certification in progress  
+**Status:** ACTIVE — ordered commutative ring accepted; field inverse next  
 **Input:** `Q-BLOCK-002 — Accepted Stage-One Rational Interface`  
 **Governing specification:** `BOMA-R-ACCEPT-001`  
 **Real domain acceptance:** **NOT YET**
 
-## Route and identity decisions
+## Accepted spine
 
 ```text
 Q-BLOCK-002
-      │
-      ▼
-shared qLT / qPos / qClose / Q-density gateways
-      │
-      ├──────── Route D — Dedekind LowerCut / CutEquiv — SELECTED
-      │
-      └──────── Route C — CauchySeq / CauchyEquiv — retained branch
+   ↓
+shared Q order / density gateways
+   ↓
+R-DP-001 — Dedekind route selected
+   ↓
+LowerCut / CutEquiv
+   ↓
+R-DP-002 — quotient identity selected
+   ↓
+RBOMA + rLE
+   ├── constructive partial-order core
+   └── R-LOGIC-BR-001 isolated classical comparability
+   ↓
+R-COMP-BLOCK-001 — Dedekind completeness PASS
+   ↓
+R-ADD-GROUP-BLOCK-001 — additive group PASS
+   ↓
+R-DP-004 — reusable Q Archimedean route selected
+   ↓
+R-DP-005 — sign-free decomposition multiplication selected
+   ↓
+R-MUL-BLOCK-001 — ordered commutative ring PASS
+   ↓
+RA-08 multiplicative inverse — CURRENT FRONTIER
 ```
 
-`R-DP-001` selected the Dedekind route for Stage One after both embedding probes passed and the Dedekind route additionally supplied a direct verified union/LUB skeleton.
+## Route / identity / logic decisions
 
-Formal identity:
+### R-DP-001 — completion route
+
+Dedekind lower cuts are the canonical Stage-I route. Cauchy completion remains a retained branch for Stage II / convergence analysis.
+
+### R-DP-002 — identity
 
 ```text
-LowerCut + CutEquiv
-        │
-        ▼
 RBOMA := Quotient cutSetoid
-        │
-        ├── rOfQ injective
-        └── rOfQ order-reflecting
 ```
 
-`R-DP-002` selected quotient identity after V5 `32180783725` PASS.
+The rational embedding `rOfQ` is injective and order-reflecting.
 
-## Order logic boundary
+### R-LOGIC-BR-001 — explicit classical boundary
 
-The selected quotient inclusion order has two distinct proof regions:
+The quotient inclusion order has a constructive reflexive/transitive/antisymmetric core. Total cut comparability is an isolated explicit classical witness. Later sign-identification proofs consume this witness; operation definitions are audited separately.
 
-```text
-CONSTRUCTIVE REGION
-  rLE reflexive / transitive / antisymmetric
+V5 `32181726522` — PASS.
 
-EXPLICIT CLASSICAL BOUNDARY
-  R-LOGIC-BR-001
-  CutComparability := ∀A B, CutLE A B ∨ CutLE B A
-  proof provenance: Classical.em
-```
+## Completeness
 
-Split V5 `32181726522` passed both the constructive order core and the isolated classical comparability witness.
+`R-COMP-BLOCK-001` constructs least upper bounds of nonempty bounded families by union of lower regions.
 
-This boundary remains important: later sign-identification proofs may consume comparability, while operation definitions are audited separately for definition-level classical choices.
-
-## Formal Dedekind completeness
-
-`R-COMP-BLOCK-001` is accepted:
-
-```text
-nonempty bounded family of RBOMA
-        │
-        ▼
-union of representative lower regions
-        │
-        ▼
-valid LowerCut / quotient class
-        │
-        ▼
-least-upper-bound theorem
-```
-
-V5 `32182124371` — PASS.
-
+V5 `32182124371` — PASS.  
 `RA-11 = PASS`.
 
-The completeness block does not consume the classical cut-comparability witness.
+## Additive group
 
-## Additive structure — accepted
-
-### Addition
-
-`R-ADD-BLOCK-001`:
+`R-ADD-GROUP-BLOCK-001` contains:
 
 ```text
-cutAdd
-  ↓
-CutEquiv respect
-  ↓
+rZero
 rAdd
-  ↓
-Q preservation + commutativity + associativity + zero
+rNeg
 ```
 
-V5:
+with commutativity, associativity, zero, inverse, cancellation, and involutive negation.
+
+Key V5:
 
 ```text
-32183597094  cut validity / quotient lift PASS
-32183864915  Q addition preservation       PASS
-32184188077  additive monoid laws          PASS
+32183597094 addition construction/lift PASS
+32183864915 Q addition preservation PASS
+32184188077 additive laws PASS
+32184767097 negation candidate/Q preservation PASS
+32186209544 fine cut bracketing PASS
+32186543211 additive inverse/group PASS
 ```
 
+`RA-05 = PASS`.  
 `RA-06 = PASS`.
 
-### Rational Archimedean approximation gateway
+## Approximation architecture
 
-Study of negation exposed a stronger obligation than mere Q-density.
+### R-DP-004 — Q Archimedean approximation
 
-`R-DP-004` compared:
-
-```text
-A  reusable Q Archimedean route
-B  direct one-off cut bracketing
-```
-
-Route A was selected after deriving the reusable chain:
+Route A was selected over a one-off cut proof. Reusable chain:
 
 ```text
-∀q ∈ Q, ∃n ∈ N, q ≤ n
-       ↓
+Q bounded above by embedded N
+  ↓
 Archimedean scaling
-       ↓
+  ↓
 rational grid crossing
-       ↓
+  ↓
 finite first-exit search
-       ↓
+  ↓
 CutBracketApprox
 ```
 
-Important logical provenance:
+The arithmetic chain is separated from the isolated classical finite predicate-membership search.
+
+### Q positive multiplicative approximation
+
+PDSA-R-008 additionally isolated an independent Q contribution for strict positive multiplication, cancellation by existential inverse witnesses, and interior product approximation.
+
+This contribution is reused by real multiplication kernel laws and is mandatory reverse-engineering material.
+
+## Ordered commutative-ring multiplication — accepted
+
+`R-DP-005` selected Candidate A:
 
 ```text
-Q upper-bound / scaling / grid arithmetic  — no Classical sign selector
-finite membership first-exit search        — isolated Classical.em
+x⁺ := max(x,0)
+x⁻ := max(-x,0)
+xy := x⁺y⁺ + x⁻y⁻ - x⁺y⁻ - x⁻y⁺
 ```
 
-V5 cut bracketing `32186209544` — PASS.
+The operation definition contains no proposition-valued sign branch. Candidate B (direct sign-case) and Candidate C (shift-to-positive) are retained Stage-II alternatives.
 
-`R-QARCH-BLOCK-001` is reusable and must be classified during reverse engineering.
-
-### Negation and additive inverse
+### Construction and Q preservation
 
 ```text
-cutNeg(A): q ∈ -A iff ∃r ∉ A, q < -r
-        │
-        ▼
-CutEquiv respect / rNeg
-        │
-        ├── Q negation preservation
-        └── CutBracketApprox consumed explicitly
-                ↓
-          A + (-A) ≈ 0
+32187088594 positive-part envelope PASS
+32187257316 nonnegative multiplication kernel PASS
+32187796232 Q positive multiplicative approximation PASS
+32187981163 nonnegative kernel preserves Q multiplication PASS
+32189753112 signed candidate preserves Q multiplication for all signs PASS
 ```
 
-V5:
+### Kernel laws
 
 ```text
-32184767097  negation candidate / Q preservation PASS
-32186543211  additive inverse + cancellation + involution PASS
+K(0,x)=0
+K(1,x)=x⁺
+K associative
 ```
 
-`R-ADD-GROUP-BLOCK-001` is accepted.
+V5 `32190372037` — PASS.
 
-`RA-05 = PASS`.
-
-## Multiplication sign architecture — selected, laws still pending
-
-`R-DP-005` compared three architectures:
+Positive/negative reconstruction:
 
 ```text
-A  positive/negative-part decomposition
-B  direct sign-case multiplication
-C  shift-to-positive multiplication
+x = x⁺ - x⁻
 ```
 
-### Candidate A — SELECTED Stage-I route
+V5 `32190664688` — PASS.
 
-Nonnegative envelope:
+Kernel distributivity on nonnegative right inputs:
 
 ```text
-A⁺ := A ∪ principalCut(0)
-A⁻ := (-A) ∪ principalCut(0)
+K(A,B+C)=K(A,B)+K(A,C)
 ```
 
-Signed candidate:
+V5 `32191468468` — PASS.
+
+**Study result:** K3 required no new Archimedean gateway; Q density, cut roundedness, rational distributivity, and existing strict-order/product lemmas sufficed.
+
+### Signed ring laws
 
 ```text
-xy = x⁺y⁺ + x⁻y⁻ - x⁺y⁻ - x⁻y⁺
+commutativity / zero / one       32191203164 PASS
+quadrant simplifications         32191828021 PASS
+associativity                    32191975377 PASS
+additive-order compatibility     32192220694 PASS
+derived additive identities      32192550245 PASS
+distributivity left/right        32192506728 PASS
+ordered-ring compatibility       32192653931 PASS
 ```
 
-The definition contains no proposition-valued sign `if` and no built-in `Real` multiplication. Sign comparison is confined to proof branches that identify the envelopes.
-
-Verified layers:
+The ordered-ring layer proves:
 
 ```text
-32187088594  positive-part envelope                     PASS
-32187257316  nonnegative multiplication kernel          PASS
-32187796232  Q positive multiplicative approximation    PASS
-32187981163  nonnegative Q multiplication preservation  PASS
-32189753112  signed candidate + all-sign Q preservation PASS
+x≤y ↔ 0≤y-x
+0≤x,0≤y → 0≤xy
+x(-y)=-(xy)
+(-x)y=-(xy)
+0≤c, x≤y → cx≤cy and xc≤yc
 ```
 
-Candidate B is retained for Stage II, not declared mathematically invalid. Its current disadvantage is architectural: direct definition by proposition-valued sign cases generally requires a computational/classical sign selector at **definition level**.
+`PDSA-R-009` is CLOSED.  
+`R-MUL-BLOCK-001` is accepted.
 
-Candidate C is also retained as a branch; it was not selected because it adds shift-existence/independence obligations and risks premature coupling to global approximation.
-
-`PDSA-R-008` is CLOSED with Candidate A selected.
-
-## Current mathematical frontier — PDSA-R-009
-
-The selected operation architecture is **not yet a certified field multiplication**.
-
-`PDSA-R-009 — Real Multiplication Law Certification` is ACTIVE.
-
-Kernel-first law gates:
+Current effects:
 
 ```text
-K0  zero annihilation
-K1  one / positive-envelope identity
-K2  associativity
-K3  distributive interface over nonnegative addition
-K4  order / positivity compatibility
+RA-04 zero/one                 PASS at ring level
+RA-07 multiplication           PASS at ordered-ring level
+RA-09 ordered-ring portion     PASS; field inverse portion pending
+RA-10 Q multiplication         PASS
 ```
 
-Then signed laws:
+## Current frontier — RA-08 multiplicative inverse
+
+The carrier is **not yet a field**.
+
+Required next result is structurally of the form:
 
 ```text
-S1  commutativity
-S2  zero laws
-S3  one laws
-S4  associativity
-S5  distributivity
-S6  Q preservation — already PASS at candidate level
-S7  ordered-ring compatibility
+x ≠ 0
+  →
+∃ y : RBOMA,
+  rMulCandidate x y = rOne
 ```
 
-Current V5 target:
+with representative invariance, sign compatibility, and no hidden import of a standard real reciprocal.
+
+This is a new PDSA/Decision Point rather than a corollary of `R-MUL-BLOCK-001`.
+
+Candidate inverse architectures must be compared before promotion, including at least:
 
 ```text
-nonnegative kernel zero laws + positive-envelope closure + associativity
+A  direct reciprocal construction on positive Dedekind cuts, then signed extension;
+B  inverse derived at the stabilized RBOMA/order/completeness level.
 ```
 
-Status: **RUNNING / PENDING EVIDENCE**.
+The comparison must track:
 
-No `RA-07` promotion occurs merely because `rMulCandidate` is well-defined and Q-preserving.
+```text
+Dedekind-route dependence;
+use of CutBracketApprox / Q inverse witnesses;
+new approximation obligations;
+classical sign/witness selection;
+proof transparency;
+Stage-II branch value;
+reverse-engineering separability.
+```
 
 ## Reverse-engineering schedule
 
-Reverse engineering is a canonical Stage-One gate, not an optional retrospective.
+Reverse engineering remains a canonical gate.
 
 ### RE-R-001 — local real-stage reverse audit
 
@@ -261,91 +252,67 @@ Backward path:
 ```text
 accepted R
   ↓
-field / ordered-field laws
+field inverse / ordered-field closure
   ↓
-signed multiplication architecture
+R-MUL-BLOCK-001
   ↓
-positive envelope + nonnegative kernel
+signed decomposition / kernel
   ↓
-additive group
+R-ADD-GROUP-BLOCK-001
   ↓
-Dedekind identity / completeness / order
+Dedekind completeness / identity / order
   ↓
-Q density + Archimedean / multiplicative approximation contributions
+Q density + Archimedean + multiplicative approximation
   ↓
 accepted Q
 ```
 
-Mandatory classification targets now include:
+Mandatory classification targets include:
 
 ```text
-R-DP-001  completion route choice
-R-DP-002  quotient identity
-R-LOGIC-BR-001  classical comparability boundary
-R-DP-004  Archimedean approximation route
-R-DP-005  multiplication sign architecture
+R-DP-001 completion route
+R-DP-002 quotient identity
+R-LOGIC-BR-001 classical comparability
+R-DP-004 approximation route
+R-DP-005 multiplication sign architecture
 R-QARCH-BLOCK-001
-Q-positive multiplicative approximation contribution
-proof-engineering-only CI/Lean failures
+Q positive multiplicative approximation
+K1/K2 approximation reuse
+K3 density/roundedness dependency
+signed decomposition/quadrant classical provenance
+ordered-ring monotonicity as algebraically derived
+all proof-engineering-only CI/namespace/rewrite failures
+future RA-08 inverse architecture
 ```
-
-Each dependency will be classified as structural, Dedekind-route-specific, logical, reusable, proof-engineering-only, or branch candidate.
 
 ### RE-STAGE1-001 — whole Stage-I reverse audit
 
-Trigger after accepted C and before broad Stage-II branching:
+After accepted C and before broad Stage-II branching:
 
 ```text
 C → R → Q → Z → N → pre-numerical layer → declared metatheory
-```
-
-Its output will select controlled Stage-II Brick/Block/Junction branch experiments.
-
-## Verification evidence summary
-
-```text
-R representation D/C probes                    32179389952 PASS
-shared Q-density gateway                        32179943679 PASS
-Dedekind raw LUB skeleton                       32180113386 PASS
-D/C rational embedding probes                   32180417291 PASS
-Dedekind quotient identity                      32180783725 PASS
-Dedekind order-logic split                      32181726522 PASS
-formal RBOMA Dedekind completeness              32182124371 PASS
-Dedekind addition                               32183597094 PASS
-Q embedding preserves real addition             32183864915 PASS
-real additive commutative-monoid laws           32184188077 PASS
-Dedekind negation candidate                     32184767097 PASS
-Dedekind cut bracketing                         32186209544 PASS
-real additive inverse/group laws                32186543211 PASS
-positive-part envelope                          32187088594 PASS
-nonnegative multiplication kernel               32187257316 PASS
-Q positive multiplicative approximation         32187796232 PASS
-nonnegative multiplication preserves Q          32187981163 PASS
-signed multiplication candidate preserves Q     32189753112 PASS
-multiplication law certification                ACTIVE / PENDING
-Lean                                             4.32.1
 ```
 
 ## Current acceptance status
 
 ```text
 RA-01 explicit carrier             CONSTRUCTED
-RA-02 formal identity              PASS / R-DP-002 RESOLVED
-RA-03 Q embedding                  PASS at identity/order interface
-RA-04 zero / one                   PARTIAL — additive zero PASS; multiplicative one pending laws
-RA-05 negation                     PASS / additive-group inverse certified
-RA-06 addition                     PASS / R-ADD-BLOCK-001
-RA-07 multiplication               CANDIDATE SELECTED; law certification ACTIVE
-RA-08 nonzero inverse              NOT BUILT
-RA-09 ordered-field laws           PARTIAL
-RA-10 Q structure preservation     order + addition + negation + candidate multiplication PASS
+RA-02 formal identity              PASS / R-DP-002
+RA-03 Q embedding                  PASS at current algebra/order interface
+RA-04 zero / one                   PASS at ring level
+RA-05 negation                     PASS
+RA-06 addition                     PASS
+RA-07 multiplication               PASS at ordered-ring level / R-MUL-BLOCK-001
+RA-08 nonzero inverse              CURRENT FRONTIER / NOT BUILT
+RA-09 ordered-field laws           ordered-ring portion PASS; inverse-dependent closure pending
+RA-10 Q structure preservation     order + addition + negation + multiplication PASS
 RA-11 selected completeness        PASS / R-COMP-BLOCK-001
 RA-12 Q density in RBOMA           NOT YET CLOSED AS ACCEPTANCE ITEM
 RA-13 Archimedean characterization PARTIAL INFRASTRUCTURE / not closed on R
 RA-14 representation adequacy      PARTIAL
-RA-15 completion route             PASS / R-DP-001 RESOLVED
-RA-16 multi-route convergence      NOT TRIGGERED AS FULL MULTI-CARRIER GATE
-RA-17 completion scope             Dedekind LUB contract selected / PASS theorem
+RA-15 completion route             PASS / R-DP-001
+RA-16 multi-route convergence      NOT TRIGGERED as full multi-carrier gate
+RA-17 completion scope             Dedekind LUB theorem PASS
 RA-18 hidden standard Real audit   ongoing
 RA-19 commitment ledger            ongoing
 RA-20 claim-level V5               ongoing
@@ -356,15 +323,14 @@ RA-22 acceptance                   NOT ELIGIBLE
 ## Next canonical work
 
 ```text
-1. certify nonnegative kernel zero/associativity gate;
-2. prove kernel one = positive-envelope identity;
-3. derive the distributive interface and record any new approximation dependency;
-4. lift kernel laws to the selected signed multiplication;
-5. certify ordered-ring compatibility;
-6. construct nonzero multiplicative inverse (RA-08);
-7. close RA-12 / RA-13 and remaining audits;
-8. execute final R integration / RA-22;
-9. execute RE-R-001 before any canonical C construction.
+1. open/resolve RA-08 inverse architecture decision;
+2. construct positive reciprocal candidate and/or higher-level inverse route probes;
+3. certify x≠0 → inverse and signed extension;
+4. close inverse-dependent ordered-field laws;
+5. close RA-12 / RA-13 and remaining audits;
+6. execute final R integration / RA-22;
+7. execute RE-R-001;
+8. only then begin canonical C construction.
 ```
 
-No complex-number construction is permitted before `RA-22 ACCEPT` **and** the scheduled `RE-R-001` reverse-engineering gate.
+No complex-number construction is permitted before `RA-22 ACCEPT` **and** `RE-R-001` completion.
