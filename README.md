@@ -12,10 +12,10 @@ Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA` 
 4. `LAB/PDSA/STATUS.md`
 5. `LAB/00_ARCHITECTURE/N_CORE_DAG.md`
 6. `LAB/00_ARCHITECTURE/N_ARITHMETIC_DAG.md`
-7. `LAB/00_ARCHITECTURE/Z_ACCEPTANCE_SPECIFICATION.md`
-8. `LAB/00_ARCHITECTURE/REGISTRY.md`
-9. `LAB/00_ARCHITECTURE/GRAPH.md`
-10. `LAB/PDSA/PDSA-Z-RE-001_REVERSE_ENGINEER_N_FROM_Z.md`
+7. `LAB/00_ARCHITECTURE/Q_DAG.md`
+8. `LAB/00_ARCHITECTURE/Q_COMMITMENT_LEDGER.md`
+9. `LAB/00_ARCHITECTURE/REGISTRY.md`
+10. `LAB/00_ARCHITECTURE/GRAPH.md`
 
 ## Do not linearize BOMA
 
@@ -52,10 +52,6 @@ difference pairs + explicit equivalence
 
 `Z-DP-001` selected signed normal forms as the Stage-One export while retaining the pair route.
 
-Arithmetic and order each underwent independent dual-route reconvergence before promotion.
-
-Acceptance:
-
 ```text
 ZA-01..20 PASS
 Z-J-002 PASS
@@ -74,57 +70,99 @@ ordered-ring laws        32170144944
 Lean                     4.32.1
 ```
 
-No quotient carrier or Lean built-in `Int` was required for the accepted Stage-One construction.
+No quotient carrier or Lean built-in `Int` was required for the accepted Stage-One integer construction.
 
 ## Mandatory post-Z reverse experiment — completed
 
-After Z acceptance, BOMA executed the required reverse-engineering experiment before opening the rational stage.
-
-### Reverse construction from Z only
+After Z acceptance, BOMA executed the required reverse-engineering experiment before opening Q:
 
 ```text
-N_Cone(Z) := {x : Z_BOMA | 0 ≤ x}
-ReachZ generated from 0 by +1
+Z_BOMA
+   ↓
+N_Cone(Z) / ReachZ
+   ↓
+comparison with bottom-up N_BOMA
 ```
 
-The Z-only reverse core passed V5 in run `32170817620`.
+Reverse core V5: `32170817620`.
 
-### Comparison against the original bottom-up N
-
-Only after the reverse candidates existed was `N_BOMA` reintroduced as a frozen comparison reference.
-
-Final comparison:
-
-```text
-run:             32171528363
-verified commit: 335ad9780d8cfee45624998f59dae264c1057be1
-result:          PASS
-```
+Final comparison V5: `32171528363`.
 
 `Z-RE-J-001` classification:
 
 > **INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE**
 
-The reverse cone reconverges with the accepted natural interface on:
+The reverse route reconverges on `0,S,+,*,≤`, but bottom-up construction/PDSA provenance is not recoverable from Z as an extensional object. Exact decoding in the current comparison is representation-aware because `ZSigned` retains `BOMANat` magnitudes.
+
+## Accepted rational stage
+
+Stage One constructs Q from accepted Z through an explicit cancellation and identity architecture:
 
 ```text
-0
-successor
-addition
-multiplication
-order
+Z-BLOCK-002
+   ↓
+Q-GATE-BLOCK-001  nonzero cancellation
+   ↓
+positive-denominator RawFrac + FracEquiv
+   ↓
+raw arithmetic respect
+   ↓
+Q-DP-001
+   ↓
+Q-BLOCK-001 quotient carrier / identity layer
+   ↓
+field + order + embedding + generation packages
+   ↓
+Q-J-002 PASS
+   ↓
+QA-23 ACCEPT
+   ↓
+Q-BLOCK-002 Accepted Stage-One Rational Interface
 ```
 
-but the original pre-numerical/TCT/formalization/PDSA construction history is not recoverable from Z as an extensional mathematical object. Exact decoding in the current comparison is representation-aware because selected `ZSigned` retains `BOMANat` magnitudes.
+`Q-DP-001` selected:
 
-Detailed comparison:
+```text
+QBOMA := Quotient fracSetoid
+```
 
-`LAB/PDSA/experiments/PDSA-Z-RE-001_BOTTOM_UP_VS_REVERSE_COMPARISON.md`
+as a **methodological/formalization choice**, not as a claim that rationals must mathematically be quotient objects.
+
+The accepted Q interface includes:
+
+```text
+nontrivial commutative field behavior
+unique nonzero inverse witnesses without a global Choice selector
+faithful ordered Z embedding
+coherent N→Z→Q embedding
+total order
+translation invariance
+negation order reversal
+nonnegative multiplication monotonicity
+positive inverse behavior
+integer-fraction generation
+```
+
+Final integration:
+
+```text
+run    32178326013
+Lean   4.32.1
+result PASS
+```
+
+The Q source audit records the explicit quotient commitment and found no Q payload occurrence of `Classical`, `Choice`, `sorry`, `axiom`, built-in `Rat`, or `gcd`.
+
+Retained Stage-II branches include reduced canonical fractions, external-setoid identity, and alternative denominator disciplines. Stage One does not falsely claim multi-carrier Q reconvergence.
 
 ## Current frontier
 
-> **Rational-number stage — NEXT.**
+> **Real-number stage — NEXT.**
 
-No rational carrier is yet constructed or accepted.
+The accepted chain is now:
 
-The next action is a representation-neutral Q acceptance specification before choosing fraction syntax, equivalence/normalization, field operations, order, or a canonical representation.
+```text
+pre-numerical constructional layer → N → Z → Q
+```
+
+The next action is a representation-neutral **R acceptance specification**, followed by an explicit completion Decision Point. No Dedekind, Cauchy, or other completion regime is canonical yet.
