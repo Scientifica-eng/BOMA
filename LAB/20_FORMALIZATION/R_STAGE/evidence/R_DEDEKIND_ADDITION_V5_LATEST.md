@@ -1,10 +1,10 @@
 # R Dedekind Addition V5 Evidence
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `0ad1ac3bd3b1ff0ab2e51979191a09a2b1f3c38c`  
-**Workflow run ID:** `32182275050`  
+**Status:** PASS  
+**Verified commit:** `4ace1a37a46102adc235ef4c2f00c459143bb6c1`  
+**Workflow run ID:** `32183597094`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
-| valid LowerCut addition + CutEquiv respect + quotient rAdd lift | failure |
+| valid LowerCut addition + CutEquiv respect + quotient rAdd lift | success |
