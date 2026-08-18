@@ -1,0 +1,173 @@
+name: BOMA N-Core R-B — Evidence-Producing V5
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/NCoreRB001.lean'
+      - 'LAB/payloads/lean/NCore/Verify_N_*.lean'
+      - 'LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md'
+      - '.github/workflows/boma-ncore-rb-005-evidence.yml'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+
+jobs:
+  verify-and-record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up pinned Lean toolchain
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+
+      - name: Verify unified producer payload
+        id: producer
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/NCoreRB001.lean
+
+      - name: Verify N-BLOCK-001
+        id: block001
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_001.lean
+
+      - name: Verify N-BLOCK-002
+        id: block002
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_002.lean
+
+      - name: Verify N-BLOCK-003
+        id: block003
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean
+
+      - name: Verify N-BLOCK-004
+        id: block004
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_004.lean
+
+      - name: Verify N-BLOCK-005
+        id: block005
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_005.lean
+
+      - name: Verify N-BLOCK-006
+        id: block006
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_006.lean
+
+      - name: Verify N-J-001 independent Route B
+        id: routeb
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean
+
+      - name: Verify N-J-001 convergence interface
+        id: junction001
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001.lean
+
+      - name: Record run evidence in repository
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -u
+          VERIFIED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+          GENERATED_AT="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+          RESULT="PASS"
+          for outcome in \
+            "${{ steps.setup.outcome }}" \
+            "${{ steps.producer.outcome }}" \
+            "${{ steps.block001.outcome }}" \
+            "${{ steps.block002.outcome }}" \
+            "${{ steps.block003.outcome }}" \
+            "${{ steps.block004.outcome }}" \
+            "${{ steps.block005.outcome }}" \
+            "${{ steps.block006.outcome }}" \
+            "${{ steps.routeb.outcome }}" \
+            "${{ steps.junction001.outcome }}"
+          do
+            if [ "$outcome" != "success" ]; then
+              RESULT="FAIL_OR_INCOMPLETE"
+            fi
+          done
+
+          git fetch origin main
+          git checkout -B v5-evidence origin/main
+          mkdir -p LAB/20_FORMALIZATION/N_CORE/evidence
+
+          cat > LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md <<EOF
+          # N-Core Claim-Level V5 — Automated Evidence Record
+
+          **Status:** ${RESULT}  
+          **Verified commit:** \`${VERIFIED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`  
+          **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Recorded at (UTC):** \`${GENERATED_AT}\`
+
+          This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
+
+          | Verification target | Outcome |
+          |---|---|
+          | Lean/toolchain setup | ${{ steps.setup.outcome }} |
+          | unified producer payload | ${{ steps.producer.outcome }} |
+          | N-BLOCK-001 | ${{ steps.block001.outcome }} |
+          | N-BLOCK-002 | ${{ steps.block002.outcome }} |
+          | N-BLOCK-003 | ${{ steps.block003.outcome }} |
+          | N-BLOCK-004 | ${{ steps.block004.outcome }} |
+          | N-BLOCK-005 | ${{ steps.block005.outcome }} |
+          | N-BLOCK-006 | ${{ steps.block006.outcome }} |
+          | N-J-001 independent Route B | ${{ steps.routeb.outcome }} |
+          | N-J-001 convergence interface | ${{ steps.junction001.outcome }} |
+
+          Interpretation must follow:
+
+          \`LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md\`
+
+          A PASS here is machine evidence for the mapped claims under the recorded toolchain. It is not NAC-15 acceptance.
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record claim-level N-Core V5 run ${RUN_ID}"
+            git push origin HEAD:main
+          fi
+
+      - name: Enforce verification result
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.setup.outcome }}" = "success"
+          test "${{ steps.producer.outcome }}" = "success"
+          test "${{ steps.block001.outcome }}" = "success"
+          test "${{ steps.block002.outcome }}" = "success"
+          test "${{ steps.block003.outcome }}" = "success"
+          test "${{ steps.block004.outcome }}" = "success"
+          test "${{ steps.block005.outcome }}" = "success"
+          test "${{ steps.block006.outcome }}" = "success"
+          test "${{ steps.routeb.outcome }}" = "success"
+          test "${{ steps.junction001.outcome }}" = "success"
