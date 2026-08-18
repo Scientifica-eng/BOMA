@@ -166,7 +166,7 @@ theorem q_positive_product_inner_approx
     qlt_mul_div_right hprod hr hrinv
   have h0xrinv : qLE qZero (qMul x rinv) :=
     qmul_nonneg hx hrinvPos.1
-  rcases BOMA.R.Density001.rational_order_dense hxdivq with ⟨a, hxa, haq⟩
+  rcases rational_order_dense hxdivq with ⟨a, hxa, haq⟩
   have haPos : qLT qZero a := qlt_zero_of_nonneg_lt h0xrinv hxa
   have hxar : qLT x (qMul a r) :=
     qlt_mul_recompose_right hxa hr hrinv
@@ -179,7 +179,7 @@ theorem q_positive_product_inner_approx
     qlt_mul_div_left hxar haPos hainv
   have h0ainvx : qLE qZero (qMul ainv x) :=
     qmul_nonneg hainvPos.1 hx
-  rcases BOMA.R.Density001.rational_order_dense hxdivr with ⟨b, hxb, hbr⟩
+  rcases rational_order_dense hxdivr with ⟨b, hxb, hbr⟩
   have hbPos : qLT qZero b := qlt_zero_of_nonneg_lt h0ainvx hxb
   have hxab : qLT x (qMul a b) :=
     qlt_mul_recompose_left hxb haPos hainv
