@@ -1,6 +1,13 @@
 # PDCA Laboratory
 
-This directory is the documentary structure for the experimental PDCA cycle used while constructing BOMA from zero.
+> **Legacy naming notice — 2026-08-18**  
+> The governing BOMA research method is **PDSA — Plan, Do, Study, Act**, not PDCA.  
+> This directory name and the `PDCA` identifiers inside it are preserved as historical provenance from an earlier naming stage of the repository. They must not be interpreted as the current methodological standard.  
+> The authoritative correction and governance record is: `LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md`.
+
+This directory is the documentary structure for the experimental cycle historically labelled `PDCA` while constructing BOMA from zero.
+
+Under current project governance, the methodological interpretation of this work is **PDSA**, with particular emphasis on the `Study` phase as an explicit producer of reusable research learning.
 
 ## Principle
 
@@ -66,4 +73,4 @@ A conceptual probe must never be described as a formally executed backend experi
 
 ## Current status
 
-This structure is itself a PDCA design decision under test. It is not a normative BOMA requirement.
+This historical structure originated under the label `PDCA`. The current normative research-cycle method is **PDSA**. The directory remains non-normative as a BOMA specification and is retained for provenance and learning continuity.
