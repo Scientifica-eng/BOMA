@@ -1,11 +1,11 @@
 # N-Core Claim-Level V5 — Automated Evidence Record
 
 **Status:** PASS  
-**Verified commit:** `5fb03a48e243697f49f1cbde30be986d73f2ff68`  
-**Workflow run ID:** `32163771789`  
+**Verified commit:** `692f506856f735aeace29949a3eaee4e25af232f`  
+**Workflow run ID:** `32163936417`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Verification assembly:** `producer + claim fragment`  
-**Recorded at (UTC):** `2026-08-18T17:06:23Z`
+**Recorded at (UTC):** `2026-08-18T17:08:00Z`
 
 This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
 
