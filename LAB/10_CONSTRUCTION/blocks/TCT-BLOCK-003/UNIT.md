@@ -11,12 +11,12 @@
 
 ## Purpose
 
-Package the verified terminal-recovery result into a reusable canonical decomposition contribution for the current TCT path without introducing numerical depth, successor, a global predecessor function, ordered-pair objects, or quotient classes.
+Package the verified terminal-recovery result into a reusable canonical decomposition contribution for the current TCT path without introducing numerical depth, natural-number successor, a global predecessor function, ordered-pair objects, or quotient classes.
 
 ## Inputs
 
 ```text
-TCT-BLOCK-002  selected normal-form presentations + meta-level recovery
+TCT-BLOCK-002  selected generated normal-form presentations + meta-level recovery
 TCT-BR-010     reassociation-generated structural equivalence ≈
 TCT-BR-009     terminal preservation DERIVED under BR-010
 TCT-J-001      PASS / RESOLVED
@@ -103,21 +103,21 @@ This result is derived from `TCT-BR-010` through the terminal-recovery proof of 
 
 ### Meaning of “canonical”
 
-In this Block, **canonical decomposition** means:
+In this Block, canonical decomposition means:
 
 > the recovered predecessor contribution is well-defined up to the declared structural equivalence `≈` across equivalent selected presentations.
 
-It does **not** mean that an equivalence-class object has been constructed.
+It does not mean that an equivalence-class object has been constructed.
 
 ## Reusable certified contribution
 
-The Block exports the following downstream guarantee:
+The Block exports:
 
 > **Canonical Decomposition Guarantee:** For any explicitly supplied non-empty selected normal-form presentation on the current TCT path, terminal predecessor recovery exists; and equivalent presentations under `TCT-BR-010` recover equivalent predecessor presentations with corresponding distinguished terminal `U` roles.
 
 The guarantee is distinct from the Block document and from the meta-level `recover` procedure that witnesses it.
 
-This preserves the project distinction:
+This preserves:
 
 ```text
 Construction Unit ≠ Reusable Certified Contribution
@@ -133,7 +133,7 @@ a completed Config carrier
 ordered-pair objects
 numerical depth
 number of construction steps
-successor
+natural-number successor
 natural numbers
 induction
 arithmetic
@@ -171,11 +171,14 @@ NO NUMERICAL DEPENDENCE           PASS
 
 **Block result: ACTIVE / ACCEPTED on the current path.**
 
-## Downstream
+## Current downstream state
 
-`TCT-BLOCK-004 — Construction Depth / Structural Iteration` is now the next reserved target.
+```text
+TCT-BLOCK-004  ACTIVE — Structural Iteration History
+TCT-BLOCK-005  ACTIVE — Successor-Like Extension Structure
+```
 
-The immediate downstream question must not begin by assigning a natural-number-valued depth. It should ask what **structural iteration invariant** can be built from repeated canonical decomposition without numerical circularity.
+The next boundary is PDSA-TCT-008 calibration and then an explicit formalization/acceptance gate; no numerical depth Block is inserted between them.
 
 ## Sensitivity
 
@@ -203,4 +206,4 @@ PDSA-TCT-004
 PDSA-TCT-005
 ```
 
-Historical predecessor work remains preserved under the earlier TCT and reverse-engineering records.
+Terminology/downstream state synchronized during `PDSA-TCT-008`.
