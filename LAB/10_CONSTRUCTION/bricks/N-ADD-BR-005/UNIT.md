@@ -1,11 +1,10 @@
 # N-ADD-BR-005 — Opposite-Side Equations for Route R
-
-- **Status:** ACTIVE — PENDING FORMAL VERIFICATION
+- **Status:** ACTIVE / V4+V5 PASS
 - **Depends on:** N-ADD-BR-001, N-BLOCK-003
 
-Derive by induction:
+Derived by induction:
 ```text
-addR(z,b)    = b
-addR(s a,b)  = s(addR(a,b))
+addR(z,b)=b
+addR(s a,b)=s(addR(a,b))
 ```
-This is support for route convergence; it is not built into the Route-R definition.
+These were not built into Route R.

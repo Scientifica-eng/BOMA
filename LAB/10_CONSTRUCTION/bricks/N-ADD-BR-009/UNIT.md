@@ -1,10 +1,8 @@
 # N-ADD-BR-009 — Addition Successor Compatibility
-
-- **Status:** RESERVED
+- **Status:** ACTIVE / V4+V5 PASS
 - **Depends on:** N-ADD-BR-007
 
-Targets:
 ```text
-a + s b = s(a+b)
-s a + b = s(a+b)
+a+s b=s(a+b)
+s a+b=s(a+b)
 ```

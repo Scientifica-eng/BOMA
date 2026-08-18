@@ -1,27 +1,28 @@
 # N-ARITHMETIC DAG — Stage-One Arithmetic
 
 **Document ID:** `BOMA-N-ARITH-DAG-001`  
-**Version:** `0.1`  
-**Status:** ACTIVE — ADDITION CONSTRUCTION IN PROGRESS
+**Version:** `0.2`  
+**Status:** ACTIVE — ADDITION ACCEPTED / MULTIPLICATION NEXT
 
 ```text
 N-BLOCK-007  Accepted N-Core
       │
-      ├────────► N-ADD-BLOCK-001  Right-Recursive Addition
+      ├────────► N-ADD-BLOCK-001  Right-Recursive Addition — PASS
       │
-      └────────► N-ADD-BLOCK-002  Left-Recursive Addition
+      └────────► N-ADD-BLOCK-002  Left-Recursive Addition  — PASS
                          │
 N-ADD-BLOCK-001 ─────────┤
                          ▼
                     N-ADD-J-001
-                 route convergence
+                    PASS / V4+V5
                          │
                          ▼
                  N-ADD-BLOCK-003
               Canonical Addition + Laws
+                    ACTIVE / PASS
                          │
                          ▼
-                Multiplication — later
+                Multiplication — NEXT
                          │
                          ▼
                     Order — later
@@ -30,4 +31,4 @@ N-ADD-BLOCK-001 ─────────┤
             N-Arithmetic Integration Gate
 ```
 
-The two addition routes are parallel constructions, not a Decision Point: both are intentionally retained and compared. Reconvergence preserves both histories.
+The two addition histories remain distinct even after their outputs reconverge. Canonical spelling uses Route R only after pointwise equivalence is established.

@@ -1,10 +1,9 @@
 # N-ADD-BR-012 — Addition Cancellation
+- **Status:** ACTIVE / V4+V5 PASS
+- **Depends on:** N-ADD-BR-007, N-BLOCK-002, N-BLOCK-003, N-ADD-BR-010
 
-- **Status:** RESERVED
-- **Depends on:** N-ADD-BR-007, N-BLOCK-002, N-BLOCK-003
-
-Targets sufficient for downstream order/integer work:
 ```text
-a+c = b+c ⇒ a=b
-c+a = c+b ⇒ a=b
+a+c=b+c ⇒ a=b
+c+a=c+b ⇒ a=b
 ```
+Right cancellation uses successor injectivity; left cancellation uses commutativity.

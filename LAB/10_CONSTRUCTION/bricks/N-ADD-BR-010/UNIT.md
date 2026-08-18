@@ -1,10 +1,5 @@
 # N-ADD-BR-010 — Addition Commutativity
-
-- **Status:** RESERVED
+- **Status:** ACTIVE / V4+V5 PASS
 - **Depends on:** N-ADD-J-001, N-ADD-BR-007
 
-Target:
-```text
-a + b = b + a
-```
-The dual-route convergence should be used as provenance where appropriate rather than treating commutativity as an imported arithmetic fact.
+`a+b=b+a`. The proof records dual-recursion reconvergence as direct provenance rather than importing commutativity.

@@ -1,8 +1,16 @@
 # N-ADD-BLOCK-003 — Canonical Addition and Laws
 
-- **Status:** RESERVED — BLOCKED BY N-ADD-J-001
-- **Planned members:** N-ADD-BR-007..012
+- **Status:** **ACTIVE — V4/V5 PASS**
+- **Members:** N-ADD-BR-007..012
+- **Depends on:** N-ADD-J-001
 
-After route convergence this Block will export one canonical addition interface plus its zero, successor, commutativity, associativity, and cancellation laws.
+Exports canonical `add` plus:
+```text
+left/right zero identities
+left/right successor equations
+commutativity
+associativity
+left/right cancellation
+```
 
-It may not become ACTIVE merely because one recursive implementation exists.
+The package is downstream of route convergence; it does not erase the alternative recursion history.

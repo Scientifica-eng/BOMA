@@ -1,10 +1,6 @@
 # N-ADD-BR-007 — Canonical Addition Export
-
-- **Status:** RESERVED — BLOCKED BY N-ADD-J-001
+- **Status:** ACTIVE / V5 PASS
 - **Epistemic:** REPRESENTATIONAL CHOICE AFTER PROVED EQUIVALENCE
+- **Depends on:** N-ADD-J-001
 
-After convergence, export:
-```text
-add := addR
-```
-The choice of Route R as the canonical spelling must not erase Route L provenance or imply Route R was mathematically necessary.
+Export `add := addR`. Route L remains a preserved equivalent witness; Route R is not reclassified as mathematically necessary.

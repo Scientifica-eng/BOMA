@@ -1,10 +1,8 @@
 # N-ADD-BR-008 — Addition Zero Identities
-
-- **Status:** RESERVED
+- **Status:** ACTIVE / V4+V5 PASS
 - **Depends on:** N-ADD-BR-007
 
-Targets:
 ```text
-a + z = a
-z + a = a
+a+z=a
+z+a=a
 ```

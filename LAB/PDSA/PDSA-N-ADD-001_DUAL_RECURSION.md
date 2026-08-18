@@ -1,25 +1,30 @@
 # PDSA-N-ADD-001 — Dual-Recursion Addition
 
-**Status:** ACTIVE — PLAN / DO
+**Status:** **CLOSED — PASS / DUAL ROUTES RECONVERGED**
 
-## Question
-Can addition be constructed independently by recursion on either argument and then reconverge to one certified operation?
+## PLAN
+Construct addition independently by recursion on either argument, then require pointwise convergence before canonical export.
 
-## Routes
+## DO
 ```text
-Route R: addR(a,b) = fold a s b
-Route L: addL(a,b) = fold b s a
+Route R: addR(a,b)=fold a s b
+Route L: addL(a,b)=fold b s a
+```
+Both routes were implemented and verified independently.
+
+## STUDY
+Written V4 audit proved opposite-side equations for Route R, then `addL(a,b)=addR(a,b)`. The convergence gives a provenance-rich derivation of commutativity after swapping arguments. Associativity follows by induction on the third argument; cancellation uses accepted successor injectivity plus commutativity.
+
+Formal evidence:
+```text
+run 32164861155
+verified commit 0749a846e3c0610f30db6faf27db25e262a6e278
+Lean 4.32.1
+Route R PASS
+Route L PASS
+Convergence PASS
+Canonical laws PASS
 ```
 
-Neither route may use the other in its definition.
-
-## Convergence target
-```text
-∀a b, addL(a,b) = addR(a,b)
-```
-
-## Downstream target
-Only after convergence export canonical `add`, then derive zero identities, successor equations, commutativity, associativity, and cancellation.
-
-## Verification
-Use separate backend fragments for Route R, Route L, convergence, and canonical laws so a failure can be localized to the DAG branch.
+## ACT
+`N-ADD-J-001 = PASS / RESOLVED`. Export canonical `add := addR` while preserving Route L as an equivalent production witness. Activate `N-ADD-BLOCK-003` and permit multiplication work.

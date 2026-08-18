@@ -1,7 +1,6 @@
 # N-ADD-BLOCK-002 — Left-Recursive Addition Route
-
-- **Status:** ACTIVE — CANDIDATE / V5 PENDING
+- **Status:** ACTIVE / V5 PASS
 - **Members:** N-ADD-BR-003, N-ADD-BR-004
 - **Depends on:** N-BLOCK-007
 
-Exports the independently constructed first-argument-recursive addition route.
+Independent first-argument-recursive production route.
