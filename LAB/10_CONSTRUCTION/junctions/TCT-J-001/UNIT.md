@@ -10,7 +10,7 @@
 
 ## Purpose
 
-Compatibility gate between finite selected normal-form configuration formation and canonical last-step decomposition under the active structural-equivalence specification.
+Compatibility gate between selected generated normal-form presentations and canonical last-step decomposition under the active structural-equivalence specification.
 
 ## Incoming
 
@@ -22,11 +22,11 @@ TCT-BR-009      terminal preservation theorem, derived under BR-010
 
 ## Outgoing
 
-`TCT-BLOCK-003` — now **ADMISSIBLE TO CONSTRUCT**, but still RESERVED until its own PDSA construction cycle creates and verifies it.
+`TCT-BLOCK-003 — Canonical Decomposition`, now ACTIVE after its independent construction/verification cycle.
 
 ## Junction question
 
-For a non-empty meta-finitely presented configuration in the selected normal form, can the final construction step be recovered in a way invariant under `TCT-BR-010` structural equivalence?
+For a non-empty presentation supplied with a meta-finite derivation and expressed in the selected normal form, can the final construction step be recovered in a way invariant under `TCT-BR-010` structural equivalence?
 
 ## Recovery is a meta-level inspection record
 
@@ -92,7 +92,7 @@ No object-level numerical counting, cardinality, natural-number length, complete
 PASS
 ```
 
-The required condition is **DERIVED under TCT-BR-010** for the current selected normal-form family.
+The required condition is DERIVED under TCT-BR-010 for the current selected normal-form family.
 
 ## Historical progression
 
@@ -110,23 +110,23 @@ TCT-BR-010 defines explicit restricted ≈
 PDSA-TCT-004 proves terminal preservation
     ↓
 TCT-J-001 PASS / RESOLVED
+    ↓
+PDSA-TCT-005 constructs TCT-BLOCK-003
 ```
 
-The earlier CONDITIONAL state remains valid historical evidence; it is not silently erased.
+The earlier CONDITIONAL state remains valid historical evidence.
 
-## Consequence
+## Current consequence
 
-The construction may now proceed to a dedicated canonical decomposition Block.
-
-However:
+The gate has already permitted and been consumed by:
 
 ```text
-TCT-J-001 PASS
-        ≠
-TCT-BLOCK-003 already constructed
+TCT-BLOCK-003  ACTIVE — Canonical Decomposition
+TCT-BLOCK-004  ACTIVE — Structural Iteration History
+TCT-BLOCK-005  ACTIVE — Successor-Like Extension Structure
 ```
 
-`TCT-BLOCK-003` must be created, specified, and verified in `PDSA-TCT-005` before it becomes ACTIVE.
+Passing this Junction did not itself construct those downstream units; each received its own PDSA cycle.
 
 ## Sensitivity
 
@@ -141,10 +141,10 @@ terminal-role specification
 single-generator kernel assumptions relevant to the proof
 ```
 
-A reopened Junction may affect decomposition, structural depth, successor, and formal-domain construction.
+A reopened Junction affects all dependent active Blocks and future formalization work.
 
 ## Legacy source
 
 `LAB/BUILDING/reverse/TCT-J-001_CANONICAL_DECOMPOSITION_JUNCTION.md`
 
-Historical wording is preserved there. The present unit is the canonical state after the PDSA-TCT-003 and PDSA-TCT-004 studies.
+Historical wording is preserved there. The present unit is the canonical state after PDSA-TCT-003 through PDSA-TCT-008 synchronization.
