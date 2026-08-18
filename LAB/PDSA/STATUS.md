@@ -25,7 +25,7 @@ Historical `PDCA` names are provenance only; governing method is PDSA.
 | PDSA-N-004 | producer cycle / candidate retained | monolithic feasibility candidate; mapped into DAG |
 | PDSA-N-005 | producer cycle / written bridge result retained | bridge contributions mapped to N-BLOCK-005 |
 | PDSA-N-006 | producer cycle / written characterization retained | initiality/standardness mapped to N-BLOCK-004/006 |
-| PDSA-N-007 | **ACTIVE — CLAIM-LEVEL V5 SUBGATE** | theorem ownership + unit wrappers + Route-B/Junction verification payloads; observed checker evidence pending |
+| PDSA-N-007 | **ACTIVE — CLAIM-LEVEL V5 SUBGATE** | unit wrappers + theorem ownership + repository-resident CI evidence mechanism; observed evidence pending |
 | PDSA-N-008 | **CLOSED — PASS** | canonical N-Core DAG extracted: 20 Bricks, 6 Blocks, 2 Junctions |
 | PDSA-N-009 | **CLOSED — WRITTEN V4 CONDITIONAL PASS** | no-confusion Route A/Route B reconverge; N-J-001 waits for V5 premises |
 | PDSA-N-010 | **ACTIVE — PRE-AUDIT** | NAC-01..NAC-14 integration matrix prepared; N-J-002 remains blocked |
@@ -46,9 +46,13 @@ Ownership manifest:
 
 `LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`
 
-Current workflow:
+Current evidence-producing workflow:
 
-`.github/workflows/boma-ncore-rb-004.yml`
+`.github/workflows/boma-ncore-rb-005-evidence.yml`
+
+Repository evidence sink:
+
+`LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md`
 
 The workflow separately checks:
 
@@ -59,24 +63,17 @@ N-J-001 independent Route B
 N-J-001 convergence wrapper
 ```
 
-New explicit verification witnesses include:
-
-```text
-N-BR-007 generatedness/no-junk
-N-BR-017 history ↔ constructor ancestry
-N-BR-018 constructional no-confusion transfer
-```
+It records the triggering SHA, pinned toolchain, and each step outcome back into the repository, then fails unless every required check succeeds. It does **not** change canonical mathematical statuses automatically.
 
 Current evidence state:
 
 ```text
 claim-level payloads prepared:    YES
 claim ownership mapped:           YES
-observed checker result:          NOT EXPOSED IN CURRENT CONNECTOR SESSION
+repository evidence mechanism:    READY
+observed checker evidence:        PENDING UNTIL EVIDENCE FILE RECORDS A RUN
 V5 promotion:                     NO
 ```
-
-No visible status is interpreted as neither PASS nor FAIL.
 
 ## Current frontier
 
@@ -113,7 +110,7 @@ V5 and post-V5 re-audits still block final integration
 ## Current blockers
 
 ```text
-1. observed pinned-toolchain claim-level V5 checker evidence
+1. repository-resident observed claim-level V5 evidence
 2. claim-by-claim recording of successful/failed checks
 3. unqualified N-J-001 PASS
 4. post-V5 NAC-13 preservation re-audit
