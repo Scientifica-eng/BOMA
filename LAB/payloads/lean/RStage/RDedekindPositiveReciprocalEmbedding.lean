@@ -95,7 +95,7 @@ theorem cutRecipPos_principal
           qMul qinv q = qMul q qinv := qMul_comm qinv q
           _ = qOne := hqinv
       have hqr : qLT q r :=
-        q_inverse_strict_antitone h0t htqinv hrt hqinvq
+        q_inverse_strict_antitone h0t htqinv htr hqinvq
       have hrOut : ¬ (principalCut q).lower r := by
         intro hrq
         exact (qlt_asymm hqr) hrq
@@ -119,7 +119,7 @@ theorem cutRecipPos_principal
           qMul qinv q = qMul q qinv := qMul_comm qinv q
           _ = qOne := hqinv
       have hqr : qLT q r :=
-        q_inverse_strict_antitone h0t htqinv hrt hqinvq
+        q_inverse_strict_antitone h0t htqinv htr hqinvq
       have hrOut : ¬ (principalCut q).lower r := by
         intro hrq
         exact (qlt_asymm hqr) hrq
