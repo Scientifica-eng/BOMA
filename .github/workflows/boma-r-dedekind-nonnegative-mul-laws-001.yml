@@ -32,7 +32,7 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: false
-      - name: Verify nonnegative multiplication zero and associativity laws
+      - name: Verify nonnegative multiplication zero, one, and associativity laws
         id: laws
         if: steps.setup.outcome == 'success'
         continue-on-error: true
@@ -113,7 +113,7 @@ jobs:
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
-          | kernel zero annihilation + positive-envelope closure + associativity | ${{ steps.laws.outcome }} |
+          | kernel zero annihilation + one-to-positive-envelope identity + positive-envelope closure + associativity | ${{ steps.laws.outcome }} |
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
