@@ -1,114 +1,196 @@
 # PDSA-Q-001 — Pre-Rational Cancellation / Denominator Gateway
 
 **CycleID:** `PDSA-Q-001`  
-**Status:** **ACTIVE — QG-01 V5 / QG-02 STUDY NEXT**  
+**Status:** **CLOSED — QG-01 PASS / QG-02 ROUTE-F DISCIPLINE ADOPTED**  
 **Date:** 2026-08-18  
 **Source:** `Z-BLOCK-002`  
 **Target specification:** `BOMA-Q-ACCEPT-001 v1.0`
 
 ## PLAN
 
-Before constructing a rational representation, discharge the mathematical assumptions normally hidden inside the phrase “fractions modulo cross multiplication.”
-
-Primary questions:
+Before constructing a rational representation, discharge the assumptions normally hidden inside “fractions modulo cross multiplication.”
 
 ```text
-QG-01  Can accepted Z cancel a common nonzero multiplicative factor?
-QG-02  What denominator discipline should Stage-One fraction syntax use?
+QG-01  derive nonzero multiplication cancellation in accepted Z
+QG-02  choose an explicit denominator discipline for the first fraction route
 ```
 
-No fraction-equivalence relation is promoted before QG-01 passes.
+No fraction-equivalence relation was promoted before QG-01 passed.
 
-## DO — QG-01 candidate
+---
+
+# DO
+
+## D1 — QG-01 cancellation gateway
 
 Created:
 
 `LAB/payloads/lean/QStage/QGatewayCancellation.lean`
 
-The proof route is internal to accepted BOMA N/Z:
+Derivation:
 
 ```text
-N addition zero characterization
+N sum-zero characterization
    ↓
-N multiplication no-zero-divisor
+N no-zero-divisor multiplication
    ↓
-product of natural successors nonzero
+nonzero product of N successors
    ↓
-Z multiplication no-zero-divisor by signed cases
+Z no-zero-divisor by selected signed cases
    ↓
-additive cancellation / inverse uniqueness in accepted Z group
+Z additive cancellation / inverse uniqueness
    ↓
-negation-multiplication compatibility
+negation × multiplication compatibility
    ↓
-nonzero multiplicative cancellation in Z
+nonzero multiplicative cancellation
 ```
 
-Target interface:
+Export:
 
 ```text
-c ≠ 0 ∧ a*c = b*c → a=b
-c ≠ 0 ∧ c*a = c*b → a=b
+a*b=0 → a=0 ∨ b=0
 
-a ≠ 0 ∧ b ≠ 0 → a*b ≠ 0
+a≠0 ∧ b≠0 → a*b≠0
+
+c≠0 ∧ a*c=b*c → a=b
+c≠0 ∧ c*a=c*b → a=b
 ```
 
-No built-in integer-domain cancellation theorem is imported.
+Canonical gateway:
 
-## Verification
+`Q-GATE-BLOCK-001`.
 
-Workflow:
-
-`.github/workflows/boma-q-gateway-001.yml`
-
-Evidence sink:
-
-`LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_GATEWAY_V5_LATEST.md`
-
-QG-01 remains pending until the pinned-toolchain run is observed.
-
-## QG-02 candidates for Study
-
-### D1 — positive natural denominator
+## D2 — QG-01 V5
 
 ```text
-numerator   : Z_BOMA
-denominator : N_BOMA with 0 < denominator
+workflow run: 32172230166
+Lean:         4.32.1
+result:       PASS
 ```
 
-Advantages:
-- sign belongs only to numerator;
-- order comparison has positive denominator orientation;
-- no signed denominator normalization needed.
+## D3 — QG-02 denominator Study
 
-Costs:
-- requires a clean positive-natural subtype/interface;
-- multiplication/addition must repeatedly embed denominators into Z.
+Compared:
 
-### D2 — nonzero natural denominator + sign convention
+```text
+D1 positive natural denominator
+D2 nonzero natural denominator + attached validity/sign handling
+D3 nonzero integer denominator
+```
 
-Similar to D1 but denominator validity is `d ≠ 0`; positivity is then automatic for naturals but may need an explicit bridge theorem.
+### Selected discipline for experimental Route F
 
-### D3 — nonzero integer denominator
+Use a **structurally positive natural denominator**:
 
-Advantages:
-- fraction operations stay entirely inside Z.
+```text
+PosDen := predecessor payload d
+value(PosDen d) := successor(d)
+```
 
-Costs:
-- duplicate sign representations;
-- must normalize denominator sign or absorb it into equivalence/canonicalization;
-- order cross multiplication requires sign control.
+This means positivity/nonzeroness is guaranteed by syntax rather than a proof-bearing field.
 
-## Initial Study preference — not yet Act
+Consequences:
 
-For the first pair/equivalence route, **positive/nonzero natural denominators** appear structurally cleaner because accepted N already provides a canonical nonnegative magnitude domain and avoids denominator-sign duplication.
+```text
+sign lives only in the Z numerator
+denominator-sign duplication is impossible
+order cross multiplication has positive orientation
+denominator nonzeroness is derived from successor no-confusion
+```
 
-This is a hypothesis to test after QG-01 verification, not yet a canonical Decision Point.
+This is a route-level representation choice, not yet the canonical rational identity decision.
 
-## ACT rule
+## D4 — raw fraction representation and equivalence
 
-Only after QG-01 PASS may the cycle:
+Created:
 
-1. select an experimental denominator discipline for Route F;
-2. construct raw valid fractions;
-3. prove cross-product equivalence is an equivalence relation using explicit cancellation;
-4. open a separate representation comparison against a canonical/reduced route.
+`LAB/payloads/lean/QStage/QFractions.lean`
+
+```text
+RawFrac := Z_BOMA × PosDen
+
+(a,b) ~ (c,d) ↔ a*d = c*b
+```
+
+Established:
+
+```text
+reflexivity
+symmetry
+transitivity
+faithful raw embedding a ↦ a/1 modulo ~
+```
+
+Transitivity consumes QG-01 explicitly by cancelling the shared nonzero intermediate denominator.
+
+Canonical representation route:
+
+`Q-F-BLOCK-001`.
+
+## D5 — fraction-equivalence V5
+
+First run `32172400560` failed only in the final Z-embedding reflection lemma: the checker retained `a*1=b*1` instead of automatically applying multiplicative identity.
+
+The cross-product relation itself, including transitivity, had already elaborated before that failure.
+
+The reflection proof was replaced by an explicit equality chain; no fraction definition, denominator discipline, or equivalence clause changed.
+
+Final run:
+
+```text
+workflow run: 32172543345
+Lean:         4.32.1
+result:       PASS
+```
+
+---
+
+# STUDY
+
+## S1 — cross-product equivalence depends on a real prior theorem
+
+The experiment confirms that transitivity is not “free syntax.” It consumes exactly the integer nonzero cancellation theorem isolated in QG-01.
+
+This justifies the gateway as a separate Construction Graph unit.
+
+## S2 — positive denominators reduce representational burden without deciding rational identity
+
+Using successor-shaped natural denominators removes:
+
+```text
+zero-denominator proof fields
+signed denominator normalization
+duplicate ± denominator representations
+```
+
+but does **not** solve duplicate rational representations such as `1/2 ~ 2/4`.
+
+Therefore denominator discipline and formal rational identity remain distinct architectural questions.
+
+## S3 — first V5 failure was proof opacity, not relation failure
+
+The only failed theorem after the equivalence proofs was `a/1` reflection. Replacing implicit simplification by explicit multiplication-by-one equations closed the run.
+
+Learning:
+
+> preserve the mathematical relation when checker failure occurs strictly downstream in an interface lemma.
+
+---
+
+# ACT
+
+```text
+QG-01 = PASS
+QG-02 Route-F denominator discipline = ADOPTED
+Q-F-BLOCK-001 representation/equivalence = V5 PASS
+```
+
+Open the next cycle on:
+
+```text
+raw neg/add/mul respect for FracEquiv
+formal rational identity realization
+Q-DP-001: quotient/setoid vs reduced normal form vs scoped setoid
+```
+
+No quotient carrier is created by this cycle.
