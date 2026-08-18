@@ -6,21 +6,20 @@
 - **Type:** Brick
 - **Layer:** `L1 — explicit constructed structure`
 - **Operational Status:** **ACTIVE**
+- **Current-path Epistemic Status:** **DERIVED UNDER TCT-BR-010**
 
 ## Purpose
 
-Make explicit the structural condition required for last-step recovery to be invariant under the declared structural equivalence `≈`.
+Record the structural condition/theorem required for last-step recovery to be invariant under the declared structural equivalence `≈`.
 
 ## Incoming dependencies
 
 ```text
-TCT-J-001
+TCT-BLOCK-002
 TCT-BR-010
 ```
 
-## Required condition
-
-Structural equivalence must preserve the distinguished terminal interface and terminal-block role.
+## Derived condition
 
 For selected normal-form presentations:
 
@@ -30,63 +29,95 @@ B ≡ Q ⊙ U
 A ≈ B
 ```
 
-then the recovered terminal role must correspond and:
+then the recovered terminal role corresponds and:
 
 ```text
-P ≈ Q
+P ≈ Q.
 ```
 
-at the level of object-level structural equivalence.
+The base selected presentation `U` has meta-level predecessor record `ε`.
 
-The symbols `≡` above record selected-presentation identity; no independent bare object-level equality is being assumed.
+The symbols `≡` record selected-presentation identity; no independent bare object-level equality is assumed.
 
-## Epistemic Status
+## Current derivability result
 
-**DECLARED CHOICE — ADDITIONAL CONSTRAINT, WITH DERIVABILITY RETEST OPEN UNDER TCT-BR-010**
+`PDSA-TCT-004` proved terminal predecessor cancellation under the **exact restricted generated relation** of `TCT-BR-010`.
 
-The completed historical derivability test established that terminal-interface preservation could not be inferred from the **previous incomplete specification** of `≈` because that specification did not state enough about the relation.
-
-That historical result remains valid evidence about the earlier state of the project.
-
-`PDSA-TCT-003` has now introduced:
-
-`TCT-BR-010 — Reassociation-Generated Structural Equivalence`.
-
-Unlike an interface-preserving definition, BR-010 deliberately does not build the present condition into `≈`.
-
-Therefore the current question is now mathematically sharper:
-
-> Is terminal preservation derived from the restricted generation rules of TCT-BR-010, or must this Brick remain an independent declared constraint?
-
-No reclassification to DERIVED is made before that proof/countermodel cycle completes.
-
-## Verification evidence
-
-Historical result:
-
-`LAB/10_CONSTRUCTION/experiments/TCT-BR-009-DERIVABILITY-001.md`
-
-Current equality/identity and candidate-definition evidence:
+The proof uses a permitted external ordered trace `τ` of the presented syntax and establishes:
 
 ```text
-LAB/PDSA/experiments/PDSA-TCT-003-EQ-AUDIT-001.md
-LAB/PDSA/experiments/PDSA-TCT-003-EQUIVALENCE-CANDIDATES-001.md
-LAB/10_CONSTRUCTION/bricks/TCT-BR-010/UNIT.md
+A ≈ B  ⇒  τ(A) ≡ τ(B)
 ```
 
-## Why the retest is nontrivial
+for every explicit BR-010 derivation witness.
 
-A generic congruence does not guarantee right cancellation.
+On the refined selected normal-form grammar, the trace is injective. Therefore:
 
-For example, a relation admitting:
+```text
+P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q.
+```
+
+The proof also shows that reassociation preserves the structurally terminal position, so the distinguished terminal `U` role is preserved.
+
+Verification evidence:
+
+`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
+
+## Historical epistemic state
+
+This Brick was originally introduced after the first derivability audit with status:
+
+```text
+DECLARED CHOICE — ADDITIONAL CONSTRAINT
+```
+
+That result was correct relative to the **then-incomplete specification of `≈`**.
+
+The historical state is not erased.
+
+The progression is:
+
+```text
+incomplete ≈
+    ↓
+terminal preservation not derivable from stated premises
+    ↓
+BR-009 recorded as DECLARED ADDITIONAL CONSTRAINT
+    ↓
+PDSA-TCT-003 defines restricted BR-010 relation
+    ↓
+PDSA-TCT-004 retests derivability
+    ↓
+BR-009 DERIVED UNDER TCT-BR-010 on current path
+```
+
+This is a PDSA learning result: strengthened and clarified premises changed the epistemic classification without invalidating the earlier Study.
+
+## Scope boundary
+
+The theorem is scoped to:
+
+- the current single elementary block `U`;
+- the current empty definitional convention;
+- the refined selected normal-form grammar;
+- the exact SE-1 through SE-4 definition of BR-010;
+- the present compatible composition discipline.
+
+It does not automatically transfer to branches with additional generators, commutativity, collapse laws, alternative equivalences, or richer interface systems.
+
+## Counterexample boundary
+
+A generic congruence does not imply this theorem.
+
+For example, adding:
 
 ```text
 U ⊙ U ≈ U
 ```
 
-can fail terminal predecessor recovery.
+can destroy right cancellation.
 
-The next proof must therefore use the **specific fact that TCT-BR-010 is generated only by definitional identity, reassociation, equivalence closure, and compatible contextual closure**, with no insertion/deletion/collapse generator.
+Therefore the derived status depends essentially on the restricted BR-010 generation rules.
 
 ## What this Brick does not introduce
 
@@ -100,29 +131,22 @@ addition
 successor
 induction
 ordered-pair objects
+completed quotient carrier
 ```
 
-The condition is structural only.
+The result is structural only.
 
-## Possible outcomes of PDSA-TCT-004
+## Consequence for TCT-J-001
 
-```text
-DERIVED UNDER TCT-BR-010
-    Prove P ⊙ U ≈ Q ⊙ U ⇒ P ≈ Q and terminal-role preservation.
-    Update current-path epistemic classification while preserving history.
+The missing canonicality condition has now been derived under the selected current-path structural equivalence.
 
-RETAIN DECLARED CONSTRAINT
-    Show that BR-010 alone is insufficient or that proof requires an
-    additional admissibility condition.
+Accordingly `TCT-J-001` may be marked PASS/RESOLVED with the PDSA-TCT-004 proof as evidence.
 
-FAIL / REDESIGN
-    Produce a countermodel satisfying BR-010 as actually specified but
-    violating the required property; revise/branch the structural identity.
-```
+This does not by itself construct `TCT-BLOCK-003`; that Block remains a separate next construction step.
 
 ## Sensitivity
 
-A change to this Brick or to the definition of `≈` requires rechecking:
+A change to this Brick's premises or to the definition of `≈` requires rechecking:
 
 ```text
 TCT-J-001
@@ -132,20 +156,20 @@ TCT-BLOCK-005
 TCT-BLOCK-006
 ```
 
-## Legacy origin
+## Provenance
 
-Discovered during:
+Historical discovery:
 
 `LAB/10_CONSTRUCTION/experiments/TCT-J-001-VERIFICATION-001.md`
 
-and originally recorded inside:
+Historical negative derivability audit:
 
-`LAB/BUILDING/reverse/TCT-J-001_CANONICAL_DECOMPOSITION_JUNCTION.md`
+`LAB/10_CONSTRUCTION/experiments/TCT-BR-009-DERIVABILITY-001.md`
 
-## PDSA provenance
+Current-path derivation:
 
 ```text
-PDSA-TCT-001  synchronized operational vs epistemic status
-PDSA-TCT-003  supplied explicit ≈ and reopened derivability as a precise theorem question
-PDSA-TCT-004  next verification cycle
+PDSA-TCT-003
+PDSA-TCT-004
+LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
 ```
