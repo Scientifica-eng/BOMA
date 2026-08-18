@@ -1,15 +1,13 @@
 # N-CORE DAG — Canonical Topology for the R-B Stage-One Route
 
 **Document ID:** `BOMA-N-DAG-001`  
-**Version:** `1.0`  
+**Version:** `1.1`  
 **Status:** **ACTIVE — CANONICAL N-CORE TOPOLOGY**  
-**PDSA origin:** `PDSA-N-008`
+**PDSA origins:** `PDSA-N-008`, `PDSA-N-009`
 
 ## Purpose
 
-This document replaces the misleading reading of `N-RB-CAND-001` as one monolithic construction. The candidate and unified Lean payload remain experimental/formal evidence; the canonical architecture is the DAG below.
-
-## Topology
+The R-B candidate and unified Lean payload are producer/evidence artifacts. The canonical architecture is the DAG below.
 
 ```text
 N-DP-001 selects R-B
@@ -17,65 +15,67 @@ N-DP-001 selects R-B
         ▼
 N-BLOCK-001  Formal Unary Kernel
         │
-        ├──────────────► N-BLOCK-002  Internal No-Confusion
-        │
-        ├──────────────► N-BLOCK-003  Induction / Generatedness
-        │
-        ├──────────────► N-BLOCK-004  Recursion / Pointwise Initiality
-        │
-        └──────────────► N-BLOCK-005  TCT Realization Bridge
+        ├────────► N-BLOCK-002  Internal No-Confusion
+        ├────────► N-BLOCK-003  Induction / Generatedness
+        ├────────► N-BLOCK-004  Recursion / Pointwise Initiality
+        └────────► N-BLOCK-005  TCT Realization Bridge
                                ▲
                                │
                     TCT-BLOCK-002..005
 
-N-BLOCK-005 + TCT-BLOCK-005
+TCT-BLOCK-005 + N-BLOCK-005
         │
         ▼
 N-BR-018  Constructional No-Confusion Transfer
         │
-        ├──────────────────────────────┐
-        │                              │
-N-BLOCK-002                            │
-Internal route                         │
-        │                              │
-        └────────► N-J-001 ◄───────────┘
-                  No-Confusion
-                  Dual-Route Convergence
+N-BLOCK-002 ──────┐
+                  ├──► N-J-001
+N-BR-018 ─────────┘    CONDITIONAL PASS
+                       written V4 / V5 pending
 
-N-BLOCK-004
-        │
-        ▼
-N-BLOCK-006  Pointwise Standardness
+N-BLOCK-004 ─────► N-BLOCK-006  Pointwise Standardness
 
 N-BLOCK-002 ─┐
 N-BLOCK-003 ─┤
 N-BLOCK-004 ─┤
 N-BLOCK-005 ─┼──► N-J-002 — N-Core Integration Gate
-N-BLOCK-006 ─┤
+N-BLOCK-006 ─┤             RESERVED / BLOCKED
 N-J-001     ─┘
                     │
                     ▼
-          NAC-15 closure decision
+             NAC-15 decision
                     │
-             only if all PASS
+              if ACCEPT only
                     ▼
              BOMA N-Core ACCEPTED
 ```
 
-## Interpretation
+## Topology interpretation
 
-The four branches after `N-BLOCK-001` are not a Decision Point: they are parallel required contributions. `N-J-001` is a deliberate cross-route reconvergence experiment. It asks whether the same formal no-confusion contribution is obtained both internally from the inductive regime and constructionally through the faithful TCT ancestry route.
+The four branches after `N-BLOCK-001` are parallel required contributions, not a Decision Point.
 
-`N-J-002` is the integration gate. It must not PASS merely because a unified Lean file contains all definitions.
+`N-J-001` is the first deliberate reconvergence experiment. Route A derives no-confusion internally from the inductive formal regime. Route B transfers the pre-formalized constructional invariant through the TCT bridge and coverage/reconstruction. Written comparison shows both produce the same formal interface while retaining different assumptions and provenance.
+
+## Current convergence result
+
+```text
+N-J-001
+interface match:            PASS
+route independence:         PASS
+written V4 cross-path:      PASS
+V5 relevant premises:       PENDING
+operational result:         CONDITIONAL PASS
+```
 
 ## Canonical rule
 
 ```text
 backend file structure ≠ construction topology
+same downstream contribution ≠ same construction history
 ```
 
-Every N-Core theorem must cite the Brick/Block that owns the contribution and the evidence that verifies it.
+Every theorem must cite its owning Brick/Block and verification evidence.
 
-## Current status
+## Aggregate provenance
 
-The DAG is canonical. Most mathematical/formal units have written candidate evidence inherited from PDSA-N-004..006, but V5 verification remains pending. `N-J-001` and `N-J-002` are not resolved.
+`TCT-BLOCK-006` is retained as the earlier monolithic aggregate view. `N-RB-CAND-001` and `NCoreRB001.lean` remain producer/evidence artifacts and must not bypass this graph.
