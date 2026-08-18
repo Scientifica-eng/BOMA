@@ -1,7 +1,7 @@
 # R Shared Q Density Gateway V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `3a8f0c61b68dec527a03c23a5ac9cfdcb20d125b`  
-**Workflow run ID:** `32179578123`  
+**Verified commit:** `32a65691ba1198daffbca183d7c0aa3a2b3a0aba`  
+**Workflow run ID:** `32179743684`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
