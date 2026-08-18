@@ -59,4 +59,35 @@ theorem principalCut_reflects {q r : QBOMA}
     have hmR : (principalCut r).lower m := (h m).1 hmQ
     exact False.elim ((qlt_asymm hrm) hmR)
 
+/-- Inclusion relation restricted to principal rational cuts. -/
+def PrincipalLE (q r : QBOMA) : Prop :=
+  ∀ a : QBOMA, (principalCut q).lower a → (principalCut r).lower a
+
+/-- Principal-cut inclusion is exactly the accepted rational non-strict order. -/
+theorem principalLE_iff_qLE (q r : QBOMA) : PrincipalLE q r ↔ qLE q r := by
+  constructor
+  · intro hInc
+    by_cases hqr : qLE q r
+    · exact hqr
+    · rcases qle_total q r with hqr' | hrq
+      · exact False.elim (hqr hqr')
+      · have hrneq : r ≠ q := by
+          intro heq
+          apply hqr
+          rw [← heq]
+          exact qle_refl q
+        have hrltq : qLT r q := ⟨hrq, hrneq⟩
+        rcases rational_order_dense hrltq with ⟨m, hrm, hmq⟩
+        have hmQ : (principalCut q).lower m := hmq
+        have hmR : (principalCut r).lower m := hInc m hmQ
+        exact False.elim ((qlt_asymm hrm) hmR)
+  · intro hqr a haq
+    refine ⟨qle_trans haq.1 hqr, ?_⟩
+    intro har
+    have hqa : qLE q a := by
+      rw [har]
+      exact hqr
+    have hqaEq : q = a := qle_antisymm hqa haq.1
+    exact haq.2 hqaEq.symm
+
 end BOMA.R.DedekindProbe001
