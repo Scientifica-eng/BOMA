@@ -7,7 +7,7 @@ open BOMA.NArithmetic.Addition001
 open BOMA.Q.Quotient001
 open BOMA.Q.Embedding001
 open BOMA.Q.Order001
-open BOMA.Q.AdditiveOrder001
+open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.DedekindProbe001
 open BOMA.R.QArchimedeanScaling001
