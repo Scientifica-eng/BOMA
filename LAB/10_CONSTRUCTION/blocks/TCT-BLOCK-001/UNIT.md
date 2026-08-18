@@ -55,7 +55,7 @@ No independent bare object-level equality relation is introduced by this Block.
 
 ### Empty behavior
 
-The empty behavior of `ε` is a **declared definitional construction convention**:
+The empty behavior of `ε` is a declared definitional construction convention:
 
 ```text
 ε ⊙ A ≡ A
@@ -70,7 +70,7 @@ This is not classified as a theorem derived from prior structure.
 
 Different parenthesized presentations are not definitionally identical merely by syntax.
 
-The current path treats reassociation through the explicit structural-equivalence specification:
+The current path treats reassociation through:
 
 `TCT-BR-010 — Reassociation-Generated Structural Equivalence`.
 
@@ -82,15 +82,15 @@ Thus:
 
 when the displayed compositions are admissible.
 
-On the current path this reassociation is a **declared structural-identity criterion**, not a claim of strict equality and not a theorem derived from an independent geometric semantics.
+On the current path this reassociation is a declared structural-identity criterion, not a claim of strict equality and not a theorem derived from an independent geometric semantics.
 
 ## Verification status
 
-ACTIVE as a construction Block.
+ACTIVE as the root construction Block.
 
-The kernel choices and constructional operation are explicit. Structural equivalence is now specified separately by `TCT-BR-010`.
+The kernel choices and constructional operation are explicit. Structural equivalence is specified separately by `TCT-BR-010`.
 
-Consequences such as terminal preservation, cancellation, and canonical decomposition remain verification targets and are not supplied by this Block.
+This Block itself does not supply terminal preservation, cancellation, decomposition, structural iteration, or successor-like properties. Those claims have since been independently derived/constructed downstream in their own units and PDSA cycles.
 
 ## Epistemic status
 
@@ -98,15 +98,27 @@ Consequences such as terminal preservation, cancellation, and canonical decompos
 - `⊙`: DEFINED CONSTRUCTIONALLY
 - empty behavior: DECLARED / DEFINITIONAL
 - reassociation as structurally irrelevant: DECLARED CHOICE via `TCT-BR-010`
-- terminal cancellation/preservation: NOT DERIVED HERE
-- Natural-number notions: NOT INTRODUCED
+- downstream terminal/decomposition/iteration/extension results: NOT DERIVED BY THIS BLOCK; see downstream units
+- natural-number notions: NOT INTRODUCED
+
+## Current downstream state
+
+```text
+TCT-BLOCK-002  ACTIVE
+TCT-BR-010     ACTIVE
+TCT-BR-009     ACTIVE / DERIVED
+TCT-J-001      PASS / RESOLVED
+TCT-BLOCK-003  ACTIVE
+TCT-BLOCK-004  ACTIVE
+TCT-BLOCK-005  ACTIVE
+```
 
 ## Sensitivity
 
 - Changing `U`: retest formation and all descendants.
 - Changing `ε`: retest identity-dependent constructions.
 - Changing `⊙`: high-impact retest of the downstream graph.
-- Changing the relation between `≡` and `≈`: retest `TCT-BR-010`, `TCT-BR-009`, and `TCT-J-001`.
+- Changing the relation between `≡` and `≈`: retest `TCT-BR-010`, `TCT-BR-009`, `TCT-J-001`, and affected descendants.
 
 ## Legacy source
 
@@ -119,3 +131,5 @@ Historical bare `=` notation in that source is interpreted through the later equ
 ## Acceptance condition
 
 The Block is canonical only while its explicit construction can be reviewed independently and without hidden numerical premises, and while its identity conventions remain explicitly separated from downstream structural theorems.
+
+Verification/downstream wording synchronized during `PDSA-TCT-008`.
