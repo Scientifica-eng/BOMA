@@ -23,8 +23,6 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
                  │ ACTIVE           │
                  └────────┬─────────┘
                           │
-                       COMPOSES
-                          │
                           ▼
                  ┌──────────────────┐
                  │ TCT-BLOCK-002    │
@@ -66,16 +64,16 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BLOCK-004                 │
-          │ Structural Iteration / Depth  │
-          │ RESERVED — ADMISSIBLE NEXT    │
-          │ NOT YET CONSTRUCTED           │
+          │ Structural Iteration History  │
+          │ ACTIVE                        │
           └───────────────┬────────────────┘
                           │
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BLOCK-005                 │
-          │ Successor                     │
-          │ RESERVED — NOT CONSTRUCTED    │
+          │ Successor-Like Extension      │
+          │ RESERVED — ADMISSIBLE NEXT    │
+          │ NOT YET CONSTRUCTED           │
           └───────────────┬────────────────┘
                           │
                           ▼
@@ -96,15 +94,15 @@ The graph distinguishes **constructed/active units** from **resolved gates** and
 The active mathematical construction now reaches:
 
 ```text
-TCT-BLOCK-003 — Canonical Decomposition
+TCT-BLOCK-004 — Structural Iteration History
 ```
 
-The Block exports a representation-invariant decomposition guarantee but no quotient object and no global predecessor function.
+This Block does not assign numerical depth. It records canonical repeated decomposition history and the extension-tail relation.
 
 The next frontier is:
 
 ```text
-TCT-BLOCK-004 — Structural Iteration / Pre-Numerical Depth
+TCT-BLOCK-005 — Successor-Like Extension Structure
 ```
 
 which remains RESERVED / NOT CONSTRUCTED.
@@ -114,13 +112,15 @@ which remains RESERVED / NOT CONSTRUCTED.
 ```text
 TCT-BLOCK-002
       ↓
-TCT-BR-010  explicit current-path ≈
+TCT-BR-010  structural equivalence
       ↓
-TCT-BR-009  terminal preservation DERIVED
+TCT-BR-009  terminal preservation
       ↓
-TCT-J-001   PASS / RESOLVED
+TCT-J-001   canonical recovery PASS
       ↓
-TCT-BLOCK-003 ACTIVE
+TCT-BLOCK-003 canonical decomposition
+      ↓
+TCT-BLOCK-004 structural iteration history
 ```
 
 Key evidence:
@@ -128,7 +128,30 @@ Key evidence:
 ```text
 LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
 LAB/PDSA/experiments/PDSA-TCT-005-CANONICAL-DECOMPOSITION-VERIFICATION-001.md
+LAB/PDSA/experiments/PDSA-TCT-006-STRUCTURAL-HISTORY-001.md
 ```
+
+## Anti-circularity note
+
+The historical planning label “Construction Depth” is not used as the canonical role at this stage.
+
+The current Block exports:
+
+```text
+history witness
+history correspondence under ≈
+extension-tail relation
+```
+
+and does **not** export:
+
+```text
+numeric depth
+cardinality
+natural-number length
+```
+
+This is a direct architectural consequence of CAL-001 learning.
 
 ## Horizontal structure
 
@@ -143,13 +166,7 @@ CANDIDATE-A  ── ALTERNATIVE_TO ── CANDIDATE-B
 
 No alternative is deleted merely because another candidate is selected.
 
-The interface-preserving equivalence studied in PDSA-TCT-003 remains a legitimate future branch, but it is not the current canonical identity specification.
-
-## Vertical structure
-
-A higher unit depends on outputs of lower units.
-
-Target view:
+## Vertical target view
 
 ```text
 Kernel
@@ -160,16 +177,16 @@ Structural equivalence
   ↓
 Canonical decomposition
   ↓
-Structural iteration / depth
+Structural iteration history
   ↓
-Successor-like structure
+Successor-like extension
   ↓
 Formalization boundary
   ↓
 Formal natural-number domain
 ```
 
-The path is currently active through Canonical Decomposition only.
+The path is currently active through Structural Iteration History only.
 
 ## Junction rule
 
@@ -186,7 +203,7 @@ What PDSA evidence resolved the gate?
 
 ## Change propagation
 
-A change to a unit propagates only along declared dependency/sensitivity edges. It does not automatically invalidate unrelated siblings.
+A change to BR-010 or the decomposition layer propagates through the active history Block and all future descendants.
 
 Example:
 
@@ -195,9 +212,11 @@ Change TCT-BR-010
         ↓
 retest TCT-BR-009
         ↓
-reopen/retest TCT-J-001
+reopen TCT-J-001
         ↓
 retest TCT-BLOCK-003
+        ↓
+retest TCT-BLOCK-004
         ↓
 all affected descendants
 ```
@@ -210,8 +229,6 @@ TCT-J-002 → structural-iteration / formal-stage correspondence
                                                    PLANNED / NOT YET ACTIVE
 TCT-J-003 → formal realization boundary           PLANNED / NOT YET ACTIVE
 ```
-
-Only resolved Junctions may permit downstream canonical promotion.
 
 ## PDSA relation
 
