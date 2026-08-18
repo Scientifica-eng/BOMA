@@ -1,17 +1,17 @@
 # N-Core Claim-Level V5 — Automated Evidence Record
 
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `08c9ea0fb3bf2ac5cbc4a452cc4e6aac09f50552`  
-**Workflow run ID:** `32162999218`  
+**Verified commit:** `2a76a825ef6a437ab1f006b113428b725ff58dee`  
+**Workflow run ID:** `32163389036`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
-**Recorded at (UTC):** `2026-08-18T16:57:17Z`
+**Recorded at (UTC):** `2026-08-18T17:01:45Z`
 
 This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
 
 | Verification target | Outcome |
 |---|---|
 | Lean/toolchain setup | success |
-| unified producer payload | failure |
+| unified producer payload | success |
 | N-BLOCK-001 | failure |
 | N-BLOCK-002 | failure |
 | N-BLOCK-003 | failure |
