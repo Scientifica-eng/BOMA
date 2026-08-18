@@ -1,14 +1,12 @@
 # N-J-001 — No-Confusion Dual-Route Convergence
 
-- **Operational Status:** **CONDITIONAL PASS — WRITTEN V4 CROSS-PATH / V5 PENDING**
-- **Epistemic Status:** **DERIVED CROSS-PATH AGREEMENT, CONDITIONAL ON PENDING V5 PREMISES**
-- **PDSA:** `PDSA-N-009`
+- **Operational Status:** **PASS / RESOLVED**
+- **Epistemic Status:** **DERIVED CROSS-PATH AGREEMENT / V4 + V5 VERIFIED**
+- **PDSA:** `PDSA-N-009`, verification completed through `PDSA-N-007`
 
 ## Incoming Route A — internal formal route
 
 `N-BLOCK-002 — Internal No-Confusion Package`.
-
-Producer provenance:
 
 ```text
 N-BLOCK-001
@@ -22,8 +20,6 @@ N-BR-004 / N-BR-005
 
 `TCT-BLOCK-005 + N-BLOCK-005 → N-BR-018`.
 
-Producer provenance:
-
 ```text
 TCT successor-like empty exclusion / injectivity
              +
@@ -34,7 +30,7 @@ N-BR-018
 
 ## Common contribution interface
 
-Both routes establish at the written mathematical level:
+Both routes establish:
 
 ```text
 ∀n, s(n) ≠ z
@@ -43,19 +39,40 @@ s(a) = s(b) ⇒ a = b
 
 under the same declared R-B formal identity interface.
 
-## Independence result
+## Independence
 
-Route B was proved without using `N-BR-004` or `N-BR-005` as premises. It uses TCT-BLOCK-005 plus bridge preservation, reflection, and coverage/reconstruction.
+Route B is preserved as an independent production witness. Its formal verification fragment does not invoke the Route-A theorem names `s_ne_z` or `s_injective`.
 
-Therefore the routes are distinct production witnesses, not the same proof rewritten twice.
+Thus the routes are not one proof duplicated in two files.
 
-## Convergence evidence
+## Verification evidence
 
-Primary:
+### Written cross-path evidence
 
 `LAB/PDSA/experiments/PDSA-N-009-NO-CONFUSION-RECONVERGENCE-001.md`
 
-The experiment explicitly proves both Route-B clauses and compares assumption sets.
+Result: V4 cross-path PASS.
+
+### Formal V5 evidence
+
+```text
+workflow run:     32163771789
+verified commit:  5fb03a48e243697f49f1cbde30be986d73f2ff68
+pinned Lean:      leanprover/lean4:v4.32.1
+```
+
+Repository evidence:
+
+`LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md`
+
+The run passed:
+
+```text
+N-BLOCK-002 Route A
+N-BLOCK-005 bridge premises
+N-J-001 independent Route B
+N-J-001 convergence interface
+```
 
 ## Junction result
 
@@ -65,34 +82,41 @@ PROVENANCE SEPARATION        PASS
 ROUTE-B INDEPENDENCE         PASS
 ASSUMPTION COMPARISON        PASS
 WRITTEN CROSS-PATH V4        PASS
-V5 BACKEND PREMISES          PENDING
+FORMAL CLAIM-LEVEL V5        PASS
 ```
 
-Hence the current operational classification is:
+Therefore:
 
-> **CONDITIONAL PASS — written V4 cross-path convergence established; final unqualified PASS waits for V5 evidence for the relevant formal/bridge claims.**
+> **N-J-001 = PASS / RESOLVED.**
 
 ## Export
 
-The Junction exports one reusable **Formal No-Confusion Contribution** with two preserved production witnesses:
+One reusable **Formal No-Confusion Contribution** with two preserved production witnesses:
 
 ```text
 Witness A — internal inductive route
 Witness B — TCT ancestry transfer route
 ```
 
-The shared output does not erase either history.
+Reconvergence does not erase either construction history.
+
+## Scope
+
+The V5 result is relative to the selected R-B formalization and the corrected scope recorded in `N-DP-002` / `BOMA-RB-FORMAL-CORR-001`.
+
+No cross-framework necessity is inferred.
 
 ## Reopening conditions
 
 Reopen if any of the following changes materially:
 
 ```text
-R-B formal equality
+R-B formal equality or eliminator scope
+N-DP-002 universe policy
 inductive constructor regime
 TCT-BLOCK-005
 TCT-BR-010
 N-BLOCK-005 bridge
 coverage/reconstruction scope
-V5 checker rejects a premise used by either route
+future checker evidence invalidates a premise
 ```
