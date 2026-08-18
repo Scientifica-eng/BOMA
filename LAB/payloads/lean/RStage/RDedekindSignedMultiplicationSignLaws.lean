@@ -99,7 +99,7 @@ theorem rMulCandidate_of_nonneg_nonpos
   rw [rMulNonnegEnvelope_right_nonpos x hy0]
   rw [rMulNonnegEnvelope_neg_left_of_nonneg (rNeg y) h0x]
   rw [rMulNonnegEnvelope_neg_left_of_nonneg y h0x]
-  rw [rAdd_zero_left, rAdd_zero_right]
+  simp only [rAdd_zero_left, rAdd_zero_right]
 
 /-- Negative-positive quadrant. -/
 theorem rMulCandidate_of_nonpos_nonneg
