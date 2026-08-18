@@ -31,17 +31,21 @@ theorem qmk_eq_iff {x y : RawFrac} : qmk x = qmk y ↔ FracEquiv x y := by
 
 /-- Lift raw negation through the verified respect proof. -/
 def qNeg : QBOMA → QBOMA :=
-  Quotient.map rawNeg (fun _ _ h => rawNeg_respects h)
+  Quotient.lift
+    (fun a => qmk (rawNeg a))
+    (fun _ _ h => qmk_sound (rawNeg_respects h))
 
 /-- Lift raw addition through the verified binary respect proof. -/
 def qAdd : QBOMA → QBOMA → QBOMA :=
-  Quotient.map₂ rawAdd
-    (fun _ _ _ _ ha hb => rawAdd_respects ha hb)
+  Quotient.lift₂
+    (fun a b => qmk (rawAdd a b))
+    (fun _ _ _ _ ha hb => qmk_sound (rawAdd_respects ha hb))
 
 /-- Lift raw multiplication through the verified binary respect proof. -/
 def qMul : QBOMA → QBOMA → QBOMA :=
-  Quotient.map₂ rawMul
-    (fun _ _ _ _ ha hb => rawMul_respects ha hb)
+  Quotient.lift₂
+    (fun a b => qmk (rawMul a b))
+    (fun _ _ _ _ ha hb => qmk_sound (rawMul_respects ha hb))
 
 /-- Quotient zero and one. -/
 def qZero : QBOMA := qmk rawZero
