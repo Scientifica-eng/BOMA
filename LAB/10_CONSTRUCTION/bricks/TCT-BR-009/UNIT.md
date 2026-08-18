@@ -5,7 +5,7 @@
 - **Unit ID:** `TCT-BR-009`
 - **Type:** Brick
 - **Layer:** `L1 — explicit constructed structure`
-- **Status:** PENDING
+- **Status:** **DECLARED ADDITIONAL CONSTRAINT**
 
 ## Purpose
 
@@ -37,9 +37,27 @@ at the level of structural equivalence.
 
 ## Epistemic status
 
-**FORMALIZATION-DEPENDENT / PENDING**
+**DECLARED ADDITIONAL CONSTRAINT — NOT DERIVED FROM THE CURRENT SPECIFICATION OF `≈`**
 
-This condition is not yet claimed to follow from the current definition of `≈`. The present task is to determine whether it is derivable or must be declared as an additional admissibility condition.
+The completed derivability test established that terminal-interface preservation cannot be inferred from the presently specified structural-equivalence relation because the current specification does not itself require preservation of boundary/interface data.
+
+This Brick is therefore an explicit admissibility constraint for the current path. It is not a theorem of the present kernel.
+
+A future alternative or strengthened definition of `≈` may make this condition derivable. If that occurs, the change must be recorded through a new PDSA cycle and the canonical status must be updated with new evidence rather than silently rewriting this history.
+
+## Verification evidence
+
+Primary result:
+
+`LAB/10_CONSTRUCTION/experiments/TCT-BR-009-DERIVABILITY-001.md`
+
+Recorded result:
+
+```text
+TCT-BR-009 = DECLARED ADDITIONAL CONSTRAINT
+TCT-J-001   = CONDITIONAL / PENDING
+TCT-BLOCK-003 = RESERVED / NOT BUILT
+```
 
 ## What this Brick does not introduce
 
@@ -54,28 +72,36 @@ successor
 induction
 ```
 
-The condition is purely structural.
+The condition is structural only.
 
-## Verification question
+## Current research question
 
-Can terminal-interface preservation be proved from the existing structural-equivalence definition without importing numerical or set-theoretic assumptions?
+The unresolved question is no longer whether this condition follows from the **current** incomplete specification of `≈`; that derivability test has already returned a negative result.
 
-### Possible outcomes
+The next research question is:
+
+> Should the active construction adopt a stronger definition of `≈` under which terminal-interface preservation is derived, or retain a weaker `≈` together with `TCT-BR-009` as an independent declared constraint?
+
+This question is assigned to the new PDSA TCT sequence.
+
+## Possible future outcomes
 
 ```text
-DERIVED
-    The condition follows from the existing definition of ≈.
+RETAIN DECLARED CONSTRAINT
+    Keep the present status and make the dependency explicit in TCT-J-001.
 
-DECLARED CHOICE
-    The condition must be added explicitly to the admissibility of ≈.
+DERIVED UNDER REVISED ≈
+    A later explicit definition of ≈ proves terminal preservation.
+    The historical declared-constraint status remains part of provenance.
 
-REJECTED
-    The condition is incompatible with the intended representation class.
+REJECTED / REDESIGN
+    A later construction shows the constraint is incompatible with the
+    intended representation class and the path must branch or be redesigned.
 ```
 
 ## Sensitivity
 
-A change to this Brick requires rechecking:
+A change to this Brick or to the definition of `≈` requires rechecking:
 
 ```text
 TCT-J-001
@@ -94,3 +120,11 @@ Discovered during:
 and originally recorded inside:
 
 `LAB/BUILDING/reverse/TCT-J-001_CANONICAL_DECOMPOSITION_JUNCTION.md`
+
+## PDSA provenance
+
+Status synchronization performed during:
+
+`PDSA-TCT-001 — Baseline Stabilization`
+
+The synchronization changes documentary status only. It does not close `TCT-J-001` and does not promote any downstream Block.
