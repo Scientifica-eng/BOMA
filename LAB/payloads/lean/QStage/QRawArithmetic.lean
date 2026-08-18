@@ -89,7 +89,7 @@ theorem rawMul_respects {x x' y y' : RawFrac}
     _ = zmul (zmul x'.num (denZ x.den)) (zmul y'.num (denZ y.den)) :=
       congrArg (fun t => zmul (zmul x'.num (denZ x.den)) t) hy
     _ = zmul (zmul x'.num y'.num) (zmul (denZ x.den) (denZ y.den)) :=
-      (zmul4_swap_middle x'.num (denZ x.den) y'.num (denZ y.den)).symm
+      zmul4_swap_middle x'.num (denZ x.den) y'.num (denZ y.den)
 
 /-- First scaled numerator term used in addition well-definedness. -/
 theorem rawAdd_term_left {x x' y y' : RawFrac}
@@ -127,14 +127,13 @@ theorem rawAdd_term_right {x x' y y' : RawFrac}
   calc
     zmul (zmul y.num (denZ x.den))
         (zmul (denZ x'.den) (denZ y'.den)) =
-      zmul (zmul y.num (denZ y'.den))
-        (zmul (denZ x.den) (denZ x'.den)) := by
-          calc
-            zmul (zmul y.num (denZ x.den))
-                (zmul (denZ x'.den) (denZ y'.den)) =
-              zmul (zmul y.num (denZ y'.den))
-                (zmul (denZ x.den) (denZ x'.den)) :=
-              zmul4_swap_middle y.num (denZ x.den) (denZ y'.den) (denZ x'.den)
+      zmul (zmul y.num (denZ x.den))
+        (zmul (denZ y'.den) (denZ x'.den)) :=
+      congrArg (fun t => zmul (zmul y.num (denZ x.den)) t)
+        (zmul_comm (denZ x'.den) (denZ y'.den))
+    _ = zmul (zmul y.num (denZ y'.den))
+        (zmul (denZ x.den) (denZ x'.den)) :=
+      zmul4_swap_middle y.num (denZ x.den) (denZ y'.den) (denZ x'.den)
     _ = zmul (zmul y'.num (denZ y.den))
         (zmul (denZ x.den) (denZ x'.den)) :=
       congrArg (fun t => zmul t (zmul (denZ x.den) (denZ x'.den))) hy
@@ -178,9 +177,23 @@ theorem rawAdd_respects {x x' y y' : RawFrac}
     _ = zadd
         (zmul (zmul x'.num (denZ y'.den))
           (zmul (denZ x.den) (denZ y.den)))
+        (zmul (zmul y.num (denZ x.den))
+          (zmul (denZ x'.den) (denZ y'.den))) :=
+      congrArg
+        (fun t => zadd t
+          (zmul (zmul y.num (denZ x.den))
+            (zmul (denZ x'.den) (denZ y'.den))))
+        (rawAdd_term_left hx)
+    _ = zadd
+        (zmul (zmul x'.num (denZ y'.den))
+          (zmul (denZ x.den) (denZ y.den)))
         (zmul (zmul y'.num (denZ x'.den))
           (zmul (denZ x.den) (denZ y.den))) :=
-      congrArg₂ zadd (rawAdd_term_left hx) (rawAdd_term_right hy)
+      congrArg
+        (fun t => zadd
+          (zmul (zmul x'.num (denZ y'.den))
+            (zmul (denZ x.den) (denZ y.den))) t)
+        (rawAdd_term_right hy)
     _ = zmul
         (zadd (zmul x'.num (denZ y'.den)) (zmul y'.num (denZ x'.den)))
         (zmul (denZ x.den) (denZ y.den)) :=
