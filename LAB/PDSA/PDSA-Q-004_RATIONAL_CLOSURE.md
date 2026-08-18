@@ -108,7 +108,9 @@ BOMA Stage-One Rational Domain = ACCEPTED
 
 Canonical downstream export:
 
-`Q-BLOCK-001 — Accepted Stage-One Rational Interface`
+`Q-BLOCK-002 — Accepted Stage-One Rational Interface`
+
+`Q-BLOCK-001` is preserved with its original narrower meaning: verified quotient carrier / identity / lifted-operations interface. It is not silently repurposed by this closure cycle.
 
 ## Construction Graph effect
 
@@ -121,13 +123,15 @@ Q-F-BLOCK-001
    ↓
 Q-DP-001
    ↓
-QBOMA field/order construction
+Q-BLOCK-001   quotient carrier / identity layer
+   ↓
+field + order + embedding + generation packages
    ↓
 Q-J-002 PASS
    ↓
 QA-23 ACCEPT
    ↓
-Q-BLOCK-001
+Q-BLOCK-002   accepted downstream Q interface
 ```
 
 ## Learning Graph effect
@@ -143,6 +147,7 @@ quotient order can avoid proposition-extensionality transport
 order/field compatibility benefits from a difference-nonnegativity bridge
 CI trigger topology is part of auditable dependency topology
 failed proof-engineering attempts remain Study evidence, not mathematical failures
+existing unit identities must not be silently repurposed during closure
 ```
 
 ## Next-cycle permission
