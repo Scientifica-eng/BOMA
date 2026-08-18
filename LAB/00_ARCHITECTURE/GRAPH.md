@@ -28,9 +28,11 @@ PDSA-TCT-008   Calibration PASS
 BOMA-N-ACCEPT-001
       ↓
 N-DP-001       selects R-B
+      ↓
+N-DP-002       declares eliminator/universe scope
 ```
 
-## Canonical N-Core DAG
+## Accepted N-Core DAG
 
 ```text
                          N-BLOCK-001
@@ -49,40 +51,53 @@ TCT-BLOCK-005 + N-BLOCK-005
           N-BR-018
  Constructional No-Confusion
              │
-N-BLOCK-002 ─┴──────► N-J-001
-                      CONDITIONAL PASS
-                      written V4 / V5 pending
+N-BLOCK-002 ─┴──────► N-J-001  PASS / V4+V5
 
-N-BLOCK-004 ───────► N-BLOCK-006
-                     Pointwise Standardness
+N-BLOCK-004 ───────► N-BLOCK-006  Pointwise Standardness
 
 N-BLOCK-002 ─┐
 N-BLOCK-003 ─┤
 N-BLOCK-004 ─┤
-N-BLOCK-005 ─┼──► N-J-002 — Integration Gate — BLOCKED
+N-BLOCK-005 ─┼──► N-J-002  PASS / RESOLVED
 N-BLOCK-006 ─┤
 N-J-001     ─┘
-                       ↓ if PASS
-                 NAC-15 decision
-                       ↓ if ACCEPT
-                BOMA N-Core ACCEPTED
+                       │
+                       ▼
+                 NAC-15 ACCEPT
+                       │
+                       ▼
+                N-BLOCK-007
+          Accepted Natural-Number Core
+                       │
+                       ▼
+               N-Arithmetic — NEXT
+```
+
+## Verification
+
+```text
+claim-level V5 run: 32163771789
+Lean:               4.32.1
+N-BLOCK-001..006:   mapped formal claims PASS
+N-J-001:            PASS
+N-J-002:            PASS
+NAC-15:             ACCEPT
 ```
 
 ## Critical interpretation
 
-The four branches after `N-BLOCK-001` are parallel required contributions, not a Decision Point. `N-J-001` is the first deliberate split/reconvergence verification: two different production histories yield the same no-confusion interface.
+The accepted N-Core was not a linear construction. The branches after `N-BLOCK-001` are parallel contributions. `N-J-001` preserves two independent production witnesses for no-confusion. `N-J-002` integrates the whole package only after V5 and preservation/commitment audits.
 
-`TCT-BLOCK-006` is retained only as the earlier aggregate view and must not be used to bypass this DAG.
+`TCT-BLOCK-006` remains provenance only; `N-BLOCK-007` is the canonical downstream N-Core interface.
 
 ## Current frontier
 
-The architecture and first written reconvergence are established. The blocking work is:
-
 ```text
-PDSA-N-007 pinned-toolchain V5 evidence
-unit-level evidence mapping
-N-J-002 integration audit
-NAC-15 closure decision
+BOMA Stage-One R-B N-Core: ACCEPTED
+addition:                      NOT YET CONSTRUCTED
+multiplication:                NOT YET CONSTRUCTED
+order:                         NOT YET CONSTRUCTED
+integers:                      NOT YET REACHED
 ```
 
-`ℕ` is not yet accepted.
+The next work is a separate auditable N-Arithmetic DAG; acceptance of the carrier must not silently create arithmetic operations.
