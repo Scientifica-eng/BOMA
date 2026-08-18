@@ -20,9 +20,8 @@ theorem raw_equiv_zero_iff_num_zero (x : RawFrac) :
     rw [zmul_one_right, zmul_zero_left] at h
     exact h
   · intro h
-    rw [h]
-    change zmul zzero zone = zmul zzero (denZ x.den)
-    rw [zmul_zero_left, zmul_zero_left]
+    change zmul x.num zone = zmul zzero (denZ x.den)
+    rw [h, zmul_zero_left, zmul_zero_left]
 
 /-- Reciprocal raw witness for a positive signed numerator `+(n+1)`. -/
 def rawRecipPos (d : PosDen) (n : BOMANat) : RawFrac :=
@@ -103,10 +102,11 @@ theorem q_inverse_unique {q r s : QBOMA}
     _ = qMul qOne s := congrArg (fun t => qMul t s) hr
     _ = s := qMul_one_left s
 
-/-- QA-09 constructive interface: each nonzero rational has a unique inverse
-witness, without choosing a global inverse function. -/
+/-- QA-09 constructive interface: each nonzero rational has one inverse witness,
+and every inverse witness is equal to it. This avoids `∃!` notation and any
+Choice-based global selector. -/
 theorem q_inverse_exists_unique (q : QBOMA) (hq : q ≠ qZero) :
-    ∃! r : QBOMA, QInvRel q r := by
+    ∃ r : QBOMA, QInvRel q r ∧ ∀ s : QBOMA, QInvRel q s → s = r := by
   rcases q_inverse_exists q hq with ⟨r, hr⟩
   refine ⟨r, hr, ?_⟩
   intro s hs
