@@ -13,7 +13,7 @@ TCT-BLOCK-001 → TCT-BLOCK-002 → TCT-BR-010 → TCT-BR-009
        → TCT-BLOCK-005 → PDSA-TCT-008 calibration PASS
 ```
 
-## Natural-number formalization
+## Accepted natural-number path
 
 ```text
 BOMA-N-ACCEPT-001
@@ -29,61 +29,144 @@ N-J-002 PASS
 NAC-15 ACCEPT
    ↓
 N-BLOCK-007 Accepted N-Core
+   ↓
+addition split/reconvergence
+   ↓
+multiplication split/reconvergence
+   ↓
+order split/reconvergence
+   ↓
+N-ARITH-J-001 PASS
+   ↓
+NAA-18 ACCEPT
+   ↓
+N-ARITH-BLOCK-001 Accepted N-Arithmetic
 ```
 
-## Natural-number arithmetic
+## Accepted integer path
 
 ```text
-N-BLOCK-007
-   │
-   ├─ addR ─┐
-   └─ addL ─┴─► N-ADD-J-001 PASS ─► canonical addition PASS
-                                                   │
-                                   ┌───────────────┴───────────────┐
-                                   ▼                               ▼
-                                mulR                             mulL
-                                   └───────────────┬───────────────┘
-                                                   ▼
-                                           N-MUL-J-001 PASS
-                                                   ▼
-                                           canonical multiplication PASS
-
-N-BLOCK-007 ─────────────────────────► structural inductive order ─┐
-canonical addition ─────────────────► additive-witness order ─────┤
-                                                                  ▼
-                                                           N-ORD-J-001 PASS
-                                                                  ▼
-                                                           canonical order PASS
-                                                                  ▼
-                                                   arithmetic/order compatibility PASS
-                                                                  ▼
-                                                           N-ARITH-J-001 PASS
-                                                                  ▼
-                                                             NAA-18 ACCEPT
-                                                                  ▼
-                                                        N-ARITH-BLOCK-001
+N-ARITH-BLOCK-001
+      │
+      ├────────► Z-S-BLOCK-001  signed normal forms ──────┐
+      │                                                    │
+      └────────► Z-D-BLOCK-001  difference pairs + ~ ─────┤
+                                                           ▼
+                                                    Z-J-001 PASS
+                                                           │
+                                                           ▼
+                                                    Z-DP-001
+                                              signed export selected
+                                              pair route retained
+                                                           │
+                                                           ▼
+                                                    Z-BLOCK-001
+                                                           │
+                        ┌──────────────────────────────────┴─────────────────────────────┐
+                        ▼                                                                ▼
+              direct signed arithmetic                                      pair-mediated arithmetic
+                        └──────────────────────────────────┬─────────────────────────────┘
+                                                           ▼
+                                                    Z-ARITH-J-001 PASS
+                                                           ▼
+                                             commutative-ring package PASS
+                                                           │
+                        ┌──────────────────────────────────┴─────────────────────────────┐
+                        ▼                                                                ▼
+                direct signed order                                           pair cross-sum order
+                        └──────────────────────────────────┬─────────────────────────────┘
+                                                           ▼
+                                                     Z-ORD-J-001 PASS
+                                                           ▼
+                                               ordered-ring package PASS
+                                                           ▼
+                                                     Z-J-002 PASS
+                                                           ▼
+                                                     ZA-21 ACCEPT
+                                                           ▼
+                                                    Z-BLOCK-002
+                                              Accepted Stage-One Z
 ```
 
-## Verified arithmetic evidence
+## Mandatory post-Z reverse engineering
 
 ```text
-N-Core         32163771789
-Addition       32164861155
-Multiplication 32165318266
-Order          32165691581
-Lean           4.32.1
+Z-BLOCK-002 Accepted Z
+      │
+      ├────────► Z-RE-BLOCK-001
+      │          N_Cone(Z) = {x | 0 ≤ x}
+      │
+      └────────► Z-RE-BLOCK-002
+                 ReachZ generated by 0 and +1
+                     │
+                     └──► ReachZ → nonnegative    [Z-only]
+
+reverse candidates independently V5 PASS
+      │
+      ▼
+freeze/reintroduce bottom-up N only as comparison reference
+      │
+      ▼
+encode/decode + preservation of 0,S,+,*,≤
+      │
+      ▼
+Z-RE-J-001 PASS
+INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
+```
+
+Key interpretation:
+
+```text
+Z-only recovery:
+  nonnegative cone
+  zero / one / successor
+  + / * / order closure
+  ReachZ
+  ReachZ → nonnegative
+  Prop-valued ReachZ induction
+
+representation/comparison-assisted:
+  exact cone ↔ BOMANat decoder
+  nonnegative → ReachZ in current proof
+  successor no-confusion / injectivity in current proof
+  Type-valued recursion transport
+
+not recovered from extensional Z:
+  pre-numerical TCT provenance
+  N formalization Decision Point history
+  original recursion/initiality derivation provenance
+  PDSA learning graph
+```
+
+## Verification evidence
+
+```text
+N-Core                         32163771789
+N addition                     32164861155
+N multiplication               32165318266
+N order                        32165691581
+Z representation               32168105466
+Z arithmetic convergence       32169328837
+Z ring laws                    32169564747
+Z order convergence            32169832933
+Z ordered-ring laws            32170144944
+Z→N reverse core               32170817620
+Z→N bottom-up comparison       32171528363
+Lean                           4.32.1
 ```
 
 ## Current frontier
 
 ```text
-Pre-numerical layer         CALIBRATED
-BOMA N-Core                 ACCEPTED
-BOMA N-Arithmetic           ACCEPTED
-Integers                    NOT YET CONSTRUCTED
-Rationals                   NOT REACHED
-Reals                       NOT REACHED
-Complex numbers             NOT REACHED
+Pre-numerical layer                 CALIBRATED
+BOMA N-Core                         ACCEPTED
+BOMA N-Arithmetic                   ACCEPTED
+BOMA Z                              ACCEPTED
+post-Z reverse N experiment         CLOSED
+  result                            INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
+Rationals                           NEXT / NOT YET CONSTRUCTED
+Reals                               NOT REACHED
+Complex numbers                     NOT REACHED
 ```
 
-The next work is the integer acceptance/architecture stage. No integer representation is canonical yet.
+The next work is a representation-neutral rational acceptance specification followed by an explicit construction/equivalence architecture. No rational representation is canonical yet.
