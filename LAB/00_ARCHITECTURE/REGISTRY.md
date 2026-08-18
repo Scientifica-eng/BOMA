@@ -32,8 +32,8 @@ Operational status and epistemic status must not be collapsed into one field.
 | TCT-BR-010 | Brick | L1 | Reassociation-generated structural equivalence `≈` | ACTIVE | DECLARED CHOICE — STRUCTURAL IDENTITY SPECIFICATION | `LAB/10_CONSTRUCTION/bricks/TCT-BR-010/UNIT.md` |
 | TCT-BR-009 | Brick | L1 | Terminal interface preservation | ACTIVE | DERIVED UNDER TCT-BR-010; historically declared additional constraint | `LAB/10_CONSTRUCTION/bricks/TCT-BR-009/UNIT.md` |
 | TCT-J-001 | Junction | L1 | Canonicality gate | PASS / RESOLVED | DERIVED / VERIFIED UNDER TCT-BR-010 | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
-| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
-| TCT-BLOCK-004 | Block | L1 | Construction depth | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
+| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | ACTIVE | MIXED — constructed decomposition judgment + derived canonicality guarantee | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-003/UNIT.md` |
+| TCT-BLOCK-004 | Block | L1 | Structural iteration / construction depth | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-005 | Block | L1 | Successor | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
 
@@ -69,57 +69,36 @@ TCT-BR-008  Recovery candidate
 
 These are registry candidates only until individual unit records are created and verified.
 
-### TCT-BR-010 — active structural identity specification
+## Active identity and decomposition layer
 
-`TCT-BR-010` is the explicit definition of structural equivalence selected by `PDSA-TCT-003` for the current canonical path.
+### TCT-BR-010
 
-Its defining content is intentionally narrow:
+Defines the current structural equivalence through meta-finitely witnessable SE-1 through SE-4 derivations.
 
-```text
-≡ is included in ≈
-reassociation is a declared structural-equivalence generator
-equivalence closure is admitted
-compatible contextual closure is admitted
-```
+### TCT-BR-009
 
-It contains no generator for insertion, deletion, idempotent collapse, contraction, or commutativity and contains no numerical criterion.
+Terminal predecessor/role preservation is now DERIVED under BR-010 on the current selected normal-form path.
 
-The relation is read proof-theoretically through explicit meta-finite derivation witnesses; no completed quotient carrier is required.
+### TCT-J-001
 
-### TCT-BR-009 — current path result
+Canonical recovery gate is PASS / RESOLVED with PDSA-TCT-004 proof evidence.
 
-`TCT-BR-009` was first discovered as an additional requirement when `≈` was incomplete.
+### TCT-BLOCK-003
 
-Historical status:
+Canonical decomposition is now an ACTIVE Block.
 
-```text
-DECLARED CHOICE — ADDITIONAL CONSTRAINT
-```
+Its downstream certified contribution is:
 
-After `TCT-BR-010` was defined, `PDSA-TCT-004` proved terminal predecessor and terminal-role preservation using an ordered trace invariant.
+> for any explicitly supplied non-empty selected normal-form presentation, terminal predecessor recovery exists; equivalent presentations under BR-010 recover equivalent predecessor presentations with corresponding terminal U roles.
 
-Current-path status:
-
-```text
-Operational Status = ACTIVE
-Epistemic Status   = DERIVED UNDER TCT-BR-010
-```
-
-This reclassification preserves the historical state as provenance rather than rewriting it.
-
-### TCT-J-001 — resolved gate
+The Block does **not** construct a global predecessor function or quotient domain.
 
 Verification evidence:
 
-`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
-
-Result:
-
 ```text
-TCT-J-001 = PASS / RESOLVED
+LAB/PDSA/experiments/PDSA-TCT-005-CANONICAL-DECOMPOSITION-VERIFICATION-001.md
+LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
 ```
-
-The proof is scoped to the current selected normal-form grammar and exact BR-010 relation.
 
 ## Registry rules
 
@@ -137,6 +116,8 @@ The proof is scoped to the current selected normal-form grammar and exact BR-010
 12. An explicit structural-equivalence specification must be versioned/replaced through traceable unit history rather than silently broadened.
 13. A historical epistemic classification remains part of provenance even if later clarified premises permit a stronger derivation.
 14. Passing a Junction permits downstream work; it does not itself construct the downstream Block.
+15. “Canonical modulo ≈” does not imply that a quotient object has been constructed.
+16. A reusable certified contribution must not be conflated with the construction unit/document that produced it.
 
 ## Current position
 
@@ -144,29 +125,33 @@ The proof is scoped to the current selected normal-form grammar and exact BR-010
 TCT-BLOCK-001  ACTIVE          | kernel
 TCT-BLOCK-002  ACTIVE          | selected normal-form construction
 TCT-BR-010     ACTIVE          | DECLARED structural identity specification ≈
-TCT-BR-009     ACTIVE          | DERIVED under BR-010
-TCT-J-001      PASS / RESOLVED | canonical recovery gate closed
-TCT-BLOCK-003  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
+TCT-BR-009     ACTIVE          | DERIVED terminal preservation
+TCT-J-001      PASS / RESOLVED | canonical recovery gate
+TCT-BLOCK-003  ACTIVE          | canonical decomposition guarantee
+TCT-BLOCK-004  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
 ```
 
 ## Next construction target
 
-The gate for canonical decomposition is now resolved.
-
 The project may begin:
 
 ```text
-PDSA-TCT-005 — Canonical Decomposition Block
+PDSA-TCT-006 — Structural Iteration / Pre-Numerical Depth
 ```
 
-The next cycle must explicitly construct `TCT-BLOCK-003`; it may reuse the verified recovery theorem but must not treat the Block as already existing.
+The cycle must inherit CAL-001 and must **not** begin by defining a natural-number-valued depth.
+
+The required first question is:
+
+> What structural invariant of repeated canonical decomposition can be constructed before any numerical interpretation is introduced?
 
 ## Current PDSA status
 
 ```text
 PDSA-TCT-001  CLOSED — baseline stabilization
 PDSA-TCT-002  CLOSED — pre-numerical metatheory contract
-PDSA-TCT-003  CLOSED — structural equivalence selected as TCT-BR-010
-PDSA-TCT-004  CLOSING — terminal recovery proved, J-001 resolved
-PDSA-TCT-005  NEXT — canonical decomposition construction
+PDSA-TCT-003  CLOSED — structural equivalence / BR-010
+PDSA-TCT-004  CLOSED — terminal recovery theorem / J-001 PASS
+PDSA-TCT-005  CLOSING — canonical decomposition Block constructed and verified
+PDSA-TCT-006  NEXT — structural iteration / pre-numerical depth
 ```
