@@ -1,7 +1,7 @@
 # INTEGER ACCEPTANCE SPECIFICATION
 
 **Document ID:** `BOMA-Z-ACCEPT-001`  
-**Version:** `1.0`  
+**Version:** `1.1`  
 **Status:** **ACTIVE — TARGET SPECIFICATION**  
 **Depends on:** `N-ARITH-BLOCK-001 — Accepted Natural-Number Arithmetic Interface`
 
@@ -227,6 +227,76 @@ Only after ZA-01..20 pass may the project classify the BOMA Stage-One integer do
 
 ---
 
+# Mandatory post-acceptance reverse-engineering experiment
+
+This is **not** a precondition for ZA-21. It begins only after the Stage-One integer domain has been accepted.
+
+## POST-Z-RE-01 — Reverse reconstruction of N from accepted Z
+
+Immediately after ZA-21 acceptance, open a new PDSA experiment whose source is the accepted integer package and whose target is a natural-number-like substructure reconstructed from Z without simply importing the already accepted `N_BOMA` as the answer.
+
+The reverse route must make explicit which Z features it consumes, for example:
+
+```text
+zero
+one
+integer addition/multiplication
+integer order
+nonnegative cone / positive-successor structure
+natural embedding, if used only as comparison evidence rather than the definition
+```
+
+The experiment must distinguish at least:
+
+```text
+reverse-derived structure from Z
+reference comparison map to accepted N_BOMA
+features genuinely recoverable from Z
+features recoverable only after extra choices/commitments
+features of the original bottom-up construction that are lost or compressed in Z
+```
+
+## POST-Z-RE-02 — Reconvergence comparison with the bottom-up path
+
+After a reverse candidate `N_from_Z` has been built, compare it against the established bottom-up construction:
+
+```text
+pre-numerical TCT
+   → accepted N-Core
+   → accepted N-Arithmetic
+   → accepted Z
+```
+
+versus:
+
+```text
+accepted Z
+   → reverse-engineered N_from_Z
+```
+
+The comparison must not stop at carrier isomorphism. It must compare:
+
+```text
+carrier/identity interface
+zero/successor recovery
+induction/generatedness status
+recursion/initiality status
+addition/multiplication/order
+natural embedding behavior
+dependency graph
+formal commitments
+logical strength actually consumed
+construction provenance
+information lost or gained by passing through Z
+reusable certified contributions
+```
+
+A dedicated Junction must record whether the two routes reconverge on the same accepted natural-number interface and where their construction histories remain irreducibly different.
+
+The reverse experiment may produce PASS, CONDITIONAL PASS, branch divergence, or a negative result. No outcome is to be forced by the prior existence of `N_BOMA`.
+
+---
+
 # Initial research topology
 
 ```text
@@ -249,6 +319,16 @@ N-ARITH-BLOCK-001
                             │
                             ▼
                       Z integration gate
+                            │
+                            ▼
+                       ZA-21 ACCEPT
+                            │
+                            ▼
+                  POST-Z reverse experiment
+                   accepted Z → N_from_Z
+                            │
+                            ▼
+             compare/reconverge with bottom-up N
 ```
 
 The initial fork is a parallel research/construction fork, not yet a Decision Point selecting one representation over the other.
