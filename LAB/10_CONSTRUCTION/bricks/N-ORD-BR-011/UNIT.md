@@ -1,4 +1,3 @@
 # N-ORD-BR-011 — Addition Monotonicity
-- **Status:** RESERVED
-
-Left/right monotonicity of canonical addition with respect to canonical order.
+- **Status:** ACTIVE / V4+V5 PASS
+Left/right monotonicity of accepted addition.

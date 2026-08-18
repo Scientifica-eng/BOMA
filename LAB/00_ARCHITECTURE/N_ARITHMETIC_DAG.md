@@ -1,41 +1,36 @@
 # N-ARITHMETIC DAG — Stage-One Arithmetic
 
 **Document ID:** `BOMA-N-ARITH-DAG-001`  
-**Version:** `0.5`  
-**Status:** ACTIVE — ADDITION PASS / MULTIPLICATION PASS / ORDER IN PROGRESS
+**Version:** `0.6`  
+**Status:** ACTIVE — ADDITION / MULTIPLICATION / ORDER PASS — INTEGRATION NEXT
 
 ```text
 N-BLOCK-007 Accepted N-Core
-   ├─ dual addition routes → N-ADD-J-001 PASS → N-ADD-BLOCK-003 PASS
-   │                                            │
+   ├─ dual addition routes ──► N-ADD-J-001 PASS ──► N-ADD-BLOCK-003 PASS
+   │                                                  │
    │                              dual multiplication routes
-   │                                            ▼
-   │                                       N-MUL-J-001 PASS
-   │                                            ▼
-   │                                       N-MUL-BLOCK-003 PASS
+   │                                                  ▼
+   │                                             N-MUL-J-001 PASS
+   │                                                  ▼
+   │                                             N-MUL-BLOCK-003 PASS
    │
-   ├──────────────────────────────► N-ORD-BLOCK-002
-   │                                Inductive Structural Order
+   ├──────────────────────────────► N-ORD-BLOCK-002 Structural Order PASS
    │
-N-ADD-BLOCK-003 ─────────────────► N-ORD-BLOCK-001
-                                    Additive-Witness Order
-                                        \       /
-                                         \     /
-                                          ▼   ▼
-                                      N-ORD-J-001
-                                          │
-                                          ▼
-                                      N-ORD-BLOCK-003
-                                    Canonical Order + Laws
-                                          │
-                              N-MUL-BLOCK-003
-                                          │
-                                          ▼
-                                      N-ORD-BLOCK-004
-                                  Arithmetic Compatibility
-                                          │
-                                          ▼
-                               N-Arithmetic Integration Gate
+N-ADD-BLOCK-003 ─────────────────► N-ORD-BLOCK-001 Additive Order PASS
+                                        \         /
+                                         ▼       ▼
+                                      N-ORD-J-001 PASS
+                                           │
+                                           ▼
+                                      N-ORD-BLOCK-003 PASS
+                                           │
+                             N-MUL-BLOCK-003
+                                           │
+                                           ▼
+                                      N-ORD-BLOCK-004 PASS
+                                           │
+                                           ▼
+                                N-Arithmetic Integration Gate — NEXT
 ```
 
-The order experiment intentionally compares branches with materially different dependency sets.
+Three controlled reconvergence experiments now pass: addition, multiplication, and order. The order experiment preserves a branch whose dependencies stop at N-Core.

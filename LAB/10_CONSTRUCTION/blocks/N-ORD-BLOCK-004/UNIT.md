@@ -1,4 +1,4 @@
 # N-ORD-BLOCK-004 — Arithmetic / Order Compatibility
-- **Status:** RESERVED
-- **Planned members:** N-ORD-BR-011, N-ORD-BR-012
-- **Depends on:** canonical order, addition, multiplication
+- **Status:** ACTIVE — V4/V5 PASS
+- **Members:** N-ORD-BR-011, N-ORD-BR-012
+Exports addition and multiplication monotonicity.
