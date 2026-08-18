@@ -47,8 +47,7 @@ theorem rMulCandidate_comm (x y : RBOMA) :
     rMulCandidate rZero x = rZero := by
   unfold rMulCandidate
   rw [BOMA.R.DedekindSignedMulCandidate001.rNeg_zero]
-  rw [rMulNonnegEnvelope_zero_left, rMulNonnegEnvelope_zero_left,
-      rMulNonnegEnvelope_zero_left, rMulNonnegEnvelope_zero_left]
+  rw [rMulNonnegEnvelope_zero_left]
   rw [rAdd_zero_left, rAdd_zero_left,
       BOMA.R.DedekindSignedMulCandidate001.rNeg_zero, rAdd_zero_left]
 
@@ -91,6 +90,7 @@ theorem rMulNonnegEnvelope_rOfQ_nonpos_left
 /-- The nonnegative kernel sees the formal real -1 as zero on its left input. -/
 theorem rMulNonnegEnvelope_negOne_left (x : RBOMA) :
     rMulNonnegEnvelope (rNeg rOne) x = rZero := by
+  change rMulNonnegEnvelope (rNeg (rOfQ qOne)) x = rZero
   rw [rOfQ_neg qOne]
   apply rMulNonnegEnvelope_rOfQ_nonpos_left
   exact qneg_nonpos_of_nonneg qzero_le_one
