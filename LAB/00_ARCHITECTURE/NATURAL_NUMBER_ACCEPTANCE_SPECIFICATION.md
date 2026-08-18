@@ -1,164 +1,111 @@
 # NATURAL-NUMBER ACCEPTANCE SPECIFICATION
 
 **Document ID:** `BOMA-N-ACCEPT-001`  
-**Version:** `0.1-draft`  
+**Version:** `1.0`  
 **Date:** 2026-08-18  
-**Status:** DRAFT — under `PDSA-N-001`  
-**Scope:** acceptance conditions for the first formal natural-number core; arithmetic extensions are outside this core specification.
+**Status:** **ACTIVE — Stage-One N-Core acceptance specification**  
+**PDSA origin:** `PDSA-N-001`  
+**Scope:** acceptance conditions for a formal natural-number core. Addition, multiplication, order, and later arithmetic belong to a separate N-Arithmetic package.
 
 ---
 
 ## 1. Purpose
 
-This document defines what a future formal realization must establish before BOMA may classify it as an accepted realization of the natural-number core.
+This specification defines what a future formal realization must establish before BOMA may classify it as an accepted **natural-number core (N-Core)**.
 
-It is deliberately written **before** constructing the formal carrier.
+It is defined before the formal carrier is constructed.
 
-The specification separates:
-
-```text
-N-CORE
-formal natural-number carrier and its constitutive/characterizing structure
-
-N-ARITHMETIC PACKAGE
-addition, multiplication, order, and later arithmetic constructions
-```
-
-Passing N-CORE does not by itself complete all arithmetic work over natural numbers.
-
----
-
-## 2. Governing principle
-
-The current TCT path has constructed a calibrated pre-numerical core through:
+The current TCT path supplies a calibrated pre-numerical constructional core:
 
 ```text
 ε
 U
 ⊙
-selected generated presentations
+Generated Selected Configurations
 structural equivalence ≈
 canonical decomposition
 structural iteration history
 successor-like extension
 ```
 
-A formal natural-number realization must **realize this constructional ancestry** rather than silently replace it with an unrelated familiar model of natural numbers.
-
-At the same time, the TCT layer has intentionally not constructed a completed global carrier, global equality, induction, or recursion principle.
-
-Those are formalization-boundary obligations and must be visible as such.
+A formal N-Core must realize this ancestry rather than silently replace it with a familiar but unrelated model of natural numbers.
 
 ---
 
-# PART I — REQUIRED DECLARATIONS
+# 2. Required formal declarations
 
 ## NAC-01 — Formal realization regime
 
-A candidate must declare the formal regime in which it exists.
-
-The declaration must state at least:
+The candidate must declare:
 
 ```text
 ambient logic / proof discipline
 carrier ontology (set, type, object, algebra, etc.)
-identity/equality notion on the carrier
+carrier equality/identity
 meaning of function/morphism
-meaning of subobject/predicate used for induction/generatedness
-available existence/completion principles
+meaning of predicate/subobject used for generatedness/induction
+existence/completion principles used
 ```
 
-### Classification
+**Epistemic class:** `FORMALIZATION-DEPENDENT / DECLARED`.
 
-```text
-FORMALIZATION-DEPENDENT / DECLARED
-```
-
-No framework may be treated as invisible background.
-
----
+No framework may remain invisible background.
 
 ## NAC-02 — Formal carrier
 
-The candidate must provide a formally specified carrier, written schematically as:
+The candidate must provide a formally specified global carrier, schematically:
 
 ```text
 N
 ```
 
-appropriate to the declared realization regime.
+with its existence and globality justified in the declared regime.
 
-The carrier is a **new global/formal commitment** relative to the pre-numerical TCT layer.
-
-The specification must state what it means for an object to belong to / be an element or point of `N` in the selected regime.
-
-### Classification
-
-```text
-FORMALIZATION-DEPENDENT / NEW COMMITMENT
-```
-
----
+This is a **new formal commitment** relative to TCT.
 
 ## NAC-03 — Carrier identity
 
-The candidate must provide the equality/identity relation appropriate to `N` and state its relation to any representation equality used by the realization.
-
-The project must not silently identify:
+The candidate must define formal identity/equality on `N` and explicitly relate it, where relevant, to:
 
 ```text
-TCT selected-presentation identity ≡
+TCT presentation identity ≡
 TCT structural equivalence ≈
-formal carrier equality
+formal representation equality
 ```
 
-A realization theorem must explicitly connect them where required.
+These notions must not be silently conflated.
 
 ---
 
-# PART II — DISTINGUISHED STRUCTURE
+# 3. Distinguished natural-number structure
 
 ## NAC-04 — Initial element
 
-The candidate must provide a distinguished element/object:
+Provide a distinguished formal element/object:
 
 ```text
 0_N
 ```
 
-serving as the formal realization of the TCT empty/base role `ε`.
+realizing the TCT base/empty role `ε`.
 
-This does not claim that the glyph `0` existed in the pre-numerical layer.
+## NAC-05 — Global successor
 
----
-
-## NAC-05 — Successor operation
-
-The candidate must provide an object-level total operation/morphism:
+Provide a regime-appropriate total operation/morphism:
 
 ```text
 S_N : N → N
 ```
 
-or the regime-appropriate equivalent.
-
-This is stronger than the pre-numerical selected-presentation schema `ExtU`; global totality belongs to the formal realization layer.
+This is stronger than the TCT selected-presentation schema `ExtU`; global totality belongs to the formal layer.
 
 ---
 
-# PART III — TCT REALIZATION BRIDGE
+# 4. TCT realization bridge
 
 ## NAC-06 — Local realization correspondence
 
-For every explicitly supplied selected TCT presentation `A`, the realization must provide a corresponding formal element/object of `N`, written schematically:
-
-```text
-ρ(A) ∈ N
-```
-
-This notation may be implemented as a function only if the selected formal regime legitimately provides the required source/target objects. Otherwise it is a realization schema/correspondence.
-
-Required compatibility:
+For each explicitly supplied selected TCT presentation `A`, provide a formal realization value/correspondent, schematically `ρ(A)`, with:
 
 ```text
 ρ(ε) = 0_N
@@ -166,63 +113,67 @@ Required compatibility:
 A ≈ B  ⇒  ρ(A) = ρ(B)
 ```
 
-where `=` denotes the declared formal carrier identity.
+where `=` is formal carrier identity.
 
-The realization must state whether the converse reflection condition is available:
+If the selected regime does not yet possess a legitimate object that can serve as the source of a global function `ρ`, the bridge must remain an explicit **realization schema/correspondence** until that source object is constructed.
+
+### Faithfulness target
+
+For the current Stage-One canonical route, the bridge must also establish identity reflection or an explicitly justified equivalent faithfulness condition:
 
 ```text
 ρ(A) = ρ(B)  ⇒  A ≈ B.
 ```
 
-For the current canonical Stage-One route, identity reflection is a target requirement unless a formally justified alternative notion of faithful realization is adopted and explicitly recorded.
+This prevents formalization from collapsing distinctions that the calibrated TCT path preserves.
 
----
+## NAC-07 — No-confusion adequacy
 
-## NAC-07 — No-collapse / no-confusion adequacy
-
-At minimum the formal structure must validate the counterparts of the verified TCT successor-like results:
+The formal candidate must validate at least:
 
 ```text
 S_N(x) = S_N(y)  ⇒  x = y
 0_N is not in the image of S_N
 ```
 
-The proof may be inherited through a faithful TCT realization or established independently in the selected formal regime; provenance must state which.
-
-No-confusion properties must not be declared primitive if they were actually derived from other accepted commitments.
+The record must state whether these are inherited through the realization bridge, derived internally, or added as formal commitments.
 
 ---
 
-# PART IV — GLOBAL GENERATEDNESS
+# 5. Global generatedness
 
-## NAC-08 — Generatedness / absence of additional elements
+## NAC-08 — Generatedness / no additional elements
 
-The formal carrier must be exhausted by the initial role and repeated successor generation in the sense appropriate to the selected regime.
+The carrier must be exhausted by the structure generated from `0_N` under `S_N`, in a precise form appropriate to the declared regime.
 
-The specification must provide a precise regime-specific theorem/principle expressing that `N` contains no elements unrelated to the construction generated from `0_N` by `S_N`.
-
-Acceptable forms may include, when formally justified:
+Acceptable routes may include, when justified:
 
 ```text
 least S_N-closed subobject containing 0_N
-an induction principle implying generatedness
-an initial/universal characterization implying no extra elements
-an equivalent regime-specific generatedness theorem
+induction strong enough to establish generatedness
+initial/universal characterization
+another explicitly proved regime-specific equivalent
 ```
 
-The project must record which formulation is primitive, which is derived, and what logic it requires.
+The project must state what is primitive and what is derived.
 
-A mere assertion that “every element is reached after finitely many steps” is not acceptable unless the meaning of that statement is independently defined without circular dependence on the natural numbers being constructed.
+The phrase:
+
+```text
+“every element is reached after finitely many steps”
+```
+
+is not an acceptable primitive explanation unless its meaning has been independently formalized without circular dependence on the candidate natural numbers.
+
+Generatedness is a genuinely global obligation; local successor properties do not replace it.
 
 ---
 
-# PART V — INDUCTION AND RECURSION ADEQUACY
+# 6. Induction and recursion adequacy
 
 ## NAC-09 — Induction adequacy
 
-The accepted natural-number core must support an induction principle adequate to the selected formal regime.
-
-Schematic form:
+The accepted N-Core must support a regime-appropriate induction principle, schematically:
 
 ```text
 P(0_N)
@@ -231,44 +182,55 @@ P(0_N)
 ∀x ∈ N, P(x)
 ```
 
-The actual class of admissible predicates/properties and the logical meaning of the quantifiers must be declared by the realization regime.
+The admissible predicates/subobjects and logical interpretation must be declared.
 
-The specification does not assume that induction must be introduced as a primitive axiom. It may be derived from a universal/generatedness characterization, but the derivation must be explicit.
-
----
+Induction need not be primitive if it is derived from the selected universal/generatedness characterization; provenance must make that derivation explicit.
 
 ## NAC-10 — Recursion / universal mapping adequacy
 
-The accepted core must support the expected recursion behavior of natural numbers in the selected regime.
+The accepted N-Core must support the expected recursion behavior in the selected regime.
 
 Schematic target:
 
-for an admissible target `X`, base datum `x₀`, and step operation `f`, there is an appropriate unique map/morphism `h` satisfying:
+for admissible `X`, base datum `x₀`, and step operation `f`, provide an appropriate unique map/morphism `h` with:
 
 ```text
 h(0_N) = x₀
 h(S_N(n)) = f(h(n)).
 ```
 
-The exact scope of targets and morphisms is regime-dependent.
+The exact class of targets and morphisms is regime-dependent.
 
-A Peano/set-theoretic realization may prove a recursion theorem; an initial-algebra or NNO-style realization may supply the property universally. BOMA records these as different production routes rather than silently identifying them.
+Different realization styles may produce this guarantee differently:
+
+```text
+set-theoretic / Peano-style route → recursion theorem
+initial-algebra route             → initiality/universal mapping
+NNO route                         → category-relative NNO universal property
+```
+
+These production routes must remain distinct in provenance even when their exported guarantees correspond.
 
 ---
 
-# PART VI — CHARACTERIZATION / IDENTIFICATION
+# 7. Characterization and identification
 
 ## NAC-11 — Adequacy characterization
 
-The candidate must prove that its formal package satisfies an accepted characterization of the natural-number core in the selected regime.
+The candidate must prove an explicit natural-number characterization strong enough, in the selected regime, to exclude:
 
-The characterization must be stated explicitly and must be strong enough to exclude structures with extra unrelated elements, collapsed successor behavior, or cyclic successor behavior.
+```text
+extra unrelated carrier elements
+collapsed successor structure
+cyclic successor behavior
+initial element occurring as a successor
+```
 
----
+Resemblance to ordinary natural numbers is not evidence.
 
 ## NAC-12 — Uniqueness / comparison certificate
 
-Within the selected formal regime, the project must establish the appropriate uniqueness statement for accepted realizations, typically uniqueness up to a structure-preserving isomorphism/equivalence appropriate to that regime.
+For the Stage-One canonical N-Core, the selected regime must provide an appropriate uniqueness/standardness certificate, normally uniqueness up to a structure-preserving isomorphism/equivalence in that regime.
 
 The certificate must preserve at least:
 
@@ -278,17 +240,21 @@ S_N
 carrier identity/equivalence
 ```
 
-and any additional structure included in the chosen core characterization.
+### Stress-test clarification
 
-BOMA does not assume without proof that uniqueness results transfer unchanged across different foundational regimes.
+A first-order Peano-style axiom system considered only under ordinary first-order model theory is **not by itself** sufficient for NAC-12, because non-isomorphic nonstandard models may satisfy the same first-order theory.
+
+Any Peano-style realization must state the logical/semantic strength and the actual standardness/uniqueness result it uses.
+
+Cross-framework uniqueness is not assumed automatically.
 
 ---
 
-# PART VII — RELATION TO THE PRE-NUMERICAL TCT CORE
+# 8. Preservation and commitment accounting
 
-## NAC-13 — Preservation certificate
+## NAC-13 — TCT preservation certificate
 
-The formalization record must classify every relevant TCT contribution as one of:
+The formalization must classify each relevant TCT contribution as:
 
 ```text
 PRESERVED DIRECTLY
@@ -298,55 +264,46 @@ STRENGTHENED BY NEW FORMAL COMMITMENT
 NOT USED
 ```
 
-At minimum the record must account for:
+At minimum account for:
 
 ```text
 ε base role
 ExtU successor-like extension
 BR-010 structural equivalence
-canonical predecessor/decomposition
+canonical decomposition
 structural iteration history
-injectivity / empty exclusion / acyclicity results
+injectivity / empty exclusion / explicit-chain acyclicity
 ```
-
-This prevents formalization from erasing the constructional provenance.
-
----
 
 ## NAC-14 — New-commitment ledger
 
-Every property not inherited from the pre-numerical core must be listed explicitly.
-
-Expected new-commitment candidates include:
+Every new formalization commitment must be listed explicitly, including as applicable:
 
 ```text
 global carrier
-formal carrier equality
-global total successor operation
-formal generatedness/completion
+formal equality
+global successor function
+generatedness/completion principle
 induction scope
-recursion/universal mapping scope
-ambient formal logic
-existence principles required by the realization
+recursion/universal-property scope
+ambient logic
+existence principles
+quotient/type/set/object formation principles
 ```
 
-Nothing becomes “obvious” merely because it is standard in a familiar foundation.
+Standardness in a familiar foundation does not make a commitment invisible.
 
 ---
 
-# PART VIII — N-CORE VERSUS ARITHMETIC PACKAGE
+# 9. N-Core versus arithmetic
 
-## NAC-15 — N-Core completion
+## NAC-15 — N-Core closure
 
-A formal candidate may be classified as an accepted **N-Core** only after NAC-01 through NAC-14 have been discharged or explicitly mapped to a justified equivalent obligation.
-
-N-Core acceptance does not yet assert that addition, multiplication, or order have been constructed.
-
----
+A candidate may be classified as an accepted N-Core only after NAC-01 through NAC-14 are discharged or explicitly mapped to justified equivalent obligations.
 
 ## NAC-16 — N-Arithmetic package
 
-After N-Core acceptance, later PDSA cycles should construct and verify, rather than assume:
+After N-Core acceptance, later PDSA cycles must separately construct/verify:
 
 ```text
 addition
@@ -355,30 +312,71 @@ order
 interaction laws
 ```
 
-preferably through the accepted recursion/universal structure and with provenance back to the constructional composition/history where scientifically meaningful.
+preferably using the accepted recursion/universal structure and preserving constructional provenance where scientifically meaningful.
 
-Stage-One natural-number work is not complete until the required arithmetic package is separately accepted, but arithmetic is not allowed to contaminate the criterion for whether the underlying formal natural-number core exists.
+Arithmetic must not be assumed merely to make the N-Core look familiar.
 
 ---
 
-# PART IX — ACCEPTANCE MATRIX
+# 10. Stress-test results embedded in the specification
 
-A candidate N-Core must provide evidence for:
+The acceptance specification was tested against several candidate families.
+
+## Rejected by the specification
+
+```text
+current pre-numerical TCT core by itself
+    lacks formal carrier/globality/induction/recursion
+
+cyclic successor structures
+    fail required adequacy/no-confusion characterization
+
+ℤ with successor x ↦ x+1 and distinguished 0
+    fails because 0 is in successor image and forward generatedness fails
+
+natural-number-like chain plus extra disconnected elements
+    fails NAC-08 generatedness
+
+collapsing/fixed-point successor structures
+    fail NAC-07 / faithful TCT bridge
+
+first-order Peano axioms alone as a complete certificate
+    fail NAC-12 unless supplemented by an appropriate standardness/uniqueness result
+```
+
+## Potentially admissible when fully discharged
+
+```text
+set-theoretic standard natural-number realization
+initial algebra for the unary natural-number signature
+Natural Numbers Object in a declared suitable category
+other explicitly justified realization regimes
+```
+
+## Free-monoid clarification
+
+A free monoid on one generator is a strong realization/comparison model for much of the finite constructional core, but its **monoid universal property alone** does not automatically discharge the full N-Core recursion/induction/standardness obligations.
+
+Additional theorems or structure are required before it can count as a complete N-Core certificate.
+
+---
+
+# 11. Acceptance matrix
 
 | ID | Obligation | Required | Typical epistemic class |
 |---|---|---:|---|
 | NAC-01 | Formal regime declaration | YES | DECLARED / FORMALIZATION-DEPENDENT |
-| NAC-02 | Formal carrier | YES | NEW COMMITMENT |
+| NAC-02 | Formal carrier/globality | YES | NEW COMMITMENT |
 | NAC-03 | Carrier identity | YES | DECLARED / FORMALIZATION-DEPENDENT |
 | NAC-04 | Initial element | YES | REALIZATION / CONSTRUCTION |
-| NAC-05 | Global successor operation | YES | REALIZATION / CONSTRUCTION |
-| NAC-06 | TCT realization correspondence | YES | VERIFIED BRIDGE |
+| NAC-05 | Global successor | YES | REALIZATION / CONSTRUCTION |
+| NAC-06 | Faithful TCT bridge | YES | VERIFIED BRIDGE |
 | NAC-07 | No-confusion adequacy | YES | DERIVED / VERIFIED |
-| NAC-08 | Generatedness | YES | DERIVED OR DECLARED FORMAL COMPLETION, explicit provenance |
-| NAC-09 | Induction adequacy | YES | DERIVED OR REGIME PRINCIPLE, explicit provenance |
-| NAC-10 | Recursion/universal mapping adequacy | YES | DERIVED / UNIVERSAL PROPERTY |
+| NAC-08 | Generatedness | YES | EXPLICIT FORMAL OBLIGATION |
+| NAC-09 | Induction adequacy | YES | DERIVED OR REGIME PRINCIPLE |
+| NAC-10 | Recursion/universal adequacy | YES | DERIVED / UNIVERSAL PROPERTY |
 | NAC-11 | Natural-number characterization | YES | VERIFIED |
-| NAC-12 | Uniqueness/comparison certificate | YES | VERIFIED within regime |
+| NAC-12 | Uniqueness/standardness certificate | YES | VERIFIED WITHIN REGIME |
 | NAC-13 | TCT preservation certificate | YES | VERIFIED |
 | NAC-14 | New-commitment ledger | YES | AUDIT |
 | NAC-15 | N-Core closure decision | YES | GOVERNANCE |
@@ -386,28 +384,25 @@ A candidate N-Core must provide evidence for:
 
 ---
 
-# PART X — FAILURE CONDITIONS
+# 12. Failure rule
 
-A candidate must not be accepted as N-Core if any of the following remains unaddressed:
+A candidate must remain unaccepted while any required NAC obligation is unresolved or while its evidence depends on a hidden formalization commitment.
+
+In particular:
 
 ```text
-formal carrier not explicit
-carrier equality hidden
-TCT bridge absent
-successor collapses distinct predecessor roles
-initial element appears as a successor
-additional carrier elements are not excluded/generatedness is unresolved
-induction adequacy is absent
-recursion/universal behavior is absent
-realization regime is implicit
-identification is based only on resemblance to familiar ℕ
-formalization erases which commitments were newly introduced
+successor-like resemblance ≠ N-Core
+local generation schema ≠ global carrier generatedness
+induction label ≠ scoped induction theorem
+recursion label ≠ verified universal mapping behavior
+axiom list ≠ uniqueness certificate
+formal carrier ≠ faithful realization of TCT ancestry
 ```
 
 ---
 
-# PART XI — STATUS
+# 13. Next architectural action
 
-This version is a draft produced in the DO phase of `PDSA-N-001`.
+This specification does **not** select a realization regime.
 
-It must be stress-tested against multiple realization styles and deliberately defective candidate structures before it may become authoritative.
+The next PDSA cycle must open an explicit formal-realization Decision Point comparing candidate regimes against NAC-01 through NAC-14 before `TCT-BLOCK-006` is constructed.
