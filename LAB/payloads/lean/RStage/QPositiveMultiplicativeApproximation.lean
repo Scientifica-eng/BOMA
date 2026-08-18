@@ -59,7 +59,7 @@ theorem qlt_zero_of_nonneg_lt {u v : QBOMA}
   have hu0 : qLE u qZero := by
     rw [h0v]
     exact huv.1
-  have hueq0 : u = qZero := qle_antisymm h0u hu0
+  have hueq0 : u = qZero := qle_antisymm hu0 h0u
   apply huv.2
   calc
     u = qZero := hueq0
@@ -142,13 +142,12 @@ theorem qlt_mul_recompose_left {x a b ainv : QBOMA}
   rw [hleft] at ht
   exact ht
 
-/-- Inner-product approximation for positive rational factors.
-If x is nonnegative and x < q*r with q,r positive, then there are positive
-strictly interior witnesses a<q and b<r whose product still lies strictly above x. -/
+/-- Inner-product approximation below positive r.
+If x is nonnegative and x < q*r while r is positive, then positivity of q is
+forced by the inequality itself; no separate q>0 assumption is required. -/
 theorem q_positive_product_inner_approx
     {x q r : QBOMA}
     (hx : qLE qZero x)
-    (hq : qLT qZero q)
     (hr : qLT qZero r)
     (hprod : qLT x (qMul q r)) :
     ∃ a b : QBOMA,
