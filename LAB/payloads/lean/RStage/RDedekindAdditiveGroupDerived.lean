@@ -1,6 +1,7 @@
 /- Reusable identities derived from the certified additive group on RBOMA. -/
 namespace BOMA.R.DedekindAdditiveDerived001
 
+open BOMA.R.DedekindQuotient001
 open BOMA.R.DedekindAddition001
 open BOMA.R.DedekindAdditionLaws001
 open BOMA.R.DedekindNegationCandidate001
