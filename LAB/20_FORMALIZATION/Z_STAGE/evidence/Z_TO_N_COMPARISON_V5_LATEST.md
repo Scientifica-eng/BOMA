@@ -1,7 +1,7 @@
 # Z-to-N Reverse / Bottom-Up Comparison V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `72b420bc290423f58291cb2ab9ada455453c46f5`  
-**Workflow run ID:** `32171046927`  
+**Verified commit:** `287228f2ffaedcd5d9c7934cec752d4c4fcff7db`  
+**Workflow run ID:** `32171206179`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
