@@ -1,10 +1,10 @@
 # R Signed Multiplication Candidate V5 Evidence
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `79d4076c2dc6d430bc513f369934718625465737`  
-**Workflow run ID:** `32188226892`  
+**Status:** PASS  
+**Verified commit:** `90689429343d474d7201bd9eb11bf77171a5d908`  
+**Workflow run ID:** `32189753112`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
-| sign-case-free rMulCandidate + rational multiplication preservation across all signs | failure |
+| sign-case-free rMulCandidate + rational multiplication preservation across all signs | success |
