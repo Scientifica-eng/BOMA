@@ -3,6 +3,7 @@ namespace BOMA.R.DedekindOrderAdditive001
 
 open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindQuotient001
+open BOMA.R.DedekindOrderConstructive001
 open BOMA.R.DedekindAddition001
 open BOMA.R.DedekindAdditionLaws001
 
