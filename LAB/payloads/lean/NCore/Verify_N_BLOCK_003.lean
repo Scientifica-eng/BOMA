@@ -1,17 +1,17 @@
 /-
-V5 ownership wrapper for N-BLOCK-003 — Induction / Generatedness.
-Generated is a backend verification predicate only; it is not a new canonical
-object-layer definition of number or numerical depth.
--/
+V5 verification fragment for N-BLOCK-003 — Induction / Generatedness.
 
-import «LAB».payloads.lean.NCore.NCoreRB001
+Generated is a backend verification predicate only; it is not a new canonical
+object-layer definition of number or numerical depth. The workflow concatenates
+this fragment after NCoreRB001.lean.
+-/
 
 namespace BOMA.NCore.V5.NBLOCK003
 
 open BOMA.NCore.RB001
 open BOMA.NCore.RB001.BOMANat
 
-/-- N-BR-006 — induction adequacy in the selected R-B motive scope. -/
+/-- N-BR-006 — proposition-valued induction adequacy. -/
 example (P : BOMANat → Prop)
     (hz : P z)
     (hs : ∀ n, P n → P (s n)) :
