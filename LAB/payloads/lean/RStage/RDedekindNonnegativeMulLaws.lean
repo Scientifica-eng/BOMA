@@ -79,6 +79,68 @@ theorem qlt_zero_or_nonneg (q : QBOMA) :
     exact qle_refl qZero
   · exact Or.inr hpos.1
 
+/-- Multiplying the principal one cut by an arbitrary input returns the
+positive envelope of that input. This is the correct unit law for the
+nonnegative kernel before the signed decomposition is reassembled. -/
+theorem cutMulNonnegEnvelope_one_left (A : LowerCut) :
+    CutEquiv
+      (cutMulNonnegEnvelope (principalCut qOne) A)
+      (cutPosPart A) := by
+  intro q
+  constructor
+  · intro hq
+    rcases hq with hqNeg | hqProd
+    · exact Or.inr hqNeg
+    · rcases hqProd with ⟨a, b, ha, hb, h0a, h0b, hqab⟩
+      have ha1 : qLT a qOne := by
+        rcases ha with ha1 | ha0
+        · exact ha1
+        · exact qlt_trans ha0 qzero_lt_one
+      have hab_b : qLT (qMul a b) b := by
+        have ht := qmul_lt_right_positive ha1 h0b
+        rw [qMul_one_left] at ht
+        exact ht
+      have hqb : qLT q b := qlt_trans hqab hab_b
+      exact (cutPosPart A).downward hb hqb.1
+  · intro hq
+    rcases qlt_zero_or_nonneg q with hqNeg | h0q
+    · exact Or.inl hqNeg
+    · rcases (cutPosPart A).rounded hq with ⟨b, hb, hqb⟩
+      have h0b : qLT qZero b := qlt_zero_of_nonneg_lt h0q hqb
+      have hq1b : qLT q (qMul qOne b) := by
+        rw [qMul_one_left]
+        exact hqb
+      rcases q_positive_product_inner_approx h0q h0b hq1b with
+        ⟨a, b', h0a, ha1, h0b', hb'b, hqab'⟩
+      have ha : (cutPosPart (principalCut qOne)).lower a :=
+        Or.inl ha1
+      have hb' : (cutPosPart A).lower b' :=
+        (cutPosPart A).downward hb hb'b.1
+      exact Or.inr ⟨a, b', ha, hb', h0a, h0b', hqab'⟩
+
+/-- Right one law for the nonnegative kernel. -/
+theorem cutMulNonnegEnvelope_one_right (A : LowerCut) :
+    CutEquiv
+      (cutMulNonnegEnvelope A (principalCut qOne))
+      (cutPosPart A) :=
+  cutEquiv_trans
+    (cutMulNonnegEnvelope_comm A (principalCut qOne))
+    (cutMulNonnegEnvelope_one_left A)
+
+theorem rMulNonnegEnvelope_one_left (x : RBOMA) :
+    rMulNonnegEnvelope rOne x = rPosPart x := by
+  refine Quotient.inductionOn x ?_
+  intro A
+  change
+    rmk (cutMulNonnegEnvelope (principalCut qOne) A) =
+    rmk (cutPosPart A)
+  exact rmk_sound (cutMulNonnegEnvelope_one_left A)
+
+theorem rMulNonnegEnvelope_one_right (x : RBOMA) :
+    rMulNonnegEnvelope x rOne = rPosPart x := by
+  rw [rMulNonnegEnvelope_comm]
+  exact rMulNonnegEnvelope_one_left x
+
 /-- Associativity of the nonnegative-envelope kernel.
 The strict witness semantics requires a fresh interior witness when reassociating;
 that witness is supplied by the previously certified Q multiplicative-approximation interface. -/
