@@ -33,8 +33,8 @@ Operational status and epistemic status must not be collapsed into one field.
 | TCT-BR-009 | Brick | L1 | Terminal interface preservation | ACTIVE | DERIVED UNDER TCT-BR-010; historically declared additional constraint | `LAB/10_CONSTRUCTION/bricks/TCT-BR-009/UNIT.md` |
 | TCT-J-001 | Junction | L1 | Canonicality gate | PASS / RESOLVED | DERIVED / VERIFIED UNDER TCT-BR-010 | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
 | TCT-BLOCK-003 | Block | L1 | Canonical decomposition | ACTIVE | MIXED — constructed decomposition judgment + derived canonicality guarantee | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-003/UNIT.md` |
-| TCT-BLOCK-004 | Block | L1 | Structural iteration / construction depth | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
-| TCT-BLOCK-005 | Block | L1 | Successor | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
+| TCT-BLOCK-004 | Block | L1 | Structural Iteration History | ACTIVE | DERIVED STRUCTURAL VIEW / VERIFIED INVARIANT | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-004/UNIT.md` |
+| TCT-BLOCK-005 | Block | L1 | Successor-like extension structure | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
 
 ## Legacy correspondence
@@ -69,7 +69,7 @@ TCT-BR-008  Recovery candidate
 
 These are registry candidates only until individual unit records are created and verified.
 
-## Active identity and decomposition layer
+## Active identity, decomposition, and iteration layer
 
 ### TCT-BR-010
 
@@ -77,7 +77,7 @@ Defines the current structural equivalence through meta-finitely witnessable SE-
 
 ### TCT-BR-009
 
-Terminal predecessor/role preservation is now DERIVED under BR-010 on the current selected normal-form path.
+Terminal predecessor/role preservation is DERIVED under BR-010 on the current selected normal-form path.
 
 ### TCT-J-001
 
@@ -85,20 +85,27 @@ Canonical recovery gate is PASS / RESOLVED with PDSA-TCT-004 proof evidence.
 
 ### TCT-BLOCK-003
 
-Canonical decomposition is now an ACTIVE Block.
+Exports the Canonical Decomposition Guarantee without constructing a global predecessor function or quotient domain.
 
-Its downstream certified contribution is:
+### TCT-BLOCK-004
 
-> for any explicitly supplied non-empty selected normal-form presentation, terminal predecessor recovery exists; equivalent presentations under BR-010 recover equivalent predecessor presentations with corresponding terminal U roles.
+Exports the Structural Iteration History Guarantee:
 
-The Block does **not** construct a global predecessor function or quotient domain.
+> every explicitly supplied selected normal-form presentation has a canonical meta-finite decomposition-history witness; equivalent selected presentations have corresponding histories; and extension by terminal `U` prefixes the predecessor history by the canonical recovery record.
+
+This is **not** a numerical depth function.
+
+The earlier planning label “Construction Depth” is superseded on the canonical path by:
+
+```text
+Structural Iteration History
+```
+
+in direct response to CAL-001 learning.
 
 Verification evidence:
 
-```text
-LAB/PDSA/experiments/PDSA-TCT-005-CANONICAL-DECOMPOSITION-VERIFICATION-001.md
-LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
-```
+`LAB/PDSA/experiments/PDSA-TCT-006-STRUCTURAL-HISTORY-001.md`
 
 ## Registry rules
 
@@ -118,6 +125,7 @@ LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md
 14. Passing a Junction permits downstream work; it does not itself construct the downstream Block.
 15. “Canonical modulo ≈” does not imply that a quotient object has been constructed.
 16. A reusable certified contribution must not be conflated with the construction unit/document that produced it.
+17. A structural history/invariant must not be labeled as a numerical depth before a numerical interpretation has been explicitly constructed.
 
 ## Current position
 
@@ -128,7 +136,8 @@ TCT-BR-010     ACTIVE          | DECLARED structural identity specification ≈
 TCT-BR-009     ACTIVE          | DERIVED terminal preservation
 TCT-J-001      PASS / RESOLVED | canonical recovery gate
 TCT-BLOCK-003  ACTIVE          | canonical decomposition guarantee
-TCT-BLOCK-004  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
+TCT-BLOCK-004  ACTIVE          | structural iteration history
+TCT-BLOCK-005  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
 ```
 
 ## Next construction target
@@ -136,14 +145,14 @@ TCT-BLOCK-004  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
 The project may begin:
 
 ```text
-PDSA-TCT-006 — Structural Iteration / Pre-Numerical Depth
+PDSA-TCT-007 — Successor-Like Extension Structure
 ```
 
-The cycle must inherit CAL-001 and must **not** begin by defining a natural-number-valued depth.
+The first question is not “have we constructed the natural-number successor?”
 
-The required first question is:
+It is:
 
-> What structural invariant of repeated canonical decomposition can be constructed before any numerical interpretation is introduced?
+> Which structural properties are already possessed by the extension operation `A ↦ A ⊙ U` on supplied selected configurations, and which additional commitments would be required to promote it to successor on a formal carrier?
 
 ## Current PDSA status
 
@@ -152,6 +161,7 @@ PDSA-TCT-001  CLOSED — baseline stabilization
 PDSA-TCT-002  CLOSED — pre-numerical metatheory contract
 PDSA-TCT-003  CLOSED — structural equivalence / BR-010
 PDSA-TCT-004  CLOSED — terminal recovery theorem / J-001 PASS
-PDSA-TCT-005  CLOSING — canonical decomposition Block constructed and verified
-PDSA-TCT-006  NEXT — structural iteration / pre-numerical depth
+PDSA-TCT-005  CLOSED — canonical decomposition Block
+PDSA-TCT-006  CLOSING — structural iteration history constructed and verified
+PDSA-TCT-007  NEXT — successor-like extension structure
 ```
