@@ -93,7 +93,9 @@ A Block has:
 
 ### Junction
 
-A compatibility or decision gate where construction paths, representations, interfaces, or constraints must be reconciled before downstream promotion.
+A **compatibility / convergence gate** where construction paths, representations, interfaces, or constraints must be reconciled before downstream promotion.
+
+A Junction is not the unit used merely to choose among admissible alternatives.
 
 A Junction must record:
 
@@ -106,6 +108,30 @@ A Junction must record:
 - operational status;
 - epistemic status;
 - sensitivity and reopening conditions.
+
+### Decision Point
+
+An explicit architectural unit recording a **non-derived selection problem** between two or more admissible methodological, foundational, representational, logical, or formalization alternatives.
+
+A Decision Point exists when the project must choose a route and the choice is not already forced by a proved compatibility/derivability result.
+
+A Decision Point must record:
+
+- unique ID;
+- incoming dependencies and the question requiring a choice;
+- admissible options/branches with distinct identities or explicit option IDs;
+- `ALTERNATIVE_TO` relations where applicable;
+- evaluation criteria;
+- new commitments introduced by each option;
+- current operational status (`OPEN`, `RESOLVED / SELECTED`, etc.);
+- selected option if resolved;
+- epistemic status of the selection, normally `DECLARED CHOICE`, `METHODOLOGICAL CHOICE`, or `FORMALIZATION-DEPENDENT` rather than `DERIVED`;
+- rationale and PDSA evidence;
+- downstream consequences;
+- reopening/sensitivity conditions;
+- preservation status of non-selected alternatives.
+
+A selected option does not become mathematically necessary merely because it is the Stage-One canonical route.
 
 ### Configuration
 
@@ -126,7 +152,20 @@ CONSTRAINS
 ALTERNATIVE_TO
 MEETS_AT
 REPRESENTS
+BRANCHES_TO
+SELECTS
 ```
+
+### Decision relations
+
+```text
+DecisionPoint --BRANCHES_TO--> Option
+DecisionPoint --SELECTS-----> SelectedOption
+```
+
+`SELECTS` records a project choice. It must never be interpreted as `DERIVES`.
+
+Non-selected options remain traceable and may later become Stage-Two branches.
 
 ## Operational status
 
@@ -134,6 +173,9 @@ Operational status records where a unit is in the active project lifecycle and g
 
 ```text
 ACTIVE
+OPEN
+RESOLVED / SELECTED
+PASS / RESOLVED
 CONDITIONAL / PENDING
 RESERVED
 REJECTED
@@ -144,6 +186,8 @@ Operational status answers questions such as:
 
 - Is the unit currently part of the active graph?
 - Is it blocked at a gate?
+- Is it an unresolved Decision Point?
+- Has an option been selected for the canonical route?
 - Is its identity only reserved for future work?
 - Has it been rejected or archived?
 
@@ -170,19 +214,15 @@ Every active unit or explicit subclaim must declare, where applicable, one of:
 CONSTRUCTED
 DERIVED
 DECLARED CHOICE
+METHODOLOGICAL CHOICE
 FORMALIZATION-DEPENDENT
 PENDING
 REJECTED
 ```
 
-A declared additional constraint is represented as:
+A declared additional constraint can be operationally ACTIVE while epistemically a DECLARED CHOICE until/unless a later proof reclassifies its current-path role.
 
-```text
-Operational Status = ACTIVE
-Epistemic Status   = DECLARED CHOICE — ADDITIONAL CONSTRAINT
-```
-
-It must not be mislabeled as a derived theorem merely because it is required by downstream construction.
+A Decision Point selection is normally not a theorem; its status must remain a choice unless necessity is independently proved.
 
 ## Status-separation invariant
 
@@ -194,26 +234,33 @@ Verification Status / Evidence
 Epistemic Status
 ```
 
-Example:
+Historical example:
 
 ```text
 TCT-BR-009
-Operational Status = ACTIVE
-Epistemic Status   = DECLARED CHOICE — ADDITIONAL CONSTRAINT
-Verification evidence = derivability test showing NOT DERIVED from current ≈
+Earlier state under incomplete ≈:
+  Operational Status = ACTIVE
+  Epistemic Status   = DECLARED CHOICE — ADDITIONAL CONSTRAINT
+
+Current path after BR-010 / PDSA-TCT-004:
+  Operational Status = ACTIVE
+  Epistemic Status   = DERIVED UNDER TCT-BR-010
 ```
+
+The earlier state remains provenance rather than being rewritten away.
 
 ## Sensitivity rule
 
-Every Brick and every high-impact Block/Junction must answer:
+Every Brick and every high-impact Block/Junction/Decision Point must answer:
 
 ```text
-If this unit changes:
+If this unit or selection changes:
 
 What remains valid upstream?
 Which descendants require retesting?
-Which sibling units may become incompatible?
+Which sibling/alternative units may become active or incompatible?
 Which Junctions must be reopened?
+Which Decision Points must be reconsidered?
 Which PDSA results or learning claims must be revisited?
 ```
 
@@ -222,24 +269,31 @@ Which PDSA results or learning claims must be revisited?
 1. No unit may silently replace another unit.
 2. Alternatives receive distinct IDs or explicit versioned revisions when identity is intentionally preserved.
 3. A Junction may not hide an unresolved incompatibility.
-4. A pending result cannot become accepted because a downstream document exists.
-5. Historical material is preserved when scientifically relevant.
-6. Geometry or visualization is a representation unless explicitly promoted to mathematical structure.
-7. Numerical concepts are not used as hidden premises in the pre-numerical object layer.
-8. The pre-numerical layer is **not metatheory-free**; its meta-level resources must be declared.
-9. Construction is distinguished from numerical/algebraic interpretation.
-10. Operational status, verification status, and epistemic status remain distinct.
-11. Scientifically relevant failures and corrections remain traceable through PDSA learning records.
-12. AI-generated content never becomes canonical solely because it is fluent or plausible; appropriate verification and human research authority remain explicit.
+4. A Decision Point may not present a selected option as a derived necessity without proof.
+5. A pending result cannot become accepted because a downstream document exists.
+6. Historical material is preserved when scientifically relevant.
+7. Geometry or visualization is a representation unless explicitly promoted to mathematical structure.
+8. Numerical concepts are not used as hidden premises in the pre-numerical object layer.
+9. The pre-numerical layer is not metatheory-free; its meta-level resources must be declared.
+10. Construction is distinguished from numerical/algebraic interpretation.
+11. Operational status, verification status, and epistemic status remain distinct.
+12. Scientifically relevant failures and corrections remain traceable through PDSA learning records.
+13. AI-generated content never becomes canonical solely because it is fluent or plausible; appropriate verification and human research authority remain explicit.
+14. Non-selected Decision Point options remain traceable for later branch comparison unless explicitly rejected for a documented reason.
 
 ## Repository structure
 
-Current canonical construction directories remain:
+Current canonical structure:
 
 ```text
 LAB/
 ├── 00_ARCHITECTURE/
 ├── 10_CONSTRUCTION/
+│   ├── blocks/
+│   ├── bricks/
+│   ├── junctions/
+│   ├── decisions/
+│   └── experiments/
 ├── 20_FORMALIZATION/
 └── 90_ARCHIVE/
 ```
@@ -252,7 +306,7 @@ LAB/PDSA/
 
 `00_ARCHITECTURE` defines the active construction system.
 
-`10_CONSTRUCTION` contains the active mathematical construction.
+`10_CONSTRUCTION` contains active construction units, gates, and explicit Decision Points.
 
 `20_FORMALIZATION` contains explicit formal realizations.
 
@@ -262,8 +316,14 @@ LAB/PDSA/
 
 ## Authority rule
 
-The sequence of documents is only a **view** of the construction graph.
+The sequence of documents is only a view of the construction graph.
 
 The canonical graph and unit identities are authoritative for mathematical construction status.
 
 PDSA cycle records are authoritative for the recorded research process and learning associated with those cycles, subject to later additive correction rather than silent rewriting.
+
+## PDSA-N-002 architectural revision note
+
+The explicit `Decision Point` unit type and `BRANCHES_TO` / `SELECTS` relations were added when the project reached its first major formal-realization choice.
+
+This restores a core BOMA concept to the canonical engineering architecture rather than hiding formalization choices inside narrative text.
