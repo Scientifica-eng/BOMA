@@ -1,11 +1,11 @@
 # N-Core Claim-Level V5 — Automated Evidence Record
 
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `1fe7e48cbdf6ba98ed85a3bb97b9a178703dc5bf`  
-**Workflow run ID:** `32163537048`  
+**Status:** PASS  
+**Verified commit:** `5fb03a48e243697f49f1cbde30be986d73f2ff68`  
+**Workflow run ID:** `32163771789`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Verification assembly:** `producer + claim fragment`  
-**Recorded at (UTC):** `2026-08-18T17:03:47Z`
+**Recorded at (UTC):** `2026-08-18T17:06:23Z`
 
 This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
 
@@ -19,8 +19,8 @@ This file records checker outcomes only. It does **not** automatically promote a
 | N-BLOCK-004 | success |
 | N-BLOCK-005 | success |
 | N-BLOCK-006 | success |
-| N-J-001 independent Route B | failure |
-| N-J-001 convergence interface | failure |
+| N-J-001 independent Route B | success |
+| N-J-001 convergence interface | success |
 
 Interpretation must follow:
 
