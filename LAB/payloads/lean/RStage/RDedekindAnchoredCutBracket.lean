@@ -5,9 +5,11 @@ namespace BOMA.R.DedekindAnchoredBracket001
 
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindCutBracket001
+open BOMA.R.DedekindPositiveReciprocal001
 
 /-- If a0 is inside A and a0≤b, keep b; otherwise use a0.
 The resulting inside endpoint remains below the same outside r and its gap
@@ -35,21 +37,15 @@ theorem cut_bracket_approx_anchored
         rw [← heq]
         exact ha0
       · exact False.elim (hrOut (A.downward ha0 hr0))
-    have hnewPos : qLT qZero (qAdd r (qNeg a0)) := by
-      exact (qle_iff_nonneg_difference a0 r).1 ha0r.1 |> fun hle =>
-        ⟨hle, by
-          intro hzero
-          have heq : r = a0 := by
-            apply qAdd_left_cancel (a := qNeg a0)
-            calc
-              qAdd (qNeg a0) r = qAdd r (qNeg a0) := qAdd_comm _ _
-              _ = qZero := hzero
-              _ = qAdd (qNeg a0) a0 := (qAdd_neg_left a0).symm
-          exact ha0r.2 heq.symm⟩
+    have hnewPosRaw : QPositive (qAdd r (qNeg a0)) :=
+      positive_difference_of_lt ha0r
+    have hnewPos : qLT qZero (qAdd r (qNeg a0)) :=
+      ⟨hnewPosRaw.1, fun h => hnewPosRaw.2 h.symm⟩
     have hgapLE :
         qLE (qAdd r (qNeg a0)) (qAdd r (qNeg b)) := by
       have hneg : qLE (qNeg a0) (qNeg b) := qneg_reverses hb0
-      have ht := qadd_mono_left hneg r
+      have ht := qadd_mono_right hneg r
+      rw [qAdd_comm (qNeg a0) r, qAdd_comm (qNeg b) r] at ht
       exact ht
     have hnewSmall : qLT (qAdd r (qNeg a0)) eps :=
       qle_lt_trans_recip hgapLE hgapSmall
