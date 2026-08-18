@@ -1,10 +1,10 @@
 # Q COMMITMENT LEDGER — Stage-One Rational Construction
 
-**Status:** ACTIVE — pre-integration audit ledger  
+**Status:** FINAL FOR QA-20 — integration-audited  
 **Governing specification:** `BOMA-Q-ACCEPT-001`  
 **Identity decision:** `Q-DP-001` — explicit quotient/setoid carrier
 
-This ledger separates mathematical dependencies from representation and backend commitments. It does not promote Q to ACCEPTED by itself.
+This ledger separates mathematical dependencies from representation and backend commitments. Acceptance still requires the separate QA-23 closure decision.
 
 ## Inherited mathematical commitments
 
@@ -76,9 +76,21 @@ q ≠ 0 → ∃ r, QInvRel q r ∧ ∀ s, QInvRel q s → s = r
 
 A global `qInv : QBOMA → QBOMA` is not selected at this stage. This avoids adding a Choice commitment merely to expose the field property.
 
-## Explicitly NOT introduced in the current Q payloads
+### C-Q-05 — quotient order without proposition extensionality
 
-Repository search over `LAB/payloads/lean/QStage` found no occurrences of:
+The selected total order is defined by existence of explicit raw representatives whose cross-products satisfy the accepted Z order:
+
+```text
+qLE q r :=
+  ∃x y : RawFrac,
+    q = qmk x ∧ r = qmk y ∧ RawLE x y
+```
+
+Representative invariance is proved before total-order laws are promoted. The construction therefore does not need proposition extensionality merely to transport the raw order.
+
+## Explicitly NOT introduced in the final Q payloads
+
+A final repository search over `LAB/payloads/lean/QStage` after the order and integration files were added found no occurrences of:
 
 ```text
 Classical
@@ -91,9 +103,9 @@ gcd
 
 Interpretation:
 
-- no classical reasoning declaration was introduced by the Q construction;
+- no `Classical` declaration was introduced by the Q construction;
 - no choice-based representative selector is used;
-- no admitted theorem/axiom is used;
+- no admitted theorem or new axiom is used;
 - no built-in rational type is used as the carrier;
 - no gcd/reduced-fraction canonicalization machinery is used.
 
@@ -113,32 +125,52 @@ C  alternative denominator disciplines
 
 The Stage-One route chose quotient identity because FracEquiv and operation-respect were already verified while reduced forms would require an additional divisibility/gcd/reduction/uniqueness construction family.
 
-## Verification evidence currently available
+## QA-17 interpretation
+
+Stage One built one formal rational carrier realization after the raw-syntax layer:
 
 ```text
-QG-01 cancellation                     PASS
-fraction equivalence                   PASS
-raw arithmetic respect                 PASS
-quotient carrier / lifted operations   PASS
-raw additive laws                      PASS
-quotient additive laws                 PASS
-raw multiplicative laws                PASS
-quotient multiplicative laws           PASS
-raw distributivity                     PASS
-quotient distributivity                PASS
-nonzero inverse unique witness         PASS
-Z/N embedding preservation             PASS
-integer-fraction generation            PASS
-order core                             ACTIVE V5
+RawFrac + FracEquiv
+       ↓
+Q-DP-001
+       ↓
+QBOMA quotient carrier
 ```
 
-## Acceptance discipline
+The raw layer is production syntax/equivalence evidence for the selected carrier, not a second accepted rational carrier. Therefore the QA-17 requirement for reconvergence of **multiple built rational representations** is not triggered in Stage One.
 
-QA-20 can be marked PASS only together with the final integration audit confirming that no later Q file introduced an unrecorded commitment.
+This does not erase the retained reduced-fraction or external-setoid alternatives; they remain explicit Stage-II branch candidates.
 
-Until QA-22 and QA-23 close:
+## Final verification evidence
 
 ```text
-QBOMA = constructed Stage-One rational candidate
-not yet final accepted Q export
+QG-01 cancellation                     32172230166  PASS
+fraction equivalence                   32172543345  PASS
+raw arithmetic respect                 32173010564  PASS
+quotient carrier / lifted operations   32174050137  PASS
+raw additive laws                      32174278297  PASS
+quotient additive laws                 32174565823  PASS
+raw multiplicative laws                32174478593  PASS
+quotient multiplicative laws           32176289914  PASS
+raw distributivity                     32176145896  PASS
+quotient distributivity                32176439510  PASS
+nonzero inverse unique witness         32176692789  PASS
+Z/N embedding preservation             32177123730  PASS
+integer-fraction generation            32177245619  PASS
+order core                             32177345921  PASS
+order additive compatibility           32177896509  PASS
+order multiplicative compatibility     32178098823  PASS
+full N/Z/Q integration certificate     32178326013  PASS
+Lean                                   4.32.1
 ```
+
+## QA-20 result
+
+```text
+commitment inventory    COMPLETE
+undeclared Q principle  NOT DETECTED IN SOURCE AUDIT
+V5 integration          PASS
+QA-20                    PASS
+```
+
+The ledger does not claim a field-of-fractions universal property, reduced-fraction uniqueness, or mathematical necessity of quotient identity.
