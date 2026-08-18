@@ -3,7 +3,8 @@
 **CycleID:** `PDSA-TCT-003`  
 **Track:** TCT  
 **Date opened:** 2026-08-18  
-**Status:** **ACTIVE — PLAN / INITIAL DO**  
+**Date closed:** 2026-08-18  
+**Status:** **CLOSED — ACT: SELECT CURRENT-PATH STRUCTURAL EQUIVALENCE**  
 **Cycle type:** Mathematical-architectural definition and comparison cycle
 
 ---
@@ -29,10 +30,11 @@ Required inherited records:
 ## ConstructionUnitsAffected
 
 ```text
-TCT-BLOCK-001  associativity / empty-behavior interpretation
-TCT-BLOCK-002  normal-form representation and recovery
-TCT-BR-009     independence versus derivability under candidate ≈
-TCT-J-001      downstream target of this cycle, but not automatically resolved
+TCT-BLOCK-001  identity/empty/reassociation interpretation clarified
+TCT-BLOCK-002  recovery interpretation clarified
+TCT-BR-010     NEW active structural-equivalence specification
+TCT-BR-009     derivability question sharpened and reopened under BR-010
+TCT-J-001      gate condition rewritten precisely; still unresolved
 ```
 
 ---
@@ -43,202 +45,496 @@ TCT-J-001      downstream target of this cycle, but not automatically resolved
 
 What is the weakest useful, explicit, and auditable definition of object-level structural equivalence `≈` for the current TCT construction class?
 
-The definition must be strong enough to support the intended construction but must not silently import canonical decomposition, numerical depth, natural-number indexing, global totality, or a richer algebraic theory than has been declared.
+The definition must be strong enough to support the intended construction but must not silently import canonical decomposition, numerical depth, natural-number indexing, global totality, ordered-pair ontology, or a richer algebraic theory than has been declared.
 
-## First mandatory subquestion — `=` versus `≈`
+## Mandatory subproblem
 
-Before proposing candidate equivalence relations, determine the intended status of statements such as:
+Resolve the status of:
+
+```text
+=
+≡
+≈
+```
+
+before adopting any structural-equivalence definition.
+
+## Candidate families
+
+```text
+A — generated structural congruence using reassociation
+B — interface-preserving equivalence by definition
+C — weaker/collapsing congruence as stress-test family
+```
+
+## Acceptance discipline
+
+The cycle may select a definition of `≈`, but it may **not** promote `TCT-J-001` unless the terminal recovery condition is independently proved.
+
+---
+
+# DO
+
+## D1 — Equality / identity audit
+
+Created:
+
+`LAB/PDSA/experiments/PDSA-TCT-003-EQ-AUDIT-001.md`
+
+The audit classified current uses of identity and exposed several ambiguities.
+
+### D1.1 — Construction labels
+
+Statements historically written as:
+
+```text
+ε = empty configuration
+U = elementary block
+```
+
+are naming/definition declarations, not derived equations.
+
+### D1.2 — Empty behavior
+
+Historical:
 
 ```text
 ε ⊙ A = A
 A ⊙ ε = A
 ```
 
-relative to:
+Current-path interpretation:
 
 ```text
-(A ⊙ B) ⊙ C ≈ A ⊙ (B ⊙ C)
+ε ⊙ A ≡ A
+A ⊙ ε ≡ A
 ```
 
-Candidate interpretations to test:
+when admitted.
+
+This is a **declared definitional convention**, not a theorem.
+
+### D1.3 — Parenthesization
+
+Reassociation is not syntactic identity:
 
 ```text
-I1 — `=` is meta-level definitional/syntactic identity only.
-I2 — `=` is strict object-level identity stronger than `≈`.
-I3 — empty behavior should itself be expressed only up to `≈`.
-I4 — a mixed convention is needed, with explicit coercion rules.
+(A ⊙ B) ⊙ C  not generally ≡  A ⊙ (B ⊙ C)
 ```
 
-No interpretation is accepted merely because it is conventional in monoid theory.
+Whether the two are structurally equivalent belongs to `≈`.
 
-## Candidate families for `≈`
+### D1.4 — Recovery notation
 
-The cycle will compare at least the following families.
-
-### Candidate A — Generated structural congruence
-
-Define `≈` as the least explicitly generated equivalence/congruence containing only named structural transformations that TCT chooses or proves admissible.
-
-Questions:
-
-- Which generators are declared versus derived?
-- Is associativity included as a generator or proved from a lower representation?
-- Are empty-configuration laws strict or included as equivalence generators?
-- Does the generated relation preserve the terminal role automatically?
-
-### Candidate B — Interface-preserving structural equivalence
-
-Define `≈` by preservation of specified structural data, including boundaries/interfaces and composition structure.
-
-Questions:
-
-- Which structural data are primitive in the definition?
-- Does terminal-interface preservation become definitional/derived?
-- Does this make `TCT-BR-009` redundant as an independent constraint or merely move the declaration into the definition of `≈`?
-
-### Candidate C — Weaker result/configuration equivalence
-
-Permit an equivalence that identifies resulting configurations without requiring preservation of construction-history or terminal-interface data.
-
-Purpose:
-
-Use this family as a stress test/countermodel source for canonical recovery.
-
-Questions:
-
-- Can two configurations be equivalent while predecessor recovery differs?
-- Does this demonstrate precisely why `TCT-BR-009` is necessary on a weak path?
-
-Candidate C is not presumed desirable; it is included to understand the boundary.
-
-## Required properties to test for every candidate
+Historical verification notation:
 
 ```text
-Reflexivity
-Symmetry
-Transitivity
-Compatibility with admitted uses of ⊙
-Treatment of ε
-Treatment of parenthesization
-Boundary/interface preservation
-Terminal-role preservation
-Normal-form invariance
-Recovery invariance
-History sensitivity / history collapse
-Dependence on meta-level representation
-Hidden numerical assumptions
-Dependence on global carrier assumptions
+recover(U) = (ε,U)
+recover(P ⊙ U) = (P,U)
 ```
 
-## Proof/countermodel discipline
+was found to risk silently importing ordered-pair objects and equality on those pairs.
 
-For each claimed implication, attempt both:
+The active interpretation is now:
+
+> `recover` is a meta-level inspection procedure returning a documentary/meta-record containing predecessor presentation and terminal role.
+
+No ordered-pair object is introduced.
+
+### D1.5 — Junction condition
+
+The ambiguous historical form:
 
 ```text
-PROOF / DERIVATION
+recover(A) ≈ recover(B)
+```
+
+was replaced in the canonical Junction by explicit requirements:
+
+```text
+terminal roles correspond
 and
-COUNTERMODEL / COUNTEREXAMPLE SEARCH
+P ≈ Q
 ```
 
-A failed proof is not evidence of independence unless supported by an explicit countermodel or other independence argument.
-
-## Acceptance outcomes
-
-The cycle may Act with one of:
+for selected presentations:
 
 ```text
-SELECT ONE CANDIDATE FOR CURRENT CANONICAL PATH
-OPEN A BRANCH BETWEEN MATERIAL ALTERNATIVES
-REVISE THE TCT KERNEL / INTERFACE MODEL
-RETAIN TCT-BR-009 AS INDEPENDENT CONSTRAINT
-MAKE TCT-BR-009 DERIVED UNDER AN EXPLICIT REVISED ≈
-FAIL / RETURN TO METATHEORY OR KERNEL
+A ≡ P ⊙ U
+B ≡ Q ⊙ U.
 ```
 
-The cycle itself does not automatically pass `TCT-J-001`; terminal recovery must still receive its dedicated theorem/countermodel cycle `PDSA-TCT-004` unless the Study shows that the Junction question has become purely definitional and that reclassification is justified.
+## D2 — Candidate comparison
+
+Created:
+
+`LAB/PDSA/experiments/PDSA-TCT-003-EQUIVALENCE-CANDIDATES-001.md`
+
+### Candidate A
+
+Reassociation-generated structural equivalence.
+
+### Candidate B
+
+Interface-preserving equivalence, potentially including terminal preservation directly in the definition.
+
+### Candidate C
+
+Collapsing congruence family used for counterexample/stress testing.
+
+## D3 — Counterexample study
+
+An external two-element idempotent monoid was used as a permitted countermodel instrument:
+
+```text
+M = {e,u}
+e identity
+u ⊙ u = u
+```
+
+Then:
+
+```text
+e ⊙ u = u = u ⊙ u
+```
+
+while:
+
+```text
+e ≠ u.
+```
+
+This demonstrates that:
+
+```text
+equivalence + congruence + associativity + identity
+```
+
+is not enough to guarantee right cancellation / terminal predecessor recovery.
+
+The external model is not a TCT definition; it is countermodel evidence under the metatheory contract.
+
+## D4 — Candidate A made explicit
+
+Created canonical unit:
+
+`TCT-BR-010 — Reassociation-Generated Structural Equivalence`.
+
+Its definition is the least relation satisfying:
+
+```text
+SE-1  A ≡ B ⇒ A ≈ B
+
+SE-2  (A ⊙ B) ⊙ C ≈ A ⊙ (B ⊙ C)
+      whenever the displayed compositions are admissible
+
+SE-3  reflexive / symmetric / transitive closure
+
+SE-4  compatible contextual closure under ⊙
+```
+
+Explicitly absent:
+
+```text
+idempotent collapse
+contraction
+insertion
+deletion
+commutativity
+numerical/cardinality criteria
+terminal-preservation clause
+```
+
+## D5 — Canonical synchronization
+
+Updated:
+
+```text
+LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-001/UNIT.md
+LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-002/UNIT.md
+LAB/10_CONSTRUCTION/bricks/TCT-BR-009/UNIT.md
+LAB/10_CONSTRUCTION/bricks/TCT-BR-010/UNIT.md
+LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md
+LAB/00_ARCHITECTURE/REGISTRY.md
+LAB/00_ARCHITECTURE/GRAPH.md
+```
+
+No downstream construction Block was promoted.
 
 ---
 
-# INITIAL DO
+# OBSERVATIONS
 
-## D1 — Identity-layer issue inherited from PDSA-TCT-002
+## O1 — Bare equality was carrying multiple meanings
 
-The metatheory contract now reserves:
+The same symbol `=` had historically served for:
 
-```text
-≡  meta-level syntactic/definitional identity
-≈  object-level structural equivalence
-```
+- naming;
+- definitional empty behavior;
+- meta-level recovery specification;
+- presentation decomposition;
+- ordinary documentary prose.
 
-Historical TCT source still uses bare `=` for empty behavior.
+This was a traceability risk even where the mathematics was intuitively clear.
 
-The first active task is therefore to classify each occurrence of equality in the current kernel and decide whether it denotes:
+## O2 — Ordered pairs could have entered by notation rather than construction
 
-- meta-level definitional identity;
-- strict object-level identity;
-- or notation that should be replaced/qualified by structural equivalence.
+Writing recovery as `(P,U)` is harmless as external bookkeeping only if its status is explicit.
 
-## D2 — Current constraint baseline
+Without that declaration, a future argument could mistakenly treat pair formation as already available object-level structure.
 
-Under the inherited incomplete specification:
+## O3 — Congruence is not cancellation
 
-```text
-TCT-BR-009
-Operational Status = ACTIVE
-Epistemic Status   = DECLARED CHOICE — ADDITIONAL CONSTRAINT
-```
+The idempotent counterexample isolates a crucial distinction:
 
-The cycle must not erase this historical fact even if a later candidate `≈` makes terminal preservation derived.
+> closure under composition does not imply recoverability of a factor.
 
----
+This is directly relevant to the historical discovery of `TCT-BR-009`.
 
-# Initial Observations
+## O4 — Candidate B would answer the question by definition
 
-1. The present TCT documents rely on `≈` before giving it a complete canonical definition.
-2. Normal-form syntax can make terminal recovery deterministic at the presentation level while leaving recovery under object-level equivalence unresolved.
-3. Making terminal preservation part of the **definition** of `≈` would solve one downstream requirement but would not prove that such a definition is minimal or otherwise preferable.
-4. A weaker `≈` is scientifically useful as a comparison case because it can expose exactly which information canonical decomposition needs.
-5. The cycle must distinguish “derived from `≈`” from “built into the definition of `≈`.” Those are different epistemic claims.
+An interface-preserving equivalence that explicitly preserves terminal role is legitimate, but would make the current Junction less informative because the desired recovery condition would be included in the identity criterion.
+
+## O5 — Candidate A preserves the theorem question
+
+Candidate A identifies only definitional sameness plus parenthesization changes and their compatible contexts. It deliberately contains no terminal rule.
+
+Therefore terminal recovery remains a genuine theorem/countermodel problem.
 
 ---
 
 # STUDY
 
-**Not yet closed.**
+## S1 — Selected interpretation of identity
 
-The next Study step is an equality/identity audit over the active kernel and finite-configuration records, followed by explicit candidate definitions and counterexample search.
+For the current pre-numerical canonical path:
+
+```text
+≔  definition / notation introduction
+≡  meta-level definitional / selected-presentation identity
+≈  object-level structural equivalence
+```
+
+No separate bare object-level equality is required yet.
+
+This does not forbid a later formalization from introducing equality; it prevents premature ambiguity now.
+
+## S2 — Empty configuration result
+
+`ε` neutrality is treated as part of the declared constructional definition:
+
+```text
+ε ⊙ A ≡ A
+A ⊙ ε ≡ A.
+```
+
+This is epistemically cleaner than presenting neutrality as if it had been derived from earlier structure.
+
+## S3 — Associativity/reassociation result
+
+The historical associativity target is reclassified on the current path:
+
+```text
+reassociation is a DECLARED structural-identity generator of ≈
+```
+
+not strict equality and not a derived geometric theorem.
+
+A later branch may instead attempt to derive reassociation from a deeper interface semantics, but that is not the current canonical route.
+
+## S4 — Candidate selection
+
+Candidate A was selected because it is the weakest of the tested useful candidates that:
+
+- makes parenthesization irrelevant;
+- remains finitely witnessable/auditable;
+- does not collapse occurrences by an explicit rule;
+- does not build terminal recovery into the definition;
+- requires no numerical object-level structure;
+- requires no completed quotient carrier.
+
+## S5 — Status of TCT-BR-009
+
+The historical classification remains:
+
+```text
+DECLARED CHOICE — ADDITIONAL CONSTRAINT
+```
+
+because the original derivability test was correctly negative relative to the incomplete relation available at that time.
+
+However, BR-010 changes the premises of the derivability question.
+
+Therefore the next task is a **retest**, not a retroactive rewrite of history.
+
+## S6 — What was not established
+
+This cycle did **not** establish:
+
+```text
+P ⊙ U ≈ Q ⊙ U ⇒ P ≈ Q
+terminal-interface preservation
+canonical decomposition
+right cancellation in the general compatible term class
+TCT-J-001 PASS
+TCT-BLOCK-003
+```
+
+---
+
+# ERRORS / RISKS DETECTED
+
+1. Ambiguous bare `=` in historical construction statements.
+2. Potential silent import of object-level ordered pairs through recovery notation.
+3. Risk of treating generic congruence as if it implied cancellation.
+4. Risk of solving a Junction by putting its required result into the definition of `≈` without recording that epistemic move.
+5. Risk of calling reassociation “derived associativity” when the current path actually declares it as an identity criterion.
+
+---
+
+# SUCCESSES
+
+1. `≈` is now an independently locatable canonical unit.
+2. Its generators and non-generators are explicit.
+3. Meta-level and object-level identity roles are separated.
+4. Recovery no longer depends on an implicit ordered-pair ontology.
+5. A concrete counterexample demonstrates why cancellation needs its own proof.
+6. The next Junction test now has exact premises.
+
+---
+
+# HUMAN / AI RESEARCH RECORD
+
+## Human contribution
+
+The human research authority supplied and maintained the governing objectives inherited by this cycle:
+
+- transparent and traceable mathematical construction;
+- cumulative PDSA learning rather than linear document production;
+- preservation of errors and successful methods as research output;
+- refusal to promote downstream mathematics without explicit justification.
+
+The instruction to continue the documented PDSA plan authorized this cycle to move from planning into the equality/equivalence audit while preserving canonical gates.
+
+## AI contribution
+
+The AI research agent:
+
+- audited the overloaded identity notation;
+- identified the ordered-pair import risk in `recover`;
+- generated and compared three equivalence families;
+- produced the idempotent-collapse counterexample;
+- proposed the restricted generated relation now recorded as BR-010;
+- synchronized canonical documentation without promoting downstream Blocks.
+
+## Verification status of AI contribution
+
+The architectural definitions and counterexample reasoning are recorded for independent mathematical review.
+
+No AI-generated claim about terminal cancellation has been accepted as theorem in this cycle.
+
+This is a deliberate control against fluent-but-unverified promotion.
 
 ---
 
 # ACT
 
-**PENDING.**
+## Decision A — select Candidate A
 
-No candidate `≈` has yet been selected and no downstream unit has been promoted.
+Adopt for the current canonical path:
+
+`TCT-BR-010 — Reassociation-Generated Structural Equivalence`.
+
+Epistemic status:
+
+```text
+DECLARED CHOICE — STRUCTURAL IDENTITY SPECIFICATION
+```
+
+## Decision B — keep terminal preservation outside the definition
+
+Do not include `TCT-BR-009` as a defining generator of `≈`.
+
+This preserves the scientific content of the next test.
+
+## Decision C — do not promote the Junction
+
+```text
+TCT-J-001     remains CONDITIONAL / PENDING
+TCT-BLOCK-003 remains RESERVED / NOT CONSTRUCTED
+```
+
+## Decision D — open next PDSA cycle
+
+Next cycle:
+
+```text
+PDSA-TCT-004 — Terminal Recovery Theorem / Countermodel
+```
+
+Question:
+
+```text
+Under exactly TCT-BR-010:
+P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q ?
+```
+
+The next cycle must attempt both proof and countermodel search.
 
 ---
 
 # ConstructionGraphEffects
 
+Added:
+
 ```text
-NONE YET — research cycle opened only.
+TCT-BR-010  --DEFINES/CONSTRAINS-->  TCT-J-001
 ```
+
+Retained:
+
+```text
+TCT-BR-009  --CONSTRAINS / DERIVABILITY QUESTION--> TCT-J-001
+```
+
+No outgoing edge to `TCT-BLOCK-003` has been activated.
+
+---
 
 # LearningGraphEffects
 
-Initial inherited learning edge:
+New reusable learning:
 
 ```text
-L-TCT-002-07 (`=` versus `≈` unresolved)
-        ↓
-PDSA-TCT-003 first subproblem
+L-TCT-003-01  Bare equality must be classified before use.
+L-TCT-003-02  Empty neutrality can be definitional without object-level equality.
+L-TCT-003-03  Recovery records are meta-level unless pair objects are constructed.
+L-TCT-003-04  Congruence does not imply cancellation.
+L-TCT-003-05  Definition-by-terminal-preservation would not be a derivation.
+L-TCT-003-06  Reassociation is a declared identity criterion on the current path.
+L-TCT-003-07  Generated equivalence allows provenance of each equivalence witness.
+L-TCT-003-08  Historical negative derivability results must be retested, not erased,
+              when premises are strengthened.
 ```
 
-# OpenQuestions
+---
 
-1. What does bare `=` mean in the current TCT kernel?
-2. Must `≈` be a congruence for every compatible composition context or only selected contexts?
-3. Is associativity a theorem, a declared equivalence generator, or a representation-normalization fact?
-4. How much boundary/interface data belongs to the identity of a configuration?
-5. Is terminal preservation an independent admissibility condition or a consequence of the selected structural identity notion?
-6. Which candidate best preserves BOMA's distinction between construction history and reusable mathematical contribution?
+# NextCycleInputs
+
+`PDSA-TCT-004` inherits:
+
+- `TCT-BR-010` exact SE-1 through SE-4 definition;
+- equality/identity notation discipline;
+- TCT-BLOCK-002 normal-form grammar;
+- meta-level recovery interpretation;
+- BR-009 required condition;
+- idempotent-collapse counterexample showing generic congruence insufficiency;
+- prohibition on numerical counting as object-level proof content.
+
+---
+
+# Closure conclusion
+
+**PDSA-TCT-003 CLOSED.**
+
+The project now has an explicit, intentionally weak structural-equivalence relation for the current path. The next scientific frontier is no longer “what does `≈` mean?” but the precise theorem/countermodel question of whether that relation supports terminal predecessor recovery.
