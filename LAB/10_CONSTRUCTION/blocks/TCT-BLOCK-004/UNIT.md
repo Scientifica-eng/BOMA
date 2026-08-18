@@ -21,7 +21,7 @@ This Block is the repaired successor to the historical numerical-depth attempt a
 TCT-BLOCK-003  Canonical Decomposition Guarantee
 TCT-BLOCK-002  selected normal-form grammar
 TCT-BR-010     structural equivalence ≈
-CAL-001         hidden-numerical learning
+CAL-001        hidden-numerical learning
 ```
 
 ## Selected normal-form environment
@@ -127,7 +127,7 @@ before `Hist(A)`.
 
 Thus the predecessor history is the canonical tail of the extended history.
 
-This is the current **pre-numerical iteration relation**.
+This is the current pre-numerical iteration relation.
 
 ### SI-5 — Reconstruction
 
@@ -145,7 +145,7 @@ This contribution carries constructional ancestry without assigning a number to 
 
 ## Anti-circularity rule
 
-The following are **not** statements of this Block:
+The following are not statements of this Block:
 
 ```text
 depth(A) = n
@@ -161,13 +161,13 @@ Such statements require a later numerical realization/interpretation.
 
 The earlier registry/planning label `Construction Depth` risked suggesting that a numerical magnitude had already been constructed.
 
-Following CAL-001 and PDSA-TCT-006, the canonical role is renamed:
+Following CAL-001 and PDSA-TCT-006, the canonical role is:
 
 ```text
 Structural Iteration History
 ```
 
-`construction depth` may later become an interpretation of this structure after a numerical domain has been legitimately introduced.
+`construction depth` may later become an interpretation after a numerical domain has been legitimately introduced.
 
 ## What this Block does not construct
 
@@ -209,15 +209,13 @@ NO GLOBAL HISTORY CARRIER                PASS
 
 **Block result: ACTIVE / VERIFIED on the current path.**
 
-## Downstream
+## Current downstream state
 
-`TCT-BLOCK-005` remains the next target.
+```text
+TCT-BLOCK-005  ACTIVE — Successor-Like Extension Structure
+```
 
-Its immediate question should be framed as:
-
-> What extension relation/operation is already constructed by `A ↦ A ⊙ U`, and which properties make it successor-like before any formal natural-number carrier is declared?
-
-The next Block must not identify that operation with the natural-number successor merely by analogy.
+The next project boundary is the PDSA-TCT-008 whole-path calibration before formal natural-number realization.
 
 ## Sensitivity
 
@@ -252,3 +250,5 @@ PDSA-TCT-004
 PDSA-TCT-005
 PDSA-TCT-006
 ```
+
+Downstream state synchronized during `PDSA-TCT-008`.
