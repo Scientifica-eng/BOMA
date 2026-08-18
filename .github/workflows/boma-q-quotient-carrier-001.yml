@@ -39,6 +39,7 @@ jobs:
         if: steps.setup.outcome == 'success'
         continue-on-error: true
         run: |
+          printf '%s\n\n' 'import Init.Data.Quot' > /tmp/QQuotientCarrier.lean
           cat \
             LAB/payloads/lean/NCore/NCoreRB001.lean \
             LAB/payloads/lean/NArithmetic/AddRight.lean \
@@ -61,7 +62,7 @@ jobs:
             LAB/payloads/lean/QStage/QFractions.lean \
             LAB/payloads/lean/QStage/QRawArithmetic.lean \
             LAB/payloads/lean/QStage/QQuotientCarrier.lean \
-            > /tmp/QQuotientCarrier.lean
+            >> /tmp/QQuotientCarrier.lean
           lake env lean /tmp/QQuotientCarrier.lean
 
       - name: Record evidence
@@ -81,6 +82,7 @@ jobs:
           **Verified commit:** \`${GITHUB_SHA}\`  
           **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
           **Pinned toolchain:** \`$(cat lean-toolchain)\`
+          **Backend helper import:** \`Init.Data.Quot\`
 
           | Target | Outcome |
           |---|---|
