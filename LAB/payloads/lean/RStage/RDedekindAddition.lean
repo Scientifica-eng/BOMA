@@ -25,7 +25,7 @@ theorem qlt_le_trans {x y z : QBOMA} (hxy : qLT x y) (hyz : qLE y z) : qLT x z :
   intro hxz
   have hyx : qLE y x := by
     have h := hyz
-    rw [hxz] at h
+    rw [← hxz] at h
     exact h
   have hxyEq : x = y := qle_antisymm hxy.1 hyx
   exact hxy.2 hxyEq
