@@ -1,7 +1,7 @@
 # R Rational Embedding Probes V5 Evidence
 **Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `a5584ff1b410b1e4be13d2668e9c27b9aab81aad`  
-**Workflow run ID:** `32179842445`  
+**Verified commit:** `c2d465cc58971a6cde585bce89dfcca45f758b77`  
+**Workflow run ID:** `32180195661`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
