@@ -6,21 +6,27 @@ open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindQuotient001
 open BOMA.R.DedekindOrderConstructive001
 
-/-- Classical reasoning supplies the isolated CutComparability interface for
-lower sets of the accepted linearly ordered rational carrier. -/
+/-- Classical excluded middle supplies the isolated CutComparability interface
+for lower sets of the accepted linearly ordered rational carrier. The classical
+commitment is explicit in the two calls to `Classical.em`. -/
 theorem cutComparability_classical : CutComparability := by
-  classical
   intro A B
-  by_cases hAB : CutLE A B
-  · exact Or.inl hAB
-  · apply Or.inr
-    intro q hqB
-    by_contra hqA
-    apply hAB
-    intro r hrA
-    rcases qle_total r q with hrq | hqr
-    · exact B.downward hqB hrq
-    · exact False.elim (hqA (A.downward hrA hqr))
+  cases Classical.em (CutLE A B) with
+  | inl hAB =>
+      exact Or.inl hAB
+  | inr hNotAB =>
+      apply Or.inr
+      intro q hqB
+      cases Classical.em (A.lower q) with
+      | inl hqA =>
+          exact hqA
+      | inr hNotAq =>
+          exfalso
+          apply hNotAB
+          intro r hrA
+          rcases qle_total r q with hrq | hqr
+          · exact B.downward hqB hrq
+          · exact False.elim (hNotAq (A.downward hrA hqr))
 
 /-- Stage-One totality candidate obtained from the localized classical witness. -/
 theorem rLE_total_classical (x y : RBOMA) : rLE x y ∨ rLE y x :=
