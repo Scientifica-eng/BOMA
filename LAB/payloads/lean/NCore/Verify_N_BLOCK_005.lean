@@ -1,9 +1,8 @@
 /-
-V5 ownership wrapper for N-BLOCK-005 — TCT Realization Bridge.
+V5 verification fragment for N-BLOCK-005 — TCT Realization Bridge.
 TCTNF is a backend representation of selected normal-form syntax only.
+The workflow concatenates this fragment after NCoreRB001.lean.
 -/
-
-import «LAB».payloads.lean.NCore.NCoreRB001
 
 namespace BOMA.NCore.V5.NBLOCK005
 
