@@ -2,9 +2,10 @@
 BOMA R-B N-Core candidate 001 — unified backend payload.
 
 This file IMPLEMENTS the formal candidate N-RB-CAND-001 under
-BOMA-RB-FORMAL-001. It is not the canonical pre-numerical TCT definition.
-It deliberately defines a fresh carrier and does not use Lean's built-in Nat
-as the N-Core carrier.
+BOMA-RB-FORMAL-001 plus the V5 scope correction recorded after
+PDSA-N-007-V5-FAILURE-001. It is not the canonical pre-numerical TCT
+definition. It deliberately defines a fresh carrier and does not use Lean's
+built-in Nat as the N-Core carrier.
 
 Any TCTNF datatype below REPRESENTS selected TCT normal forms for backend
 verification only.
@@ -34,7 +35,9 @@ theorem s_injective {a b : BOMANat} (h : s a = s b) : a = b := by
 
 /-! ## Dependent elimination / induction -/
 
-def ind {P : BOMANat → Type u}
+/-- Sort-polymorphic eliminator: covers proposition-valued induction and
+    Type-valued dependent elimination without conflating their scopes. -/
+def ind {P : BOMANat → Sort u}
     (hz : P z)
     (hs : ∀ n, P n → P (s n)) :
     ∀ n, P n
@@ -154,28 +157,31 @@ theorem bridge_reflects_formal_identity {a b : TCTNF}
 
 /-! ## Unary-algebra initiality / recursion characterization -/
 
+/-- Universe-polymorphic algebra record. The canonical BOMA initiality theorem
+    below is intentionally specialized to Type 0 for Stage One; the generic
+    comparison theorem remains same-universe polymorphic. -/
 structure UnaryAlgebra where
   Carrier : Type u
   base : Carrier
   step : Carrier → Carrier
 
-structure Hom (A B : UnaryAlgebra) where
+structure Hom (A B : UnaryAlgebra.{u}) where
   toFun : A.Carrier → B.Carrier
   map_base : toFun A.base = B.base
   map_step : ∀ x, toFun (A.step x) = B.step (toFun x)
 
-/-- The formal BOMA candidate viewed as a unary algebra. -/
-def bomaAlg : UnaryAlgebra where
+/-- The formal BOMA candidate viewed as a Type-0 unary algebra. -/
+def bomaAlg : UnaryAlgebra.{0} where
   Carrier := BOMANat
   base := z
   step := s
 
-def idHom (A : UnaryAlgebra) : Hom A A where
+def idHom (A : UnaryAlgebra.{u}) : Hom A A where
   toFun := fun x => x
   map_base := rfl
   map_step := by intro x; rfl
 
-def compHom {A B C : UnaryAlgebra} (g : Hom B C) (f : Hom A B) : Hom A C where
+def compHom {A B C : UnaryAlgebra.{u}} (g : Hom B C) (f : Hom A B) : Hom A C where
   toFun := fun x => g.toFun (f.toFun x)
   map_base := by
     calc
@@ -188,32 +194,36 @@ def compHom {A B C : UnaryAlgebra} (g : Hom B C) (f : Hom A B) : Hom A C where
         congrArg g.toFun (f.map_step x)
       _ = C.step (g.toFun (f.toFun x)) := g.map_step (f.toFun x)
 
-/-- Existence of the canonical homomorphism from the BOMA candidate. -/
-def foldHom (A : UnaryAlgebra) : Hom bomaAlg A where
+/-- Existence of the canonical homomorphism from the BOMA candidate to a
+    Type-0 target unary algebra. -/
+def foldHom (A : UnaryAlgebra.{0}) : Hom bomaAlg A where
   toFun := fold A.base A.step
   map_base := rfl
   map_step := by intro n; rfl
 
-/-- Pointwise uniqueness of homomorphisms from the BOMA candidate. -/
-theorem foldHom_unique (A : UnaryAlgebra) (h : Hom bomaAlg A) :
+/-- Pointwise uniqueness of homomorphisms from the BOMA candidate in the
+    selected Type-0 unary-algebra scope. -/
+theorem foldHom_unique (A : UnaryAlgebra.{0}) (h : Hom bomaAlg A) :
     ∀ n, h.toFun n = (foldHom A).toFun n :=
   fold_unique A.base A.step h.toFun h.map_base h.map_step
 
-/-- Pointwise initiality avoids requiring function extensionality. -/
-def PointwiseInitial (A : UnaryAlgebra) : Prop :=
-  ∀ B : UnaryAlgebra,
+/-- Same-universe pointwise initiality avoids requiring function extensionality. -/
+def PointwiseInitial (A : UnaryAlgebra.{u}) : Prop :=
+  ∀ B : UnaryAlgebra.{u},
     ∃ h : Hom A B,
       ∀ k : Hom A B, ∀ x, k.toFun x = h.toFun x
 
+/-- Stage-One BOMA initiality is explicitly scoped to Type-0 unary algebras. -/
 theorem boma_pointwise_initial : PointwiseInitial bomaAlg := by
   intro B
   refine ⟨foldHom B, ?_⟩
   intro k x
   exact foldHom_unique B k x
 
-/-- Any two pointwise-initial unary algebras are pointwise inverse-isomorphic. -/
+/-- Any two same-universe pointwise-initial unary algebras are pointwise
+    inverse-isomorphic. -/
 theorem pointwise_initial_unique
-    (A B : UnaryAlgebra)
+    (A B : UnaryAlgebra.{u})
     (hA : PointwiseInitial A)
     (hB : PointwiseInitial B) :
     ∃ f : Hom A B, ∃ g : Hom B A,
