@@ -1,10 +1,10 @@
 /-
-V5 ownership wrapper for N-BLOCK-001 — Formal Unary Kernel.
-This file verifies the declared carrier/constructor/identity/eliminator interfaces
-without promoting the whole N-Core candidate.
--/
+V5 verification fragment for N-BLOCK-001 — Formal Unary Kernel.
 
-import «LAB».payloads.lean.NCore.NCoreRB001
+The evidence-producing workflow concatenates this fragment after
+NCoreRB001.lean. It is intentionally not a standalone Lean module; this avoids
+inventing a repository-wide module root merely for verification plumbing.
+-/
 
 namespace BOMA.NCore.V5.NBLOCK001
 
@@ -20,7 +20,7 @@ universe u
 /-- N-BR-002: the selected formal identity interface is available on N_BOMA. -/
 example (n : BOMANat) : n = n := rfl
 
-/-- N-BR-003: dependent eliminator interface. -/
+/-- N-BR-003: dependent eliminator interface, including Type-valued motives. -/
 example {P : BOMANat → Type u}
     (hz : P z)
     (hs : ∀ n, P n → P (s n)) :
