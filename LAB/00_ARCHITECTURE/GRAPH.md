@@ -8,7 +8,7 @@
 
 This is the human-readable map of the active construction.
 
-The graph distinguishes **constructed/active units** from **conditional gates** and **reserved downstream targets**. A reserved node is shown for architectural planning only and must not be read as constructed.
+The graph distinguishes **constructed/active units** from **resolved gates** and **reserved downstream targets**. A reserved node is shown for architectural planning only and must not be read as constructed.
 
 ## Current graph
 
@@ -28,7 +28,7 @@ The graph distinguishes **constructed/active units** from **conditional gates** 
                           ▼
                  ┌──────────────────┐
                  │ TCT-BLOCK-002    │
-                 │ Finite           │
+                 │ Selected Finite  │
                  │ Configurations   │
                  │ ACTIVE           │
                  └────────┬─────────┘
@@ -39,30 +39,29 @@ The graph distinguishes **constructed/active units** from **conditional gates** 
           ┌────────────────────────────────┐
           │ TCT-J-001                     │
           │ Canonicality Gate             │
-          │ CONDITIONAL / PENDING         │
+          │ PASS / RESOLVED               │
           └───────────────┬────────────────┘
                     ▲             ▲
                     │             │
-      DEFINES ≈ /   │             │ CONSTRAINS / current
-      CONSTRAINS    │             │ derivability retest
+      DEFINES ≈ /   │             │ DERIVED RESULT
+      CONSTRAINS    │             │
                     │             │
 ┌──────────────────────────┐  ┌──────────────────────────┐
 │ TCT-BR-010               │  │ TCT-BR-009               │
 │ Reassociation-Generated  │  │ Terminal Interface       │
 │ Structural Equivalence   │  │ Preservation             │
-│ Operational: ACTIVE      │  │ Operational: ACTIVE      │
-│ Epistemic: DECLARED      │  │ Epistemic: DECLARED      │
-│ IDENTITY SPECIFICATION   │  │ ADDITIONAL CONSTRAINT    │
-└──────────────────────────┘  │ retest under BR-010       │
-                              └──────────────────────────┘
+│ ACTIVE                   │  │ ACTIVE                   │
+│ DECLARED IDENTITY SPEC   │  │ DERIVED UNDER BR-010     │
+└──────────────────────────┘  └──────────────────────────┘
                           │
-                 gate unresolved
+                    gate passed
                           │
                           ▼
           ┌────────────────────────────────┐
           │ TCT-BLOCK-003                 │
           │ Canonical Decomposition       │
-          │ RESERVED — NOT CONSTRUCTED    │
+          │ RESERVED — ADMISSIBLE NEXT    │
+          │ NOT YET CONSTRUCTED           │
           └───────────────┬────────────────┘
                           │
                           ▼
@@ -94,31 +93,29 @@ The graph distinguishes **constructed/active units** from **conditional gates** 
 
 ## Current frontier
 
-The actual mathematical frontier is:
+The verified path now reaches the output side of `TCT-J-001`:
 
 ```text
 TCT-BLOCK-002
       ↓
 TCT-BR-010  explicit current-path ≈
       ↓
-TCT-J-001  ← TCT-BR-009 terminal-preservation question
+TCT-BR-009  terminal preservation DERIVED
+      ↓
+TCT-J-001   PASS / RESOLVED
+      ↓
+TCT-BLOCK-003  RESERVED — next construction target
 ```
 
 The project has **not** yet constructed `TCT-BLOCK-003` or any later node.
 
-`PDSA-TCT-003` selected `TCT-BR-010` without building terminal recovery into the equivalence definition.
+Verification evidence for the passed gate:
 
-The active theorem/countermodel task is therefore:
+`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
 
-```text
-P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q
-```
+The next cycle is:
 
-under exactly the BR-010 generation rules.
-
-Active execution plan:
-
-`LAB/PDSA/BOMA_STAGE_ONE_PDSA_EXECUTION_PLAN.md`
+`PDSA-TCT-005 — Canonical Decomposition Block`.
 
 ## Horizontal structure
 
@@ -148,7 +145,7 @@ Finite configurations
   ↓
 Structural equivalence / decomposition gate
   ↓
-Decomposition
+Canonical decomposition
   ↓
 Structural iteration / depth
   ↓
@@ -159,7 +156,7 @@ Formalization boundary
 Formal natural-number domain
 ```
 
-Only the first two Blocks are currently active constructed Blocks. BR-010 is an active identity-specification Brick; it does not itself constitute a new downstream construction Block.
+Only the first two Blocks are currently active constructed Blocks. BR-010 is an active identity-specification Brick; BR-009 is a derived theorem Brick; J-001 is a resolved Junction.
 
 ## Junction rule
 
@@ -185,7 +182,7 @@ Change TCT-BR-010
         ↓
 retest TCT-BR-009
         ↓
-retest TCT-J-001
+reopen/retest TCT-J-001
         ↓
 retest TCT-BLOCK-003 if it exists at that time
         ↓
@@ -195,7 +192,7 @@ all affected descendants
 ## Current and planned gates
 
 ```text
-TCT-J-001 → decomposition admissibility          CURRENT / UNRESOLVED
+TCT-J-001 → decomposition admissibility          PASS / RESOLVED
 TCT-J-002 → depth / formal-stage correspondence  PLANNED / NOT YET ACTIVE
 TCT-J-003 → formal realization boundary           PLANNED / NOT YET ACTIVE
 ```
