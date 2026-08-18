@@ -1,4 +1,4 @@
-# TCT-BLOCK-002 — Finite Configurations
+# TCT-BLOCK-002 — Generated Selected Configurations
 
 ## Canonical Identity
 
@@ -6,10 +6,11 @@
 - **Type:** Block
 - **Layer:** L1 — explicit constructed structure
 - **Operational Status:** ACTIVE
+- **Terminology note:** historical sources and earlier canonical revisions used “Finite Configurations”; PDSA-TCT-008 refines the canonical title to avoid reading meta-finiteness as an already constructed object-level numerical property.
 
 ## Purpose
 
-Construct the meta-finitely presented configuration family generated from the TCT-BLOCK-001 kernel without numerical indexing.
+Construct selected configuration presentations generated from the TCT-BLOCK-001 kernel, each accompanied by an explicit **meta-finite** formation/derivation witness, without numerical indexing or a completed global carrier.
 
 ## Inputs
 
@@ -22,7 +23,7 @@ U  elementary block
 ## Outputs
 
 ```text
-meta-finitely presented selected normal-form configurations
+selected generated normal-form presentations with meta-finite witnesses
 meta-level terminal-step recovery procedure
 ```
 
@@ -43,13 +44,23 @@ These Brick IDs are registry candidates until their individual canonical records
 
 ## Junction
 
-`TCT-J-001` is the explicit canonicality gate for terminal-step recovery and has been independently verified under `TCT-BR-010` by `PDSA-TCT-004`.
+`TCT-J-001` is the explicit canonicality gate for terminal-step recovery and is now PASS / RESOLVED under `TCT-BR-010` by `PDSA-TCT-004`.
 
 ## Formation and metatheory boundary
 
 The normal-form grammar is interpreted under `BOMA-META-TCT-001` as a meta-level formation specification.
 
-A presented configuration is admitted when it carries an explicit meta-finite formation/derivation according to the grammar. This does not assert a completed global set/type of all finite configurations and does not assign a natural-number-valued size.
+A presented configuration is admitted when it carries an explicit meta-finite formation/derivation according to the grammar.
+
+This does **not** assert:
+
+```text
+a completed global set/type of all generated configurations
+an object-level finite cardinality
+a natural-number-valued size or depth
+```
+
+The canonical title therefore avoids using “finite” as the object-level role name even though every supplied presentation/derivation is meta-finite in the research environment.
 
 ## Selected canonical normal-form grammar
 
@@ -65,7 +76,7 @@ because the current definitional convention gives:
 ε ⊙ U ≡ U.
 ```
 
-The selected canonical grammar is therefore refined to:
+The selected canonical grammar is:
 
 ```text
 NF  ::= ε | NF+
@@ -74,26 +85,22 @@ NF+ ::= U | (NF+ ⊙ U)
 
 This refinement excludes explicit `ε` inside a non-empty selected normal form.
 
-It does **not** change the constructional content of the track and introduces no numerical indexing. It removes a definitional duplicate so that presentation-level uniqueness can be stated cleanly.
-
-Historical documents retain the earlier grammar as provenance.
+It does not change the constructional content of the track and introduces no numerical indexing. Historical documents retain the earlier grammar as provenance.
 
 ## Normal-form identity convention
 
 For selected normal-form presentations:
 
 ```text
-≡  denotes meta-level definitional / selected-presentation identity
-≈  denotes object-level structural equivalence as specified by TCT-BR-010
+≡  meta-level definitional / selected-presentation identity
+≈  object-level structural equivalence as specified by TCT-BR-010
 ```
 
-The normal-form convention is a **DECLARED CHOICE** and must not itself be confused with a proof that arbitrary structural-equivalence classes possess canonical representatives beyond the verified current scope.
+The normal-form convention is a DECLARED CHOICE and must not itself be confused with a proof that arbitrary structural-equivalence classes possess canonical representatives beyond the verified current scope.
 
 ## Recovery procedure
 
-Recovery is currently a **meta-level inspection procedure on selected normal-form syntax**.
-
-It is defined schematically by:
+Recovery is a **meta-level inspection procedure on selected normal-form syntax**:
 
 ```text
 recover(U)
@@ -105,31 +112,28 @@ recover(P ⊙ U)
 
 for `P ∈ NF+`.
 
-The meta-record notation does **not** introduce an object-level ordered-pair construction or equality on ordered pairs.
-
-Inside the selected normal form, the terminal `U` is syntactically visible and recovery is deterministic as a presentation-level inspection.
+The meta-record notation does not introduce an object-level ordered-pair construction or equality on ordered pairs.
 
 ## Verification status
 
-**PASS** for meta-finite configuration formation and explicit selected normal-form generation.
+**PASS** for generated selected-presentation formation with explicit meta-finite witnesses.
 
-**PASS** for deterministic terminal inspection inside the selected normal-form presentation.
+**PASS** for deterministic terminal inspection inside selected normal form.
 
-**PASS under TCT-BR-010** for invariance of predecessor/terminal recovery modulo `≈`, by:
+**PASS under TCT-BR-010** for invariance of predecessor/terminal recovery modulo `≈` by:
 
 `LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`.
-
-The theorem is scoped to the present selected normal-form family and current BR-010 relation.
 
 ## Epistemic status
 
 - formation procedure: CONSTRUCTED relative to declared grammar/metatheory
+- meta-finiteness of supplied witness: META-LEVEL ONLY
 - normal-form convention: DECLARED CHOICE
 - refined NF grammar: DECLARED REPRESENTATION REFINEMENT
 - terminal visibility in selected NF: CONSTRUCTED / SYNTACTIC
 - recovery procedure on NF syntax: META-LEVEL DEFINITION
 - recovery invariance modulo BR-010: DERIVED
-- numerical indexing: NOT INTRODUCED
+- object-level numerical finiteness/cardinality: NOT INTRODUCED
 - completed global carrier: NOT INTRODUCED
 
 ## Structural-equivalence dependency
@@ -140,9 +144,18 @@ The current path uses:
 
 The recovery theorem depends on the exact BR-010 generation rules and must be retested if those rules change.
 
+## Current downstream state
+
+```text
+TCT-J-001      PASS / RESOLVED
+TCT-BLOCK-003  ACTIVE — Canonical Decomposition
+TCT-BLOCK-004  ACTIVE — Structural Iteration History
+TCT-BLOCK-005  ACTIVE — Successor-Like Extension Structure
+```
+
 ## Sensitivity
 
-- Changing the formation grammar requires retesting normal forms, recovery, decomposition, depth, and successor.
+- Changing the formation grammar requires retesting normal forms, recovery, decomposition, structural iteration, and successor-like extension.
 - Changing only the normal-form convention requires representation-invariance retesting.
 - Changing structural equivalence has high downstream impact.
 - Promoting recovery from a meta-level inspection to an object-level function requires an explicit new construction/formalization step.
@@ -154,4 +167,4 @@ The recovery theorem depends on the exact BR-010 generation rules and must be re
 
 The legacy source remains preserved and is not the canonical identity of this unit.
 
-Historical use of the earlier grammar, bare `=`, and pair notation in recovery examples is interpreted through the later PDSA equality/identity and recovery audits.
+Historical use of “finite configurations,” the earlier grammar, bare `=`, and pair notation is interpreted through the later PDSA metatheory, equality/identity, recovery, and calibration audits.
