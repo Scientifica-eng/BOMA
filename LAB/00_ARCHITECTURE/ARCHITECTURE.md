@@ -10,6 +10,37 @@ This file defines the permanent engineering architecture of the transparent math
 
 The project is represented as an **auditable dependency graph**, not as a linear sequence of documents.
 
+### Mandatory graph-topology specialization
+
+For the canonical operational interpretation of serial dependencies, horizontal independence, parallel convergence, branching, and branch reconvergence, every human or AI collaborator must also read:
+
+```text
+LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+```
+
+That document is authoritative for graph-topology questions under this architecture. In particular:
+
+```text
+construction DAG ≠ forced linear chain
+fork ≠ Decision Point by default
+meeting ≠ verified Junction by default
+reconvergence preserves branch provenance
+```
+
+The current Stage-One program gives particular attention to scientifically meaningful:
+
+```text
+split → independent development → verified reconvergence
+```
+
+patterns when the mathematics naturally supports them.
+
+This specialization was adopted through:
+
+```text
+PDSA-ARCH-001 — Construction Topology Adoption
+```
+
 The current Stage-One objective is:
 
 ```text
@@ -28,7 +59,7 @@ natural numbers
 integers → rationals → reals → complex numbers
 ```
 
-The diagram is a target architecture, not a claim that downstream units already exist.
+The diagram is a target architecture, not a claim that downstream units already exist and not a requirement that every local dependency graph be linear.
 
 ## Governing research method
 
@@ -77,6 +108,8 @@ A Brick must have:
 - sensitivity/change impact;
 - relevant PDSA provenance when created or changed under the current method.
 
+A Brick's graph orientation does not determine whether it is a Brick. A Brick may be dependency-free, vertically dependent, horizontally independent of sibling units, branch-specific, or one of several contributors to a convergent downstream unit.
+
 ### Block
 
 A coherent cluster of Bricks that establishes one higher-level structure.
@@ -90,6 +123,8 @@ A Block has:
 - acceptance criterion;
 - operational and epistemic status;
 - PDSA provenance where applicable.
+
+A Block may contain serial or parallel internal structure. Composition must preserve Brick identities and provenance.
 
 ### Junction
 
@@ -108,6 +143,8 @@ A Junction must record:
 - operational status;
 - epistemic status;
 - sensitivity and reopening conditions.
+
+A Junction may reconcile branches that arose from a Decision Point or combine parallel non-alternative contributions. A visual meeting of paths is not sufficient evidence of convergence.
 
 ### Decision Point
 
@@ -166,6 +203,21 @@ DecisionPoint --SELECTS-----> SelectedOption
 `SELECTS` records a project choice. It must never be interpreted as `DERIVES`.
 
 Non-selected options remain traceable and may later become Stage-Two branches.
+
+### Topology interpretation
+
+The same relation vocabulary may participate in different graph topologies:
+
+```text
+serial dependency
+horizontal independence
+parallel convergence
+Decision Point branching
+exploratory branching
+verified reconvergence through Junctions
+```
+
+The detailed rules and fork taxonomy are defined by `CONSTRUCTION_TOPOLOGY.md`.
 
 ## Operational status
 
@@ -264,6 +316,8 @@ Which Decision Points must be reconsidered?
 Which PDSA results or learning claims must be revisited?
 ```
 
+For reconvergent structures, sensitivity analysis must also identify whether a change invalidates only one branch, the Junction proof, or the shared downstream contribution.
+
 ## Architectural invariants
 
 1. No unit may silently replace another unit.
@@ -280,6 +334,12 @@ Which PDSA results or learning claims must be revisited?
 12. Scientifically relevant failures and corrections remain traceable through PDSA learning records.
 13. AI-generated content never becomes canonical solely because it is fluent or plausible; appropriate verification and human research authority remain explicit.
 14. Non-selected Decision Point options remain traceable for later branch comparison unless explicitly rejected for a documented reason.
+15. Repository or document order must not be treated as mathematical dependency order.
+16. Independent horizontal units must not be forced into false dependencies for presentation convenience.
+17. A fork must be classified before it is represented as a Decision Point.
+18. Reconvergence requires explicit evidence and an appropriate Junction/compatibility record.
+19. Reconvergence does not erase branch provenance or imply identical construction histories.
+20. Same reusable certified contribution may have multiple distinct producer paths, provided their convergence/translation is explicitly verified.
 
 ## Repository structure
 
@@ -304,6 +364,13 @@ The PDSA research-process record is maintained separately under:
 LAB/PDSA/
 ```
 
+Repository-level handoff/discovery files:
+
+```text
+README.md
+AGENTS.md
+```
+
 `00_ARCHITECTURE` defines the active construction system.
 
 `10_CONSTRUCTION` contains active construction units, gates, and explicit Decision Points.
@@ -316,9 +383,11 @@ LAB/PDSA/
 
 ## Authority rule
 
-The sequence of documents is only a view of the construction graph.
+The sequence of documents is only a **view** of the construction graph.
 
 The canonical graph and unit identities are authoritative for mathematical construction status.
+
+`LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md` is authoritative for the operational interpretation of serial/parallel/fork/reconvergence topology.
 
 PDSA cycle records are authoritative for the recorded research process and learning associated with those cycles, subject to later additive correction rather than silent rewriting.
 
@@ -327,3 +396,13 @@ PDSA cycle records are authoritative for the recorded research process and learn
 The explicit `Decision Point` unit type and `BRANCHES_TO` / `SELECTS` relations were added when the project reached its first major formal-realization choice.
 
 This restores a core BOMA concept to the canonical engineering architecture rather than hiding formalization choices inside narrative text.
+
+## PDSA-ARCH-001 architectural revision note
+
+`PDSA-ARCH-001 — Construction Topology Adoption` consolidated prior Brick/Block/DAG/branch learning into the explicit canonical topology rules in:
+
+```text
+LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+```
+
+It also established `README.md` and `AGENTS.md` as mandatory repository-level handoff entry points.
