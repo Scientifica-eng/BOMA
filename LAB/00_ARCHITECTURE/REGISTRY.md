@@ -2,32 +2,33 @@
 
 **Status:** ACTIVE — Canonical registry  
 **Topology:** `CONSTRUCTION_TOPOLOGY.md`  
-**N-Core:** `N_CORE_DAG.md`
+**N-Core:** `N_CORE_DAG.md`  
+**N-Arithmetic:** `N_ARITHMETIC_DAG.md`
 
 Operational, verification, and epistemic status remain separate.
 
-## Pre-numerical TCT path
+## Pre-numerical TCT
 
-| ID | Type | Role | Operational | Epistemic |
-|---|---|---|---|---|
-| TCT-BLOCK-001 | Block | Construction Kernel | ACTIVE | mixed declared/constructed |
-| TCT-BLOCK-002 | Block | Generated Selected Configurations | ACTIVE | constructed + representation choices |
-| TCT-BR-010 | Brick | Structural equivalence `≈` | ACTIVE | DECLARED CHOICE |
-| TCT-BR-009 | Brick | Terminal preservation | ACTIVE | DERIVED under BR-010 |
-| TCT-J-001 | Junction | Canonical decomposition gate | PASS / RESOLVED | DERIVED |
-| TCT-BLOCK-003 | Block | Canonical Decomposition | ACTIVE | constructed + derived guarantee |
-| TCT-BLOCK-004 | Block | Structural Iteration History | ACTIVE | DERIVED |
-| TCT-BLOCK-005 | Block | Successor-Like Extension | ACTIVE | DERIVED |
-| TCT-BLOCK-006 | retained aggregate | old monolithic N candidate view | DECOMPOSED / PROVENANCE | provisional aggregate |
-
-## Natural-number Decision Points
-
-| ID | Role | Operational | Epistemic |
+| ID | Type | Role | Status |
 |---|---|---|---|
-| N-DP-001 | Stage-One realization regime | RESOLVED — R-B selected | METHODOLOGICAL / FORMALIZATION CHOICE |
-| N-DP-002 | eliminator and universe scope | RESOLVED | FORMALIZATION-DEPENDENT / METHODOLOGICAL CHOICE |
+| TCT-BLOCK-001 | Block | Construction Kernel | ACTIVE |
+| TCT-BLOCK-002 | Block | Generated Selected Configurations | ACTIVE |
+| TCT-BR-010 | Brick | Structural equivalence `≈` | ACTIVE — declared identity specification |
+| TCT-BR-009 | Brick | Terminal preservation | ACTIVE — derived under BR-010 |
+| TCT-J-001 | Junction | Canonical decomposition gate | PASS |
+| TCT-BLOCK-003 | Block | Canonical Decomposition | ACTIVE |
+| TCT-BLOCK-004 | Block | Structural Iteration History | ACTIVE |
+| TCT-BLOCK-005 | Block | Successor-Like Extension | ACTIVE |
+| TCT-BLOCK-006 | provenance aggregate | old monolithic N candidate | DECOMPOSED / PROVENANCE |
 
-Selected scope at `N-DP-002`:
+## Natural-number formalization decisions
+
+| ID | Role | Status |
+|---|---|---|
+| N-DP-001 | Stage-One realization regime | RESOLVED — R-B selected |
+| N-DP-002 | eliminator / universe scope | RESOLVED |
+
+Scope:
 
 ```text
 eliminator               Sort-polymorphic
@@ -36,72 +37,84 @@ bomaAlg initiality       Type-0 unary-algebra scope
 standardness comparison  same-universe polymorphic
 ```
 
-## N-Core Bricks
+## Accepted N-Core
 
-All machine-relevant claims below passed claim-level V5 in workflow run `32163771789` under Lean 4.32.1.
-
-| ID | Role | Operational | Epistemic |
-|---|---|---|---|
-| N-BR-001 | Fresh unary inductive declaration | ACTIVE / V5 | DECLARED FORMALIZATION COMMITMENT |
-| N-BR-002 | Formal identity interface | ACTIVE / V5 | FORMALIZATION-DEPENDENT |
-| N-BR-003 | Dependent eliminator interface | ACTIVE / V5 | regime interface |
-| N-BR-004 | Constructor disjointness | ACTIVE / V5 | DERIVED |
-| N-BR-005 | Successor injectivity | ACTIVE / V5 | DERIVED |
-| N-BR-006 | Induction adequacy | ACTIVE / V5 | DERIVED |
-| N-BR-007 | Generatedness / no-junk | ACTIVE / V5 | DERIVED |
-| N-BR-008 | Nondependent recursor | ACTIVE / V5 | DERIVED |
-| N-BR-009 | Recursor equations | ACTIVE / V5 | DERIVED |
-| N-BR-010 | Pointwise recursion uniqueness | ACTIVE / V5 | DERIVED |
-| N-BR-011 | Pointwise initiality | ACTIVE / V5 | DERIVED IN DECLARED SCOPE |
-| N-BR-012 | Base realization | ACTIVE / V5 | bridge |
-| N-BR-013 | Extension realization | ACTIVE / V5 | bridge |
-| N-BR-014 | `≈` preservation | ACTIVE / V5 | DERIVED bridge obligation |
-| N-BR-015 | Identity reflection / faithfulness | ACTIVE / V5 | DERIVED bridge obligation |
-| N-BR-016 | Bridge reconstruction / coverage | ACTIVE / V5 | DERIVED bridge certificate |
-| N-BR-017 | History / constructor-ancestry correspondence | ACTIVE / V5 | DERIVED bridge obligation |
-| N-BR-018 | Constructional no-confusion transfer | ACTIVE / V4+V5 | DERIVED independent route |
-| N-BR-019 | Initial-candidate comparison maps | ACTIVE / V5 | DERIVED |
-| N-BR-020 | Pointwise inverse / standardness | ACTIVE / V5 | DERIVED IN DECLARED SCOPE |
-
-## N-Core Blocks / Junctions
-
-| ID | Type | Role | Operational | Epistemic |
-|---|---|---|---|---|
-| N-BLOCK-001 | Block | Formal Unary Kernel | ACTIVE / V5 | mixed declared/formal interfaces |
-| N-BLOCK-002 | Block | Internal No-Confusion | ACTIVE / V4+V5 PASS | DERIVED |
-| N-BLOCK-003 | Block | Induction / Generatedness | ACTIVE / V4+V5 PASS | DERIVED |
-| N-BLOCK-004 | Block | Recursion / Pointwise Initiality | ACTIVE / V4+V5 PASS | DERIVED IN SCOPE |
-| N-BLOCK-005 | Block | TCT Realization Bridge | ACTIVE / V3+V5 PASS | mixed representation + derived bridge |
-| N-BLOCK-006 | Block | Pointwise Standardness | ACTIVE / V4+V5 PASS | DERIVED IN SCOPE |
-| N-J-001 | Junction | Dual-route no-confusion convergence | PASS / RESOLVED | DERIVED CROSS-PATH AGREEMENT |
-| N-J-002 | Junction | N-Core integration gate | PASS / RESOLVED | DERIVED ARCHITECTURAL INTEGRATION |
-| N-BLOCK-007 | Block | Accepted Natural-Number Core Interface | ACTIVE — ACCEPTED | mixed formal commitments + derived certified package |
-
-## Acceptance
+Canonical detailed units are `N-BR-001..020`, `N-BLOCK-001..007`, `N-J-001`, `N-J-002`.
 
 ```text
-NAC-01..14: PASS
-NAC-15:     ACCEPT
-N-Core:     ACCEPTED under Stage-One R-B scope
+N-BLOCK-001..006 mapped V5 claims PASS
+N-J-001 PASS / V4+V5
+N-J-002 PASS
+NAC-01..14 PASS
+NAC-15 ACCEPT
+N-BLOCK-007 ACTIVE — ACCEPTED N-CORE EXPORT
 ```
 
-Closure:
+V5: run `32163771789`, Lean 4.32.1.
 
-`LAB/PDSA/PDSA-N-012_N_CORE_CLOSURE.md`
+## Accepted addition
 
-Canonical downstream export:
+| Unit | Role | Status |
+|---|---|---|
+| N-ADD-BLOCK-001 | right-recursive route | PASS / V5 |
+| N-ADD-BLOCK-002 | left-recursive route | PASS / V5 |
+| N-ADD-J-001 | route convergence | PASS / V4+V5 |
+| N-ADD-BLOCK-003 | canonical addition + laws | ACTIVE / PASS |
 
-`LAB/10_CONSTRUCTION/blocks/N-BLOCK-007/UNIT.md`
+Bricks `N-ADD-BR-001..012` remain canonical members/provenance.
 
-## Arithmetic boundary
+V5: run `32164861155`.
 
-The accepted N-Core does **not** yet contain:
+## Accepted multiplication
+
+| Unit | Role | Status |
+|---|---|---|
+| N-MUL-BLOCK-001 | right-recursive route | PASS / V5 |
+| N-MUL-BLOCK-002 | left-recursive route | PASS / V5 |
+| N-MUL-J-001 | route convergence | PASS / V4+V5 |
+| N-MUL-BLOCK-003 | canonical multiplication + laws | ACTIVE / PASS |
+
+Bricks `N-MUL-BR-001..012` remain canonical members/provenance.
+
+V5: run `32165318266`.
+
+## Accepted order
+
+| Unit | Role | Status |
+|---|---|---|
+| N-ORD-BLOCK-001 | additive-witness route | PASS / V5 |
+| N-ORD-BLOCK-002 | N-Core-only inductive route | PASS / V5 |
+| N-ORD-J-001 | route equivalence | PASS / V4+V5 |
+| N-ORD-BLOCK-003 | canonical total order + laws | ACTIVE / PASS |
+| N-ORD-BLOCK-004 | arithmetic/order compatibility | ACTIVE / PASS |
+
+Bricks `N-ORD-BR-001..012` remain canonical members/provenance.
+
+V5: run `32165691581`.
+
+## Accepted N-Arithmetic
+
+| Unit | Role | Status |
+|---|---|---|
+| N-ARITH-J-001 | arithmetic integration gate | PASS / RESOLVED |
+| N-ARITH-BLOCK-001 | accepted arithmetic downstream interface | ACTIVE — ACCEPTED |
 
 ```text
-addition
-multiplication
-order
-semiring/arithmetic laws
+NAA-01..17 PASS
+NAA-18 ACCEPT
 ```
 
-These require a new auditable N-Arithmetic DAG before the project proceeds to integers.
+Exact law interface is recorded in:
+
+- `LAB/PDSA/PDSA-N-ARITH-002_INTEGRATION_AUDIT.md`
+- `LAB/10_CONSTRUCTION/blocks/N-ARITH-BLOCK-001/UNIT.md`
+
+## Current frontier
+
+```text
+N-Core         ACCEPTED
+N-Arithmetic   ACCEPTED
+Integers       NOT YET CONSTRUCTED
+```
+
+The next canonical action is the integer acceptance/architecture stage. No pair, quotient, or signed representation is canonical until an explicit integer Decision Point is studied and resolved.
