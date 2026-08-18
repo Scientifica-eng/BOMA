@@ -93,15 +93,16 @@ theorem encode_order (a b : BOMANat) :
   change zLE (embedN a) (embedN b) ↔ LE a b
   exact embedN_order a b
 
-/-- Decoder also recognizes reverse successor. This theorem is representation-aware. -/
+/-- Decoder also recognizes reverse successor. This theorem is representation-aware.
+For the possible cone constructors the computation is definitional; the negative
+case is excluded by the nonnegativity proof. -/
 theorem decode_succ (x : NFromZCone) :
     coneDecodeN (coneSucc x) = s (coneDecodeN x) := by
   cases x with
   | mk val h =>
     cases val with
     | zero => rfl
-    | pos n =>
-        simp [coneDecodeN, coneSucc, zadd, zaddD, zone, embedN]
+    | pos n => rfl
     | neg n =>
         change False at h
         contradiction
