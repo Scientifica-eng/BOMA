@@ -22,8 +22,8 @@ U  elementary block
 ## Outputs
 
 ```text
-meta-finitely presented normal-form configurations
-candidate terminal-step recovery procedure
+meta-finitely presented selected normal-form configurations
+meta-level terminal-step recovery procedure
 ```
 
 ## Internal candidate Bricks
@@ -43,13 +43,40 @@ These Brick IDs are registry candidates until their individual canonical records
 
 ## Junction
 
-`TCT-J-001` is the explicit canonicality gate for terminal-step recovery.
+`TCT-J-001` is the explicit canonicality gate for terminal-step recovery and has been independently verified under `TCT-BR-010` by `PDSA-TCT-004`.
 
 ## Formation and metatheory boundary
 
 The normal-form grammar is interpreted under `BOMA-META-TCT-001` as a meta-level formation specification.
 
 A presented configuration is admitted when it carries an explicit meta-finite formation/derivation according to the grammar. This does not assert a completed global set/type of all finite configurations and does not assign a natural-number-valued size.
+
+## Selected canonical normal-form grammar
+
+`PDSA-TCT-004` found a representational redundancy in the historical grammar:
+
+```text
+NF ::= ε | U | (NF ⊙ U)
+```
+
+because the current definitional convention gives:
+
+```text
+ε ⊙ U ≡ U.
+```
+
+The selected canonical grammar is therefore refined to:
+
+```text
+NF  ::= ε | NF+
+NF+ ::= U | (NF+ ⊙ U)
+```
+
+This refinement excludes explicit `ε` inside a non-empty selected normal form.
+
+It does **not** change the constructional content of the track and introduces no numerical indexing. It removes a definitional duplicate so that presentation-level uniqueness can be stated cleanly.
+
+Historical documents retain the earlier grammar as provenance.
 
 ## Normal-form identity convention
 
@@ -60,13 +87,13 @@ For selected normal-form presentations:
 ≈  denotes object-level structural equivalence as specified by TCT-BR-010
 ```
 
-The normal-form convention is a **DECLARED CHOICE** and must not itself be confused with a proof that structural equivalence has canonical representatives.
+The normal-form convention is a **DECLARED CHOICE** and must not itself be confused with a proof that arbitrary structural-equivalence classes possess canonical representatives beyond the verified current scope.
 
-## Recovery candidate
+## Recovery procedure
 
 Recovery is currently a **meta-level inspection procedure on selected normal-form syntax**.
 
-It should be read schematically as:
+It is defined schematically by:
 
 ```text
 recover(U)
@@ -76,27 +103,32 @@ recover(P ⊙ U)
   ≔ meta-record { predecessor: P, terminal-role: distinguished U }
 ```
 
+for `P ∈ NF+`.
+
 The meta-record notation does **not** introduce an object-level ordered-pair construction or equality on ordered pairs.
 
 Inside the selected normal form, the terminal `U` is syntactically visible and recovery is deterministic as a presentation-level inspection.
 
-What remains unresolved is whether that recovery is invariant under `≈`.
-
 ## Verification status
 
-PASS for meta-finite configuration formation and explicit normal-form generation.
+**PASS** for meta-finite configuration formation and explicit selected normal-form generation.
 
-PASS for deterministic terminal inspection **inside the selected normal-form presentation**.
+**PASS** for deterministic terminal inspection inside the selected normal-form presentation.
 
-Canonical decomposition modulo `≈` remains pending independent verification at `TCT-J-001`.
+**PASS under TCT-BR-010** for invariance of predecessor/terminal recovery modulo `≈`, by:
+
+`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`.
+
+The theorem is scoped to the present selected normal-form family and current BR-010 relation.
 
 ## Epistemic status
 
 - formation procedure: CONSTRUCTED relative to declared grammar/metatheory
 - normal-form convention: DECLARED CHOICE
+- refined NF grammar: DECLARED REPRESENTATION REFINEMENT
 - terminal visibility in selected NF: CONSTRUCTED / SYNTACTIC
 - recovery procedure on NF syntax: META-LEVEL DEFINITION
-- canonical decomposition modulo `≈`: PENDING
+- recovery invariance modulo BR-010: DERIVED
 - numerical indexing: NOT INTRODUCED
 - completed global carrier: NOT INTRODUCED
 
@@ -106,7 +138,7 @@ The current path uses:
 
 `TCT-BR-010 — Reassociation-Generated Structural Equivalence`.
 
-`TCT-BLOCK-002` does not claim that this relation preserves recovered predecessors. That is the next theorem/countermodel question.
+The recovery theorem depends on the exact BR-010 generation rules and must be retested if those rules change.
 
 ## Sensitivity
 
@@ -114,6 +146,7 @@ The current path uses:
 - Changing only the normal-form convention requires representation-invariance retesting.
 - Changing structural equivalence has high downstream impact.
 - Promoting recovery from a meta-level inspection to an object-level function requires an explicit new construction/formalization step.
+- Reintroducing explicit `ε` inside non-empty selected normal forms reopens the presentation-injectivity proof used by PDSA-TCT-004.
 
 ## Legacy source
 
@@ -121,4 +154,4 @@ The current path uses:
 
 The legacy source remains preserved and is not the canonical identity of this unit.
 
-Historical use of `=` and pair notation in recovery examples is interpreted through the later equality/identity audit.
+Historical use of the earlier grammar, bare `=`, and pair notation in recovery examples is interpreted through the later PDSA equality/identity and recovery audits.
