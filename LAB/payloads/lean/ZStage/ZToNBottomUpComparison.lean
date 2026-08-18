@@ -67,12 +67,20 @@ theorem encode_decode_val (x : NFromZCone) :
   apply cone_ext
   rfl
 
-/-- The comparison map preserves successor. -/
+/-- The comparison map preserves successor. No simplifier is used here: the
+natural arithmetic step and the Z embedding step are exhibited separately. -/
 theorem encode_succ (n : BOMANat) :
     coneEncodeN (s n) = coneSucc (coneEncodeN n) := by
   apply cone_ext
   change embedN (s n) = zadd (embedN n) zone
-  simpa [zone] using embedN_add n (s z)
+  have hn : add n (s z) = s n := by
+    calc
+      add n (s z) = s (add n z) := add_s_right n z
+      _ = s n := congrArg s (add_z_right n)
+  calc
+    embedN (s n) = embedN (add n (s z)) := congrArg embedN hn.symm
+    _ = zadd (embedN n) (embedN (s z)) := embedN_add n (s z)
+    _ = zadd (embedN n) zone := rfl
 
 /-- The comparison map preserves accepted natural addition. -/
 theorem encode_add (a b : BOMANat) :
