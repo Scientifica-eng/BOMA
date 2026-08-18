@@ -82,7 +82,10 @@ def fracOfZ (a : ZSigned) : RawFrac := ⟨a, oneDen⟩
 theorem fracOfZ_reflects {a b : ZSigned}
     (h : FracEquiv (fracOfZ a) (fracOfZ b)) : a = b := by
   change zmul a zone = zmul b zone at h
-  simpa using h
+  calc
+    a = zmul a zone := (zmul_one_right a).symm
+    _ = zmul b zone := h
+    _ = b := zmul_one_right b
 
 /-- Exact preservation of equality by the raw-fraction embedding. -/
 theorem fracOfZ_preserves {a b : ZSigned} (h : a = b) :
