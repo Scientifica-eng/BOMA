@@ -1,9 +1,7 @@
 /-
-V5 ownership wrapper for N-BLOCK-002 — Internal No-Confusion Package.
-Route A of N-J-001.
+V5 verification fragment for N-BLOCK-002 — Internal No-Confusion Package.
+Route A of N-J-001. The workflow concatenates this after NCoreRB001.lean.
 -/
-
-import «LAB».payloads.lean.NCore.NCoreRB001
 
 namespace BOMA.NCore.V5.NBLOCK002
 
