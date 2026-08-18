@@ -1,13 +1,12 @@
 /-
-V5 candidate for N-J-001 Route B — constructional no-confusion transfer.
+V5 verification fragment for N-J-001 Route B — constructional no-confusion transfer.
 
 Independence discipline:
-This file does NOT invoke the internal Route-A theorems `s_ne_z` or
-`s_injective`. It derives the same formal interface using the selected TCT
-representation, bridge reflection, and coverage/reconstruction.
+This fragment does NOT invoke the internal Route-A theorems `s_ne_z` or
+`s_injective`. The workflow concatenates it after NCoreRB001.lean and derives
+the same formal interface using the selected TCT representation, bridge
+reflection, and coverage/reconstruction.
 -/
-
-import «LAB».payloads.lean.NCore.NCoreRB001
 
 namespace BOMA.NCore.V5.NJ001RouteB
 
