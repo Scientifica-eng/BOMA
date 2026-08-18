@@ -1,0 +1,155 @@
+name: BOMA Z Order Routes — Claim-Level V5
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/ZStage/ZOrderDirect.lean'
+      - 'LAB/payloads/lean/ZStage/ZOrderPair.lean'
+      - 'LAB/payloads/lean/ZStage/ZOrderConvergence.lean'
+      - '.github/workflows/boma-z-order-routes-001.yml'
+      - 'lean-toolchain'
+
+jobs:
+  verify-and-record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Direct signed order route
+        id: direct
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat \
+            LAB/payloads/lean/NCore/NCoreRB001.lean \
+            LAB/payloads/lean/NArithmetic/AddRight.lean \
+            LAB/payloads/lean/NArithmetic/AddLeft.lean \
+            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
+            LAB/payloads/lean/NArithmetic/AddLaws.lean \
+            LAB/payloads/lean/NArithmetic/MulRight.lean \
+            LAB/payloads/lean/NArithmetic/MulLeft.lean \
+            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
+            LAB/payloads/lean/NArithmetic/MulLaws.lean \
+            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
+            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
+            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
+            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
+            LAB/payloads/lean/ZStage/ZSigned.lean \
+            LAB/payloads/lean/ZStage/ZOrderDirect.lean \
+            > /tmp/ZOrderDirect.lean
+          lake env lean /tmp/ZOrderDirect.lean
+
+      - name: Pair cross-sum order route
+        id: pair
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat \
+            LAB/payloads/lean/NCore/NCoreRB001.lean \
+            LAB/payloads/lean/NArithmetic/AddRight.lean \
+            LAB/payloads/lean/NArithmetic/AddLeft.lean \
+            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
+            LAB/payloads/lean/NArithmetic/AddLaws.lean \
+            LAB/payloads/lean/NArithmetic/MulRight.lean \
+            LAB/payloads/lean/NArithmetic/MulLeft.lean \
+            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
+            LAB/payloads/lean/NArithmetic/MulLaws.lean \
+            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
+            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
+            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
+            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
+            LAB/payloads/lean/ZStage/ZSigned.lean \
+            LAB/payloads/lean/ZStage/ZPairs.lean \
+            LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean \
+            LAB/payloads/lean/ZStage/ZOrderPair.lean \
+            > /tmp/ZOrderPair.lean
+          lake env lean /tmp/ZOrderPair.lean
+
+      - name: Order route convergence
+        id: convergence
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cat \
+            LAB/payloads/lean/NCore/NCoreRB001.lean \
+            LAB/payloads/lean/NArithmetic/AddRight.lean \
+            LAB/payloads/lean/NArithmetic/AddLeft.lean \
+            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
+            LAB/payloads/lean/NArithmetic/AddLaws.lean \
+            LAB/payloads/lean/NArithmetic/MulRight.lean \
+            LAB/payloads/lean/NArithmetic/MulLeft.lean \
+            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
+            LAB/payloads/lean/NArithmetic/MulLaws.lean \
+            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
+            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
+            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
+            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
+            LAB/payloads/lean/ZStage/ZSigned.lean \
+            LAB/payloads/lean/ZStage/ZPairs.lean \
+            LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean \
+            LAB/payloads/lean/ZStage/ZOrderDirect.lean \
+            LAB/payloads/lean/ZStage/ZOrderPair.lean \
+            LAB/payloads/lean/ZStage/ZOrderConvergence.lean \
+            > /tmp/ZOrderConvergence.lean
+          lake env lean /tmp/ZOrderConvergence.lean
+
+      - name: Record evidence
+        if: always()
+        shell: bash
+        run: |
+          RESULT=PASS
+          for x in "${{ steps.setup.outcome }}" "${{ steps.direct.outcome }}" "${{ steps.pair.outcome }}" "${{ steps.convergence.outcome }}"; do
+            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
+          done
+          git fetch origin main
+          git checkout -B zorder-evidence origin/main
+          mkdir -p LAB/20_FORMALIZATION/Z_STAGE/evidence
+          cat > LAB/20_FORMALIZATION/Z_STAGE/evidence/Z_ORDER_ROUTES_V5_LATEST.md <<EOF
+          # Z Dual-Route Order V5 Evidence
+          **Status:** ${RESULT}  
+          **Verified commit:** \`${GITHUB_SHA}\`  
+          **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
+          **Pinned toolchain:** \`$(cat lean-toolchain)\`
+
+          | Target | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | direct signed order | ${{ steps.direct.outcome }} |
+          | pair cross-sum order | ${{ steps.pair.outcome }} |
+          | order route convergence | ${{ steps.convergence.outcome }} |
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/20_FORMALIZATION/Z_STAGE/evidence/Z_ORDER_ROUTES_V5_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Z order-routes V5 run ${GITHUB_RUN_ID}"
+            git push origin HEAD:main
+          fi
+
+      - name: Enforce
+        if: always()
+        run: |
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.direct.outcome }}" = success
+          test "${{ steps.pair.outcome }}" = success
+          test "${{ steps.convergence.outcome }}" = success
