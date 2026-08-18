@@ -197,7 +197,7 @@ of human thought. Zermelo-Fraenkel set theory with the Axiom of
 Choice~\cite{Jech2003,Zermelo1908}, the Peano axioms in their
 first-order formulation~\cite{Peano1889}, Martin-L\"{o}f Type
 Theory~\cite{MartinLof1975,MartinLof1984}, Homotopy Type
-Theory~\cite{HoTTBook2013,Voevodsky2010}, and the categorical foundations
+Theory~\cite{HoTTBook2013}, and the categorical foundations
 developed from Lawvere's work~\cite{Lawvere1964,MacLane1971} ---
 each of these systems is internally precise to a degree that
 admits mechanical verification, expressively powerful enough to
@@ -664,6 +664,7 @@ The \emph{dependency closure} of $\beta$ is:
 \[
   \DC{\beta}
   = \{\,\beta' \mid \beta' \prec \beta\,\}.
+\]
 \end{definition}
 
 \begin{axiom}[Acyclicity]
@@ -736,6 +737,7 @@ The \emph{cumulative content} of $\beta$ is:
   = \mathrm{Content}(\beta)
   \;\cup
   \bigcup_{\beta' \in \DC{\beta}} \mathrm{Content}(\beta').
+\]
 \end{definition}
 
 \subsection{Decision Points}
@@ -923,10 +925,11 @@ $\mathcal{B}_i$ affects or constrains $\mathcal{P}$.
 \begin{definition}[Branch Tree]
 \label{def:branch-tree}
 The \emph{Branch Tree} $\mathcal{T}$ of a development is the
-rooted tree whose root is the Atomic Block $\beta_0$, whose internal
-nodes are Decision Blocks, whose edges are labeled by the options
-$O_i \in \mathrm{Options}(\mathcal{D})$, and whose paths from root to
-any node correspond to unique architectural paths.
+rooted tree whose root is the Atomic Block $\beta_0$, whose
+internal nodes are Decision Blocks, whose edges are labeled by
+the options $O_i \in \mathrm{Options}(\mathcal{D})$, and whose
+paths from root to any node correspond to unique architectural
+paths.
 \end{definition}
 
 \begin{remark}
@@ -940,10 +943,10 @@ record of one development within that space.
 \label{def:minimal-branch}
 A Branch $\mathcal{B}_i$ at $\mathcal{D}$ is \emph{minimal} if
 the first Post-Decision Block differs from the corresponding
-Block in the parent path only in the content directly determined by
-the selection of $O_i$, and all subsequent Blocks are developed under
-no additional assumptions beyond the branching prefix and the
-commitment of $O_i$.
+Block in the parent path only in the content directly determined
+by the selection of $O_i$, and all subsequent Blocks are
+developed under no additional assumptions beyond the branching
+prefix and the commitment of $O_i$.
 \end{definition}
 
 \subsection{Local Consistency as the Sole Validity Criterion}
@@ -1173,9 +1176,9 @@ content but to logical commitments. A logically minimal
 development defaults to intuitionistic logic and introduces
 classical commitments only when necessary, since intuitionistic
 logic is strictly weaker than classical logic. Per-injection
-logic declarations --- specifying the inference system under which
-each injection is introduced --- are the logical analogue of the
-per-injection necessity declarations required by
+logic declarations --- specifying the inference system under
+which each injection is introduced --- are the logical analogue
+of the per-injection necessity declarations required by
 Axiom~\ref{ax:minimal}.
 \end{remark}
 
@@ -1186,8 +1189,8 @@ Axiom~\ref{ax:minimal}.
 \label{def:dep-legible}
 A path $\mathcal{P}$ is \emph{dependency-legible} if, for every
 Block $\beta \in \mathcal{P}$, the set $\mathrm{Dep}(\beta)$ is
-explicitly declared, and $\DC{\beta}$ is reconstructible from these
-declarations without inference or supplementation.
+explicitly declared, and $\DC{\beta}$ is reconstructible from
+these declarations without inference or supplementation.
 \end{definition}
 
 \begin{definition}[Decision Legibility]
@@ -1252,8 +1255,9 @@ Injection Legibility hold for initial segments trivially. Decision
 Legibility holds since every Decision Block in the initial segment
 satisfies Axiom~\ref{ax:documentation}. Branch Legibility holds
 since the Branch Tree of the initial segment is a sub-tree of the
-full Branch Tree, and the documentation requirement for the initial
-segment is satisfied as a restriction of the full documentation.
+full Branch Tree, and the documentation requirement for the
+initial segment is satisfied as a restriction of the full
+documentation.
 \end{proof}
 
 \begin{remark}[Architectural Transparency and Institution Theory]
@@ -1296,13 +1300,14 @@ any reader without reconstruction (\S\ref{subsec:transparency}).
 \label{def:foundational-space}
 Let $\beta_0$ be a fixed Atomic Block. The \emph{Foundational
 Space} relative to $\beta_0$, written $\FS{\beta_0}$, is the
-collection of all locally consistent architectural paths whose first
-element is $\beta_0$:
+collection of all locally consistent architectural paths whose
+first element is $\beta_0$:
 \[
   \FS{\beta_0}
   = \{\,\mathcal{P} \mid \mathcal{P}
     \text{ is a locally consistent architectural path with }
     \mathcal{P}_0 = \beta_0\,\}.
+\]
 \end{definition}
 
 \begin{remark}
@@ -1338,13 +1343,13 @@ resemblance to the set-theoretic multiverse proposed by
 Hamkins~\cite{Hamkins2012}, and the relationship between the two
 frameworks merits explicit discussion.
 
-Hamkins argues that the independence results of set theory motivate
-a pluralist ontological stance: there is no single ``true''
-set-theoretic universe, but rather a multiverse of equally legitimate
-universes, each with its own truths.
+Hamkins argues that the independence results of set theory
+motivate a pluralist ontological stance: there is no single
+``true'' set-theoretic universe, but rather a multiverse of
+equally legitimate universes, each with its own truths.
 
-The Foundational Space $\FS{\beta_0}$ differs from Hamkins' multiverse
-in five fundamental respects.
+The Foundational Space $\FS{\beta_0}$ differs from Hamkins'
+multiverse in five fundamental respects.
 
 \textit{Scope.} Hamkins' multiverse is exclusively set-theoretic.
 The Foundational Space accommodates paths of any foundational
@@ -1356,31 +1361,31 @@ substructure of the full Foundational Space.
 \textit{Level of operation.} Hamkins' multiverse operates at the
 level of mathematical models, with relationships established by
 forcing and inner models. The Foundational Space operates at the
-level of architectural construction, with relationships established
-by common ancestry, divergence points, and Decision Point
-reselections.
+level of architectural construction, with relationships
+established by common ancestry, divergence points, and Decision
+Point reselections.
 
 \textit{Ontological commitment.} Hamkins' multiverse carries an
 explicit ontological commitment: the plurality of universes is a
-claim about what genuinely exists. The Foundational Space carries no
-such commitment.
+claim about what genuinely exists. The Foundational Space carries
+no such commitment.
 
-\textit{Documentation.} The universes of Hamkins' multiverse exist
-independently of any documentation of the decisions that produced
-them. In contrast, a path in $\FS{\beta_0}$ is an architecturally
-transparent development with explicitly documented Decision Points
-and injection structure.
+\textit{Documentation.} The universes of Hamkins' multiverse
+exist independently of any documentation of the decisions that
+produced them. In contrast, a path in $\FS{\beta_0}$ is an
+architecturally transparent development with explicitly
+documented Decision Points and injection structure.
 
 \textit{Mechanism of plurality.} In Hamkins' multiverse, plurality
-arises from model-theoretic operations within set theory itself. In
-the Foundational Space, plurality arises from architectural
-Decisions that precede mathematical development.
+arises from model-theoretic operations within set theory itself.
+In the Foundational Space, plurality arises from architectural
+decisions that precede mathematical development.
 
 In summary: Hamkins' multiverse can be understood as a specific,
 densely explored region of the Foundational Space --- the cluster
-of set-theoretic paths diverging at Decision Points internal to ZFC
-and its extensions --- studied through the lens of model-theoretic
-semantics rather than architectural construction.
+of set-theoretic paths diverging at Decision Points internal to
+ZFC and its extensions --- studied through the lens of
+model-theoretic semantics rather than architectural construction.
 \end{remark}
 
 \subsection{Structure of the Foundational Space}
@@ -1395,9 +1400,9 @@ segment shared by both paths.
 
 \begin{definition}[Divergence Point]
 \label{def:divergence}
-The \emph{divergence point} of $\mathcal{P}$ and $\mathcal{Q}$ is the
-Decision Point $\mathcal{D}$ immediately following their common
-ancestry.
+The \emph{divergence point} of $\mathcal{P}$ and $\mathcal{Q}$
+is the Decision Point $\mathcal{D}$ immediately following their
+common ancestry.
 \end{definition}
 
 \begin{proposition}[Architectural Ultra-Pseudometric]
@@ -1418,11 +1423,12 @@ symmetry, and the ultrametric inequality, constituting an
 Non-negativity and symmetry are immediate. For the ultrametric
 inequality: let $j = |\CA{\mathcal{P}}{\mathcal{Q}}|$ and
 $k = |\CA{\mathcal{Q}}{\mathcal{R}}|$, and set $m = \min(j,k)$.
-Since $\mathcal{P}$ and $\mathcal{Q}$ agree on their first $j$ Blocks,
-and $\mathcal{Q}$ and $\mathcal{R}$ agree on their first $k$ Blocks,
-both $\mathcal{P}$ and $\mathcal{R}$ agree with $\mathcal{Q}$ on their
-first $m$ Blocks, hence agree with each other on those $m$ Blocks.
-Therefore $|\CA{\mathcal{P}}{\mathcal{R}}| \geq m$, giving:
+Since $\mathcal{P}$ and $\mathcal{Q}$ agree on their first $j$
+Blocks, and $\mathcal{Q}$ and $\mathcal{R}$ agree on their first
+$k$ Blocks, both $\mathcal{P}$ and $\mathcal{R}$ agree with
+$\mathcal{Q}$ on their first $m$ Blocks, hence agree with each
+other on those $m$ Blocks. Therefore
+$|\CA{\mathcal{P}}{\mathcal{R}}| \geq m = \min(j,k)$, giving:
 \[
   d(\mathcal{P},\mathcal{R})
   \leq \frac{1}{\min(j,k)+1}
@@ -1443,37 +1449,42 @@ This dependence is a feature, not a defect, provided its
 interpretation is correctly understood. The function $d$ measures
 \emph{architectural proximity} --- the degree to which two paths
 proceeded in documented agreement --- rather than \emph{logical
-proximity}. Architectural proximity is the appropriate measure in the
-context of \BOMA{}, which is concerned with the process of foundational
-construction and not only with the resulting content.
+proximity}. Architectural proximity is the appropriate measure in
+the context of \BOMA{}, which is concerned with the process of
+foundational construction and not only with the resulting content.
 \end{remark}
 
 \begin{remark}[Pseudometric Character]
 \label{rem:pseudometric}
-The function $d$ fails to be a genuine metric when infinite paths are
-admitted, since two paths sharing an infinite common ancestry receive
-distance zero without being identical. This correctly reflects
-architectural indistinguishability at any finite depth. For all
-practical purposes --- finite foundational developments --- the
-restriction to finite-length paths gives a genuine ultrametric.
+The function $d$ fails to be a genuine metric when infinite paths
+are admitted, since two paths sharing an infinite common ancestry
+receive distance zero without being identical. This correctly
+reflects architectural indistinguishability at any finite depth.
+For all practical purposes --- finite foundational developments
+--- the restriction to finite-length paths gives a genuine
+ultrametric.
 \end{remark}
 
 \begin{remark}[Canonical Normalization]
 \label{rem:normalization}
-When the primary purpose of computing $d$ is to compare the logical
-depth of shared commitment, paths may be normalized to a common level
-of granularity before computing the Block count. A \emph{canonical
-normalization} re-packages content into Blocks of uniform logical
-weight (one injection per Block). The normalized distance $d^*$ is
-invariant under re-packaging and measures shared logical commitment.
-The relationship between $d$ and $d^*$ is itself architecturally
-informative.
+When the primary purpose of computing $d$ is to compare the
+logical depth of shared commitment, paths may be normalized to a
+common level of granularity before computing the Block count. A
+\emph{canonical normalization} re-packages content into Blocks of
+uniform logical weight (one injection per Block). The normalized
+distance $d^*$ is invariant under re-packaging and measures shared
+logical commitment. The relationship between $d$ and $d^*$ is
+itself architecturally informative.
+
+Canonical normalization in \S\ref{subsec:comparison-multi} provides a
+basis for comparison invariant under packaging decisions.
 \end{remark}
 
 \begin{definition}[Ancestry Depth]
 \label{def:ancestry-depth}
-The \emph{ancestry depth} of $\mathcal{P}$ and $\mathcal{Q}$ is
-$\delta(\mathcal{P},\mathcal{Q}) = |\CA{\mathcal{P}}{\mathcal{Q}}|$.
+The \emph{ancestry depth} of $\mathcal{P}$ and $\mathcal{Q}$
+is $\delta(\mathcal{P},\mathcal{Q}) =
+|\CA{\mathcal{P}}{\mathcal{Q}}|$.
 \end{definition}
 
 \subsection{Navigation in the Foundational Space}
@@ -1481,10 +1492,10 @@ $\delta(\mathcal{P},\mathcal{Q}) = |\CA{\mathcal{P}}{\mathcal{Q}}|$.
 
 \begin{definition}[Reachability]
 \label{def:reachability}
-A path $\mathcal{Q}$ is \emph{reachable} from $\mathcal{P}$ if there
-exists a finite sequence of Decision Point reselections connecting
-them. Since the Branch Tree is connected, every pair of paths is
-mutually reachable.
+A path $\mathcal{Q}$ is \emph{reachable} from $\mathcal{P}$ if
+there exists a finite sequence of Decision Point reselections
+connecting them. Since the Branch Tree is connected, every pair
+of paths is mutually reachable.
 \end{definition}
 
 \subsection{Contradictions as Structural Information}
@@ -1492,16 +1503,18 @@ mutually reachable.
 
 \begin{definition}[Inter-path Contradiction]
 \label{def:inter-contradiction}
-An \emph{inter-path contradiction} relative to $\mathcal{D}$ is a
-formula $\varphi$ such that $\mathcal{P} \vdash \varphi$ and
-$\mathcal{Q} \vdash \neg\varphi$ for branches $\mathcal{P}$, $\mathcal{Q}$
-diverging at $\mathcal{D}$.
+An \emph{inter-path contradiction} relative to $\mathcal{D}$ is
+a formula $\varphi$ such that
+$\mathcal{P} \vdash \varphi$ and $\mathcal{Q} \vdash \neg\varphi$
+for branches $\mathcal{P}$, $\mathcal{Q}$ diverging at
+$\mathcal{D}$.
 \end{definition}
 
 \begin{theorem}[Contradiction Localization]
 \label{thm:localization}
-Let $\mathcal{P}$ and $\mathcal{Q}$ be locally consistent paths with
-$\mathcal{P} \vdash \varphi$ and $\mathcal{Q} \vdash \neg\varphi$. Then:
+Let $\mathcal{P}$ and $\mathcal{Q}$ be locally consistent paths
+with $\mathcal{P} \vdash \varphi$ and
+$\mathcal{Q} \vdash \neg\varphi$. Then:
 \begin{enumerate}
   \item Neither $\mathcal{P}$ nor $\mathcal{Q}$ is internally
         inconsistent.
@@ -1515,23 +1528,23 @@ $\mathcal{P} \vdash \varphi$ and $\mathcal{Q} \vdash \neg\varphi$. Then:
 \begin{proof}
 (1) Both paths are locally consistent by hypothesis.
 
-(2) By Proposition~\ref{prop:inheritance}, the cumulative content of
-$\CA{\mathcal{P}}{\mathcal{Q}}$ is identical in both paths.
+(2) By Proposition~\ref{prop:inheritance}, the cumulative content
+of $\CA{\mathcal{P}}{\mathcal{Q}}$ is identical in both paths.
 
 \textit{That $\varphi$ is not derivable from common ancestry:}
 Suppose $\CA{\mathcal{P}}{\mathcal{Q}} \vdash \varphi$. Then both
-paths derive $\varphi$, but $\mathcal{Q} \vdash \neg\varphi$, so
-$\mathcal{Q}$ derives both $\varphi$ and $\neg\varphi$, contradicting
-local consistency of $\mathcal{Q}$.
+paths derive $\varphi$, but $\mathcal{Q} \vdash \neg\varphi$,
+so $\mathcal{Q}$ derives both $\varphi$ and $\neg\varphi$,
+contradicting local consistency of $\mathcal{Q}$.
 
 \textit{That $\neg\varphi$ is not derivable from common ancestry:}
-Suppose $\CA{\mathcal{P}}{\mathcal{Q}} \vdash \neg\varphi$. Then both
-paths derive $\neg\varphi$, but $\mathcal{P} \vdash \varphi$, so
-$\mathcal{P}$ derives both $\varphi$ and $\neg\varphi$, contradicting
-local consistency of $\mathcal{P}$.
+Suppose $\CA{\mathcal{P}}{\mathcal{Q}} \vdash \neg\varphi$. Then
+both paths derive $\neg\varphi$, but $\mathcal{P} \vdash \varphi$,
+so $\mathcal{P}$ derives both $\varphi$ and $\neg\varphi$,
+contradicting local consistency of $\mathcal{P}$.
 
-Hence the derivations must depend on post-Decision content originating
-at $\mathcal{D}$.
+Hence the derivations must depend on post-Decision content
+originating at $\mathcal{D}$.
 
 (3) Immediate from Definition~\ref{def:nontrivial}.
 \end{proof}
@@ -1540,9 +1553,10 @@ at $\mathcal{D}$.
 \label{def:separation}
 A \emph{separation formula} for $\mathcal{D}$ is a formula
 $\varphi \in \Sep{\mathcal{D}}$ such that
-$\mathcal{P} \vdash \varphi$ and $\mathcal{Q} \vdash \neg\varphi$ for
-two locally consistent branches diverging at $\mathcal{D}$. The set
-$\Sep{\mathcal{D}}$ is the \emph{semantic signature} of $\mathcal{D}$.
+$\mathcal{P} \vdash \varphi$ and $\mathcal{Q} \vdash \neg\varphi$
+for two locally consistent branches diverging at $\mathcal{D}$.
+The set $\Sep{\mathcal{D}}$ is the \emph{semantic signature} of
+$\mathcal{D}$.
 \end{definition}
 
 \subsection{Mathematics as a Traceable Knowledge System}
@@ -1550,8 +1564,8 @@ $\Sep{\mathcal{D}}$ is the \emph{semantic signature} of $\mathcal{D}$.
 
 \begin{definition}[Traceable Knowledge System]
 \label{def:traceable}
-A foundational development is a \emph{traceable knowledge system} if
-every statement in its deductive closure can be assigned a
+A foundational development is a \emph{traceable knowledge system}
+if every statement in its deductive closure can be assigned a
 \emph{provenance} --- a complete record of the Blocks and Decision
 Point selections from which it ultimately derives --- and this
 provenance is structurally determined from the architectural record.
@@ -1564,26 +1578,27 @@ Definition~\ref{def:transparency} is a traceable knowledge system.
 \end{proposition}
 
 \begin{proof}
-Architectural Transparency requires Dependency Legibility, Injection
-Legibility, and Decision Legibility. These conditions ensure that
-the dependency closure of every Block, the injection set of every
-Block, and the selection at every Decision Point are explicitly
-declared. A derivation of $\varphi$ in $\mathcal{P}$ proceeds through
-a finite sequence of Blocks; its provenance is the subgraph of the
-dependency structure supporting this derivation, together with the
-injections and Decision Point selections on which it depends. This
-provenance is structurally determined --- a definite object fixed by
-the architectural record.
+Architectural Transparency requires Dependency Legibility,
+Injection Legibility, and Decision Legibility. These conditions
+ensure that the dependency closure of every Block, the injection
+set of every Block, and the selection at every Decision Point are
+explicitly declared. A derivation of $\varphi$ in $\mathcal{P}$
+proceeds through a finite sequence of Blocks; its provenance is
+the subgraph of the dependency structure supporting this
+derivation, together with the injections and Decision Point
+selections on which it depends. This provenance is structurally
+determined --- a definite object fixed by the architectural record.
 \end{proof}
 
 \begin{remark}[On Computability and Structural Determination]
 \label{rem:computability-provenance}
-The claim is that provenance is \emph{structurally determined}, not
-that it is \emph{mechanically extractable} in all cases. Extraction
-depends on the decidability properties of the underlying logic. In
-cases where the logic has a decidable consequence relation, provenance
-extraction is mechanically feasible. In the general first-order case,
-it requires non-mechanical means.
+The claim is that provenance is \emph{structurally determined},
+not that it is \emph{mechanically extractable} in all cases.
+Extraction depends on the decidability properties of the
+underlying logic. In cases where the logic has a decidable
+consequence relation, provenance extraction is mechanically
+feasible. In the general first-order case, it requires
+non-mechanical means.
 \end{remark}
 
 % ============================================================
@@ -1596,19 +1611,19 @@ it requires non-mechanical means.
 
 \begin{definition}[Adjudicative Comparison]
 \label{def:adjudicative}
-An \emph{adjudicative comparison} of two paths produces a judgment of
-the form: $\mathcal{P}$ is preferable to $\mathcal{Q}$, where
-preferability is defined in terms of validity, correctness, or
-foundational superiority.
+An \emph{adjudicative comparison} of two paths produces a
+judgment of the form: $\mathcal{P}$ is preferable to
+$\mathcal{Q}$, where preferability is defined in terms of
+validity, correctness, or foundational superiority.
 \end{definition}
 
 \begin{principle}[Prohibition on Adjudicative Comparison]
 \label{prin:no-adjudication}
 \BOMA{} provides no mechanism for adjudicative comparison. No
 structural feature --- not the injection weight, not the depth of
-common ancestry, not the cardinality of the semantic signature ---
-constitutes a criterion of foundational superiority between locally
-consistent paths.
+common ancestry, not the cardinality of the semantic signature
+--- constitutes a criterion of foundational superiority between
+locally consistent paths.
 \end{principle}
 
 \subsection{What Comparison Is}
@@ -1617,20 +1632,20 @@ consistent paths.
 \begin{definition}[Structural Comparison]
 \label{def:structural-comparison}
 A \emph{structural comparison} of $\mathcal{P}$ and $\mathcal{Q}$
-produces: the common ancestry; the divergence point; the selections
-made at the divergence point in each path; an approximation of the
-semantic signature; the injection weights of post-Decision Blocks;
-and the local consistency status of each path. No output includes a
-judgment of preferability.
+produces: the common ancestry; the divergence point; the
+selections made at the divergence point in each path; an
+approximation of the semantic signature; the injection weights
+of post-Decision Blocks; and the local consistency status of
+each path. No output includes a judgment of preferability.
 \end{definition}
 
 \begin{definition}[Epistemological Yield]
 \label{def:yield}
-The \emph{epistemological yield} of a structural comparison is the
-knowledge produced about the architecture of the Foundational Space
---- specifically about the nature of the divergence point, the
-mathematical consequences of the selection, and the relationship
-between the paths within $\FS{\beta_0}$.
+The \emph{epistemological yield} of a structural comparison is
+the knowledge produced about the architecture of the Foundational
+Space --- specifically about the nature of the divergence point,
+the mathematical consequences of the selection, and the
+relationship between the paths within $\FS{\beta_0}$.
 \end{definition}
 
 \subsection{Structural Ancestry and the Locus of Difference}
@@ -1638,23 +1653,23 @@ between the paths within $\FS{\beta_0}$.
 
 \begin{proposition}[Difference Localization]
 \label{prop:diff-localize}
-Every mathematical difference between $\mathcal{P}$ and $\mathcal{Q}$
-is attributable to post-Decision content and localized to the
-divergence point $\mathcal{D}$.
+Every mathematical difference between $\mathcal{P}$ and
+$\mathcal{Q}$ is attributable to post-Decision content and
+localized to the divergence point $\mathcal{D}$.
 \end{proposition}
 
 \begin{proof}
 By Proposition~\ref{prop:inheritance}, cumulative content of
-$\CA{\mathcal{P}}{\mathcal{Q}}$ is identical in both paths. Any
-statement derivable from common ancestry is derivable in both. Any
-disagreement cannot derive from common ancestry and must depend on
-post-Decision content originating at $\mathcal{D}$.
+$\CA{\mathcal{P}}{\mathcal{Q}}$ is identical in both paths.
+Any statement derivable from common ancestry is derivable in
+both. Any disagreement cannot derive from common ancestry and
+must depend on post-Decision content originating at $\mathcal{D}$.
 \end{proof}
 
 \begin{definition}[Injection Divergence]
 \label{def:inj-divergence}
-The \emph{injection divergence} of $\mathcal{P}$ and $\mathcal{Q}$ with
-divergence point $\mathcal{D}$ is:
+The \emph{injection divergence} of $\mathcal{P}$ and $\mathcal{Q}$
+with divergence point $\mathcal{D}$ is:
 \[
   \Delta_{\mathrm{Inj}}(\mathcal{P},\mathcal{Q})
   = \Bigl(
@@ -1674,8 +1689,8 @@ divergence point $\mathcal{D}$ is:
 
 \begin{theorem}[Epistemic Content of Contradiction]
 \label{thm:epistemic}
-Let $\mathcal{P}$ and $\mathcal{Q}$ be locally consistent paths with
-divergence point $\mathcal{D}$ and separation formula
+Let $\mathcal{P}$ and $\mathcal{Q}$ be locally consistent paths
+with divergence point $\mathcal{D}$ and separation formula
 $\varphi \in \Sep{\mathcal{D}}$. The structural comparison of
 $\mathcal{P}$ and $\mathcal{Q}$ with respect to $\varphi$ yields:
 \begin{enumerate}
@@ -1686,21 +1701,22 @@ $\mathcal{P}$ and $\mathcal{Q}$ with respect to $\varphi$ yields:
   \item \textbf{Assumption identification}: $\Delta_{\mathrm{Inj}}
         (\mathcal{P},\mathcal{Q})$ contains the assumptions
         responsible for the different derivations;
-  \item \textbf{World demarcation}: $\varphi$ is a statement whose
-        truth value is determined by the selection at $\mathcal{D}$;
-  \item \textbf{Irreducibility confirmation}: the disagreement is
-        not resolvable within \BOMA{}.
+  \item \textbf{World demarcation}: $\varphi$ is a statement
+        whose truth value is determined by the selection at
+        $\mathcal{D}$;
+  \item \textbf{Irreducibility confirmation}: the disagreement
+        is not resolvable within \BOMA{}.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-Items (1) and (2) follow from Theorem~\ref{thm:localization}. Item
-(3) follows from Definition~\ref{def:inj-divergence} and
+Items (1) and (2) follow from Theorem~\ref{thm:localization}.
+Item (3) follows from Definition~\ref{def:inj-divergence} and
 Axiom~\ref{ax:minimal}: since every injection is individually
 declared and irredundant, assumptions responsible for any derived
-statement are identifiable from injection sets. Item (4) follows
-from Definition~\ref{def:separation}. Item (5) follows from
-Principle~\ref{prin:no-adjudication}.
+statement are identifiable from injection sets.
+Item (4) follows from Definition~\ref{def:separation}.
+Item (5) follows from Principle~\ref{prin:no-adjudication}.
 \end{proof}
 
 \subsection{Comparison Across Multiple Paths}
@@ -1708,17 +1724,18 @@ Principle~\ref{prin:no-adjudication}.
 
 \begin{definition}[Comparative Profile]
 \label{def:comparative-profile}
-Let $\{\mathcal{P}_1,\ldots,\mathcal{P}_m\}$ be locally consistent
-paths in $\FS{\beta_0}$. Their \emph{comparative profile} consists of:
-for each pair, the common ancestry, divergence point, and ancestry
-depth; the pairwise distance matrix $M_{ij} = d(\mathcal{P}_i,
-\mathcal{P}_j)$; for each Decision Point, the partition of paths by
-their selections; and for each separation formula, the partition of
-paths into those deriving $\varphi$ and those deriving $\neg\varphi$.
+Let $\{\mathcal{P}_1,\ldots,\mathcal{P}_m\}$ be locally
+consistent paths in $\FS{\beta_0}$. Their \emph{comparative
+profile} consists of: for each pair, the common ancestry,
+divergence point, and ancestry depth; the pairwise distance
+matrix $M_{ij} = d(\mathcal{P}_i,\mathcal{P}_j)$; for each
+Decision Point, the partition of paths by their selections;
+and for each separation formula, the partition of paths into
+those deriving $\varphi$ and those deriving $\neg\varphi$.
 
 Canonical normalization of paths --- as defined in
-Remark~\ref{rem:normalization} --- provides a basis for comparison
-that is invariant under packaging decisions.
+Remark~\ref{rem:normalization} --- provides a basis for
+comparison that is invariant under packaging decisions.
 \end{definition}
 
 \begin{definition}[Foundational Cluster]
@@ -1730,11 +1747,11 @@ $\mathcal{P}_i,\mathcal{P}_j \in \mathcal{C}$.
 \end{definition}
 
 \begin{remark}
-The ancestry depth of Definition~\ref{def:ancestry-depth} is related
-to the branch depth of Definition~\ref{def:branch-depth}: two paths
-diverging at a Branch of depth $d$ have ancestry depth equal to the
-number of Blocks in the branching prefix at that depth. Branches at
-greater depth share longer common ancestry.
+The ancestry depth of Definition~\ref{def:ancestry-depth} is
+related to the branch depth of Definition~\ref{def:branch-depth}:
+two paths diverging at a Branch of depth $d$ have ancestry depth
+equal to the number of Blocks in the branching prefix at that
+depth. Branches at greater depth share longer common ancestry.
 \end{remark}
 
 \subsection{Comparison as a Research Methodology}
@@ -1742,11 +1759,11 @@ greater depth share longer common ancestry.
 
 \begin{definition}[Architectural Inquiry]
 \label{def:architectural-inquiry}
-An \emph{architectural inquiry} is a research program that applies
-structural comparison to a collection of paths with the goal of
-producing their comparative profile, identifying non-trivial Decision
-Points, characterizing their semantic signatures, and mapping the
-foundational clusters that emerge.
+An \emph{architectural inquiry} is a research program that
+applies structural comparison to a collection of paths with
+the goal of producing their comparative profile, identifying
+non-trivial Decision Points, characterizing their semantic
+signatures, and mapping the foundational clusters that emerge.
 \end{definition}
 
 % ============================================================
@@ -1756,23 +1773,25 @@ foundational clusters that emerge.
 
 \begin{remark}[Architectural Reconstruction]
 \label{rem:reconstruction}
-The analyses of existing foundational systems in this section employ
-\emph{architectural reconstruction}: the retrospective reading of an
-existing foundational development through the lens of \BOMA{}, with
-the aim of identifying structures corresponding to Blocks, dependency
-relations, Decision Points, and injection sets.
+The analyses of existing foundational systems in this section
+employ \emph{architectural reconstruction}: the retrospective
+reading of an existing foundational development through the lens
+of \BOMA{}, with the aim of identifying structures corresponding
+to Blocks, dependency relations, Decision Points, and injection
+sets.
 
 Architectural reconstruction is an interpretive practice, not a
-mechanical extraction. The Decision Points identified below are not
-historical events in the sense of discrete, localized occurrences.
-They are logical structures --- the existence of mutually consistent
-alternatives from which a selection was eventually made --- not
-specific moments at which specific persons made specific choices.
+mechanical extraction. The Decision Points identified below are
+not historical events in the sense of discrete, localized
+occurrences. They are logical structures --- the existence of
+mutually consistent alternatives from which a selection was
+eventually made --- not specific moments at which specific persons
+made specific choices.
 
 The primary purpose of \BOMA{} is prospective: it is designed for
-future foundational developments conducted within the architectural
-paradigm. The application to existing foundations is a secondary,
-illustrative purpose.
+future foundational developments conducted within the
+architectural paradigm. The application to existing foundations
+is a secondary, illustrative purpose.
 \end{remark}
 
 \subsection{Zermelo-Fraenkel Set Theory with Choice}
@@ -1780,64 +1799,70 @@ illustrative purpose.
 
 \begin{observation}[ZFC as an Architectural Path]
 \label{obs:zfc-path}
-ZFC~\cite{Jech2003,Zermelo1908} corresponds to a locally consistent
-architectural path $\mathcal{P}_{\mathrm{ZFC}}$ in
-$\FS{\beta_0^{\mathrm{ZFC}}}$, where the Atomic Block declares: the
-membership relation $\in$ as primitive; classical first-order logic;
-the universe of discourse consisting entirely of sets. Every axiom
-of ZFC corresponds to an injecting Block.
+ZFC~\cite{Jech2003,Zermelo1908} corresponds to a locally
+consistent architectural path $\mathcal{P}_{\mathrm{ZFC}}$ in
+$\FS{\beta_0^{\mathrm{ZFC}}}$, where the Atomic Block declares:
+the membership relation $\in$ as primitive; classical first-order
+logic; the universe of discourse consisting entirely of sets.
+Every axiom of ZFC corresponds to an injecting Block.
 \end{observation}
 
 \begin{observation}[Decision-Point-Structured Episodes in ZFC]
 \label{obs:zfc-episodes}
-The historical development of ZFC contains several episodes with the
-logical structure of Decision Points.
+The historical development of ZFC contains several episodes with
+the logical structure of Decision Points.
 
-\textit{The Choice Episode.} Between 1904 and the mid-twentieth century~\cite{BaireEtAl1905,Moore1982,Zermelo1904}, the mathematical
-community engaged in sustained deliberation about the Axiom of Choice.
-The episode involved explicit recognition of alternatives --- Choice,
-Dependent Choice, Countable Choice, no choice principle --- and
-explicit argument about their consequences. The architectural framework
-reads this as a Decision Point with semantic signature including the
-Well-Ordering Theorem~\cite{Zermelo1904}, Zorn's Lemma~\cite{Jech2003},
-and the Hahn-Banach Theorem~\cite{Kunen1980}.
+\textit{The Choice Episode.} Between 1904 and the mid-twentieth
+century~\cite{BaireEtAl1905,Moore1982,Zermelo1904}, the
+mathematical community engaged in sustained deliberation about
+the Axiom of Choice. The episode involved explicit recognition
+of alternatives --- Choice, Dependent Choice, Countable Choice,
+no choice principle --- and explicit argument about their
+consequences. The architectural framework reads this as a
+Decision Point with semantic signature including the
+Well-Ordering Theorem~\cite{Zermelo1904}, Zorn's
+Lemma~\cite{Jech2003}, and the Hahn-Banach
+Theorem~\cite{Kunen1980}.
 
 \textit{The Foundation Episode.} The Axiom of Foundation was
 introduced primarily as a technical device excluding pathological
-constructions. The alternative --- non-well-founded sets --- has been
-developed by Aczel and others~\cite{Aczel1988,AczelRathjen2001}. The
-reconstruction of this as a Decision Point is more tentative: the
-``choice'' was partly a decision by default.
+constructions. The alternative --- non-well-founded sets ---
+has been developed by Aczel and others~\cite{Aczel1988,AczelRathjen2001}.
+The reconstruction of this as a Decision Point is more tentative:
+the ``choice'' was partly a decision by default.
 
 \textit{The Classical Logic Episode.} The commitment to classical
-first-order logic was made against a background in which intuitionistic
-alternatives were known --- Brouwer's intuitionism~\cite{Brouwer1907}
-and Heyting's formalization~\cite{Heyting1930,Heyting1956} were
-contemporaneous.
+first-order logic was made against a background in which
+intuitionistic alternatives were known --- Brouwer's
+intuitionism~\cite{Brouwer1907} and Heyting's
+formalization~\cite{Heyting1930,Heyting1956} were contemporaneous.
 \end{observation}
 
 \begin{remark}
-The identification of Decision-Point-structured episodes in ZFC is an
-architectural reconstruction in the sense of Remark~\ref{rem:reconstruction}.
-It is an illustration of the framework's concepts, not a historical
-claim that ZFC consciously proceeded through documented Decision Points.
+The identification of Decision-Point-structured episodes in ZFC
+is an architectural reconstruction in the sense of
+Remark~\ref{rem:reconstruction}. It is an illustration of the
+framework's concepts, not a historical claim that ZFC consciously
+proceeded through documented Decision Points.
 \end{remark}
 
 \begin{remark}[\BOMA{} and the Set-Theoretic Multiverse]
 \label{rem:multiverse-zfc}
-Within the set-theoretic region of the Foundational Space, the Decision
-Points corresponding to large cardinal axioms~\cite{Jech2003,Kunen1980},
-forcing-related extensions~\cite{Cohen1963,Cohen1964}, and variants of
-the Axiom of Choice~\cite{Moore1982} generate a cluster of paths whose
-structure is analogous to Hamkins' set-theoretic multiverse~\cite{Hamkins2012}.
+Within the set-theoretic region of the Foundational Space, the
+Decision Points corresponding to large cardinal
+axioms~\cite{Jech2003,Kunen1980}, forcing-related
+extensions~\cite{Cohen1963,Cohen1964}, and variants of the Axiom
+of Choice~\cite{Moore1982} generate a cluster of paths whose
+structure is analogous to Hamkins' set-theoretic
+multiverse~\cite{Hamkins2012}.
 
-The architectural framework adds two elements that Hamkins' multiverse
-does not contain. First, the architectural record: the Decision Point
-at which the large cardinal axiom was injected, the alternatives, and
-the rationale are documented within the path. Second, the architectural
-distance: the ultra-pseudometric of Proposition~\ref{prop:metric}
-provides a measure of how far any two set-theoretic paths are from their
-common ancestry.
+The architectural framework adds two elements that Hamkins'
+multiverse does not contain. First, the architectural record: the
+Decision Point at which the large cardinal axiom was injected,
+the alternatives, and the rationale are documented within the
+path. Second, the architectural distance: the ultra-pseudometric
+of Proposition~\ref{prop:metric} provides a measure of how far
+any two set-theoretic paths are from their common ancestry.
 \end{remark}
 
 \subsection{Peano Arithmetic and Its Extensions}
@@ -1845,27 +1870,29 @@ common ancestry.
 
 \begin{observation}[Peano Arithmetic as an Architectural Path]
 \label{obs:pa-path}
-Peano Arithmetic~\cite{Peano1889} corresponds to a locally consistent
-path $\mathcal{P}_{\mathrm{PA}}$ whose Atomic Block declares: a
-distinguished element $0$, a unary successor function $S$, and
-equality; classical first-order logic; the natural numbers as domain.
+Peano Arithmetic~\cite{Peano1889} corresponds to a locally
+consistent path $\mathcal{P}_{\mathrm{PA}}$ whose Atomic Block
+declares: a distinguished element $0$, a unary successor function
+$S$, and equality; classical first-order logic; the natural
+numbers as domain.
 \end{observation}
 
 \begin{observation}[Decision Points in the Peano Development]
 \label{obs:pa-episodes}
-The most consequential episode is the \emph{Induction Strength Episode}.
-Options include: first-order induction~\cite{Peano1889}; second-order
-induction, yielding $Z_2$~\cite{Simpson2009}; and intermediate systems
-studied in reverse mathematics~\cite{Friedman1975,Simpson2009}.
+The most consequential episode is the \emph{Induction Strength
+Episode}. Options include: first-order induction~\cite{Peano1889};
+second-order induction, yielding $Z_2$~\cite{Simpson2009}; and
+intermediate systems studied in reverse
+mathematics~\cite{Friedman1975,Simpson2009}.
 \end{observation}
 
 \begin{remark}
 The program of reverse mathematics, developed by Friedman~\cite{Friedman1975}
-and extended by Simpson~\cite{Simpson2009}, is, from the architectural
-perspective, a systematic investigation of a specific region of the
-Foundational Space. Its central question --- which axioms are necessary
-and sufficient for specific mathematical theorems? --- is an
-architectural question.
+and extended by Simpson~\cite{Simpson2009}, is, from the
+architectural perspective, a systematic investigation of a
+specific region of the Foundational Space. Its central question
+--- which axioms are necessary and sufficient for specific
+mathematical theorems? --- is an architectural question.
 \end{remark}
 
 \subsection{Dependent Type Theory}
@@ -1882,16 +1909,16 @@ and $a = b : A$; the propositions-as-types interpretation.
 
 \begin{observation}[Decision Points Within Type Theory]
 \label{obs:tt-episodes}
-The \emph{Extensionality Episode} concerns whether the identity type
-$\mathrm{Id}_A(a,b)$~\cite{MartinLof1984} is required to satisfy
-uniqueness of identity proofs~\cite{MartinLof1975}. The selection of
-the non-uniqueness option yields intensional type theory, which is the
-foundation on which HoTT is built.
+The \emph{Extensionality Episode} concerns whether the identity
+type $\mathrm{Id}_A(a,b)$~\cite{MartinLof1984} is required to
+satisfy uniqueness of identity proofs~\cite{MartinLof1975}. The
+selection of the non-uniqueness option yields intensional type
+theory, which is the foundation on which HoTT is built.
 
-The \emph{Universe Hierarchy Episode} concerns whether the type theory
-includes a cumulative hierarchy $\mathcal{U}_0 : \mathcal{U}_1 : \ldots$
-Different selections produce different type theories with different
-expressive powers.
+The \emph{Universe Hierarchy Episode} concerns whether the type
+theory includes a cumulative hierarchy $\mathcal{U}_0 :
+\mathcal{U}_1 : \ldots$ Different selections produce different
+type theories with different expressive powers.
 \end{observation}
 
 \subsection{Homotopy Type Theory}
@@ -1900,11 +1927,11 @@ expressive powers.
 \begin{observation}[HoTT as an Architectural Branch]
 \label{obs:hott-branch}
 HoTT~\cite{HoTTBook2013,Voevodsky2010} corresponds to a locally
-consistent path branching from $\mathcal{P}_{\mathrm{MLTT}}$ at the
-\emph{Univalence Episode}. The Univalence Axiom is not derivable within
-intensional MLTT and therefore represents a new foundational commitment.
-Separation formulas for this Decision Point include statements provable
-in HoTT but not in MLTT.
+consistent path branching from $\mathcal{P}_{\mathrm{MLTT}}$ at
+the \emph{Univalence Episode}. The Univalence Axiom is not
+derivable within intensional MLTT and therefore represents a new
+foundational commitment. Separation formulas for this Decision
+Point include statements provable in HoTT but not in MLTT.
 \end{observation}
 
 \subsection{Categorical Foundations}
@@ -1912,20 +1939,22 @@ in HoTT but not in MLTT.
 
 \begin{observation}[Categorical Foundations as Architectural Paths]
 \label{obs:etcs-path}
-ETCS, developed by Lawvere~\cite{Lawvere1964}, corresponds to a locally
-consistent path $\mathcal{P}_{\mathrm{ETCS}}$ whose Atomic Block declares:
-objects, morphisms, composition, and identity as primitive~\cite{MacLane1971,Awodey2010};
-sets understood as objects of a specific category rather than extensionally
-determined collections.
+ETCS, developed by Lawvere~\cite{Lawvere1964}, corresponds to a
+locally consistent path $\mathcal{P}_{\mathrm{ETCS}}$ whose Atomic
+Block declares: objects, morphisms, composition, and identity as
+primitive~\cite{MacLane1971,Awodey2010}; sets understood as objects
+of a specific category rather than extensionally determined
+collections.
 \end{observation}
 
 \begin{remark}
 It is known that ETCS and a bounded version of ZFC are mutually
-interpretable~\cite{Lawvere1964,McLarty1991}. Within the architectural
-framework, this mutual interpretability corresponds to a structural
-relationship between the two paths --- a map between their deductive
-closures preserving logical consequence in both directions. This does
-not collapse the architectural distinction between the two paths.
+interpretable~\cite{Lawvere1964,McLarty1991}. Within the
+architectural framework, this mutual interpretability corresponds
+to a structural relationship between the two paths --- a map
+between their deductive closures preserving logical consequence in
+both directions. This does not collapse the architectural
+distinction between the two paths.
 \end{remark}
 
 \subsection{The Architectural Status of Existing Foundations}
@@ -1933,37 +1962,39 @@ not collapse the architectural distinction between the two paths.
 
 \begin{proposition}[Existing Foundations as Architecturally Opaque Paths]
 \label{prop:opaque}
-Every existing foundational system corresponds to a locally consistent
-path in an appropriate Foundational Space. Every such path is valid in
-the sense of Definition~\ref{def:validity}. No existing foundational
-system is rendered invalid, superseded, or diminished by \BOMA{}.
+Every existing foundational system corresponds to a locally
+consistent path in an appropriate Foundational Space. Every such
+path is valid in the sense of Definition~\ref{def:validity}. No
+existing foundational system is rendered invalid, superseded, or
+diminished by \BOMA{}.
 \end{proposition}
 
 \begin{proof}
-Local consistency of each system follows from its consistency. The
-remaining claims follow from the definitions: every locally consistent
-path is a point in the Foundational Space, and \BOMA{} places no
-restriction on content beyond local consistency and the general
-structural requirements of Definition~\ref{def:path}.
+Local consistency of each system follows from its consistency.
+The remaining claims follow from the definitions: every locally
+consistent path is a point in the Foundational Space, and \BOMA{}
+places no restriction on content beyond local consistency and the
+general structural requirements of Definition~\ref{def:path}.
 \end{proof}
 
 \begin{proposition}[Existing Foundations as Special Cases]
 \label{prop:special-cases}
-Every existing foundational system, viewed as an architectural path,
-satisfies the structural requirements of Definition~\ref{def:path} but
-does not satisfy Architectural Transparency as defined in
-Definition~\ref{def:transparency}. Specifically, existing foundations
-are decision-opaque: their Decision Points are not documented within
-the formal presentation.
+Every existing foundational system, viewed as an architectural
+path, satisfies the structural requirements of
+Definition~\ref{def:path} but does not satisfy Architectural
+Transparency as defined in Definition~\ref{def:transparency}.
+Specifically, existing foundations are decision-opaque: their
+Decision Points are not documented within the formal presentation.
 \end{proposition}
 
 \begin{remark}
-Architectural opacity is not a defect; it is a property that follows
-from the design goals of the existing paradigm. The application of
-\BOMA{} to existing foundations is an instance of architectural
-reconstruction in the sense of Remark~\ref{rem:reconstruction}: a
-retrospective interpretive reading. Existing foundations remain
-mathematically valid, internally consistent, and enormously productive.
+Architectural opacity is not a defect; it is a property that
+follows from the design goals of the existing paradigm. The
+application of \BOMA{} to existing foundations is an instance of
+architectural reconstruction in the sense of
+Remark~\ref{rem:reconstruction}: a retrospective interpretive
+reading. Existing foundations remain mathematically valid,
+internally consistent, and enormously productive.
 \end{remark}
 
 \subsection{Compatibility and Non-Competition}
@@ -1971,19 +2002,19 @@ mathematically valid, internally consistent, and enormously productive.
 
 \begin{principle}[Non-Competition]
 \label{prin:noncompetition}
-\BOMA{} does not compete with any existing foundational system. It does
-not claim that ZFC is incorrect, that Peano Arithmetic is inadequate,
-that type theories are misguided, or that categorical foundations are
-inferior to any alternative.
+\BOMA{} does not compete with any existing foundational system.
+It does not claim that ZFC is incorrect, that Peano Arithmetic is
+inadequate, that type theories are misguided, or that categorical
+foundations are inferior to any alternative.
 \end{principle}
 
 \begin{principle}[Additive Extension]
 \label{prin:additive}
-\BOMA{} is an \emph{additive extension} of the existing foundational
-paradigm: it adds the structural dimension of documented Decision
-Points, explicit injection structure, and maintained Branch Trees,
-without removing or altering any content that existing presentations
-provide.
+\BOMA{} is an \emph{additive extension} of the existing
+foundational paradigm: it adds the structural dimension of
+documented Decision Points, explicit injection structure, and
+maintained Branch Trees, without removing or altering any content
+that existing presentations provide.
 \end{principle}
 
 \subsection{The Architecture as a Meta-Framework}
@@ -1991,38 +2022,42 @@ provide.
 
 \begin{definition}[Meta-Framework]
 \label{def:meta}
-A \emph{meta-framework} for foundational mathematics is a structure
-within which individual foundational systems can be situated, compared,
-and related to one another, without itself constituting a foundational
-system.
+A \emph{meta-framework} for foundational mathematics is a
+structure within which individual foundational systems can be
+situated, compared, and related to one another, without itself
+constituting a foundational system.
 \end{definition}
 
 \begin{proposition}
 \label{prop:meta}
-\BOMA{} is a meta-framework in the sense of Definition~\ref{def:meta}
-with respect to the \emph{object logic} of individual paths: it imposes
-no constraint on which logic any particular path declares. At the level
-of its own formulation, \BOMA{} employs classical first-order logic as
-its framework logic --- a commitment that is explicit and acknowledged
-as a meta-level Decision Point in the sense of Remark~\ref{rem:three-levels}.
+\BOMA{} is a meta-framework in the sense of
+Definition~\ref{def:meta} with respect to the \emph{object logic}
+of individual paths: it imposes no constraint on which logic any
+particular path declares. At the level of its own formulation,
+\BOMA{} employs classical first-order logic as its framework
+logic --- a commitment that is explicit and acknowledged as a
+meta-level Decision Point in the sense of
+Remark~\ref{rem:three-levels}.
 \end{proposition}
 
 \begin{proof}
-The framework makes no specific mathematical commitments at the object
-level. The additional qualification --- that logical neutrality holds
-at the object level but not at the framework or meta-logic levels ---
-follows from the explicit use of classical reasoning in the framework's
-own definitions and proofs, as established in Remark~\ref{rem:three-levels}.
+The framework makes no specific mathematical commitments at the
+object level. The additional qualification --- that logical
+neutrality holds at the object level but not at the framework or
+meta-logic levels --- follows from the explicit use of classical
+reasoning in the framework's own definitions and proofs, as
+established in Remark~\ref{rem:three-levels}.
 \end{proof}
 
 \begin{remark}[The Meta-Level Decision Point]
 \label{rem:meta-dp}
-The choice of classical logic as the framework logic is, by \BOMA{}'s own
-standards, a Decision Point. The present paper selects classical logic
-on grounds of familiarity, expressive adequacy, and consistency with
-the conventions of the mathematical logic community. The unchosen
-alternative --- an intuitionistic formulation of the same architectural
-framework --- is preserved in the record by this acknowledgment.
+The choice of classical logic as the framework logic is, by
+\BOMA{}'s own standards, a Decision Point. The present paper
+selects classical logic on grounds of familiarity, expressive
+adequacy, and consistency with the conventions of the mathematical
+logic community. The unchosen alternative --- an intuitionistic
+formulation of the same architectural framework --- is preserved
+in the record by this acknowledgment.
 \end{remark}
 
 % ============================================================
@@ -2036,45 +2071,49 @@ framework --- is preserved in the record by this acknowledgment.
 \begin{observation}[The Current State of Proof Assistant Foundations]
 \label{obs:pa-current}
 Existing proof assistants are grounded in specific foundational
-systems: Coq~\cite{Coq2023} and Agda~\cite{Norell2007} in variants of
-MLTT; Lean~\cite{deMouraEtAl2015} in a dependent type theory;
-Isabelle~\cite{NipkowEtAl2002} in Higher-Order Logic; Metamath~\cite{Megill1997}
-in a metalogical framework. Each of these is, in the architectural
-sense, an architecturally opaque path.
+systems: Coq~\cite{Coq2023} and Agda~\cite{Norell2007} in
+variants of MLTT; Lean~\cite{deMouraEtAl2015} in a dependent
+type theory; Isabelle~\cite{NipkowEtAl2002} in Higher-Order
+Logic; Metamath~\cite{Megill1997} in a metalogical framework.
+Each of these is, in the architectural sense, an architecturally
+opaque path.
 \end{observation}
 
 \begin{application}[Architecturally Transparent Proof Assistants]
 \label{app:transparent-pa}
-\BOMA{} suggests a new design requirement for proof assistants: not
-merely verification of formal derivations, but documentation of the
-architectural choices made in the underlying foundational development,
-maintained as a first-class structural artifact.
+\BOMA{} suggests a new design requirement for proof assistants:
+not merely verification of formal derivations, but documentation
+of the architectural choices made in the underlying foundational
+development, maintained as a first-class structural artifact.
 \end{application}
 
 \begin{application}[Dependency Analysis and Axiom Tracking]
 \label{app:axiom-tracking}
-Given an architecturally transparent development, the injection set of
-every theorem --- the collection of assumptions on which it ultimately
-depends --- is structurally determined by the architectural record. In
-cases where the underlying logic supports effective proof search, this
-injection set is mechanically extractable. This enables \emph{axiom
-profiling}: for any theorem, a precise account of which foundational
-commitments are necessary for its proof.
+Given an architecturally transparent development, the injection
+set of every theorem --- the collection of assumptions on which
+it ultimately depends --- is structurally determined by the
+architectural record. In cases where the underlying logic supports
+effective proof search, this injection set is mechanically
+extractable. This enables \emph{axiom profiling}: for any theorem,
+a precise account of which foundational commitments are necessary
+for its proof.
 
-A user of a large formal library --- such as Mathlib in Lean~\cite{LeanCommunity2023},
-or the Coq standard library~\cite{Coq2023} --- who wishes to understand
-why a specific definition was chosen over an alternative currently has
-no structural source for this information within the library. An
-architecturally transparent library would make this a first-class
-structural artifact.
+A user of a large formal library --- such as Mathlib in
+Lean~\cite{LeanCommunity2023}, or the Coq standard
+library~\cite{Coq2023} --- who wishes to understand why a
+specific definition was chosen over an alternative currently has
+no structural source for this information within the library.
+An architecturally transparent library would make this a
+first-class structural artifact.
 \end{application}
 
 \begin{application}[Library Branching and Foundational Experiments]
 \label{app:branching}
-The Branch structure of \BOMA{} suggests a new mode of interaction with
-formal libraries: the ability to branch a library at a specific
-Decision Point and explore the consequences of a different foundational
-choice, while preserving the original development unchanged.
+The Branch structure of \BOMA{} suggests a new mode of
+interaction with formal libraries: the ability to branch a library
+at a specific Decision Point and explore the consequences of a
+different foundational choice, while preserving the original
+development unchanged.
 \end{application}
 
 \subsection{Philosophy of Mathematics}
@@ -2082,21 +2121,22 @@ choice, while preserving the original development unchanged.
 
 \begin{application}[A Formal Framework for Foundational Pluralism]
 \label{app:pluralism}
-The Foundational Space $\FS{\beta_0}$ provides a formal framework for
-foundational pluralism. Within \BOMA{}, foundational pluralism is not a
-philosophical thesis to be argued for or against; it is a structural fact.
+The Foundational Space $\FS{\beta_0}$ provides a formal framework
+for foundational pluralism. Within \BOMA{}, foundational pluralism
+is not a philosophical thesis to be argued for or against; it is
+a structural fact.
 \end{application}
 
 \begin{application}[Independence Results as Architectural Information]
 \label{app:independence}
 The independence results of mathematical logic --- G\"{o}del's
-incompleteness theorems~\cite{Goedel1931}, the independence of the
-Continuum Hypothesis from ZFC~\cite{Cohen1963,Cohen1964,Goedel1938,Goedel1940}
---- have a precise architectural interpretation. A statement $\varphi$
-independent of a foundation $\mathcal{P}$ is a separation formula for
-the Decision Point at which $\mathcal{P}$ must make a choice about
-$\varphi$. Independence results are architectural certifications of
-non-trivial Decision Points.
+incompleteness theorems~\cite{Goedel1931}, the independence of
+the Continuum Hypothesis from ZFC~\cite{Cohen1963,Cohen1964,Goedel1938,Goedel1940}
+--- have a precise architectural interpretation. A statement
+$\varphi$ independent of a foundation $\mathcal{P}$ is a
+separation formula for the Decision Point at which $\mathcal{P}$
+must make a choice about $\varphi$. Independence results are
+architectural certifications of non-trivial Decision Points.
 \end{application}
 
 \subsection{Mathematical Education}
@@ -2104,17 +2144,17 @@ non-trivial Decision Points.
 
 \begin{application}[Teaching Mathematics Through Decision Points]
 \label{app:education}
-The architectural discipline suggests presenting mathematical content
-through its Decision Points: making visible at each stage the choices
-that were made and the alternatives that existed.
+The architectural discipline suggests presenting mathematical
+content through its Decision Points: making visible at each stage
+the choices that were made and the alternatives that existed.
 \end{application}
 
 \begin{application}[Curriculum Design and Dependency Transparency]
 \label{app:curriculum}
-An architecturally transparent mathematical development provides a
-precise dependency structure from which a well-ordered curriculum can
-be read directly. The partial order on Blocks determines logically
-admissible orderings of curriculum topics.
+An architecturally transparent mathematical development provides
+a precise dependency structure from which a well-ordered
+curriculum can be read directly. The partial order on Blocks
+determines logically admissible orderings of curriculum topics.
 \end{application}
 
 \subsection{Foundations Research}
@@ -2122,40 +2162,41 @@ admissible orderings of curriculum topics.
 
 \begin{application}[Systematic Mapping of the Foundational Space]
 \label{app:mapping}
-The Foundational Space $\FS{\beta_0}$ is an object of mathematical study
-in its own right. Systematic mapping of specific regions --- for
-example, the region containing classical and constructive set theories
---- is a research program that \BOMA{} makes coherent and tractable.
+The Foundational Space $\FS{\beta_0}$ is an object of mathematical
+study in its own right. Systematic mapping of specific regions
+--- for example, the region containing classical and constructive
+set theories --- is a research program that \BOMA{} makes coherent
+and tractable.
 \end{application}
 
 \begin{application}[Classification of Decision Points]
 \label{app:classification}
-Decision Points vary in the depth and breadth of their mathematical
-consequences. Their classification by semantic signatures,
-independence relations, and architectural coupling constitutes a
-theory of foundational choice.
+Decision Points vary in the depth and breadth of their
+mathematical consequences. Their classification by semantic
+signatures, independence relations, and architectural coupling
+constitutes a theory of foundational choice.
 \end{application}
 
 \begin{application}[Minimal Foundations]
 \label{app:minimal}
 The Minimal Injection Principle suggests identifying minimal
-foundations: paths that achieve a specified mathematical result with
-the smallest possible cumulative injection weight. This extends the
-reverse mathematics of Friedman~\cite{Friedman1975} and Simpson~\cite{Simpson2009}
-to the full Foundational Space.
+foundations: paths that achieve a specified mathematical result
+with the smallest possible cumulative injection weight. This
+extends the reverse mathematics of Friedman~\cite{Friedman1975}
+and Simpson~\cite{Simpson2009} to the full Foundational Space.
 \end{application}
 
 \begin{application}[Formal Comparison of Foundational Systems]
 \label{app:formal-comparison}
-The structural comparison framework of \S\ref{sec:comparison} enables
-comparison at the level of architectural structure rather than
-interpretability or consistency strength.
+The structural comparison framework of \S\ref{sec:comparison}
+enables comparison at the level of architectural structure rather
+than interpretability or consistency strength.
 
 The notion of a Minimal Branch --- as defined in
-Definition~\ref{def:minimal-branch} --- is particularly relevant here:
-a minimal Branch isolates the effect of a single Decision Point
-selection as cleanly as possible, making the structural comparison
-maximally informative.
+Definition~\ref{def:minimal-branch} --- is particularly relevant
+here: a minimal Branch isolates the effect of a single Decision
+Point selection as cleanly as possible, making the structural
+comparison maximally informative.
 \end{application}
 
 \subsection{Connections to Adjacent Fields}
@@ -2166,27 +2207,30 @@ maximally informative.
 The architectural framework is structurally analogous to
 version-controlled software development~\cite{Coq2023,deMouraEtAl2015}.
 Blocks correspond to commits; dependency structures correspond to
-commit histories; Decision Points correspond to branch points; Branches
-correspond to repository branches. The formal infrastructure of
-version control systems --- directed acyclic graphs of commits, branch
-management --- is a computational realization of structures closely
-related to those defined in \BOMA{}.
+commit histories; Decision Points correspond to branch points;
+Branches correspond to repository branches. The formal
+infrastructure of version control systems --- directed acyclic
+graphs of commits, branch management --- is a computational
+realization of structures closely related to those defined in
+\BOMA{}.
 \end{connection}
 
 \begin{connection}[Formal Epistemology]
 \label{con:epistemology}
 The notion of a traceable knowledge system (Definition~\ref{def:traceable})
-connects \BOMA{} to formal epistemology. A traceable knowledge system
-makes provenance a formally defined structural concept, providing a
-mathematical model for one of the central concepts of formal epistemology.
+connects \BOMA{} to formal epistemology. A traceable knowledge
+system makes provenance a formally defined structural concept,
+providing a mathematical model for one of the central concepts
+of formal epistemology.
 \end{connection}
 
 \begin{connection}[Artificial Intelligence and Mathematical Reasoning]
 \label{con:ai}
-A system trained on architecturally transparent mathematical content
-would have access to a richer structural representation: not merely
-the content of mathematical developments, but the architectural choices
-that shaped them and the alternatives that were available.
+A system trained on architecturally transparent mathematical
+content would have access to a richer structural representation:
+not merely the content of mathematical developments, but the
+architectural choices that shaped them and the alternatives that
+were available.
 \end{connection}
 
 \subsection{The Immediate Research Agenda}
@@ -2226,123 +2270,131 @@ that shaped them and the alternatives that were available.
 \subsection{What This Paper Has Not Done}
 \label{subsec:not-done}
 
-This paper has not proposed a new mathematical foundation. It has not
-introduced new axioms, defined new primitive notions, or derived new
-mathematical theorems. It has not claimed that existing foundations are
-deficient. It has not resolved the philosophical questions surrounding
-foundational pluralism. It has not developed any Branch in full. The
-architecture has been defined; its application is the work of
-subsequent research.
+This paper has not proposed a new mathematical foundation. It has
+not introduced new axioms, defined new primitive notions, or
+derived new mathematical theorems. It has not claimed that
+existing foundations are deficient. It has not resolved the
+philosophical questions surrounding foundational pluralism. It
+has not developed any Branch in full. The architecture has been
+defined; its application is the work of subsequent research.
 
 \subsection{What This Paper Has Done}
 \label{subsec:done}
 
-We have identified an architectural gap in the existing foundational
-paradigm: not a logical gap, but an organizational one, concerning the
-documentation of Decision Points, the preservation of alternatives, and
-the declaration of injection structure.
+We have identified an architectural gap in the existing
+foundational paradigm: not a logical gap, but an organizational
+one, concerning the documentation of Decision Points, the
+preservation of alternatives, and the declaration of injection
+structure.
 
-We have proposed \BOMA{}, a precise architectural framework addressing
-this gap through seven structural components.
+We have proposed \BOMA{}, a precise architectural framework
+addressing this gap through seven structural components.
 
 We have introduced the Foundational Space as the global object
-produced by the architectural framework, established inter-path
-contradictions as structural information (Theorem~\ref{thm:localization}),
-and characterized architecturally transparent paths as traceable
-knowledge systems (Proposition~\ref{prop:traceable}).
+produced by the architectural framework, established
+inter-path contradictions as structural information
+(Theorem~\ref{thm:localization}), and characterized
+architecturally transparent paths as traceable knowledge systems
+(Proposition~\ref{prop:traceable}).
 
 We have established comparison as an epistemological tool
 (Theorem~\ref{thm:epistemic}) and demonstrated that \BOMA{} is a
-meta-framework within which existing foundations --- ZFC~\cite{Jech2003,Zermelo1908},
-Peano Arithmetic~\cite{Peano1889}, Martin-L\"{o}f Type Theory~\cite{MartinLof1975,MartinLof1984},
-HoTT~\cite{HoTTBook2013}, and categorical foundations~\cite{Lawvere1964,MacLane1971} ---
-are situated as locally consistent, architecturally opaque paths.
+meta-framework within which existing foundations ---
+ZFC~\cite{Jech2003,Zermelo1908},
+Peano Arithmetic~\cite{Peano1889},
+Martin-L\"{o}f Type Theory~\cite{MartinLof1975,MartinLof1984},
+HoTT~\cite{HoTTBook2013}, and categorical
+foundations~\cite{Lawvere1964,MacLane1971} --- are situated as
+locally consistent, architecturally opaque paths.
 
 \subsection{The Central Claim}
 \label{subsec:central}
 
 The central claim of this paper is the following.
 
-The organizational paradigm of existing foundational mathematics ---
-linear presentation of axioms, definitions, and theorems, with
-Decision Points invisible, alternatives suppressed, and injection
-structure undeclared --- is one paradigm among possible
-paradigms~\cite{BenacerrafPutnam1983,Shapiro2000}, and not the only one
-consistent with mathematical rigor.
+The organizational paradigm of existing foundational mathematics
+--- linear presentation of axioms, definitions, and theorems,
+with Decision Points invisible, alternatives suppressed, and
+injection structure undeclared --- is one paradigm among possible
+paradigms~\cite{BenacerrafPutnam1983,Shapiro2000}, and not the
+only one consistent with mathematical rigor.
 
-\BOMA{} is an alternative paradigm: one in which every foundational
-development is organized as a Branch Tree of locally consistent paths,
-every genuine choice is recorded at the moment it is made, every new
-assumption is individually declared, and every development is situated
-within a navigable space of alternative developments.
+\BOMA{} is an alternative paradigm: one in which every
+foundational development is organized as a Branch Tree of locally
+consistent paths, every genuine choice is recorded at the moment
+it is made, every new assumption is individually declared, and
+every development is situated within a navigable space of
+alternative developments.
 
 \subsection{What Comes Next}
 \label{subsec:next}
 
 The immediate next steps are those identified in
 \S\ref{subsec:agenda}: formal verification, reconstruction of a
-classic foundation, development of comparison tools, and first Branch
-developments.
+classic foundation, development of comparison tools, and first
+Branch developments.
 
 \begin{remark}[Scope and the Broader Vision]
 \label{rem:scope}
-The present paper has demonstrated \BOMA{} at the level of foundational
-systems. This is the appropriate starting point, but not the intended
-limit of the framework's scope.
+The present paper has demonstrated \BOMA{} at the level of
+foundational systems. This is the appropriate starting point, but
+not the intended limit of the framework's scope.
 
 The architectural discipline of \BOMA{} applies at every level of
-mathematical development. A definition in analysis, a lemma in algebra,
-a construction in topology --- each is a Block in the sense of
-Definition~\ref{def:block}. A researcher who wishes to explore two
-competing formulations of a definition does not face a foundational
-question; they face a Decision Point at the level of their immediate
-mathematical development. \BOMA{} applies there with full generality.
+mathematical development. A definition in analysis, a lemma in
+algebra, a construction in topology --- each is a Block in the
+sense of Definition~\ref{def:block}. A researcher who wishes to
+explore two competing formulations of a definition does not face a
+foundational question; they face a Decision Point at the level of
+their immediate mathematical development. \BOMA{} applies there
+with full generality.
 
-This scope extension carries a methodological consequence that the
-present paper has not foregrounded: the architectural discipline makes
-mathematical development experimentally tractable. Trial and error ---
-the exploration of alternatives through deliberate branching,
-observation of consequences, and revision of choices --- becomes a
-first-class mathematical methodology rather than an informal practice.
-The Branch Tree is the formal record of this experimental process;
-local consistency is the criterion that makes each experimental path
-self-validating.
+This scope extension carries a methodological consequence that
+the present paper has not foregrounded: the architectural
+discipline makes mathematical development experimentally
+tractable. Trial and error --- the exploration of alternatives
+through deliberate branching, observation of consequences, and
+revision of choices --- becomes a first-class mathematical
+methodology rather than an informal practice. The Branch Tree is
+the formal record of this experimental process; local consistency
+is the criterion that makes each experimental path self-validating.
 
-The full realization of this vision --- mathematics as a constructible,
-branchable, experimentally navigable structure at every level of
-development, including levels not yet reached by existing mathematics
---- is the long-term research program of which this paper is the
-architectural foundation.
+The full realization of this vision --- mathematics as a
+constructible, branchable, experimentally navigable structure at
+every level of development, including levels not yet reached by
+existing mathematics --- is the long-term research program of
+which this paper is the architectural foundation.
 
 Within the Foundational Space $\FS{\beta_0}$, unknown mathematics
-occupies a determinate structural position: the collection of locally
-consistent paths that have not yet been traversed. These paths are
-reachable from existing developments through finite sequences of
-Decision Point reselections (Definition~\ref{def:reachability}). The
-act of mathematical exploration, within the architectural paradigm,
-is the act of extending a Branch into an untraversed region of
-$\FS{\beta_0}$. Mathematics is inexhaustible not because its objects
-are infinite in number, but because the Foundational Space is infinite
-in structure. \BOMA{} does not close this space; it makes its infinitude
-navigable.
+occupies a determinate structural position: the collection of
+locally consistent paths that have not yet been traversed. These
+paths are reachable from existing developments through finite
+sequences of Decision Point reselections
+(Definition~\ref{def:reachability}). The act of mathematical
+exploration, within the architectural paradigm, is the act of
+extending a Branch into an untraversed region of $\FS{\beta_0}$.
+Mathematics is inexhaustible not because its objects are infinite
+in number, but because the Foundational Space is infinite in
+structure. \BOMA{} does not close this space; it makes its
+infinitude navigable.
 \end{remark}
 
 \subsection{A Remark on Method}
 \label{subsec:method}
 
-This paper has been written in a style of deliberate tentativeness. It
-claims what it can support and declines to claim what it cannot. It
-characterizes existing foundations with care, attributing to them the
-substantial achievements they have and declining to attribute failures
-they do not have.
+This paper has been written in a style of deliberate
+tentativeness. It claims what it can support and declines to
+claim what it cannot. It characterizes existing foundations with
+care, attributing to them the substantial achievements they have
+and declining to attribute failures they do not have.
 
 This tentativeness is not diffidence. It is an expression of the
 Minimal Injection Principle applied to the domain of intellectual
-claims: a paper should claim no more than is supported by its arguments,
-and present no derived conclusion as an injected assumption. The
-architecture is offered as the minimum structure needed to make the
-architectural dimension of foundational mathematics visible and
-tractable.
+claims: a paper should claim no more than is supported by its
+arguments, and present no derived conclusion as an injected
+assumption. The architecture is offered as the minimum structure
+needed to make the architectural dimension of foundational
+mathematics visible and tractable.
 
 % ============================================================
 % BIBLIOGRAPHY
