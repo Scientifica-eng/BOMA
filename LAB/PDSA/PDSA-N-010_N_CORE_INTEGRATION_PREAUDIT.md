@@ -1,99 +1,190 @@
-# PDSA-N-010 — N-Core Integration Pre-Audit
+# PDSA-N-010 — N-Core Integration Audit
 
 **CycleID:** `PDSA-N-010`  
 **Track:** Natural Numbers / N-Core Integration  
 **Date opened:** 2026-08-18  
-**Status:** **ACTIVE — PRE-AUDIT / N-J-002 BLOCKED ON V5**
+**Status:** **CLOSED — PASS / N-J-002 INTEGRATION CRITERIA SATISFIED**
 
 ## Research question
 
-Before `N-J-002` is allowed to open for a final integration decision, what exact evidence is already available for NAC-01 through NAC-14, and what remains blocked on V5 or post-V5 re-audit?
+Are the independently produced N-Core contributions mutually compatible, adequately verified, faithful to TCT ancestry, and sufficient to discharge NAC-01 through NAC-14 under the explicitly selected R-B scope?
 
-## Constraint
-
-This cycle prepares the integration gate. It must not:
-
-```text
-promote N-J-002 to PASS
-close NAC-15
-call the candidate ℕ
-start N-Arithmetic
-```
-
-## Inputs
+## Inputs at closure
 
 ```text
 BOMA-N-ACCEPT-001 v1.0
-BOMA-N-DAG-001 v1.1
-BOMA-RB-FORMAL-001 v1.0
+BOMA-N-DAG-001
+N-DP-001 — R-B selection
+N-DP-002 — eliminator/universe scope
+BOMA-RB-FORMAL-001
+BOMA-RB-FORMAL-CORR-001
 N-BLOCK-001 .. N-BLOCK-006
-N-J-001
-V5_THEOREM_OWNERSHIP.md
-N-RB-CAND-001 preservation & commitment ledger
-PDSA-N-007 claim-level V5 gate
+N-J-001 PASS / RESOLVED
+PDSA-N-007 CLOSED — V5 PASS
+V5 run 32163771789
+PDSA-N-011 NAC-13/NAC-14 PASS
 ```
 
-## DO — integration matrix
+---
 
-| NAC | Primary canonical evidence | Current pre-audit classification | Remaining condition |
-|---|---|---|---|
-| NAC-01 Formal regime | `BOMA-RB-FORMAL-001`, `N-DP-001` | **PASS — DECLARED** | post-V5 check for undeclared principles |
-| NAC-02 Formal carrier | `N-BR-001`, `N-BLOCK-001` | **CONSTRUCTED CANDIDATE** | V5 declaration/elaboration evidence |
-| NAC-03 Carrier identity | `N-BR-002` | **PASS — SPECIFIED** | V5 use consistency + final audit |
-| NAC-04 Initial element | `N-BR-001`, `N-BR-012` | **WRITTEN PASS** | V5 base realization |
-| NAC-05 Global successor | `N-BR-001`, `N-BR-013` | **WRITTEN PASS** | V5 constructor/extension realization |
-| NAC-06 Faithful TCT bridge | `N-BLOCK-005` | **WRITTEN/V3 PASS** | claim-level V5 bridge evidence |
-| NAC-07 No-confusion | `N-BLOCK-002`, `N-BR-018`, `N-J-001` | **WRITTEN V4 CONDITIONAL PASS** | V5 both routes + Junction wrapper |
-| NAC-08 Generatedness | `N-BR-007`, `N-BLOCK-003` | **WRITTEN PASS** | V5 `Generated/all_generated` witness |
-| NAC-09 Induction | `N-BR-006`, `N-BLOCK-003` | **WRITTEN/REGIME PASS** | V5 eliminator/adequacy |
-| NAC-10 Recursion / universal mapping | `N-BLOCK-004` | **WRITTEN PASS** | V5 fold/uniqueness/initiality |
-| NAC-11 Adequacy characterization | `N-BLOCK-002..005`, `N-J-001` | **PROVISIONAL WRITTEN INTEGRATION PASS** | V5 + whole-package compatibility review |
-| NAC-12 Uniqueness / standardness | `N-BLOCK-006` | **WRITTEN PASS IN R-B SCOPE** | V5 comparison/inverse theorem |
-| NAC-13 TCT preservation | preservation ledger + `N-BLOCK-005` + `N-J-001` | **WRITTEN PASS / V5 PENDING** | V5 bridge/history claims + final re-audit |
-| NAC-14 New commitments | preservation/commitment ledger | **PASS AT CANDIDATE LEVEL** | post-V5 hidden-assumption re-audit |
+# Final NAC-01..NAC-14 integration matrix
 
-## NAC-11 integration argument — provisional only
+| NAC | Canonical evidence | Final integration result |
+|---|---|---|
+| NAC-01 Formal regime | `N-DP-001`, `N-DP-002`, boundary + correction | **PASS** |
+| NAC-02 Formal carrier | `N-BR-001`, `N-BLOCK-001`, V5 | **PASS** |
+| NAC-03 Carrier identity | `N-BR-002`, declared formal equality distinction | **PASS** |
+| NAC-04 Initial element | `z`, `N-BR-012`, V5 | **PASS** |
+| NAC-05 Global successor | `s`, `N-BR-013`, V5 | **PASS** |
+| NAC-06 Faithful TCT bridge | `N-BLOCK-005`, V3+V5 | **PASS** |
+| NAC-07 No-confusion | `N-BLOCK-002`, `N-BR-018`, `N-J-001` V4+V5 | **PASS** |
+| NAC-08 Generatedness | `N-BR-007`, `N-BLOCK-003`, V5 | **PASS** |
+| NAC-09 Induction | `N-BR-006`, Sort-polymorphic eliminator / Prop theorem, V5 | **PASS** |
+| NAC-10 Recursion / universal mapping | `N-BLOCK-004`, V5 | **PASS IN DECLARED SCOPE** |
+| NAC-11 Adequacy characterization | integrated package below | **PASS** |
+| NAC-12 Uniqueness / standardness | `N-BLOCK-006`, V5 | **PASS IN DECLARED R-B SCOPE** |
+| NAC-13 TCT preservation | `PDSA-N-011` | **PASS** |
+| NAC-14 New commitments | `N-DP-002`, correction, `PDSA-N-011` | **PASS** |
 
-The current candidate excludes the principal failure modes required by NAC-11 through different DAG contributions:
+---
+
+# NAC-11 final integration argument
+
+NAC-11 is an architectural characterization obligation rather than one primitive theorem. Its failure modes are excluded by mutually compatible DAG contributions.
+
+## Extra unrelated elements
+
+Excluded by:
 
 ```text
-extra unrelated elements
-  → N-BLOCK-003 generatedness
-
-initial element as successor
-  → N-BLOCK-002 / N-J-001 no-confusion
-
-collapsed successor
-  → N-BLOCK-002 injectivity + faithful bridge
-
-cyclic / non-constructional collapse
-  → inductive ancestry + generatedness + TCT-faithful bridge
-
-uncharacterized recursion behavior
-  → N-BLOCK-004 pointwise initiality
+N-BLOCK-003 generatedness / no-junk
 ```
 
-This is an **integration argument**, not a new primitive theorem. It may be promoted only after its premises receive the required evidence levels.
+Every inhabitant of the formal carrier is certified by the constructor-generated predicate under the checked inductive regime.
 
-## Current hard blockers for N-J-002
+## Initial element appearing as a successor
+
+Excluded independently through two routes converging at `N-J-001`:
 
 ```text
-B1  observed pinned-toolchain V5 evidence
-B2  claim-level mapping of successful checker results
-B3  unqualified N-J-001 PASS
-B4  post-V5 NAC-13 preservation re-audit
-B5  post-V5 NAC-14 commitment re-audit
-B6  confirm actual universe/type scope accepted by checker
+s(n) ≠ z
 ```
 
-## STUDY
+## Collapsed successor structure
 
-The topology-aware pre-audit shows that no single new mathematical axiom appears necessary at this stage. The remaining work is primarily **verification integration and commitment auditing**.
+Excluded by:
 
-This is a useful result: if a new axiom or formal principle appears during V5, it will be detected as a deviation from the current matrix rather than silently absorbed.
+```text
+s(a)=s(b) ⇒ a=b
+```
 
-## ACT
+again with both internal and constructional production witnesses, plus bridge faithfulness.
 
-Keep `N-J-002` operationally `RESERVED / BLOCKED`.
+## Cyclic / non-constructional collapse
 
-Attach this matrix to the Junction as its pre-audit evidence. Open the final integration decision only after the V5 blockers are discharged.
+The accepted characterization does not import TCT acyclicity as a primitive axiom. Instead, the concrete R-B carrier combines:
+
+```text
+fresh inductive formation
+generatedness
+constructor no-confusion
+faithful reification/realization
+constructor ↔ structural-extension ancestry
+```
+
+A cycle incompatible with this constructor ancestry is therefore not an admitted alternative inhabitant structure of the constructed carrier.
+
+No numerical depth measure is used to define this conclusion.
+
+## Uncharacterized recursion behavior
+
+Controlled by:
+
+```text
+N-BLOCK-004 recursion
+computation equations
+pointwise uniqueness
+pointwise initiality
+```
+
+within the explicit Stage-One universe scope selected at `N-DP-002`.
+
+## Standardness within the selected regime
+
+`N-BLOCK-006` provides same-universe pointwise-initial comparison maps with pointwise inverse laws. This gives the regime-appropriate uniqueness certificate required by NAC-12 without claiming unrestricted cross-foundation categoricity.
+
+## TCT ancestry compatibility
+
+`N-BLOCK-005` and `N-J-001` ensure that the formal anti-collapse interface is not merely internally convenient: it is also recoverable from the pre-numerical constructional ancestry through a second verified route.
+
+### NAC-11 conclusion
+
+```text
+NAC-11 = PASS
+```
+
+The characterization is sufficient for the selected R-B N-Core acceptance target and its scope is explicit.
+
+---
+
+# Cross-branch compatibility audit
+
+The four major branches after `N-BLOCK-001` are compatible:
+
+```text
+No-Confusion
+Induction / Generatedness
+Recursion / Initiality
+TCT Realization Bridge
+```
+
+No branch requires an assumption rejected by another.
+
+`N-BLOCK-006` consumes `N-BLOCK-004` under the same universe policy.
+
+`N-J-001` verifies that internal no-confusion and TCT-transferred no-confusion reconverge on the same formal interface.
+
+No circular dependency was introduced:
+
+```text
+TCT bridge does not define the inductive carrier
+internal no-confusion does not prove Route B
+Route B does not invoke internal no-confusion theorems
+initiality does not define the TCT ancestry
+NAC-13/NAC-14 audits do not add mathematical premises
+```
+
+---
+
+# Verification compatibility
+
+Observed claim-level V5 run:
+
+```text
+32163771789
+Lean 4.32.1
+all required producer / Block / Route-B / Junction steps = success
+```
+
+The verification scope is exactly recorded rather than generalized silently.
+
+---
+
+# STUDY
+
+1. The N-Core architecture is genuinely non-linear: several independent formal contributions were built and only later integrated.
+2. The reconvergence experiment added epistemic value beyond a single internal proof by showing the same no-confusion interface arises from constructional ancestry.
+3. Failed V5 attempts improved the formal contract before final integration.
+4. The remaining boundary after this audit is no longer “missing construction”; it is the **explicit acceptance act NAC-15**.
+5. Passing N-J-002 must not retroactively turn formalization choices into derivations.
+
+# ACT
+
+```text
+NAC-01 .. NAC-14  PASS under documented R-B scope
+N-J-002             eligible for PASS / RESOLVED
+NAC-15              NEXT — separate closure decision
+N-Arithmetic         still BLOCKED until NAC-15
+```
+
+This cycle does not itself declare `BOMA N-Core ACCEPTED`; that is reserved for the separate NAC-15 decision.
