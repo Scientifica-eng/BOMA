@@ -13,7 +13,7 @@ The registry distinguishes two independent status dimensions:
 ```text
 OPERATIONAL STATUS
 Where the unit is in the project lifecycle / active graph.
-Examples: ACTIVE, CONDITIONAL / PENDING, RESERVED, REJECTED.
+Examples: ACTIVE, PASS / RESOLVED, RESERVED, REJECTED.
 
 EPISTEMIC STATUS
 How the mathematical or architectural content is justified.
@@ -28,11 +28,11 @@ Operational status and epistemic status must not be collapsed into one field.
 | ID | Type | Layer | Role | Operational Status | Epistemic Status | Canonical path |
 |---|---|---|---|---|---|---|
 | TCT-BLOCK-001 | Block | L1 | Construction kernel | ACTIVE | MIXED — declared constitutive choices + constructional definition; see unit | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-001/UNIT.md` |
-| TCT-BLOCK-002 | Block | L1 | Finite configurations | ACTIVE | MIXED — constructed formation + declared normal-form choice; see unit | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-002/UNIT.md` |
+| TCT-BLOCK-002 | Block | L1 | Selected finite configurations | ACTIVE | MIXED — constructed formation + declared/refined normal-form choice + derived recovery invariance | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-002/UNIT.md` |
 | TCT-BR-010 | Brick | L1 | Reassociation-generated structural equivalence `≈` | ACTIVE | DECLARED CHOICE — STRUCTURAL IDENTITY SPECIFICATION | `LAB/10_CONSTRUCTION/bricks/TCT-BR-010/UNIT.md` |
-| TCT-J-001 | Junction | L1 | Canonicality gate | CONDITIONAL / PENDING | PENDING | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
-| TCT-BR-009 | Brick | L1 | Terminal interface preservation constraint | ACTIVE | DECLARED CHOICE — ADDITIONAL CONSTRAINT; derivability retest pending under BR-010 | `LAB/10_CONSTRUCTION/bricks/TCT-BR-009/UNIT.md` |
-| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
+| TCT-BR-009 | Brick | L1 | Terminal interface preservation | ACTIVE | DERIVED UNDER TCT-BR-010; historically declared additional constraint | `LAB/10_CONSTRUCTION/bricks/TCT-BR-009/UNIT.md` |
+| TCT-J-001 | Junction | L1 | Canonicality gate | PASS / RESOLVED | DERIVED / VERIFIED UNDER TCT-BR-010 | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
+| TCT-BLOCK-003 | Block | L1 | Canonical decomposition | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-004 | Block | L1 | Construction depth | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-005 | Block | L1 | Successor | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
 | TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
@@ -84,26 +84,42 @@ compatible contextual closure is admitted
 
 It contains no generator for insertion, deletion, idempotent collapse, contraction, or commutativity and contains no numerical criterion.
 
-Most importantly, `TCT-BR-010` does **not** include terminal-interface preservation as a defining clause. That property remains a separate theorem/constraint question.
+The relation is read proof-theoretically through explicit meta-finite derivation witnesses; no completed quotient carrier is required.
 
-### TCT-BR-009
+### TCT-BR-009 — current path result
 
-`TCT-BR-009` is the explicit structural constraint discovered at `TCT-J-001`:
+`TCT-BR-009` was first discovered as an additional requirement when `≈` was incomplete.
 
-> structural equivalence must preserve the distinguished terminal interface and terminal-block role, so that equivalent terminal decompositions recover equivalent predecessor configurations.
+Historical status:
 
-Its original derivability test established that this condition was **not derived from the then-incomplete specification of `≈`**.
+```text
+DECLARED CHOICE — ADDITIONAL CONSTRAINT
+```
 
-Accordingly, its current status remains:
+After `TCT-BR-010` was defined, `PDSA-TCT-004` proved terminal predecessor and terminal-role preservation using an ordered trace invariant.
+
+Current-path status:
 
 ```text
 Operational Status = ACTIVE
-Epistemic Status   = DECLARED CHOICE — ADDITIONAL CONSTRAINT
+Epistemic Status   = DERIVED UNDER TCT-BR-010
 ```
 
-However, `TCT-BR-010` now supplies a new explicit, more restrictive `≈`. Therefore `PDSA-TCT-004` must retest derivability under exactly that definition.
+This reclassification preserves the historical state as provenance rather than rewriting it.
 
-A successful proof may reclassify the current-path mathematical role of BR-009 as DERIVED while preserving the historical declared-constraint provenance.
+### TCT-J-001 — resolved gate
+
+Verification evidence:
+
+`LAB/PDSA/experiments/PDSA-TCT-004-TERMINAL-RECOVERY-PROOF-001.md`
+
+Result:
+
+```text
+TCT-J-001 = PASS / RESOLVED
+```
+
+The proof is scoped to the current selected normal-form grammar and exact BR-010 relation.
 
 ## Registry rules
 
@@ -117,46 +133,40 @@ A successful proof may reclassify the current-path mathematical role of BR-009 a
 8. Reserved units must not be presented as constructed.
 9. Additional constraints must be represented as explicit units rather than hidden premises.
 10. Operational status and epistemic status are separate dimensions and must be recorded separately.
-11. A declared constraint may be operationally ACTIVE while remaining epistemically a DECLARED CHOICE rather than a DERIVED result.
-12. A property built into a definition is not to be reported as a derived theorem.
-13. An explicit structural-equivalence specification must be versioned/replaced through traceable unit history rather than silently broadened.
+11. A property built into a definition is not to be reported as a derived theorem.
+12. An explicit structural-equivalence specification must be versioned/replaced through traceable unit history rather than silently broadened.
+13. A historical epistemic classification remains part of provenance even if later clarified premises permit a stronger derivation.
+14. Passing a Junction permits downstream work; it does not itself construct the downstream Block.
 
 ## Current position
 
 ```text
-TCT-BLOCK-001  ACTIVE                 | kernel
-TCT-BLOCK-002  ACTIVE                 | finite normal-form construction
-TCT-BR-010     ACTIVE                 | DECLARED structural identity specification ≈
-TCT-BR-009     ACTIVE                 | DECLARED additional constraint, retest pending
-TCT-J-001      CONDITIONAL / PENDING  | theorem/countermodel gate
-TCT-BLOCK-003  RESERVED               | NOT CONSTRUCTED
+TCT-BLOCK-001  ACTIVE          | kernel
+TCT-BLOCK-002  ACTIVE          | selected normal-form construction
+TCT-BR-010     ACTIVE          | DECLARED structural identity specification ≈
+TCT-BR-009     ACTIVE          | DERIVED under BR-010
+TCT-J-001      PASS / RESOLVED | canonical recovery gate closed
+TCT-BLOCK-003  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
 ```
 
-## Gate condition for TCT-BLOCK-003
+## Next construction target
 
-`TCT-BLOCK-003` must not be treated as constructed until `TCT-J-001` is independently resolved under `TCT-BR-010`.
+The gate for canonical decomposition is now resolved.
 
-The next question is whether the current generated relation proves:
+The project may begin:
 
 ```text
-P ⊙ U ≈ Q ⊙ U  ⇒  P ≈ Q
+PDSA-TCT-005 — Canonical Decomposition Block
 ```
 
-with preservation of the distinguished terminal role.
+The next cycle must explicitly construct `TCT-BLOCK-003`; it may reuse the verified recovery theorem but must not treat the Block as already existing.
 
-## Current next action
-
-The active PDSA sequence is documented in:
-
-`LAB/PDSA/BOMA_STAGE_ONE_PDSA_EXECUTION_PLAN.md`
-
-Current status:
+## Current PDSA status
 
 ```text
 PDSA-TCT-001  CLOSED — baseline stabilization
 PDSA-TCT-002  CLOSED — pre-numerical metatheory contract
-PDSA-TCT-003  CLOSING — structural equivalence selected as TCT-BR-010
-PDSA-TCT-004  NEXT — terminal recovery theorem / countermodel
+PDSA-TCT-003  CLOSED — structural equivalence selected as TCT-BR-010
+PDSA-TCT-004  CLOSING — terminal recovery proved, J-001 resolved
+PDSA-TCT-005  NEXT — canonical decomposition construction
 ```
-
-No downstream Block is promoted by the selection of `TCT-BR-010`.
