@@ -3,6 +3,7 @@ namespace BOMA.R.DedekindSignedMulBasicLaws001
 
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindQuotient001
@@ -47,9 +48,8 @@ theorem rMulCandidate_comm (x y : RBOMA) :
     rMulCandidate rZero x = rZero := by
   unfold rMulCandidate
   rw [BOMA.R.DedekindSignedMulCandidate001.rNeg_zero]
-  rw [rMulNonnegEnvelope_zero_left]
-  rw [rAdd_zero_left, rAdd_zero_left,
-      BOMA.R.DedekindSignedMulCandidate001.rNeg_zero, rAdd_zero_left]
+  simp only [rMulNonnegEnvelope_zero_left, rAdd_zero_left,
+    BOMA.R.DedekindSignedMulCandidate001.rNeg_zero]
 
 /-- Zero annihilates the selected signed multiplication on the right. -/
 @[simp] theorem rMulCandidate_zero_right (x : RBOMA) :
