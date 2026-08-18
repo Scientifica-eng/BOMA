@@ -34,8 +34,8 @@ Operational status and epistemic status must not be collapsed into one field.
 | TCT-J-001 | Junction | L1 | Canonicality gate | PASS / RESOLVED | DERIVED / VERIFIED UNDER TCT-BR-010 | `LAB/10_CONSTRUCTION/junctions/TCT-J-001/UNIT.md` |
 | TCT-BLOCK-003 | Block | L1 | Canonical decomposition | ACTIVE | MIXED — constructed decomposition judgment + derived canonicality guarantee | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-003/UNIT.md` |
 | TCT-BLOCK-004 | Block | L1 | Structural Iteration History | ACTIVE | DERIVED STRUCTURAL VIEW / VERIFIED INVARIANT | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-004/UNIT.md` |
-| TCT-BLOCK-005 | Block | L1 | Successor-like extension structure | RESERVED — ADMISSIBLE NEXT | PENDING / NOT CONSTRUCTED | reserved |
-| TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | RESERVED | PENDING / NOT CONSTRUCTED | reserved |
+| TCT-BLOCK-005 | Block | L1 | Successor-Like Extension Structure | ACTIVE | DERIVED STRUCTURAL OPERATION PACKAGE / VERIFIED | `LAB/10_CONSTRUCTION/blocks/TCT-BLOCK-005/UNIT.md` |
+| TCT-BLOCK-006 | Block | L2 | Formal natural-number domain | RESERVED — BLOCKED BY CALIBRATION / FORMALIZATION BOUNDARY | PENDING / NOT CONSTRUCTED | reserved |
 
 ## Legacy correspondence
 
@@ -47,65 +47,47 @@ Operational status and epistemic status must not be collapsed into one field.
 
 Legacy documents remain source records. They are not the canonical identity of the active unit.
 
-## Initial Brick decomposition
-
-### TCT-BLOCK-001 — candidate Bricks
+## Current canonical pre-numerical path
 
 ```text
-TCT-BR-001  Empty configuration
-TCT-BR-002  Elementary block U
-TCT-BR-003  Interface compatibility
-TCT-BR-004  Concatenation
+TCT-BLOCK-001  Construction Kernel
+      ↓
+TCT-BLOCK-002  Selected Finite Configurations
+      ↓
+TCT-BR-010     Structural Equivalence ≈
+      ↓
+TCT-BR-009     Terminal Preservation — DERIVED
+      ↓
+TCT-J-001      PASS / RESOLVED
+      ↓
+TCT-BLOCK-003  Canonical Decomposition
+      ↓
+TCT-BLOCK-004  Structural Iteration History
+      ↓
+TCT-BLOCK-005  Successor-Like Extension Structure
 ```
 
-### TCT-BLOCK-002 — candidate Bricks
+## TCT-BLOCK-005 verified package
+
+The current extension schema has verified:
 
 ```text
-TCT-BR-005  Formation
-TCT-BR-006  Normal form
-TCT-BR-007  Terminal visibility
-TCT-BR-008  Recovery candidate
+selected extension availability
+canonical predecessor recovery
+injectivity modulo ≈
+ε not in extension image
+no fixed points modulo ≈
+history-tail extension
+acyclicity for explicit non-empty extension histories
 ```
 
-These are registry candidates only until individual unit records are created and verified.
+This package is **successor-like**, not yet the natural-number successor.
 
-## Active identity, decomposition, and iteration layer
-
-### TCT-BR-010
-
-Defines the current structural equivalence through meta-finitely witnessable SE-1 through SE-4 derivations.
-
-### TCT-BR-009
-
-Terminal predecessor/role preservation is DERIVED under BR-010 on the current selected normal-form path.
-
-### TCT-J-001
-
-Canonical recovery gate is PASS / RESOLVED with PDSA-TCT-004 proof evidence.
-
-### TCT-BLOCK-003
-
-Exports the Canonical Decomposition Guarantee without constructing a global predecessor function or quotient domain.
-
-### TCT-BLOCK-004
-
-Exports the Structural Iteration History Guarantee:
-
-> every explicitly supplied selected normal-form presentation has a canonical meta-finite decomposition-history witness; equivalent selected presentations have corresponding histories; and extension by terminal `U` prefixes the predecessor history by the canonical recovery record.
-
-This is **not** a numerical depth function.
-
-The earlier planning label “Construction Depth” is superseded on the canonical path by:
-
-```text
-Structural Iteration History
-```
-
-in direct response to CAL-001 learning.
+No completed natural-number carrier, object-level induction, or formal successor function has been constructed.
 
 Verification evidence:
 
-`LAB/PDSA/experiments/PDSA-TCT-006-STRUCTURAL-HISTORY-001.md`
+`LAB/PDSA/experiments/PDSA-TCT-007-SUCCESSOR-LIKE-VERIFICATION-001.md`
 
 ## Registry rules
 
@@ -126,42 +108,56 @@ Verification evidence:
 15. “Canonical modulo ≈” does not imply that a quotient object has been constructed.
 16. A reusable certified contribution must not be conflated with the construction unit/document that produced it.
 17. A structural history/invariant must not be labeled as a numerical depth before a numerical interpretation has been explicitly constructed.
+18. Successor-like structural properties must not be reported as a natural-number successor before a formal carrier/realization is explicitly established.
 
 ## Current position
 
 ```text
-TCT-BLOCK-001  ACTIVE          | kernel
-TCT-BLOCK-002  ACTIVE          | selected normal-form construction
-TCT-BR-010     ACTIVE          | DECLARED structural identity specification ≈
-TCT-BR-009     ACTIVE          | DERIVED terminal preservation
-TCT-J-001      PASS / RESOLVED | canonical recovery gate
-TCT-BLOCK-003  ACTIVE          | canonical decomposition guarantee
-TCT-BLOCK-004  ACTIVE          | structural iteration history
-TCT-BLOCK-005  RESERVED        | ADMISSIBLE NEXT, NOT CONSTRUCTED
+TCT-BLOCK-001  ACTIVE
+TCT-BLOCK-002  ACTIVE
+TCT-BR-010     ACTIVE
+TCT-BR-009     ACTIVE / DERIVED
+TCT-J-001      PASS / RESOLVED
+TCT-BLOCK-003  ACTIVE
+TCT-BLOCK-004  ACTIVE
+TCT-BLOCK-005  ACTIVE
+TCT-BLOCK-006  RESERVED / BLOCKED
 ```
 
-## Next construction target
+## Mandatory next gate
 
-The project may begin:
+Before `TCT-BLOCK-006` or any formal natural-number carrier work, run:
 
 ```text
-PDSA-TCT-007 — Successor-Like Extension Structure
+PDSA-TCT-008 — Pre-Numerical Whole-Path Calibration
 ```
 
-The first question is not “have we constructed the natural-number successor?”
+The audit must review the full active path for silent imports of:
 
-It is:
+```text
+numerical counting / cardinality
+numerical depth or stage
+completed global totality
+object-level induction / recursion over ℕ
+unannounced equality strength
+quotient / equivalence-class existence
+set/type carrier assumptions
+ordered-pair or function objects
+successor identification by analogy
+classical/nonconstructive principles not declared
+```
 
-> Which structural properties are already possessed by the extension operation `A ↦ A ⊙ U` on supplied selected configurations, and which additional commitments would be required to promote it to successor on a formal carrier?
+Only after this calibration closes may the project define the acceptance specification and formalization boundary for a natural-number realization.
 
 ## Current PDSA status
 
 ```text
-PDSA-TCT-001  CLOSED — baseline stabilization
-PDSA-TCT-002  CLOSED — pre-numerical metatheory contract
-PDSA-TCT-003  CLOSED — structural equivalence / BR-010
-PDSA-TCT-004  CLOSED — terminal recovery theorem / J-001 PASS
-PDSA-TCT-005  CLOSED — canonical decomposition Block
-PDSA-TCT-006  CLOSING — structural iteration history constructed and verified
-PDSA-TCT-007  NEXT — successor-like extension structure
+PDSA-TCT-001  CLOSED
+PDSA-TCT-002  CLOSED
+PDSA-TCT-003  CLOSED
+PDSA-TCT-004  CLOSED
+PDSA-TCT-005  CLOSED
+PDSA-TCT-006  CLOSED
+PDSA-TCT-007  CLOSING — successor-like Block constructed and verified
+PDSA-TCT-008  NEXT — pre-numerical whole-path calibration
 ```
