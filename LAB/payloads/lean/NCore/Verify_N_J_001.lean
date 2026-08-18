@@ -1,11 +1,13 @@
 /-
-V5 convergence wrapper for N-J-001.
-It checks that the two preserved production witnesses export the same formal
+V5 convergence fragment for N-J-001.
+
+The workflow concatenates:
+
+NCoreRB001.lean + Verify_N_J_001_RouteB.lean + this fragment
+
+and checks that the two preserved production witnesses export the same formal
 No-Confusion contribution interface.
 -/
-
-import «LAB».payloads.lean.NCore.NCoreRB001
-import «LAB».payloads.lean.NCore.Verify_N_J_001_RouteB
 
 namespace BOMA.NCore.V5.NJ001
 
