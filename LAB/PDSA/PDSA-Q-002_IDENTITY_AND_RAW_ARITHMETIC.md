@@ -1,7 +1,7 @@
 # PDSA-Q-002 — Rational Raw Arithmetic / Formal Identity Realization
 
 **CycleID:** `PDSA-Q-002`  
-**Status:** **ACTIVE — RAW ARITHMETIC PASS / Q-DP-001 RESOLVED / QUOTIENT V5 RECHECK**  
+**Status:** **CLOSED — RAW ARITHMETIC PASS / Q-DP-001 RESOLVED / QUOTIENT CARRIER V5 PASS**  
 **Date:** 2026-08-18  
 **Inputs:** `Q-GATE-BLOCK-001`, `Q-F-BLOCK-001`, `Q-F-BLOCK-002`
 
@@ -72,7 +72,7 @@ Canonical unit:
 
 ## Candidate A — quotient/setoid carrier
 
-The project already possesses exactly the prerequisites quotient lifting should consume:
+The project already possesses exactly the prerequisites quotient lifting consumes:
 
 ```text
 verified equivalence relation
@@ -82,16 +82,16 @@ verified multiplication respect
 faithful Z raw embedding
 ```
 
-New accepted commitment if selected:
+New accepted commitment:
 
 ```text
 Setoid packaging
 Quotient carrier formation
 quotient soundness/exactness
-quotient map/lift/induction infrastructure
+quotient lift/induction infrastructure
 ```
 
-This is the first quotient-like carrier commitment in the accepted number-domain chain.
+This is the first quotient-like carrier commitment in the accepted BOMA number-domain chain.
 
 ## Candidate B — reduced fractions
 
@@ -106,7 +106,7 @@ reduced-form uniqueness
 operation normalization
 ```
 
-This route is retained for Stage-II / later comparison because its cost is mathematically substantive.
+This route remains retained for Stage-II / later comparison because its cost is mathematically substantive.
 
 ## Candidate C — external setoid identity
 
@@ -120,7 +120,7 @@ Rationale:
 
 ```text
 all mathematical quotient prerequisites are already verified
-carrier equality can now reflect the certified representation relation
+carrier equality can reflect the certified representation relation
 no gcd infrastructure is needed merely to form Stage-One Q
 quotient cost is explicit rather than hidden
 reduced-fraction route remains preserved
@@ -130,13 +130,11 @@ Selection is methodological/formalization-dependent, not mathematical necessity.
 
 ---
 
-# DO — quotient carrier candidate
-
-Created:
+# DO — quotient carrier realization
 
 `LAB/payloads/lean/QStage/QQuotientCarrier.lean`
 
-Candidate interface:
+constructs:
 
 ```text
 fracSetoid : Setoid RawFrac
@@ -150,40 +148,102 @@ qOne
 qOfZ
 ```
 
-with quotient equality reflection and injective Z embedding.
-
-## First quotient V5 Study
-
-Run `32173336344` failed because the concatenated backend assembly did not import the helper layer defining `Quotient.map` / `Quotient.map₂`.
-
-This was a **backend assembly limitation**, not a mathematical quotient failure:
+with:
 
 ```text
-Setoid formation compiled
-Quotient formation compiled
-Quotient.sound compiled
-Quotient.exact compiled
+qmk(x)=qmk(y) ↔ FracEquiv(x,y)
+qOfZ injective
+representative computation equations
 ```
 
-The workflow was corrected to prepend an explicit:
+## Quotient V5 Study lineage
+
+### Run `32173336344`
+
+The bare assembled environment did not expose the higher-level `Quotient.map/map₂` helpers used by the first spelling. Core quotient formation/soundness/exactness had already elaborated.
+
+### Run `32173821831`
+
+An attempted explicit helper-module import was itself invalid in the pinned environment and stopped before the BOMA quotient source. The import was removed; it is not a project commitment.
+
+### Run `32173496433`
+
+The `Quotient.map₂` spelling also exposed output-setoid inference friction in the bare verification environment.
+
+### Final design
+
+The source was rewritten to the direct codomain-oriented primitives:
 
 ```text
-import Init.Data.Quot
+Quotient.lift
+Quotient.lift₂
 ```
 
-before concatenating the BOMA verification fragments.
+with well-definedness discharged by the already-verified raw respect theorems and `qmk_sound`.
 
-The source was also kept on direct quotient binary lifting and does not introduce `funext` merely to define binary operations.
+This avoids both output-setoid inference and any need to introduce function extensionality merely to define binary operations.
 
-## ACT
-
-Current action:
+### Final quotient-carrier V5
 
 ```text
-KEEP Q-DP-001 RESOLVED — quotient selected
-KEEP Q_BOMA as CANDIDATE until fresh V5 PASS
-DO NOT infer field laws/inverse/order from carrier formation
-KEEP reduced-fraction route as retained alternative
+workflow run:    32174050137
+verified commit: 0b18b225c258ff873e36d26c15a10f8117c499fe
+Lean:            4.32.1
+result:          PASS
 ```
 
-Once quotient V5 passes, close this cycle and open the field/inverse/order construction family.
+Canonical carrier unit:
+
+`Q-BLOCK-001`.
+
+---
+
+# STUDY — commitment result
+
+The successful quotient realization requires exactly the currently recorded quotient machinery:
+
+```text
+Setoid
+Quotient formation
+Quotient.sound / Quotient.exact
+Quotient.lift / Quotient.lift₂
+```
+
+The construction has not established a need for:
+
+```text
+Classical
+choice
+function extensionality
+built-in Rat
+```
+
+Those remain unintroduced unless a later theorem actually consumes them.
+
+A backend API/import failure is therefore not to be reclassified as a mathematical or logical commitment.
+
+---
+
+# ACT
+
+Promote:
+
+```text
+Q-F-BLOCK-002   PASS / V5
+Q-DP-001        RESOLVED — quotient selected
+Q-BLOCK-001     carrier/identity/lifted operations V5 PASS
+```
+
+Close this cycle.
+
+Open the next construction family on:
+
+```text
+raw additive/multiplicative laws modulo FracEquiv
+lifting those laws to Q_BOMA
+nonzero multiplicative inverse
+rational order
+field/order integration
+```
+
+Do not infer field laws or QA-23 acceptance merely from quotient carrier success.
