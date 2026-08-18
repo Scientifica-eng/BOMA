@@ -1,10 +1,10 @@
 # Q Raw Distributivity V5 Evidence
-**Status:** FAIL_OR_INCOMPLETE  
-**Verified commit:** `8ebea10da91124308248c5eb22daf466f5a9a001`  
-**Workflow run ID:** `32174689195`  
+**Status:** PASS  
+**Verified commit:** `c5109bce36c03676986d43fc3538693d912bbbf9`  
+**Workflow run ID:** `32176145896`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`
 
 | Target | Outcome |
 |---|---|
 | Lean setup | success |
-| raw multiplication distributes over raw addition modulo FracEquiv | failure |
+| raw multiplication distributes over raw addition modulo FracEquiv | success |
