@@ -37,7 +37,7 @@ theorem cutMulNonnegEnvelope_principal
   · intro hx
     rcases hx with hxNeg | hxProd
     · have hqrNonNeg : qLE qZero (qMul q r) := qmul_nonneg hq hr
-      exact qle_lt_trans hxNeg hqrNonNeg
+      exact qlt_le_trans hxNeg hqrNonNeg
     · rcases hxProd with ⟨a, b, haPosCut, hbPosCut, h0a, h0b, hxab⟩
       have haQ : qLT a q :=
         ((cutPosPart_principal_nonneg hq) a).mp haPosCut
