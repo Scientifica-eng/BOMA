@@ -6,5 +6,5 @@
 
 | Target | Outcome |
 |---|---|
-| Lean setup | failure |
-| representative invariance + total-order laws + exact Z-order extension | skipped |
+| Lean setup | success |
+| representative invariance + total-order laws + exact Z-order extension | failure |
