@@ -20,7 +20,7 @@ theorem tct_extU_ne_eps (a : TCTNF) : extU a ≠ eps := by
 
 /-- Backend representation of the TCT extension-injectivity contribution. -/
 theorem tct_extU_injective {a b : TCTNF} (h : extU a = extU b) : a = b := by
-  cases a <;> cases b <;> simp [extU] at h ⊢
+  cases a <;> cases b <;> simp_all [extU]
 
 /-- N-BR-018, Route-B clause 1:
 formal constructor/base disjointness transferred through constructional ancestry. -/
