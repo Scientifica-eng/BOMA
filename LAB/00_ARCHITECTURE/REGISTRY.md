@@ -3,7 +3,8 @@
 **Status:** ACTIVE — Canonical registry  
 **Topology:** `CONSTRUCTION_TOPOLOGY.md`  
 **N-Core:** `N_CORE_DAG.md`  
-**N-Arithmetic:** `N_ARITHMETIC_DAG.md`
+**N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
+**Q:** `Q_DAG.md`
 
 Operational, verification, and epistemic status remain separate.
 
@@ -214,6 +215,92 @@ Detailed comparison:
 
 `LAB/PDSA/experiments/PDSA-Z-RE-001_BOTTOM_UP_VS_REVERSE_COMPARISON.md`
 
+## Rational construction and identity
+
+| Unit | Role | Status |
+|---|---|---|
+| Q-GATE-BLOCK-001 | nonzero multiplication cancellation gateway | ACTIVE / V5 PASS |
+| Q-F-BLOCK-001 | positive-denominator raw-fraction / FracEquiv route | ACTIVE / V5 PASS |
+| Q-F-BLOCK-002 | equivalence-respecting raw arithmetic | ACTIVE / V5 PASS |
+| Q-DP-001 | Stage-One rational formal identity realization | RESOLVED — quotient/setoid selected |
+| Q-BLOCK-001 | verified quotient carrier / identity / lifted operations | ACTIVE / V5 PASS |
+
+Key verification:
+
+```text
+cancellation          32172230166 PASS
+fraction equivalence  32172543345 PASS
+raw arithmetic        32173010564 PASS
+quotient carrier      32174050137 PASS
+```
+
+`Q-DP-001` is a methodological/formalization choice. Reduced fractions and external-setoid identity remain retained alternatives rather than rejected histories.
+
+## Accepted rational algebra / order
+
+The selected `QBOMA` package has verified:
+
+```text
+additive commutative-group laws
+multiplicative commutative-monoid laws
+nontriviality
+distributivity
+unique inverse witness for each nonzero rational
+faithful Z embedding and coherent N embedding
+total order extending Z order
+addition translation invariance
+negation order reversal
+multiplication monotonicity for nonnegative factors
+positive inverse behavior
+integer-fraction generation
+```
+
+Verification:
+
+```text
+raw additive laws                    32174278297 PASS
+quotient additive laws               32174565823 PASS
+raw multiplicative laws              32174478593 PASS
+raw distributivity                   32176145896 PASS
+quotient multiplicative laws         32176289914 PASS
+quotient distributivity              32176439510 PASS
+nonzero inverse witness              32176692789 PASS
+Z/N embedding                        32177123730 PASS
+generation                           32177245619 PASS
+order core                           32177345921 PASS
+order additive compatibility         32177896509 PASS
+order multiplicative compatibility   32178098823 PASS
+full N/Z/Q integration               32178326013 PASS
+Lean                                 4.32.1
+```
+
+## Rational integration / closure
+
+| Unit | Role | Status |
+|---|---|---|
+| Q-J-002 | final rational integration gate | PASS / RESOLVED |
+| Q-BLOCK-002 | accepted Stage-One rational downstream interface | ACTIVE — ACCEPTED |
+
+```text
+QA-01..16 PASS
+QA-17 NOT TRIGGERED AS MULTI-CARRIER GATE
+QA-18 RESOLVED
+QA-19..22 PASS
+QA-23 ACCEPT
+```
+
+Closure:
+
+`LAB/PDSA/PDSA-Q-004_RATIONAL_CLOSURE.md`
+
+Final commitment ledger:
+
+`LAB/00_ARCHITECTURE/Q_COMMITMENT_LEDGER.md`
+
+The final Q payload source audit records the explicit quotient commitment and found no occurrence of `Classical`, `Choice`, `sorry`, `axiom`, built-in `Rat`, or `gcd`.
+
+No field-of-fractions universal property or reduced-fraction uniqueness is implied.
+
 ## Current frontier
 
 ```text
@@ -221,7 +308,9 @@ N-Core            ACCEPTED
 N-Arithmetic      ACCEPTED
 Z                 ACCEPTED
 post-Z Z→N study  CLOSED — INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
-Q                 NOT YET CONSTRUCTED
+Q                 ACCEPTED
+R                 NOT YET CONSTRUCTED
+C                 NOT REACHED
 ```
 
-The next canonical action is the rational-number acceptance/architecture stage. No built-in rational carrier or undeclared fraction-equivalence/normalization regime may be promoted before an explicit Q specification and construction path are established.
+The next canonical action is the **real-number acceptance specification**, followed by an explicit completion Decision Point. No Dedekind/Cauchy/other completion regime is canonical until that decision is studied and resolved.
