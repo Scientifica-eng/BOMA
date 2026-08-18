@@ -28,11 +28,15 @@ Claim-level ownership manifest:
 
 `LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`
 
-Current claim-level workflow:
+Current evidence-producing workflow:
 
-`.github/workflows/boma-ncore-rb-004.yml`
+`.github/workflows/boma-ncore-rb-005-evidence.yml`
 
-The earlier `boma-ncore-rb-003.yml` remains provenance of the monolithic verification stage.
+Automated evidence sink:
+
+`LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md`
+
+Earlier workflows `boma-ncore-rb-003.yml` and `boma-ncore-rb-004.yml` remain provenance of the monolithic and first claim-level verification stages.
 
 ---
 
@@ -129,9 +133,27 @@ The route uses selected TCT representation, bridge reflection, coverage/reconstr
 
 `Verify_N_J_001.lean` checks that Route A and Route B export the same formal no-confusion interface.
 
-## D5 — CI workflow
+## D5 — First claim-level workflow
 
-Created `.github/workflows/boma-ncore-rb-004.yml` with separate checker steps for the producer, each Block wrapper, Route B, and the Junction wrapper.
+`.github/workflows/boma-ncore-rb-004.yml` checks each claim-owning unit separately, but the connected session could not observe its push-triggered Actions result directly.
+
+## D6 — Repository-resident evidence production
+
+To remove dependence on the Actions UI, `.github/workflows/boma-ncore-rb-005-evidence.yml` was added.
+
+It:
+
+1. runs the producer and each claim-level verification step independently;
+2. uses `continue-on-error` so all branch outcomes can be recorded in one run;
+3. writes a repository evidence record containing the triggering SHA, pinned toolchain, and each step outcome;
+4. pushes only the evidence record back to `main`;
+5. then fails the workflow unless every required verification step succeeded.
+
+The evidence file is:
+
+`LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md`
+
+This workflow has **contents-write permission only to produce evidence**. It does not modify canonical mathematical statuses, Registry, Junction status, or NAC decisions.
 
 Primary experiment record:
 
@@ -143,7 +165,7 @@ Primary experiment record:
 
 ## S1 — Evidence observability limitation
 
-The connected GitHub interface currently returns no commit-status entries for the workflow-triggering commit, and its available commit-workflow-run action exposes pull-request-triggered runs only. Direct workflow-page retrieval is not supported by the connector route available in this session.
+The connected GitHub interface returns no commit-status entries for the earlier workflow-triggering commit, and its commit-workflow-run action exposes pull-request-triggered runs only. Direct workflow-page retrieval is unsupported in this session.
 
 Therefore:
 
@@ -152,23 +174,28 @@ no visible status ≠ PASS
 no visible status ≠ FAIL
 ```
 
-No V5 promotion is made without an observed checker result.
+## S2 — Architectural response to observability
 
-## S2 — Architectural improvement already obtained
+Rather than weaken the evidence requirement, the project now makes CI emit a repository-resident evidence record. This turns verification output into an auditable BOMA artifact independent of UI observability.
 
-Even before checker observation, the V5 preparation improved traceability:
+The evidence artifact is still epistemically subordinate to the canonical unit graph: it records checker outcomes; humans/PDSA decide status promotion after Study.
+
+## S3 — Architectural improvement already obtained
+
+Even before checker evidence is observed, V5 preparation improved traceability:
 
 - theorem ownership is claim-level;
 - generatedness is no longer implicit;
 - history/ancestry correspondence has an explicit backend witness;
 - N-J-001 Route-B independence is machine-testable;
-- CI failure can be localized to a DAG branch rather than a monolithic file.
+- CI failure can be localized to a DAG branch rather than a monolithic file;
+- CI evidence can now persist in the repository rather than only in an external UI.
 
 ---
 
 # ACT
 
-Current action:
+Current action until the evidence sink records an actual run:
 
 ```text
 KEEP V5 = PENDING OBSERVED CHECKER EVIDENCE
@@ -177,6 +204,6 @@ KEEP N-J-002 = BLOCKED
 KEEP NAC-15 = NOT ELIGIBLE
 ```
 
-In parallel, prepare the N-J-002 NAC-01..NAC-14 integration matrix without promoting the Junction.
+`PDSA-N-010` prepares the NAC-01..NAC-14 integration matrix in parallel without promoting `N-J-002`.
 
 Arithmetic remains blocked.
