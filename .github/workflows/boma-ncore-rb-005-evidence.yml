@@ -29,6 +29,13 @@ jobs:
         id: setup
         continue-on-error: true
         uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
 
       - name: Verify unified producer payload
         id: producer
@@ -40,49 +47,82 @@ jobs:
         id: block001
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_001.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_001.lean \
+              > /tmp/Verify_N_BLOCK_001.lean
+          lake env lean /tmp/Verify_N_BLOCK_001.lean
 
       - name: Verify N-BLOCK-002
         id: block002
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_002.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_002.lean \
+              > /tmp/Verify_N_BLOCK_002.lean
+          lake env lean /tmp/Verify_N_BLOCK_002.lean
 
       - name: Verify N-BLOCK-003
         id: block003
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean \
+              > /tmp/Verify_N_BLOCK_003.lean
+          lake env lean /tmp/Verify_N_BLOCK_003.lean
 
       - name: Verify N-BLOCK-004
         id: block004
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_004.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_004.lean \
+              > /tmp/Verify_N_BLOCK_004.lean
+          lake env lean /tmp/Verify_N_BLOCK_004.lean
 
       - name: Verify N-BLOCK-005
         id: block005
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_005.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_005.lean \
+              > /tmp/Verify_N_BLOCK_005.lean
+          lake env lean /tmp/Verify_N_BLOCK_005.lean
 
       - name: Verify N-BLOCK-006
         id: block006
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_BLOCK_006.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_BLOCK_006.lean \
+              > /tmp/Verify_N_BLOCK_006.lean
+          lake env lean /tmp/Verify_N_BLOCK_006.lean
 
       - name: Verify N-J-001 independent Route B
         id: routeb
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean \
+              > /tmp/Verify_N_J_001_RouteB.lean
+          lake env lean /tmp/Verify_N_J_001_RouteB.lean
 
       - name: Verify N-J-001 convergence interface
         id: junction001
         if: steps.setup.outcome == 'success'
         continue-on-error: true
-        run: lake env lean LAB/payloads/lean/NCore/Verify_N_J_001.lean
+        run: |
+          cat LAB/payloads/lean/NCore/NCoreRB001.lean \
+              LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean \
+              LAB/payloads/lean/NCore/Verify_N_J_001.lean \
+              > /tmp/Verify_N_J_001.lean
+          lake env lean /tmp/Verify_N_J_001.lean
 
       - name: Record run evidence in repository
         id: evidence
@@ -124,6 +164,7 @@ jobs:
           **Verified commit:** \`${VERIFIED_SHA}\`  
           **Workflow run ID:** \`${RUN_ID}\`  
           **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Verification assembly:** \`producer + claim fragment\`  
           **Recorded at (UTC):** \`${GENERATED_AT}\`
 
           This file records checker outcomes only. It does **not** automatically promote any canonical BOMA status.
