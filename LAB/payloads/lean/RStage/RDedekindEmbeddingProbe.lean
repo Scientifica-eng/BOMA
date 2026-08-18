@@ -75,7 +75,7 @@ theorem principalLE_iff_qLE (q r : QBOMA) : PrincipalLE q r ↔ qLE q r := by
           intro heq
           apply hqr
           rw [← heq]
-          exact qle_refl q
+          exact qle_refl r
         have hrltq : qLT r q := ⟨hrq, hrneq⟩
         rcases rational_order_dense hrltq with ⟨m, hrm, hmq⟩
         have hmQ : (principalCut q).lower m := hmq
