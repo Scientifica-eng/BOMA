@@ -11,6 +11,25 @@ Individual cycle documents preserve their creation history and may contain inter
 
 Historical `PDCA` identifiers elsewhere remain legacy provenance only; the governing method is PDSA.
 
+## Architecture / governance cycles
+
+| Cycle | Current Status | Main Result |
+|---|---|---|
+| PDSA-ARCH-001 | CLOSED — ADOPTED | canonical DAG topology; serial/parallel/fork/reconvergence rules; README + AGENTS handoff |
+
+Canonical topology reference:
+
+```text
+LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+```
+
+Mandatory handoff entry points:
+
+```text
+README.md
+AGENTS.md
+```
+
 ## TCT cycles
 
 | Cycle | Current Status | Main Result |
@@ -57,12 +76,36 @@ FINAL NAC-01..NAC-14 AUDIT
 NAC-15 N-Core closure decision
 ```
 
+## Topology constraint on current N-Core work
+
+The formal candidate/payload is **not** the canonical architecture by itself.
+
+Before N-Core acceptance, the candidate must be decomposed/read according to the actual construction DAG described in:
+
+```text
+LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+```
+
+Do not force the N-Core into a single vertical chain. Identify genuine:
+
+```text
+serial dependencies
+horizontal independent units
+parallel contributors
+Decision Point branches
+Junctions
+scientifically meaningful branch → reconvergence patterns
+```
+
+Reconvergence must preserve branch provenance.
+
 ## Current blockers
 
 ```text
 1. observed successful Lean checker evidence for unified candidate
 2. final post-checker preservation/commitment re-audit
-3. NAC-15 closure decision
+3. topology-aware canonical N-Core Brick/Block/Junction decomposition
+4. NAC-15 closure decision
 ```
 
 No addition, multiplication, order, integers, or later number-domain work may be promoted before the N-Core gate is legitimately closed.
@@ -75,10 +118,13 @@ LAB/payloads/lean/NCore/NCoreRB001.lean
 
 Earlier payloads remain provenance / exploratory implementations and are not the preferred unified verification target.
 
+The preferred payload remains a **backend verification candidate**, not a substitute for Brick/Block architecture.
+
 ## Current proof status summary
 
 ```text
 Architectural / written mathematical evidence: substantial PASS
 Formal V5 checker evidence:               PENDING OBSERVATION
+Topology-aware canonical N decomposition: PENDING
 Accepted N-Core / ℕ:                       NOT YET
 ```
