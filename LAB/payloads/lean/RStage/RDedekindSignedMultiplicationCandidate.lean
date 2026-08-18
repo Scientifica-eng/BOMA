@@ -162,6 +162,7 @@ theorem rMulCandidate_rOfQ (q r : QBOMA) :
       rw [rOfQ_neg q, rOfQ_neg r, hPP, hNN, hPN, hNP]
       rw [rAdd_zero_left, rAdd_zero_right]
       rw [rOfQ_neg]
+      rw [rAdd_zero_left]
       apply congrArg rOfQ
       calc
         qNeg (qMul q (qNeg r)) = qNeg (qNeg (qMul q r)) :=
@@ -177,6 +178,7 @@ theorem rMulCandidate_rOfQ (q r : QBOMA) :
       unfold rMulCandidate
       rw [rOfQ_neg q, rOfQ_neg r, hPP, hNN, hPN, hNP]
       rw [rAdd_zero_left, rAdd_zero_left]
+      rw [rAdd_zero_left]
       rw [rOfQ_neg]
       apply congrArg rOfQ
       calc
