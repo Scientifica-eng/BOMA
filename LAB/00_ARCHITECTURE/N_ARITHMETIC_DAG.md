@@ -1,8 +1,8 @@
 # N-ARITHMETIC DAG — Stage-One Arithmetic
 
 **Document ID:** `BOMA-N-ARITH-DAG-001`  
-**Version:** `0.6`  
-**Status:** ACTIVE — ADDITION / MULTIPLICATION / ORDER PASS — INTEGRATION NEXT
+**Version:** `1.0`  
+**Status:** **ACTIVE — N-ARITHMETIC ACCEPTED**
 
 ```text
 N-BLOCK-007 Accepted N-Core
@@ -30,7 +30,47 @@ N-ADD-BLOCK-003 ─────────────────► N-ORD-BLO
                                       N-ORD-BLOCK-004 PASS
                                            │
                                            ▼
-                                N-Arithmetic Integration Gate — NEXT
+                                     N-ARITH-J-001 PASS
+                                           │
+                                           ▼
+                                      NAA-18 ACCEPT
+                                           │
+                                           ▼
+                                   N-ARITH-BLOCK-001
+                              Accepted N-Arithmetic Interface
+                                           │
+                                           ▼
+                                   Integer stage — NEXT
 ```
 
-Three controlled reconvergence experiments now pass: addition, multiplication, and order. The order experiment preserves a branch whose dependencies stop at N-Core.
+## Verification lineage
+
+```text
+N-Core             run 32163771789
+Addition           run 32164861155
+Multiplication     run 32165318266
+Order/full stack   run 32165691581
+Toolchain          Lean 4.32.1
+```
+
+## Reconvergence record
+
+1. Addition: right-recursive / left-recursive routes reconverge.
+2. Multiplication: right-recursive / left-recursive routes reconverge.
+3. Order: additive-witness and N-Core-only inductive routes reconverge.
+
+The order experiment establishes convergence across materially different dependency layers.
+
+## Acceptance
+
+```text
+NAA-01..17 = PASS
+N-ARITH-J-001 = PASS / RESOLVED
+NAA-18 = ACCEPT
+```
+
+Canonical downstream interface:
+
+`LAB/10_CONSTRUCTION/blocks/N-ARITH-BLOCK-001/UNIT.md`
+
+This accepted package does not construct integers; it makes integer work eligible to begin.
