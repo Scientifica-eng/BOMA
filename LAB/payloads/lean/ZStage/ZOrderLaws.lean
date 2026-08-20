@@ -221,11 +221,40 @@ theorem zle_total (x y : ZSigned) : zLE x y ∨ zLE y x := by
       | pos b => exact Or.inl True.intro
       | neg b => exact le_total b a
 
-/-- The selected integer order exactly extends the accepted natural order. -/
+/-- The selected integer order exactly extends the accepted natural order.
+The proof is case-explicit so the Iff-valued successor-order lemma is consumed
+by `.mp`/`.mpr` instead of being used as a simp rewrite through `propext`. -/
 theorem embedN_order (a b : BOMANat) :
     zLE (embedN a) (embedN b) ↔ LE a b := by
-  cases a <;> cases b <;>
-    simp [zLE, zLEd, embedN, le_s_iff, z_le, not_s_le_z]
+  cases a with
+  | z =>
+      cases b with
+      | z =>
+          change True ↔ LE z z
+          constructor
+          · intro _
+            exact le_refl z
+          · intro _
+            exact True.intro
+      | s b =>
+          change True ↔ LE z (s b)
+          constructor
+          · intro _
+            exact z_le (s b)
+          · intro _
+            exact True.intro
+  | s a =>
+      cases b with
+      | z =>
+          change False ↔ LE (s a) z
+          constructor
+          · intro h
+            exact False.elim h
+          · intro h
+            exact (not_s_le_z a) h
+      | s b =>
+          change LE a b ↔ LE (s a) (s b)
+          exact le_s_iff.symm
 
 /-- Translation invariance / right addition monotonicity. -/
 theorem zadd_mono_right {x y : ZSigned} (h : zLE x y) (c : ZSigned) :
