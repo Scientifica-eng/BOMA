@@ -11,6 +11,10 @@ change the elaboration environment of the accepted mathematical assembly.
 The prototype computes the transitive declaration closure inside the accepted
 assembly module and stops recursion at declarations owned by other modules.
 Those boundary leaves are candidates for Trusted Base classification.
+
+Multiple targets are supported. Their closures are unioned by declaration name
+and dependency edge so a stage without one synthetic integration theorem can be
+audited without inventing a new accepted certificate.
 """
 
 from __future__ import annotations
@@ -29,10 +33,6 @@ from typing import Iterable
 
 EXTRACTOR = Path("LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean")
 
-# Rare compiler-generated declarations can lack both a saved source range and a
-# directly range-mapped declaration-name prefix. These overrides are not theorem
-# classifications: they only record source provenance that is independently
-# visible in the accepted source. Keep the set small and auditable.
 GENERATED_SOURCE_OVERRIDES: dict[str, tuple[str, str]] = {
     "BOMA.NCore.RB001.ind.match_1": (
         "LAB/payloads/lean/NCore/NCoreRB001.lean",
@@ -148,8 +148,6 @@ def build_assembly(root: Path, entries: Iterable[str], output: Path) -> list[Sou
 def extractor_body(root: Path) -> str:
     text = (root / EXTRACTOR).read_text(encoding="utf-8")
     lines = text.splitlines()
-    # The runner owns imports: importing metaprogramming support happens only
-    # after the accepted .olean has already been built.
     while lines and (not lines[0].strip() or lines[0].lstrip().startswith("import ")):
         lines.pop(0)
     return "\n".join(lines) + "\n"
@@ -158,9 +156,6 @@ def extractor_body(root: Path) -> str:
 def source_for_line(ranges: list[SourceRange], line: int | None) -> str | None:
     if line is None:
         return None
-    # Lean declaration positions are normally directly comparable to assembly
-    # source lines. Accept an adjacent off-by-one representation as a guarded
-    # compatibility fallback and surface the raw positions in JSON.
     for candidate in (line, line + 1, line - 1):
         for r in ranges:
             if r.start_line <= candidate <= r.end_line:
@@ -179,21 +174,7 @@ def parse_int(value: str) -> int | None:
 
 
 def infer_generated_sources(internal: list[InternalDecl]) -> list[InternalDecl]:
-    """Associate range-less generated/private declarations with source provenance.
-
-    Lean often omits source ranges for compiler-generated declarations such as
-    `.match_*`, `._proof_*`, recursors, constructor injectivity helpers, and
-    private implementation declarations. We do not invent a line range.
-
-    Resolution order:
-
-    1. longest declaration-name prefix with a direct source range;
-    2. a deliberately small explicit generated-source override whose parent
-       declaration is visible in accepted source.
-
-    Both modes preserve `start_line/end_line = null`; they classify provenance,
-    not theorem ownership or mathematical status.
-    """
+    """Associate range-less generated/private declarations with source provenance."""
 
     mapped = [d for d in internal if d.source is not None]
     out: list[InternalDecl] = []
@@ -279,9 +260,35 @@ def parse_output(
     return internal, external, unresolved, edges, meta
 
 
+def dedupe_internal(items: list[InternalDecl]) -> list[InternalDecl]:
+    """Union repeated target closures by declaration name.
+
+    Prefer a record that already carries a direct source range. Multiple target
+    commands otherwise print the same internal declarations repeatedly.
+    """
+
+    by_name: dict[str, InternalDecl] = {}
+    for item in items:
+        prev = by_name.get(item.name)
+        if prev is None or (prev.source is None and item.source is not None):
+            by_name[item.name] = item
+    return list(by_name.values())
+
+
+def dedupe_external(items: list[ExternalDecl]) -> list[ExternalDecl]:
+    by_name: dict[str, ExternalDecl] = {}
+    for item in items:
+        prev = by_name.get(item.name)
+        if prev is None:
+            by_name[item.name] = item
+        elif prev.module != item.module or prev.kind != item.kind:
+            raise ValueError(f"inconsistent external declaration metadata across targets: {item.name}")
+    return list(by_name.values())
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Prototype BOMA Lean declaration dependency audit")
-    parser.add_argument("--stage", required=True, help="stage label, e.g. R")
+    parser.add_argument("--stage", required=True, help="stage label, e.g. R or Q")
     parser.add_argument("--manifest", required=True, help="accepted source manifest relative to repo root")
     parser.add_argument("--target", action="append", required=True, help="fully-qualified Lean declaration; repeatable")
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="repository root")
@@ -293,17 +300,12 @@ def main() -> int:
         entries = load_manifest(root, args.manifest)
         module = legal_module_name(args.stage)
 
-        # Lake/Lean requires project inputs to remain inside the package root.
-        # Keep the audit workspace transient and untracked, but create it under
-        # the repository root rather than the operating-system /tmp directory.
         with tempfile.TemporaryDirectory(prefix=".boma-lean-deps-", dir=root) as td_raw:
             td = Path(td_raw)
             assembly = td / f"{module}.lean"
             olean = td / f"{module}.olean"
             ranges = build_assembly(root, entries, assembly)
 
-            # Crucial separation: compile the accepted assembly in the same
-            # direct-source style as BOMA V5, with no `import Lean` injected.
             run(
                 ["lake", "env", "lean", "-o", str(olean), str(assembly)],
                 cwd=root,
@@ -327,20 +329,25 @@ def main() -> int:
 
             raw_internal, external, unresolved, edges, meta = parse_output(audit_proc.stdout, ranges)
 
+        raw_internal = dedupe_internal(raw_internal)
+        external = dedupe_external(external)
+        unresolved = sorted(set(unresolved))
+
         raw_unmapped = sorted(d.name for d in raw_internal if d.source is None)
         internal = infer_generated_sources(raw_internal)
+        internal = dedupe_internal(internal)
         unmapped_internal = sorted(d.name for d in internal if d.source is None)
         inferred_generated = sorted(
             d.name for d in internal
             if d.source_resolution in {"generated-prefix", "generated-override"}
         )
-        internal_axioms = sorted(d.name for d in internal if d.kind == "axiom")
+        internal_axioms = sorted({d.name for d in internal if d.kind == "axiom"})
         external_modules = sorted({d.module for d in external})
 
         result = {
             "status": "PROTOTYPE_PASS" if not unresolved and not internal_axioms else "PROTOTYPE_FAIL",
             "scope": (
-                "transitive declaration closure inside the compiled accepted assembly module; "
+                "union of transitive declaration closures inside the compiled accepted assembly module; "
                 "direct consumer→dependency edges retained; external module leaves are boundary candidates "
                 "for Trusted Base classification; Claim-Registry semantic comparison remains separate"
             ),
@@ -358,9 +365,10 @@ def main() -> int:
                 "generated_source_inferences": len(inferred_generated),
                 "unmapped_internal_ranges": len(unmapped_internal),
                 "internal_axioms": len(internal_axioms),
+                "targets": len(args.target),
             },
             "internal_axioms": internal_axioms,
-            "unresolved": sorted(unresolved),
+            "unresolved": unresolved,
             "raw_unmapped_internal_ranges": raw_unmapped,
             "generated_source_inferences": inferred_generated,
             "unmapped_internal_ranges": unmapped_internal,
