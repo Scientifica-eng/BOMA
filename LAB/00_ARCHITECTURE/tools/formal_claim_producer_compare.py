@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
-"""Compare BOMA R Claim Records with the actual Lean dependency closure.
+"""Compare BOMA Claim Records with an actual Lean dependency closure.
 
-This is the semantic bridge after theorem-level boundary classification:
+Two root modes are supported because accepted stages do not all package their
+final interface in the same way:
 
-    accepted Claim Registry
-      -> explicit claim producer policy
-      -> actual producer declarations in Lean closure
-      -> transitive internal support ancestry
+* ``single_target`` — one accepted integration theorem/certificate is the root.
+  Its direct internal dependencies must be explicit Claim producers or declared
+  integration-local packaging. This is the calibrated R mode.
+* ``producer_union`` — the accepted stage has no synthetic final theorem bundle.
+  The formal closure is the union of explicitly selected Claim producers. Every
+  audit target must therefore itself be a declared producer. This preserves the
+  existing architecture instead of inventing a certificate only for the audit.
 
-The comparison intentionally does *not* allow the integration certificate itself
-to claim transitive ownership of the whole graph. Doing so would make the audit
-vacuous. Every direct internal dependency of the certificate must instead be an
-explicit claim producer or integration-local generated/packaging infrastructure.
+In both modes every internal declaration in the extracted closure must have
+ancestry from at least one declared Claim producer, and the external boundary
+classifier must already pass.
 """
 
 from __future__ import annotations
@@ -24,9 +27,6 @@ from pathlib import Path
 from typing import Any
 
 
-CLAIM_RE = re.compile(r"`(R-CL-[A-Z0-9-]+)`")
-
-
 def load_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as fh:
         data = json.load(fh)
@@ -35,11 +35,12 @@ def load_json(path: Path) -> dict[str, Any]:
     return data
 
 
-def load_registry_claims(path: Path, section_label: str) -> list[str]:
+def load_registry_claims(path: Path, section_label: str, claim_pattern: str) -> list[str]:
     lines = path.read_text(encoding="utf-8").splitlines()
     in_section = False
     claims: list[str] = []
     seen: set[str] = set()
+    claim_re = re.compile(r"`(" + claim_pattern + r")`")
 
     for line in lines:
         if line.startswith("## "):
@@ -50,7 +51,7 @@ def load_registry_claims(path: Path, section_label: str) -> list[str]:
             continue
         if not in_section:
             continue
-        match = CLAIM_RE.search(line)
+        match = claim_re.search(line)
         if match:
             claim = match.group(1)
             if claim not in seen:
@@ -60,7 +61,7 @@ def load_registry_claims(path: Path, section_label: str) -> list[str]:
     if not in_section:
         raise ValueError(f"registry section not found: {section_label}")
     if not claims:
-        raise ValueError(f"no R Claim IDs found in registry section: {section_label}")
+        raise ValueError(f"no Claim IDs found in registry section: {section_label}")
     return claims
 
 
@@ -93,9 +94,13 @@ def reachable_internal(start: str, adjacency: dict[str, list[str]], internal_nam
     return reached
 
 
-def shortest_path(start: str, target: str, adjacency: dict[str, list[str]]) -> list[str] | None:
-    queue: deque[str] = deque([start])
-    parent: dict[str, str | None] = {start: None}
+def shortest_path_any(starts: list[str], target: str, adjacency: dict[str, list[str]]) -> list[str] | None:
+    queue: deque[str] = deque()
+    parent: dict[str, str | None] = {}
+    for start in starts:
+        if start not in parent:
+            parent[start] = None
+            queue.append(start)
     while queue:
         node = queue.popleft()
         if node == target:
@@ -134,7 +139,7 @@ def source_stage(source: str | None) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Compare R Claim producers with actual Lean closure")
+    parser = argparse.ArgumentParser(description="Compare Claim producers with actual Lean closure")
     parser.add_argument("--closure", required=True, type=Path)
     parser.add_argument("--classification", required=True, type=Path)
     parser.add_argument("--policy", required=True, type=Path)
@@ -146,9 +151,24 @@ def main() -> int:
     classification = load_json(args.classification)
     policy = load_json(args.policy)
 
-    target = policy.get("target")
-    if not isinstance(target, str) or not target:
-        raise ValueError("policy target missing")
+    root_mode = str(policy.get("root_mode", "single_target"))
+    if root_mode not in {"single_target", "producer_union"}:
+        raise ValueError(f"unsupported root_mode: {root_mode}")
+
+    policy_target = policy.get("target")
+    policy_audit_targets = [
+        x for x in policy.get("audit_targets", []) if isinstance(x, str) and x
+    ]
+    if root_mode == "single_target":
+        if not isinstance(policy_target, str) or not policy_target:
+            raise ValueError("single_target policy requires target")
+        roots = [policy_target]
+    else:
+        if not policy_audit_targets:
+            raise ValueError("producer_union policy requires audit_targets")
+        roots = policy_audit_targets
+
+    closure_targets = [x for x in closure.get("targets", []) if isinstance(x, str) and x]
 
     internal = [item for item in closure.get("internal", []) if isinstance(item, dict)]
     internal_by_name = {
@@ -160,13 +180,25 @@ def main() -> int:
     edges = [item for item in closure.get("edges", []) if isinstance(item, dict)]
     adjacency = adjacency_from_edges(edges, internal_names)
 
-    registry_claims = load_registry_claims(args.registry, str(policy.get("registry_section", "R Claim IDs")))
+    claim_pattern = str(policy.get("claim_id_pattern", "[A-Z0-9-]+-CL-[A-Z0-9-]+"))
+    registry_claims = load_registry_claims(
+        args.registry,
+        str(policy.get("registry_section", "Claim IDs")),
+        claim_pattern,
+    )
     policy_claims_obj = policy.get("claims", {})
     if not isinstance(policy_claims_obj, dict):
         raise ValueError("policy claims must be an object")
     policy_claims = list(policy_claims_obj.keys())
 
     residuals: list[dict[str, Any]] = []
+
+    if set(closure_targets) != set(roots):
+        residuals.append({
+            "type": "audit_target_policy_drift",
+            "policy_targets": roots,
+            "closure_targets": closure_targets,
+        })
 
     missing_policy_claims = sorted(set(registry_claims) - set(policy_claims))
     extra_policy_claims = sorted(set(policy_claims) - set(registry_claims))
@@ -193,12 +225,12 @@ def main() -> int:
             "status": closure.get("status"),
         })
 
-    target_reach = reachable_internal(target, adjacency, internal_names)
-    target_reach.add(target)
-
     integration_prefixes = [
         p for p in policy.get("integration_local_prefixes", []) if isinstance(p, str) and p
     ]
+    integration_claim = policy.get("integration_claim")
+    if integration_prefixes and (not isinstance(integration_claim, str) or not integration_claim):
+        raise ValueError("integration_local_prefixes require integration_claim")
 
     ownership: dict[str, set[str]] = {}
     producer_names: set[str] = set()
@@ -223,8 +255,8 @@ def main() -> int:
         for producer in producers:
             producer_names.add(producer)
             exists = producer in internal_names
-            path = shortest_path(target, producer, adjacency) if producer != target else [target]
-            reachable = producer == target or path is not None
+            path = shortest_path_any(roots, producer, adjacency)
+            reachable = producer in roots or path is not None
             if not exists:
                 residuals.append({
                     "type": "declared_producer_not_internal",
@@ -233,12 +265,12 @@ def main() -> int:
                 })
             if exists and not reachable:
                 residuals.append({
-                    "type": "declared_producer_not_reachable_from_target",
+                    "type": "declared_producer_not_reachable_from_audit_root",
                     "claim": claim_id,
                     "producer": producer,
                 })
 
-            owned = set()
+            owned: set[str] = set()
             if exists:
                 owned.add(producer)
                 if transitive:
@@ -247,8 +279,9 @@ def main() -> int:
             producer_results.append({
                 "name": producer,
                 "exists_in_internal_closure": exists,
-                "reachable_from_target": reachable,
-                "shortest_target_path": path,
+                "reachable_from_audit_root": reachable,
+                "shortest_audit_path": path if path is not None else ([producer] if producer in roots else None),
+                "is_audit_target": producer in roots,
                 "source": internal_by_name.get(producer, {}).get("source") if exists else None,
                 "owned_internal_count": len(owned),
             })
@@ -264,23 +297,38 @@ def main() -> int:
             "owned_internal_count": len(claim_owned),
         })
 
-    # Integration-local declarations are packaging/generated artifacts, not a
-    # license for the integration claim to own their transitive dependencies.
     for name in internal_names:
         if matches_prefix(name, integration_prefixes):
-            ownership.setdefault(name, set()).add("R-CL-INTEGRATION-001")
+            ownership.setdefault(name, set()).add(str(integration_claim))
 
-    direct_internal = sorted(set(adjacency.get(target, [])))
+    direct_internal_records: list[dict[str, Any]] = []
     undeclared_direct: list[str] = []
-    for dep in direct_internal:
-        if dep in producer_names or matches_prefix(dep, integration_prefixes):
-            continue
-        undeclared_direct.append(dep)
-    if undeclared_direct:
-        residuals.append({
-            "type": "undeclared_target_direct_internal_dependency",
-            "dependencies": undeclared_direct,
-        })
+    if root_mode == "single_target":
+        target = roots[0]
+        direct_internal = sorted(set(adjacency.get(target, [])))
+        for dep in direct_internal:
+            declared = dep in producer_names
+            local = matches_prefix(dep, integration_prefixes)
+            direct_internal_records.append({
+                "name": dep,
+                "declared_producer": declared,
+                "integration_local": local,
+                "source": internal_by_name.get(dep, {}).get("source"),
+            })
+            if not declared and not local:
+                undeclared_direct.append(dep)
+        if undeclared_direct:
+            residuals.append({
+                "type": "undeclared_target_direct_internal_dependency",
+                "dependencies": undeclared_direct,
+            })
+    else:
+        nonproducer_targets = sorted(set(roots) - producer_names)
+        if nonproducer_targets:
+            residuals.append({
+                "type": "producer_union_target_not_declared_producer",
+                "targets": nonproducer_targets,
+            })
 
     unowned_internal = sorted(name for name in internal_names if name not in ownership)
     if unowned_internal:
@@ -305,7 +353,8 @@ def main() -> int:
         "status": status,
         "policy_schema": policy.get("schema"),
         "stage": policy.get("stage"),
-        "target": target,
+        "root_mode": root_mode,
+        "audit_targets": roots,
         "closure_status": closure.get("status"),
         "boundary_classification_status": classification.get("status"),
         "registry_claims": registry_claims,
@@ -314,25 +363,18 @@ def main() -> int:
             "registry_claims": len(registry_claims),
             "policy_claims": len(policy_claims),
             "declared_producers": len(producer_names),
+            "audit_targets": len(roots),
             "internal_declarations": len(internal_names),
             "owned_internal_declarations": len(ownership),
             "unowned_internal_declarations": len(unowned_internal),
-            "target_direct_internal_dependencies": len(direct_internal),
+            "target_direct_internal_dependencies": len(direct_internal_records),
             "undeclared_target_direct_internal_dependencies": len(undeclared_direct),
             "multi_claim_owned_internal_declarations": len(multi_owned),
             "residual_groups": len(residuals),
         },
         "internal_by_source_stage": dict(sorted(stage_counts.items())),
         "unowned_by_source_stage": dict(sorted(unowned_stage_counts.items())),
-        "target_direct_internal_dependencies": [
-            {
-                "name": name,
-                "declared_producer": name in producer_names,
-                "integration_local": matches_prefix(name, integration_prefixes),
-                "source": internal_by_name.get(name, {}).get("source"),
-            }
-            for name in direct_internal
-        ],
+        "target_direct_internal_dependencies": direct_internal_records,
         "claims": claim_results,
         "multi_claim_owned_internal": [
             {"name": name, "claims": sorted(ownership[name])}
