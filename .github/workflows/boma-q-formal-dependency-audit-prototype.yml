@@ -1,0 +1,290 @@
+name: BOMA Q Formal Dependency Audit — Prototype
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
+      - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py'
+      - 'LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt'
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - '.github/workflows/boma-q-formal-dependency-audit-prototype.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boma-q-formal-dependency-audit-prototype
+  cancel-in-progress: true
+
+jobs:
+  audit-q-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Extract actual Q accepted-claim declaration closure
+        id: audit
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_ARGS=()
+          while IFS= read -r target; do
+            [ -n "$target" ] || continue
+            TARGET_ARGS+=(--target "$target")
+          done < <(python3 - <<'PY'
+          import json
+          with open('LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json', encoding='utf-8') as fh:
+              policy = json.load(fh)
+          for target in policy['audit_targets']:
+              print(target)
+          PY
+          )
+          test "${#TARGET_ARGS[@]}" -gt 0
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage Q \
+            --manifest LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            "${TARGET_ARGS[@]}" \
+            --json-out /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            > /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout 2>&1
+          cat /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+
+      - name: Classify Q formal boundary against declared policy
+        id: classify
+        if: steps.audit.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            > /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout 2>&1
+          cat /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
+
+      - name: Compare actual Q closure with Q Claim producers
+        id: claimmap
+        if: steps.classify.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --classification /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
+            > /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout 2>&1
+          cat /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+
+      - name: Record Q prototype evidence on feature branch
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          RESULT=PROTOTYPE_PASS
+          if [ "${{ steps.setup.outcome }}" != success ] || [ "${{ steps.audit.outcome }}" != success ]; then
+            RESULT=PROTOTYPE_FAIL
+          fi
+
+          CLASSIFICATION_STATUS=NO_OUTPUT
+          if [ -f /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            CLASSIFICATION_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.classify.outcome }}" = skipped ]; then
+            CLASSIFICATION_STATUS=SKIPPED
+          fi
+
+          CLAIM_PRODUCER_STATUS=NO_OUTPUT
+          if [ -f /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            CLAIM_PRODUCER_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.claimmap.outcome }}" = skipped ]; then
+            CLAIM_PRODUCER_STATUS=SKIPPED
+          fi
+
+          BRANCH='architecture/claim-transparency-001'
+          VERIFIED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+
+          git fetch origin "$BRANCH"
+          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
+          if [ "$CURRENT_HEAD" != "$VERIFIED_SHA" ]; then
+            echo '::error::Feature branch moved after this Q audit started; refusing stale prototype evidence promotion.'
+            exit 1
+          fi
+
+          git checkout -B q-claim-transparency-evidence "origin/$BRANCH"
+          mkdir -p LAB/20_FORMALIZATION/Q_STAGE/evidence
+
+          if [ -f /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json ]; then
+            cp /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "PROTOTYPE_FAIL",
+            "reason": "dependency extractor did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
+          if [ -f /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            cp /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "${CLASSIFICATION_STATUS}",
+            "reason": "semantic classification did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
+          if [ -f /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            cp /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "${CLAIM_PRODUCER_STATUS}",
+            "reason": "Claim/producer comparison did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
+          cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
+          # Q Formal Dependency Closure — Prototype Evidence
+
+          **Status:** ${RESULT}  
+          **Boundary classification:** ${CLASSIFICATION_STATUS}  
+          **Claim/producer comparison:** ${CLAIM_PRODUCER_STATUS}  
+          **Audited source commit:** \`${VERIFIED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`  
+          **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Root mode:** \`producer_union\` over accepted Q integration/law targets  
+          **Accepted assembly manifest:** \`LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt\`
+
+          | Step | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | compile Q accepted assembly + extract multi-target transitive closure | ${{ steps.audit.outcome }} |
+          | classify boundary against explicit dependency policy | ${{ steps.classify.outcome }} |
+          | compare actual closure against Q Claim/producer policy | ${{ steps.claimmap.outcome }} |
+
+          ## Scope boundary
+
+          This prototype does not invent a new Q mathematical certificate. It audits the existing accepted Q integration-package theorems plus acceptance-level laws omitted from the package file. `PROTOTYPE_PASS` alone is not a Q transparency certification.
+
+          `CLASSIFICATION_PASS` requires zero unclassified formal boundary residuals. `CLAIM_PRODUCER_PASS` requires exact Q Claim-registry agreement, declared producers in the actual closure, audit roots that are themselves declared Claim producers, and zero internal declarations without producer ancestry.
+          EOF
+
+          if [ -f /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Claim/producer comparison log tail'
+              echo
+              echo '```text'
+              tail -n 140 /tmp/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          elif [ -f /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Boundary classification log tail'
+              echo
+              echo '```text'
+              tail -n 100 /tmp/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          elif [ -f /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Extractor log tail'
+              echo
+              echo '```text'
+              tail -n 100 /tmp/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record Q formal dependency prototype run ${RUN_ID}"
+            git push origin HEAD:"$BRANCH"
+          fi
+
+      - name: Enforce full Q prototype comparison
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.classify.outcome }}" = success
+          test "${{ steps.claimmap.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## Q Formal Dependency Closure Prototype
+
+          This workflow audits the existing accepted Q integration/law surface without introducing a new carrier, theorem statement, or synthetic acceptance certificate.
+
+          A later Q transparency promotion requires zero formal-boundary residuals and zero Claim/producer residuals. This workflow does not change QA-23, merge the branch, or authorize C.
+          EOF
