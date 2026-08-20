@@ -4,11 +4,13 @@
 - **Epistemic Status:** **MIXED FORMALIZATION CHOICE + DERIVED CERTIFIED PACKAGE**
 - **Acceptance:** `RA-22 = ACCEPT`
 - **Depends on:** selected Dedekind route, `R-J-002`, `PDSA-R-014`
+- **Post-acceptance audit:** `PDSA-R-015 / RE-R-001 CLOSED`
 - **Input domain:** `Q-BLOCK-002 — Accepted Stage-One Rational Interface`
+- **Next-family status:** **C NOT STARTED — USER HOLD**
 
 ## Purpose
 
-Provide the canonical downstream interface for the accepted BOMA Stage-One real domain while preserving the Dedekind/Cauchy route decision, quotient-identity choice, logical boundaries, proof-engineering lineage, and narrower construction Blocks.
+Provide the canonical downstream interface for the accepted BOMA Stage-One real domain while preserving the Dedekind/Cauchy route decision, quotient-identity choice, logical boundaries, proof-engineering lineage, narrower construction Blocks, and post-acceptance reverse classification.
 
 ## Carrier / identity
 
@@ -166,7 +168,7 @@ no global inverse selector required by the accepted field interface
 Lean 4.32.1 / GitHub V5 as meta-level verification infrastructure
 ```
 
-The active build has zero external Lake packages; no standard-library real carrier/completeness theorem is used as the definition or construction of `RBOMA`.
+The active verified build has zero external Lake packages; no standard-library real carrier/completeness theorem is used as the definition or construction of `RBOMA`.
 
 ## Preserved alternatives
 
@@ -175,10 +177,13 @@ Stage One selected Dedekind lower cuts through `R-DP-001` while retaining the Ca
 Other retained questions include:
 
 ```text
-quotient identity versus alternative identity realizations
+quotient identity versus external CutEquiv identity
 Dedekind versus Cauchy completion
+localized classical totality versus constructive locatedness/order regimes
 sign-free multiplication versus retained alternative multiplication architectures
+direct Dedekind reciprocal versus completeness/supremum inverse
 reusable Q approximation components versus route-specific Dedekind proof machinery
+strict order as rLE+inequality versus an explicit strict-inclusion witness interface
 ```
 
 No convergence theorem between two independently completed real carriers is claimed in Stage One.
@@ -193,24 +198,63 @@ RA-21       PASS / R-J-002 RESOLVED
 RA-22       ACCEPT
 ```
 
-Closure record:
-
-`LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md`
-
-## Downstream permission
-
-`R-BLOCK-001` is the accepted Stage-One R export.
-
-However, it does **not** yet permit canonical complex-number construction. Governance requires:
+Closure records:
 
 ```text
-R-BLOCK-001 accepted
-   ↓
-RE-R-001 local real-stage reverse engineering
-   ↓
-RE-R-001 closure
-   ↓
-canonical C stage may open
+LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
+LAB/20_FORMALIZATION/R_STAGE/R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
 ```
 
-This preserves the scheduled reverse-engineering gate before R-stage commitments propagate into C.
+## Post-acceptance reverse engineering
+
+`RE-R-001` has now been executed and closed through `PDSA-R-015`.
+
+Canonical reverse matrix:
+
+`LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md`
+
+The principal result is that the accepted R interface must not be confused with the necessity of its selected realization:
+
+```text
+acceptance-required properties
++
+Dedekind-specific construction choices
++
+formal quotient identity choice
++
+localized logical commitments
++
+reusable Q-level contributions
++
+verification infrastructure
++
+retained branch candidates
+```
+
+In particular, Stage-One acceptance does not make the Dedekind route, quotient identity, current classical comparability proof, multiplication architecture, or direct reciprocal route universally necessary.
+
+```text
+RE-R-001 = CLOSED / COMPLETE
+```
+
+No accepted R theorem was weakened or revoked by the reverse audit.
+
+## Downstream status
+
+The governance prerequisite that required RE-R-001 before any canonical complex-number stage is satisfied.
+
+However, **eligibility is not authorization**. The user has explicitly instructed:
+
+```text
+DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
+```
+
+Therefore the current downstream state is:
+
+```text
+R-BLOCK-001  ACTIVE — ACCEPTED
+RE-R-001     CLOSED / COMPLETE
+C            NOT STARTED — USER HOLD
+```
+
+No C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle is authorized or opened by this R export.
