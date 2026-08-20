@@ -36,10 +36,9 @@
   ],
   "claims": {
     "Q-CL-GATE-001": {
-      "role": "Z nonzero multiplication cancellation gateway",
+      "role": "Z nonzero multiplication cancellation gateway actually consumed by accepted fraction equivalence/order proofs",
       "producers": [
-        "BOMA.Q.Gateway001.zmul_right_cancel_nonzero",
-        "BOMA.Q.Gateway001.zmul_ne_zero"
+        "BOMA.Q.Gateway001.zmul_right_cancel_nonzero"
       ]
     },
     "Q-CL-REP-001": {
