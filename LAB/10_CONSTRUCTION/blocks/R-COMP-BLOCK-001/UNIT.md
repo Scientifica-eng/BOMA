@@ -88,15 +88,24 @@ Payload:
 
 `LAB/payloads/lean/RStage/RDedekindCompleteness.lean`
 
+Canonical evidence file:
+
+`LAB/20_FORMALIZATION/R_STAGE/evidence/R_DEDEKIND_COMPLETENESS_V5_LATEST.md`
+
 V5:
 
 ```text
-run 32182124371
+run 32182056311
+verified commit fca34d837b5c78b540ac2ff50648a8cc531018a5
 Lean 4.32.1
 result PASS
 ```
 
 The verified target is the formal `RBOMA` least-upper-bound theorem, not only the earlier raw `LowerCut` union probe.
+
+### Provenance metadata correction — 2026-08-20
+
+An earlier version of this Block listed run `32182124371`. Audit against the canonical evidence file established that the correct formal-completeness run is `32182056311`. This correction changes provenance metadata only; the theorem statement and PASS result are unchanged.
 
 ## Logical scope
 
