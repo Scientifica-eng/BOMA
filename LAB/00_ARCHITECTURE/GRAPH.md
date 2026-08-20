@@ -4,7 +4,8 @@
 **Detailed topology:** `CONSTRUCTION_TOPOLOGY.md`  
 **N-Core:** `N_CORE_DAG.md`  
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
-**Q:** `Q_DAG.md`
+**Q:** `Q_DAG.md`  
+**R:** `R_DAG.md`
 
 ## Pre-numerical trunk
 
@@ -19,13 +20,11 @@ TCT-BLOCK-001 → TCT-BLOCK-002 → TCT-BR-010 → TCT-BR-009
 ```text
 BOMA-N-ACCEPT-001
    ↓
-N-DP-001 R-B
-N-DP-002 scope
+N-DP-001 R-B + N-DP-002 scope
    ↓
 parallel N-Core DAG
    ↓
-N-J-001 PASS
-N-J-002 PASS
+N-J-001 PASS → N-J-002 PASS
    ↓
 NAC-15 ACCEPT
    ↓
@@ -49,145 +48,185 @@ N-ARITH-BLOCK-001 Accepted N-Arithmetic
 ```text
 N-ARITH-BLOCK-001
       │
-      ├────────► Z-S-BLOCK-001  signed normal forms ──────┐
-      │                                                    │
-      └────────► Z-D-BLOCK-001  difference pairs + ~ ─────┤
-                                                           ▼
-                                                    Z-J-001 PASS
-                                                           │
-                                                           ▼
-                                                    Z-DP-001
-                                              signed export selected
-                                              pair route retained
-                                                           │
-                                                           ▼
-                                                    Z-BLOCK-001
-                                                           │
-                        ┌──────────────────────────────────┴─────────────────────────────┐
-                        ▼                                                                ▼
-              direct signed arithmetic                                      pair-mediated arithmetic
-                        └──────────────────────────────────┬─────────────────────────────┘
-                                                           ▼
-                                                    Z-ARITH-J-001 PASS
-                                                           ▼
-                                             commutative-ring package PASS
-                                                           │
-                        ┌──────────────────────────────────┴─────────────────────────────┐
-                        ▼                                                                ▼
-                direct signed order                                           pair cross-sum order
-                        └──────────────────────────────────┬─────────────────────────────┘
-                                                           ▼
-                                                     Z-ORD-J-001 PASS
-                                                           ▼
-                                               ordered-ring package PASS
-                                                           ▼
-                                                     Z-J-002 PASS
-                                                           ▼
-                                                     ZA-21 ACCEPT
-                                                           ▼
-                                                    Z-BLOCK-002
-                                              Accepted Stage-One Z
+      ├────────► Z-S-BLOCK-001 signed normal forms ───────┐
+      └────────► Z-D-BLOCK-001 difference pairs + ~ ─────┤
+                                                          ▼
+                                                   Z-J-001 PASS
+                                                          ▼
+                                                   Z-DP-001
+                                         signed export selected
+                                         pair route retained
+                                                          ▼
+                                                   Z-BLOCK-001
+                                                          │
+                direct arithmetic ───────┐                │
+                pair arithmetic   ───────┴─► Z-ARITH-J-001 PASS
+                                                          ▼
+                                                 commutative ring
+                                                          │
+                direct order      ───────┐                │
+                pair order        ───────┴─► Z-ORD-J-001 PASS
+                                                          ▼
+                                                  ordered ring
+                                                          ▼
+                                                   Z-J-002 PASS
+                                                          ▼
+                                                   ZA-21 ACCEPT
+                                                          ▼
+                                                   Z-BLOCK-002
+                                             Accepted Stage-One Z
 ```
 
 ## Mandatory post-Z reverse engineering
 
 ```text
-Z-BLOCK-002 Accepted Z
-      │
-      ├────────► Z-RE-BLOCK-001
-      │          N_Cone(Z) = {x | 0 ≤ x}
-      │
-      └────────► Z-RE-BLOCK-002
-                 ReachZ generated by 0 and +1
-                     │
-                     └──► ReachZ → nonnegative    [Z-only]
-
-reverse candidates independently V5 PASS
-      │
-      ▼
-freeze/reintroduce bottom-up N only as comparison reference
-      │
-      ▼
-encode/decode + preservation of 0,S,+,*,≤
-      │
-      ▼
-Z-RE-J-001 PASS
+Z-BLOCK-002
+   ├──► Z-RE-BLOCK-001 nonnegative cone
+   └──► Z-RE-BLOCK-002 successor reachability
+                 ↓
+         reverse candidates V5 PASS
+                 ↓
+         compare with bottom-up N
+                 ↓
+           Z-RE-J-001 PASS
+                 ↓
 INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
 ```
 
-Key interpretation:
-
-```text
-Z-only recovery:
-  nonnegative cone
-  zero / one / successor
-  + / * / order closure
-  ReachZ
-  ReachZ → nonnegative
-  Prop-valued ReachZ induction
-
-representation/comparison-assisted:
-  exact cone ↔ BOMANat decoder
-  nonnegative → ReachZ in current proof
-  successor no-confusion / injectivity in current proof
-  Type-valued recursion transport
-
-not recovered from extensional Z:
-  pre-numerical TCT provenance
-  N formalization Decision Point history
-  original recursion/initiality derivation provenance
-  PDSA learning graph
-```
+The extensional Z interface recovers substantial N-like structure but does not recover pre-numerical/TCT/PDSA provenance.
 
 ## Accepted rational path
 
 ```text
 Z-BLOCK-002
-   │
-   ▼
-Q-GATE-BLOCK-001
-nonzero multiplication cancellation
-   │
-   ▼
-Q-F-BLOCK-001
-positive denominator + RawFrac + FracEquiv
-   │
-   ▼
-Q-F-BLOCK-002
-raw arithmetic respects FracEquiv
-   │
-   ▼
+   ↓
+Q-GATE-BLOCK-001 cancellation
+   ↓
+Q-F-BLOCK-001 RawFrac + FracEquiv
+   ↓
+Q-F-BLOCK-002 operation respect
+   ↓
 Q-DP-001
 quotient/setoid identity selected
 reduced/external-setoid alternatives retained
-   │
-   ▼
+   ↓
 Q-BLOCK-001
-verified quotient carrier / identity / lifted operations
-   │
-   ├──────── additive / multiplicative / distributive field laws
-   ├──────── unique nonzero inverse witnesses
-   ├──────── faithful Z + coherent N embeddings
-   ├──────── integer-fraction generation
-   └──────── RawLE representative invariance → qLE total order
-                                                │
-                         ┌──────────────────────┴─────────────────────┐
-                         ▼                                            ▼
-              translation + negation                     nonnegative multiplication
-              order compatibility                        + positive inverse behavior
-                         └──────────────────────┬─────────────────────┘
-                                                ▼
-                                  QIntegrationCertificate PASS
-                                                ▼
-                                          Q-J-002 PASS
-                                                ▼
-                                          QA-23 ACCEPT
-                                                ▼
-                                         Q-BLOCK-002
-                                   Accepted Stage-One Q
+   ├── field algebra
+   ├── unique nonzero inverse witnesses
+   ├── faithful Z + coherent N embeddings
+   ├── integer-fraction generation
+   └── qLE total order
+            │
+            ├── additive/negation order compatibility
+            └── nonnegative multiplication + positive inverse behavior
+                         ↓
+              QIntegrationCertificate PASS
+                         ↓
+                    Q-J-002 PASS
+                         ↓
+                    QA-23 ACCEPT
+                         ↓
+                    Q-BLOCK-002
+              Accepted Stage-One Q
 ```
 
-QA-17 is deliberately not drawn as a second-carrier reconvergence: Stage One built one formal rational carrier after its raw syntax/equivalence production layer. Reduced fractions and other identity regimes remain later branch candidates.
+## Accepted real path
+
+```text
+Q-BLOCK-002 — accepted Q
+   ↓
+shared Q order / density / approximation contributions
+   ↓
+R-DP-001
+   ├── Dedekind lower cuts SELECTED
+   └── Cauchy route RETAINED
+   ↓
+LowerCut / CutEquiv
+   ↓
+R-DP-002
+quotient identity selected
+external CutEquiv identity retained
+   ↓
+RBOMA := Quotient cutSetoid
+   ↓
+rOfQ + constructive rLE core
+   ↓
+R-DP-003
+localized classical CutComparability selected
+   ↓
+R-COMP-BLOCK-001
+Dedekind LUB completeness
+   ↓
+R-ADD-BLOCK-001 + R-NEG-CANDIDATE-BLOCK-001
+   ↓
+R-DP-004 / R-QARCH-BLOCK-001
+   ↓
+R-ADD-GROUP-BLOCK-001
+   ↓
+R-DP-005
+positive/negative-part multiplication selected
+   ↓
+R-MUL-BLOCK-001 ordered commutative ring
+   ↓
+R-DP-006
+direct positive Dedekind reciprocal selected
+completeness-level inverse retained
+   ↓
+R-FIELD-BLOCK-001
+unique nonzero inverse witnesses
+   ↓
+R-DENSITY-BLOCK-001 + R-ARCH-BLOCK-001
+   ↓
+explicit ordered-field closure
+   ↓
+R-J-002 PASS
+   ↓
+RA-22 ACCEPT
+   ↓
+R-BLOCK-001
+Accepted Stage-One R
+```
+
+## Post-R reverse engineering — COMPLETED
+
+```text
+R-BLOCK-001 ACCEPTED
+   ↓
+PDSA-R-015 / RE-R-001
+   ↓
+backward classification
+   ├── interface-required properties
+   ├── Dedekind-specific realizations
+   ├── quotient formalization choice
+   ├── localized logical commitments
+   ├── reusable Q-level contributions
+   ├── proof/CI infrastructure
+   └── retained alternative branches
+   ↓
+RE-R-001 CLOSED / COMPLETE
+```
+
+Primary reverse classifications:
+
+```text
+R-DP-001 Dedekind             ROUTE-SPECIFIC / branch candidate
+R-DP-002 quotient identity    FORMALIZATION CHOICE / branch candidate
+R-DP-003 CutComparability     LOGICAL COMMITMENT / branch candidate
+R-COMP LUB property           acceptance-required
+R-COMP union realization      Dedekind-specific
+R-DP-004 Q arithmetic         reusable; cut search route-specific
+R-DP-005 multiplication       selected architecture / branch candidate
+R-DP-006 reciprocal           Dedekind-specific / branch candidate
+RA-12 / RA-13 properties      acceptance-required with route-specific proofs
+```
+
+Canonical reverse matrix:
+
+```text
+LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
+```
+
+No accepted R theorem was changed by the reverse audit.
 
 ## Verification evidence
 
@@ -217,21 +256,31 @@ Q order core                   32177345921
 Q order additive compatibility 32177896509
 Q order multiplicative compat  32178098823
 Q full integration             32178326013
+R identity / Q embedding       32180783725
+R order logic split            32181726522
+R Dedekind completeness        32182056311
+R additive inverse             32186543211
+R signed multiplication        32189753112
+R ordered ring                 32192653931
+R nonzero inverse              32356513408
+R rational density             32359834460
+R Archimedean                  32359869558
+R final integration            32374868448
 Lean                           4.32.1
 ```
 
 ## Current frontier
 
 ```text
-Pre-numerical layer                 CALIBRATED
-BOMA N-Core                         ACCEPTED
-BOMA N-Arithmetic                   ACCEPTED
-BOMA Z                              ACCEPTED
-post-Z reverse N experiment         CLOSED
-  result                            INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
-BOMA Q                              ACCEPTED
-Reals                               NEXT / NOT YET CONSTRUCTED
-Complex numbers                     NOT REACHED
+Pre-numerical layer     CALIBRATED
+BOMA N-Core             ACCEPTED
+BOMA N-Arithmetic       ACCEPTED
+BOMA Z                  ACCEPTED
+post-Z reverse N        CLOSED
+BOMA Q                  ACCEPTED
+BOMA R                  ACCEPTED
+RE-R-001                CLOSED / COMPLETE
+BOMA C                  NOT STARTED — USER HOLD
 ```
 
-The next work is a representation-neutral real-number acceptance specification and an explicit completion Decision Point. No Dedekind, Cauchy, or other completion regime is canonical yet.
+By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle is to be opened until a new explicit user order is given.
