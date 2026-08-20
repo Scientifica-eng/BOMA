@@ -87,6 +87,14 @@ The widened integration certificate passed without introducing a global inverse 
 
 Verified commit: `f07363c22b049a3fae028a927df74d4fb28a0680`.
 
+The canonical ordered source assembly for the R-J-002 workflow is now recorded separately in:
+
+`LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
+
+This manifest is an operational traceability artifact. Extracting the previously inline source order into the manifest does not revise the accepted theorem set or retroactively alter run `32374868448`; it makes the integration dependency order independently inspectable and reduces workflow-list drift.
+
+The integration workflow also guards evidence promotion by checking that its verification inputs have not changed between the actually verified `GITHUB_SHA` and the `main` head on which the evidence record would be committed. Documentation-only movement of `main` may coexist with a verified source state; verification-input drift causes evidence promotion to stop rather than misattribute the run.
+
 ## Acceptance-obligation map
 
 ```text
