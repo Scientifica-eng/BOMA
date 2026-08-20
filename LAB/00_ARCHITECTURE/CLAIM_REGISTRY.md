@@ -1,7 +1,7 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED; R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
+**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED; Q/R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
 **Date:** 2026-08-20  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
 **Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
@@ -26,7 +26,7 @@ The registry links these layers without collapsing them.
 | `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md` |
 | `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md` |
 | `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md` |
-| `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md` |
+| `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md` |
 | `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md` |
 
 `COMPLETE` in the declared-closure column means human-readable Claim closure at the current audit granularity. `PASS — BRANCH-LOCAL` is stronger: it is backed by theorem-level dependency extraction, boundary classification, and Claim/producer comparison on `architecture/claim-transparency-001`. It does not retroactively relabel historical commits or merge the branch into `main`.
@@ -100,7 +100,9 @@ Detailed mapping: `Z_CLAIM_CLOSURE_AUDIT_001.md`.
 
 ## 6. Q Claim IDs
 
-Detailed mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.
+Declared-closure mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.  
+Machine transparency certification: `Q_TRANSPARENCY_CERTIFICATION_001.md`.  
+Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-Q-FORMAL-CLOSURE-STUDY-001.md`.
 
 | Claim ID | Role | Primary producer |
 |---|---|---|
@@ -114,6 +116,26 @@ Detailed mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.
 | `Q-CL-GEN-001` | fraction generation/characterization | Q generation layer |
 | `Q-CL-ORDER-001` | total ordered rational interface | Q order/compatibility layers |
 | `Q-CL-INTEGRATION-001` | accepted Q integration | `Q-J-002` / `Q-BLOCK-002` |
+
+Historical canonical Q integration evidence remains:
+
+```text
+run             32178326013
+result          PASS
+```
+
+Current branch-local Q transparency evidence:
+
+```text
+run                  32416694028
+audited source       87b635a15cb057a517e201f8fbf99b54296533b8
+formal extraction    PROTOTYPE_PASS
+boundary             CLASSIFICATION_PASS
+claim/producer       CLAIM_PRODUCER_PASS
+residuals            0
+```
+
+The first Q Claim/producer run intentionally remains part of the Learning Graph: it exposed one over-declared producer (`zmul_ne_zero`) that was valid source code but not consumed by the accepted Claim closure. The producer policy was corrected rather than expanding the audit roots merely to obtain a PASS.
 
 ## 7. R Claim IDs
 
@@ -146,18 +168,18 @@ Lean            4.32.1
 result          PASS
 ```
 
-Current branch-local transparency evidence:
+Current branch-local R transparency evidence:
 
 ```text
-run                  32415451960
-audited source       6044629aba7b827070c334e274ef14ec4a95e009
+run                  32415977469
+audited source       db827c7de13275e55bbe2dcbd320c409f2a1c9ee
 formal extraction    PROTOTYPE_PASS
 boundary             CLASSIFICATION_PASS
 claim/producer       CLAIM_PRODUCER_PASS
 residuals            0
 ```
 
-The two evidence lines answer different questions and must not be conflated: the canonical integration run is historical mathematical V5 evidence; the later architecture run is theorem-level dependency/Claim transparency evidence for the feature branch.
+The canonical integration run and later transparency runs answer different questions and must not be conflated: V5 evidence records mathematical integration at its verified source; architecture runs audit theorem-level dependency/Claim transparency for the feature branch.
 
 ## 8. Cross-stage dependency spine
 
@@ -183,27 +205,26 @@ This spine is only a high-level view. Internal branch/Junction dependencies rema
 N-Core        DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
 N-Arithmetic  DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
 Z             DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
-Q             DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+Q             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 R             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 ```
 
-R's result is calibrated against the accepted final integration certificate and has zero unclassified formal residuals plus zero unowned internal declarations. It does not automatically promote upstream stages because they require their own accepted root targets and stage-specific producer policies.
+Q and R have independent stage-level machine audits with zero formal-boundary residuals and zero unowned internal declarations. Their different root modes preserve the accepted architecture: R uses its single final integration certificate; Q uses the existing union of integration-package and acceptance-law roots rather than inventing a new theorem.
 
 ## 10. Next program step
 
-Reuse the calibrated R machinery in reverse dependency order:
+Continue in reverse dependency order:
 
 ```text
-Q
 Z
 N-Arithmetic
 N-Core
 ```
 
-For each stage:
+For each remaining stage:
 
 ```text
-select the accepted stage-root theorem/certificate;
+select the accepted theorem surface without fabricating new mathematics;
 define a machine-readable Claim producer policy;
 extract ActualFormalClosure;
 classify the formal boundary;
