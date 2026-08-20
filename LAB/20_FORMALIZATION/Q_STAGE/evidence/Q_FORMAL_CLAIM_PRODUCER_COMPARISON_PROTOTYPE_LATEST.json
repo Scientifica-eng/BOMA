@@ -1,5 +1,5 @@
 {
-  "status": "CLAIM_PRODUCER_REVIEW_REQUIRED",
+  "status": "CLAIM_PRODUCER_PASS",
   "policy_schema": "BOMA-Q-FORMAL-CLAIM-PRODUCER-POLICY-001",
   "stage": "Q",
   "root_mode": "producer_union",
@@ -54,7 +54,7 @@
   "counts": {
     "registry_claims": 10,
     "policy_claims": 10,
-    "declared_producers": 50,
+    "declared_producers": 49,
     "audit_targets": 20,
     "internal_declarations": 338,
     "owned_internal_declarations": 338,
@@ -62,7 +62,7 @@
     "target_direct_internal_dependencies": 0,
     "undeclared_target_direct_internal_dependencies": 0,
     "multi_claim_owned_internal_declarations": 275,
-    "residual_groups": 1
+    "residual_groups": 0
   },
   "internal_by_source_stage": {
     "N-Arithmetic": 59,
@@ -75,7 +75,7 @@
   "claims": [
     {
       "claim": "Q-CL-GATE-001",
-      "role": "Z nonzero multiplication cancellation gateway",
+      "role": "Z nonzero multiplication cancellation gateway actually consumed by accepted fraction equivalence/order proofs",
       "transitive_ownership": true,
       "producers": [
         {
@@ -91,15 +91,6 @@
           "is_audit_target": false,
           "source": "LAB/payloads/lean/QStage/QGatewayCancellation.lean",
           "owned_internal_count": 125
-        },
-        {
-          "name": "BOMA.Q.Gateway001.zmul_ne_zero",
-          "exists_in_internal_closure": false,
-          "reachable_from_audit_root": false,
-          "shortest_audit_path": null,
-          "is_audit_target": false,
-          "source": null,
-          "owned_internal_count": 0
         }
       ],
       "owned_internal_count": 125
@@ -3773,11 +3764,5 @@
       ]
     }
   ],
-  "residuals": [
-    {
-      "type": "declared_producer_not_internal",
-      "claim": "Q-CL-GATE-001",
-      "producer": "BOMA.Q.Gateway001.zmul_ne_zero"
-    }
-  ]
+  "residuals": []
 }

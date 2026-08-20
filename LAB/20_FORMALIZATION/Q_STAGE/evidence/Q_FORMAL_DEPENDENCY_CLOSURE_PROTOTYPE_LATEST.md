@@ -2,9 +2,9 @@
 
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
-**Claim/producer comparison:** CLAIM_PRODUCER_REVIEW_REQUIRED  
-**Audited source commit:** `3fb2979996d7436050831b0c01e688f81114c4df`  
-**Workflow run ID:** `32416480087`  
+**Claim/producer comparison:** CLAIM_PRODUCER_PASS  
+**Audited source commit:** `87b635a15cb057a517e201f8fbf99b54296533b8`  
+**Workflow run ID:** `32416694028`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root mode:** `producer_union` over accepted Q integration/law targets  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt`
@@ -14,7 +14,7 @@
 | Lean setup | success |
 | compile Q accepted assembly + extract multi-target transitive closure | success |
 | classify boundary against explicit dependency policy | success |
-| compare actual closure against Q Claim/producer policy | failure |
+| compare actual closure against Q Claim/producer policy | success |
 
 ## Scope boundary
 
@@ -25,6 +25,12 @@ This prototype does not invent a new Q mathematical certificate. It audits the e
 ## Claim/producer comparison log tail
 
 ```text
+      "claims": [
+        "Q-CL-ALG-001",
+        "Q-CL-CARRIER-001",
+        "Q-CL-EMBED-001",
+        "Q-CL-GATE-001",
+        "Q-CL-GEN-001",
         "Q-CL-INV-001",
         "Q-CL-ORDER-001",
         "Q-CL-RAWOPS-001",
@@ -157,12 +163,6 @@ This prototype does not invent a new Q mathematical certificate. It audits the e
       ]
     }
   ],
-  "residuals": [
-    {
-      "type": "declared_producer_not_internal",
-      "claim": "Q-CL-GATE-001",
-      "producer": "BOMA.Q.Gateway001.zmul_ne_zero"
-    }
-  ]
+  "residuals": []
 }
 ```
