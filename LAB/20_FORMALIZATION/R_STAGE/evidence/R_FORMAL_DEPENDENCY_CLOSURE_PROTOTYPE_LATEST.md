@@ -1,9 +1,10 @@
 # R Formal Dependency Closure — Prototype Evidence
 
 **Status:** PROTOTYPE_PASS  
-**Semantic classification:** CLASSIFICATION_PASS  
-**Audited source commit:** `3225acb4aec6fc0e6b03e62f69c6c956383ea66d`  
-**Workflow run ID:** `32405080337`  
+**Boundary classification:** CLASSIFICATION_PASS  
+**Claim/producer comparison:** CLAIM_PRODUCER_PASS  
+**Audited source commit:** `6044629aba7b827070c334e274ef14ec4a95e009`  
+**Workflow run ID:** `32415451960`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
@@ -13,94 +14,137 @@
 | Lean setup | success |
 | compile accepted assembly + extract transitive declaration closure/edges | success |
 | classify boundary against explicit dependency policy | success |
+| compare actual closure against R Claim/producer policy | success |
 
 ## Scope boundary
 
 A `PROTOTYPE_PASS` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA `TRANSPARENCY PASS`.
 
-The semantic classifier separately compares external leaves and source-attributed direct consumers against `FORMAL_DEPENDENCY_POLICY.json`. A classification status of `CLASSIFICATION_REVIEW_REQUIRED` is a deliberate research result: its residual dependencies must be diagnosed, declared, or removed before any transparency promotion.
+`CLASSIFICATION_PASS` means no external/internal formal dependency remains unclassified under `FORMAL_DEPENDENCY_POLICY.json`.
 
-## Classifier log tail
+`CLAIM_PRODUCER_PASS` additionally requires the R Claim Registry and machine-readable producer policy to agree, every declared producer to occur in and be reachable through the actual Lean closure, every direct internal dependency of the integration certificate to be explicitly declared or integration-local, and every internal declaration to have producer ancestry. Only the conjunction of these results is eligible for a later transparency-promotion decision.
+
+## Claim/producer comparison log tail
 
 ```text
-          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Arithmetic001.embedN_add",
-          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Arithmetic001.embedN_mul",
-          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Arithmetic001.zadd_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Arithmetic001.zmul_one_right",
-          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Arithmetic001.zmul_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.pairLE_neg_flip",
-          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zle_refl",
-          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.canonical_pair_separates",
-          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.pairAdd_assoc",
-          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.pairAdd_comm",
-          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.pairMul_add_right",
-          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.pairMul_assoc",
-          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.pairMul_comm",
-          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
-          "source_resolution": "direct-range"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
-        "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonpos",
-        "of_eq_true"
-      ],
-      "residual": false
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_common_s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_symm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg_involutive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
     }
-  ]
+  ],
+  "residuals": []
 }
 ```

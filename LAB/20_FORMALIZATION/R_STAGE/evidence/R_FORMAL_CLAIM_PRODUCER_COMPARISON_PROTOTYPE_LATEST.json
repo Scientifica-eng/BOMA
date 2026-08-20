@@ -1,0 +1,7673 @@
+{
+  "status": "CLAIM_PRODUCER_PASS",
+  "policy_schema": "BOMA-R-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "stage": "R",
+  "target": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+  "closure_status": "PROTOTYPE_PASS",
+  "boundary_classification_status": "CLASSIFICATION_PASS",
+  "registry_claims": [
+    "R-CL-CARRIER-001",
+    "R-CL-QEMBED-001",
+    "R-CL-ORDER-001",
+    "R-CL-NONTRIV-001",
+    "R-CL-ADD-001",
+    "R-CL-MUL-001",
+    "R-CL-INV-001",
+    "R-CL-FIELD-001",
+    "R-CL-COMP-001",
+    "R-CL-DENSITY-001",
+    "R-CL-ARCH-001",
+    "R-CL-INTEGRATION-001"
+  ],
+  "policy_claims": [
+    "R-CL-CARRIER-001",
+    "R-CL-QEMBED-001",
+    "R-CL-ORDER-001",
+    "R-CL-NONTRIV-001",
+    "R-CL-ADD-001",
+    "R-CL-MUL-001",
+    "R-CL-INV-001",
+    "R-CL-FIELD-001",
+    "R-CL-COMP-001",
+    "R-CL-DENSITY-001",
+    "R-CL-ARCH-001",
+    "R-CL-INTEGRATION-001"
+  ],
+  "counts": {
+    "registry_claims": 12,
+    "policy_claims": 12,
+    "declared_producers": 29,
+    "internal_declarations": 606,
+    "owned_internal_declarations": 606,
+    "unowned_internal_declarations": 0,
+    "target_direct_internal_dependencies": 27,
+    "undeclared_target_direct_internal_dependencies": 0,
+    "multi_claim_owned_internal_declarations": 575,
+    "residual_groups": 0
+  },
+  "internal_by_source_stage": {
+    "N-Arithmetic": 59,
+    "N-Core": 19,
+    "Q": 136,
+    "R": 279,
+    "Z": 113
+  },
+  "unowned_by_source_stage": {},
+  "target_direct_internal_dependencies": [
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.rLE_antisymm",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.rLE_refl",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.rLE_trans",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean"
+    },
+    {
+      "name": "BOMA.R.DedekindStrictOrder001.rlt_irrefl",
+      "declared_producer": true,
+      "integration_local": false,
+      "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean"
+    },
+    {
+      "name": "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
+      "declared_producer": false,
+      "integration_local": true,
+      "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean"
+    },
+    {
+      "name": "BOMA.R.StageIntegration002.RStageIntegrationCertificate.mk",
+      "declared_producer": false,
+      "integration_local": true,
+      "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "R-CL-CARRIER-001",
+      "role": "real carrier + formal identity",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindQuotient001.cutSetoid",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+            "BOMA.R.DedekindQuotient001.cutSetoid"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
+          "owned_internal_count": 151
+        },
+        {
+          "name": "BOMA.R.DedekindQuotient001.RBOMA",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+            "BOMA.R.DedekindQuotient001.RBOMA"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
+          "owned_internal_count": 152
+        },
+        {
+          "name": "BOMA.R.DedekindQuotient001.rmk_eq_iff",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
+            "BOMA.R.DedekindQuotient001.rmk_eq_iff"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
+          "owned_internal_count": 155
+        }
+      ],
+      "owned_internal_count": 155
+    },
+    {
+      "claim": "R-CL-QEMBED-001",
+      "role": "faithful/order-exact Q embedding",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindQuotient001.rOfQ_injective"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
+          "owned_internal_count": 355
+        },
+        {
+          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindQuotient001.rOfQ_order"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
+          "owned_internal_count": 362
+        }
+      ],
+      "owned_internal_count": 364
+    },
+    {
+      "claim": "R-CL-ORDER-001",
+      "role": "total-order interface",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindOrderConstructive001.rLE_refl",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderConstructive001.rLE_refl"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
+          "owned_internal_count": 161
+        },
+        {
+          "name": "BOMA.R.DedekindOrderConstructive001.rLE_trans",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderConstructive001.rLE_trans"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
+          "owned_internal_count": 161
+        },
+        {
+          "name": "BOMA.R.DedekindOrderConstructive001.rLE_antisymm",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderConstructive001.rLE_antisymm"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
+          "owned_internal_count": 161
+        },
+        {
+          "name": "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderClassical001.rLE_total_classical"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
+          "owned_internal_count": 238
+        },
+        {
+          "name": "BOMA.R.DedekindStrictOrder001.rlt_irrefl",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindStrictOrder001.rlt_irrefl"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
+          "owned_internal_count": 157
+        }
+      ],
+      "owned_internal_count": 246
+    },
+    {
+      "claim": "R-CL-NONTRIV-001",
+      "role": "rZero != rOne",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 369
+        }
+      ],
+      "owned_internal_count": 369
+    },
+    {
+      "claim": "R-CL-ADD-001",
+      "role": "additive commutative group + order compatibility",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditionLaws001.rAdd_comm"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
+          "owned_internal_count": 360
+        },
+        {
+          "name": "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditionLaws001.rAdd_assoc"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
+          "owned_internal_count": 364
+        },
+        {
+          "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
+          "owned_internal_count": 372
+        },
+        {
+          "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
+          "owned_internal_count": 403
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 426
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 424
+        }
+      ],
+      "owned_internal_count": 427
+    },
+    {
+      "claim": "R-CL-MUL-001",
+      "role": "ordered commutative-ring multiplication",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
+          "owned_internal_count": 397
+        },
+        {
+          "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean",
+          "owned_internal_count": 481
+        },
+        {
+          "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
+          "owned_internal_count": 484
+        },
+        {
+          "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
+          "owned_internal_count": 496
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
+          "owned_internal_count": 510
+        }
+      ],
+      "owned_internal_count": 542
+    },
+    {
+      "claim": "R-CL-INV-001",
+      "role": "unique nonzero inverse witness + positivity",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
+          "owned_internal_count": 536
+        },
+        {
+          "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
+          "owned_internal_count": 505
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 543
+        }
+      ],
+      "owned_internal_count": 573
+    },
+    {
+      "claim": "R-CL-FIELD-001",
+      "role": "acceptance-strength ordered-field closure",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 369
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 426
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 424
+        },
+        {
+          "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
+          "owned_internal_count": 543
+        }
+      ],
+      "owned_internal_count": 551
+    },
+    {
+      "claim": "R-CL-COMP-001",
+      "role": "Dedekind least-upper-bound completeness",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
+          "owned_internal_count": 182
+        }
+      ],
+      "owned_internal_count": 182
+    },
+    {
+      "claim": "R-CL-DENSITY-001",
+      "role": "strict rational-image density",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindRationalDensity001.r_rational_image_dense"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
+          "owned_internal_count": 361
+        }
+      ],
+      "owned_internal_count": 361
+    },
+    {
+      "claim": "R-CL-ARCH-001",
+      "role": "Archimedean strict upper-bound characterization",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+            "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper"
+          ],
+          "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
+          "owned_internal_count": 370
+        }
+      ],
+      "owned_internal_count": 370
+    },
+    {
+      "claim": "R-CL-INTEGRATION-001",
+      "role": "same-carrier acceptance integration",
+      "transitive_ownership": false,
+      "producers": [
+        {
+          "name": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+          "exists_in_internal_closure": true,
+          "reachable_from_target": true,
+          "shortest_target_path": [
+            "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+          ],
+          "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
+          "owned_internal_count": 1
+        }
+      ],
+      "owned_internal_count": 1
+    }
+  ],
+  "multi_claim_owned_internal": [
+    {
+      "name": "BOMA.NArithmetic.Addition001.add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addL",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulL",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.add_mono_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_total",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_antisymm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_s_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_total",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.z_le",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.below",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold._f",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.s_injective",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.s_ne_z",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Embedding001.qOfN",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Embedding001.qOfN_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Embedding001.qOfN_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Embedding001.qOfZ_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.FracEquiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.PosDen",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.PosDen.mk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.PosDen.pred",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac.den",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac.mk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac.num",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.RawFrac.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denMul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denNat",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denNat_mul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denZ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denZ_mul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denZ_ne_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.denZ_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.fracOfZ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.fracOfZ_reflects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.frac_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.frac_symm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.frac_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.oneDen",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_assoc_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_comm_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_neg_equiv_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_term_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_term_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_zero_left_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawAdd_zero_right_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_add_right_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_assoc_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_comm_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_one_left_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_one_right_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_zero_left_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawMul_zero_right_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawNeg_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawOne",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.rawZero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.raw_distrib_den_factor",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.raw_distrib_num_factor",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.zmul4_swap_middle",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Fraction001.zmul_swap_last",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.additive_inverse_unique",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.embedN_ne_zero_of_ne",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.n_add_eq_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.n_mul_eq_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.n_mul_succ_succ_ne_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.neg_embedN_ne_zero_of_ne",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zadd_left_cancel",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zadd_right_cancel",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zmul_eq_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zmul_neg_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zmul_neg_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Gateway001.zmul_right_cancel_nonzero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.QInvRel",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.q_inverse_exists",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.rawMul_recip_neg_equiv_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.rawMul_recip_pos_equiv_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.rawRecipNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.rawRecipPos",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Inverse001.raw_equiv_zero_iff_num_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.RawLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.denZ_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qLE_mk_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qOfZ_order",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qle_antisymm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qle_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qle_total",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.qle_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_antisymm_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_respects_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_respects_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_total",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.rawLE_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Order001.zmul_order_reflect_right_nonneg_nonzero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.QPositive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.inverse_of_positive_is_positive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qAdd_exchange",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qAdd_inverse_unique",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qAdd_left_cancel",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qMul_neg_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qNeg_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.q_difference_translate",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qadd_mono_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qmul_mono_left_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qmul_mono_right_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qmul_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qneg_reverses",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qone_ne_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qzero_le_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.zle_iff_zero_le_difference",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.QBOMA",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.fracSetoid",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_neg_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_neg_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_zero_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qAdd_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_add_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_one_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_one_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_zero_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qMul_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qNeg._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qOfZ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qOfZ_injective",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qOne",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qZero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qmk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qmk_eq_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Q.Quotient001.qmk_sound",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd._proof_2",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd._proof_3",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd._proof_4",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.cutAdd_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.qadd_mono",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.qle_lt_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.qlt_le_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.rAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.rAdd._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.rOne",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAddition001.rZero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_add_back_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_add_back_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_sub_left_of_lt_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_sub_right_of_lt_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_assoc_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_comm_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_zero_left_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_exchange",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_neg_sum_cancel_left",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_sub_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveDerived001.rNeg_add",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.cutAdd_neg_equiv_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.cutAdd_neg_to_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.qNeg_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_inverse_unique",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_left_cancel",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rNeg_involutive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.zero_to_cutAdd_neg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindAnchoredBracket001.cut_bracket_approx_anchored",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindCutBracket001.cut_bracket_approx",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindFiniteExit001.qGrid_first_exit",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg._proof_2",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg._proof_3",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg._proof_4",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.qNeg_injective",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.qNeg_involutive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.qneg_strict_reverses",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.rNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.rNeg._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNegationCandidate001.rOfQ_neg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope._proof_1",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope._proof_2",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope._proof_3",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope._proof_4",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope_comm",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope_respects",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.member_le_outside",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.outside_posPart_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.rMulNonnegEnvelope",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.rMulNonnegEnvelope._proof_1",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMul001.rMulNonnegEnvelope_comm",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.below_product_mem_kernel",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cutAdd_nonneg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cutMulNonnegEnvelope_add_right_of_nonneg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cut_le_add_of_zero_le_left",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cut_le_add_of_zero_le_right",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.q_sum_inner_approx",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qadd_lt_mono",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qadd_lt_zero_of_neg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qzero_lt_add_of_pos",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.rMulNonnegEnvelope_add_right_of_nonneg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.sum_member_cutAdd",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_assoc",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_one_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_zero_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutPosPart_mulNonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutZero_le_mulNonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.qlt_zero_or_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_assoc",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_one_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_zero_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderAdditive001.cutAdd_mono",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderAdditive001.rAdd_mono",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderAdditive001.rAdd_mono_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderAdditive001.rAdd_nonneg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderAdditive001.rAdd_nonpos",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderClassical001.cutComparability_classical",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.CutComparability",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.rLE_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderConstructive001.rLE_total_of_cutComparability",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rPositiveInvRel_strict_positive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_neg_right",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.cutNeg_le_zero_of_zero_le",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.cutPosPart_of_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.cutZero_le_neg_of_le_zero",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.outside_of_nonnegative_cut_is_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rNegPart_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rNegPart_of_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_nonneg_of_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_nonpos_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_zero",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rPosNeg_decomposition",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rPosPart_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveDecomposition001.rPosPart_of_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseProduct004.cutMul_recipPos_equiv_one",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseProduct004.principal_one_mem_mul_recip_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseRelation003.RPositiveInvRel",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseRelation003.cut_zero_le_recipPos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseRelation003.rPositiveInvRel_exists",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveInverseRelation003.rPositiveInvRel_product_one",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart._proof_1",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart._proof_2",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart._proof_3",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart._proof_4",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.cutPosPart_respects",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.rNegPart",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.rPosPart",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositivePart001.rPosPart._proof_1",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.CutHasPositive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos._proof_1",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos._proof_2",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos._proof_3",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos._proof_4",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos_proof_independent",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.cut_inside_lt_outside",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveReciprocal001.qle_lt_trans_recip",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveRepresentative002.cut_has_positive_of_nonneg_ne_zero",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveRepresentative002.cut_zero_le_of_has_positive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindPositiveRepresentative002.r_nonneg_nonzero_positive_rep",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.CutEquiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.CutLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.downward",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.lower",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.mk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.nonempty",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-COMP-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.proper",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.LowerCut.rounded",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.PrincipalLE",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.cutEquiv_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.cutEquiv_symm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.cutEquiv_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.cutLE_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.cutLE_trans",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut._proof_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut._proof_2",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut._proof_3",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut._proof_4",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalCut_reflects",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindProbe001.q_minus_one_lt",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.RBOMA",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.cutLE_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.cutSetoid",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rLE_mk_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rOfQ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rmk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rmk_eq_iff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindQuotient001.rmk_sound",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulNonnegEnvelope_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.cutMulNonnegEnvelope_principal_nonpos_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_right",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_zero_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_zero_right",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulNonnegEnvelope_negOne_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulNonnegEnvelope_rOfQ_nonpos_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulCandidate001.cutPosPart_principal_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulCandidate001.qneg_nonpos_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulCandidate001.rMulCandidate",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulCandidate001.rNeg_zero",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonneg_nonneg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonneg_nonpos",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonpos_nonpos",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_of_nonneg_left",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_nonpos_left_as_neg",
+      "claims": [
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.cutMulNonnegEnvelope_left_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonpos_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonpos_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_left_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_neg_left_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_neg_right_of_nonneg",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_right_nonpos",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindStrictOrder001.rLT",
+      "claims": [
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.DedekindStrictOrder001.rOfQ_strict_order",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-NONTRIV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.positive_difference_of_lt",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qLT",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qMul_left_cancel_nonzero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qMul_ne_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qTwo",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_asymm",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_irrefl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_mul_left_positive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qlt_trichotomy",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qone_lt_two",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qtwo_positive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.qzero_lt_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.rational_half_exists",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.Gateway001.rational_order_dense",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qGrid",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qGrid_eventually_outside",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qGrid_succ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qGrid_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qOfN_succ",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanGrid001.qle_grid_of_gap_bound",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanScaling001.q_archimedean_scale",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanUpperBound001.denZ_ge_one",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanUpperBound001.q_le_natural_upper",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QArchimedeanUpperBound001.rawFrac_le_natural",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QInverseOrder001.q_inverse_strict_antitone",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.q_positive_product_inner_approx",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_div_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_div_right",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_recompose_left",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_recompose_right",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_zero_inverse",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_zero_of_nonneg_lt",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_lt_left_positive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_lt_right_positive",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_right_cancel_nonzero",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QReciprocalGap004.q_add_gap",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QReciprocalGap004.q_add_one_minus",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QReciprocalGap004.q_lt_mul_inverse_of_small_gap",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.R.QReciprocalGap004.qlt_le_trans_gap",
+      "claims": [
+        "R-CL-FIELD-001",
+        "R-CL-INV-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.diff_nat_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.diff_self",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.diff_zero_nat",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.embedN_add",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.embedN_mul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.embedN_zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.signed_eq_of_pair_equiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zaddD",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zaddD.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zaddD_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zaddP",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_neg_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_neg_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_pair_semantics",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_routes_converge",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_zero_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zadd_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmulD",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmulD.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmulD_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmulP",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_add_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_one_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_one_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_pair_semantics",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_routes_converge",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_zero_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zmul_zero_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zone",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.zzero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.NonNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.embedN_order",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.n_le_cancel_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.nonneg_is_embedded",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE_add_embedded",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE_neg_flip",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE_respects_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE_respects_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairLE_to_gap",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.pairOfSigned_embedN",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zLE",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zLEd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zLEd.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zLEp",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zadd_mono_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zadd_mono_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_antisymm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_iff_natural_gap",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_iff_pair",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_total",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zle_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zmul_mono_left_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zmul_mono_right_nonneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Order001.zorder_routes_converge",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZEquiv",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair.mk",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair.n",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair.p",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZPair.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.casesOn",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.ctorIdx",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.neg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.pos",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.rec",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.ZSigned.zero",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.canonical_pair_separates",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff._f",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff.eq_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff.eq_2",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff.eq_3",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff.eq_4",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.diff.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.embedN",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.normalizePair",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairAdd",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairAdd_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairAdd_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairAdd_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_add_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_assoc",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_respects_left",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairMul_respects_right",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairNeg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairNeg_respects",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pairOfSigned",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.pair_roundtrip",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.z_add4_swap_last",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.z_add4_swap_middle",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.z_add_left_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.z_mul_left_comm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_common_s",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_refl",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_symm",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zeq_trans",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg.match_1",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-CARRIER-001",
+        "R-CL-COMP-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-ORDER-001",
+        "R-CL-QEMBED-001"
+      ]
+    },
+    {
+      "name": "BOMA.Z.Rep001.zneg_involutive",
+      "claims": [
+        "R-CL-ADD-001",
+        "R-CL-ARCH-001",
+        "R-CL-DENSITY-001",
+        "R-CL-FIELD-001",
+        "R-CL-INV-001",
+        "R-CL-MUL-001",
+        "R-CL-NONTRIV-001",
+        "R-CL-QEMBED-001"
+      ]
+    }
+  ],
+  "residuals": []
+}
