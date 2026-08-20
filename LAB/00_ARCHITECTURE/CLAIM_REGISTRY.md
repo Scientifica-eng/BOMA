@@ -1,7 +1,7 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED FOR ALL ACCEPTED NUMBER STAGES  
+**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED; R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
 **Date:** 2026-08-20  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
 **Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
@@ -21,15 +21,15 @@ The registry links these layers without collapsing them.
 
 ## 2. Accepted export inventory
 
-| Export | Mathematical status | Declared claim-closure status | Audit record |
-|---|---|---|---|
-| `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md` |
-| `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md` |
-| `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md` |
-| `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | `LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md` |
-| `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | `LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md` |
+| Export | Mathematical status | Declared claim closure | Machine transparency | Audit record |
+|---|---|---|---|---|
+| `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md` |
+| `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md` |
+| `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md` |
+| `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md` |
+| `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md` |
 
-`COMPLETE` here means **declared human-readable claim closure at the current audit granularity**. It does not yet mean theorem-level machine-derived transparency certification.
+`COMPLETE` in the declared-closure column means human-readable Claim closure at the current audit granularity. `PASS — BRANCH-LOCAL` is stronger: it is backed by theorem-level dependency extraction, boundary classification, and Claim/producer comparison on `architecture/claim-transparency-001`. It does not retroactively relabel historical commits or merge the branch into `main`.
 
 ## 3. N-Core Claim IDs
 
@@ -117,7 +117,10 @@ Detailed mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.
 
 ## 7. R Claim IDs
 
-Detailed mapping: `R_CLAIM_CLOSURE_AUDIT_003.md` plus `RE-R-001`.
+Declared-closure calibration: `R_CLAIM_CLOSURE_AUDIT_003.md`.  
+Machine transparency certification: `R_TRANSPARENCY_CERTIFICATION_001.md`.  
+Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-STUDY-001.md`.  
+Reverse classification: `RE-R-001`.
 
 | Claim ID | Role | Primary producer |
 |---|---|---|
@@ -134,7 +137,7 @@ Detailed mapping: `R_CLAIM_CLOSURE_AUDIT_003.md` plus `RE-R-001`.
 | `R-CL-ARCH-001` | Archimedean upper-bound characterization | `R-ARCH-BLOCK-001` |
 | `R-CL-INTEGRATION-001` | same-carrier acceptance integration | `R-J-002` / `RStageIntegration002.lean` |
 
-Current latest R integration evidence on the program baseline:
+Historical canonical R integration evidence on the program baseline remains:
 
 ```text
 run             32385379288
@@ -142,6 +145,19 @@ verified source af0a03d83245b1e15e9903df00db89edf3317042
 Lean            4.32.1
 result          PASS
 ```
+
+Current branch-local transparency evidence:
+
+```text
+run                  32415451960
+audited source       6044629aba7b827070c334e274ef14ec4a95e009
+formal extraction    PROTOTYPE_PASS
+boundary             CLASSIFICATION_PASS
+claim/producer       CLAIM_PRODUCER_PASS
+residuals            0
+```
+
+The two evidence lines answer different questions and must not be conflated: the canonical integration run is historical mathematical V5 evidence; the later architecture run is theorem-level dependency/Claim transparency evidence for the feature branch.
 
 ## 8. Cross-stage dependency spine
 
@@ -164,25 +180,35 @@ This spine is only a high-level view. Internal branch/Junction dependencies rema
 ## 9. Current transparency status
 
 ```text
-N-Core        DECLARED CLAIM CLOSURE COMPLETE
-N-Arithmetic  DECLARED CLAIM CLOSURE COMPLETE
-Z             DECLARED CLAIM CLOSURE COMPLETE
-Q             DECLARED CLAIM CLOSURE COMPLETE
-R             DECLARED CLAIM CLOSURE COMPLETE
+N-Core        DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+N-Arithmetic  DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+Z             DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+Q             DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+R             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 ```
 
-No stage is yet labeled machine-checked `TRANSPARENCY PASS` under `PDSA-ARCH-002` because the transitive theorem-level `ActualFormalClosure` comparison is not yet complete.
+R's result is calibrated against the accepted final integration certificate and has zero unclassified formal residuals plus zero unowned internal declarations. It does not automatically promote upstream stages because they require their own accepted root targets and stage-specific producer policies.
 
 ## 10. Next program step
 
-Phase C now becomes active:
+Reuse the calibrated R machinery in reverse dependency order:
 
 ```text
-DeclaredClosure(E)
-  versus
-ActualFormalClosure(E)
+Q
+Z
+N-Arithmetic
+N-Core
 ```
 
-for every accepted export `E`, beginning with the assembly/file-level closures already available in R and the theorem-ownership mapping already available in N-Core.
+For each stage:
+
+```text
+select the accepted stage-root theorem/certificate;
+define a machine-readable Claim producer policy;
+extract ActualFormalClosure;
+classify the formal boundary;
+compare Claim Registry ↔ producers ↔ internal ancestry;
+require zero residuals before stage-level transparency promotion.
+```
 
 No record in this registry authorizes C. `C NOT STARTED — USER HOLD` remains unchanged.
