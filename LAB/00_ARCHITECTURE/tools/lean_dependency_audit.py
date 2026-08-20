@@ -200,7 +200,12 @@ def main() -> int:
         entries = load_manifest(root, args.manifest)
         module = legal_module_name(args.stage)
 
-        with tempfile.TemporaryDirectory(prefix="boma-lean-deps-") as td_raw:
+        # Lake/Lean requires project inputs to remain inside the package root.
+        # Keep the audit workspace transient and untracked, but create it under
+        # the repository root rather than the operating-system /tmp directory.
+        # This fixes PDSA-ARCH-002-R-FORMAL-CLOSURE-PROTOTYPE-FAILURE-001
+        # without changing the accepted-source elaboration environment.
+        with tempfile.TemporaryDirectory(prefix=".boma-lean-deps-", dir=root) as td_raw:
             td = Path(td_raw)
             assembly = td / f"{module}.lean"
             olean = td / f"{module}.olean"
