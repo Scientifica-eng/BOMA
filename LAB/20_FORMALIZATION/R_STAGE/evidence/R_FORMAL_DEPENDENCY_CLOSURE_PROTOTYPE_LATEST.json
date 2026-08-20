@@ -1,6 +1,6 @@
 {
   "status": "PROTOTYPE_PASS",
-  "scope": "transitive declaration closure inside the compiled accepted assembly module; direct consumer→dependency edges retained; external module leaves are boundary candidates for Trusted Base classification; Claim-Registry semantic comparison remains separate",
+  "scope": "union of transitive declaration closures inside the compiled accepted assembly module; direct consumer→dependency edges retained; external module leaves are boundary candidates for Trusted Base classification; Claim-Registry semantic comparison remains separate",
   "stage": "R",
   "manifest": "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt",
   "targets": [
@@ -457,7 +457,8 @@
     "raw_unmapped_internal_ranges": 62,
     "generated_source_inferences": 62,
     "unmapped_internal_ranges": 0,
-    "internal_axioms": 0
+    "internal_axioms": 0,
+    "targets": 1
   },
   "internal_axioms": [],
   "unresolved": [],
