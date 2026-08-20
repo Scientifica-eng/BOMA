@@ -5,7 +5,7 @@
 - **Stage:** `R_STAGE`
 - **Inputs:** `R-ADD-GROUP-BLOCK-001`, `R-DP-005`, Q multiplicative-approximation contribution, selected Dedekind order
 - **Acceptance obligations:** `RA-04` multiplicative one, `RA-07`, ring/order portion of `RA-09`, multiplication part of `RA-10`
-- **Does not discharge:** `RA-08` nonzero multiplicative inverse
+- **Scope boundary:** this Block itself is the ordered-ring contribution; nonzero inversion is supplied separately by `R-FIELD-BLOCK-001`
 
 ## Selected operation
 
@@ -170,24 +170,29 @@ V5 `32192653931` — PASS.
 
 ## Acceptance effect
 
-This block certifies the selected multiplication as an **ordered commutative-ring multiplication** over `RBOMA`.
+This Block certifies the selected multiplication as an **ordered commutative-ring multiplication** over `RBOMA`.
 
-Current effects:
+Its own effects are:
 
 ```text
 RA-04 zero/one                         PASS at ring level
 RA-07 multiplication                   PASS at ordered-ring level
-RA-09 ordered-field laws               PARTIAL — ordered-ring part PASS; field inverse pending
+RA-09 ordered-field laws               ordered-ring portion PASS
 RA-10 Q structure preservation         multiplication PASS
 ```
 
-It does **not** justify calling the Stage-One real carrier a field yet. `RA-08` remains a separate required gate:
+### Later inverse closure
+
+The historical scope boundary of this Block is preserved: it did not itself construct inverses. That formerly open gate has since been discharged independently:
 
 ```text
-x ≠ 0  →  ∃ y, x*y = 1
+R-DP-006                  RESOLVED — direct Dedekind reciprocal selected
+R-FIELD-BLOCK-001         PASS / ACTIVE
+RA-08                      PASS
+nonzero inverse V5         32356513408 PASS
 ```
 
-with representative invariance and compatibility with the selected ordered-ring structure.
+Accordingly, “inverse pending” is no longer the project frontier, but it remains outside this Block's construction responsibility.
 
 ## Logical provenance
 
@@ -212,7 +217,8 @@ signed decomposition;
 proof-only classical sign classification;
 additive order compatibility;
 ordered-ring monotonicity derived from S5 rather than direct cut witness reconstruction;
-proof-engineering failures versus mathematical dependencies.
+proof-engineering failures versus mathematical dependencies;
+separation of ordered-ring construction from later field-inverse closure.
 ```
 
-This block is therefore an especially important reverse-engineering junction before the field-inverse construction is analyzed.
+This Block remains an especially important reverse-engineering junction.
