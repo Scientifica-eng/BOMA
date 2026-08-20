@@ -9,6 +9,8 @@ on:
       - 'LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean'
       - 'LAB/payloads/lean/RStage/RDedekindPositiveInverseProduct004.lean'
       - 'LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean'
+      - 'LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean'
+      - 'LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean'
       - '.github/workflows/boma-r-dedekind-positive-inverse-relation-003.yml'
       - 'lean-toolchain'
 jobs:
@@ -86,6 +88,7 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindAddition.lean \
             LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean \
             LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean \
+            LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean \
             LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean \
             LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean \
             LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean \
@@ -93,9 +96,12 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean \
             LAB/payloads/lean/RStage/RDedekindCutBracketApprox.lean \
             LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean \
+            LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean \
             LAB/payloads/lean/RStage/RDedekindPositivePart.lean \
+            LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean \
             LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean \
             LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean \
+            LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean \
             LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean \
             LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean \
             LAB/payloads/lean/RStage/RDedekindPositiveReciprocalEmbedding.lean \
@@ -105,6 +111,7 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean \
             LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean \
             LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean \
+            LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean \
             LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean \
             LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean \
             LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean \
