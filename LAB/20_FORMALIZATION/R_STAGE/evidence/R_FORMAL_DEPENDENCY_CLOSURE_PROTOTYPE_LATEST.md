@@ -2,8 +2,8 @@
 
 **Status:** PROTOTYPE_PASS  
 **Semantic classification:** CLASSIFICATION_REVIEW_REQUIRED  
-**Audited source commit:** `3a4c65da33dc7174016c922e646b30362c56cbaa`  
-**Workflow run ID:** `32404915213`  
+**Audited source commit:** `84ee0505136b6be829fc6a29b518fb68d6a828ef`  
+**Workflow run ID:** `32405021915`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
@@ -23,6 +23,11 @@ The semantic classifier separately compares external leaves and source-attribute
 ## Classifier log tail
 
 ```text
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.embedN_mul",
           "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
           "source_resolution": "direct-range"
         },
@@ -54,11 +59,6 @@ The semantic classifier separately compares external leaves and source-attribute
         {
           "name": "BOMA.Z.Order001.zle_refl",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {

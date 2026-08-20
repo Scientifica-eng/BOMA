@@ -34,11 +34,6 @@
           "name": "BOMA.Z.Order001.embedN_order._simp_1_15",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_17",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "generated-prefix"
         }
       ],
       "out_of_scope_consumers": [],
@@ -486,6 +481,11 @@
         {
           "name": "BOMA.Z.Order001.zle_iff_natural_gap",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -1173,6 +1173,11 @@
         {
           "name": "BOMA.Z.Order001.zmul_mono_left_nonneg",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -2259,6 +2264,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.NArithmetic.Order001.leAdd_refl",
+          "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.NArithmetic.Order001.leAdd_s",
           "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
           "source_resolution": "direct-range"
@@ -3080,6 +3090,11 @@
           "name": "BOMA.Z.Order001.zle_iff_natural_gap",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
+          "source_resolution": "direct-range"
         }
       ],
       "out_of_scope_consumers": [],
@@ -3306,6 +3321,11 @@
         {
           "name": "BOMA.Z.Order001.zmul_mono_right_nonneg",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         }
       ],
@@ -3534,6 +3554,11 @@
           "name": "BOMA.Z.Order001.zmul_mono_right_nonneg",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
+          "source_resolution": "direct-range"
         }
       ],
       "out_of_scope_consumers": [],
@@ -3599,6 +3624,11 @@
         {
           "name": "BOMA.R.DedekindProbe001.cutEquiv_symm",
           "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         }
       ],
@@ -4936,11 +4966,6 @@
         {
           "name": "BOMA.Z.Order001.embedN_order._simp_1_15",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_17",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "generated-prefix"
         }
       ],
@@ -6785,6 +6810,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.NArithmetic.Order001.leAdd_refl",
+          "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.NArithmetic.Order001.leAdd_s",
           "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
           "source_resolution": "direct-range"
@@ -8378,16 +8408,6 @@
           "name": "BOMA.Z.Order001.zorder_routes_converge",
           "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_17",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_18",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "generated-prefix"
         },
         {
           "name": "BOMA.Z.Rep001.ZEquiv",
@@ -10310,11 +10330,6 @@
           "source_resolution": "direct-range"
         },
         {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.Z.Rep001.canonical_pair_separates",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
@@ -10457,11 +10472,6 @@
           "name": "BOMA.Z.Order001.zorder_routes_converge",
           "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_18",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "generated-prefix"
         },
         {
           "name": "BOMA.Z.Rep001.canonical_pair_separates",
@@ -10656,6 +10666,11 @@
         {
           "name": "BOMA.R.DedekindSignedMulSignLaws001.cutMulNonnegEnvelope_left_nonpos",
           "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -12948,6 +12963,11 @@
           "name": "BOMA.Z.Order001.zle_total",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
+          "source_resolution": "direct-range"
         }
       ],
       "out_of_scope_consumers": [],
@@ -13201,11 +13221,6 @@
         {
           "name": "BOMA.Z.Order001.zmul_mono_left_nonneg",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -14461,11 +14476,6 @@
           "source_resolution": "direct-range"
         },
         {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.Z.Rep001.canonical_pair_separates",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
@@ -15552,6 +15562,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Z.Rep001.canonical_pair_separates",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
@@ -16263,6 +16278,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.NArithmetic.Order001.leAdd_refl",
+          "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Q.Embedding001.qOfN_zero",
           "source": "LAB/payloads/lean/QStage/QEmbeddingLaws.lean",
           "source_resolution": "direct-range"
@@ -16397,11 +16417,6 @@
         {
           "name": "BOMA.Z.Order001.embedN_order._simp_1_16",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge._simp_1_18",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "generated-prefix"
         }
       ],
@@ -16596,11 +16611,6 @@
           "name": "BOMA.Z.Order001.pairLE_neg_flip",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
-          "source_resolution": "direct-range"
         }
       ],
       "out_of_scope_consumers": [],
@@ -16675,11 +16685,6 @@
         {
           "name": "BOMA.Z.Order001.zle_refl",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.zorder_routes_converge",
-          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
           "source_resolution": "direct-range"
         },
         {
