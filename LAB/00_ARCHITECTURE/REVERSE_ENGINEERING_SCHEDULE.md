@@ -27,12 +27,14 @@ Learning Graph effects
 
 ## Gate RE-R-001 — local reverse engineering of the real-number stage
 
-**Trigger:** immediately after `RA-22 ACCEPT` for the Stage-One real interface and **before construction of the canonical complex-number stage begins**.
+**Trigger:** immediately after `RA-22 ACCEPT` for the Stage-One real interface and before canonical complex-number construction.
 
-Backward traversal:
+**Current status:** **CLOSED / COMPLETE** through `PDSA-R-015` on 2026-08-20.
+
+Backward traversal completed:
 
 ```text
-accepted R export
+R-BLOCK-001 accepted R export
     ↓
 ordered-field interface
     ↓
@@ -42,12 +44,20 @@ Dedekind quotient identity
     ↓
 completion theorem / order interface
     ↓
-Q embedding and Q-density gateway
+Q embedding and Q-level gateways
     ↓
 accepted Q export
 ```
 
-Required classifications for each dependency:
+Canonical Study matrix:
+
+`LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md`
+
+Cycle record:
+
+`LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md`
+
+Required classifications were applied separately:
 
 ```text
 STRUCTURALLY NECESSARY
@@ -58,22 +68,48 @@ REUSABLE CERTIFIED CONTRIBUTION
 ALTERNATIVE / BRANCH CANDIDATE
 ```
 
-Mandatory Study questions:
+### RE-R-001 final findings
 
-1. Which accepted R claims remain if `R-LOGIC-BR-001` is removed and totality is weakened?
-2. Which claims depend specifically on Dedekind representation rather than on a completion interface?
-3. Which verified contributions could be consumed unchanged by the retained Cauchy branch?
-4. Is quotient identity necessary for the exported interface, or merely the selected Stage-One realization?
-5. Can any R-stage unit be weakened or eliminated without changing `RA-22`?
-6. Which Decision Points should become explicit Stage-Two branch experiments?
+The accepted real interface factors into:
 
-`RE-R-001` must not silently revise accepted R. Any discovered alternative or weakening becomes a new Brick/Block/Decision Point/PDSA cycle with provenance preserved.
+```text
+acceptance-required properties
++
+selected Dedekind construction route
++
+selected quotient identity realization
++
+localized logical commitments
++
+reusable carrier-independent Q contributions
++
+verification infrastructure
++
+retained alternative branches
+```
+
+Key reverse classifications:
+
+```text
+R-DP-001 Dedekind route              ROUTE-SPECIFIC / branch candidate
+R-DP-002 quotient identity           FORMALIZATION CHOICE / branch candidate
+R-DP-003 classical comparability     LOGICAL COMMITMENT / branch candidate
+R-DP-004 Q arithmetic subinterfaces  REUSABLE; cut search/bracketing Dedekind-specific
+R-DP-005 multiplication architecture SELECTED ARCHITECTURE / branch candidate
+R-DP-006 direct reciprocal           DEDEKIND-SPECIFIC route / branch candidate
+Dedekind LUB property                acceptance-required
+LUB-by-union proof                    Dedekind-specific
+RA-12 density property               acceptance-required
+RA-13 Archimedean property           acceptance-required
+```
+
+No accepted R theorem was revised by the reverse audit.
 
 ## Gate RE-STAGE1-001 — global reverse engineering of the completed number-system chain
 
-**Trigger:** immediately after the Stage-One complex-number interface is accepted and **before broad Stage-Two branching experiments begin**.
+**Trigger:** immediately after the Stage-One complex-number interface is accepted and before broad Stage-Two branching experiments begin.
 
-Backward traversal:
+Backward traversal will be:
 
 ```text
 accepted C
@@ -108,7 +144,7 @@ The global audit must produce at least:
 
 ## Stage-Two handoff criterion
 
-Stage Two must not be treated as unconstrained experimentation. Its initial branch set should be selected from the reverse-engineering evidence.
+Stage Two must not be treated as unconstrained experimentation. Its initial branch set should be selected from reverse-engineering evidence.
 
 A branch experiment should name:
 
@@ -123,19 +159,44 @@ Convergence criterion, if any
 Verification plan
 ```
 
+`RE-R-001` has already registered candidate branches around:
+
+```text
+completion route
+logical order regime
+formal identity
+inverse architecture
+multiplication sign architecture
+approximation route
+strict-order witness architecture
+```
+
+These are candidates only; none is started by this schedule update.
+
 ## Timing rule
 
-Do **not** execute `RE-R-001` before `RA-22 ACCEPT`: an unstable forward construction does not yet provide a reliable reverse target.
+`RE-R-001` was correctly executed after `RA-22 ACCEPT` and before any canonical C construction.
 
-Do **not** postpone `RE-R-001` until after canonical C is deeply developed: that would reduce its ability to expose R-stage assumptions before they propagate downstream.
+`RE-STAGE1-001` must not be executed before C acceptance: its purpose is to reverse-engineer the complete Stage-One number-system architecture as a finished chain.
 
-Do **not** execute `RE-STAGE1-001` before C acceptance: its purpose is to reverse-engineer the complete Stage-One number-system architecture as a finished chain.
+## Explicit user hold on C
+
+Although completion of `RE-R-001` satisfies the governance prerequisite that would normally make the canonical C stage eligible, the user has explicitly instructed:
+
+```text
+DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
+```
+
+Therefore eligibility is not authorization.
+
+No C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle may be opened until that explicit order is received.
 
 ## Current status
 
 ```text
-RE-R-001        SCHEDULED — waiting for RA-22 ACCEPT
-RE-STAGE1-001   SCHEDULED — waiting for Stage-One C acceptance
+RE-R-001        CLOSED / COMPLETE — PDSA-R-015
+C stage         NOT STARTED — USER HOLD
+RE-STAGE1-001   SCHEDULED — cannot trigger before accepted C
 ```
 
-This schedule is part of the canonical architecture and is intended to prevent reverse engineering from being forgotten or applied at a scientifically unhelpful time.
+This schedule remains canonical architecture.
