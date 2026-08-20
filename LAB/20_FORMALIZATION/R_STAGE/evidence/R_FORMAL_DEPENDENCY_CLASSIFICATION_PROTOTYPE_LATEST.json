@@ -8,16 +8,16 @@
   ],
   "counts": {
     "external_boundary": 81,
-    "classified_external": 77,
-    "external_residuals": 4,
+    "classified_external": 79,
+    "external_residuals": 2,
     "internal_residuals": 0,
-    "total_residuals": 4
+    "total_residuals": 2
   },
   "classification_counts": {
     "DECLARED_LOGICAL_COMMITMENT": 2,
-    "REVIEW_REQUIRED": 4,
+    "REVIEW_REQUIRED": 2,
     "TRUSTED_FORMALIZATION_INFRASTRUCTURE": 9,
-    "TRUSTED_METATHEORY": 66
+    "TRUSTED_METATHEORY": 68
   },
   "residuals": [
     {
@@ -28,7 +28,7 @@
       "policy_source": "declaration_override",
       "trusted_base_refs": [],
       "refs": [],
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance must identify the exact BOMA consumer(s) before this is accepted as part of a declared localized classical commitment.",
+      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set.",
       "direct_consumers": [
         {
           "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -63,7 +63,7 @@
       "policy_source": "declaration_override",
       "trusted_base_refs": [],
       "refs": [],
-      "reason": "External Lean axiom discovered by theorem-level closure. Source-level audits did not expose it; direct consumer/path attribution is required before any Trusted Base or formalization classification.",
+      "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification.",
       "direct_consumers": [
         {
           "name": "BOMA.Q.Order001.qOfZ_order",
@@ -101,99 +101,6 @@
         "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
         "BOMA.R.DedekindQuotient001.rOfQ_order",
         "propext"
-      ],
-      "residual": true
-    },
-    {
-      "name": "Nat",
-      "kind": "inductive",
-      "module": "Init.Prelude",
-      "classification": "REVIEW_REQUIRED",
-      "policy_source": "declaration_override",
-      "trusted_base_refs": [],
-      "refs": [],
-      "reason": "BOMA's object-level N is not Lean built-in Nat. The external Nat dependency may be host/generated infrastructure, but its direct consumer path must be demonstrated before classification.",
-      "direct_consumers": [
-        {
-          "name": "BOMA.NCore.RB001.BOMANat.ctorIdx",
-          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
-          "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.Z.Rep001.ZSigned.ctorIdx",
-          "source": "LAB/payloads/lean/ZStage/ZSigned.lean",
-          "source_resolution": "generated-prefix"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
-        "BOMA.R.Gateway001.qzero_lt_one",
-        "BOMA.Q.OrderedField001.qone_ne_zero",
-        "BOMA.Z.Rep001.ZSigned.ctorIdx",
-        "Nat"
-      ],
-      "residual": true
-    },
-    {
-      "name": "noConfusion_of_Nat",
-      "kind": "theorem",
-      "module": "Init.Prelude",
-      "classification": "REVIEW_REQUIRED",
-      "policy_source": "declaration_override",
-      "trusted_base_refs": [],
-      "refs": [],
-      "reason": "Potential host-level constructor-index/no-confusion support associated with generated inductive infrastructure; require a path through generated declarations rather than silently treating it as BOMA mathematics.",
-      "direct_consumers": [
-        {
-          "name": "BOMA.NArithmetic.Order001.leInd_antisymm",
-          "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.NArithmetic.Order001.leInd_s_iff",
-          "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.NArithmetic.Order001.not_s_le_z",
-          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.NCore.RB001.s_ne_z",
-          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.Gateway001.embedN_ne_zero_of_ne",
-          "source": "LAB/payloads/lean/QStage/QGatewayCancellation.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.Gateway001.neg_embedN_ne_zero_of_ne",
-          "source": "LAB/payloads/lean/QStage/QGatewayCancellation.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qone_ne_zero",
-          "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Rep001.canonical_pair_separates",
-          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
-          "source_resolution": "direct-range"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
-        "BOMA.R.Gateway001.qzero_lt_one",
-        "BOMA.Q.OrderedField001.qone_ne_zero",
-        "noConfusion_of_Nat"
       ],
       "residual": true
     }
@@ -282,7 +189,7 @@
       "policy_source": "declaration_override",
       "trusted_base_refs": [],
       "refs": [],
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance must identify the exact BOMA consumer(s) before this is accepted as part of a declared localized classical commitment.",
+      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set.",
       "direct_consumers": [
         {
           "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -5077,7 +4984,7 @@
       "policy_source": "declaration_override",
       "trusted_base_refs": [],
       "refs": [],
-      "reason": "External Lean axiom discovered by theorem-level closure. Source-level audits did not expose it; direct consumer/path attribution is required before any Trusted Base or formalization classification.",
+      "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification.",
       "direct_consumers": [
         {
           "name": "BOMA.Q.Order001.qOfZ_order",
@@ -10984,11 +10891,13 @@
       "name": "Nat",
       "kind": "inductive",
       "module": "Init.Prelude",
-      "classification": "REVIEW_REQUIRED",
+      "classification": "TRUSTED_METATHEORY",
       "policy_source": "declaration_override",
-      "trusted_base_refs": [],
+      "trusted_base_refs": [
+        "TB-META-002"
+      ],
       "refs": [],
-      "reason": "BOMA's object-level N is not Lean built-in Nat. The external Nat dependency may be host/generated infrastructure, but its direct consumer path must be demonstrated before classification.",
+      "reason": "Edge provenance shows built-in Nat only as the return type of Lean-generated constructor-index declarations for BOMA inductive carriers. It is host/compiler indexing infrastructure, not the object-level BOMA natural-number carrier.",
       "direct_consumers": [
         {
           "name": "BOMA.NCore.RB001.BOMANat.ctorIdx",
@@ -11010,7 +10919,7 @@
         "BOMA.Z.Rep001.ZSigned.ctorIdx",
         "Nat"
       ],
-      "residual": true
+      "residual": false
     },
     {
       "name": "Not",
@@ -16351,11 +16260,13 @@
       "name": "noConfusion_of_Nat",
       "kind": "theorem",
       "module": "Init.Prelude",
-      "classification": "REVIEW_REQUIRED",
+      "classification": "TRUSTED_METATHEORY",
       "policy_source": "declaration_override",
-      "trusted_base_refs": [],
+      "trusted_base_refs": [
+        "TB-META-002"
+      ],
       "refs": [],
-      "reason": "Potential host-level constructor-index/no-confusion support associated with generated inductive infrastructure; require a path through generated declarations rather than silently treating it as BOMA mathematics.",
+      "reason": "Lean-generated constructor discrimination/no-confusion infrastructure consumed when BOMA proofs eliminate impossible constructor equalities. This is part of the selected inductive formalization regime, not use of built-in Nat as BOMA's mathematical carrier.",
       "direct_consumers": [
         {
           "name": "BOMA.NArithmetic.Order001.leInd_antisymm",
@@ -16406,7 +16317,7 @@
         "BOMA.Q.OrderedField001.qone_ne_zero",
         "noConfusion_of_Nat"
       ],
-      "residual": true
+      "residual": false
     },
     {
       "name": "of_decide_eq_false",
