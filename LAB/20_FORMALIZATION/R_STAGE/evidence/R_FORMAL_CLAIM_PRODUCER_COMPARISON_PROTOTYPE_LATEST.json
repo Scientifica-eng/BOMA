@@ -2,7 +2,10 @@
   "status": "CLAIM_PRODUCER_PASS",
   "policy_schema": "BOMA-R-FORMAL-CLAIM-PRODUCER-POLICY-001",
   "stage": "R",
-  "target": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+  "root_mode": "single_target",
+  "audit_targets": [
+    "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+  ],
   "closure_status": "PROTOTYPE_PASS",
   "boundary_classification_status": "CLASSIFICATION_PASS",
   "registry_claims": [
@@ -37,6 +40,7 @@
     "registry_claims": 12,
     "policy_claims": 12,
     "declared_producers": 29,
+    "audit_targets": 1,
     "internal_declarations": 606,
     "owned_internal_declarations": 606,
     "unowned_internal_declarations": 0,
@@ -226,36 +230,39 @@
         {
           "name": "BOMA.R.DedekindQuotient001.cutSetoid",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
             "BOMA.R.DedekindQuotient001.cutSetoid"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "owned_internal_count": 151
         },
         {
           "name": "BOMA.R.DedekindQuotient001.RBOMA",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
             "BOMA.R.DedekindQuotient001.RBOMA"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "owned_internal_count": 152
         },
         {
           "name": "BOMA.R.DedekindQuotient001.rmk_eq_iff",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
             "BOMA.R.DedekindQuotient001.rmk_eq_iff"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "owned_internal_count": 155
         }
@@ -270,22 +277,24 @@
         {
           "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindQuotient001.rOfQ_injective"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "owned_internal_count": 355
         },
         {
           "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindQuotient001.rOfQ_order"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "owned_internal_count": 362
         }
@@ -300,55 +309,60 @@
         {
           "name": "BOMA.R.DedekindOrderConstructive001.rLE_refl",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderConstructive001.rLE_refl"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
           "owned_internal_count": 161
         },
         {
           "name": "BOMA.R.DedekindOrderConstructive001.rLE_trans",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderConstructive001.rLE_trans"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
           "owned_internal_count": 161
         },
         {
           "name": "BOMA.R.DedekindOrderConstructive001.rLE_antisymm",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderConstructive001.rLE_antisymm"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
           "owned_internal_count": 161
         },
         {
           "name": "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderClassical001.rLE_total_classical"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
           "owned_internal_count": 238
         },
         {
           "name": "BOMA.R.DedekindStrictOrder001.rlt_irrefl",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindStrictOrder001.rlt_irrefl"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
           "owned_internal_count": 157
         }
@@ -363,11 +377,12 @@
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 369
         }
@@ -382,66 +397,72 @@
         {
           "name": "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditionLaws001.rAdd_comm"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
           "owned_internal_count": 360
         },
         {
           "name": "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditionLaws001.rAdd_assoc"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
           "owned_internal_count": 364
         },
         {
           "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
           "owned_internal_count": 372
         },
         {
           "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
           "owned_internal_count": 403
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 426
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 424
         }
@@ -456,55 +477,60 @@
         {
           "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
           "owned_internal_count": 397
         },
         {
           "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean",
           "owned_internal_count": 481
         },
         {
           "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
           "owned_internal_count": 484
         },
         {
           "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
           "owned_internal_count": 496
         },
         {
           "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
           "owned_internal_count": 510
         }
@@ -519,33 +545,36 @@
         {
           "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
           "owned_internal_count": 536
         },
         {
           "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
           "owned_internal_count": 505
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 543
         }
@@ -560,44 +589,48 @@
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 369
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 426
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 424
         },
         {
           "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
           "owned_internal_count": 543
         }
@@ -612,11 +645,12 @@
         {
           "name": "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
           "owned_internal_count": 182
         }
@@ -631,11 +665,12 @@
         {
           "name": "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindRationalDensity001.r_rational_image_dense"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
           "owned_internal_count": 361
         }
@@ -650,11 +685,12 @@
         {
           "name": "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
             "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper"
           ],
+          "is_audit_target": false,
           "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
           "owned_internal_count": 370
         }
@@ -669,10 +705,11 @@
         {
           "name": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
           "exists_in_internal_closure": true,
-          "reachable_from_target": true,
-          "shortest_target_path": [
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
             "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
           ],
+          "is_audit_target": true,
           "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
           "owned_internal_count": 1
         }
