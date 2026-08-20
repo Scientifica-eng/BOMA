@@ -43,6 +43,7 @@
       "integration_claim": "R-CL-INTEGRATION-001",
       "allow_quotient": true,
       "classical_allowed_files": [
+        "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
         "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
         "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
         "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
