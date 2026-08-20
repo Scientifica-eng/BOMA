@@ -1,0 +1,6 @@
+{
+  "status": "PROTOTYPE_FAIL",
+  "reason": "dependency extractor did not produce JSON output",
+  "verified_commit": "92b8afac54a219473a40174d35556b4ad1e9e0da",
+  "workflow_run": "32399253014"
+}
