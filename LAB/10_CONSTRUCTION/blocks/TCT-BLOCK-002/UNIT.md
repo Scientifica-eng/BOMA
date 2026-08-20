@@ -27,7 +27,20 @@ selected generated normal-form presentations with meta-finite witnesses
 meta-level terminal-step recovery procedure
 ```
 
-## Internal candidate Bricks
+## Declared internal components
+
+```text
+Formation discipline
+Selected normal-form convention
+Terminal visibility on selected syntax
+Meta-level recovery procedure
+```
+
+These are explicit internal construction components of `TCT-BLOCK-002`. They are **not separate canonical Brick units** at the current project granularity.
+
+### Granularity normalization — PDSA-ARCH-002
+
+Earlier revisions provisionally labeled these components:
 
 ```text
 TCT-BR-005  Formation
@@ -36,7 +49,9 @@ TCT-BR-007  Terminal visibility
 TCT-BR-008  Recovery candidate
 ```
 
-These Brick IDs are registry candidates until their individual canonical records are created and verified.
+Those labels were explicitly candidate Brick IDs and were never promoted to individual canonical `UNIT.md` records. `PDSA-ARCH-002` removes their **active candidate-identity interpretation** so that a named internal component cannot be mistaken for an independently accepted Brick.
+
+Historical records retain the provisional labels as provenance. Future promotion requires an explicit Brick record and evidence that the component satisfies the current independent-review/replaceability/branchability granularity rule.
 
 ## Dependency
 
@@ -167,4 +182,6 @@ TCT-BLOCK-005  ACTIVE — Successor-Like Extension Structure
 
 The legacy source remains preserved and is not the canonical identity of this unit.
 
-Historical use of “finite configurations,” the earlier grammar, bare `=`, and pair notation is interpreted through the later PDSA metatheory, equality/identity, recovery, and calibration audits.
+Historical use of “finite configurations,” the earlier grammar, bare `=`, pair notation, and provisional `TCT-BR-005..008` labels is interpreted through the later PDSA metatheory, equality/identity, recovery, calibration, and claim-transparency audits.
+
+Internal-component granularity was normalized during `PDSA-ARCH-002` without changing the mathematical construction.
