@@ -123,6 +123,7 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean \
             LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean \
             LAB/payloads/lean/RStage/RDedekindStrictOrder.lean \
+            LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean \
             LAB/payloads/lean/RStage/RDedekindCompleteness.lean \
             LAB/payloads/lean/RStage/RDedekindRationalDensity.lean \
             LAB/payloads/lean/RStage/RDedekindArchimedean.lean \
@@ -150,7 +151,7 @@ jobs:
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
-          | same-carrier identity/order/Q embedding/additive group/field witness/Dedekind LUB/density/Archimedean integration certificate | ${{ steps.integration.outcome }} |
+          | same-carrier identity/order/Q embedding/additive group/explicit ordered-field closure/inverse witness/Dedekind LUB/density/Archimedean integration certificate | ${{ steps.integration.outcome }} |
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
