@@ -28,8 +28,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: boma-r-formal-dependency-audit-prototype
-  cancel-in-progress: true
+  group: boma-formal-transparency-evidence-architecture-claim-transparency-001
+  cancel-in-progress: false
 
 jobs:
   extract-r-closure:
@@ -140,8 +140,30 @@ jobs:
           git fetch origin "$BRANCH"
           CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
           if [ "$CURRENT_HEAD" != "$VERIFIED_SHA" ]; then
-            echo '::error::Feature branch moved after this audit started; refusing stale prototype evidence promotion.'
-            exit 1
+            CHANGED_VERIFICATION_INPUTS="$(git diff --name-only "$VERIFIED_SHA" "$CURRENT_HEAD" -- \
+              LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md \
+              LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+              LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+              LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean \
+              LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+              LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+              LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+              LAB/payloads/lean/NCore \
+              LAB/payloads/lean/NArithmetic \
+              LAB/payloads/lean/ZStage \
+              LAB/payloads/lean/QStage \
+              LAB/payloads/lean/RStage \
+              lean-toolchain \
+              lakefile.toml \
+              .github/workflows/boma-r-formal-dependency-audit-prototype.yml)"
+            if [ -n "$CHANGED_VERIFICATION_INPUTS" ]; then
+              echo '::error::R verification inputs changed after this audit started; refusing stale prototype evidence promotion.'
+              printf '%s\n' "$CHANGED_VERIFICATION_INPUTS"
+              exit 1
+            fi
+            echo 'Branch moved only outside R verification inputs; recording evidence against the audited source SHA.'
           fi
 
           git checkout -B claim-transparency-evidence "origin/$BRANCH"
