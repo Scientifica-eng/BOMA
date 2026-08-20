@@ -1,9 +1,9 @@
 # R Formal Dependency Closure — Prototype Evidence
 
 **Status:** PROTOTYPE_PASS  
-**Semantic classification:** CLASSIFICATION_REVIEW_REQUIRED  
-**Audited source commit:** `84ee0505136b6be829fc6a29b518fb68d6a828ef`  
-**Workflow run ID:** `32405021915`  
+**Semantic classification:** CLASSIFICATION_PASS  
+**Audited source commit:** `3225acb4aec6fc0e6b03e62f69c6c956383ea66d`  
+**Workflow run ID:** `32405080337`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
@@ -12,7 +12,7 @@
 |---|---|
 | Lean setup | success |
 | compile accepted assembly + extract transitive declaration closure/edges | success |
-| classify boundary against explicit dependency policy | failure |
+| classify boundary against explicit dependency policy | success |
 
 ## Scope boundary
 
@@ -23,6 +23,11 @@ The semantic classifier separately compares external leaves and source-attribute
 ## Classifier log tail
 
 ```text
+          "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.embedN_add",
           "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
           "source_resolution": "direct-range"
         },
@@ -44,11 +49,6 @@ The semantic classifier separately compares external leaves and source-attribute
         {
           "name": "BOMA.Z.Arithmetic001.zmul_routes_converge",
           "source": "LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Z.Order001.embedN_order",
-          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "direct-range"
         },
         {
