@@ -455,8 +455,8 @@
     "dependency_edges": 7899,
     "unresolved": 0,
     "raw_unmapped_internal_ranges": 67,
-    "generated_source_inferences": 66,
-    "unmapped_internal_ranges": 1,
+    "generated_source_inferences": 67,
+    "unmapped_internal_ranges": 0,
     "internal_axioms": 0
   },
   "internal_axioms": [],
@@ -547,6 +547,7 @@
     "BOMA.NCore.RB001.BOMANat.s.inj",
     "BOMA.NCore.RB001.BOMANat.s.injEq",
     "BOMA.NCore.RB001.fold._f",
+    "BOMA.NCore.RB001.ind.match_1",
     "BOMA.Q.Quotient001.qAdd._proof_1",
     "BOMA.Q.Quotient001.qMul._proof_1",
     "BOMA.Q.Quotient001.qNeg._proof_1",
@@ -598,9 +599,7 @@
     "BOMA.Z.Rep001.diff.match_1",
     "BOMA.Z.Rep001.zneg.match_1"
   ],
-  "unmapped_internal_ranges": [
-    "BOMA.NCore.RB001.ind.match_1"
-  ],
+  "unmapped_internal_ranges": [],
   "external_modules": [
     "Init.Classical",
     "Init.Core",
@@ -1279,9 +1278,9 @@
       "kind": "definition",
       "start_line": null,
       "end_line": null,
-      "source": null,
-      "source_resolution": "unmapped",
-      "source_anchor": null
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-override",
+      "source_anchor": "BOMA.NCore.RB001.ind"
     },
     {
       "name": "BOMA.NCore.RB001.s_injective",

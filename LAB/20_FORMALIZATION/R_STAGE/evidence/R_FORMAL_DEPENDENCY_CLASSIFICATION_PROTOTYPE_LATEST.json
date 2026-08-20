@@ -10,8 +10,8 @@
     "external_boundary": 81,
     "classified_external": 77,
     "external_residuals": 4,
-    "internal_residuals": 1,
-    "total_residuals": 5
+    "internal_residuals": 0,
+    "total_residuals": 4
   },
   "classification_counts": {
     "DECLARED_LOGICAL_COMMITMENT": 2,
@@ -196,11 +196,6 @@
         "noConfusion_of_Nat"
       ],
       "residual": true
-    },
-    {
-      "type": "internal_without_source",
-      "name": "BOMA.NCore.RB001.ind.match_1",
-      "classification": "REVIEW_REQUIRED"
     }
   ],
   "external": [
@@ -13167,8 +13162,8 @@
         },
         {
           "name": "BOMA.NCore.RB001.ind.match_1",
-          "source": null,
-          "source_resolution": "unmapped"
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-override"
         },
         {
           "name": "BOMA.Z.Arithmetic001.embedN_add",
@@ -13262,8 +13257,8 @@
         },
         {
           "name": "BOMA.NCore.RB001.ind.match_1",
-          "source": null,
-          "source_resolution": "unmapped"
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-override"
         },
         {
           "name": "BOMA.Z.Order001.zLEd.match_1",
