@@ -2,7 +2,7 @@
 
 - **Operational Status:** **PASS / RESOLVED**
 - **Epistemic Status:** **DERIVED ARCHITECTURAL INTEGRATION**
-- **PDSA:** `PDSA-R-013`
+- **PDSA:** `PDSA-R-013`, closure refinement in `PDSA-R-014`
 - **Acceptance obligation:** `RA-21`
 - **Carrier:** `RBOMA := Quotient cutSetoid`
 
@@ -16,7 +16,9 @@ constructive rLE core + isolated classical totality witness
 rLT derived strict order
 rAdd / rNeg / additive-group laws
 rMulCandidate / ordered commutative-ring laws
+explicit translation-invariance + negation-reversal laws
 witness-based nonzero multiplicative inverse + uniqueness
+positive-inverse behavior
 formal Dedekind LUB completeness
 strict rational-image density
 Archimedean natural upper bound
@@ -27,11 +29,11 @@ RStageIntegration002.lean
 
 ## Question
 
-Do the independently verified Stage-One R components coexist on one and the same formal carrier, equality, order, zero/one, addition, negation, multiplication, rational embedding, and inverse relation, while preserving the declared Dedekind-completeness scope and logical commitments?
+Do all acceptance-level Stage-One R interfaces coexist on one and the same formal carrier, equality, order, constants, operations, rational embedding, inverse relation, and declared completeness scope?
 
 ## Integrated certificate
 
-`LAB/payloads/lean/RStage/RStageIntegration002.lean` packages a single certificate over the existing `RBOMA` containing:
+`LAB/payloads/lean/RStage/RStageIntegration002.lean` packages one certificate over the existing `RBOMA` containing:
 
 ```text
 injective Q embedding
@@ -40,10 +42,13 @@ rLE reflexivity / transitivity / antisymmetry / totality
 rLT irreflexivity
 0_R != 1_R
 additive commutative-group interface
+addition translation invariance as an iff
+negation order reversal
 multiplicative commutativity / associativity / one
 full distributivity
 nonnegative-factor order compatibility
 nonzero inverse existence + uniqueness witnesses
+positive inverse behavior
 Dedekind least-upper-bound theorem
 Q-image density
 Archimedean upper-bound characterization
@@ -51,64 +56,75 @@ Archimedean upper-bound characterization
 
 No new carrier, arithmetic operation, inverse selector, completeness notion, or axiom is introduced by the certificate.
 
-## V5 evidence
+## Final V5 evidence
 
 Authoritative evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md`
 
-Stabilized run:
+Final acceptance-strength run:
 
 ```text
-run                 32373914836
-verified commit     67f6eef4ce46504b3648cb3effd22784f07d79c2
+run                 32374868448
+verified commit     f07363c22b049a3fae028a927df74d4fb28a0680
 Lean                4.32.1
 result              PASS
 ```
 
-## Study retained: first run
+## Study lineage retained
 
-The first integration run:
+### Initial integration run
 
 ```text
 32373666593  FAIL_OR_INCOMPLETE
 ```
 
-reached the new integration payload after elaborating the long accepted dependency assembly, then failed only because `qzero_lt_one` was referenced without opening its actual namespace `BOMA.R.Gateway001`.
+The long dependency assembly reached the integration payload, then failed because `qzero_lt_one` was referenced without opening its actual provider namespace `BOMA.R.Gateway001`.
 
-The correction:
-
-```text
-open BOMA.R.Gateway001
-```
-
-plus changing a proposition-valued `def` to `theorem` for linter clarity did not weaken or remove any integration obligation.
-
-Therefore the first failure is classified as:
+Classification:
 
 ```text
-Lean name-resolution / provenance defect
-NOT a mathematical counterexample
-NOT a carrier incompatibility
-NOT a missing ordered-field theorem
+name-resolution / provenance defect
+not a mathematical counterexample
+not a carrier incompatibility
 ```
 
-This failure remains part of the Learning Graph.
+After that repair, the narrower certificate passed in run `32373914836`.
+
+### Closure-audit strengthening
+
+The final RA-09 audit refused to treat the phrase “ordered-field laws” as sufficient evidence for three specifically named obligations:
+
+```text
+addition translation invariance
+negation order reversal
+positive inverse behavior
+```
+
+`RDedekindOrderedFieldClosure.lean` was therefore added and the integration certificate widened rather than weakened.
+
+Two transient failures were preserved:
+
+```text
+32374548008  integration referenced the new closure namespace before the workflow DAG included its source file
+32374636592  closure source omitted visibility of qZero/qOne/principalCut provider namespaces
+```
+
+Both are proof-engineering / dependency-visibility Study results. The mathematical goals were retained unchanged. The repaired widened certificate then passed in `32374868448`.
 
 ## Scope preserved
 
-`R-J-002` verifies compatibility of the accepted Stage-One route. It does **not** extend the mathematical claim to:
+`R-J-002` verifies compatibility of the selected Stage-One route. It does **not** enlarge the accepted claim to:
 
 ```text
-Cauchy completeness
-metric completeness
+Cauchy / metric / sequential completeness
 Dedekind <-> Cauchy carrier equivalence
 uniqueness of complete ordered fields
 standard-library Real equivalence
 transcendental analysis
 ```
 
-The inverse interface remains witness-based; no global inverse function requiring Choice is introduced merely for integration.
+The inverse interface remains witness-based; no global Choice-backed inverse function is introduced merely for integration.
 
 ## RA-21 result
 
@@ -116,13 +132,11 @@ The inverse interface remains witness-based; no global inverse function requirin
 RA-21 = PASS
 ```
 
-The integration gate found no circularity or same-name/same-carrier conflict after the namespace repair.
+The final run checks the explicit RA-09 ordered-field closure properties as part of the same-carrier assembly.
 
 ## Export effect
 
-`R-J-002` makes `RA-22` eligible for a **separate closure decision**.
-
-It does not itself accept the real stage. The final closure must audit `RA-01..RA-21` against `BOMA-R-ACCEPT-001` before exporting an accepted downstream R block.
+`R-J-002` makes `RA-22` eligible for a separate closure decision. It does not itself accept R.
 
 ## Reopening conditions
 
@@ -132,8 +146,8 @@ Reopen if any material part changes:
 LowerCut / CutEquiv / RBOMA
 rOfQ
 rLE / rLT / totality witness
-rAdd / rNeg
-rMulCandidate
+rAdd / rNeg / translation-order interface
+rMulCandidate / ordered-field closure
 nonzero inverse relation
 Dedekind LUB contract
 rational density or Archimedean theorem
