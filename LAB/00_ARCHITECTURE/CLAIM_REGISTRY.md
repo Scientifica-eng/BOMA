@@ -1,44 +1,140 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE / INITIAL R CALIBRATION COMPLETE; Q/Z/N MAPPING PENDING  
+**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED FOR ALL ACCEPTED NUMBER STAGES  
 **Date:** 2026-08-20  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
+**Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
 **Program:** `PDSA-ARCH-002`
 
 ## 1. Purpose
 
-Provide one project-level index from accepted mathematical claims to their acceptance role, construction producer, dependency classifications, and formal evidence.
+Provide the project-level index from accepted mathematical claims to their stage-specific closure audit and canonical producer families.
 
-This registry is an assertion-audit layer. It does not replace Brick/Block/Junction/Decision Point identities and does not replace stage-specific evidence files.
+The registry is intentionally an **index**, not a duplicate copy of every stage audit. Detailed statements, dependency classifications, evidence, non-claims, and sensitivity belong in the linked claim-closure audit records and canonical unit/evidence files.
+
+```text
+Construction Unit ≠ Claim Record ≠ Lean theorem
+```
+
+The registry links these layers without collapsing them.
 
 ## 2. Accepted export inventory
 
-| Export | Mathematical status | Claim-closure mapping status |
+| Export | Mathematical status | Declared claim-closure status | Audit record |
+|---|---|---|---|
+| `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md` |
+| `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md` |
+| `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md` |
+| `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | `LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md` |
+| `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | `LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md` |
+
+`COMPLETE` here means **declared human-readable claim closure at the current audit granularity**. It does not yet mean theorem-level machine-derived transparency certification.
+
+## 3. N-Core Claim IDs
+
+Detailed mapping: `N_CORE_CLAIM_CLOSURE_AUDIT_001.md`.
+
+| Claim ID | Role | Primary canonical owner/producer |
 |---|---|---|
-| `N-BLOCK-007` | ACCEPTED | PENDING — Phase B5 |
-| `N-ARITH-BLOCK-001` | ACCEPTED | PENDING — Phase B4 |
-| `Z-BLOCK-002` | ACCEPTED | PENDING — Phase B3 |
-| `Q-BLOCK-002` | ACCEPTED | PENDING — Phase B2 |
-| `R-BLOCK-001` | ACCEPTED / `RA-22` | INITIAL DECLARED-CLOSURE MAP COMPLETE — Phase B1 |
+| `N-CL-CARRIER-001` | fresh unary carrier/base/successor | `N-BR-001` / `N-BLOCK-001` |
+| `N-CL-ID-001` | formal identity interface | `N-BR-002` |
+| `N-CL-ELIM-001` | dependent eliminator interface | `N-BR-003` |
+| `N-CL-NOCONF-A-001` | internal no-confusion route | `N-BR-004..005` |
+| `N-CL-IND-001` | induction adequacy | `N-BR-006` |
+| `N-CL-GEN-001` | generatedness/no-junk | `N-BR-007` |
+| `N-CL-REC-001` | recursion + computation | `N-BR-008..009` |
+| `N-CL-RECUNIQ-001` | recursion uniqueness | `N-BR-010` |
+| `N-CL-INITIAL-001` | pointwise initiality | `N-BR-011` |
+| `N-CL-TCTBASE-001` | TCT base realization | `N-BR-012` |
+| `N-CL-TCTEXT-001` | TCT extension realization | `N-BR-013` |
+| `N-CL-TCTPRES-001` | structural-equivalence preservation | `N-BR-014` |
+| `N-CL-TCTREFL-001` | formal identity reflection | `N-BR-015` |
+| `N-CL-TCTCOVER-001` | bridge reconstruction/coverage | `N-BR-016` |
+| `N-CL-HIST-001` | TCT history/constructor ancestry | `N-BR-017` |
+| `N-CL-NOCONF-B-001` | constructional no-confusion route | `N-BR-018` |
+| `N-CL-NOCONF-CONV-001` | no-confusion reconvergence | `N-J-001` |
+| `N-CL-COMPARE-001` | pointwise-initial comparison maps | `N-BR-019` |
+| `N-CL-STANDARD-001` | pointwise inverse/standardness | `N-BR-020` |
+| `N-CL-INTEGRATION-001` | accepted N-Core integration | `N-BLOCK-007` / `N-J-002` |
 
-Post-acceptance reverse records such as `RE-R-001` are classification/audit outputs, not additional accepted number-domain exports.
+Formal ownership reference:
 
-## 3. R-stage calibrated Claim Records
+`LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`.
 
-The R records below are calibrated against:
+## 4. N-Arithmetic Claim IDs
 
-```text
-R-BLOCK-001
-R_CLAIM_V5_INDEX.md
-R_STAGE_ACCEPTANCE_AUDIT_001.md
-R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
-PDSA-R-015 / RE-R-001 dependency classification
-R_INTEGRATION_002_INPUTS.txt
-R_INTEGRATION_002_V5_LATEST.md
-```
+Detailed mapping: `N_ARITH_CLAIM_CLOSURE_AUDIT_001.md`.
 
-The current latest integration evidence on the PDSA-ARCH-002 baseline records:
+| Claim ID | Role | Primary producer |
+|---|---|---|
+| `NAR-CL-ADDDEF-001` | dual addition definitions | `N-ADD-BLOCK-001..002` |
+| `NAR-CL-ADDCONV-001` | addition reconvergence | `N-ADD-J-001` |
+| `NAR-CL-ADD-001` | canonical addition + laws | `N-ADD-BLOCK-003` |
+| `NAR-CL-MULDEF-001` | dual multiplication definitions | `N-MUL-BLOCK-001..002` |
+| `NAR-CL-MULCONV-001` | multiplication reconvergence | `N-MUL-J-001` |
+| `NAR-CL-MUL-001` | canonical multiplication + laws | `N-MUL-BLOCK-003` |
+| `NAR-CL-ORDERDEF-001` | dual order routes | `N-ORD-BLOCK-001..002` |
+| `NAR-CL-ORDERCONV-001` | order reconvergence | `N-ORD-J-001` |
+| `NAR-CL-ORDER-001` | canonical natural order | `N-ORD-BLOCK-003` |
+| `NAR-CL-ORDERARITH-001` | arithmetic/order compatibility | `N-ORD-BLOCK-004` |
+| `NAR-CL-INTEGRATION-001` | accepted N-Arithmetic integration | `N-ARITH-J-001` / `N-ARITH-BLOCK-001` |
+
+## 5. Z Claim IDs
+
+Detailed mapping: `Z_CLAIM_CLOSURE_AUDIT_001.md`.
+
+| Claim ID | Role | Primary producer |
+|---|---|---|
+| `Z-CL-REP-001` | signed normal-form route | `Z-S-BLOCK-001` |
+| `Z-CL-ALTREP-001` | difference-pair route | `Z-D-BLOCK-001` |
+| `Z-CL-REPCONV-001` | representation convergence | `Z-REP-BR-001..005` / `Z-J-001` |
+| `Z-CL-CARRIER-001` | accepted selected integer carrier/identity | `Z-DP-001` / `Z-BLOCK-001` |
+| `Z-CL-ARITHCONV-001` | direct/pair arithmetic convergence | `Z-ARITH-J-001` |
+| `Z-CL-RING-001` | commutative-ring interface | `Z-ARITH-BLOCK-003` |
+| `Z-CL-EMBED-001` | faithful N embedding | Z representation/arithmetic/order chain |
+| `Z-CL-GEN-001` | natural-difference generation | `Z-ARITH-BLOCK-003` |
+| `Z-CL-ORDERCONV-001` | order-route convergence | `Z-ORD-J-001` |
+| `Z-CL-ORDER-001` | total ordered-ring interface | `Z-ORD-BLOCK-001` |
+| `Z-CL-INTEGRATION-001` | accepted integer integration | `Z-J-002` / `Z-BLOCK-002` |
+
+## 6. Q Claim IDs
+
+Detailed mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.
+
+| Claim ID | Role | Primary producer |
+|---|---|---|
+| `Q-CL-GATE-001` | Z nonzero cancellation gateway | `Q-GATE-BLOCK-001` |
+| `Q-CL-REP-001` | raw positive-denominator fractions + equivalence | `Q-F-BLOCK-001` |
+| `Q-CL-RAWOPS-001` | raw operations respect equivalence | `Q-F-BLOCK-002` |
+| `Q-CL-CARRIER-001` | quotient carrier/identity | `Q-DP-001` / `Q-BLOCK-001` |
+| `Q-CL-ALG-001` | accepted additive/multiplicative algebra | Q algebra proof layers |
+| `Q-CL-INV-001` | unique nonzero inverse witness | Q inverse-witness layer |
+| `Q-CL-EMBED-001` | faithful Z/N embeddings | Q embedding layer |
+| `Q-CL-GEN-001` | fraction generation/characterization | Q generation layer |
+| `Q-CL-ORDER-001` | total ordered rational interface | Q order/compatibility layers |
+| `Q-CL-INTEGRATION-001` | accepted Q integration | `Q-J-002` / `Q-BLOCK-002` |
+
+## 7. R Claim IDs
+
+Detailed mapping: `R_CLAIM_CLOSURE_AUDIT_003.md` plus `RE-R-001`.
+
+| Claim ID | Role | Primary producer |
+|---|---|---|
+| `R-CL-CARRIER-001` | real carrier + formal identity | Dedekind identity layer / `R-DP-002` |
+| `R-CL-QEMBED-001` | faithful/order-exact Q embedding | principal-cut embedding layer |
+| `R-CL-ORDER-001` | total-order interface | constructive order core + `R-LOGIC-BR-001` |
+| `R-CL-NONTRIV-001` | `rZero ≠ rOne` | Q strict order + final closure |
+| `R-CL-ADD-001` | additive commutative group | `R-ADD-GROUP-BLOCK-001` |
+| `R-CL-MUL-001` | ordered commutative-ring multiplication | `R-MUL-BLOCK-001` |
+| `R-CL-INV-001` | unique nonzero inverse witness | `R-FIELD-BLOCK-001` |
+| `R-CL-FIELD-001` | acceptance-strength ordered-field closure | ordered-field closure payload + producer Blocks |
+| `R-CL-COMP-001` | Dedekind LUB completeness | `R-COMP-BLOCK-001` |
+| `R-CL-DENSITY-001` | strict rational-image density | `R-DENSITY-BLOCK-001` |
+| `R-CL-ARCH-001` | Archimedean upper-bound characterization | `R-ARCH-BLOCK-001` |
+| `R-CL-INTEGRATION-001` | same-carrier acceptance integration | `R-J-002` / `RStageIntegration002.lean` |
+
+Current latest R integration evidence on the program baseline:
 
 ```text
 run             32385379288
@@ -47,299 +143,46 @@ Lean            4.32.1
 result          PASS
 ```
 
-### R-CL-CARRIER-001 — Explicit accepted real carrier and formal identity
+## 8. Cross-stage dependency spine
 
-**Statement/scope**
-
-```text
-LowerCut over QBOMA
-CutEquiv A B := ∀q, A.lower q ↔ B.lower q
-RBOMA := Quotient cutSetoid
-```
-
-**Acceptance:** `RA-01`, `RA-02`.  
-**Producer:** selected Dedekind representation + `R-DP-002` + quotient identity layer.  
-**Classification:**
+At accepted-export granularity:
 
 ```text
-accepted need for explicit carrier/identity  MATHEMATICAL_CLAIM / STRUCTURALLY NECESSARY relative to R acceptance
-LowerCut representation                     REPRESENTATION_COMMITMENT / ROUTE-SPECIFIC — DEDEKIND
-Quotient identity                           FORMALIZATION_COMMITMENT
-Lean Quotient availability                  TRUSTED_METATHEORY
+N-CL-INTEGRATION-001
+  ↓
+NAR-CL-INTEGRATION-001
+  ↓
+Z-CL-INTEGRATION-001
+  ↓
+Q-CL-INTEGRATION-001
+  ↓
+R-CL-INTEGRATION-001
 ```
 
-**Evidence:** `R_DEDEKIND_QUOTIENT_IDENTITY_V5_LATEST.md`, run `32180783725`.  
-**Alternative:** external `CutEquiv` identity retained; Cauchy carrier retained as branch candidate.  
-**Sensitivity:** changing representation or formal identity reopens dependent equality/order/operation lifts and final integration.
+This spine is only a high-level view. Internal branch/Junction dependencies remain authoritative in their canonical unit graphs.
 
-### R-CL-QEMBED-001 — Faithful, order-exact rational embedding
-
-**Statement/scope**
+## 9. Current transparency status
 
 ```text
-rOfQ : QBOMA → RBOMA
-injective
-preserves/reflects accepted rational order
+N-Core        DECLARED CLAIM CLOSURE COMPLETE
+N-Arithmetic  DECLARED CLAIM CLOSURE COMPLETE
+Z             DECLARED CLAIM CLOSURE COMPLETE
+Q             DECLARED CLAIM CLOSURE COMPLETE
+R             DECLARED CLAIM CLOSURE COMPLETE
 ```
 
-and downstream certified preservation of accepted Q constants/operations through their respective operation Blocks.
+No stage is yet labeled machine-checked `TRANSPARENCY PASS` under `PDSA-ARCH-002` because the transitive theorem-level `ActualFormalClosure` comparison is not yet complete.
 
-**Acceptance:** `RA-03`, part of `RA-10`.  
-**Producer:** principal-cut embedding + quotient identity/order layer + operation-preservation proofs.  
-**Dependencies:** accepted `Q-BLOCK-002`, `R-CL-CARRIER-001`.  
-**Classification:** `MATHEMATICAL_CLAIM`; principal-cut realization is `ROUTE-SPECIFIC — DEDEKIND`.  
-**Evidence:** identity/order run `32180783725` plus operation-specific R evidence.
+## 10. Next program step
 
-### R-CL-ORDER-001 — Accepted total-order interface
-
-**Statement/scope**
+Phase C now becomes active:
 
 ```text
-rLE reflexive
-rLE transitive
-rLE antisymmetric
-rLE total
-rLT := rLE ∧ ≠
+DeclaredClosure(E)
+  versus
+ActualFormalClosure(E)
 ```
 
-with exact extension of accepted Q order.
+for every accepted export `E`, beginning with the assembly/file-level closures already available in R and the theorem-ownership mapping already available in N-Core.
 
-**Acceptance:** order portion of `RA-09`, `RA-10`.  
-**Producer:** constructive inclusion-order core + `R-LOGIC-BR-001`.  
-**Dependencies/classification:**
-
-```text
-partial-order core                 MATHEMATICAL_CLAIM; current realization ROUTE-SPECIFIC — DEDEKIND
-CutComparability witness           LOGICAL_COMMITMENT
-localized Classical.em             LOGICAL_COMMITMENT
-LowerCut/CutLE                      REPRESENTATION_COMMITMENT
-```
-
-**Evidence:** `R_DEDEKIND_ORDER_LOGIC_SPLIT_V5_LATEST.md`, run `32181726522`.  
-**Alternative:** constructive locatedness/strengthened cuts or another strict/total order regime retained.  
-**Sensitivity:** removing the totality witness invalidates accepted total-order closure and current sign-dependent proofs unless replaced.
-
-### R-CL-NONTRIV-001 — Nontriviality
-
-**Statement:** `rZero ≠ rOne`.  
-**Acceptance:** `RA-04`, ordered-field closure.  
-**Producer:** accepted Q strict order + faithful Q embedding / final closure theorem.  
-**Classification:** `MATHEMATICAL_CLAIM`.  
-**Evidence:** final integration certificate; latest evidence run `32385379288` for the current source assembly.
-
-### R-CL-ADD-001 — Additive commutative-group interface
-
-**Statement/scope**
-
-```text
-rZero
-rAdd
-rNeg
-associativity
-commutativity
-zero identities
-additive inverse
-cancellation
-involutive negation
-```
-
-**Acceptance:** `RA-05`, `RA-06`, additive portion of `RA-09`, part of `RA-10`.  
-**Producer:** `R-ADD-BLOCK-001` + `R-NEG-CANDIDATE-BLOCK-001` + `R-QARCH-BLOCK-001` → `R-ADD-GROUP-BLOCK-001`.  
-**Dependencies/classification:**
-
-```text
-Q addition/order/density interfaces          MATHEMATICAL_CLAIM
-cut addition / cut negation                  ROUTE-SPECIFIC — DEDEKIND
-Q natural-upper/scaling subclaims            REUSABLE CERTIFIED CONTRIBUTIONS
-finite cut membership search                 LOGICAL_COMMITMENT + ROUTE-SPECIFIC
-cut_bracket_approx                           ROUTE-SPECIFIC — DEDEKIND
-```
-
-**Evidence:** runs `32183597094`, `32183864915`, `32184188077`, `32184767097`, `32186209544`, `32186543211`.  
-**Sensitivity:** additive inverse proof must be rechecked if fine bracketing/negation/addition identity changes.
-
-### R-CL-MUL-001 — Ordered commutative-ring multiplication
-
-**Statement/scope**
-
-```text
-rMulCandidate
-commutativity
-associativity
-zero absorption
-one identities
-left/right distributivity
-nonnegative-factor monotonicity
-```
-
-**Acceptance:** `RA-07`, ring/order portion of `RA-09`, multiplication part of `RA-10`.  
-**Producer:** `R-MUL-BLOCK-001`, selected by `R-DP-005` architecture.  
-**Dependencies/classification:**
-
-```text
-positive envelope / nonnegative cut kernel  ROUTE-SPECIFIC — DEDEKIND
-Q positive multiplicative approximation     REUSABLE CERTIFIED CONTRIBUTION
-signed decomposition architecture           REPRESENTATION / ARCHITECTURAL CHOICE
-proof-level sign classification              LOGICAL_COMMITMENT via total-order interface
-additive group                               MATHEMATICAL_CLAIM
-```
-
-**Evidence:** principal runs `32189753112`, `32191203164`, `32191975377`, `32192506728`, `32192653931`.  
-**Alternatives:** direct sign-case and shift-to-positive multiplication routes retained as branch candidates.
-
-### R-CL-INV-001 — Unique nonzero multiplicative-inverse witness
-
-**Statement/scope**
-
-```text
-x ≠ rZero → ∃y, x*y = rOne
-left inverse follows by commutativity
-inverse witness is unique
-```
-
-No global Choice-backed selector is part of the accepted interface.
-
-**Acceptance:** `RA-08`, inverse-dependent portion of `RA-09`.  
-**Producer:** `R-DP-006` selected direct positive Dedekind reciprocal → `R-FIELD-BLOCK-001`.  
-**Dependencies/classification:**
-
-```text
-Q inverse-order / reciprocal arithmetic    REUSABLE CERTIFIED CONTRIBUTION
-positive reciprocal LowerCut               ROUTE-SPECIFIC — DEDEKIND
-fine/anchored bracketing                    ROUTE-SPECIFIC — DEDEKIND
-positive representative extraction          LOGICAL_COMMITMENT / route-sensitive witness step
-signed extension                            consumes R-CL-ORDER-001
-```
-
-**Evidence:** runs `32355681924`, `32356254961`, `32356513408`.  
-**Alternative:** completeness/supremum inverse retained but not built to reconvergence.
-
-### R-CL-FIELD-001 — Acceptance-strength ordered-field closure
-
-**Statement/scope**
-
-On the same accepted carrier/operations:
-
-```text
-nontriviality
-additive group
-commutative multiplicative algebra
-unique nonzero inverse witnesses
-translation invariance
-negation order reversal
-nonnegative-factor multiplication monotonicity
-positive inverse behavior
-```
-
-**Acceptance:** `RA-09` and integration-relevant parts of `RA-04..10`.  
-**Producer:** `R-ADD-GROUP-BLOCK-001` + `R-MUL-BLOCK-001` + `R-FIELD-BLOCK-001` + order/closure payload.  
-**Classification:** `MATHEMATICAL_CLAIM`; current realization inherits route-specific/logical dependencies only through the subclaims actually consumed.  
-**Evidence:** `RDedekindOrderedFieldClosure.lean` consumed by `R-J-002`; latest integration evidence run `32385379288`.
-
-### R-CL-COMP-001 — Dedekind least-upper-bound completeness
-
-**Statement/scope**
-
-Every nonempty bounded `F : RBOMA → Prop` has a least upper bound in `RBOMA`.
-
-**Acceptance:** `RA-11`.  
-**Producer:** `R-COMP-BLOCK-001`.  
-**Classification:**
-
-```text
-completeness property required by R acceptance  MATHEMATICAL_CLAIM / STRUCTURALLY NECESSARY relative to contract
-witness-by-union LowerCut proof                 ROUTE-SPECIFIC — DEDEKIND
-```
-
-**Logical note:** does not consume the total-comparability classical witness.  
-**Evidence:** run `32182056311`.  
-**Non-claim:** no automatic Cauchy/metric/sequential completeness.
-
-### R-CL-DENSITY-001 — Strict rational-image density
-
-**Statement:**
-
-```text
-x < y → ∃q : QBOMA, x < rOfQ q ∧ rOfQ q < y
-```
-
-**Acceptance:** `RA-12`.  
-**Producer:** `R-DENSITY-BLOCK-001`.  
-**Dependencies/classification:**
-
-```text
-Q internal density                    REUSABLE CERTIFIED CONTRIBUTION
-Dedekind roundedness                  ROUTE-SPECIFIC — DEDEKIND
-strict-inclusion witness extraction   LOGICAL_COMMITMENT, localized
-principal-cut sandwich                ROUTE-SPECIFIC — DEDEKIND
-```
-
-**Evidence:** run `32359834460`.
-
-### R-CL-ARCH-001 — Archimedean embedded-natural upper bound
-
-**Statement:**
-
-```text
-∀x : RBOMA, ∃n : N_BOMA, x < rOfQ(qOfN n)
-```
-
-**Acceptance:** `RA-13`.  
-**Producer:** `R-ARCH-BLOCK-001`.  
-**Dependencies/classification:**
-
-```text
-Q natural upper bound          REUSABLE CERTIFIED CONTRIBUTION
-LowerCut proper/downward       ROUTE-SPECIFIC — DEDEKIND
-principal-cut strict inclusion ROUTE-SPECIFIC — DEDEKIND
-```
-
-**Logical note:** does not inherit finite cut-membership `Classical.em` from the stronger bracketing route.  
-**Evidence:** run `32359869558`.
-
-### R-CL-INTEGRATION-001 — Same-carrier acceptance integration
-
-**Statement/scope**
-
-The accepted identity/order/Q embedding, nontriviality, additive group, field-witness algebra, ordered compatibility, Dedekind LUB completeness, rational density, and Archimedean characterization elaborate together on the same carrier and operations.
-
-**Acceptance:** `RA-21 / R-J-002`; supports `RA-22 ACCEPT`.  
-**Producer:** `RStageIntegration002.lean` + ordered assembly manifest.  
-**Classification:**
-
-```text
-mathematical coexistence/integration assertion   MATHEMATICAL_CLAIM / ACCEPTANCE GOVERNANCE
-assembly manifest/workflow                       VERIFICATION_INFRASTRUCTURE
-Lean checker/toolchain                           TRUSTED BASE / VERIFICATION_INFRASTRUCTURE
-```
-
-**Evidence:** `R_INTEGRATION_002_V5_LATEST.md`, current baseline run `32385379288`, verified source `af0a03d83245b1e15e9903df00db89edf3317042`.
-
-## 4. R non-claim boundaries retained by the registry
-
-The R Claim Records do not promote:
-
-```text
-Cauchy completeness
-metric completeness
-sequential completeness
-nested-interval completeness
-equivalence of completeness notions
-uniqueness of complete ordered fields
-Dedekind↔Cauchy isomorphism
-all real analysis
-transcendental theory
-measure theory
-complex-number construction
-```
-
-## 5. Next mapping actions
-
-```text
-B2  construct Q accepted-claim closure and register Q claims
-B3  construct Z accepted-claim closure and register Z claims
-B4  construct N-Arithmetic accepted-claim closure
-B5  construct N-Core accepted-claim closure
-```
-
-Only after these declared closures stabilize should `PDSA-ARCH-002` introduce the first automated declared-vs-formal dependency comparison.
+No record in this registry authorizes C. `C NOT STARTED — USER HOLD` remains unchanged.
