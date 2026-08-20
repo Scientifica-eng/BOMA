@@ -63,24 +63,20 @@ theorem principalCut_reflects {q r : QBOMA}
 def PrincipalLE (q r : QBOMA) : Prop :=
   ∀ a : QBOMA, (principalCut q).lower a → (principalCut r).lower a
 
-/-- Principal-cut inclusion is exactly the accepted rational non-strict order. -/
+/-- Principal-cut inclusion is exactly the accepted rational non-strict order.
+The forward proof reuses the single explicit trichotomy gateway instead of
+introducing a second implicit proposition-decidability split. -/
 theorem principalLE_iff_qLE (q r : QBOMA) : PrincipalLE q r ↔ qLE q r := by
   constructor
   · intro hInc
-    by_cases hqr : qLE q r
-    · exact hqr
-    · rcases qle_total q r with hqr' | hrq
-      · exact False.elim (hqr hqr')
-      · have hrneq : r ≠ q := by
-          intro heq
-          apply hqr
-          rw [← heq]
-          exact qle_refl r
-        have hrltq : qLT r q := ⟨hrq, hrneq⟩
-        rcases rational_order_dense hrltq with ⟨m, hrm, hmq⟩
-        have hmQ : (principalCut q).lower m := hmq
-        have hmR : (principalCut r).lower m := hInc m hmQ
-        exact False.elim ((qlt_asymm hrm) hmR)
+    rcases qlt_trichotomy q r with hqr | heq | hrq
+    · exact hqr.1
+    · rw [heq]
+      exact qle_refl r
+    · rcases rational_order_dense hrq with ⟨m, hrm, hmq⟩
+      have hmQ : (principalCut q).lower m := hmq
+      have hmR : (principalCut r).lower m := hInc m hmQ
+      exact False.elim ((qlt_asymm hrm) hmR)
   · intro hqr a haq
     refine ⟨qle_trans haq.1 hqr, ?_⟩
     intro har
