@@ -1,12 +1,16 @@
 # BOMA-R-ACCEPT-001 — Stage-One Real-Number Acceptance Specification
 
-**Status:** ACTIVE — governing specification before a real carrier is selected  
-**Date:** 2026-08-18  
-**Input:** `Q-BLOCK-002 — Accepted Stage-One Rational Interface`
+**Status:** **ACTIVE — GOVERNING SPECIFICATION / FULFILLED BY RA-22 ACCEPT**  
+**Original ex-ante specification date:** 2026-08-18  
+**Closure status synchronized:** 2026-08-20  
+**Input:** `Q-BLOCK-002 — Accepted Stage-One Rational Interface`  
+**Accepted export:** `R-BLOCK-001`  
+**Closure:** `PDSA-R-014`  
+**Post-acceptance reverse audit:** `PDSA-R-015 / RE-R-001 CLOSED`
 
 ## Purpose
 
-Define what BOMA must mean by an accepted Stage-One real-number domain **before** selecting Dedekind cuts, Cauchy sequences, interval completion, or any other realization.
+This specification was intentionally written **before** selecting Dedekind cuts, Cauchy sequences, interval completion, or any other realization. It remains the governing record of what BOMA required before the Stage-One real domain could be accepted.
 
 The specification separates:
 
@@ -23,6 +27,20 @@ branch / convergence claims
 ```
 
 No standard `Real` carrier may be used as the BOMA real definition merely to discharge these obligations.
+
+### Post-closure status note
+
+The ex-ante obligations below are now discharged as recorded by the canonical closure artifacts:
+
+```text
+RA-01..15   PASS, with RA-15 RESOLVED
+RA-16       NOT TRIGGERED — correctly discharged
+RA-17..20   PASS
+RA-21       PASS / R-J-002 RESOLVED
+RA-22       ACCEPT
+```
+
+The accepted realization is `R-BLOCK-001`, built through the selected Dedekind route. `RE-R-001` subsequently classified which dependencies are acceptance-required versus Dedekind-specific, logical, formalization-specific, reusable, or retained branch candidates. That reverse audit does not rewrite the ex-ante acceptance obligations below.
 
 ---
 
@@ -64,6 +82,14 @@ nested-interval / equivalent completion:
 ```
 
 Stage One may select one completion contract without proving all classical equivalences between completeness notions. Any unproved equivalence must remain outside the acceptance claim.
+
+Selected Stage-One contract after `R-DP-001`:
+
+```text
+Dedekind least-upper-bound completeness.
+```
+
+No equivalence with Cauchy/metric/sequential completeness is silently promoted.
 
 ---
 
@@ -227,6 +253,14 @@ branch retained
 
 If only one formal carrier is built, this gate must be marked **NOT TRIGGERED**, not falsely recorded as reconvergence.
 
+Stage-One outcome:
+
+```text
+RA-16 = NOT TRIGGERED
+```
+
+because only the Dedekind route was completed to a formal accepted real carrier; the Cauchy route remains retained branch material.
+
 ## RA-17 — Completion-notion scope
 
 Record exactly which completeness criterion is proved.
@@ -261,9 +295,22 @@ Each promoted real theorem must have V5 evidence at its actual dependency level.
 
 Failures due proof engineering, missing imports, or CI assembly must be distinguished from mathematical counterexamples in the Study record.
 
+Canonical evidence map:
+
+```text
+LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_V5_INDEX.md
+```
+
 ## RA-21 — Real integration gate
 
 A final `R-J-002` must verify that carrier, equality, ordered-field laws, Q embedding, completeness, density/Archimedean characterization, commitments, and V5 evidence are mutually compatible and non-circular.
+
+Stage-One outcome:
+
+```text
+RA-21 = PASS
+final acceptance-strength V5 = 32374868448 PASS
+```
 
 ## RA-22 — Stage-One real acceptance
 
@@ -274,6 +321,13 @@ RA-22 = ACCEPT
 ```
 
 and an accepted downstream real Block be exported.
+
+Stage-One outcome:
+
+```text
+RA-22 = ACCEPT
+R-BLOCK-001 = ACTIVE — ACCEPTED
+```
 
 ---
 
@@ -297,15 +351,28 @@ These require their own construction and verification lineage.
 
 # Stage-II branch value
 
-The Q→R transition is a primary future branching laboratory.
+The Q→R transition remains a primary future branching laboratory.
 
-High-value controlled comparisons include:
+`RE-R-001` refined high-value controlled comparisons to include:
 
 ```text
-Dedekind cuts ↔ Cauchy completion
-quotient sequence identity ↔ alternative normalization/interface
-strict versus non-strict order primitives
-constructive versus stronger classical completion regimes
+Dedekind cuts ↔ full Cauchy completion
+quotient identity ↔ external CutEquiv identity
+localized classical comparability ↔ constructive locatedness/order regime
+positive/negative decomposition ↔ alternative multiplication architectures
+direct Dedekind reciprocal ↔ completeness/supremum inverse
+reusable Q approximation ↔ direct cut-bracketing route
+rLE+inequality strict order ↔ explicit strict-inclusion witness
 ```
 
-Stage One should preserve enough Decision Point evidence to make those comparisons possible without rewriting history.
+These are retained branch candidates only; none is opened by the accepted Stage-One R closure or by RE-R-001.
+
+## Current transition status
+
+```text
+R        ACCEPTED
+RE-R-001 CLOSED / COMPLETE
+C        NOT STARTED — USER HOLD
+```
+
+No C-stage construction is authorized until a new explicit user order.
