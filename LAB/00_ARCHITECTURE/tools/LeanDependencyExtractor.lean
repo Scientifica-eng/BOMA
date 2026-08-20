@@ -41,6 +41,11 @@ structure ClosureResult where
   internal : Array Name := #[]
   external : Array (Name × Option Name) := #[]
   unresolved : Array Name := #[]
+  /-- Direct dependency edges `consumer → dependency`. These edges are retained
+  even when the dependency is an external boundary leaf so later semantic
+  classification can identify the exact BOMA consumer and a path from the
+  accepted integration certificate. -/
+  edges : Array (Name × Name) := #[]
 
 /-- Compute the transitive declaration closure while treating every declaration
 outside the module containing the selected accepted certificate as a boundary
@@ -49,7 +54,8 @@ Lean's trusted implementation/library environment.
 
 Internal declarations include generated/private declarations because module
 ownership, not a `BOMA.*` name-prefix convention, decides whether recursion
-continues. -/
+continues. Direct edges are recorded before the internal/external split so the
+boundary provenance remains auditable. -/
 partial def walkClosure
     (env : Environment)
     (acceptedModule : Name)
@@ -70,9 +76,13 @@ partial def walkClosure
         | some ci =>
             let owner := moduleOf? env declName
             if owner == some acceptedModule then
-              let next := usedConstantsIncludingOpaque ci ++ rest
+              let deps := usedConstantsIncludingOpaque ci
+              let edges := deps.foldl (fun acc dep => acc.push (declName, dep)) result.edges
+              let next := deps ++ rest
               walkClosure env acceptedModule next seen
-                { result with internal := result.internal.push declName }
+                { result with
+                    internal := result.internal.push declName
+                    edges := edges }
             else
               walkClosure env acceptedModule rest seen
                 { result with external := result.external.push (declName, owner) }
@@ -92,9 +102,9 @@ syntax (name := bomaDependencyClosure)
 
 Prints a machine-readable tab-separated closure for the selected declaration.
 The selected declaration must live in an imported accepted-assembly module.
-The output protocol is intentionally simple so a Python orchestration layer can
-map declaration ranges back to source-manifest files and classify external
-boundary leaves against `TRUSTED_BASE.md`.
+The output protocol includes direct `BOMA_EDGE consumer dependency` records so
+a downstream classifier can produce shortest provenance paths to sensitive
+Trusted-Base or logical leaves rather than treating the closure as a flat set.
 -/
 @[command_elab bomaDependencyClosure]
 def elabBomaDependencyClosure : CommandElab
@@ -136,11 +146,16 @@ def elabBomaDependencyClosure : CommandElab
       for declName in result.unresolved do
         liftIO <| printLine ["BOMA_UNRESOLVED", declName.toString]
 
+      for (consumer, dependency) in result.edges do
+        liftIO <| printLine
+          ["BOMA_EDGE", consumer.toString, dependency.toString]
+
       liftIO <| printLine
         [ "BOMA_AUDIT", "COUNTS",
           toString result.internal.size,
           toString result.external.size,
-          toString result.unresolved.size ]
+          toString result.unresolved.size,
+          toString result.edges.size ]
   | _ => throwUnsupportedSyntax
 
 end BOMA.Audit

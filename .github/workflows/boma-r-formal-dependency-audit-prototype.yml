@@ -7,8 +7,10 @@ on:
       - architecture/claim-transparency-001
     paths:
       - 'LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md'
+      - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
       - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
       - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py'
       - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
       - 'LAB/payloads/lean/NCore/**'
       - 'LAB/payloads/lean/NArithmetic/**'
@@ -47,7 +49,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Extract actual R declaration closure
+      - name: Extract actual R declaration closure and dependency edges
         id: audit
         if: steps.setup.outcome == 'success'
         continue-on-error: true
@@ -59,8 +61,22 @@ jobs:
             --manifest LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
             --target BOMA.R.StageIntegration002.rStageIntegrationCertificate \
             --json-out /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
-            > /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+            > /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout 2>&1
           cat /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+
+      - name: Classify external boundary against declared policy
+        id: classify
+        if: steps.audit.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            > /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout 2>&1
+          cat /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
 
       - name: Record prototype evidence on feature branch
         id: evidence
@@ -71,6 +87,18 @@ jobs:
           RESULT=PROTOTYPE_PASS
           if [ "${{ steps.setup.outcome }}" != success ] || [ "${{ steps.audit.outcome }}" != success ]; then
             RESULT=PROTOTYPE_FAIL
+          fi
+
+          CLASSIFICATION_STATUS=NO_OUTPUT
+          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            CLASSIFICATION_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.classify.outcome }}" = skipped ]; then
+            CLASSIFICATION_STATUS=SKIPPED
           fi
 
           BRANCH='architecture/claim-transparency-001'
@@ -102,10 +130,25 @@ jobs:
           EOF
           fi
 
+          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            cp /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "${CLASSIFICATION_STATUS}",
+            "reason": "semantic classification did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
           cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
           # R Formal Dependency Closure — Prototype Evidence
 
           **Status:** ${RESULT}  
+          **Semantic classification:** ${CLASSIFICATION_STATUS}  
           **Audited source commit:** \`${VERIFIED_SHA}\`  
           **Workflow run ID:** \`${RUN_ID}\`  
           **Pinned toolchain:** \`${TOOLCHAIN}\`  
@@ -115,16 +158,26 @@ jobs:
           | Step | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
-          | compile accepted assembly + extract transitive declaration closure | ${{ steps.audit.outcome }} |
+          | compile accepted assembly + extract transitive declaration closure/edges | ${{ steps.audit.outcome }} |
+          | classify boundary against explicit dependency policy | ${{ steps.classify.outcome }} |
 
           ## Scope boundary
 
-          This is a **prototype theorem/declaration-closure measurement**, not yet a BOMA \`TRANSPARENCY PASS\`.
+          A \`PROTOTYPE_PASS\` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA \`TRANSPARENCY PASS\`.
 
-          The extractor recursively traverses type and proof/definition-body constants for declarations owned by the compiled accepted assembly module and records external module dependencies as boundary leaves. Semantic comparison of those declarations/leaves against the Claim Registry and Trusted Base remains a separate gate.
+          The semantic classifier separately compares external leaves and source-attributed direct consumers against \`FORMAL_DEPENDENCY_POLICY.json\`. A classification status of \`CLASSIFICATION_REVIEW_REQUIRED\` is a deliberate research result: its residual dependencies must be diagnosed, declared, or removed before any transparency promotion.
           EOF
 
-          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout ]; then
+          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Classifier log tail'
+              echo
+              echo '```text'
+              tail -n 80 /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          elif [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout ]; then
             {
               echo
               echo '## Extractor log tail'
@@ -139,6 +192,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json \
             LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
           if ! git diff --cached --quiet; then
             git commit -m "Record R formal dependency prototype run ${RUN_ID}"
@@ -160,7 +214,7 @@ jobs:
           cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
           ## R Formal Dependency Closure Prototype
 
-          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate using a separately compiled accepted assembly module.
+          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate using a separately compiled accepted assembly module, retains direct dependency edges, and runs an explicit boundary classifier.
 
-          A successful run is still **not** a final `TRANSPARENCY PASS`: Claim-Registry and Trusted-Base semantic classification must have zero unclassified residuals first.
+          Extraction success is not a final `TRANSPARENCY PASS`. Any `CLASSIFICATION_REVIEW_REQUIRED` residual must be diagnosed or explicitly classified before promotion.
           EOF

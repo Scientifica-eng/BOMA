@@ -22,7 +22,7 @@ import re
 import subprocess
 import sys
 import tempfile
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Iterable
 
@@ -44,6 +44,8 @@ class InternalDecl:
     start_line: int | None
     end_line: int | None
     source: str | None
+    source_resolution: str
+    source_anchor: str | None
 
 
 @dataclass(frozen=True)
@@ -51,6 +53,12 @@ class ExternalDecl:
     name: str
     kind: str
     module: str
+
+
+@dataclass(frozen=True)
+class DependencyEdge:
+    consumer: str
+    dependency: str
 
 
 def run(cmd: list[str], *, cwd: Path, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
@@ -159,10 +167,51 @@ def parse_int(value: str) -> int | None:
         return None
 
 
-def parse_output(text: str, ranges: list[SourceRange]) -> tuple[list[InternalDecl], list[ExternalDecl], list[str], dict[str, str]]:
+def infer_generated_sources(internal: list[InternalDecl]) -> list[InternalDecl]:
+    """Associate range-less generated/private declarations with a mapped prefix.
+
+    Lean often omits source ranges for compiler-generated declarations such as
+    `.match_*`, `._proof_*`, recursors, constructor injectivity helpers, and
+    private implementation declarations. We do not invent a line range. Instead
+    we retain `start_line/end_line = null`, mark the resolution as
+    `generated-prefix`, and attach the source of the longest declaration-name
+    prefix that *does* have a direct source range.
+    """
+
+    mapped = [d for d in internal if d.source is not None]
+    out: list[InternalDecl] = []
+    for decl in internal:
+        if decl.source is not None:
+            out.append(decl)
+            continue
+        candidates = [
+            anchor
+            for anchor in mapped
+            if decl.name.startswith(anchor.name + ".")
+        ]
+        if not candidates:
+            out.append(decl)
+            continue
+        anchor = max(candidates, key=lambda d: len(d.name))
+        out.append(
+            replace(
+                decl,
+                source=anchor.source,
+                source_resolution="generated-prefix",
+                source_anchor=anchor.name,
+            )
+        )
+    return out
+
+
+def parse_output(
+    text: str,
+    ranges: list[SourceRange],
+) -> tuple[list[InternalDecl], list[ExternalDecl], list[str], list[DependencyEdge], dict[str, str]]:
     internal: list[InternalDecl] = []
     external: list[ExternalDecl] = []
     unresolved: list[str] = []
+    edge_pairs: set[tuple[str, str]] = set()
     meta: dict[str, str] = {}
 
     for raw in text.splitlines():
@@ -173,17 +222,29 @@ def parse_output(text: str, ranges: list[SourceRange]) -> tuple[list[InternalDec
         if tag == "BOMA_INTERNAL" and len(fields) >= 5:
             start = parse_int(fields[3])
             end = parse_int(fields[4])
+            source = source_for_line(ranges, start)
             internal.append(
-                InternalDecl(fields[1], fields[2], start, end, source_for_line(ranges, start))
+                InternalDecl(
+                    name=fields[1],
+                    kind=fields[2],
+                    start_line=start,
+                    end_line=end,
+                    source=source,
+                    source_resolution="direct-range" if source else "unmapped",
+                    source_anchor=None,
+                )
             )
         elif tag == "BOMA_EXTERNAL" and len(fields) >= 4:
             external.append(ExternalDecl(fields[1], fields[2], fields[3]))
         elif tag == "BOMA_UNRESOLVED" and len(fields) >= 2:
             unresolved.append(fields[1])
+        elif tag == "BOMA_EDGE" and len(fields) >= 3:
+            edge_pairs.add((fields[1], fields[2]))
         elif tag == "BOMA_AUDIT" and len(fields) >= 3:
             meta[fields[1]] = "\t".join(fields[2:])
 
-    return internal, external, unresolved, meta
+    edges = [DependencyEdge(a, b) for a, b in sorted(edge_pairs)]
+    return internal, external, unresolved, edges, meta
 
 
 def main() -> int:
@@ -203,8 +264,6 @@ def main() -> int:
         # Lake/Lean requires project inputs to remain inside the package root.
         # Keep the audit workspace transient and untracked, but create it under
         # the repository root rather than the operating-system /tmp directory.
-        # This fixes PDSA-ARCH-002-R-FORMAL-CLOSURE-PROTOTYPE-FAILURE-001
-        # without changing the accepted-source elaboration environment.
         with tempfile.TemporaryDirectory(prefix=".boma-lean-deps-", dir=root) as td_raw:
             td = Path(td_raw)
             assembly = td / f"{module}.lean"
@@ -213,7 +272,7 @@ def main() -> int:
 
             # Crucial separation: compile the accepted assembly in the same
             # direct-source style as BOMA V5, with no `import Lean` injected.
-            compile_proc = run(
+            run(
                 ["lake", "env", "lean", "-o", str(olean), str(assembly)],
                 cwd=root,
             )
@@ -234,18 +293,23 @@ def main() -> int:
             env["LEAN_PATH"] = str(td) + (os.pathsep + existing if existing else "")
             audit_proc = run(["lake", "env", "lean", str(runner)], cwd=root, env=env)
 
-            internal, external, unresolved, meta = parse_output(audit_proc.stdout, ranges)
+            raw_internal, external, unresolved, edges, meta = parse_output(audit_proc.stdout, ranges)
 
-        internal_axioms = sorted(d.name for d in internal if d.kind == "axiom")
+        raw_unmapped = sorted(d.name for d in raw_internal if d.source is None)
+        internal = infer_generated_sources(raw_internal)
         unmapped_internal = sorted(d.name for d in internal if d.source is None)
+        inferred_generated = sorted(
+            d.name for d in internal if d.source_resolution == "generated-prefix"
+        )
+        internal_axioms = sorted(d.name for d in internal if d.kind == "axiom")
         external_modules = sorted({d.module for d in external})
 
         result = {
             "status": "PROTOTYPE_PASS" if not unresolved and not internal_axioms else "PROTOTYPE_FAIL",
             "scope": (
                 "transitive declaration closure inside the compiled accepted assembly module; "
-                "external module leaves are boundary candidates for Trusted Base classification; "
-                "Claim-Registry semantic comparison is not yet complete"
+                "direct consumer→dependency edges retained; external module leaves are boundary candidates "
+                "for Trusted Base classification; Claim-Registry semantic comparison remains separate"
             ),
             "stage": args.stage,
             "manifest": args.manifest,
@@ -255,16 +319,22 @@ def main() -> int:
             "counts": {
                 "internal": len(internal),
                 "external_boundary": len(external),
+                "dependency_edges": len(edges),
                 "unresolved": len(unresolved),
+                "raw_unmapped_internal_ranges": len(raw_unmapped),
+                "generated_source_inferences": len(inferred_generated),
                 "unmapped_internal_ranges": len(unmapped_internal),
                 "internal_axioms": len(internal_axioms),
             },
             "internal_axioms": internal_axioms,
             "unresolved": sorted(unresolved),
+            "raw_unmapped_internal_ranges": raw_unmapped,
+            "generated_source_inferences": inferred_generated,
             "unmapped_internal_ranges": unmapped_internal,
             "external_modules": external_modules,
             "internal": [asdict(d) for d in sorted(internal, key=lambda d: d.name)],
             "external_boundary": [asdict(d) for d in sorted(external, key=lambda d: (d.module, d.name))],
+            "edges": [asdict(e) for e in edges],
         }
 
         rendered = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
