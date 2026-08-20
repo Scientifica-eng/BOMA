@@ -1,15 +1,17 @@
 # R-DP-003 — Dedekind Real Total-Order Logical Regime
 
-- **Operational Status:** **OPEN — LOGICAL SENSITIVITY PROBE REQUIRED**
+- **Operational Status:** **RESOLVED — LOCALIZED CLASSICAL COMPARABILITY SELECTED FOR STAGE I**
 - **Epistemic Status:** **LOGICAL / METHODOLOGICAL DECISION POINT**
 - **Input:** `R-DP-002 — RBOMA quotient identity selected`
 - **Target:** `BOMA-R-ACCEPT-001 / RA-09 / RA-19`
+- **PDSA:** `PDSA-R-003`
+- **Reverse classification:** `PDSA-R-015 / RE-R-001`
 
 ## Decision question
 
-What explicit logical commitment, if any, is required to promote cut inclusion from a representative-invariant partial order to the Stage-One **total** real order required by `RA-09`?
+What explicit logical commitment is required to promote representative-invariant cut inclusion from a constructive partial order to the Stage-One total real order required by `RA-09`?
 
-## Current facts
+## Verified split
 
 The selected representation provides:
 
@@ -21,53 +23,79 @@ RBOMA := LowerCut / CutEquiv
 rLE := quotient inclusion interface
 ```
 
-The current `LowerCut` syntax does not silently contain excluded middle, a total-comparability axiom, or a separate locatedness field.
+V5 verifies without a global classical declaration:
 
-## Candidate A — explicit Classical derivation
+```text
+rLE reflexivity
+rLE transitivity
+rLE antisymmetry
+CutComparability -> rLE totality
+```
 
-Use classical reasoning only to establish cut comparability:
+A separate theorem then supplies the missing comparability witness with localized classical reasoning:
 
 ```text
 CutComparability := ∀ A B : LowerCut, CutLE A B ∨ CutLE B A
 ```
 
-Then derive quotient totality from that interface.
-
-This route must demonstrate that:
+Authoritative evidence:
 
 ```text
-reflexivity/transitivity/antisymmetry remain constructive;
-Classical is localized to CutComparability;
-field/order proofs downstream consume the comparability theorem rather than reintroducing classical reasoning ad hoc.
+R_DEDEKIND_ORDER_LOGIC_SPLIT_V5_LATEST.md
+run 32181726522
+Lean 4.32.1
+PASS
 ```
 
-## Candidate B — declare narrow cut-comparability principle
+## Candidates studied
 
-Treat `CutComparability` itself as an explicit logical/formalization commitment without exporting unrestricted `Classical` into the object-level interface.
+### Candidate A — explicit localized Classical derivation — SELECTED
 
-This is logically narrower at the architectural interface, but the project must not pretend it has been constructively derived if its only current witness uses classical reasoning.
+Use classical reasoning only to witness `CutComparability`, then derive quotient totality through the narrow interface.
 
-## Candidate C — revise toward a constructive real-order contract
+This preserves the constructive partial-order core and prevents ad hoc downstream `classical` declarations from being mistaken for independent mathematical assumptions.
 
-Strengthen or alter the cut/order specification and weaken/adjust the acceptance notion of totality if a genuinely constructive Stage-One real domain is desired.
+### Candidate B — declare narrow comparability principle
 
-This would be a substantive acceptance-specification revision and may require revisiting standard Stage-One goals. It is not a silent implementation choice.
+Retained as a logical/formalization branch. Architecturally this exposes only `CutComparability`, but the current verified witness remains classical; BOMA does not relabel that provenance as constructive.
+
+### Candidate C — constructive locatedness / revised order regime
+
+Retained as a high-value Stage-II branch. It would require a stronger constructive cut specification, witness-carrying strict order, or a revised acceptance contract. It is not a silent implementation change.
+
+## ACT
+
+Stage One selects:
+
+```text
+constructive partial-order core
++
+localized classical witness of CutComparability
++
+constructive totality-from-CutComparability bridge
+```
+
+Therefore:
+
+```text
+R-DP-003 = RESOLVED
+```
+
+The selected logical cost is explicit and localized.
+
+## Reverse-engineering result
+
+`RE-R-001` classifies the comparability witness as:
+
+```text
+LOGICAL COMMITMENT
+ALTERNATIVE / BRANCH CANDIDATE
+```
+
+It is required by the **current proof route** to discharge RA-09 totality and sign-dependent closure, but it is not part of the definitions of `LowerCut`, `CutEquiv`, `RBOMA`, or the constructive `rLE` core and is not claimed necessary to every construction of the reals.
+
+Removing it without replacement would invalidate the current RA-09/RA-22 package; replacing it by a constructive totality route is a legitimate later branch experiment.
 
 ## Metatheory compatibility
 
-`BOMA-META-TCT-001` states that a materially classical step is permitted at the meta/proof level when explicitly declared in the relevant PDSA/verification record; it must not be treated as invisible background.
-
-Thus an explicit classical Stage-One R decision is permissible if scientifically justified and locally recorded.
-
-## Decision lock
-
-Before resolving this Decision Point, V5 must distinguish:
-
-```text
-constructive partial-order laws on rLE
-CutComparability as a separate proposition/interface
-rLE totality derived from CutComparability
-Classical derivation of CutComparability in an isolated theorem
-```
-
-No downstream file may simply write `classical` to obtain real totality before this gate closes.
+`BOMA-META-TCT-001` permits materially classical proof steps when explicitly declared in the relevant PDSA/verification record. This Decision Point records that boundary rather than treating Classical reasoning as invisible background.
