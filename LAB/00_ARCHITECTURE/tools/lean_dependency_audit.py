@@ -29,6 +29,17 @@ from typing import Iterable
 
 EXTRACTOR = Path("LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean")
 
+# Rare compiler-generated declarations can lack both a saved source range and a
+# directly range-mapped declaration-name prefix. These overrides are not theorem
+# classifications: they only record source provenance that is independently
+# visible in the accepted source. Keep the set small and auditable.
+GENERATED_SOURCE_OVERRIDES: dict[str, tuple[str, str]] = {
+    "BOMA.NCore.RB001.ind.match_1": (
+        "LAB/payloads/lean/NCore/NCoreRB001.lean",
+        "BOMA.NCore.RB001.ind",
+    ),
+}
+
 
 @dataclass(frozen=True)
 class SourceRange:
@@ -168,14 +179,20 @@ def parse_int(value: str) -> int | None:
 
 
 def infer_generated_sources(internal: list[InternalDecl]) -> list[InternalDecl]:
-    """Associate range-less generated/private declarations with a mapped prefix.
+    """Associate range-less generated/private declarations with source provenance.
 
     Lean often omits source ranges for compiler-generated declarations such as
     `.match_*`, `._proof_*`, recursors, constructor injectivity helpers, and
-    private implementation declarations. We do not invent a line range. Instead
-    we retain `start_line/end_line = null`, mark the resolution as
-    `generated-prefix`, and attach the source of the longest declaration-name
-    prefix that *does* have a direct source range.
+    private implementation declarations. We do not invent a line range.
+
+    Resolution order:
+
+    1. longest declaration-name prefix with a direct source range;
+    2. a deliberately small explicit generated-source override whose parent
+       declaration is visible in accepted source.
+
+    Both modes preserve `start_line/end_line = null`; they classify provenance,
+    not theorem ownership or mathematical status.
     """
 
     mapped = [d for d in internal if d.source is not None]
@@ -184,23 +201,38 @@ def infer_generated_sources(internal: list[InternalDecl]) -> list[InternalDecl]:
         if decl.source is not None:
             out.append(decl)
             continue
+
         candidates = [
             anchor
             for anchor in mapped
             if decl.name.startswith(anchor.name + ".")
         ]
-        if not candidates:
-            out.append(decl)
-            continue
-        anchor = max(candidates, key=lambda d: len(d.name))
-        out.append(
-            replace(
-                decl,
-                source=anchor.source,
-                source_resolution="generated-prefix",
-                source_anchor=anchor.name,
+        if candidates:
+            anchor = max(candidates, key=lambda d: len(d.name))
+            out.append(
+                replace(
+                    decl,
+                    source=anchor.source,
+                    source_resolution="generated-prefix",
+                    source_anchor=anchor.name,
+                )
             )
-        )
+            continue
+
+        override = GENERATED_SOURCE_OVERRIDES.get(decl.name)
+        if override is not None:
+            source, anchor_name = override
+            out.append(
+                replace(
+                    decl,
+                    source=source,
+                    source_resolution="generated-override",
+                    source_anchor=anchor_name,
+                )
+            )
+            continue
+
+        out.append(decl)
     return out
 
 
@@ -299,7 +331,8 @@ def main() -> int:
         internal = infer_generated_sources(raw_internal)
         unmapped_internal = sorted(d.name for d in internal if d.source is None)
         inferred_generated = sorted(
-            d.name for d in internal if d.source_resolution == "generated-prefix"
+            d.name for d in internal
+            if d.source_resolution in {"generated-prefix", "generated-override"}
         )
         internal_axioms = sorted(d.name for d in internal if d.kind == "axiom")
         external_modules = sorted({d.module for d in external})
