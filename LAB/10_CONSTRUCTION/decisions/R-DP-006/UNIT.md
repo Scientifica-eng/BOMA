@@ -1,134 +1,123 @@
 # R-DP-006 — Real Multiplicative-Inverse Architecture
 
-- **Operational Status:** **OPEN — COMPARATIVE PROBE REQUIRED**
-- **Epistemic Status:** **MATHEMATICAL / ARCHITECTURAL DECISION POINT**
+- **Operational Status:** **CLOSED / RESOLVED**
+- **Epistemic Status:** **METHODOLOGICAL CHOICE + VERIFIED CONSTRUCTION ROUTE**
 - **Input:** `R-MUL-BLOCK-001`, `R-COMP-BLOCK-001`, `R-QARCH-BLOCK-001`, accepted Q inverse interface
 - **Primary target:** `RA-08`
-- **Downstream:** inverse-dependent portion of `RA-09`, final field closure, `RA-22`
+- **Selected Stage-I route:** **Route A — direct positive Dedekind reciprocal, then signed extension**
+- **Retained branch:** **Route B — completeness/supremum inverse**, reserved for Stage-II comparison
 
-## Decision question
+## Decision
 
-How should a multiplicative inverse for each nonzero selected real be constructed without importing a standard real reciprocal and while keeping the dependency path auditable?
+Stage One selects the direct Dedekind reciprocal route.
 
-Required output is structurally:
-
-```text
-x ≠ rZero
-  →
-∃ y : RBOMA,
-  rMulCandidate x y = rOne
-```
-
-with the corresponding right-inverse law by commutativity, representative invariance, compatibility with the rational embedding, and explicit sign handling.
-
-## Candidate A — direct positive Dedekind reciprocal, then signed extension
-
-For a positive lower cut `A`, define a reciprocal cut using positive rational points known to lie outside `A` and their already-certified Q inverse witnesses.
-
-Schematic membership:
+For a positive lower cut `A`, reciprocal membership is constructed from positive rational points outside `A` and existential Q inverse witnesses:
 
 ```text
 q ∈ recip(A)
   iff
 q < 0
   or
-∃ r > 0, r ∉ A, ∃ rinv,
-  QInvRel r rinv ∧ q < rinv.
+∃ r>0 outside A, ∃rinv,
+  QInvRel r rinv ∧ q<rinv.
 ```
 
-The positivity witness for `A` is used to prove properness; it should not appear in the extensional lower predicate itself.
+The resulting reciprocal is not chosen by a global representative selector.  A representative-independent relation on `RBOMA` is certified first, then extended to all nonzero reals by sign.
 
-### Expected advantages
+## Verified Route-A chain
 
 ```text
-close to the selected Dedekind representation;
-uses explicit Q inverse witnesses already available;
-likely reuses CutBracketApprox for the hard inverse-product direction;
-transparent representative-level witness analysis.
+Q inverse-order interface
+  ↓
+positive reciprocal LowerCut validity / CutEquiv respect
+  ↓
+positive principal-Q reciprocal preservation
+  ↓
+anchored fine bracketing
+  ↓
+Q reciprocal-gap estimate 004
+  ↓
+A * recip(A) ≈ 1
+  ↓
+representative-independent positive inverse relation
+  ↓
+signed nonzero inverse existence + left inverse + uniqueness
 ```
 
-### Expected costs
+Key V5 evidence:
 
 ```text
-route-specific;
-requires inverse-order lemmas on Q;
-requires extracting/transporting positive-real witnesses;
-likely consumes fine boundary bracketing again;
-must prove proof-parameter independence / CutEquiv respect.
+32193229000  reciprocal LowerCut validity / proof independence       PASS
+32193653985  positive principal-Q reciprocal preservation            PASS
+32193755906  anchored fine bracketing                                PASS
+32355200375  Q reciprocal-gap estimate 004                           PASS
+32355681924  positive Dedekind inverse product 004                    PASS
+32356254961  positive inverse relation 003                            PASS
+32356513408  nonzero inverse existence/left inverse/uniqueness 004    PASS
 ```
 
-## Candidate B — completeness-level inverse on stabilized RBOMA
-
-For positive `x`, form an approximating family such as rational/real candidates `q ≥ 0` satisfying `q*x < 1` or an equivalent non-strict formulation, take a supremum using `R-COMP-BLOCK-001`, and prove the supremum multiplies with `x` to one.
-
-### Expected advantages
+Therefore:
 
 ```text
-operates above the raw Dedekind representation;
-may reveal the inverse as a consequence of ordered completeness rather than cut syntax;
-potentially more reusable for another completion carrier.
+RA-08 = PASS
 ```
 
-### Expected costs
+and the inverse-dependent field portion of `RA-09` is eligible for closure.
+
+## Why Route A is selected
+
+Route A closed the target with already-visible dependencies.  Fine bracketing is required only in the hard reverse inclusion of the product-one proof; it is **not** required to define the reciprocal, prove its LowerCut validity, or prove positive Q reciprocal preservation.
+
+The logical/classical cost is similarly localized:
 
 ```text
-requires a carefully bounded nonempty approximation family;
-requires multiplication/supremum interaction or an equivalent continuity argument;
-may still need Q density and Archimedean approximation;
-may introduce more infrastructure than the direct cut route.
+reciprocal object construction              no global Choice selector
+representative independence                 extensional / quotient reasoning
+positive product = one                      Q arithmetic + anchored cut bracketing
+signed extension                            consumes isolated total-order comparability
+positive representative extraction          local classical witness reasoning
 ```
 
-## Required comparison dimensions
+## Route B — retained, not rejected
+
+The completeness-level route remains a high-value Stage-II branch.  The current accepted completeness interface supplies LUB existence but does not yet supply:
 
 ```text
-new theorem burden;
-representation dependence;
-use of Q density / CutBracketApprox / Archimedean scaling;
-logical commitments and witness selection;
-formal proof robustness;
-Q reciprocal preservation;
-reverse-engineering clarity;
-Stage-II branch value.
+boundedness of reciprocal approximants at the required level;
+multiplication/supremum interaction such as x*sup(F)=sup(xF),
+or an equivalent continuity theorem.
 ```
 
-## Forbidden shortcuts
+Those are real additional dependencies, so Route B has a materially larger immediate proof surface.  This is a cost comparison, not a mathematical rejection.
 
-Do not discharge this decision by:
+## PDSA learning retained
+
+Historical revisions remain valid Learning-Graph evidence:
 
 ```text
-built-in Real reciprocal;
-field instances on standard reals;
-assuming nonzero elements already have inverses;
-untracked Choice selecting a boundary/reciprocal representative;
-using completeness as a slogan without proving the supremum/product interface.
+Q-gap 001 — incorrect endpoint equality in strict/non-strict transitivity proof;
+Q-gap 002 — global rewrite polluted the left expression;
+Q-gap 003 — accidental use of `<` notation requiring an unavailable LT instance;
+Q-gap 004 — explicit qLT chain, PASS;
+positive inverse-product 003 — consumed positivity witness name after destructuring;
+positive inverse-product 004 — preserved original witness, PASS;
+nonzero inverse 003 — ambiguous rNeg_zero provenance;
+nonzero inverse 004 — explicit producer-qualified rNeg_zero, PASS;
+CI relation/nonzero runs — missing DAG dependencies were classified as assembly defects.
 ```
 
-## Initial comparative hypothesis
-
-Candidate A appears to have the smaller immediate proof surface because Q inverse witnesses and fine cut bracketing are already certified. Candidate B may be architecturally more carrier-neutral, but its multiplication/supremum interaction is not yet available.
-
-This is a hypothesis, not a decision.
-
-## Decision lock
-
-Do not promote `RA-08` until:
-
-```text
-1. at least one candidate produces a valid positive inverse object;
-2. representative invariance is established;
-3. positive inverse-product = one passes V5;
-4. nonzero signed extension passes V5;
-5. Q inverse preservation is audited;
-6. Candidate A/B dependency cost is recorded;
-7. the selected route is explicitly resolved here.
-```
+None of these failures was a mathematical counterexample to the selected reciprocal architecture.
 
 ## Reverse-engineering significance
 
-`R-DP-006` is mandatory input to `RE-R-001`. The reverse audit must determine whether the accepted inverse is:
+`R-DP-006` is mandatory input to `RE-R-001`.  The reverse audit must test which accepted contribution is:
 
 ```text
-intrinsically Dedekind-route-specific;
-derivable from higher ordered-complete-ring structure;
-or replaceable by an equivalent reusable contribution.
+intrinsically Dedekind-specific;
+reusable Q arithmetic/approximation;
+proof-only classical sign/witness selection;
+derivable later from higher ordered-complete-field structure;
+or replaceable by the retained completeness-level inverse branch.
 ```
+
+Reconvergence with Route B is **not claimed** in Stage One because Route B was not built to a second full inverse carrier/interface.
