@@ -1,10 +1,10 @@
 # PDSA-R-003 — Dedekind Total-Order Logical Gate
 
 **CycleID:** `PDSA-R-003`  
-**Status:** **ACTIVE — LOGICAL SENSITIVITY UNDER V5**  
-**Date:** 2026-08-18  
+**Status:** **CLOSED — LOCALIZED CLASSICAL COMPARABILITY SELECTED**  
+**Date:** 2026-08-18; status synchronized 2026-08-20  
 **Input:** `R-DP-002 RESOLVED — RBOMA quotient identity selected`  
-**Decision Point:** `R-DP-003`
+**Decision Point:** `R-DP-003 — RESOLVED`
 
 ## PLAN
 
@@ -22,11 +22,7 @@ rather than placing `classical` at the top of all real-number proofs.
 
 ## DO
 
-Created:
-
-`LAB/payloads/lean/RStage/RDedekindOrderLogicalProbe.lean`
-
-The probe proves without a classical declaration:
+The verified order split proves without a global classical declaration:
 
 ```text
 CutLE antisymmetry up to CutEquiv
@@ -35,7 +31,7 @@ rLE transitivity
 rLE antisymmetry
 ```
 
-It then isolates:
+It isolates:
 
 ```text
 CutComparability := ∀A B, CutLE A B ∨ CutLE B A
@@ -44,46 +40,62 @@ CutComparability := ∀A B, CutLE A B ∨ CutLE B A
 and proves constructively:
 
 ```text
-CutComparability → totality of rLE
+CutComparability → totality of rLE.
 ```
 
-Finally, a single theorem with an explicit local `classical` block is used to test:
+Finally, a separate theorem with an explicit local Classical proof produces `CutComparability` for the selected lower-cut representation.
+
+Authoritative evidence:
 
 ```text
-Classical → CutComparability
+LAB/20_FORMALIZATION/R_STAGE/evidence/R_DEDEKIND_ORDER_LOGIC_SPLIT_V5_LATEST.md
+run 32181726522
+Lean 4.32.1
+PASS
 ```
 
-from which quotient totality follows.
+## STUDY
 
-## Governing metatheory rule
+The V5 result answers the original questions:
 
-`BOMA-META-TCT-001` permits materially classical proof steps when they are explicitly declared in the relevant PDSA/verification record rather than treated as invisible background.
+1. Partial-order laws pass without the classical totality witness.
+2. The selected proof of total cut comparability is isolated and explicitly classical.
+3. Downstream proofs can consume the narrow totality interface rather than reintroducing unrelated ad hoc classical assumptions.
+4. A genuinely constructive total-order route would be a different representation/logical branch, not a documentary relabeling.
 
-This cycle applies that traceability rule at the first observed R-stage logical boundary.
+The governing metatheory permits this explicit proof-level commitment when it is recorded rather than hidden.
 
-## Verification
+## ACT
 
-Workflow:
-
-`.github/workflows/boma-r-dedekind-order-logic-001.yml`
-
-Evidence:
-
-`LAB/20_FORMALIZATION/R_STAGE/evidence/R_DEDEKIND_ORDER_LOGIC_V5_LATEST.md`
-
-## STUDY questions
-
-1. Do partial-order laws pass without `Classical`?
-2. Does the only current classical use occur in the witness of `CutComparability`?
-3. Can Stage One expose `CutComparability` as the narrow architectural interface while recording that its current proof is classical?
-4. Would changing the acceptance target to a constructive non-total order materially change the intended standard-real stage?
-
-## ACT candidates
+Select:
 
 ```text
-A  accept an explicit classical proof commitment for CutComparability;
-B  declare CutComparability as a narrower formal principle, with classical proof provenance;
-C  revise the real acceptance/order contract toward a constructive regime.
+Candidate A — explicit localized Classical derivation of CutComparability
 ```
 
-No later R proof may add independent ad hoc `classical` blocks for totality while this gate is open.
+with the narrow architectural interface retained.
+
+Therefore:
+
+```text
+R-DP-003 = RESOLVED
+```
+
+Retained later branches:
+
+```text
+narrow comparability principle with explicit provenance
+constructive locatedness / strengthened cut specification
+witness-carrying strict-order architecture
+```
+
+## Later acceptance effect
+
+This logical gate fed the full Stage-One real construction, and the final acceptance closure records:
+
+```text
+RA-09 PASS
+RA-22 ACCEPT
+```
+
+`PDSA-R-015 / RE-R-001` subsequently classifies the classical comparability witness as a **LOGICAL COMMITMENT / BRANCH CANDIDATE**, not as a universal mathematical necessity.
