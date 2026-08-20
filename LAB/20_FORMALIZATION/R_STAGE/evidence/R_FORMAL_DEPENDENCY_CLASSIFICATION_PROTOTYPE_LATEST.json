@@ -7,54 +7,19 @@
     "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
   ],
   "counts": {
-    "external_boundary": 81,
-    "classified_external": 79,
-    "external_residuals": 2,
+    "external_boundary": 79,
+    "classified_external": 78,
+    "external_residuals": 1,
     "internal_residuals": 0,
-    "total_residuals": 2
+    "total_residuals": 1
   },
   "classification_counts": {
     "DECLARED_LOGICAL_COMMITMENT": 2,
-    "REVIEW_REQUIRED": 2,
+    "REVIEW_REQUIRED": 1,
     "TRUSTED_FORMALIZATION_INFRASTRUCTURE": 9,
-    "TRUSTED_METATHEORY": 68
+    "TRUSTED_METATHEORY": 67
   },
   "residuals": [
-    {
-      "name": "Classical.propDecidable",
-      "kind": "definition",
-      "module": "Init.Classical",
-      "classification": "REVIEW_REQUIRED",
-      "policy_source": "declaration_override",
-      "trusted_base_refs": [],
-      "refs": [],
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set.",
-      "direct_consumers": [
-        {
-          "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-          "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-          "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.Gateway001.qlt_trichotomy",
-          "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
-          "source_resolution": "direct-range"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindQuotient001.rOfQ_order",
-        "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-        "Classical.propDecidable"
-      ],
-      "residual": true
-    },
     {
       "name": "propext",
       "kind": "axiom",
@@ -65,26 +30,6 @@
       "refs": [],
       "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification.",
       "direct_consumers": [
-        {
-          "name": "BOMA.Q.Order001.qOfZ_order",
-          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
-          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
-          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
-          "source_resolution": "direct-range"
-        },
         {
           "name": "BOMA.Z.Order001.embedN_order._simp_1_15",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
@@ -99,7 +44,11 @@
       "out_of_scope_consumers": [],
       "shortest_target_path": [
         "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindQuotient001.rOfQ_order",
+        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+        "BOMA.R.Gateway001.qzero_lt_one",
+        "BOMA.Q.OrderedField001.qzero_le_one",
+        "BOMA.Z.Order001.embedN_order",
+        "BOMA.Z.Order001.embedN_order._simp_1_15",
         "propext"
       ],
       "residual": true
@@ -154,7 +103,7 @@
         "R-CL-ORDER-001",
         "R-CL-DENSITY-001"
       ],
-      "reason": null,
+      "reason": "R theorem-closure auditing exposed an implicit proposition-decidability split in rational strict-order trichotomy. The proof was normalized to an explicit localized Classical.em site in RPreCompletionGateway; downstream principal-cut and negation proofs now reuse that gateway rather than introducing separate decisions.",
       "direct_consumers": [
         {
           "name": "BOMA.R.DedekindFiniteExit001.qGrid_first_exit",
@@ -170,36 +119,6 @@
           "name": "BOMA.R.DedekindRationalDensity001.strict_cut_inclusion_witness",
           "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
           "source_resolution": "direct-range"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
-        "BOMA.R.DedekindOrderClassical001.cutComparability_classical",
-        "Classical.em"
-      ],
-      "residual": false
-    },
-    {
-      "name": "Classical.propDecidable",
-      "kind": "definition",
-      "module": "Init.Classical",
-      "classification": "REVIEW_REQUIRED",
-      "policy_source": "declaration_override",
-      "trusted_base_refs": [],
-      "refs": [],
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set.",
-      "direct_consumers": [
-        {
-          "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-          "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-          "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-          "source_resolution": "direct-range"
         },
         {
           "name": "BOMA.R.Gateway001.qlt_trichotomy",
@@ -210,11 +129,11 @@
       "out_of_scope_consumers": [],
       "shortest_target_path": [
         "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindQuotient001.rOfQ_order",
-        "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-        "Classical.propDecidable"
+        "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
+        "BOMA.R.DedekindOrderClassical001.cutComparability_classical",
+        "Classical.em"
       ],
-      "residual": true
+      "residual": false
     },
     {
       "name": "Eq.mp",
@@ -245,6 +164,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Q.Order001.qOfZ_order",
+          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Q.Order001.rawLE_respects_left",
           "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
           "source_resolution": "direct-range"
@@ -262,6 +186,11 @@
         {
           "name": "BOMA.Q.OrderedField001.inverse_of_positive_is_positive",
           "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -1009,11 +938,6 @@
         {
           "name": "BOMA.R.DedekindProbe001.q_minus_one_lt",
           "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
-          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "source_resolution": "direct-range"
         },
         {
@@ -2983,6 +2907,16 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Q.Order001.qOfZ_order",
+          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Q.OrderedField001.zle_iff_zero_le_difference",
           "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
           "source_resolution": "direct-range"
@@ -3624,16 +3558,6 @@
       "reason": null,
       "direct_consumers": [
         {
-          "name": "BOMA.Q.Order001.qOfZ_order",
-          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos_proof_independent",
           "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
           "source_resolution": "direct-range"
@@ -3668,6 +3592,11 @@
       "reason": null,
       "direct_consumers": [
         {
+          "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.R.DedekindProbe001.cutEquiv_symm",
           "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
           "source_resolution": "direct-range"
@@ -3697,17 +3626,35 @@
       "reason": null,
       "direct_consumers": [
         {
+          "name": "BOMA.Q.Order001.qOfZ_order",
+          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.R.DedekindProbe001.cutEquiv_trans",
           "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
+          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "source_resolution": "direct-range"
         }
       ],
       "out_of_scope_consumers": [],
       "shortest_target_path": [
         "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
-        "BOMA.R.DedekindQuotient001.cutSetoid",
-        "BOMA.R.DedekindProbe001.cutEquiv_trans",
+        "BOMA.R.DedekindQuotient001.rOfQ_order",
         "Iff.trans"
       ],
       "residual": false
@@ -4987,26 +4934,6 @@
       "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification.",
       "direct_consumers": [
         {
-          "name": "BOMA.Q.Order001.qOfZ_order",
-          "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
-          "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
-          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.Z.Order001.embedN_order._simp_1_15",
           "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
           "source_resolution": "generated-prefix"
@@ -5020,7 +4947,11 @@
       "out_of_scope_consumers": [],
       "shortest_target_path": [
         "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindQuotient001.rOfQ_order",
+        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+        "BOMA.R.Gateway001.qzero_lt_one",
+        "BOMA.Q.OrderedField001.qzero_le_one",
+        "BOMA.Z.Order001.embedN_order",
+        "BOMA.Z.Order001.embedN_order._simp_1_15",
         "propext"
       ],
       "residual": true
@@ -6277,6 +6208,11 @@
           "name": "BOMA.R.DedekindNegationCandidate001.cutNeg._proof_2",
           "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
           "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
+          "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
+          "source_resolution": "direct-range"
         },
         {
           "name": "BOMA.R.DedekindNegationCandidate001.qneg_strict_reverses",
@@ -7885,11 +7821,6 @@
         },
         {
           "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
-          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
           "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
           "source_resolution": "direct-range"
         },
@@ -9841,11 +9772,6 @@
           "source_resolution": "direct-range"
         },
         {
-          "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-          "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.R.DedekindNegationCandidate001.qNeg_injective",
           "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
           "source_resolution": "direct-range"
@@ -11129,11 +11055,6 @@
           "name": "BOMA.R.DedekindProbe001.principalCut._proof_2",
           "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
           "source_resolution": "generated-prefix"
-        },
-        {
-          "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-          "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-          "source_resolution": "direct-range"
         },
         {
           "name": "BOMA.R.DedekindRationalDensity001.principal_cut_between_strict_cuts",
@@ -14022,11 +13943,6 @@
           "source_resolution": "direct-range"
         },
         {
-          "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
-          "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
-          "source_resolution": "direct-range"
-        },
-        {
           "name": "BOMA.R.DedekindRationalDensity001.principal_cut_between_strict_cuts",
           "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
           "source_resolution": "direct-range"
@@ -14566,45 +14482,6 @@
         "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
         "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonpos",
         "congrFun'"
-      ],
-      "residual": false
-    },
-    {
-      "name": "dite",
-      "kind": "definition",
-      "module": "Init.Prelude",
-      "classification": "TRUSTED_METATHEORY",
-      "policy_source": "module_default",
-      "trusted_base_refs": [
-        "TB-META-001",
-        "TB-META-002",
-        "TB-META-003"
-      ],
-      "refs": [],
-      "reason": null,
-      "direct_consumers": [
-        {
-          "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-          "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-          "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-          "source_resolution": "direct-range"
-        },
-        {
-          "name": "BOMA.R.Gateway001.qlt_trichotomy",
-          "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
-          "source_resolution": "direct-range"
-        }
-      ],
-      "out_of_scope_consumers": [],
-      "shortest_target_path": [
-        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
-        "BOMA.R.DedekindQuotient001.rOfQ_order",
-        "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-        "dite"
       ],
       "residual": false
     },

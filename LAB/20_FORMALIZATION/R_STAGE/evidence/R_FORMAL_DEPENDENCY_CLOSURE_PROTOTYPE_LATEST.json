@@ -196,263 +196,263 @@
     {
       "path": "LAB/payloads/lean/QStage/QOrderCore.lean",
       "start_line": 2909,
-      "end_line": 3094
+      "end_line": 3104
     },
     {
       "path": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-      "start_line": 3097,
-      "end_line": 3275
+      "start_line": 3107,
+      "end_line": 3303
     },
     {
       "path": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
-      "start_line": 3278,
-      "end_line": 3379
+      "start_line": 3306,
+      "end_line": 3407
     },
     {
       "path": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
-      "start_line": 3382,
-      "end_line": 3432
+      "start_line": 3410,
+      "end_line": 3462
     },
     {
       "path": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
-      "start_line": 3435,
-      "end_line": 3593
+      "start_line": 3465,
+      "end_line": 3623
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
-      "start_line": 3596,
-      "end_line": 3631
+      "start_line": 3626,
+      "end_line": 3661
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
-      "start_line": 3634,
-      "end_line": 3726
+      "start_line": 3664,
+      "end_line": 3752
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean",
-      "start_line": 3729,
-      "end_line": 3816
+      "start_line": 3755,
+      "end_line": 3842
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
-      "start_line": 3819,
-      "end_line": 3890
+      "start_line": 3845,
+      "end_line": 3920
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
-      "start_line": 3893,
-      "end_line": 3954
+      "start_line": 3923,
+      "end_line": 3984
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
-      "start_line": 3957,
-      "end_line": 3991
+      "start_line": 3987,
+      "end_line": 4021
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
-      "start_line": 3994,
-      "end_line": 4103
+      "start_line": 4024,
+      "end_line": 4133
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean",
-      "start_line": 4106,
-      "end_line": 4216
+      "start_line": 4136,
+      "end_line": 4246
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
-      "start_line": 4219,
-      "end_line": 4351
+      "start_line": 4249,
+      "end_line": 4381
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
-      "start_line": 4354,
-      "end_line": 4419
+      "start_line": 4384,
+      "end_line": 4449
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
-      "start_line": 4422,
-      "end_line": 4540
+      "start_line": 4452,
+      "end_line": 4568
     },
     {
       "path": "LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean",
-      "start_line": 4543,
-      "end_line": 4606
+      "start_line": 4571,
+      "end_line": 4634
     },
     {
       "path": "LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean",
-      "start_line": 4609,
-      "end_line": 4648
+      "start_line": 4637,
+      "end_line": 4676
     },
     {
       "path": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
-      "start_line": 4651,
-      "end_line": 4718
+      "start_line": 4679,
+      "end_line": 4746
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
-      "start_line": 4721,
-      "end_line": 4759
+      "start_line": 4749,
+      "end_line": 4787
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindCutBracketApprox.lean",
-      "start_line": 4762,
-      "end_line": 4810
+      "start_line": 4790,
+      "end_line": 4838
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
-      "start_line": 4813,
-      "end_line": 4948
+      "start_line": 4841,
+      "end_line": 4976
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean",
-      "start_line": 4951,
-      "end_line": 5021
+      "start_line": 4979,
+      "end_line": 5049
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
-      "start_line": 5024,
-      "end_line": 5135
+      "start_line": 5052,
+      "end_line": 5163
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
-      "start_line": 5138,
-      "end_line": 5296
+      "start_line": 5166,
+      "end_line": 5324
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
-      "start_line": 5299,
-      "end_line": 5474
+      "start_line": 5327,
+      "end_line": 5502
     },
     {
       "path": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
-      "start_line": 5477,
-      "end_line": 5663
+      "start_line": 5505,
+      "end_line": 5691
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean",
-      "start_line": 5666,
-      "end_line": 5763
+      "start_line": 5694,
+      "end_line": 5791
     },
     {
       "path": "LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean",
-      "start_line": 5766,
-      "end_line": 5804
+      "start_line": 5794,
+      "end_line": 5832
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
-      "start_line": 5807,
-      "end_line": 5928
+      "start_line": 5835,
+      "end_line": 5956
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalEmbedding.lean",
-      "start_line": 5931,
-      "end_line": 6059
+      "start_line": 5959,
+      "end_line": 6087
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindAnchoredCutBracket.lean",
-      "start_line": 6062,
-      "end_line": 6115
+      "start_line": 6090,
+      "end_line": 6143
     },
     {
       "path": "LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean",
-      "start_line": 6118,
-      "end_line": 6233
+      "start_line": 6146,
+      "end_line": 6261
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveInverseProduct004.lean",
-      "start_line": 6236,
-      "end_line": 6339
+      "start_line": 6264,
+      "end_line": 6367
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
-      "start_line": 6342,
-      "end_line": 6409
+      "start_line": 6370,
+      "end_line": 6437
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean",
-      "start_line": 6412,
-      "end_line": 6611
+      "start_line": 6440,
+      "end_line": 6639
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
-      "start_line": 6614,
-      "end_line": 6842
+      "start_line": 6642,
+      "end_line": 6870
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
-      "start_line": 6845,
-      "end_line": 7103
+      "start_line": 6873,
+      "end_line": 7131
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
-      "start_line": 7106,
-      "end_line": 7223
+      "start_line": 7134,
+      "end_line": 7251
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
-      "start_line": 7226,
-      "end_line": 7355
+      "start_line": 7254,
+      "end_line": 7383
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean",
-      "start_line": 7358,
-      "end_line": 7574
+      "start_line": 7386,
+      "end_line": 7602
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
-      "start_line": 7577,
-      "end_line": 7801
+      "start_line": 7605,
+      "end_line": 7829
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
-      "start_line": 7804,
-      "end_line": 7917
+      "start_line": 7832,
+      "end_line": 7945
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean",
-      "start_line": 7920,
-      "end_line": 8002
+      "start_line": 7948,
+      "end_line": 8030
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
-      "start_line": 8005,
-      "end_line": 8077
+      "start_line": 8033,
+      "end_line": 8105
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
-      "start_line": 8080,
-      "end_line": 8125
+      "start_line": 8108,
+      "end_line": 8153
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
-      "start_line": 8128,
-      "end_line": 8241
+      "start_line": 8156,
+      "end_line": 8269
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
-      "start_line": 8244,
-      "end_line": 8343
+      "start_line": 8272,
+      "end_line": 8371
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
-      "start_line": 8346,
-      "end_line": 8461
+      "start_line": 8374,
+      "end_line": 8489
     },
     {
       "path": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
-      "start_line": 8464,
-      "end_line": 8539
+      "start_line": 8492,
+      "end_line": 8567
     },
     {
       "path": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
-      "start_line": 8542,
-      "end_line": 8674
+      "start_line": 8570,
+      "end_line": 8702
     }
   ],
   "counts": {
     "internal": 609,
-    "external_boundary": 81,
-    "dependency_edges": 7899,
+    "external_boundary": 79,
+    "dependency_edges": 7893,
     "unresolved": 0,
     "raw_unmapped_internal_ranges": 67,
     "generated_source_inferences": 67,
@@ -1988,7 +1988,7 @@
       "name": "BOMA.Q.Order001.qOfZ_order",
       "kind": "theorem",
       "start_line": 3086,
-      "end_line": 3092,
+      "end_line": 3102,
       "source": "LAB/payloads/lean/QStage/QOrderCore.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2104,8 +2104,8 @@
     {
       "name": "BOMA.Q.OrderedField001.QPositive",
       "kind": "definition",
-      "start_line": 3355,
-      "end_line": 3357,
+      "start_line": 3383,
+      "end_line": 3385,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2113,8 +2113,8 @@
     {
       "name": "BOMA.Q.OrderedField001.inverse_of_positive_is_positive",
       "kind": "theorem",
-      "start_line": 3359,
-      "end_line": 3377,
+      "start_line": 3387,
+      "end_line": 3405,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2122,8 +2122,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qAdd_exchange",
       "kind": "theorem",
-      "start_line": 3129,
-      "end_line": 3137,
+      "start_line": 3139,
+      "end_line": 3147,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2131,8 +2131,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qAdd_inverse_unique",
       "kind": "theorem",
-      "start_line": 3121,
-      "end_line": 3127,
+      "start_line": 3131,
+      "end_line": 3137,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2140,8 +2140,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qAdd_left_cancel",
       "kind": "theorem",
-      "start_line": 3108,
-      "end_line": 3119,
+      "start_line": 3118,
+      "end_line": 3129,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2149,8 +2149,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qMul_neg_left",
       "kind": "theorem",
-      "start_line": 3288,
-      "end_line": 3297,
+      "start_line": 3316,
+      "end_line": 3325,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2158,41 +2158,14 @@
     {
       "name": "BOMA.Q.OrderedField001.qNeg_add",
       "kind": "theorem",
-      "start_line": 3139,
-      "end_line": 3152,
+      "start_line": 3149,
+      "end_line": 3162,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
     },
     {
       "name": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-      "kind": "theorem",
-      "start_line": 3178,
-      "end_line": 3186,
-      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
-      "name": "BOMA.Q.OrderedField001.q_difference_translate",
-      "kind": "theorem",
-      "start_line": 3208,
-      "end_line": 3219,
-      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
-      "name": "BOMA.Q.OrderedField001.qadd_mono_right",
-      "kind": "theorem",
-      "start_line": 3221,
-      "end_line": 3227,
-      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
-      "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
       "kind": "theorem",
       "start_line": 3188,
       "end_line": 3206,
@@ -2201,10 +2174,37 @@
       "source_anchor": null
     },
     {
+      "name": "BOMA.Q.OrderedField001.q_difference_translate",
+      "kind": "theorem",
+      "start_line": 3236,
+      "end_line": 3247,
+      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qadd_mono_right",
+      "kind": "theorem",
+      "start_line": 3249,
+      "end_line": 3255,
+      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+      "kind": "theorem",
+      "start_line": 3208,
+      "end_line": 3234,
+      "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
       "name": "BOMA.Q.OrderedField001.qmul_mono_left_nonneg",
       "kind": "theorem",
-      "start_line": 3333,
-      "end_line": 3338,
+      "start_line": 3361,
+      "end_line": 3366,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2212,8 +2212,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qmul_mono_right_nonneg",
       "kind": "theorem",
-      "start_line": 3314,
-      "end_line": 3331,
+      "start_line": 3342,
+      "end_line": 3359,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2221,8 +2221,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qmul_nonneg",
       "kind": "theorem",
-      "start_line": 3299,
-      "end_line": 3312,
+      "start_line": 3327,
+      "end_line": 3340,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2230,8 +2230,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qneg_reverses",
       "kind": "theorem",
-      "start_line": 3252,
-      "end_line": 3273,
+      "start_line": 3280,
+      "end_line": 3301,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2239,8 +2239,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qone_ne_zero",
       "kind": "theorem",
-      "start_line": 3348,
-      "end_line": 3353,
+      "start_line": 3376,
+      "end_line": 3381,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2248,8 +2248,8 @@
     {
       "name": "BOMA.Q.OrderedField001.qzero_le_one",
       "kind": "theorem",
-      "start_line": 3340,
-      "end_line": 3346,
+      "start_line": 3368,
+      "end_line": 3374,
       "source": "LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2257,8 +2257,8 @@
     {
       "name": "BOMA.Q.OrderedField001.zle_iff_zero_le_difference",
       "kind": "theorem",
-      "start_line": 3154,
-      "end_line": 3176,
+      "start_line": 3164,
+      "end_line": 3186,
       "source": "LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2527,8 +2527,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.cutAdd",
       "kind": "definition",
-      "start_line": 4037,
-      "end_line": 4075,
+      "start_line": 4067,
+      "end_line": 4105,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2572,8 +2572,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.cutAdd_respects",
       "kind": "theorem",
-      "start_line": 4077,
-      "end_line": 4088,
+      "start_line": 4107,
+      "end_line": 4118,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2581,8 +2581,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.qadd_mono",
       "kind": "theorem",
-      "start_line": 4026,
-      "end_line": 4035,
+      "start_line": 4056,
+      "end_line": 4065,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2590,8 +2590,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.qle_lt_trans",
       "kind": "theorem",
-      "start_line": 4004,
-      "end_line": 4013,
+      "start_line": 4034,
+      "end_line": 4043,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2599,8 +2599,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.qlt_le_trans",
       "kind": "theorem",
-      "start_line": 4015,
-      "end_line": 4024,
+      "start_line": 4045,
+      "end_line": 4054,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2608,8 +2608,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.rAdd",
       "kind": "definition",
-      "start_line": 4090,
-      "end_line": 4094,
+      "start_line": 4120,
+      "end_line": 4124,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2626,8 +2626,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.rOne",
       "kind": "definition",
-      "start_line": 4101,
-      "end_line": 4101,
+      "start_line": 4131,
+      "end_line": 4131,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2635,8 +2635,8 @@
     {
       "name": "BOMA.R.DedekindAddition001.rZero",
       "kind": "definition",
-      "start_line": 4099,
-      "end_line": 4100,
+      "start_line": 4129,
+      "end_line": 4130,
       "source": "LAB/payloads/lean/RStage/RDedekindAddition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2644,8 +2644,8 @@
     {
       "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_add_back_left",
       "kind": "theorem",
-      "start_line": 4163,
-      "end_line": 4176,
+      "start_line": 4193,
+      "end_line": 4206,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2653,8 +2653,8 @@
     {
       "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_add_back_right",
       "kind": "theorem",
-      "start_line": 4131,
-      "end_line": 4143,
+      "start_line": 4161,
+      "end_line": 4173,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2662,8 +2662,8 @@
     {
       "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_sub_left_of_lt_add",
       "kind": "theorem",
-      "start_line": 4145,
-      "end_line": 4161,
+      "start_line": 4175,
+      "end_line": 4191,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2671,8 +2671,8 @@
     {
       "name": "BOMA.R.DedekindAdditionEmbedding001.qlt_sub_right_of_lt_add",
       "kind": "theorem",
-      "start_line": 4117,
-      "end_line": 4129,
+      "start_line": 4147,
+      "end_line": 4159,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2680,8 +2680,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_assoc_equiv",
       "kind": "theorem",
-      "start_line": 4279,
-      "end_line": 4315,
+      "start_line": 4309,
+      "end_line": 4345,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2689,8 +2689,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_comm_equiv",
       "kind": "theorem",
-      "start_line": 4230,
-      "end_line": 4244,
+      "start_line": 4260,
+      "end_line": 4274,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2698,8 +2698,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.cutAdd_zero_left_equiv",
       "kind": "theorem",
-      "start_line": 4246,
-      "end_line": 4270,
+      "start_line": 4276,
+      "end_line": 4300,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2707,8 +2707,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
       "kind": "theorem",
-      "start_line": 4326,
-      "end_line": 4336,
+      "start_line": 4356,
+      "end_line": 4366,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2716,8 +2716,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
       "kind": "theorem",
-      "start_line": 4317,
-      "end_line": 4324,
+      "start_line": 4347,
+      "end_line": 4354,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2725,8 +2725,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
       "kind": "theorem",
-      "start_line": 4338,
-      "end_line": 4343,
+      "start_line": 4368,
+      "end_line": 4373,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2734,8 +2734,8 @@
     {
       "name": "BOMA.R.DedekindAdditionLaws001.rAdd_zero_right",
       "kind": "theorem",
-      "start_line": 4345,
-      "end_line": 4349,
+      "start_line": 4375,
+      "end_line": 4379,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2743,8 +2743,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_exchange",
       "kind": "theorem",
-      "start_line": 4960,
-      "end_line": 4969,
+      "start_line": 4988,
+      "end_line": 4997,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2752,8 +2752,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_neg_sum_cancel_left",
       "kind": "theorem",
-      "start_line": 5004,
-      "end_line": 5013,
+      "start_line": 5032,
+      "end_line": 5041,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2761,8 +2761,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveDerived001.rAdd_sub_right",
       "kind": "theorem",
-      "start_line": 4986,
-      "end_line": 4993,
+      "start_line": 5014,
+      "end_line": 5021,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2770,8 +2770,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveDerived001.rNeg_add",
       "kind": "theorem",
-      "start_line": 4971,
-      "end_line": 4984,
+      "start_line": 4999,
+      "end_line": 5012,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2779,8 +2779,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveInverse001.cutAdd_neg_equiv_zero",
       "kind": "theorem",
-      "start_line": 4895,
-      "end_line": 4902,
+      "start_line": 4923,
+      "end_line": 4930,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2788,8 +2788,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveInverse001.cutAdd_neg_to_zero",
       "kind": "theorem",
-      "start_line": 4834,
-      "end_line": 4853,
+      "start_line": 4862,
+      "end_line": 4881,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2797,14 +2797,41 @@
     {
       "name": "BOMA.R.DedekindAdditiveInverse001.qNeg_zero",
       "kind": "theorem",
-      "start_line": 4828,
-      "end_line": 4832,
+      "start_line": 4856,
+      "end_line": 4860,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
     },
     {
       "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_inverse_unique",
+      "kind": "theorem",
+      "start_line": 4960,
+      "end_line": 4966,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_left_cancel",
+      "kind": "theorem",
+      "start_line": 4947,
+      "end_line": 4958,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_left",
+      "kind": "theorem",
+      "start_line": 4940,
+      "end_line": 4945,
+      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
       "kind": "theorem",
       "start_line": 4932,
       "end_line": 4938,
@@ -2813,37 +2840,10 @@
       "source_anchor": null
     },
     {
-      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_left_cancel",
-      "kind": "theorem",
-      "start_line": 4919,
-      "end_line": 4930,
-      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
-      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_left",
-      "kind": "theorem",
-      "start_line": 4912,
-      "end_line": 4917,
-      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
-      "name": "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
-      "kind": "theorem",
-      "start_line": 4904,
-      "end_line": 4910,
-      "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
-      "source_resolution": "direct-range",
-      "source_anchor": null
-    },
-    {
       "name": "BOMA.R.DedekindAdditiveInverse001.rNeg_involutive",
       "kind": "theorem",
-      "start_line": 4940,
-      "end_line": 4946,
+      "start_line": 4968,
+      "end_line": 4974,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2851,8 +2851,8 @@
     {
       "name": "BOMA.R.DedekindAdditiveInverse001.zero_to_cutAdd_neg",
       "kind": "theorem",
-      "start_line": 4855,
-      "end_line": 4893,
+      "start_line": 4883,
+      "end_line": 4921,
       "source": "LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2860,8 +2860,8 @@
     {
       "name": "BOMA.R.DedekindAnchoredBracket001.cut_bracket_approx_anchored",
       "kind": "theorem",
-      "start_line": 6075,
-      "end_line": 6113,
+      "start_line": 6103,
+      "end_line": 6141,
       "source": "LAB/payloads/lean/RStage/RDedekindAnchoredCutBracket.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2869,8 +2869,8 @@
     {
       "name": "BOMA.R.DedekindArchimedean001.cut_strict_below_natural_principal",
       "kind": "theorem",
-      "start_line": 8493,
-      "end_line": 8527,
+      "start_line": 8521,
+      "end_line": 8555,
       "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2878,8 +2878,8 @@
     {
       "name": "BOMA.R.DedekindArchimedean001.qlt_le_trans_arch",
       "kind": "theorem",
-      "start_line": 8480,
-      "end_line": 8491,
+      "start_line": 8508,
+      "end_line": 8519,
       "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2887,8 +2887,8 @@
     {
       "name": "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper",
       "kind": "theorem",
-      "start_line": 8529,
-      "end_line": 8537,
+      "start_line": 8557,
+      "end_line": 8565,
       "source": "LAB/payloads/lean/RStage/RDedekindArchimedean.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2896,8 +2896,8 @@
     {
       "name": "BOMA.R.DedekindCompleteness001.RUpperBound",
       "kind": "definition",
-      "start_line": 8251,
-      "end_line": 8253,
+      "start_line": 8279,
+      "end_line": 8281,
       "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2905,8 +2905,8 @@
     {
       "name": "BOMA.R.DedekindCompleteness001.member_le_supFamily",
       "kind": "theorem",
-      "start_line": 8291,
-      "end_line": 8303,
+      "start_line": 8319,
+      "end_line": 8331,
       "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2914,8 +2914,8 @@
     {
       "name": "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists",
       "kind": "theorem",
-      "start_line": 8323,
-      "end_line": 8341,
+      "start_line": 8351,
+      "end_line": 8369,
       "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2923,8 +2923,8 @@
     {
       "name": "BOMA.R.DedekindCompleteness001.supCutFromFamily",
       "kind": "definition",
-      "start_line": 8255,
-      "end_line": 8289,
+      "start_line": 8283,
+      "end_line": 8317,
       "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2968,8 +2968,8 @@
     {
       "name": "BOMA.R.DedekindCompleteness001.supFamily_le_of_upper",
       "kind": "theorem",
-      "start_line": 8305,
-      "end_line": 8321,
+      "start_line": 8333,
+      "end_line": 8349,
       "source": "LAB/payloads/lean/RStage/RDedekindCompleteness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2977,8 +2977,8 @@
     {
       "name": "BOMA.R.DedekindCutBracket001.cut_bracket_approx",
       "kind": "theorem",
-      "start_line": 4773,
-      "end_line": 4808,
+      "start_line": 4801,
+      "end_line": 4836,
       "source": "LAB/payloads/lean/RStage/RDedekindCutBracketApprox.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2986,8 +2986,8 @@
     {
       "name": "BOMA.R.DedekindFiniteExit001.qGrid_first_exit",
       "kind": "theorem",
-      "start_line": 4731,
-      "end_line": 4757,
+      "start_line": 4759,
+      "end_line": 4785,
       "source": "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -2995,8 +2995,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.cutNeg",
       "kind": "definition",
-      "start_line": 4456,
-      "end_line": 4486,
+      "start_line": 4486,
+      "end_line": 4516,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3040,8 +3040,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
       "kind": "theorem",
-      "start_line": 4513,
-      "end_line": 4532,
+      "start_line": 4543,
+      "end_line": 4560,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3049,8 +3049,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.cutNeg_respects",
       "kind": "theorem",
-      "start_line": 4488,
-      "end_line": 4502,
+      "start_line": 4518,
+      "end_line": 4532,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3058,8 +3058,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.qNeg_injective",
       "kind": "theorem",
-      "start_line": 4441,
-      "end_line": 4446,
+      "start_line": 4471,
+      "end_line": 4476,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3067,8 +3067,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.qNeg_involutive",
       "kind": "theorem",
-      "start_line": 4433,
-      "end_line": 4439,
+      "start_line": 4463,
+      "end_line": 4469,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3076,8 +3076,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.qneg_strict_reverses",
       "kind": "theorem",
-      "start_line": 4448,
-      "end_line": 4454,
+      "start_line": 4478,
+      "end_line": 4484,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3085,8 +3085,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.rNeg",
       "kind": "definition",
-      "start_line": 4504,
-      "end_line": 4508,
+      "start_line": 4534,
+      "end_line": 4538,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3103,8 +3103,8 @@
     {
       "name": "BOMA.R.DedekindNegationCandidate001.rOfQ_neg",
       "kind": "theorem",
-      "start_line": 4534,
-      "end_line": 4538,
+      "start_line": 4562,
+      "end_line": 4566,
       "source": "LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3112,8 +3112,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope",
       "kind": "definition",
-      "start_line": 5328,
-      "end_line": 5406,
+      "start_line": 5356,
+      "end_line": 5434,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3157,8 +3157,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope_comm",
       "kind": "theorem",
-      "start_line": 5432,
-      "end_line": 5452,
+      "start_line": 5460,
+      "end_line": 5480,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3166,8 +3166,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.cutMulNonnegEnvelope_respects",
       "kind": "theorem",
-      "start_line": 5408,
-      "end_line": 5430,
+      "start_line": 5436,
+      "end_line": 5458,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3175,8 +3175,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.member_le_outside",
       "kind": "theorem",
-      "start_line": 5321,
-      "end_line": 5326,
+      "start_line": 5349,
+      "end_line": 5354,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3184,8 +3184,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.outside_posPart_nonneg",
       "kind": "theorem",
-      "start_line": 5312,
-      "end_line": 5319,
+      "start_line": 5340,
+      "end_line": 5347,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3193,8 +3193,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.rMulNonnegEnvelope",
       "kind": "definition",
-      "start_line": 5454,
-      "end_line": 5459,
+      "start_line": 5482,
+      "end_line": 5487,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3211,8 +3211,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMul001.rMulNonnegEnvelope_comm",
       "kind": "theorem",
-      "start_line": 5464,
-      "end_line": 5472,
+      "start_line": 5492,
+      "end_line": 5500,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3220,8 +3220,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.below_product_mem_kernel",
       "kind": "theorem",
-      "start_line": 6921,
-      "end_line": 6941,
+      "start_line": 6949,
+      "end_line": 6969,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3229,8 +3229,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cutAdd_nonneg",
       "kind": "theorem",
-      "start_line": 6913,
-      "end_line": 6919,
+      "start_line": 6941,
+      "end_line": 6947,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3238,8 +3238,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cutMulNonnegEnvelope_add_right_of_nonneg",
       "kind": "theorem",
-      "start_line": 6970,
-      "end_line": 7077,
+      "start_line": 6998,
+      "end_line": 7105,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3247,8 +3247,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cut_le_add_of_zero_le_left",
       "kind": "theorem",
-      "start_line": 6887,
-      "end_line": 6901,
+      "start_line": 6915,
+      "end_line": 6929,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3256,8 +3256,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.cut_le_add_of_zero_le_right",
       "kind": "theorem",
-      "start_line": 6903,
-      "end_line": 6911,
+      "start_line": 6931,
+      "end_line": 6939,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3265,8 +3265,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.q_sum_inner_approx",
       "kind": "theorem",
-      "start_line": 6874,
-      "end_line": 6885,
+      "start_line": 6902,
+      "end_line": 6913,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3274,8 +3274,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qadd_lt_mono",
       "kind": "theorem",
-      "start_line": 6863,
-      "end_line": 6872,
+      "start_line": 6891,
+      "end_line": 6900,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3283,8 +3283,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qadd_lt_zero_of_neg",
       "kind": "theorem",
-      "start_line": 6943,
-      "end_line": 6949,
+      "start_line": 6971,
+      "end_line": 6977,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3292,8 +3292,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.qzero_lt_add_of_pos",
       "kind": "theorem",
-      "start_line": 6951,
-      "end_line": 6957,
+      "start_line": 6979,
+      "end_line": 6985,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3301,8 +3301,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.rMulNonnegEnvelope_add_right_of_nonneg",
       "kind": "theorem",
-      "start_line": 7079,
-      "end_line": 7101,
+      "start_line": 7107,
+      "end_line": 7129,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3310,8 +3310,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulDistributivity001.sum_member_cutAdd",
       "kind": "theorem",
-      "start_line": 6959,
-      "end_line": 6968,
+      "start_line": 6987,
+      "end_line": 6996,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3319,8 +3319,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_assoc",
       "kind": "theorem",
-      "start_line": 6757,
-      "end_line": 6825,
+      "start_line": 6785,
+      "end_line": 6853,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3328,8 +3328,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_one_left",
       "kind": "theorem",
-      "start_line": 6695,
-      "end_line": 6732,
+      "start_line": 6723,
+      "end_line": 6760,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3337,8 +3337,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutMulNonnegEnvelope_zero_left",
       "kind": "theorem",
-      "start_line": 6642,
-      "end_line": 6659,
+      "start_line": 6670,
+      "end_line": 6687,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3346,8 +3346,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutPosPart_mulNonneg",
       "kind": "theorem",
-      "start_line": 6635,
-      "end_line": 6640,
+      "start_line": 6663,
+      "end_line": 6668,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3355,8 +3355,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.cutZero_le_mulNonneg",
       "kind": "theorem",
-      "start_line": 6629,
-      "end_line": 6633,
+      "start_line": 6657,
+      "end_line": 6661,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3364,8 +3364,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.qlt_zero_or_nonneg",
       "kind": "theorem",
-      "start_line": 6684,
-      "end_line": 6693,
+      "start_line": 6712,
+      "end_line": 6721,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3373,8 +3373,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_assoc",
       "kind": "theorem",
-      "start_line": 6827,
-      "end_line": 6840,
+      "start_line": 6855,
+      "end_line": 6868,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3382,8 +3382,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_one_left",
       "kind": "theorem",
-      "start_line": 6743,
-      "end_line": 6750,
+      "start_line": 6771,
+      "end_line": 6778,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3391,8 +3391,8 @@
     {
       "name": "BOMA.R.DedekindNonnegativeMulLaws001.rMulNonnegEnvelope_zero_left",
       "kind": "theorem",
-      "start_line": 6670,
-      "end_line": 6677,
+      "start_line": 6698,
+      "end_line": 6705,
       "source": "LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3400,8 +3400,8 @@
     {
       "name": "BOMA.R.DedekindNonzeroInverse004.rNeg_ne_zero",
       "kind": "theorem",
-      "start_line": 8022,
-      "end_line": 8030,
+      "start_line": 8050,
+      "end_line": 8058,
       "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3409,8 +3409,8 @@
     {
       "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero",
       "kind": "theorem",
-      "start_line": 8032,
-      "end_line": 8050,
+      "start_line": 8060,
+      "end_line": 8078,
       "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3418,8 +3418,8 @@
     {
       "name": "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
       "kind": "theorem",
-      "start_line": 8061,
-      "end_line": 8075,
+      "start_line": 8089,
+      "end_line": 8103,
       "source": "LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3427,8 +3427,8 @@
     {
       "name": "BOMA.R.DedekindOrderAdditive001.cutAdd_mono",
       "kind": "theorem",
-      "start_line": 4363,
-      "end_line": 4371,
+      "start_line": 4393,
+      "end_line": 4401,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3436,8 +3436,8 @@
     {
       "name": "BOMA.R.DedekindOrderAdditive001.rAdd_mono",
       "kind": "theorem",
-      "start_line": 4373,
-      "end_line": 4385,
+      "start_line": 4403,
+      "end_line": 4415,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3445,8 +3445,8 @@
     {
       "name": "BOMA.R.DedekindOrderAdditive001.rAdd_mono_right",
       "kind": "theorem",
-      "start_line": 4387,
-      "end_line": 4391,
+      "start_line": 4417,
+      "end_line": 4421,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3454,8 +3454,8 @@
     {
       "name": "BOMA.R.DedekindOrderAdditive001.rAdd_nonneg",
       "kind": "theorem",
-      "start_line": 4399,
-      "end_line": 4407,
+      "start_line": 4429,
+      "end_line": 4437,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3463,8 +3463,8 @@
     {
       "name": "BOMA.R.DedekindOrderAdditive001.rAdd_nonpos",
       "kind": "theorem",
-      "start_line": 4409,
-      "end_line": 4417,
+      "start_line": 4439,
+      "end_line": 4447,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3472,8 +3472,8 @@
     {
       "name": "BOMA.R.DedekindOrderClassical001.cutComparability_classical",
       "kind": "theorem",
-      "start_line": 3965,
-      "end_line": 3985,
+      "start_line": 3995,
+      "end_line": 4015,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3481,8 +3481,8 @@
     {
       "name": "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
       "kind": "theorem",
-      "start_line": 3987,
-      "end_line": 3989,
+      "start_line": 4017,
+      "end_line": 4019,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3490,8 +3490,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.CutComparability",
       "kind": "definition",
-      "start_line": 3938,
-      "end_line": 3940,
+      "start_line": 3968,
+      "end_line": 3970,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3499,8 +3499,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.cutLE_antisymm_equiv",
       "kind": "theorem",
-      "start_line": 3900,
-      "end_line": 3908,
+      "start_line": 3930,
+      "end_line": 3938,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3508,8 +3508,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.rLE_antisymm",
       "kind": "theorem",
-      "start_line": 3928,
-      "end_line": 3936,
+      "start_line": 3958,
+      "end_line": 3966,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3517,8 +3517,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.rLE_refl",
       "kind": "theorem",
-      "start_line": 3910,
-      "end_line": 3914,
+      "start_line": 3940,
+      "end_line": 3944,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3526,8 +3526,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.rLE_total_of_cutComparability",
       "kind": "theorem",
-      "start_line": 3942,
-      "end_line": 3952,
+      "start_line": 3972,
+      "end_line": 3982,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3535,8 +3535,8 @@
     {
       "name": "BOMA.R.DedekindOrderConstructive001.rLE_trans",
       "kind": "theorem",
-      "start_line": 3916,
-      "end_line": 3926,
+      "start_line": 3946,
+      "end_line": 3956,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3544,8 +3544,8 @@
     {
       "name": "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive",
       "kind": "theorem",
-      "start_line": 8223,
-      "end_line": 8239,
+      "start_line": 8251,
+      "end_line": 8267,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3553,8 +3553,8 @@
     {
       "name": "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
       "kind": "theorem",
-      "start_line": 8158,
-      "end_line": 8168,
+      "start_line": 8186,
+      "end_line": 8196,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3562,8 +3562,8 @@
     {
       "name": "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
       "kind": "theorem",
-      "start_line": 8176,
-      "end_line": 8201,
+      "start_line": 8204,
+      "end_line": 8229,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3571,8 +3571,8 @@
     {
       "name": "BOMA.R.DedekindOrderedFieldClosure001.rPositiveInvRel_strict_positive",
       "kind": "theorem",
-      "start_line": 8203,
-      "end_line": 8221,
+      "start_line": 8231,
+      "end_line": 8249,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3580,8 +3580,8 @@
     {
       "name": "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
       "kind": "theorem",
-      "start_line": 8150,
-      "end_line": 8156,
+      "start_line": 8178,
+      "end_line": 8184,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3589,8 +3589,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_mono_left_nonneg",
       "kind": "theorem",
-      "start_line": 7876,
-      "end_line": 7898,
+      "start_line": 7904,
+      "end_line": 7926,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3598,8 +3598,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_mono_right_nonneg",
       "kind": "theorem",
-      "start_line": 7900,
-      "end_line": 7907,
+      "start_line": 7928,
+      "end_line": 7935,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3607,8 +3607,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_neg_left",
       "kind": "theorem",
-      "start_line": 7866,
-      "end_line": 7874,
+      "start_line": 7894,
+      "end_line": 7902,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3616,8 +3616,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_neg_right",
       "kind": "theorem",
-      "start_line": 7854,
-      "end_line": 7864,
+      "start_line": 7882,
+      "end_line": 7892,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3625,8 +3625,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_nonneg",
       "kind": "theorem",
-      "start_line": 7845,
-      "end_line": 7852,
+      "start_line": 7873,
+      "end_line": 7880,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3634,8 +3634,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible",
       "kind": "theorem",
-      "start_line": 7909,
-      "end_line": 7915,
+      "start_line": 7937,
+      "end_line": 7943,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3643,8 +3643,8 @@
     {
       "name": "BOMA.R.DedekindOrderedRing001.rle_iff_nonneg_difference",
       "kind": "theorem",
-      "start_line": 7824,
-      "end_line": 7843,
+      "start_line": 7852,
+      "end_line": 7871,
       "source": "LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3652,8 +3652,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.cutNeg_le_zero_of_zero_le",
       "kind": "theorem",
-      "start_line": 5182,
-      "end_line": 5193,
+      "start_line": 5210,
+      "end_line": 5221,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3661,8 +3661,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.cutPosPart_of_nonpos",
       "kind": "theorem",
-      "start_line": 5157,
-      "end_line": 5168,
+      "start_line": 5185,
+      "end_line": 5196,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3670,8 +3670,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.cutZero_le_neg_of_le_zero",
       "kind": "theorem",
-      "start_line": 5195,
-      "end_line": 5214,
+      "start_line": 5223,
+      "end_line": 5242,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3679,8 +3679,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.outside_of_nonnegative_cut_is_nonneg",
       "kind": "theorem",
-      "start_line": 5170,
-      "end_line": 5180,
+      "start_line": 5198,
+      "end_line": 5208,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3688,8 +3688,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rNegPart_of_nonneg",
       "kind": "theorem",
-      "start_line": 5272,
-      "end_line": 5277,
+      "start_line": 5300,
+      "end_line": 5305,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3697,8 +3697,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rNegPart_of_nonpos",
       "kind": "theorem",
-      "start_line": 5279,
-      "end_line": 5284,
+      "start_line": 5307,
+      "end_line": 5312,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3706,8 +3706,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_nonneg_of_nonpos",
       "kind": "theorem",
-      "start_line": 5252,
-      "end_line": 5262,
+      "start_line": 5280,
+      "end_line": 5290,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3715,8 +3715,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_nonpos_of_nonneg",
       "kind": "theorem",
-      "start_line": 5240,
-      "end_line": 5250,
+      "start_line": 5268,
+      "end_line": 5278,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3724,8 +3724,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rNeg_zero",
       "kind": "theorem",
-      "start_line": 5264,
-      "end_line": 5270,
+      "start_line": 5292,
+      "end_line": 5298,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3733,8 +3733,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rPosNeg_decomposition",
       "kind": "theorem",
-      "start_line": 5286,
-      "end_line": 5294,
+      "start_line": 5314,
+      "end_line": 5322,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3742,8 +3742,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rPosPart_of_nonneg",
       "kind": "theorem",
-      "start_line": 5216,
-      "end_line": 5226,
+      "start_line": 5244,
+      "end_line": 5254,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3751,8 +3751,8 @@
     {
       "name": "BOMA.R.DedekindPositiveDecomposition001.rPosPart_of_nonpos",
       "kind": "theorem",
-      "start_line": 5228,
-      "end_line": 5238,
+      "start_line": 5256,
+      "end_line": 5266,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3760,8 +3760,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseProduct004.cutMul_recipPos_equiv_one",
       "kind": "theorem",
-      "start_line": 6300,
-      "end_line": 6337,
+      "start_line": 6328,
+      "end_line": 6365,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseProduct004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3769,8 +3769,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseProduct004.principal_one_mem_mul_recip_of_nonneg",
       "kind": "theorem",
-      "start_line": 6253,
-      "end_line": 6298,
+      "start_line": 6281,
+      "end_line": 6326,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseProduct004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3778,8 +3778,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseRelation003.RPositiveInvRel",
       "kind": "definition",
-      "start_line": 7939,
-      "end_line": 7942,
+      "start_line": 7967,
+      "end_line": 7970,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3787,8 +3787,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseRelation003.cut_zero_le_recipPos",
       "kind": "theorem",
-      "start_line": 7944,
-      "end_line": 7948,
+      "start_line": 7972,
+      "end_line": 7976,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3796,8 +3796,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseRelation003.rPositiveInvRel_exists",
       "kind": "theorem",
-      "start_line": 7950,
-      "end_line": 7956,
+      "start_line": 7978,
+      "end_line": 7984,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3805,8 +3805,8 @@
     {
       "name": "BOMA.R.DedekindPositiveInverseRelation003.rPositiveInvRel_product_one",
       "kind": "theorem",
-      "start_line": 7974,
-      "end_line": 7990,
+      "start_line": 8002,
+      "end_line": 8018,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3814,8 +3814,8 @@
     {
       "name": "BOMA.R.DedekindPositivePart001.cutPosPart",
       "kind": "definition",
-      "start_line": 5035,
-      "end_line": 5067,
+      "start_line": 5063,
+      "end_line": 5095,
       "source": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3859,8 +3859,8 @@
     {
       "name": "BOMA.R.DedekindPositivePart001.cutPosPart_of_nonneg",
       "kind": "theorem",
-      "start_line": 5103,
-      "end_line": 5115,
+      "start_line": 5131,
+      "end_line": 5143,
       "source": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3868,8 +3868,8 @@
     {
       "name": "BOMA.R.DedekindPositivePart001.cutPosPart_respects",
       "kind": "theorem",
-      "start_line": 5069,
-      "end_line": 5081,
+      "start_line": 5097,
+      "end_line": 5109,
       "source": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3877,8 +3877,8 @@
     {
       "name": "BOMA.R.DedekindPositivePart001.rNegPart",
       "kind": "definition",
-      "start_line": 5132,
-      "end_line": 5133,
+      "start_line": 5160,
+      "end_line": 5161,
       "source": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3886,8 +3886,8 @@
     {
       "name": "BOMA.R.DedekindPositivePart001.rPosPart",
       "kind": "definition",
-      "start_line": 5083,
-      "end_line": 5087,
+      "start_line": 5111,
+      "end_line": 5115,
       "source": "LAB/payloads/lean/RStage/RDedekindPositivePart.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3904,8 +3904,8 @@
     {
       "name": "BOMA.R.DedekindPositiveReciprocal001.CutHasPositive",
       "kind": "definition",
-      "start_line": 5834,
-      "end_line": 5836,
+      "start_line": 5862,
+      "end_line": 5864,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3913,8 +3913,8 @@
     {
       "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos",
       "kind": "definition",
-      "start_line": 5852,
-      "end_line": 5894,
+      "start_line": 5880,
+      "end_line": 5922,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3958,8 +3958,8 @@
     {
       "name": "BOMA.R.DedekindPositiveReciprocal001.cutRecipPos_proof_independent",
       "kind": "theorem",
-      "start_line": 5896,
-      "end_line": 5902,
+      "start_line": 5924,
+      "end_line": 5930,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3967,8 +3967,8 @@
     {
       "name": "BOMA.R.DedekindPositiveReciprocal001.cut_inside_lt_outside",
       "kind": "theorem",
-      "start_line": 5838,
-      "end_line": 5850,
+      "start_line": 5866,
+      "end_line": 5878,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3976,8 +3976,8 @@
     {
       "name": "BOMA.R.DedekindPositiveReciprocal001.qle_lt_trans_recip",
       "kind": "theorem",
-      "start_line": 5822,
-      "end_line": 5832,
+      "start_line": 5850,
+      "end_line": 5860,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3985,8 +3985,8 @@
     {
       "name": "BOMA.R.DedekindPositiveRepresentative002.cut_has_positive_of_nonneg_ne_zero",
       "kind": "theorem",
-      "start_line": 6363,
-      "end_line": 6385,
+      "start_line": 6391,
+      "end_line": 6413,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -3994,8 +3994,8 @@
     {
       "name": "BOMA.R.DedekindPositiveRepresentative002.cut_zero_le_of_has_positive",
       "kind": "theorem",
-      "start_line": 6354,
-      "end_line": 6361,
+      "start_line": 6382,
+      "end_line": 6389,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4003,8 +4003,8 @@
     {
       "name": "BOMA.R.DedekindPositiveRepresentative002.r_nonneg_nonzero_positive_rep",
       "kind": "theorem",
-      "start_line": 6387,
-      "end_line": 6407,
+      "start_line": 6415,
+      "end_line": 6435,
       "source": "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4012,8 +4012,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.CutEquiv",
       "kind": "definition",
-      "start_line": 3612,
-      "end_line": 3616,
+      "start_line": 3642,
+      "end_line": 3646,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4021,8 +4021,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.CutLE",
       "kind": "definition",
-      "start_line": 3734,
-      "end_line": 3736,
+      "start_line": 3760,
+      "end_line": 3762,
       "source": "LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4030,8 +4030,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut",
       "kind": "inductive",
-      "start_line": 3603,
-      "end_line": 3610,
+      "start_line": 3633,
+      "end_line": 3640,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4039,8 +4039,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.downward",
       "kind": "theorem",
-      "start_line": 3609,
-      "end_line": 3609,
+      "start_line": 3639,
+      "end_line": 3639,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4048,8 +4048,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.lower",
       "kind": "definition",
-      "start_line": 3606,
-      "end_line": 3606,
+      "start_line": 3636,
+      "end_line": 3636,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4057,8 +4057,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.mk",
       "kind": "constructor",
-      "start_line": 3605,
-      "end_line": 3605,
+      "start_line": 3635,
+      "end_line": 3635,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4066,8 +4066,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.nonempty",
       "kind": "theorem",
-      "start_line": 3607,
-      "end_line": 3607,
+      "start_line": 3637,
+      "end_line": 3637,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4075,8 +4075,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.proper",
       "kind": "theorem",
-      "start_line": 3608,
-      "end_line": 3608,
+      "start_line": 3638,
+      "end_line": 3638,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4084,8 +4084,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.LowerCut.rounded",
       "kind": "theorem",
-      "start_line": 3610,
-      "end_line": 3610,
+      "start_line": 3640,
+      "end_line": 3640,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4093,8 +4093,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.PrincipalLE",
       "kind": "definition",
-      "start_line": 3695,
-      "end_line": 3697,
+      "start_line": 3725,
+      "end_line": 3727,
       "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4102,8 +4102,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.cutEquiv_refl",
       "kind": "theorem",
-      "start_line": 3618,
-      "end_line": 3620,
+      "start_line": 3648,
+      "end_line": 3650,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4111,8 +4111,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.cutEquiv_symm",
       "kind": "theorem",
-      "start_line": 3622,
-      "end_line": 3624,
+      "start_line": 3652,
+      "end_line": 3654,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4120,8 +4120,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.cutEquiv_trans",
       "kind": "theorem",
-      "start_line": 3626,
-      "end_line": 3629,
+      "start_line": 3656,
+      "end_line": 3659,
       "source": "LAB/payloads/lean/RStage/RDedekindProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4129,8 +4129,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.cutLE_refl",
       "kind": "theorem",
-      "start_line": 3738,
-      "end_line": 3740,
+      "start_line": 3764,
+      "end_line": 3766,
       "source": "LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4138,8 +4138,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.cutLE_trans",
       "kind": "theorem",
-      "start_line": 3742,
-      "end_line": 3745,
+      "start_line": 3768,
+      "end_line": 3771,
       "source": "LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4147,8 +4147,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.principalCut",
       "kind": "definition",
-      "start_line": 3657,
-      "end_line": 3672,
+      "start_line": 3687,
+      "end_line": 3702,
       "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4192,8 +4192,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.principalCut_reflects",
       "kind": "theorem",
-      "start_line": 3680,
-      "end_line": 3693,
+      "start_line": 3710,
+      "end_line": 3723,
       "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4201,8 +4201,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
       "kind": "theorem",
-      "start_line": 3699,
-      "end_line": 3724,
+      "start_line": 3729,
+      "end_line": 3750,
       "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4210,8 +4210,8 @@
     {
       "name": "BOMA.R.DedekindProbe001.q_minus_one_lt",
       "kind": "theorem",
-      "start_line": 3642,
-      "end_line": 3655,
+      "start_line": 3672,
+      "end_line": 3685,
       "source": "LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4219,8 +4219,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.RBOMA",
       "kind": "definition",
-      "start_line": 3831,
-      "end_line": 3832,
+      "start_line": 3857,
+      "end_line": 3858,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4228,8 +4228,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.cutLE_respects",
       "kind": "theorem",
-      "start_line": 3856,
-      "end_line": 3863,
+      "start_line": 3882,
+      "end_line": 3889,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4237,8 +4237,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.cutSetoid",
       "kind": "definition",
-      "start_line": 3826,
-      "end_line": 3829,
+      "start_line": 3852,
+      "end_line": 3855,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4246,8 +4246,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rLE",
       "kind": "definition",
-      "start_line": 3865,
-      "end_line": 3869,
+      "start_line": 3891,
+      "end_line": 3895,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4255,8 +4255,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rLE_mk_iff",
       "kind": "theorem",
-      "start_line": 3871,
-      "end_line": 3880,
+      "start_line": 3897,
+      "end_line": 3906,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4264,8 +4264,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rOfQ",
       "kind": "definition",
-      "start_line": 3848,
-      "end_line": 3849,
+      "start_line": 3874,
+      "end_line": 3875,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4273,8 +4273,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rOfQ_injective",
       "kind": "theorem",
-      "start_line": 3851,
-      "end_line": 3854,
+      "start_line": 3877,
+      "end_line": 3880,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4282,8 +4282,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rOfQ_order",
       "kind": "theorem",
-      "start_line": 3882,
-      "end_line": 3888,
+      "start_line": 3908,
+      "end_line": 3918,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4291,8 +4291,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rmk",
       "kind": "definition",
-      "start_line": 3834,
-      "end_line": 3835,
+      "start_line": 3860,
+      "end_line": 3861,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4300,8 +4300,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rmk_eq_iff",
       "kind": "theorem",
-      "start_line": 3841,
-      "end_line": 3846,
+      "start_line": 3867,
+      "end_line": 3872,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4309,8 +4309,8 @@
     {
       "name": "BOMA.R.DedekindQuotient001.rmk_sound",
       "kind": "theorem",
-      "start_line": 3837,
-      "end_line": 3839,
+      "start_line": 3863,
+      "end_line": 3865,
       "source": "LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4318,8 +4318,8 @@
     {
       "name": "BOMA.R.DedekindRationalDensity001.principal_cut_between_strict_cuts",
       "kind": "theorem",
-      "start_line": 8378,
-      "end_line": 8421,
+      "start_line": 8406,
+      "end_line": 8449,
       "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4327,8 +4327,8 @@
     {
       "name": "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
       "kind": "theorem",
-      "start_line": 8423,
-      "end_line": 8459,
+      "start_line": 8451,
+      "end_line": 8487,
       "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4336,8 +4336,8 @@
     {
       "name": "BOMA.R.DedekindRationalDensity001.strict_cut_inclusion_witness",
       "kind": "theorem",
-      "start_line": 8357,
-      "end_line": 8376,
+      "start_line": 8385,
+      "end_line": 8404,
       "source": "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4345,8 +4345,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
       "kind": "theorem",
-      "start_line": 7389,
-      "end_line": 7572,
+      "start_line": 7417,
+      "end_line": 7600,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4354,8 +4354,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulAssociativity001.rMulNonnegEnvelope_nonneg",
       "kind": "theorem",
-      "start_line": 7376,
-      "end_line": 7387,
+      "start_line": 7404,
+      "end_line": 7415,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4363,8 +4363,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.cutMulNonnegEnvelope_principal_nonpos_left",
       "kind": "theorem",
-      "start_line": 7165,
-      "end_line": 7182,
+      "start_line": 7193,
+      "end_line": 7210,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4372,8 +4372,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
       "kind": "theorem",
-      "start_line": 7125,
-      "end_line": 7149,
+      "start_line": 7153,
+      "end_line": 7177,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4381,8 +4381,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
       "kind": "theorem",
-      "start_line": 7203,
-      "end_line": 7215,
+      "start_line": 7231,
+      "end_line": 7243,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4390,8 +4390,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_right",
       "kind": "theorem",
-      "start_line": 7217,
-      "end_line": 7221,
+      "start_line": 7245,
+      "end_line": 7249,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4399,8 +4399,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_zero_left",
       "kind": "theorem",
-      "start_line": 7151,
-      "end_line": 7157,
+      "start_line": 7179,
+      "end_line": 7185,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4408,8 +4408,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_zero_right",
       "kind": "theorem",
-      "start_line": 7159,
-      "end_line": 7163,
+      "start_line": 7187,
+      "end_line": 7191,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4417,8 +4417,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulNonnegEnvelope_negOne_left",
       "kind": "theorem",
-      "start_line": 7195,
-      "end_line": 7201,
+      "start_line": 7223,
+      "end_line": 7229,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4426,8 +4426,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulBasicLaws001.rMulNonnegEnvelope_rOfQ_nonpos_left",
       "kind": "theorem",
-      "start_line": 7184,
-      "end_line": 7193,
+      "start_line": 7212,
+      "end_line": 7221,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4435,8 +4435,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulCandidate001.cutPosPart_principal_nonpos",
       "kind": "theorem",
-      "start_line": 6431,
-      "end_line": 6441,
+      "start_line": 6459,
+      "end_line": 6469,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4444,8 +4444,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulCandidate001.qneg_nonpos_of_nonneg",
       "kind": "theorem",
-      "start_line": 6489,
-      "end_line": 6494,
+      "start_line": 6517,
+      "end_line": 6522,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4453,8 +4453,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulCandidate001.rMulCandidate",
       "kind": "definition",
-      "start_line": 6538,
-      "end_line": 6549,
+      "start_line": 6566,
+      "end_line": 6577,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4462,8 +4462,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulCandidate001.rNeg_zero",
       "kind": "theorem",
-      "start_line": 6530,
-      "end_line": 6536,
+      "start_line": 6558,
+      "end_line": 6564,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4471,8 +4471,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
       "kind": "theorem",
-      "start_line": 7765,
-      "end_line": 7787,
+      "start_line": 7793,
+      "end_line": 7815,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4480,8 +4480,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonneg_nonneg",
       "kind": "theorem",
-      "start_line": 7597,
-      "end_line": 7614,
+      "start_line": 7625,
+      "end_line": 7642,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4489,8 +4489,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonneg_nonpos",
       "kind": "theorem",
-      "start_line": 7645,
-      "end_line": 7720,
+      "start_line": 7673,
+      "end_line": 7748,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4498,8 +4498,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_nonpos_nonpos",
       "kind": "theorem",
-      "start_line": 7616,
-      "end_line": 7643,
+      "start_line": 7644,
+      "end_line": 7671,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4507,8 +4507,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right_of_nonneg_left",
       "kind": "theorem",
-      "start_line": 7722,
-      "end_line": 7741,
+      "start_line": 7750,
+      "end_line": 7769,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4516,8 +4516,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_nonpos_left_as_neg",
       "kind": "theorem",
-      "start_line": 7743,
-      "end_line": 7763,
+      "start_line": 7771,
+      "end_line": 7791,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4525,8 +4525,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.cutMulNonnegEnvelope_left_nonpos",
       "kind": "theorem",
-      "start_line": 7246,
-      "end_line": 7263,
+      "start_line": 7274,
+      "end_line": 7291,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4534,8 +4534,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonneg",
       "kind": "theorem",
-      "start_line": 7304,
-      "end_line": 7315,
+      "start_line": 7332,
+      "end_line": 7343,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4543,8 +4543,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonpos",
       "kind": "theorem",
-      "start_line": 7317,
-      "end_line": 7327,
+      "start_line": 7345,
+      "end_line": 7355,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4552,8 +4552,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonpos_nonneg",
       "kind": "theorem",
-      "start_line": 7329,
-      "end_line": 7340,
+      "start_line": 7357,
+      "end_line": 7368,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4561,8 +4561,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonpos_nonpos",
       "kind": "theorem",
-      "start_line": 7342,
-      "end_line": 7353,
+      "start_line": 7370,
+      "end_line": 7381,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4570,8 +4570,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_left_nonpos",
       "kind": "theorem",
-      "start_line": 7265,
-      "end_line": 7280,
+      "start_line": 7293,
+      "end_line": 7308,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4579,8 +4579,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_neg_left_of_nonneg",
       "kind": "theorem",
-      "start_line": 7290,
-      "end_line": 7295,
+      "start_line": 7318,
+      "end_line": 7323,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4588,8 +4588,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_neg_right_of_nonneg",
       "kind": "theorem",
-      "start_line": 7297,
-      "end_line": 7302,
+      "start_line": 7325,
+      "end_line": 7330,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4597,8 +4597,8 @@
     {
       "name": "BOMA.R.DedekindSignedMulSignLaws001.rMulNonnegEnvelope_right_nonpos",
       "kind": "theorem",
-      "start_line": 7282,
-      "end_line": 7288,
+      "start_line": 7310,
+      "end_line": 7316,
       "source": "LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4606,8 +4606,8 @@
     {
       "name": "BOMA.R.DedekindStrictOrder001.rLT",
       "kind": "definition",
-      "start_line": 8090,
-      "end_line": 8091,
+      "start_line": 8118,
+      "end_line": 8119,
       "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4615,8 +4615,8 @@
     {
       "name": "BOMA.R.DedekindStrictOrder001.rOfQ_strict_order",
       "kind": "theorem",
-      "start_line": 8111,
-      "end_line": 8123,
+      "start_line": 8139,
+      "end_line": 8151,
       "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4624,8 +4624,8 @@
     {
       "name": "BOMA.R.DedekindStrictOrder001.rlt_irrefl",
       "kind": "theorem",
-      "start_line": 8093,
-      "end_line": 8095,
+      "start_line": 8121,
+      "end_line": 8123,
       "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4633,8 +4633,8 @@
     {
       "name": "BOMA.R.DedekindStrictOrder001.rlt_mk_iff",
       "kind": "theorem",
-      "start_line": 8097,
-      "end_line": 8109,
+      "start_line": 8125,
+      "end_line": 8137,
       "source": "LAB/payloads/lean/RStage/RDedekindStrictOrder.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4642,8 +4642,8 @@
     {
       "name": "BOMA.R.Gateway001.positive_difference_of_lt",
       "kind": "theorem",
-      "start_line": 3537,
-      "end_line": 3549,
+      "start_line": 3567,
+      "end_line": 3579,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4651,8 +4651,8 @@
     {
       "name": "BOMA.R.Gateway001.qLT",
       "kind": "definition",
-      "start_line": 3388,
-      "end_line": 3389,
+      "start_line": 3416,
+      "end_line": 3417,
       "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4660,8 +4660,8 @@
     {
       "name": "BOMA.R.Gateway001.qMul_left_cancel_nonzero",
       "kind": "theorem",
-      "start_line": 3455,
-      "end_line": 3476,
+      "start_line": 3485,
+      "end_line": 3506,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4669,8 +4669,8 @@
     {
       "name": "BOMA.R.Gateway001.qMul_ne_zero",
       "kind": "theorem",
-      "start_line": 3478,
-      "end_line": 3485,
+      "start_line": 3508,
+      "end_line": 3515,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4678,8 +4678,8 @@
     {
       "name": "BOMA.R.Gateway001.qTwo",
       "kind": "definition",
-      "start_line": 3495,
-      "end_line": 3496,
+      "start_line": 3525,
+      "end_line": 3526,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4687,8 +4687,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_add_right",
       "kind": "theorem",
-      "start_line": 3443,
-      "end_line": 3453,
+      "start_line": 3473,
+      "end_line": 3483,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4696,8 +4696,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_asymm",
       "kind": "theorem",
-      "start_line": 3412,
-      "end_line": 3415,
+      "start_line": 3440,
+      "end_line": 3443,
       "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4705,8 +4705,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_irrefl",
       "kind": "theorem",
-      "start_line": 3394,
-      "end_line": 3396,
+      "start_line": 3422,
+      "end_line": 3424,
       "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4714,8 +4714,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_mul_left_positive",
       "kind": "theorem",
-      "start_line": 3487,
-      "end_line": 3493,
+      "start_line": 3517,
+      "end_line": 3523,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4723,8 +4723,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_trans",
       "kind": "theorem",
-      "start_line": 3401,
-      "end_line": 3410,
+      "start_line": 3429,
+      "end_line": 3438,
       "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4732,8 +4732,8 @@
     {
       "name": "BOMA.R.Gateway001.qlt_trichotomy",
       "kind": "theorem",
-      "start_line": 3417,
-      "end_line": 3425,
+      "start_line": 3445,
+      "end_line": 3455,
       "source": "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4741,8 +4741,8 @@
     {
       "name": "BOMA.R.Gateway001.qone_lt_two",
       "kind": "theorem",
-      "start_line": 3502,
-      "end_line": 3507,
+      "start_line": 3532,
+      "end_line": 3537,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4750,8 +4750,8 @@
     {
       "name": "BOMA.R.Gateway001.qtwo_positive",
       "kind": "theorem",
-      "start_line": 3509,
-      "end_line": 3512,
+      "start_line": 3539,
+      "end_line": 3542,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4759,8 +4759,8 @@
     {
       "name": "BOMA.R.Gateway001.qzero_lt_one",
       "kind": "theorem",
-      "start_line": 3498,
-      "end_line": 3500,
+      "start_line": 3528,
+      "end_line": 3530,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4768,8 +4768,8 @@
     {
       "name": "BOMA.R.Gateway001.rational_half_exists",
       "kind": "theorem",
-      "start_line": 3514,
-      "end_line": 3535,
+      "start_line": 3544,
+      "end_line": 3565,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4777,8 +4777,8 @@
     {
       "name": "BOMA.R.Gateway001.rational_order_dense",
       "kind": "theorem",
-      "start_line": 3551,
-      "end_line": 3591,
+      "start_line": 3581,
+      "end_line": 3621,
       "source": "LAB/payloads/lean/RStage/QRationalDensityGateway.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4786,8 +4786,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qGrid",
       "kind": "definition",
-      "start_line": 4671,
-      "end_line": 4673,
+      "start_line": 4699,
+      "end_line": 4701,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4795,8 +4795,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qGrid_eventually_outside",
       "kind": "theorem",
-      "start_line": 4703,
-      "end_line": 4716,
+      "start_line": 4731,
+      "end_line": 4744,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4804,8 +4804,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qGrid_succ",
       "kind": "theorem",
-      "start_line": 4679,
-      "end_line": 4684,
+      "start_line": 4707,
+      "end_line": 4712,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4813,8 +4813,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qGrid_zero",
       "kind": "theorem",
-      "start_line": 4675,
-      "end_line": 4677,
+      "start_line": 4703,
+      "end_line": 4705,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4822,8 +4822,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qOfN_succ",
       "kind": "theorem",
-      "start_line": 4665,
-      "end_line": 4669,
+      "start_line": 4693,
+      "end_line": 4697,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4831,8 +4831,8 @@
     {
       "name": "BOMA.R.QArchimedeanGrid001.qle_grid_of_gap_bound",
       "kind": "theorem",
-      "start_line": 4686,
-      "end_line": 4701,
+      "start_line": 4714,
+      "end_line": 4729,
       "source": "LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4840,8 +4840,8 @@
     {
       "name": "BOMA.R.QArchimedeanScaling001.q_archimedean_scale",
       "kind": "theorem",
-      "start_line": 4622,
-      "end_line": 4646,
+      "start_line": 4650,
+      "end_line": 4674,
       "source": "LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4849,8 +4849,8 @@
     {
       "name": "BOMA.R.QArchimedeanUpperBound001.denZ_ge_one",
       "kind": "theorem",
-      "start_line": 4558,
-      "end_line": 4563,
+      "start_line": 4586,
+      "end_line": 4591,
       "source": "LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4858,8 +4858,8 @@
     {
       "name": "BOMA.R.QArchimedeanUpperBound001.q_le_natural_upper",
       "kind": "theorem",
-      "start_line": 4596,
-      "end_line": 4604,
+      "start_line": 4624,
+      "end_line": 4632,
       "source": "LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4867,8 +4867,8 @@
     {
       "name": "BOMA.R.QArchimedeanUpperBound001.rawFrac_le_natural",
       "kind": "theorem",
-      "start_line": 4565,
-      "end_line": 4594,
+      "start_line": 4593,
+      "end_line": 4622,
       "source": "LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4876,8 +4876,8 @@
     {
       "name": "BOMA.R.QInverseOrder001.q_inverse_strict_antitone",
       "kind": "theorem",
-      "start_line": 5776,
-      "end_line": 5802,
+      "start_line": 5804,
+      "end_line": 5830,
       "source": "LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4885,8 +4885,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.q_positive_product_inner_approx",
       "kind": "theorem",
-      "start_line": 5621,
-      "end_line": 5661,
+      "start_line": 5649,
+      "end_line": 5689,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4894,8 +4894,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_div_left",
       "kind": "theorem",
-      "start_line": 5586,
-      "end_line": 5604,
+      "start_line": 5614,
+      "end_line": 5632,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4903,8 +4903,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_div_right",
       "kind": "theorem",
-      "start_line": 5551,
-      "end_line": 5565,
+      "start_line": 5579,
+      "end_line": 5593,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4912,8 +4912,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_recompose_left",
       "kind": "theorem",
-      "start_line": 5606,
-      "end_line": 5619,
+      "start_line": 5634,
+      "end_line": 5647,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4921,8 +4921,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_mul_recompose_right",
       "kind": "theorem",
-      "start_line": 5567,
-      "end_line": 5584,
+      "start_line": 5595,
+      "end_line": 5612,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4930,8 +4930,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_zero_inverse",
       "kind": "theorem",
-      "start_line": 5544,
-      "end_line": 5549,
+      "start_line": 5572,
+      "end_line": 5577,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4939,8 +4939,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qlt_zero_of_nonneg_lt",
       "kind": "theorem",
-      "start_line": 5530,
-      "end_line": 5542,
+      "start_line": 5558,
+      "end_line": 5570,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4948,8 +4948,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_lt_left_positive",
       "kind": "theorem",
-      "start_line": 5523,
-      "end_line": 5528,
+      "start_line": 5551,
+      "end_line": 5556,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4957,8 +4957,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_lt_right_positive",
       "kind": "theorem",
-      "start_line": 5512,
-      "end_line": 5521,
+      "start_line": 5540,
+      "end_line": 5549,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4966,8 +4966,8 @@
     {
       "name": "BOMA.R.QPositiveMultiplicativeApprox001.qmul_right_cancel_nonzero",
       "kind": "theorem",
-      "start_line": 5487,
-      "end_line": 5502,
+      "start_line": 5515,
+      "end_line": 5530,
       "source": "LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4975,8 +4975,8 @@
     {
       "name": "BOMA.R.QReciprocalGap004.q_add_gap",
       "kind": "theorem",
-      "start_line": 6153,
-      "end_line": 6164,
+      "start_line": 6181,
+      "end_line": 6192,
       "source": "LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4984,8 +4984,8 @@
     {
       "name": "BOMA.R.QReciprocalGap004.q_add_one_minus",
       "kind": "theorem",
-      "start_line": 6140,
-      "end_line": 6151,
+      "start_line": 6168,
+      "end_line": 6179,
       "source": "LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4993,8 +4993,8 @@
     {
       "name": "BOMA.R.QReciprocalGap004.q_lt_mul_inverse_of_small_gap",
       "kind": "theorem",
-      "start_line": 6166,
-      "end_line": 6231,
+      "start_line": 6194,
+      "end_line": 6259,
       "source": "LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -5002,8 +5002,8 @@
     {
       "name": "BOMA.R.QReciprocalGap004.qlt_le_trans_gap",
       "kind": "theorem",
-      "start_line": 6129,
-      "end_line": 6138,
+      "start_line": 6157,
+      "end_line": 6166,
       "source": "LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -5011,8 +5011,8 @@
     {
       "name": "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
       "kind": "inductive",
-      "start_line": 8571,
-      "end_line": 8643,
+      "start_line": 8599,
+      "end_line": 8671,
       "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -5020,8 +5020,8 @@
     {
       "name": "BOMA.R.StageIntegration002.RStageIntegrationCertificate.mk",
       "kind": "constructor",
-      "start_line": 8576,
-      "end_line": 8576,
+      "start_line": 8604,
+      "end_line": 8604,
       "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -5029,8 +5029,8 @@
     {
       "name": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
       "kind": "theorem",
-      "start_line": 8645,
-      "end_line": 8672,
+      "start_line": 8673,
+      "end_line": 8700,
       "source": "LAB/payloads/lean/RStage/RStageIntegration002.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -6101,11 +6101,6 @@
       "module": "Init.Classical"
     },
     {
-      "name": "Classical.propDecidable",
-      "kind": "definition",
-      "module": "Init.Classical"
-    },
-    {
       "name": "Eq.mp",
       "kind": "definition",
       "module": "Init.Core"
@@ -6428,11 +6423,6 @@
     {
       "name": "congrFun'",
       "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "dite",
-      "kind": "definition",
       "module": "Init.Prelude"
     },
     {
@@ -12579,6 +12569,10 @@
     },
     {
       "consumer": "BOMA.Q.Order001.qOfZ_order",
+      "dependency": "Eq.mp"
+    },
+    {
+      "consumer": "BOMA.Q.Order001.qOfZ_order",
       "dependency": "Eq.mpr"
     },
     {
@@ -12587,7 +12581,11 @@
     },
     {
       "consumer": "BOMA.Q.Order001.qOfZ_order",
-      "dependency": "Iff.rfl"
+      "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.Q.Order001.qOfZ_order",
+      "dependency": "Iff.trans"
     },
     {
       "consumer": "BOMA.Q.Order001.qOfZ_order",
@@ -12596,10 +12594,6 @@
     {
       "consumer": "BOMA.Q.Order001.qOfZ_order",
       "dependency": "id"
-    },
-    {
-      "consumer": "BOMA.Q.Order001.qOfZ_order",
-      "dependency": "propext"
     },
     {
       "consumer": "BOMA.Q.Order001.qle_antisymm",
@@ -13671,6 +13665,10 @@
     },
     {
       "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+      "dependency": "Eq.mp"
+    },
+    {
+      "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
       "dependency": "Eq.mpr"
     },
     {
@@ -13679,7 +13677,11 @@
     },
     {
       "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-      "dependency": "Iff.rfl"
+      "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
+      "dependency": "Iff.trans"
     },
     {
       "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
@@ -13688,10 +13690,6 @@
     {
       "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
       "dependency": "id"
-    },
-    {
-      "consumer": "BOMA.Q.OrderedField001.qNonNeg_mk_iff",
-      "dependency": "propext"
     },
     {
       "consumer": "BOMA.Q.OrderedField001.q_difference_translate",
@@ -13919,6 +13917,14 @@
     },
     {
       "consumer": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+      "dependency": "Iff.symm"
+    },
+    {
+      "consumer": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
+      "dependency": "Iff.trans"
+    },
+    {
+      "consumer": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
       "dependency": "Quotient.inductionOn"
     },
     {
@@ -13932,10 +13938,6 @@
     {
       "consumer": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
       "dependency": "id"
-    },
-    {
-      "consumer": "BOMA.Q.OrderedField001.qle_iff_nonneg_difference",
-      "dependency": "propext"
     },
     {
       "consumer": "BOMA.Q.OrderedField001.qmul_mono_left_nonneg",
@@ -19295,15 +19297,15 @@
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
+      "dependency": "And.left"
+    },
+    {
+      "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
       "dependency": "BOMA.Q.Order001.qLE"
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
       "dependency": "BOMA.Q.Order001.qle_refl"
-    },
-    {
-      "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-      "dependency": "BOMA.Q.Order001.qle_total"
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -19347,7 +19349,7 @@
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-      "dependency": "Classical.propDecidable"
+      "dependency": "BOMA.R.Gateway001.qlt_trichotomy"
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -19356,10 +19358,6 @@
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
       "dependency": "Eq.mpr"
-    },
-    {
-      "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-      "dependency": "Eq.symm"
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -19396,10 +19394,6 @@
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
       "dependency": "congrArg"
-    },
-    {
-      "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
-      "dependency": "dite"
     },
     {
       "consumer": "BOMA.R.DedekindNegationCandidate001.cutNeg_principal",
@@ -26771,10 +26765,6 @@
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-      "dependency": "BOMA.Q.Order001.qle_total"
-    },
-    {
-      "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
       "dependency": "BOMA.Q.Order001.qle_trans"
     },
     {
@@ -26803,11 +26793,11 @@
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-      "dependency": "BOMA.R.Gateway001.rational_order_dense"
+      "dependency": "BOMA.R.Gateway001.qlt_trichotomy"
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-      "dependency": "Classical.propDecidable"
+      "dependency": "BOMA.R.Gateway001.rational_order_dense"
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
@@ -26847,10 +26837,6 @@
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-      "dependency": "Not"
-    },
-    {
-      "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
       "dependency": "Or"
     },
     {
@@ -26860,10 +26846,6 @@
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
       "dependency": "congrArg"
-    },
-    {
-      "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
-      "dependency": "dite"
     },
     {
       "consumer": "BOMA.R.DedekindProbe001.principalLE_iff_qLE",
@@ -27223,27 +27205,15 @@
     },
     {
       "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
-      "dependency": "Eq"
-    },
-    {
-      "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
-      "dependency": "Eq.mpr"
-    },
-    {
-      "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
       "dependency": "Iff"
     },
     {
       "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
-      "dependency": "congrArg"
+      "dependency": "Iff.trans"
     },
     {
       "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
       "dependency": "id"
-    },
-    {
-      "consumer": "BOMA.R.DedekindQuotient001.rOfQ_order",
-      "dependency": "propext"
     },
     {
       "consumer": "BOMA.R.DedekindQuotient001.rmk",
@@ -30155,7 +30125,7 @@
     },
     {
       "consumer": "BOMA.R.Gateway001.qlt_trichotomy",
-      "dependency": "Classical.propDecidable"
+      "dependency": "Classical.em"
     },
     {
       "consumer": "BOMA.R.Gateway001.qlt_trichotomy",
@@ -30188,10 +30158,6 @@
     {
       "consumer": "BOMA.R.Gateway001.qlt_trichotomy",
       "dependency": "Or.inr"
-    },
-    {
-      "consumer": "BOMA.R.Gateway001.qlt_trichotomy",
-      "dependency": "dite"
     },
     {
       "consumer": "BOMA.R.Gateway001.qone_lt_two",
