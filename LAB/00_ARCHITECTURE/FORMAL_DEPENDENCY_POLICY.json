@@ -40,19 +40,25 @@
     },
     "Classical.propDecidable": {
       "classification": "REVIEW_REQUIRED",
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance must identify the exact BOMA consumer(s) before this is accepted as part of a declared localized classical commitment."
+      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set."
     },
     "propext": {
       "classification": "REVIEW_REQUIRED",
-      "reason": "External Lean axiom discovered by theorem-level closure. Source-level audits did not expose it; direct consumer/path attribution is required before any Trusted Base or formalization classification."
+      "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification."
     },
     "Nat": {
-      "classification": "REVIEW_REQUIRED",
-      "reason": "BOMA's object-level N is not Lean built-in Nat. The external Nat dependency may be host/generated infrastructure, but its direct consumer path must be demonstrated before classification."
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-002"],
+      "reason": "Edge provenance shows built-in Nat only as the return type of Lean-generated constructor-index declarations for BOMA inductive carriers. It is host/compiler indexing infrastructure, not the object-level BOMA natural-number carrier.",
+      "allowed_direct_sources": [
+        "LAB/payloads/lean/NCore/NCoreRB001.lean",
+        "LAB/payloads/lean/ZStage/ZSigned.lean"
+      ]
     },
     "noConfusion_of_Nat": {
-      "classification": "REVIEW_REQUIRED",
-      "reason": "Potential host-level constructor-index/no-confusion support associated with generated inductive infrastructure; require a path through generated declarations rather than silently treating it as BOMA mathematics."
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-002"],
+      "reason": "Lean-generated constructor discrimination/no-confusion infrastructure consumed when BOMA proofs eliminate impossible constructor equalities. This is part of the selected inductive formalization regime, not use of built-in Nat as BOMA's mathematical carrier."
     },
     "Quotient": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
