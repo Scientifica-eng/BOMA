@@ -1,10 +1,10 @@
 # PDSA-R-010 — Real Multiplicative Inverse
 
 **CycleID:** `PDSA-R-010`  
-**Status:** **ACTIVE — R-DP-006 OPEN**  
-**Date:** 2026-08-18  
+**Status:** **CLOSED — ROUTE A SELECTED / RA-08 PASS**  
+**Date:** 2026-08-18 → 2026-08-20  
 **ParentCycles/LearningInputs:** `PDSA-R-009`, `PDSA-R-006`, `PDSA-R-008`, accepted Q inverse interface  
-**Decision Point:** `R-DP-006`  
+**Decision Point:** `R-DP-006 — CLOSED / RESOLVED`  
 **Primary acceptance target:** `RA-08`
 
 ## ResearchQuestion
@@ -17,28 +17,28 @@ Compare two routes.
 
 ### Route A — direct positive Dedekind reciprocal
 
-1. Prove the Q inverse-order interface needed for reciprocal cuts.
-2. Define a positive reciprocal lower cut from positive rational outside witnesses.
-3. Prove LowerCut validity and CutEquiv/proof-parameter independence.
-4. Prove preservation on positive principal rational cuts.
-5. Prove positive inverse-product = one, explicitly identifying any use of `CutBracketApprox`.
-6. Extend to arbitrary nonzero signed reals using the stabilized sign/quadrant infrastructure.
+1. prove the Q inverse-order interface;
+2. define a positive reciprocal lower cut from positive rational outside witnesses;
+3. prove LowerCut validity and CutEquiv/proof-parameter independence;
+4. prove preservation on positive principal rational cuts;
+5. prove positive inverse-product = one and identify exactly where fine bracketing is consumed;
+6. lift to a representative-independent positive inverse relation;
+7. extend to arbitrary nonzero signed reals;
+8. prove left inverse and witness uniqueness.
 
 ### Route B — completeness-level inverse
 
-1. Define an approximating family below the reciprocal condition at the `RBOMA` level.
-2. Prove the family nonempty and bounded.
-3. Take its supremum via `R-COMP-BLOCK-001`.
-4. Establish the multiplication/supremum interface needed to prove product = one.
-5. Compare the resulting dependency graph with Route A.
+1. define a reciprocal approximating family at the `RBOMA` level;
+2. prove nonempty/bounded;
+3. take a supremum via `R-COMP-BLOCK-001`;
+4. prove enough multiplication/supremum interaction to obtain product one;
+5. compare the dependency cost with Route A.
 
-## DO — current state
+## DO
 
-### Route A validity probe
+### Route A — completed chain
 
-A Q-level theorem has been written for strict antitonicity of existential inverse witnesses on positive rationals.
-
-The direct reciprocal lower predicate is:
+The selected positive reciprocal predicate is:
 
 ```text
 q ∈ recip(A)
@@ -49,163 +49,258 @@ q < 0
   QInvRel r rinv ∧ q<rinv.
 ```
 
-The positivity proof for the source cut is used only to prove properness; it is absent from the lower predicate itself.
+The positivity witness for `A` is used to certify properness.  It is not part of the extensional lower predicate.
 
-The first V5 run reached unavailable helper names (`qNeg_zero`, `qle_lt_trans`) before it could test the mathematical properness argument. Both references were replaced by local derivations so the validity probe remains independent of later helper layers. A corrected rerun is active.
-
-### Route B prerequisite audit
-
-The accepted completeness interface was inspected directly.
-
-It supplies:
+The verified chain is:
 
 ```text
-rDedekind_lub_exists:
-  nonempty + bounded family of RBOMA
-  → existence of a least upper bound.
+Q inverse-order structure
+  ↓
+positive reciprocal LowerCut validity / proof independence
+  ↓
+positive principal-Q reciprocal preservation
+  ↓
+anchored fine cut bracketing
+  ↓
+Q reciprocal-gap estimate 004
+  ↓
+A * recip(A) ≈ principalCut(1)
+  ↓
+representative-independent RPositiveInvRel
+  ↓
+nonzero signed extension
+  ↓
+right inverse + left inverse + uniqueness
 ```
 
-It does **not** currently supply a theorem such as:
+No global function `RBOMA → RBOMA` was introduced through Choice.  The accepted interface is existential/unique-witness based.
+
+### Route B — prerequisite audit
+
+The accepted completeness theorem supplies:
+
+```text
+nonempty bounded family
+  →
+least upper bound exists.
+```
+
+It does not currently supply:
 
 ```text
 x * sup(F) = sup(x*F)
 ```
 
-or an equivalent multiplication-continuity/order-supremum interface.
+or an equivalent multiplication-continuity/order-supremum transport theorem.
 
-A reciprocal approximant family such as
+A reciprocal approximant family also requires a nontrivial boundedness proof and earlier use of positive rational witnesses below positive reals.  Route B therefore exposes a materially larger immediate prerequisite surface.
 
-```text
-{q ≥ 0 | q*x < 1}
-```
-
-also needs a nontrivial boundedness proof. At the higher `RBOMA` level, the natural proof requires a positive rational lower witness below positive `x`, so Route B tends to consume the rational-density-in-R interface earlier than the current canonical schedule.
-
-Route B is therefore **not rejected**, but its visible prerequisite surface is materially larger than the bare LUB theorem.
+Route B is retained for Stage-II branch comparison; it is not mathematically rejected.
 
 ## Observations
 
-1. The ordered-ring cycle deliberately ended before inverse construction, so inversion failures remain local to this cycle.
-2. Route A separates reciprocal-object validity from the harder inverse-product theorem.
-3. The first Route-A V5 failure was proof/API engineering, not a counterexample.
-4. Route B currently exposes at least two missing interfaces beyond `R-COMP-BLOCK-001`:
+1. Reciprocal-object validity is much cheaper than the inverse-product theorem.
+2. Positive principal-Q reciprocal preservation also does **not** require fine bracketing.
+3. Fine bracketing enters only in the hard reverse inclusion of:
 
 ```text
-boundedness of reciprocal approximants;
-multiplication/supremum interaction or an equivalent continuity argument.
+A * recip(A) ≈ principalCut(1).
 ```
 
-5. Route B may also require earlier closure/use of the rational-density acceptance item.
+4. The signed extension introduces no new analytic approximation.  It consumes the already-isolated total-order/sign interface plus additive negation and signed multiplication laws.
+5. A representative-independent relation is sufficient for field acceptance; a global inverse selector is unnecessary.
+6. Route B confirms that LUB existence alone is not a slogan from which inversion may be imported.
 
-## STUDY questions
+## STUDY
 
-1. Can positive reciprocal LowerCut validity be proved without `CutBracketApprox`?
-2. Which direction of `A * recip(A) ≈ 1` first consumes fine bracketing?
-3. Can Q reciprocal preservation be proved from Q density and inverse antitonicity alone?
-4. Can Route B avoid a new multiplication-continuity/supremum theorem, or is it genuinely necessary?
-5. Can Route B prove boundedness without first extracting a positive rational lower witness for `x`?
-6. Is any use of classical logic witness-selection, sign-identification, or merely proposition reasoning?
-7. Which inverse contribution is more reusable across a future Cauchy completion branch?
+### Mathematical learning
 
-## ErrorsDetected
-
-Current Route-A proof-engineering errors:
+The successful dependency decomposition is:
 
 ```text
-unavailable qNeg_zero helper name;
-unavailable qle_lt_trans helper name at this dependency level.
+Q inverse/order algebra
+  ↓
+Dedekind reciprocal syntax
+  ↓
+extensionality / quotient transport
+  ↓
+local boundary approximation only for product-one surjectivity
+  ↓
+proof-level sign extension
 ```
 
-Both were replaced locally; no theorem statement changed.
+This is significantly more informative than an undifferentiated field axiom.
 
-## Successes
+### Logical learning
 
-The ordered commutative-ring layer is independently certified.
+Classical reasoning is localized.  It is used where the project identifies sign / extracts proposition-level witnesses from an arbitrary cut predicate.  It is not embedded into the reciprocal lower-predicate definition and no global Choice selector is introduced.
 
-The Route-B audit prevents an implicit assumption that LUB existence alone implies multiplicative inversion.
+### Route comparison
 
-## HiddenAssumptions
-
-Forbidden unless explicitly reconstructed and recorded:
+Route A has now produced the complete accepted inverse contribution.  Route B would require at least:
 
 ```text
-standard Real reciprocal;
+bounded reciprocal-approximant family;
+positive rational witness extraction at the higher level;
+multiplication/supremum interaction or an equivalent continuity theorem.
+```
+
+Therefore Route A has the smaller verified Stage-I dependency surface while Route B remains valuable as a Stage-II branch.
+
+## ErrorsDetected / Learning from failed revisions
+
+All failures below were retained as Learning-Graph evidence; none was a mathematical counterexample.
+
+### Early helper/API failures
+
+```text
+unavailable qNeg_zero helper;
+unavailable qle_lt_trans helper at the chosen dependency level.
+```
+
+These were replaced by local derivations.
+
+### Q reciprocal-gap revisions
+
+```text
+001  incorrect endpoint equality in strict/non-strict transitivity helper;
+002  global rewrite of hsumA polluted the left expression;
+003  accidental use of `<` notation, requiring an unavailable LT instance on QBOMA;
+004  explicit qLT chain with local endpoint rewrites — PASS.
+```
+
+### Positive inverse-product revisions
+
+```text
+003  destructured hApos and then attempted to reuse the consumed proof name;
+004  preserved hAposOrig before destructuring — PASS.
+```
+
+### Integration / CI failures
+
+```text
+positive inverse relation 003 first run:
+  missing NonnegativeMulEmbedding / PositiveDecomposition dependencies in CI assembly;
+  classified as CI-DAG defect, not theorem failure.
+
+nonzero inverse 003:
+  ambiguous rNeg_zero from two preserved producers;
+  revision 004 explicitly qualifies the selected producer — PASS.
+```
+
+The workflow repairs changed dependency assembly/provenance only; they did not change the mathematical reciprocal architecture.
+
+## Successes / VerificationEvidence
+
+```text
+32193229000  positive reciprocal LowerCut validity / proof independence      PASS
+32193653985  positive principal-Q reciprocal preservation                   PASS
+32193755906  anchored fine cut bracketing                                   PASS
+32355200375  Q reciprocal-gap estimate 004                                  PASS
+32355681924  positive Dedekind inverse product 004                           PASS
+32356254961  positive inverse relation 003                                   PASS
+32356513408  nonzero inverse 004: right/left existence + uniqueness          PASS
+```
+
+Pinned verifier: `leanprover/lean4:v4.32.1`.
+
+## HiddenAssumptions audit
+
+The accepted route does **not** import:
+
+```text
+built-in Real reciprocal;
 preexisting real-field instance;
-choice of a canonical cut boundary;
-continuity of multiplication at suprema;
-existence of a positive rational inside a positive real cut without proof.
+canonical cut boundary selector;
+global Choice selecting inverse representatives;
+multiplication/supremum continuity theorem;
+field inversion as an axiom.
 ```
 
-## HumanContributions
-
-The requirement to perform reverse engineering before canonical C means the inverse architecture must remain a visible decision node. In particular, route-specific cut machinery must not be collapsed into a generic “field axiom”.
-
-## AIContributions
-
-The AI separated the inverse from the ordered-ring cycle, proposed the direct-cut/completeness comparison, constructed the first Route-A validity probe, and identified the concrete missing interfaces in the completeness-level route.
-
-## VerificationEvidence
+The following remain explicit dependencies:
 
 ```text
-Route A first reciprocal-validity V5 32193084014 — FAIL_OR_INCOMPLETE / API-level
-Route A corrected rerun                         — PENDING
-Route B completeness prerequisite audit         — completed against accepted interface
+Dedekind cut representation;
+Q inverse witnesses/order structure;
+anchored fine bracketing for the hard product-one direction;
+isolated classical sign/witness reasoning;
+quotient identity of RBOMA.
 ```
 
-## ACT candidates
+## ACT
+
+**Select Route A for Stage One.**
 
 ```text
-A  select direct cut reciprocal if validity/product proofs remain localized and auditable;
-B  select completeness-level inverse if it gives a materially cleaner higher-level dependency path after its missing interfaces are built;
-C  retain both if both pass with useful Stage-II branch contrast;
-D  revise the inverse interface if either route reveals a missing ordered-ring/completeness obligation.
+R-DP-006 = CLOSED / RESOLVED
+RA-08    = PASS
 ```
+
+Retain Route B as a Stage-II branch for later convergence/cost comparison.
+
+Create a downstream ordered-field interface rather than modifying `R-MUL-BLOCK-001` into a different semantic object.
 
 ## ConstructionGraphEffects
 
-Current frontier:
-
 ```text
-R-MUL-BLOCK-001
+R-MUL-BLOCK-001 — ordered commutative ring PASS
   ↓
-R-DP-006
-  ├── Route A direct reciprocal — validity probe active
-  └── Route B completeness inverse — prerequisite gap identified
-        ↓
-RA-08
+R-DP-006 — Route A selected
+  ↓
+positive reciprocal object
+  ↓
+positive inverse relation
+  ↓
+signed nonzero inverse + uniqueness
+  ↓
+R-FIELD-BLOCK-001 — eligible
 ```
 
 ## LearningGraphEffects
 
 ```text
-ordered commutative ring accepted
+ordered ring
   ↓
-field claim intentionally withheld
+inverse architecture comparison
+  ├── Route A built and certified
+  └── Route B prerequisite gap measured and retained
   ↓
-new inverse architecture decision isolated
-  ├── Route A validity/API probe
-  └── Route B LUB-interface audit
+proof failures classified by layer
+  ↓
+verified field-inverse contribution
 ```
+
+## HumanContributions
+
+The insistence on reverse engineering and branch provenance prevented the reciprocal from being collapsed into an opaque “field axiom” and required the alternative completeness route to remain visible.
+
+## AIContributions
+
+The AI decomposed the inverse problem, implemented the direct-cut route, isolated fine bracketing to the exact direction where it is needed, repaired proof/CI failures without silent replacement, and compared the measured Route-A surface against Route B.
 
 ## Reverse-engineering note
 
-All Route A/B dependencies and negative results must be preserved for `RE-R-001`. In particular, the audit must distinguish:
+`RE-R-001` must explicitly revisit:
 
 ```text
-cut-level reciprocal syntax;
-Q inverse-order structure;
-fine boundary approximation;
-RBOMA rational-density requirements;
-LUB existence;
-multiplication/supremum interaction;
-proof-engineering-only helper-name failures.
+R-DP-006 route choice;
+reciprocal LowerCut syntax;
+Q inverse-order contribution;
+anchored bracketing;
+Q reciprocal-gap contribution;
+positive representative extraction;
+proof-only classical sign handling;
+Route-B missing multiplication/supremum interface;
+all failed proof-engineering revisions as learning evidence.
 ```
+
+The reverse audit must distinguish what is intrinsically Dedekind-specific from reusable Q/ordered-field contributions.
 
 ## NextCycleInputs
 
-1. close the corrected Route-A reciprocal validity V5;
-2. if PASS, prove positive principal-rational reciprocal preservation;
-3. then attack the positive inverse-product theorem and identify its exact approximation dependency;
-4. only after that compare the measured Route-A cost with the explicit Route-B prerequisite gap.
-
-Do not attempt signed nonzero inversion until the positive route is independently stable.
+1. export `R-FIELD-BLOCK-001` as the verified ordered-field interface;
+2. close RA-12 rational density and RA-13 Archimedean characterization in parallel branches;
+3. close RA-14/17/18/19/20 audits;
+4. run `R-J-002` integration;
+5. only then decide `RA-22`;
+6. immediately execute `RE-R-001` before any canonical complex-number construction.
