@@ -1,0 +1,50 @@
+name: BOMA Claim Surface Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/TRUSTED_BASE.md'
+      - 'LAB/00_ARCHITECTURE/CLAIM_SURFACE_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/tools/claim_surface_audit.py'
+      - 'LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/**/**CLAIM_CLOSURE_AUDIT*.md'
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - '.github/workflows/boma-claim-surface-audit-001.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  accepted-source-surface:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run accepted-source claim surface audit
+        run: python3 LAB/00_ARCHITECTURE/tools/claim_surface_audit.py
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## BOMA Claim Surface Audit
+
+          This gate checks declared accepted-source manifests and sensitive source-level commitments.
+
+          It **does not yet certify Lean theorem-level transitive dependency closure** and must not be interpreted as a full `TRANSPARENCY PASS` under `PDSA-ARCH-002`.
+          EOF
