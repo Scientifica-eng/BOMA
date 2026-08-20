@@ -7,6 +7,7 @@ open BOMA.NCore.RB001
 open BOMA.NCore.RB001.BOMANat
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.R.Gateway001
 open BOMA.R.DedekindQuotient001
 open BOMA.R.DedekindOrderConstructive001
 open BOMA.R.DedekindOrderClassical001
@@ -102,7 +103,7 @@ theorem rZero_ne_rOne_integrated : rZero ≠ rOne := by
 
 /-- The single certificate used by R-J-002. Each field is an already-proved
 Stage-One theorem instantiated on the same formal carrier and operations. -/
-def rStageIntegrationCertificate : RStageIntegrationCertificate where
+theorem rStageIntegrationCertificate : RStageIntegrationCertificate where
   qEmbeddingInjective := @rOfQ_injective
   qOrderExact := rOfQ_order
   orderRefl := rLE_refl
