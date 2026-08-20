@@ -1,0 +1,103 @@
+# JUNCTION LEDGER — Convergence Strength and Shared Outputs
+
+**Document ID:** `BOMA-JUNCTION-LEDGER-001`  
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R  
+**Date:** 2026-08-20  
+**Program:** `PDSA-ARCH-002`
+
+## 1. Purpose
+
+Index canonical Junctions by the **actual strength of convergence** they certify. A Junction is not inferred from a drawing and a shared informal name is not convergence evidence.
+
+Strength vocabulary used here:
+
+```text
+EQUALITY                    pointwise/formal equality of compared outputs
+EQUIVALENCE                 iff/extensional equivalence of relations/interfaces
+CLASSIFICATION              one representation relation is completely classified by another identity regime
+SAME-DOWNSTREAM-ADEQUACY    distinct producers establish the same certified downstream contribution
+SAME-CARRIER-INTEGRATION    required claims elaborate/coexist on one selected carrier/operation package
+CANONICALITY GATE           representation/recovery is invariant under the declared identity regime
+```
+
+Detailed theorem statements and evidence remain authoritative in each Junction `UNIT.md` and stage evidence records.
+
+## 2. Junction inventory
+
+| Junction | Incoming routes/contributions | Convergence strength | Shared output / role |
+|---|---|---|---|
+| `TCT-J-001` | selected terminal recovery + `TCT-BR-010` structural identity + derived terminal preservation | `CANONICALITY GATE` | predecessor/terminal recovery well-defined up to `≈` |
+| `N-J-001` | internal inductive no-confusion Route A + TCT-constructional no-confusion Route B | `SAME-DOWNSTREAM-ADEQUACY` with theorem-level agreement on no-confusion interface | accepted no-confusion contribution without erasing producer histories |
+| `N-J-002` | N kernel, no-confusion, induction/generatedness, recursion/initiality, TCT bridge, standardness | `SAME-CARRIER-INTEGRATION` | N-Core acceptance integration |
+| `N-ADD-J-001` | right-recursive `addR` + independently left-recursive `addL` | `EQUALITY` | `∀a b, addL a b = addR a b` and canonical addition eligibility |
+| `N-MUL-J-001` | right-recursive `mulR` + independently left-recursive `mulL` | `EQUALITY` | `∀a b, mulL a b = mulR a b` and canonical multiplication eligibility |
+| `N-ORD-J-001` | additive-gap witness order + independent inductive order | `EQUIVALENCE` | extensional equivalence of the two order relations |
+| `N-ARITH-J-001` | accepted addition, multiplication and order packages | `SAME-CARRIER-INTEGRATION` | accepted N-Arithmetic interface |
+| `Z-J-001` | signed normal forms + difference pairs/`~` | `EQUIVALENCE + CLASSIFICATION` | exact signed round trip, pair round trip up to `~`, and `p~q ↔ normalize(p)=normalize(q)` |
+| `Z-ARITH-J-001` | direct signed arithmetic + pair-mediated arithmetic | `EQUALITY` | pointwise equality of addition/multiplication producers before canonical spelling |
+| `Z-ORD-J-001` | direct signed order + pair cross-sum order | `EQUIVALENCE` | same accepted integer order interface |
+| `Z-J-002` | carrier/identity, ring, embeddings/generation, order/compatibility | `SAME-CARRIER-INTEGRATION` | `ZA-21` integer acceptance integration |
+| `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational acceptance integration |
+| `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration and `RA-22` acceptance eligibility |
+
+## 3. Provenance rule
+
+For every row above:
+
+```text
+reconvergence ≠ retroactive identity of production history
+```
+
+Therefore downstream canonical spelling may consume the shared certified output while the repository must retain:
+
+```text
+incoming route identities
+route-local assumptions
+route-local evidence
+translation/equality/equivalence proof
+Junction reopening conditions
+```
+
+## 4. Claim linkage
+
+Principal Claim Registry links include:
+
+```text
+N-J-001       → N-CL-NOCONF-CONV-001
+N-J-002       → N-CL-INTEGRATION-001
+N-ADD-J-001   → NAR-CL-ADDCONV-001
+N-MUL-J-001   → NAR-CL-MULCONV-001
+N-ORD-J-001   → NAR-CL-ORDERCONV-001
+N-ARITH-J-001 → NAR-CL-INTEGRATION-001
+Z-J-001       → Z-CL-REPCONV-001
+Z-ARITH-J-001 → Z-CL-ARITHCONV-001
+Z-ORD-J-001   → Z-CL-ORDERCONV-001
+Z-J-002       → Z-CL-INTEGRATION-001
+Q-J-002       → Q-CL-INTEGRATION-001
+R-J-002       → R-CL-INTEGRATION-001
+```
+
+`TCT-J-001` remains a pre-numerical canonicality gate rather than a number-stage acceptance Claim ID in the current registry rollout.
+
+## 5. Reopening rule
+
+A Junction must be marked for retest if a change affects:
+
+```text
+an incoming producer;
+the compared output statement;
+the identity/equivalence regime;
+a route-local assumption used by the convergence proof;
+the formal theorem/certificate implementing convergence;
+the accepted source assembly for that certificate.
+```
+
+A change confined to a branch artifact not consumed by the Junction does not automatically invalidate the shared downstream contribution.
+
+## 6. Current boundary
+
+No C Junction exists or is authorized.
+
+```text
+C NOT STARTED — USER HOLD
+```
