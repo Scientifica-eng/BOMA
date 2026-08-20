@@ -13,6 +13,7 @@ on:
       - 'LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean'
       - 'LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean'
       - 'LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence003.lean'
+      - 'LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean'
       - '.github/workflows/boma-r-dedekind-nonzero-inverse-003.yml'
       - 'lean-toolchain'
 
@@ -104,6 +105,7 @@ jobs:
             LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean \
             LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean \
             LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean \
+            LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean \
             LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean \
             LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean \
             LAB/payloads/lean/RStage/RDedekindPositiveReciprocalEmbedding.lean \
