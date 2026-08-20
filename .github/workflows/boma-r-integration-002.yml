@@ -13,8 +13,13 @@ on:
       - 'LAB/payloads/lean/ZStage/**'
       - 'LAB/payloads/lean/QStage/**'
       - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
       - '.github/workflows/boma-r-integration-002.yml'
       - 'lean-toolchain'
+
+concurrency:
+  group: boma-r-integration-002-evidence-main
+  cancel-in-progress: false
 
 jobs:
   verify-and-record:
@@ -23,6 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Lean
         id: setup
         continue-on-error: true
@@ -34,111 +40,69 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: false
-      - name: Verify R-J-002 integrated Stage-One real certificate
-        id: integration
+
+      - name: Validate R-J-002 assembly manifest
+        id: manifest
         if: steps.setup.outcome == 'success'
         continue-on-error: true
+        shell: bash
         run: |
-          cat \
-            LAB/payloads/lean/NCore/NCoreRB001.lean \
-            LAB/payloads/lean/NArithmetic/AddRight.lean \
-            LAB/payloads/lean/NArithmetic/AddLeft.lean \
-            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
-            LAB/payloads/lean/NArithmetic/AddLaws.lean \
-            LAB/payloads/lean/NArithmetic/MulRight.lean \
-            LAB/payloads/lean/NArithmetic/MulLeft.lean \
-            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
-            LAB/payloads/lean/NArithmetic/MulLaws.lean \
-            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
-            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
-            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
-            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
-            LAB/payloads/lean/ZStage/ZSigned.lean \
-            LAB/payloads/lean/ZStage/ZPairs.lean \
-            LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean \
-            LAB/payloads/lean/ZStage/ZPairArithmetic.lean \
-            LAB/payloads/lean/ZStage/ZSignedArithmeticDirect.lean \
-            LAB/payloads/lean/ZStage/ZSignedArithmeticPair.lean \
-            LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean \
-            LAB/payloads/lean/ZStage/ZArithmeticLaws.lean \
-            LAB/payloads/lean/ZStage/ZOrderDirect.lean \
-            LAB/payloads/lean/ZStage/ZOrderPair.lean \
-            LAB/payloads/lean/ZStage/ZOrderConvergence.lean \
-            LAB/payloads/lean/ZStage/ZOrderLaws.lean \
-            LAB/payloads/lean/QStage/QGatewayCancellation.lean \
-            LAB/payloads/lean/QStage/QFractions.lean \
-            LAB/payloads/lean/QStage/QRawArithmetic.lean \
-            LAB/payloads/lean/QStage/QRawAdditiveLaws.lean \
-            LAB/payloads/lean/QStage/QRawMultiplicativeLaws.lean \
-            LAB/payloads/lean/QStage/QRawDistributiveLaw.lean \
-            LAB/payloads/lean/QStage/QQuotientCarrier.lean \
-            LAB/payloads/lean/QStage/QQuotientAdditiveLaws.lean \
-            LAB/payloads/lean/QStage/QQuotientMultiplicativeLaws.lean \
-            LAB/payloads/lean/QStage/QQuotientDistributiveLaw.lean \
-            LAB/payloads/lean/QStage/QInverseWitness.lean \
-            LAB/payloads/lean/QStage/QEmbeddingLaws.lean \
-            LAB/payloads/lean/QStage/QOrderCore.lean \
-            LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean \
-            LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean \
-            LAB/payloads/lean/RStage/RPreCompletionGateway.lean \
-            LAB/payloads/lean/RStage/QRationalDensityGateway.lean \
-            LAB/payloads/lean/RStage/RDedekindProbe.lean \
-            LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean \
-            LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean \
-            LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean \
-            LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean \
-            LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean \
-            LAB/payloads/lean/RStage/RDedekindAddition.lean \
-            LAB/payloads/lean/RStage/RDedekindAdditionEmbedding.lean \
-            LAB/payloads/lean/RStage/RDedekindAdditionLaws.lean \
-            LAB/payloads/lean/RStage/RDedekindOrderAdditiveCompatibility.lean \
-            LAB/payloads/lean/RStage/RDedekindNegationCandidate.lean \
-            LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean \
-            LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean \
-            LAB/payloads/lean/RStage/QArchimedeanGridProbe.lean \
-            LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean \
-            LAB/payloads/lean/RStage/RDedekindCutBracketApprox.lean \
-            LAB/payloads/lean/RStage/RDedekindAdditiveInverse.lean \
-            LAB/payloads/lean/RStage/RDedekindAdditiveGroupDerived.lean \
-            LAB/payloads/lean/RStage/RDedekindPositivePart.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveDecomposition.lean \
-            LAB/payloads/lean/RStage/RDedekindNonnegativeMultiplication.lean \
-            LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean \
-            LAB/payloads/lean/RStage/RDedekindNonnegativeMulEmbedding.lean \
-            LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveReciprocalCandidate.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveReciprocalEmbedding.lean \
-            LAB/payloads/lean/RStage/RDedekindAnchoredCutBracket.lean \
-            LAB/payloads/lean/RStage/QReciprocalGapEstimate004.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveInverseProduct004.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean \
-            LAB/payloads/lean/RStage/RDedekindSignedMultiplicationCandidate.lean \
-            LAB/payloads/lean/RStage/RDedekindNonnegativeMulLaws.lean \
-            LAB/payloads/lean/RStage/RDedekindNonnegativeMulDistributivity.lean \
-            LAB/payloads/lean/RStage/RDedekindSignedMultiplicationBasicLaws.lean \
-            LAB/payloads/lean/RStage/RDedekindSignedMultiplicationSignLaws.lean \
-            LAB/payloads/lean/RStage/RDedekindSignedMultiplicationAssociativity.lean \
-            LAB/payloads/lean/RStage/RDedekindSignedMultiplicationDistributivity.lean \
-            LAB/payloads/lean/RStage/RDedekindOrderedRingCompatibility.lean \
-            LAB/payloads/lean/RStage/RDedekindPositiveInverseRelation003.lean \
-            LAB/payloads/lean/RStage/RDedekindNonzeroInverseExistence004.lean \
-            LAB/payloads/lean/RStage/RDedekindStrictOrder.lean \
-            LAB/payloads/lean/RStage/RDedekindOrderedFieldClosure.lean \
-            LAB/payloads/lean/RStage/RDedekindCompleteness.lean \
-            LAB/payloads/lean/RStage/RDedekindRationalDensity.lean \
-            LAB/payloads/lean/RStage/RDedekindArchimedean.lean \
-            LAB/payloads/lean/RStage/RStageIntegration002.lean \
-            > /tmp/RStageIntegration002.lean
+          test -s LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+
+      - name: Verify R-J-002 integrated Stage-One real certificate
+        id: integration
+        if: steps.setup.outcome == 'success' && steps.manifest.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          : > /tmp/RStageIntegration002.lean
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> /tmp/RStageIntegration002.lean
+            printf '\n' >> /tmp/RStageIntegration002.lean
+          done < LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
           lake env lean /tmp/RStageIntegration002.lean
+
       - name: Record evidence
         if: always()
         shell: bash
         run: |
           RESULT=PASS
-          for x in "${{ steps.setup.outcome }}" "${{ steps.integration.outcome }}"; do
+          for x in "${{ steps.setup.outcome }}" "${{ steps.manifest.outcome }}" "${{ steps.integration.outcome }}"; do
             if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
           done
+
           git fetch origin main
+
+          # Evidence may be committed on top of a newer documentation-only main head,
+          # but never on top of a main head whose verification inputs differ from
+          # the source state actually checked by this run.
+          if ! git diff --quiet "${GITHUB_SHA}" origin/main -- \
+              LAB/payloads/lean/NCore \
+              LAB/payloads/lean/NArithmetic \
+              LAB/payloads/lean/ZStage \
+              LAB/payloads/lean/QStage \
+              LAB/payloads/lean/RStage \
+              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+              .github/workflows/boma-r-integration-002.yml \
+              lean-toolchain; then
+            echo "::error::R-J-002 verification inputs changed on main after this run started; refusing to promote stale evidence."
+            git diff --name-only "${GITHUB_SHA}" origin/main -- \
+              LAB/payloads/lean/NCore \
+              LAB/payloads/lean/NArithmetic \
+              LAB/payloads/lean/ZStage \
+              LAB/payloads/lean/QStage \
+              LAB/payloads/lean/RStage \
+              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+              .github/workflows/boma-r-integration-002.yml \
+              lean-toolchain
+            exit 1
+          fi
+
           git checkout -B rstageintegration002-evidence origin/main
           mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
           cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md <<EOF
@@ -151,8 +115,10 @@ jobs:
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
+          | assembly manifest validation | ${{ steps.manifest.outcome }} |
           | same-carrier identity/order/Q embedding/additive group/explicit ordered-field closure/inverse witness/Dedekind LUB/density/Archimedean integration certificate | ${{ steps.integration.outcome }} |
           EOF
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md
@@ -160,8 +126,10 @@ jobs:
             git commit -m "Record R-J-002 integration V5 run ${GITHUB_RUN_ID}"
             git push origin HEAD:main
           fi
+
       - name: Enforce
         if: always()
         run: |
           test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.manifest.outcome }}" = success
           test "${{ steps.integration.outcome }}" = success
