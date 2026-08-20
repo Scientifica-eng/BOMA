@@ -8,9 +8,18 @@ on:
   push:
     branches: [main]
     paths:
+      - 'LAB/payloads/lean/NCore/NCoreRB001.lean'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
       - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt'
       - '.github/workflows/boma-q-integration-001.yml'
       - 'lean-toolchain'
+      - 'lakefile.toml'
+
+concurrency:
+  group: boma-q-integration-evidence-main
+  cancel-in-progress: false
 
 jobs:
   verify-and-record:
@@ -19,6 +28,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Lean
         id: setup
         continue-on-error: true
@@ -30,88 +40,108 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: false
-      - name: Verify integrated rational package
-        id: integration
+
+      - name: Validate Q integration assembly manifest
+        id: manifest
         if: steps.setup.outcome == 'success'
         continue-on-error: true
+        shell: bash
         run: |
-          cat \
-            LAB/payloads/lean/NCore/NCoreRB001.lean \
-            LAB/payloads/lean/NArithmetic/AddRight.lean \
-            LAB/payloads/lean/NArithmetic/AddLeft.lean \
-            LAB/payloads/lean/NArithmetic/AddConvergence.lean \
-            LAB/payloads/lean/NArithmetic/AddLaws.lean \
-            LAB/payloads/lean/NArithmetic/MulRight.lean \
-            LAB/payloads/lean/NArithmetic/MulLeft.lean \
-            LAB/payloads/lean/NArithmetic/MulConvergence.lean \
-            LAB/payloads/lean/NArithmetic/MulLaws.lean \
-            LAB/payloads/lean/NArithmetic/OrderAdditive.lean \
-            LAB/payloads/lean/NArithmetic/OrderInductive.lean \
-            LAB/payloads/lean/NArithmetic/OrderConvergence.lean \
-            LAB/payloads/lean/NArithmetic/OrderLaws.lean \
-            LAB/payloads/lean/ZStage/ZSigned.lean \
-            LAB/payloads/lean/ZStage/ZPairs.lean \
-            LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean \
-            LAB/payloads/lean/ZStage/ZPairArithmetic.lean \
-            LAB/payloads/lean/ZStage/ZSignedArithmeticDirect.lean \
-            LAB/payloads/lean/ZStage/ZSignedArithmeticPair.lean \
-            LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean \
-            LAB/payloads/lean/ZStage/ZArithmeticLaws.lean \
-            LAB/payloads/lean/ZStage/ZOrderDirect.lean \
-            LAB/payloads/lean/ZStage/ZOrderPair.lean \
-            LAB/payloads/lean/ZStage/ZOrderConvergence.lean \
-            LAB/payloads/lean/ZStage/ZOrderLaws.lean \
-            LAB/payloads/lean/QStage/QGatewayCancellation.lean \
-            LAB/payloads/lean/QStage/QFractions.lean \
-            LAB/payloads/lean/QStage/QRawArithmetic.lean \
-            LAB/payloads/lean/QStage/QRawAdditiveLaws.lean \
-            LAB/payloads/lean/QStage/QRawMultiplicativeLaws.lean \
-            LAB/payloads/lean/QStage/QRawDistributiveLaw.lean \
-            LAB/payloads/lean/QStage/QQuotientCarrier.lean \
-            LAB/payloads/lean/QStage/QQuotientAdditiveLaws.lean \
-            LAB/payloads/lean/QStage/QQuotientMultiplicativeLaws.lean \
-            LAB/payloads/lean/QStage/QQuotientDistributiveLaw.lean \
-            LAB/payloads/lean/QStage/QInverseWitness.lean \
-            LAB/payloads/lean/QStage/QEmbeddingLaws.lean \
-            LAB/payloads/lean/QStage/QOrderCore.lean \
-            LAB/payloads/lean/QStage/QOrderAdditiveCompatibility.lean \
-            LAB/payloads/lean/QStage/QOrderMultiplicativeCompatibility.lean \
-            LAB/payloads/lean/QStage/QGeneration.lean \
-            LAB/payloads/lean/QStage/QIntegrationCertificate.lean \
-            > /tmp/QIntegrationCertificate.lean
+          set -euo pipefail
+          MANIFEST='LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt'
+          test -s "$MANIFEST"
+          while IFS= read -r path || [ -n "$path" ]; do
+            [ -z "$path" ] && continue
+            case "$path" in \#*) continue ;; esac
+            test -f "$path"
+          done < "$MANIFEST"
+
+      - name: Verify integrated rational package
+        id: integration
+        if: steps.setup.outcome == 'success' && steps.manifest.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          : > /tmp/QIntegrationCertificate.lean
+          while IFS= read -r path || [ -n "$path" ]; do
+            [ -z "$path" ] && continue
+            case "$path" in \#*) continue ;; esac
+            cat "$path" >> /tmp/QIntegrationCertificate.lean
+            printf '\n' >> /tmp/QIntegrationCertificate.lean
+          done < LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
           lake env lean /tmp/QIntegrationCertificate.lean
+
       - name: Record evidence
+        id: evidence
         if: always()
         shell: bash
         run: |
+          set -euo pipefail
           RESULT=PASS
-          for x in "${{ steps.setup.outcome }}" "${{ steps.integration.outcome }}"; do
+          for x in \
+            "${{ steps.setup.outcome }}" \
+            "${{ steps.manifest.outcome }}" \
+            "${{ steps.integration.outcome }}"
+          do
             if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
           done
+
+          VERIFIED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+
           git fetch origin main
+
+          # Never promote evidence onto a newer main if any verification input
+          # changed after the source state actually checked by this run.
+          if ! git diff --quiet "$VERIFIED_SHA" origin/main -- \
+            LAB/payloads/lean/NCore/NCoreRB001.lean \
+            LAB/payloads/lean/NArithmetic \
+            LAB/payloads/lean/ZStage \
+            LAB/payloads/lean/QStage \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            .github/workflows/boma-q-integration-001.yml \
+            lean-toolchain \
+            lakefile.toml
+          then
+            echo '::error::Q verification inputs changed on main after this run started; refusing evidence promotion.'
+            exit 1
+          fi
+
           git checkout -B qintegration-evidence origin/main
           mkdir -p LAB/20_FORMALIZATION/Q_STAGE/evidence
           cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_INTEGRATION_V5_LATEST.md <<EOF
           # Q Final Integration V5 Evidence
           **Status:** ${RESULT}  
-          **Verified commit:** \`${GITHUB_SHA}\`  
-          **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
-          **Pinned toolchain:** \`$(cat lean-toolchain)\`
+          **Verified commit:** \`${VERIFIED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`  
+          **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Assembly manifest:** \`LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt\`
 
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
+          | assembly manifest validation | ${{ steps.manifest.outcome }} |
           | complete N/Z/Q assembly + rational integration certificate | ${{ steps.integration.outcome }} |
+
+          The verified source commit is the source state actually checked by this run. Evidence promotion is refused when verification inputs drift before the evidence commit is recorded on main.
           EOF
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_INTEGRATION_V5_LATEST.md
           if ! git diff --cached --quiet; then
-            git commit -m "Record Q integration V5 run ${GITHUB_RUN_ID}"
+            git commit -m "Record Q integration V5 run ${RUN_ID}"
             git push origin HEAD:main
           fi
+
       - name: Enforce
         if: always()
+        shell: bash
         run: |
+          set -e
           test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.manifest.outcome }}" = success
           test "${{ steps.integration.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
