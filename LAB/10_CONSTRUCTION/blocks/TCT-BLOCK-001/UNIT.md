@@ -23,7 +23,20 @@ U  elementary repeatable block
 ⊙  compatible concatenation operation
 ```
 
-## Internal candidate Bricks
+## Declared internal components
+
+```text
+Empty configuration ε
+Elementary repeatable block U
+Interface compatibility condition
+Compatible concatenation operation ⊙
+```
+
+These are explicit internal construction components of `TCT-BLOCK-001`. They are **not separate canonical Brick units** at the current project granularity.
+
+### Granularity normalization — PDSA-ARCH-002
+
+Earlier revisions of this Block provisionally labeled the four components:
 
 ```text
 TCT-BR-001  Empty configuration
@@ -32,7 +45,9 @@ TCT-BR-003  Interface compatibility
 TCT-BR-004  Concatenation
 ```
 
-These Brick IDs are registry candidates until their individual canonical records are created and verified.
+Those labels were explicitly described as candidate Brick IDs and were never promoted to individual canonical `UNIT.md` records. `PDSA-ARCH-002` therefore removes their **active candidate-identity interpretation** to prevent a component from appearing to be a canonical Brick merely because it once received a provisional ID.
+
+Historical documents containing those candidate labels remain provenance and are not rewritten. A future branch may promote a genuinely independent component to a Brick only through an explicit canonical record and the current granularity rule in `CLAIM_ARCHITECTURE.md`.
 
 ## Dependencies
 
@@ -132,4 +147,4 @@ Historical bare `=` notation in that source is interpreted through the later equ
 
 The Block is canonical only while its explicit construction can be reviewed independently and without hidden numerical premises, and while its identity conventions remain explicitly separated from downstream structural theorems.
 
-Verification/downstream wording synchronized during `PDSA-TCT-008`.
+Verification/downstream wording synchronized during `PDSA-TCT-008`; internal-component granularity normalized during `PDSA-ARCH-002` without changing the mathematical construction.
