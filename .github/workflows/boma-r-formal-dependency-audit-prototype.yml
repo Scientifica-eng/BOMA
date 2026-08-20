@@ -8,9 +8,12 @@ on:
     paths:
       - 'LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md'
       - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
       - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py'
       - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
       - 'LAB/payloads/lean/NCore/**'
       - 'LAB/payloads/lean/NArithmetic/**'
@@ -78,6 +81,22 @@ jobs:
             > /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout 2>&1
           cat /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
 
+      - name: Compare actual closure with R Claim producers
+        id: claimmap
+        if: steps.classify.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --classification /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
+            > /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout 2>&1
+          cat /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+
       - name: Record prototype evidence on feature branch
         id: evidence
         if: always()
@@ -99,6 +118,18 @@ jobs:
           )"
           elif [ "${{ steps.classify.outcome }}" = skipped ]; then
             CLASSIFICATION_STATUS=SKIPPED
+          fi
+
+          CLAIM_PRODUCER_STATUS=NO_OUTPUT
+          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            CLAIM_PRODUCER_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.claimmap.outcome }}" = skipped ]; then
+            CLAIM_PRODUCER_STATUS=SKIPPED
           fi
 
           BRANCH='architecture/claim-transparency-001'
@@ -144,11 +175,26 @@ jobs:
           EOF
           fi
 
+          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            cp /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "${CLAIM_PRODUCER_STATUS}",
+            "reason": "Claim/producer comparison did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
           cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
           # R Formal Dependency Closure — Prototype Evidence
 
           **Status:** ${RESULT}  
-          **Semantic classification:** ${CLASSIFICATION_STATUS}  
+          **Boundary classification:** ${CLASSIFICATION_STATUS}  
+          **Claim/producer comparison:** ${CLAIM_PRODUCER_STATUS}  
           **Audited source commit:** \`${VERIFIED_SHA}\`  
           **Workflow run ID:** \`${RUN_ID}\`  
           **Pinned toolchain:** \`${TOOLCHAIN}\`  
@@ -160,15 +206,27 @@ jobs:
           | Lean setup | ${{ steps.setup.outcome }} |
           | compile accepted assembly + extract transitive declaration closure/edges | ${{ steps.audit.outcome }} |
           | classify boundary against explicit dependency policy | ${{ steps.classify.outcome }} |
+          | compare actual closure against R Claim/producer policy | ${{ steps.claimmap.outcome }} |
 
           ## Scope boundary
 
           A \`PROTOTYPE_PASS\` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA \`TRANSPARENCY PASS\`.
 
-          The semantic classifier separately compares external leaves and source-attributed direct consumers against \`FORMAL_DEPENDENCY_POLICY.json\`. A classification status of \`CLASSIFICATION_REVIEW_REQUIRED\` is a deliberate research result: its residual dependencies must be diagnosed, declared, or removed before any transparency promotion.
+          \`CLASSIFICATION_PASS\` means no external/internal formal dependency remains unclassified under \`FORMAL_DEPENDENCY_POLICY.json\`.
+
+          \`CLAIM_PRODUCER_PASS\` additionally requires the R Claim Registry and machine-readable producer policy to agree, every declared producer to occur in and be reachable through the actual Lean closure, every direct internal dependency of the integration certificate to be explicitly declared or integration-local, and every internal declaration to have producer ancestry. Only the conjunction of these results is eligible for a later transparency-promotion decision.
           EOF
 
-          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
+          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Claim/producer comparison log tail'
+              echo
+              echo '```text'
+              tail -n 120 /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          elif [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
             {
               echo
               echo '## Classifier log tail'
@@ -193,19 +251,22 @@ jobs:
           git add \
             LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
             LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json \
             LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
           if ! git diff --cached --quiet; then
             git commit -m "Record R formal dependency prototype run ${RUN_ID}"
             git push origin HEAD:"$BRANCH"
           fi
 
-      - name: Enforce prototype extraction
+      - name: Enforce full prototype comparison
         if: always()
         shell: bash
         run: |
           set -e
           test "${{ steps.setup.outcome }}" = success
           test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.classify.outcome }}" = success
+          test "${{ steps.claimmap.outcome }}" = success
           test "${{ steps.evidence.outcome }}" = success
 
       - name: Record scope in job summary
@@ -214,7 +275,7 @@ jobs:
           cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
           ## R Formal Dependency Closure Prototype
 
-          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate using a separately compiled accepted assembly module, retains direct dependency edges, and runs an explicit boundary classifier.
+          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate, classifies the formal boundary, and compares the internal closure against explicit accepted R Claim producers.
 
-          Extraction success is not a final `TRANSPARENCY PASS`. Any `CLASSIFICATION_REVIEW_REQUIRED` residual must be diagnosed or explicitly classified before promotion.
+          Extraction success alone is not a final `TRANSPARENCY PASS`. Promotion requires both `CLASSIFICATION_PASS` and `CLAIM_PRODUCER_PASS`, followed by an explicit architecture/status update; this workflow does not authorize C or change the mathematical frontier.
           EOF
