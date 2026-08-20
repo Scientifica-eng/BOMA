@@ -1,0 +1,166 @@
+name: BOMA R Formal Dependency Audit — Prototype
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md'
+      - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
+      - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - '.github/workflows/boma-r-formal-dependency-audit-prototype.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boma-r-formal-dependency-audit-prototype
+  cancel-in-progress: false
+
+jobs:
+  extract-r-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Extract actual R declaration closure
+        id: audit
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage R \
+            --manifest LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            --target BOMA.R.StageIntegration002.rStageIntegrationCertificate \
+            --json-out /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            > /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+          cat /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+
+      - name: Record prototype evidence on feature branch
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          RESULT=PROTOTYPE_PASS
+          if [ "${{ steps.setup.outcome }}" != success ] || [ "${{ steps.audit.outcome }}" != success ]; then
+            RESULT=PROTOTYPE_FAIL
+          fi
+
+          BRANCH='architecture/claim-transparency-001'
+          VERIFIED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+
+          git fetch origin "$BRANCH"
+          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
+          if [ "$CURRENT_HEAD" != "$VERIFIED_SHA" ]; then
+            echo '::error::Feature branch moved after this audit started; refusing stale prototype evidence promotion.'
+            exit 1
+          fi
+
+          git checkout -B claim-transparency-evidence "origin/$BRANCH"
+          mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
+
+          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json ]; then
+            cp /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json
+          else
+            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json <<EOF
+          {
+            "status": "PROTOTYPE_FAIL",
+            "reason": "dependency extractor did not produce JSON output",
+            "verified_commit": "${VERIFIED_SHA}",
+            "workflow_run": "${RUN_ID}"
+          }
+          EOF
+          fi
+
+          cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
+          # R Formal Dependency Closure — Prototype Evidence
+
+          **Status:** ${RESULT}  
+          **Audited source commit:** \`${VERIFIED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`  
+          **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Root declaration:** \`BOMA.R.StageIntegration002.rStageIntegrationCertificate\`  
+          **Accepted assembly manifest:** \`LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt\`
+
+          | Step | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | compile accepted assembly + extract transitive declaration closure | ${{ steps.audit.outcome }} |
+
+          ## Scope boundary
+
+          This is a **prototype theorem/declaration-closure measurement**, not yet a BOMA \`TRANSPARENCY PASS\`.
+
+          The extractor recursively traverses type and proof/definition-body constants for declarations owned by the compiled accepted assembly module and records external module dependencies as boundary leaves. Semantic comparison of those declarations/leaves against the Claim Registry and Trusted Base remains a separate gate.
+          EOF
+
+          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout ]; then
+            {
+              echo
+              echo '## Extractor log tail'
+              echo
+              echo '```text'
+              tail -n 80 /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+              echo '```'
+            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record R formal dependency prototype run ${RUN_ID}"
+            git push origin HEAD:"$BRANCH"
+          fi
+
+      - name: Enforce prototype extraction
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## R Formal Dependency Closure Prototype
+
+          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate using a separately compiled accepted assembly module.
+
+          A successful run is still **not** a final `TRANSPARENCY PASS`: Claim-Registry and Trusted-Base semantic classification must have zero unclassified residuals first.
+          EOF
