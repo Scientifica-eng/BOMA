@@ -2,9 +2,11 @@
 
 **Document ID:** `BOMA-STAGE1-PDSA-PLAN-2026-08-18`  
 **Date:** 2026-08-18  
-**Status:** ACTIVE — governing execution plan for the current research stage  
+**Status:** ACTIVE — governing Stage-One execution plan; progression synchronized 2026-08-20  
 **Method:** PDSA — Plan, Do, Study, Act  
-**Scope:** From the current TCT pre-numerical construction boundary through the first canonical construction of `ℕ`, then `ℤ`, `ℚ`, `ℝ`, and `ℂ`.
+**Scope:** From the TCT pre-numerical construction boundary through the first canonical construction of `ℕ`, then `ℤ`, `ℚ`, `ℝ`, and `ℂ`.
+
+**Current progression note:** the starting-state sections below preserve the ex-ante 2026-08-18 baseline. They are historical plan inputs, not the current frontier. Current status is governed by `LAB/PDSA/STATUS.md`; as of 2026-08-20, R is accepted, RE-R-001 is closed, and C is not started under an explicit user hold.
 
 ---
 
@@ -45,9 +47,9 @@ The controlling governance record is:
 
 ---
 
-## 3. Starting canonical state
+## 3. Historical starting canonical state — 2026-08-18
 
-At the start of this plan, the canonical mathematical path is:
+At the start of this plan, the canonical mathematical path was:
 
 ```text
 TCT-BLOCK-001  Construction kernel       ACTIVE
@@ -65,9 +67,9 @@ TCT-BLOCK-005  Successor                 RESERVED
 TCT-BLOCK-006  Formal natural-number domain  RESERVED
 ```
 
-`TCT-BR-009 — Terminal Interface Preservation` has already been shown by its derivability test to be **not derived from the current specification of structural equivalence `≈`** and is therefore a **DECLARED ADDITIONAL CONSTRAINT** unless a later definition of `≈` makes it derivable.
+`TCT-BR-009 — Terminal Interface Preservation` had already been shown by its derivability test to be **not derived from the then-current specification of structural equivalence `≈`** and was therefore a **DECLARED ADDITIONAL CONSTRAINT** unless a later definition of `≈` made it derivable.
 
-The current mathematical frontier is therefore not `ℕ`; it is the canonical-decomposition gate.
+At plan start, the mathematical frontier was not `ℕ`; it was the canonical-decomposition gate. This paragraph is preserved as historical plan provenance. It must not be read as the current frontier after the completed TCT/N/Z/Q/R cycles recorded in `STATUS.md`.
 
 ---
 
@@ -450,42 +452,44 @@ NextCycleInputs
 
 ---
 
-## 19. Immediate execution order
+## 19. Execution order and current progress
 
-The active sequence from the present repository state is:
+The original Stage-One execution order remains the governing sequence, but the progression through that sequence is now:
 
 ```text
-PDSA-TCT-001  Baseline Stabilization
-      ↓
-PDSA-TCT-002  Pre-Numerical Metatheory Contract
-      ↓
-PDSA-TCT-003  Structural Equivalence ≈
-      ↓
-PDSA-TCT-004  Terminal Recovery Theorem / Countermodel
-      ↓
-PDSA-TCT-005  Canonical Decomposition
-      ↓
-PDSA-TCT-006  Structural Iteration / Depth
-      ↓
-PDSA-TCT-007  Successor-Like Structure
-      ↓
-PDSA-TCT-008  Pre-Numerical Calibration Gate
-      ↓
-PDSA-N-001    ℕ Acceptance Specification
-      ↓
-PDSA-N-002+   ℕ realization and arithmetic
-      ↓
-PDSA-Z-* → PDSA-Q-* → PDSA-R-* → PDSA-C-*
-      ↓
-Stage-One audit and canonical release
-      ↓
-Stage-Two controlled branching
+PDSA-TCT-001..008       CLOSED / CALIBRATED
+        ↓
+N-Core                  ACCEPTED
+        ↓
+N-Arithmetic            ACCEPTED
+        ↓
+Z                       ACCEPTED
+        ↓
+post-Z reverse N        CLOSED
+        ↓
+Q                       ACCEPTED
+        ↓
+R                       ACCEPTED — RA-22
+        ↓
+RE-R-001                CLOSED / COMPLETE
+        ↓
+C                       NOT STARTED — USER HOLD
+        ↓
+Stage-One final audit   NOT TRIGGERED — requires accepted C
+        ↓
+Stage-Two branching     NOT STARTED
 ```
+
+Normal governance makes the C family eligible after R acceptance and the required post-R reverse closure, but the explicit user hold is stronger than eligibility. Therefore no `PDSA-C-*` cycle or other C construction artifact may be opened until a new explicit user order is given.
+
+The detailed current cycle/status index is `LAB/PDSA/STATUS.md`. The takeover synchronization checkpoint is `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`.
 
 ---
 
 ## 20. Plan authority
 
-This document is an **execution plan**, not a claim that downstream units already exist or are proven.
+This document is an **execution plan**, not a claim that a downstream unit exists or is proven merely because it appears in the plan.
 
-The canonical construction registry remains authoritative for actual unit status. PDSA Study and Act records may propose changes; status changes become authoritative only when the corresponding canonical records and evidence are updated consistently.
+The canonical construction registry and synchronized status records remain authoritative for actual unit status. PDSA Study and Act records may propose changes; status changes become authoritative only when the corresponding canonical records and evidence are updated consistently.
+
+The historical starting state in Section 3 is deliberately preserved as plan provenance and must not be misread as the current frontier.
