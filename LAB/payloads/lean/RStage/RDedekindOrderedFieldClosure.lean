@@ -2,7 +2,9 @@
 These are derived from already-certified RBOMA additive/order/multiplicative/inverse interfaces. -/
 namespace BOMA.R.DedekindOrderedFieldClosure001
 
+open BOMA.Q.Quotient001
 open BOMA.R.Gateway001
+open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindQuotient001
 open BOMA.R.DedekindOrderConstructive001
 open BOMA.R.DedekindStrictOrder001
