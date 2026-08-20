@@ -3,7 +3,8 @@
 **Status:** ACTIVE / SYNCHRONIZED  
 **Current status date:** 2026-08-20  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
-**Historical `PDCA` names:** provenance only
+**Historical `PDCA` names:** provenance only  
+**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
 
 ## Current canonical frontier
 
@@ -28,6 +29,8 @@ C                   NOT STARTED — USER HOLD
 ```
 
 The user has explicitly instructed that **C must not be started until a new explicit order is given**. Therefore no C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle is currently authorized.
+
+The 2026-08-20 project-takeover stabilization records and corrects onboarding/CI provenance defects only. It does not change this mathematical frontier, reopen an accepted stage, or authorize C.
 
 ---
 
@@ -435,6 +438,26 @@ No accepted R theorem was weakened or revoked by the reverse audit.
 
 ---
 
+# Operational takeover / stabilization — RECORDED
+
+The current handoff is recorded in:
+
+`LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
+
+The stabilization scope is operational only:
+
+```text
+README / AGENTS synchronization
+Stage-One execution-plan progression synchronization
+R-J-002 assembly manifest extraction
+R integration evidence provenance guard
+workflow serialization for evidence recording
+```
+
+No accepted Lean payload or mathematical unit is modified by this maintenance record. Historical failed experiments, retained alternatives, superseded evidence, and old PDSA records remain preserved when they carry scientific provenance.
+
+---
+
 # Explicit C hold
 
 Normal governance would make the next number-family stage **eligible** after R acceptance and RE-R-001 closure. The current user instruction is stricter:
@@ -464,7 +487,10 @@ Eligibility is not authorization.
 ```text
 README.md
 AGENTS.md
+LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
+LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/R_ACCEPTANCE_SPECIFICATION.md
