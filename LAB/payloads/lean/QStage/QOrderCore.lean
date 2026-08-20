@@ -175,12 +175,22 @@ theorem qle_total (q r : QBOMA) : qLE q r ∨ qLE r q := by
   · exact Or.inl ((qLE_mk_iff x y).2 h)
   · exact Or.inr ((qLE_mk_iff y x).2 h)
 
-/-- The rational order exactly extends the accepted integer order. -/
+/-- The rational order exactly extends the accepted integer order.
+The representative-order Iff is composed explicitly, avoiding proposition-level
+rewriting by `qLE_mk_iff`. -/
 theorem qOfZ_order (a b : BOMA.Z.Rep001.ZSigned) :
     qLE (qOfZ a) (qOfZ b) ↔ zLE a b := by
   change qLE (qmk (fracOfZ a)) (qmk (fracOfZ b)) ↔ zLE a b
-  rw [qLE_mk_iff]
-  change zLE (zmul a zone) (zmul b zone) ↔ zLE a b
-  rw [zmul_one_right, zmul_one_right]
+  have hRaw : RawLE (fracOfZ a) (fracOfZ b) ↔ zLE a b := by
+    constructor
+    · intro h
+      change zLE (zmul a zone) (zmul b zone) at h
+      rw [zmul_one_right, zmul_one_right] at h
+      exact h
+    · intro h
+      change zLE (zmul a zone) (zmul b zone)
+      rw [zmul_one_right, zmul_one_right]
+      exact h
+  exact (qLE_mk_iff (fracOfZ a) (fracOfZ b)).trans hRaw
 
 end BOMA.Q.Order001
