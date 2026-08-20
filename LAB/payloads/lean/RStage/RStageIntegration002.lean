@@ -22,6 +22,7 @@ open BOMA.R.DedekindSignedMulAssociativity001
 open BOMA.R.DedekindSignedMulDistributivity001
 open BOMA.R.DedekindOrderedRing001
 open BOMA.R.DedekindNonzeroInverse004
+open BOMA.R.DedekindOrderedFieldClosure001
 open BOMA.R.DedekindCompleteness001
 open BOMA.R.DedekindRationalDensity001
 open BOMA.R.DedekindArchimedean001
@@ -56,6 +57,10 @@ structure RStageIntegrationCertificate where
     ∀ x : RBOMA, rAdd rZero x = x
   addInverseRight :
     ∀ x : RBOMA, rAdd x (rNeg x) = rZero
+  addTranslateOrderIff :
+    ∀ x y c : RBOMA, rLE (rAdd x c) (rAdd y c) ↔ rLE x y
+  negOrderReversing :
+    ∀ {x y : RBOMA}, rLE x y → rLE (rNeg y) (rNeg x)
   mulComm :
     ∀ x y : RBOMA, rMulCandidate x y = rMulCandidate y x
   mulAssoc :
@@ -79,6 +84,9 @@ structure RStageIntegrationCertificate where
     ∀ {x y z : RBOMA},
       rMulCandidate x y = rOne →
       rMulCandidate x z = rOne → y = z
+  positiveInverse :
+    ∀ {x y : RBOMA},
+      rLT rZero x → rMulCandidate x y = rOne → rLT rZero y
   dedekindLUB :
     ∀ (F : RBOMA → Prop),
       (∃ x : RBOMA, F x) →
@@ -93,14 +101,6 @@ structure RStageIntegrationCertificate where
     ∀ x : RBOMA,
       ∃ n : BOMANat, rLT x (rOfQ (BOMA.Q.Embedding001.qOfN n))
 
-/-- Nontriviality is inherited from the accepted rational strict order and the
-injective principal-cut embedding, rather than postulated at R. -/
-theorem rZero_ne_rOne_integrated : rZero ≠ rOne := by
-  have hlt : rLT rZero rOne := by
-    change rLT (rOfQ qZero) (rOfQ qOne)
-    exact (rOfQ_strict_order qZero qOne).2 qzero_lt_one
-  exact hlt.2
-
 /-- The single certificate used by R-J-002. Each field is an already-proved
 Stage-One theorem instantiated on the same formal carrier and operations. -/
 theorem rStageIntegrationCertificate : RStageIntegrationCertificate where
@@ -111,11 +111,13 @@ theorem rStageIntegrationCertificate : RStageIntegrationCertificate where
   orderAntisymm := @rLE_antisymm
   orderTotal := rLE_total_classical
   strictIrrefl := rlt_irrefl
-  nontrivial := rZero_ne_rOne_integrated
+  nontrivial := rZero_ne_rOne_field
   addComm := rAdd_comm
   addAssoc := rAdd_assoc
   addZeroLeft := rAdd_zero_left
   addInverseRight := rAdd_neg_right
+  addTranslateOrderIff := rLE_add_right_iff
+  negOrderReversing := @rNeg_order_reversing
   mulComm := rMulCandidate_comm
   mulAssoc := rMulCandidate_assoc
   mulOneLeft := rMulCandidate_one_left
@@ -123,6 +125,7 @@ theorem rStageIntegrationCertificate : RStageIntegrationCertificate where
   orderMulNonneg := @rMulCandidate_order_compatible
   inverseExists := r_inverse_exists_nonzero
   inverseUnique := @r_inverse_witness_unique
+  positiveInverse := @rInverse_positive_of_positive
   dedekindLUB := rDedekind_lub_exists
   rationalDensity := @r_rational_image_dense
   archimedeanUpper := r_archimedean_strict_upper
