@@ -26,7 +26,7 @@ permissions:
 
 concurrency:
   group: boma-r-formal-dependency-audit-prototype
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   extract-r-closure:
