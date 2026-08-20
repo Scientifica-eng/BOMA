@@ -33,13 +33,15 @@ theorem qlt_asymm {x y : QBOMA} (hxy : qLT x y) : ¬ qLT y x := by
   have heq := qle_antisymm hxy.1 hyx.1
   exact hxy.2 heq
 
-/-- Total-order trichotomy without adding a separate primitive order. -/
+/-- Total-order trichotomy without adding a separate primitive order.
+The equality split is an explicit localized classical commitment rather than an
+implicit `by_cases` use of the global proposition-decidability instance. -/
 theorem qlt_trichotomy (x y : QBOMA) : qLT x y ∨ x = y ∨ qLT y x := by
   rcases qle_total x y with hxy | hyx
-  · by_cases h : x = y
+  · rcases Classical.em (x = y) with h | h
     · exact Or.inr (Or.inl h)
     · exact Or.inl ⟨hxy, h⟩
-  · by_cases h : x = y
+  · rcases Classical.em (x = y) with h | h
     · exact Or.inr (Or.inl h)
     · exact Or.inr (Or.inr ⟨hyx, fun hyxEq => h hyxEq.symm⟩)
 
