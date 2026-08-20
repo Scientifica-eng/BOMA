@@ -1,8 +1,9 @@
 # R Formal Dependency Closure — Prototype Evidence
 
 **Status:** PROTOTYPE_PASS  
-**Audited source commit:** `5af2100612d9e4bca61ecb06541a659214814791`  
-**Workflow run ID:** `32403006953`  
+**Semantic classification:** CLASSIFICATION_REVIEW_REQUIRED  
+**Audited source commit:** `9635762238da3523be8dc6ce87e076b89583919f`  
+**Workflow run ID:** `32403552190`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
@@ -10,94 +11,95 @@
 | Step | Outcome |
 |---|---|
 | Lean setup | success |
-| compile accepted assembly + extract transitive declaration closure | success |
+| compile accepted assembly + extract transitive declaration closure/edges | success |
+| classify boundary against explicit dependency policy | failure |
 
 ## Scope boundary
 
-This is a **prototype theorem/declaration-closure measurement**, not yet a BOMA `TRANSPARENCY PASS`.
+A `PROTOTYPE_PASS` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA `TRANSPARENCY PASS`.
 
-The extractor recursively traverses type and proof/definition-body constants for declarations owned by the compiled accepted assembly module and records external module dependencies as boundary leaves. Semantic comparison of those declarations/leaves against the Claim Registry and Trusted Base remains a separate gate.
+The semantic classifier separately compares external leaves and source-attributed direct consumers against `FORMAL_DEPENDENCY_POLICY.json`. A classification status of `CLASSIFICATION_REVIEW_REQUIRED` is a deliberate research result: its residual dependencies must be diagnosed, declared, or removed before any transparency promotion.
 
-## Extractor log tail
+## Classifier log tail
 
 ```text
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "congrArg",
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "congrFun'",
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "dite",
-      "kind": "definition",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "eq_of_heq",
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "id",
-      "kind": "definition",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "instTransEq",
-      "kind": "definition",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "noConfusion_of_Nat",
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "of_decide_eq_false",
-      "kind": "theorem",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "rfl",
-      "kind": "definition",
-      "module": "Init.Prelude"
-    },
-    {
-      "name": "eq_false",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
-    },
-    {
-      "name": "eq_false'",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
-    },
-    {
-      "name": "eq_self",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
-    },
-    {
-      "name": "eq_true",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
-    },
-    {
-      "name": "iff_self",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
-    },
-    {
-      "name": "of_eq_true",
-      "kind": "theorem",
-      "module": "Init.SimpLemmas"
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.zadd_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.zmul_one_right",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.zmul_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.embedN_order",
+          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.pairLE_neg_flip",
+          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zle_refl",
+          "source": "LAB/payloads/lean/ZStage/ZOrderLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Order001.zorder_routes_converge",
+          "source": "LAB/payloads/lean/ZStage/ZOrderConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.canonical_pair_separates",
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.pairAdd_assoc",
+          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.pairAdd_comm",
+          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.pairMul_add_right",
+          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.pairMul_assoc",
+          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.pairMul_comm",
+          "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+        "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
+        "BOMA.R.DedekindSignedMulSignLaws001.rMulCandidate_of_nonneg_nonpos",
+        "of_eq_true"
+      ],
+      "residual": false
     }
   ]
 }
