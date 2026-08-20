@@ -3,9 +3,12 @@
   "status": "ACTIVE-PROTOTYPE",
   "date": "2026-08-20",
   "stage": "R",
+  "claim_id_pattern": "R-CL-[A-Z0-9-]+",
   "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
   "registry_section": "R Claim IDs",
+  "root_mode": "single_target",
   "target": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+  "integration_claim": "R-CL-INTEGRATION-001",
   "purpose": "Machine-check the bridge from accepted R Claim Records to explicit Lean producers and then to the actual theorem-level dependency closure. This policy does not redefine the mathematical claims; it encodes the current accepted producer path for comparison.",
   "rules": {
     "registry_claim_set_must_match": true,
