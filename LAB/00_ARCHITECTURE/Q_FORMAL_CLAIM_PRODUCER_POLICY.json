@@ -1,0 +1,142 @@
+{
+  "schema": "BOMA-Q-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "ACTIVE-PROTOTYPE",
+  "date": "2026-08-20",
+  "stage": "Q",
+  "claim_id_pattern": "Q-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "Q Claim IDs",
+  "root_mode": "producer_union",
+  "integration_claim": "Q-CL-INTEGRATION-001",
+  "purpose": "Machine-check the accepted Q Claim surface without inventing a new synthetic single theorem. The audit roots are the existing Q integration-package theorems plus acceptance-level laws not packaged by that file.",
+  "audit_targets": [
+    "BOMA.Q.Integration001.q_nontrivial",
+    "BOMA.Q.Integration001.q_additive_package",
+    "BOMA.Q.Integration001.q_ring_package",
+    "BOMA.Q.Integration001.q_inverse_package",
+    "BOMA.Q.Integration001.q_integer_embedding_package",
+    "BOMA.Q.Integration001.q_order_package",
+    "BOMA.Q.Integration001.q_ordered_field_package",
+    "BOMA.Q.Integration001.q_positive_inverse_package",
+    "BOMA.Q.Integration001.q_generation_package",
+    "BOMA.Q.Quotient001.qAdd_zero_left",
+    "BOMA.Q.Quotient001.qMul_one_left",
+    "BOMA.Q.Quotient001.qMul_zero_left",
+    "BOMA.Q.Order001.qle_refl",
+    "BOMA.Q.Order001.qle_trans",
+    "BOMA.Q.Order001.qle_antisymm",
+    "BOMA.Q.OrderedField001.qadd_translate_iff",
+    "BOMA.Q.Embedding001.qOfZ_neg",
+    "BOMA.Q.Embedding001.qOfN_add",
+    "BOMA.Q.Embedding001.qOfN_mul",
+    "BOMA.Q.Generation001.integer_fraction_classes_equal_iff"
+  ],
+  "integration_local_prefixes": [
+    "BOMA.Q.Integration001"
+  ],
+  "claims": {
+    "Q-CL-GATE-001": {
+      "role": "Z nonzero multiplication cancellation gateway",
+      "producers": [
+        "BOMA.Q.Gateway001.zmul_right_cancel_nonzero",
+        "BOMA.Q.Gateway001.zmul_ne_zero"
+      ]
+    },
+    "Q-CL-REP-001": {
+      "role": "raw positive-denominator fraction representation + equivalence",
+      "producers": [
+        "BOMA.Q.Fraction001.FracEquiv",
+        "BOMA.Q.Fraction001.frac_trans",
+        "BOMA.Q.Fraction001.fracOfZ_reflects"
+      ]
+    },
+    "Q-CL-RAWOPS-001": {
+      "role": "raw arithmetic respects fraction equivalence",
+      "producers": [
+        "BOMA.Q.Fraction001.rawNeg_respects",
+        "BOMA.Q.Fraction001.rawAdd_respects",
+        "BOMA.Q.Fraction001.rawMul_respects"
+      ]
+    },
+    "Q-CL-CARRIER-001": {
+      "role": "quotient carrier/identity and lifted operations",
+      "producers": [
+        "BOMA.Q.Quotient001.fracSetoid",
+        "BOMA.Q.Quotient001.QBOMA",
+        "BOMA.Q.Quotient001.qmk_eq_iff",
+        "BOMA.Q.Quotient001.qNeg",
+        "BOMA.Q.Quotient001.qAdd",
+        "BOMA.Q.Quotient001.qMul"
+      ]
+    },
+    "Q-CL-ALG-001": {
+      "role": "additive/multiplicative algebra + nontriviality",
+      "producers": [
+        "BOMA.Q.Integration001.q_nontrivial",
+        "BOMA.Q.Quotient001.qAdd_zero_left",
+        "BOMA.Q.Quotient001.qAdd_comm",
+        "BOMA.Q.Quotient001.qAdd_assoc",
+        "BOMA.Q.Quotient001.qAdd_neg_right",
+        "BOMA.Q.Quotient001.qMul_zero_left",
+        "BOMA.Q.Quotient001.qMul_one_left",
+        "BOMA.Q.Quotient001.qMul_comm",
+        "BOMA.Q.Quotient001.qMul_assoc",
+        "BOMA.Q.Quotient001.qMul_add_right"
+      ]
+    },
+    "Q-CL-INV-001": {
+      "role": "unique nonzero inverse witness",
+      "producers": [
+        "BOMA.Q.Inverse001.q_inverse_exists_unique"
+      ]
+    },
+    "Q-CL-EMBED-001": {
+      "role": "faithful Z/N embeddings and arithmetic preservation",
+      "producers": [
+        "BOMA.Q.Quotient001.qOfZ_injective",
+        "BOMA.Q.Embedding001.qOfZ_neg",
+        "BOMA.Q.Embedding001.qOfZ_add",
+        "BOMA.Q.Embedding001.qOfZ_mul",
+        "BOMA.Q.Embedding001.qOfN_add",
+        "BOMA.Q.Embedding001.qOfN_mul",
+        "BOMA.Q.Order001.qOfZ_order"
+      ]
+    },
+    "Q-CL-GEN-001": {
+      "role": "explicit integer/positive-denominator generation and exact class equality",
+      "producers": [
+        "BOMA.Q.Generation001.every_q_has_integer_fraction",
+        "BOMA.Q.Generation001.integer_fraction_classes_equal_iff"
+      ]
+    },
+    "Q-CL-ORDER-001": {
+      "role": "total ordered rational interface + ordered-field compatibility",
+      "producers": [
+        "BOMA.Q.Order001.qle_refl",
+        "BOMA.Q.Order001.qle_trans",
+        "BOMA.Q.Order001.qle_antisymm",
+        "BOMA.Q.Order001.qle_total",
+        "BOMA.Q.Order001.qOfZ_order",
+        "BOMA.Q.OrderedField001.qadd_translate_iff",
+        "BOMA.Q.OrderedField001.qneg_reverses",
+        "BOMA.Q.OrderedField001.qmul_mono_right_nonneg",
+        "BOMA.Q.OrderedField001.inverse_of_positive_is_positive"
+      ]
+    },
+    "Q-CL-INTEGRATION-001": {
+      "role": "accepted same-carrier Q integration packages",
+      "transitive_ownership": false,
+      "producers": [
+        "BOMA.Q.Integration001.q_nontrivial",
+        "BOMA.Q.Integration001.q_additive_package",
+        "BOMA.Q.Integration001.q_ring_package",
+        "BOMA.Q.Integration001.q_inverse_package",
+        "BOMA.Q.Integration001.q_integer_embedding_package",
+        "BOMA.Q.Integration001.q_order_package",
+        "BOMA.Q.Integration001.q_ordered_field_package",
+        "BOMA.Q.Integration001.q_positive_inverse_package",
+        "BOMA.Q.Integration001.q_generation_package"
+      ]
+    }
+  }
+}
