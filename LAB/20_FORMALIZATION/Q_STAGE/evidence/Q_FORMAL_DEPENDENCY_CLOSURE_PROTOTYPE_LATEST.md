@@ -3,8 +3,8 @@
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
 **Claim/producer comparison:** CLAIM_PRODUCER_PASS  
-**Audited source commit:** `87b635a15cb057a517e201f8fbf99b54296533b8`  
-**Workflow run ID:** `32416694028`  
+**Audited source commit:** `c4fa19a0d85de0a6f92957315b7e1a1ee565ca2a`  
+**Workflow run ID:** `32417291894`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root mode:** `producer_union` over accepted Q integration/law targets  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt`
