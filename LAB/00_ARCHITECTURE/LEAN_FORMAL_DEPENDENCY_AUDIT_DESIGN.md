@@ -1,7 +1,7 @@
 # LEAN FORMAL DEPENDENCY AUDIT DESIGN
 
 **Document ID:** `BOMA-ARCH-LEAN-DEPS-001`  
-**Status:** PROTOTYPE DESIGN / PDSA-ARCH-002 PHASE C  
+**Status:** PROTOTYPE IMPLEMENTED / EDGE CLASSIFICATION ACTIVE — PDSA-ARCH-002 PHASE C  
 **Date:** 2026-08-20
 
 ## 1. Purpose
@@ -109,9 +109,12 @@ BOMA_EXTERNAL
 
 BOMA_UNRESOLVED
   a referenced constant could not be found in the environment
+
+BOMA_EDGE
+  direct consumer → dependency edge from an internal declaration
 ```
 
-Internal records also include declaration kind and source range where available.
+The edge relation is required because a flat closure set cannot answer which BOMA declaration consumed a sensitive external dependency or how that dependency is reached from the accepted certificate.
 
 ## 6. Source mapping
 
@@ -125,11 +128,26 @@ Lean declaration
   → accepted manifest source file
 ```
 
-Declarations with no stored range remain visible as `unmapped_internal_ranges`; they are not silently discarded. Generated declarations may legitimately fall into this category and require explicit classification.
+Lean-generated declarations often have no independent saved range. They are not discarded. The orchestrator attempts a conservative **generated-prefix** attribution:
 
-## 7. Immediate hard failures in the prototype
+```text
+qAdd._proof_1      → qAdd source file
+zaddD.match_1      → zaddD source file
+BOMANat.s.inj      → nearest mapped BOMANat declaration prefix
+```
 
-The first theorem-level prototype fails if it detects:
+The generated declaration keeps a null direct line range and records:
+
+```text
+source_resolution = generated-prefix
+source_anchor     = mapped parent declaration
+```
+
+If no mapped prefix exists, the declaration remains an explicit `unmapped_internal_ranges` residual.
+
+## 7. Immediate hard failures in the extraction prototype
+
+The theorem-level extractor fails if it detects:
 
 ```text
 an unresolved constant
@@ -138,7 +156,13 @@ failure to compile the accepted assembly
 failure to load/run the dependency extractor
 ```
 
-It does not yet fail merely because an external boundary module has not been semantically classified against `TRUSTED_BASE.md`; that is the next normalization step.
+The first attempted R run `32399253014` failed earlier than dependency traversal because the temporary assembly was created outside the Lake project root. That defect is preserved in:
+
+`LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-PROTOTYPE-FAILURE-001.md`.
+
+Moving the transient audit workspace under the repository root fixed only that proof-engineering defect; it did not change accepted source elaboration.
+
+The corrected extraction run `32403006953` passed.
 
 ## 8. What PROTOTYPE_PASS means
 
@@ -164,7 +188,7 @@ actual internal declarations
   ↔ declared Claim / Supporting Lemma producers
 
 external boundary leaves
-  ↔ explicit Trusted Base categories
+  ↔ explicit Trusted Base / logical / formalization categories
 ```
 
 with zero unclassified residuals.
@@ -188,19 +212,31 @@ BOMA.R.StageIntegration002.rStageIntegrationCertificate
 
 The integration certificate explicitly packages the same-carrier acceptance surface used by `R-J-002`.
 
-## 10. Planned progression after R prototype
+## 10. Edge-level semantic classification
 
-If R extraction is stable:
+The next prototype layer consumes the extracted JSON and:
+
+1. builds direct consumer/dependency adjacency;
+2. identifies direct BOMA consumers of every external boundary leaf;
+3. maps consumers to accepted source files, including generated-prefix attribution;
+4. computes a shortest path from the accepted integration target to sensitive leaves;
+5. classifies the leaf under an explicit machine-readable policy;
+6. emits a residual set for anything not safely classified.
+
+Canonical prototype files:
 
 ```text
-R  → classify actual closure → compare to R Claim closure
-Q  → use Q integration theorem family as multiple roots
-Z  → identify/standardize final integration root theorem family
-N-Arithmetic → final accepted law/package roots
-N-Core → compare against existing V5_THEOREM_OWNERSHIP mapping
+LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json
+LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py
 ```
 
-N-Core is expected to be especially valuable for calibration because theorem→Brick/Junction ownership already exists independently.
+A module default is not sufficient to absorb every dependency. In particular:
+
+```text
+external axiom without declaration override → REVIEW_REQUIRED
+unknown external module                   → UNDECLARED_DEPENDENCY
+restricted dependency from wrong source   → UNDECLARED_DEPENDENCY
+```
 
 ## 11. Trusted Base normalization
 
@@ -212,11 +248,48 @@ formal equality infrastructure
 inductive/recursor infrastructure
 Quotient infrastructure where selected
 basic host data/proposition infrastructure
+explicit localized logical commitments
 ```
 
 A declaration is not accepted merely because it came from a module outside the BOMA assembly. External-module status is a **boundary observation**, not automatic trust authorization.
 
-## 12. Certification target
+The first successful R flat closure exposed external leaves in:
+
+```text
+Init.Core
+Init.Prelude
+Init.SimpLemmas
+Init.Classical
+```
+
+and, among them, sensitive declarations including:
+
+```text
+Classical.em
+Classical.byContradiction
+Classical.propDecidable
+propext
+Nat
+noConfusion_of_Nat
+```
+
+The first two already have declared localized logical provenance. The others are intentionally `REVIEW_REQUIRED` until edge provenance shows the exact consumer/path and supports a justified classification. They must not be silently re-labelled as Trusted Base merely to obtain a green audit.
+
+## 12. Planned progression after R prototype
+
+Once R extraction and semantic classification are stable:
+
+```text
+R  → zero residual classification → compare to R Claim closure
+Q  → use Q integration theorem family as multiple roots
+Z  → identify/standardize final integration root theorem family
+N-Arithmetic → final accepted law/package roots
+N-Core → compare against existing V5_THEOREM_OWNERSHIP mapping
+```
+
+N-Core is expected to be especially valuable for calibration because theorem→Brick/Junction ownership already exists independently.
+
+## 13. Certification target
 
 The final Phase-C invariant remains:
 
@@ -228,13 +301,20 @@ DeclaredClosure(E) ∪ ExplicitTrustedBase
 
 with no unclassified actual dependency.
 
-Only after the semantic mapping and residual check pass may an accepted export be promoted to:
+Operational promotion rule:
 
 ```text
-TRANSPARENCY PASS
+PROTOTYPE_PASS
+  +
+CLASSIFICATION_PASS
+  +
+Claim/producer closure comparison PASS
+  ⇒ eligible for TRANSPARENCY PASS
 ```
 
-## 13. Non-effects
+No individual prerequisite is sufficient by itself.
+
+## 14. Non-effects
 
 This audit mechanism:
 
