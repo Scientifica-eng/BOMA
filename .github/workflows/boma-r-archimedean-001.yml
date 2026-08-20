@@ -82,6 +82,7 @@ jobs:
             LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean \
             LAB/payloads/lean/RStage/RDedekindProbe.lean \
             LAB/payloads/lean/RStage/RDedekindEmbeddingProbe.lean \
+            LAB/payloads/lean/RStage/RDedekindSupremumProbe.lean \
             LAB/payloads/lean/RStage/RDedekindQuotientIdentity.lean \
             LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean \
             LAB/payloads/lean/RStage/RDedekindStrictOrder.lean \
