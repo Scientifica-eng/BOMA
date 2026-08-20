@@ -25,10 +25,12 @@
       "classification": "DECLARED_LOGICAL_COMMITMENT",
       "refs": ["R-DP-003", "R-DP-004", "R-CL-ORDER-001", "R-CL-DENSITY-001"],
       "allowed_direct_sources": [
+        "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
         "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
         "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
         "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
-      ]
+      ],
+      "reason": "R theorem-closure auditing exposed an implicit proposition-decidability split in rational strict-order trichotomy. The proof was normalized to an explicit localized Classical.em site in RPreCompletionGateway; downstream principal-cut and negation proofs now reuse that gateway rather than introducing separate decisions."
     },
     "Classical.byContradiction": {
       "classification": "DECLARED_LOGICAL_COMMITMENT",
@@ -40,7 +42,7 @@
     },
     "Classical.propDecidable": {
       "classification": "REVIEW_REQUIRED",
-      "reason": "Actual closure shows a direct dependency on the classical proposition-decidability instance. Edge provenance identifies three accepted R proof consumers; they must be made explicitly classical or refactored before this dependency can leave the residual set."
+      "reason": "Residual guard: no accepted R proof should consume the global classical proposition-decidability instance after the explicit-trichotomy refactor. Any reappearance must be diagnosed rather than silently allowed."
     },
     "propext": {
       "classification": "REVIEW_REQUIRED",
@@ -63,74 +65,47 @@
     "Quotient": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.mk": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.lift": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.lift₂": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.inductionOn": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.sound": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Quotient.exact": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Setoid": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     },
     "Setoid.mk": {
       "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
       "trusted_base_refs": ["TB-META-004"],
-      "allowed_direct_source_prefixes": [
-        "LAB/payloads/lean/QStage/",
-        "LAB/payloads/lean/RStage/"
-      ]
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
     }
   },
   "rules": {
