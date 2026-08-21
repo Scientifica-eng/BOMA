@@ -1,0 +1,1489 @@
+{
+  "status": "CLAIM_PRODUCER_PASS",
+  "policy_schema": "BOMA-N-ARITH-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "stage": "N-Arithmetic",
+  "root_mode": "producer_union",
+  "audit_targets": [
+    "BOMA.NArithmetic.Addition001.addR_z",
+    "BOMA.NArithmetic.Addition001.addR_s",
+    "BOMA.NArithmetic.Addition001.addL_z",
+    "BOMA.NArithmetic.Addition001.addL_s",
+    "BOMA.NArithmetic.Addition001.add_routes_converge",
+    "BOMA.NArithmetic.Addition001.add_z_right",
+    "BOMA.NArithmetic.Addition001.add_z_left",
+    "BOMA.NArithmetic.Addition001.add_s_right",
+    "BOMA.NArithmetic.Addition001.add_s_left",
+    "BOMA.NArithmetic.Addition001.add_comm",
+    "BOMA.NArithmetic.Addition001.add_assoc",
+    "BOMA.NArithmetic.Addition001.add_right_cancel",
+    "BOMA.NArithmetic.Addition001.add_left_cancel",
+    "BOMA.NArithmetic.Multiplication001.mulR_z",
+    "BOMA.NArithmetic.Multiplication001.mulR_s",
+    "BOMA.NArithmetic.Multiplication001.mulL_z",
+    "BOMA.NArithmetic.Multiplication001.mulL_s",
+    "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+    "BOMA.NArithmetic.Multiplication001.mul_z_right",
+    "BOMA.NArithmetic.Multiplication001.mul_z_left",
+    "BOMA.NArithmetic.Multiplication001.mul_s_right",
+    "BOMA.NArithmetic.Multiplication001.mul_s_left",
+    "BOMA.NArithmetic.Multiplication001.mul_comm",
+    "BOMA.NArithmetic.Multiplication001.mul_one_right",
+    "BOMA.NArithmetic.Multiplication001.mul_one_left",
+    "BOMA.NArithmetic.Multiplication001.mul_add_right",
+    "BOMA.NArithmetic.Multiplication001.mul_add_left",
+    "BOMA.NArithmetic.Multiplication001.mul_assoc",
+    "BOMA.NArithmetic.Order001.order_routes_converge",
+    "BOMA.NArithmetic.Order001.le_refl",
+    "BOMA.NArithmetic.Order001.le_trans",
+    "BOMA.NArithmetic.Order001.le_antisymm",
+    "BOMA.NArithmetic.Order001.le_total",
+    "BOMA.NArithmetic.Order001.z_le",
+    "BOMA.NArithmetic.Order001.not_s_le_z",
+    "BOMA.NArithmetic.Order001.le_s_iff",
+    "BOMA.NArithmetic.Order001.add_mono_right",
+    "BOMA.NArithmetic.Order001.add_mono_left",
+    "BOMA.NArithmetic.Order001.mul_mono_right",
+    "BOMA.NArithmetic.Order001.mul_mono_left"
+  ],
+  "closure_status": "PROTOTYPE_PASS",
+  "boundary_classification_status": "CLASSIFICATION_PASS",
+  "registry_claims": [
+    "NAR-CL-ADDDEF-001",
+    "NAR-CL-ADDCONV-001",
+    "NAR-CL-ADD-001",
+    "NAR-CL-MULDEF-001",
+    "NAR-CL-MULCONV-001",
+    "NAR-CL-MUL-001",
+    "NAR-CL-ORDERDEF-001",
+    "NAR-CL-ORDERCONV-001",
+    "NAR-CL-ORDER-001",
+    "NAR-CL-ORDERARITH-001",
+    "NAR-CL-INTEGRATION-001"
+  ],
+  "policy_claims": [
+    "NAR-CL-ADDDEF-001",
+    "NAR-CL-ADDCONV-001",
+    "NAR-CL-ADD-001",
+    "NAR-CL-MULDEF-001",
+    "NAR-CL-MULCONV-001",
+    "NAR-CL-MUL-001",
+    "NAR-CL-ORDERDEF-001",
+    "NAR-CL-ORDERCONV-001",
+    "NAR-CL-ORDER-001",
+    "NAR-CL-ORDERARITH-001",
+    "NAR-CL-INTEGRATION-001"
+  ],
+  "counts": {
+    "registry_claims": 11,
+    "policy_claims": 11,
+    "declared_producers": 56,
+    "audit_targets": 40,
+    "internal_declarations": 97,
+    "owned_internal_declarations": 97,
+    "unowned_internal_declarations": 0,
+    "target_direct_internal_dependencies": 0,
+    "undeclared_target_direct_internal_dependencies": 0,
+    "multi_claim_owned_internal_declarations": 62,
+    "residual_groups": 0
+  },
+  "internal_by_source_stage": {
+    "N-Arithmetic": 79,
+    "N-Core": 18
+  },
+  "unowned_by_source_stage": {},
+  "target_direct_internal_dependencies": [],
+  "claims": [
+    {
+      "claim": "NAR-CL-ADDDEF-001",
+      "role": "independent recurse-right and recurse-left addition routes with computation equations",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Addition001.addR",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addR_z",
+            "BOMA.NArithmetic.Addition001.addR"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+          "owned_internal_count": 12
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addR_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addR_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addR_s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addR_s"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addL",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addL_z",
+            "BOMA.NArithmetic.Addition001.addL"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+          "owned_internal_count": 12
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addL_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addL_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addL_s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.addL_s"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+          "owned_internal_count": 13
+        }
+      ],
+      "owned_internal_count": 17
+    },
+    {
+      "claim": "NAR-CL-ADDCONV-001",
+      "role": "addition route convergence and opposite-side recursion equations",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Addition001.addR_z_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_routes_converge",
+            "BOMA.NArithmetic.Addition001.addR_z_left"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.addR_s_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_routes_converge",
+            "BOMA.NArithmetic.Addition001.addR_s_left"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+          "owned_internal_count": 16
+        }
+      ],
+      "owned_internal_count": 16
+    },
+    {
+      "claim": "NAR-CL-ADD-001",
+      "role": "canonical addition after convergence with identities, successor equations, associativity, commutativity, and cancellation",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Addition001.add",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_z_right",
+            "BOMA.NArithmetic.Addition001.add"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 13
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_z_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_z_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_z_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_z_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_s_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_s_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_s_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_s_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_comm",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_comm"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 18
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_assoc"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_right_cancel",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_right_cancel"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 18
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_left_cancel",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_left_cancel"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 24
+        }
+      ],
+      "owned_internal_count": 29
+    },
+    {
+      "claim": "NAR-CL-MULDEF-001",
+      "role": "independent recurse-right and recurse-left multiplication routes with computation equations",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulR",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulR_z",
+            "BOMA.NArithmetic.Multiplication001.mulR"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulR_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulR_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulR_s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulR_s"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulL",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulL_z",
+            "BOMA.NArithmetic.Multiplication001.mulL"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulL_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulL_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulL_s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mulL_s"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+          "owned_internal_count": 15
+        }
+      ],
+      "owned_internal_count": 19
+    },
+    {
+      "claim": "NAR-CL-MULCONV-001",
+      "role": "multiplication route convergence and opposite-side recursion equations",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+            "BOMA.NArithmetic.Multiplication001.mulR_z_left"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+          "owned_internal_count": 16
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+            "BOMA.NArithmetic.Multiplication001.mulR_s_left"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+          "owned_internal_count": 22
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+          "owned_internal_count": 26
+        }
+      ],
+      "owned_internal_count": 26
+    },
+    {
+      "claim": "NAR-CL-MUL-001",
+      "role": "canonical multiplication with zero/one, successor, associativity, commutativity, and distributivity laws",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.one",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_one_right",
+            "BOMA.NArithmetic.Multiplication001.one"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 4
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_z_right",
+            "BOMA.NArithmetic.Multiplication001.mul"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_z_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 16
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_z_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 18
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_s_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 16
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_s_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 24
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_comm",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_comm"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 28
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_one_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 19
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_one_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 32
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_add_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 17
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_add_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 30
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_assoc"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 18
+        }
+      ],
+      "owned_internal_count": 39
+    },
+    {
+      "claim": "NAR-CL-ORDERDEF-001",
+      "role": "additive-witness order and independently generated inductive structural order",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Order001.LEAdd",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge",
+            "BOMA.NArithmetic.Order001.LEAdd"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+          "owned_internal_count": 14
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.LEInd",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge",
+            "BOMA.NArithmetic.Order001.LEInd"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+          "owned_internal_count": 2
+        }
+      ],
+      "owned_internal_count": 15
+    },
+    {
+      "claim": "NAR-CL-ORDERCONV-001",
+      "role": "extensional convergence of additive-witness and inductive order routes",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge",
+            "BOMA.NArithmetic.Order001.leInd_to_leAdd"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+          "owned_internal_count": 28
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge",
+            "BOMA.NArithmetic.Order001.leAdd_to_leInd"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+          "owned_internal_count": 31
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.order_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+          "owned_internal_count": 42
+        }
+      ],
+      "owned_internal_count": 42
+    },
+    {
+      "claim": "NAR-CL-ORDER-001",
+      "role": "canonical natural order with partial/total order, zero-least, and successor laws",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Order001.LE",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_refl",
+            "BOMA.NArithmetic.Order001.LE"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 15
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_refl",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_refl"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 17
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_trans",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_trans"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 18
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_antisymm",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_antisymm"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 39
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_total",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_total"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 31
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.z_le",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.z_le"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 19
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.not_s_le_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.not_s_le_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 38
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_s_iff",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_s_iff"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 47
+        }
+      ],
+      "owned_internal_count": 59
+    },
+    {
+      "claim": "NAR-CL-ORDERARITH-001",
+      "role": "addition and multiplication monotonicity on both sides",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Order001.add_mono_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.add_mono_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 22
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.add_mono_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.add_mono_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 23
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.mul_mono_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.mul_mono_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 33
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.mul_mono_left",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.mul_mono_left"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 34
+        }
+      ],
+      "owned_internal_count": 36
+    },
+    {
+      "claim": "NAR-CL-INTEGRATION-001",
+      "role": "NAA-18 same-carrier integration of canonical addition, multiplication, and order while retaining route provenance",
+      "transitive_ownership": false,
+      "producers": [
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Addition001.add_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Addition001.add_assoc"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Multiplication001.mul_assoc"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.order_routes_converge",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.order_routes_converge"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.le_total",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.le_total"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.add_mono_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.add_mono_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NArithmetic.Order001.mul_mono_right",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NArithmetic.Order001.mul_mono_right"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+          "owned_internal_count": 1
+        }
+      ],
+      "owned_internal_count": 8
+    }
+  ],
+  "multi_claim_owned_internal": [
+    {
+      "name": "BOMA.NArithmetic.Addition001.add",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addL",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_assoc",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_comm",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_left",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_right",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_left",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_right",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulL",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-MUL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "claims": [
+        "NAR-CL-MUL-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LE",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEAdd",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.s",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.z",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.add_mono_right",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_total",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-ORDER-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-ORDERARITH-001"
+      ]
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "claims": [
+        "NAR-CL-INTEGRATION-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.below",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.rec",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "claims": [
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERCONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.z",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold._f",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind.match_1",
+      "claims": [
+        "NAR-CL-ADD-001",
+        "NAR-CL-ADDCONV-001",
+        "NAR-CL-ADDDEF-001",
+        "NAR-CL-MUL-001",
+        "NAR-CL-MULCONV-001",
+        "NAR-CL-MULDEF-001",
+        "NAR-CL-ORDER-001",
+        "NAR-CL-ORDERARITH-001",
+        "NAR-CL-ORDERCONV-001",
+        "NAR-CL-ORDERDEF-001"
+      ]
+    }
+  ],
+  "residuals": []
+}
