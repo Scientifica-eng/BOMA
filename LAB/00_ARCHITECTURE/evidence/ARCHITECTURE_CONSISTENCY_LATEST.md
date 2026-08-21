@@ -1,8 +1,8 @@
 # BOMA Architecture Consistency Evidence — PDSA-ARCH-002
 
-**Status:** REVIEW_REQUIRED  
-**Audited source commit:** `28b7895348c068ae23eec3b6b122ddd2f045f760`  
-**Workflow run ID:** `32455932902`
+**Status:** PASS  
+**Audited source commit:** `83353e1af8105eb2dcc89817b9b02c1adc84af5d`  
+**Workflow run ID:** `32462494077`
 
 This gate complements the independent theorem-level stage transparency workflows. It checks current evidence freshness, Claim/policy agreement, required architecture/view records, canonical Unit coverage, and Junction/Decision mapping integrity.
 
@@ -10,43 +10,43 @@ This gate complements the independent theorem-level stage transparency workflows
 
 ```text
 {
-  "status": "REVIEW_REQUIRED",
+  "status": "PASS",
   "policy_schema": "BOMA-ARCHITECTURE-CONSISTENCY-POLICY-001",
   "stats": {
     "stages": {
       "N-Core": {
-        "status": "FAIL",
+        "status": "PASS",
         "registry_claims": 20,
         "policy_claims": 20,
-        "audited_sha": "ad9ec2850373cdd2a94d584d4c6035352d57ec75",
-        "stale_inputs": 1
+        "audited_sha": "8b169bb226a06aa077713a337c131f426aac3cd6",
+        "stale_inputs": 0
       },
       "N-Arithmetic": {
-        "status": "FAIL",
+        "status": "PASS",
         "registry_claims": 11,
         "policy_claims": 11,
-        "audited_sha": "ee082647af0537620716b896d824048a2bca9347",
-        "stale_inputs": 1
+        "audited_sha": "8b169bb226a06aa077713a337c131f426aac3cd6",
+        "stale_inputs": 0
       },
       "Z": {
         "status": "PASS",
         "registry_claims": 11,
         "policy_claims": 11,
-        "audited_sha": "5dc1d9be73c2a931702feb9d2f9cda2ff278daa7",
+        "audited_sha": "8b169bb226a06aa077713a337c131f426aac3cd6",
         "stale_inputs": 0
       },
       "Q": {
-        "status": "FAIL",
+        "status": "PASS",
         "registry_claims": 10,
         "policy_claims": 10,
-        "audited_sha": "c4fa19a0d85de0a6f92957315b7e1a1ee565ca2a",
-        "stale_inputs": 1
+        "audited_sha": "8b169bb226a06aa077713a337c131f426aac3cd6",
+        "stale_inputs": 0
       },
       "R": {
         "status": "PASS",
         "registry_claims": 12,
         "policy_claims": 12,
-        "audited_sha": "5dc1d9be73c2a931702feb9d2f9cda2ff278daa7",
+        "audited_sha": "8b169bb226a06aa077713a337c131f426aac3cd6",
         "stale_inputs": 0
       }
     },
@@ -57,28 +57,9 @@ This gate complements the independent theorem-level stage transparency workflows
       "junctions": 14,
       "decisions": 10,
       "orphan_actual_units": 0,
-      "stale_mapped_units": 3
+      "stale_mapped_units": 0
     }
   },
-  "findings": [
-    {
-      "level": "ERROR",
-      "scope": "N-Core",
-      "path": "LAB/20_FORMALIZATION/N_CORE/evidence/N_CORE_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
-      "message": "latest PASS evidence is stale relative to current verification inputs: LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md"
-    },
-    {
-      "level": "ERROR",
-      "scope": "N-Arithmetic",
-      "path": "LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
-      "message": "latest PASS evidence is stale relative to current verification inputs: LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md"
-    },
-    {
-      "level": "ERROR",
-      "scope": "Q",
-      "path": "LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
-      "message": "latest PASS evidence is stale relative to current verification inputs: LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md"
-    }
-  ]
+  "findings": []
 }
 ```
