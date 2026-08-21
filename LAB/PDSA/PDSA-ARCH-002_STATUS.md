@@ -1,43 +1,47 @@
 # PDSA-ARCH-002 STATUS — Claim Transparency and Closure Program
 
-**Status:** ACTIVE — THEOREM-LEVEL TRANSPARENCY CLOSED N-CORE→R; VIEW/GRAPH COMPLETION PENDING  
+**Status:** **CLOSED — PROGRAM OBJECTIVES SATISFIED ON `architecture/claim-transparency-001`**  
 **Date:** 2026-08-21  
 **Branch:** `architecture/claim-transparency-001`  
 **Baseline:** `main@6bb10f16fba3caf171bebd1731a4d209832ae35b`  
-**Mathematical frontier:** UNCHANGED  
-**C:** `NOT STARTED — USER HOLD`
+**Mathematical frontier:** **UNCHANGED**  
+**C:** **NOT STARTED — USER HOLD**
+
+Authoritative closure record:
+
+`LAB/PDSA/PDSA-ARCH-002_CLOSURE_2026-08-21.md`
 
 ## Phase status
 
 | Phase | Status | Result |
 |---|---|---|
-| A — Claim vocabulary / Trusted Base / Registry | **COMPLETE** | canonical Claim architecture, dependency classes, Trusted Base, project registry |
-| B — accepted claim closures N→R | **COMPLETE** | human-readable accepted Claim closures independently mapped for N-Core, N-Arithmetic, Z, Q, R |
-| C — Declared vs Actual formal closure | **COMPLETE FOR ALL CURRENTLY ACCEPTED EXPORTS** | independent theorem-level extraction, boundary classification, and Claim/producer ancestry comparison PASS with zero residuals for N-Core→R |
-| D — granularity normalization | **ACTIVE / CALIBRATED** | provisional TCT pseudo-Brick defect corrected; promotion rule established; no symmetry-driven Brick fabrication authorized |
-| E — Block/Junction/Decision mapping | **INITIAL CANONICAL MAP COMPLETE / FURTHER NORMALIZATION NON-BLOCKING** | Block→Claim map, Junction Ledger, Decision Ledger available; historical route provenance retained |
-| F — machine-readable manifests / CI gates | **COMPLETE FOR N-CORE→R TRANSPARENCY** | shared extractor/classifier/comparator plus independent stage producer policies and CI evidence gates implemented |
-| G — generated views | **PENDING** | machine-readable multi-stage closure is now stable enough to generate separate Construction, Claim, Decision/Junction, Logic/Trust, and Learning views |
+| A — Claim vocabulary / Trusted Base / Registry | **COMPLETE** | Claim architecture, dependency classes, Trusted Base, project registry |
+| B — accepted claim closures N-Core→R | **COMPLETE** | human-readable accepted Claim closure mapped independently for all current accepted exports |
+| C — Declared vs Actual formal closure | **COMPLETE** | theorem-level extraction, boundary classification, Claim/producer comparison PASS with zero residuals for N-Core→R |
+| D — granularity normalization | **COMPLETE AT PROGRAM SCOPE** | promotion rule established; provisional TCT pseudo-Brick defect corrected; no symmetry-driven Brick fabrication |
+| E — Block/Junction/Decision mapping | **COMPLETE AT PROGRAM SCOPE** | Block→Claim map, Junction Ledger, Decision Ledger; reverse Junction coverage included |
+| F — machine-readable manifests / CI gates | **COMPLETE FOR CURRENT ACCEPTED EXPORTS** | theorem matrix, claim-surface audit, architecture consistency audit, drift guards |
+| G — generated views | **COMPLETE** | Construction, Claim, Decision/Branch/Junction, Logic/Trust, and Learning views |
 
-The program is therefore **not yet marked CLOSED** solely because Phase G and final program-level closure reconciliation remain pending. The core theorem-level transparency objective is complete.
+`COMPLETE AT PROGRAM SCOPE` does not freeze future architecture refinement. It means the acceptance criteria of `PDSA-ARCH-002` are satisfied for the currently accepted export frontier.
 
 ## Current mathematical state
 
 ```text
-N-Core        ACCEPTED — NAC-15
-N-Arithmetic  ACCEPTED — NAA-18
-Z             ACCEPTED — ZA-21
-post-Z reverse N  CLOSED
-Q             ACCEPTED — QA-23
-R             ACCEPTED — RA-22
-RE-R-001      CLOSED / COMPLETE
+N-Core             ACCEPTED — NAC-15
+N-Arithmetic       ACCEPTED — NAA-18
+Z                  ACCEPTED — ZA-21
+post-Z reverse N   CLOSED / COMPLETE
+Q                  ACCEPTED — QA-23
+R                  ACCEPTED — RA-22
+RE-R-001           CLOSED / COMPLETE
 
-C             NOT STARTED — USER HOLD
+C                  NOT STARTED — USER HOLD
 ```
 
-No mathematical stage was reopened or strengthened by `PDSA-ARCH-002`.
+No mathematical stage was reopened, strengthened, or extended by this architecture program.
 
-## Current machine-transparency state
+## Current transparency state
 
 ```text
 N-Core        MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
@@ -57,340 +61,226 @@ LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md
 LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md
 ```
 
-## Cross-stage machine evidence summary
+## Canonical theorem-transparency evidence
 
-| Stage | Root mode | Claims | Producers | Roots | Internal / owned | External boundary | Formal residuals | Claim residuals |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
-| N-Core | `producer_union` | 20 | 34 | 21 | 97 / 97 | 40 | 0 | 0 |
-| N-Arithmetic | `producer_union` | 11 | 56 | 40 | 97 / 97 | 40 | 0 | 0 |
-| Z | `producer_union` | 11 | 48 | 29 | 203 / 203 | 60 | 0 | 0 |
-| Q | `producer_union` | 10 | 49 | 20 | 338 / 338 | 72 | 0 | 0 |
-| R | `single_target` | 12 | 29 | 1 | 606 / 606 | 76 | 0 | 0 |
+Push-triggered latest evidence is now produced by:
 
-The root modes are intentionally not uniform. Tooling follows accepted architecture rather than changing the mathematics to force one packaging pattern.
+`.github/workflows/boma-stage-transparency-matrix-001.yml`
 
-## N-Core machine evidence
+Latest matrix:
 
 ```text
-workflow run      32455061955
-audited source    ad9ec2850373cdd2a94d584d4c6035352d57ec75
-Lean              4.32.1
-extractor         PROTOTYPE_PASS
-boundary          CLASSIFICATION_PASS
-claim/producer    CLAIM_PRODUCER_PASS
+run             32456174410
+source          8b169bb226a06aa077713a337c131f426aac3cd6
+Lean            leanprover/lean4:v4.32.1
+result          PASS
 ```
 
-Boundary:
+All five stages independently returned:
 
 ```text
-TRUSTED_METATHEORY      40
-UNCLASSIFIED             0
-```
-
-N-Core preserves the distinction:
-
-```text
-pre-numerical TCT
-  ≠ backend TCTNF / Generated verification representation
-  ≠ fresh R-B formal carrier BOMANat
-```
-
-and independently retains constructional no-confusion Route B alongside formal datatype Route A.
-
-## N-Arithmetic machine evidence
-
-```text
-workflow run      32454880229
-audited source    ee082647af0537620716b896d824048a2bca9347
-Lean              4.32.1
-extractor         PROTOTYPE_PASS
-boundary          CLASSIFICATION_PASS
-claim/producer    CLAIM_PRODUCER_PASS
-```
-
-Boundary:
-
-```text
-TRUSTED_METATHEORY      40
-UNCLASSIFIED             0
-```
-
-The first formal comparison passed with zero residuals. Its root policy deliberately includes computation equations for both recurse-right/recurse-left addition and multiplication routes and both accepted order routes, incorporating lessons from earlier stage calibration.
-
-## Z machine evidence
-
-Final successful comparison:
-
-```text
-workflow run      32454713809
-audited source    8558fb5bf50a0cef07b3124bf882df03f56141e0
-Lean              4.32.1
-extractor         PROTOTYPE_PASS
-boundary          CLASSIFICATION_PASS
-claim/producer    CLAIM_PRODUCER_PASS
-```
-
-Boundary:
-
-```text
-TRUSTED_METATHEORY      60
-UNCLASSIFIED             0
-```
-
-The Z audit preserves three reconvergence histories:
-
-```text
-signed representation       ↔ difference-pair representation
-direct signed arithmetic    ↔ pair-mediated arithmetic
-direct signed order         ↔ pair cross-sum order
-```
-
-## Q machine evidence
-
-Calibrated successful comparison:
-
-```text
-workflow run      32416694028
-audited source    87b635a15cb057a517e201f8fbf99b54296533b8
-Lean              4.32.1
-extractor         PROTOTYPE_PASS
-boundary          CLASSIFICATION_PASS
-claim/producer    CLAIM_PRODUCER_PASS
-```
-
-Later workflow-concurrency regression verification also passed:
-
-```text
-workflow run      32417291894
-audited source    c4fa19a0d85de0a6f92957315b7e1a1ee565ca2a
-```
-
-Q boundary at calibration:
-
-```text
-TRUSTED_METATHEORY                      63
-TRUSTED_FORMALIZATION_INFRASTRUCTURE     9
-DECLARED_LOGICAL_COMMITMENT              0
-UNCLASSIFIED                             0
-```
-
-## R machine evidence
-
-Calibrated comparison after generic-tool regression verification:
-
-```text
-workflow run      32415977469
-audited source    db827c7de13275e55bbe2dcbd320c409f2a1c9ee
-Lean              4.32.1
-extractor         PROTOTYPE_PASS
-boundary          CLASSIFICATION_PASS
-claim/producer    CLAIM_PRODUCER_PASS
-```
-
-Later workflow-concurrency regression verification also passed:
-
-```text
-workflow run      32417221728
-audited source    2c2926b3567cb11fa93a3a4bea4464fdd86f79ce
-```
-
-R boundary at calibration:
-
-```text
-TRUSTED_METATHEORY                      65
-TRUSTED_FORMALIZATION_INFRASTRUCTURE     9
-DECLARED_LOGICAL_COMMITMENT              2
-UNCLASSIFIED                             0
-```
-
-The two declared logical leaves remain explicit:
-
-```text
-Classical.em
-Classical.byContradiction
-```
-
-## Learning Graph — retained theorem-transparency sequence
-
-The program did not move directly from a declared architecture to a clean machine pass.
-
-### R — hidden formal boundary discovery
-
-```text
-workspace/package-root execution defect
-  ↓
-5 semantic residuals
-  ↓
-2 residuals after generated/metatheory provenance classification
-  ↓
-1 residual after explicit localization of proposition decision
-  ↓
-0 residuals after removing proposition-extensionality proof artifacts
-  ↓
-Claim/producer ancestry PASS
-```
-
-The result made localized classical commitments explicit instead of leaving them hidden in elaboration/typeclass behavior.
-
-### Q — producer over-declaration
-
-```text
-formal boundary PASS
-  ↓
-1 Claim/producer residual: zmul_ne_zero
-  ↓
-actual graph showed it is a retained helper, not an acceptance producer
-  ↓
-producer policy corrected without deleting theorem or fabricating consumption
-  ↓
-0 residuals
-```
-
-### Z — root undercoverage
-
-```text
-formal boundary PASS
-  ↓
-3 producer residuals:
-  signed_roundtrip
-  embedN_zero
-  embedN_one
-  ↓
-all three are explicitly stated accepted properties
-  ↓
-added to audit-root surface rather than removed from ownership
-  ↓
-0 residuals
-```
-
-This is the opposite correction from Q and is preserved as such.
-
-### N-Arithmetic — first-pass closure
-
-The first comparison passed. Earlier stage lessons led the initial policy to include route computation equations as roots instead of treating only downstream canonical laws as the acceptance surface.
-
-### N-Core — first-pass closure with epistemic boundary preserved
-
-The first comparison passed. Definitions were used as formal roots for genuinely definitional accepted interfaces; named backend witnesses were used only where historical Claim/V5 ownership already justified them. Anonymous verification `example`s were not promoted into canonical Claim identities.
-
-## Evidence-write concurrency learning
-
-When multiple stage workflows were triggered by the same Claim Registry change, exact-HEAD evidence guards could cause one valid run to reject evidence after another stage wrote an evidence commit.
-
-The transparency workflows now use:
-
-```text
-shared concurrency group:
-  boma-formal-transparency-evidence-architecture-claim-transparency-001
-
-cancel-in-progress: false
-```
-
-and evidence promotion checks only **verification-input drift** between the audited SHA and current branch head.
-
-A run is rejected if stage payloads, manifest, Claim Registry, policy, audit tools, toolchain, or the stage workflow changed. Evidence/status-only movement does not invalidate a mathematically identical verification input set.
-
-This preserves provenance without creating a cross-stage evidence-writing race.
-
-## Machine-readable architecture now available
-
-Shared machinery:
-
-```text
-LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json
-LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean
-LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py
-LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py
-LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py
-```
-
-Stage producer policies:
-
-```text
-LAB/00_ARCHITECTURE/N_CORE_FORMAL_CLAIM_PRODUCER_POLICY.json
-LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json
-LAB/00_ARCHITECTURE/Z_FORMAL_CLAIM_PRODUCER_POLICY.json
-LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json
-LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json
-```
-
-Stage workflows:
-
-```text
-.github/workflows/boma-n-core-formal-dependency-audit-prototype.yml
-.github/workflows/boma-n-arith-formal-dependency-audit-prototype.yml
-.github/workflows/boma-z-formal-dependency-audit-prototype.yml
-.github/workflows/boma-q-formal-dependency-audit-prototype.yml
-.github/workflows/boma-r-formal-dependency-audit-prototype.yml
-```
-
-## Historical acceptance evidence remains historical
-
-Examples of retained historical mathematical evidence:
-
-```text
-N-Core             32163771789
-N addition         32164861155
-N multiplication   32165318266
-N order            32165691581
-Z representation   32168105466
-Z arithmetic       32169328837
-Z ring             32169564747
-Z order convergence 32169832933
-Z ordered ring     32170144944
-Q integration      32178326013
-R integration      32385379288
-```
-
-The new transparency evidence answers a different question: whether the current branch can mechanically account for actual formal dependencies of the accepted Claim surface. It does not rewrite the historical acceptance record.
-
-## Current Study conclusion
-
-For every currently accepted export:
-
-```text
-Actual Formal Dependency Closure(stage)
-  ⊆
-Declared Claim-producer closure(stage)
-+ transitive supporting ancestry
-+ explicit logical/formalization commitments
-+ Trusted Base
-```
-
-with:
-
-```text
+PROTOTYPE_PASS
+CLASSIFICATION_PASS
+CLAIM_PRODUCER_PASS
 formal residuals = 0
-Claim/producer residuals = 0
 unowned internal declarations = 0
 ```
 
-independently for N-Core, N-Arithmetic, Z, Q, and R.
+| Stage | Claims | Producers | Roots | Internal / owned |
+|---|---:|---:|---:|---:|
+| N-Core | 20 | 34 | 21 | 97 / 97 |
+| N-Arithmetic | 11 | 56 | 40 | 97 / 97 |
+| Z | 11 | 48 | 29 | 203 / 203 |
+| Q | 10 | 49 | 20 | 338 / 338 |
+| R | 12 | 29 | 1 | 606 / 606 |
 
-This closes the central theorem-level target of Phase C and the stage-gate implementation target of Phase F.
+The root modes remain architecture-sensitive: N-Core/N-Arithmetic/Z/Q use `producer_union`; R uses `single_target` at its accepted integration certificate.
 
-## Next technical actions
+Former stage-specific transparency workflows remain present as **manual read-only diagnostics**. They no longer promote branch evidence.
 
-1. allow the Claim Registry synchronization commit to trigger fresh N-Core→R transparency runs under the shared concurrency protocol;
-2. verify the synchronized Registry state does not introduce any new stage residual;
-3. implement Phase G as **separate views**, not one overloaded diagram:
-   - Construction DAG;
-   - Claim Dependency Graph;
-   - Decision / Branch / Junction Map;
-   - Logic and Trust Map;
-   - Learning Graph;
-4. create a cross-stage `PDSA-ARCH-002` closure/checkpoint record distinguishing theorem-transparency closure from mathematical Stage-One completion;
-5. reconcile the Phase D/E status against the final generated views and only then decide whether `PDSA-ARCH-002` itself is CLOSED.
+## Accepted-source claim surface
+
+Durable source-surface evidence:
+
+```text
+run             32462703782
+source          2d3a1dd5f47164f3af11dd047854e3decf9b6ab2
+result          PASS
+findings        0
+```
+
+Scanned accepted-source surface:
+
+```text
+N-Core         9 files   errors 0   Classical files 0
+N-Arithmetic  13 files   errors 0   Classical files 0
+Z             25 files   errors 0   Classical files 0
+Q             42 files   errors 0   Classical files 0
+R             88 files   errors 0   Classical files 5
+```
+
+The gate checks manifest integrity, `sorry`/`axiom`, undeclared `Classical`, quotient policy, and stale classical whitelist entries.
+
+R's localized classical files remain explicit policy entries rather than a hidden global exemption.
+
+Evidence:
+
+```text
+LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.json
+LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.md
+```
+
+## Architecture consistency
+
+Latest consistency evidence:
+
+```text
+run             32462494077
+source          83353e1af8105eb2dcc89817b9b02c1adc84af5d
+result          PASS
+findings        0
+```
+
+Filesystem-grounded canonical census:
+
+```text
+canonical units   143
+Bricks             70
+Blocks             49
+Junctions          14
+Decision Points    10
+orphan units        0
+stale mappings      0
+```
+
+The audit also confirms exact Registry↔producer-policy Claim-set agreement and zero freshness drift for all five stage evidence records under the canonical matrix verification inputs.
+
+Evidence:
+
+```text
+LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.json
+LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.md
+```
+
+## Generated views
+
+```text
+LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
+LAB/00_ARCHITECTURE/views/CLAIM_DEPENDENCY_GRAPH_VIEW.md
+LAB/00_ARCHITECTURE/views/DECISION_BRANCH_JUNCTION_VIEW.md
+LAB/00_ARCHITECTURE/views/LOGIC_TRUST_VIEW.md
+LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
+```
+
+These are derived projections. They do not replace canonical `UNIT.md`, Claim records, Decision/Junction ledgers, Lean evidence, or historical PDSA records.
+
+## Learning results retained
+
+The closure intentionally preserves the non-linear path to the final state.
+
+### R
+
+Formal-closure calibration exposed execution defects, generated/metatheory classification questions, localized classical dependencies, and accidental proof artifacts before reaching zero residuals.
+
+Primary study records:
+
+```text
+LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-PROTOTYPE-FAILURE-001.md
+LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-STUDY-001.md
+```
+
+### Q
+
+A valid but unused helper theorem was initially over-declared as an acceptance producer. The policy was corrected to the actual consumed graph; the theorem itself was not deleted.
+
+`LAB/PDSA/experiments/PDSA-ARCH-002-Q-FORMAL-CLOSURE-STUDY-001.md`
+
+### Z
+
+The first run found three accepted producers missing from the audit-root surface. Because the corresponding Claims were real acceptance content, the roots were expanded rather than the Claims removed.
+
+`LAB/PDSA/experiments/PDSA-ARCH-002-Z-FORMAL-CLOSURE-STUDY-001.md`
+
+### Reverse Z
+
+`Z-RE-J-001` is now indexed as a canonical reverse-learning Junction:
+
+```text
+INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
+```
+
+This preserves the result that reconstruction of an extensional N interface from accepted Z does not reconstruct the original constructional/PDSA provenance.
+
+### Evidence orchestration
+
+The program also learned that one shared GitHub concurrency group is not a durable multi-stage evidence queue. The final operational split is:
+
+```text
+stage-specific manual diagnostics     read-only
+canonical push evidence               one N-Core→R matrix transaction
+```
+
+This correction concerns verification provenance, not mathematics.
+
+## Trusted/logical boundary result
+
+The architecture maintains the separation:
+
+```text
+constructed mathematics
+≠ selected representation/formalization commitments
+≠ localized logical commitments
+≠ Trusted Metatheory
+≠ verification/CI infrastructure
+```
+
+Q has no Q-specific declared classical formal leaf in its certified closure. R retains explicit localized classical commitments, including `Classical.em` and `Classical.byContradiction` where actually consumed.
+
+## Reopening conditions
+
+Reopen affected transparency certification or the program-level closure when a material change alters any relevant:
+
+```text
+accepted payload
+accepted source manifest
+Claim Registry
+Claim-producer policy
+formal dependency/classification/comparison tooling
+stage transparency matrix or its orchestration
+Lean toolchain / material build environment
+logical or formalization boundary
+canonical Block/Brick/Junction/Decision mapping
+Junction contract / reconvergence theorem
+source-surface commitment policy
+```
+
+A documentation-only or historical-learning addition does not automatically reopen mathematical acceptance.
 
 ## Non-effects
 
-This program has not:
+`PDSA-ARCH-002` closure does not imply:
 
 ```text
-reopened an accepted mathematical stage;
-changed the mathematical frontier;
-turned selected representation/formalization routes into necessities;
-deleted failed/superseded learning evidence;
-merged the architecture branch into main;
-opened C.
+merge to main
+new mathematical acceptance
+Dedekind necessity
+quotient necessity
+classical necessity beyond the recorded selected route
+history deletion
+C authorization
+```
+
+Historical revisions of this status and all intermediate failure/study artifacts remain in repository history and dedicated PDSA experiment records.
+
+## Final program state
+
+```text
+PDSA-ARCH-002                     CLOSED
+THEOREM TRANSPARENCY N-Core→R     PASS — BRANCH-LOCAL
+CLAIM SURFACE                     PASS
+ARCHITECTURE CONSISTENCY          PASS
+UNCLASSIFIED FORMAL RESIDUALS     0
+ORPHAN CANONICAL UNITS            0
+MATHEMATICAL FRONTIER             UNCHANGED
+C                                 NOT STARTED — USER HOLD
 ```
