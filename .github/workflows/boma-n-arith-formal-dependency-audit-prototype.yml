@@ -1,0 +1,249 @@
+name: BOMA N-Arithmetic Formal Dependency Audit — Prototype
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
+      - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py'
+      - 'LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py'
+      - 'LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt'
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'lean-toolchain'
+      - 'lakefile.toml'
+      - '.github/workflows/boma-n-arith-formal-dependency-audit-prototype.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boma-formal-transparency-evidence-architecture-claim-transparency-001
+  cancel-in-progress: false
+
+jobs:
+  audit-n-arith-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Extract actual N-Arithmetic accepted-claim declaration closure
+        id: audit
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_ARGS=()
+          while IFS= read -r target; do
+            [ -n "$target" ] || continue
+            TARGET_ARGS+=(--target "$target")
+          done < <(python3 - <<'PY'
+          import json
+          with open('LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json', encoding='utf-8') as fh:
+              policy = json.load(fh)
+          for target in policy['audit_targets']:
+              print(target)
+          PY
+          )
+          test "${#TARGET_ARGS[@]}" -gt 0
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage N-Arithmetic \
+            --manifest LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt \
+            "${TARGET_ARGS[@]}" \
+            --json-out /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            > /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout 2>&1
+          cat /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+
+      - name: Classify N-Arithmetic formal boundary against declared policy
+        id: classify
+        if: steps.audit.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            > /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout 2>&1
+          cat /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
+
+      - name: Compare actual N-Arithmetic closure with Claim producers
+        id: claimmap
+        if: steps.classify.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --classification /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            --policy LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
+            > /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout 2>&1
+          cat /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+
+      - name: Record N-Arithmetic prototype evidence on feature branch
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          RESULT=PROTOTYPE_PASS
+          if [ "${{ steps.setup.outcome }}" != success ] || [ "${{ steps.audit.outcome }}" != success ]; then RESULT=PROTOTYPE_FAIL; fi
+
+          CLASSIFICATION_STATUS=NO_OUTPUT
+          if [ -f /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            CLASSIFICATION_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.classify.outcome }}" = skipped ]; then CLASSIFICATION_STATUS=SKIPPED; fi
+
+          CLAIM_PRODUCER_STATUS=NO_OUTPUT
+          if [ -f /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            CLAIM_PRODUCER_STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          elif [ "${{ steps.claimmap.outcome }}" = skipped ]; then CLAIM_PRODUCER_STATUS=SKIPPED; fi
+
+          BRANCH='architecture/claim-transparency-001'
+          VERIFIED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+
+          git fetch origin "$BRANCH"
+          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
+          if [ "$CURRENT_HEAD" != "$VERIFIED_SHA" ]; then
+            CHANGED_VERIFICATION_INPUTS="$(git diff --name-only "$VERIFIED_SHA" "$CURRENT_HEAD" -- \
+              LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+              LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+              LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean \
+              LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+              LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+              LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt \
+              LAB/payloads/lean/NCore \
+              LAB/payloads/lean/NArithmetic \
+              lean-toolchain lakefile.toml \
+              .github/workflows/boma-n-arith-formal-dependency-audit-prototype.yml)"
+            if [ -n "$CHANGED_VERIFICATION_INPUTS" ]; then
+              echo '::error::N-Arithmetic verification inputs changed after this audit started; refusing stale evidence promotion.'
+              printf '%s\n' "$CHANGED_VERIFICATION_INPUTS"
+              exit 1
+            fi
+            echo 'Branch moved only outside N-Arithmetic verification inputs; recording evidence against audited SHA.'
+          fi
+
+          git checkout -B n-arith-claim-transparency-evidence "origin/$BRANCH"
+          mkdir -p LAB/20_FORMALIZATION/N_ARITHMETIC/evidence
+
+          if [ -f /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json ]; then
+            cp /tmp/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json
+          else
+            printf '{"status":"PROTOTYPE_FAIL","reason":"dependency extractor did not produce JSON output","verified_commit":"%s","workflow_run":"%s"}\n' "$VERIFIED_SHA" "$RUN_ID" > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json
+          fi
+
+          if [ -f /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
+            cp /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json
+          else
+            printf '{"status":"%s","reason":"semantic classification did not produce JSON output","verified_commit":"%s","workflow_run":"%s"}\n' "$CLASSIFICATION_STATUS" "$VERIFIED_SHA" "$RUN_ID" > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json
+          fi
+
+          if [ -f /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
+            cp /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json
+          else
+            printf '{"status":"%s","reason":"Claim/producer comparison did not produce JSON output","verified_commit":"%s","workflow_run":"%s"}\n' "$CLAIM_PRODUCER_STATUS" "$VERIFIED_SHA" "$RUN_ID" > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json
+          fi
+
+          cat > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
+          # N-Arithmetic Formal Dependency Closure — Prototype Evidence
+
+          **Status:** ${RESULT}  
+          **Boundary classification:** ${CLASSIFICATION_STATUS}  
+          **Claim/producer comparison:** ${CLAIM_PRODUCER_STATUS}  
+          **Audited source commit:** \`${VERIFIED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`  
+          **Pinned toolchain:** \`${TOOLCHAIN}\`  
+          **Root mode:** \`producer_union\` over accepted addition/multiplication/order targets  
+          **Accepted assembly manifest:** \`LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt\`
+
+          | Step | Outcome |
+          |---|---|
+          | Lean setup | ${{ steps.setup.outcome }} |
+          | compile accepted N-Arithmetic assembly + extract multi-target closure | ${{ steps.audit.outcome }} |
+          | classify formal boundary | ${{ steps.classify.outcome }} |
+          | compare actual closure against N-Arithmetic Claim producers | ${{ steps.claimmap.outcome }} |
+
+          `PROTOTYPE_PASS` alone is not a transparency certification. Promotion requires both `CLASSIFICATION_PASS` and `CLAIM_PRODUCER_PASS` with zero residuals.
+          EOF
+
+          if [ -f /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout ]; then
+            {
+              echo; echo '## Claim/producer comparison log tail'; echo; echo '```text'; tail -n 160 /tmp/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout; echo '```'
+            } >> LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          elif [ -f /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
+            {
+              echo; echo '## Boundary classification log tail'; echo; echo '```text'; tail -n 120 /tmp/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout; echo '```'
+            } >> LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json \
+            LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ARITH_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record N-Arithmetic formal dependency prototype run ${RUN_ID}"
+            git push origin HEAD:"$BRANCH"
+          fi
+
+      - name: Enforce full N-Arithmetic prototype comparison
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.classify.outcome }}" = success
+          test "${{ steps.claimmap.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## N-Arithmetic Formal Dependency Closure Prototype
+
+          This workflow preserves the independent addition, multiplication, and order route histories while auditing their accepted reconvergence and canonical interfaces. It does not change NAA-18, merge the branch, or authorize C.
+          EOF
