@@ -5,7 +5,8 @@
 **N-Core:** `N_CORE_DAG.md`  
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
 **Q:** `Q_DAG.md`  
-**R:** `R_DAG.md`
+**R:** `R_DAG.md`  
+**C:** `C_DAG.md`
 
 Operational, verification, and epistemic status remain separate.
 
@@ -250,6 +251,33 @@ R density + Archimedean   acceptance-required properties with route-specific pro
 
 The reverse audit does not revoke or weaken `RA-22`.
 
+## Complex stage — STARTED / NOT ACCEPTED
+
+### Ex-ante acceptance and dependency architecture
+
+| Unit / record | Role | Status |
+|---|---|---|
+| `BOMA-C-ACCEPT-001` | representation-neutral Stage-One C acceptance specification | ACTIVE |
+| `BOMA-C-R-DEP-001` | accepted-R dependency contract | ACTIVE |
+| `PDSA-C-001` | acceptance-contract discriminant | CLOSED |
+| `C-DP-001` | Stage-One construction realization route | OPEN — NO SELECTION |
+
+`C-DP-001` currently retains:
+
+```text
+C-ROUTE-P  ordered-pair / rank-two coordinate candidate
+C-ROUTE-Q  polynomial-adjunction / quotient candidate
+C-ROUTE-A  conditional genuinely independent alternative
+```
+
+No route has been promoted to a canonical C Brick or Block. No C Junction exists. No C Lean payload or V5 evidence exists.
+
+Initial Claim targets are recorded in:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
+
+Current acceptance semantics require a faithful real field extension with a distinguished `I`, `I²=-1`, and unique representation of every element as `a+bI`. Full algebraic closure is explicitly deferred from Stage-One acceptance.
+
 ## Current frontier
 
 ```text
@@ -261,7 +289,9 @@ post-Z reverse N    CLOSED
 Q                   ACCEPTED
 R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
-C                   NOT STARTED — USER HOLD
+C                   STARTED — ACCEPTANCE SPEC ACTIVE / C-DP-001 OPEN
+C representation    UNSELECTED
+C accepted export   NONE
 ```
 
-By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle may be opened until a new explicit user order is given.
+The previous C hold remains historical provenance in earlier records. It was explicitly lifted by the user on 2026-08-21. No merge to `main` is implied by this branch state.
