@@ -5,7 +5,8 @@
 **N-Core:** `N_CORE_DAG.md`  
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
 **Q:** `Q_DAG.md`  
-**R:** `R_DAG.md`
+**R:** `R_DAG.md`  
+**C:** `C_DAG.md`
 
 ## Pre-numerical trunk
 
@@ -228,6 +229,54 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 
 No accepted R theorem was changed by the reverse audit.
 
+## Complex stage — STARTED / REPRESENTATION UNSELECTED
+
+The prior C hold was explicitly lifted by the user on 2026-08-21. Current C work begins at the acceptance layer:
+
+```text
+R-BLOCK-001 ACCEPTED
+   ↓
+RE-R-001 CLOSED / COMPLETE
+   ↓
+BOMA-C-ACCEPT-001
+ex-ante representation-neutral contract
+   ↓
+BOMA-C-R-DEP-001
+accepted-R dependency boundary
+   ↓
+PDSA-C-001
+acceptance discriminant CLOSED
+   ↓
+C-DP-001 OPEN
+   ├──► C-ROUTE-P ordered-pair / rank-two candidate
+   ├──► C-ROUTE-Q polynomial-adjunction / quotient candidate
+   └──► C-ROUTE-A only if genuinely independent
+
+SELECTS = NONE
+```
+
+The accepted semantic target is:
+
+```text
+faithful R field embedding
++
+distinguished I with I²=-1
++
+every C element has a unique a+bI decomposition over R
+```
+
+The following are **not** yet canonical graph nodes because no independently reviewable construction unit exists for them:
+
+```text
+C-ROUTE-P as a Block
+C-ROUTE-Q as a Block
+any C Brick
+any C Junction
+any accepted C aggregate Block
+```
+
+Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
+
 ## Verification evidence
 
 ```text
@@ -267,7 +316,10 @@ R rational density             32359834460
 R Archimedean                  32359869558
 R final integration            32374868448
 Lean                           4.32.1
+C V5                           NONE YET
 ```
+
+No C proof result is inferred from the historical N→R evidence.
 
 ## Current frontier
 
@@ -280,7 +332,9 @@ post-Z reverse N        CLOSED
 BOMA Q                  ACCEPTED
 BOMA R                  ACCEPTED
 RE-R-001                CLOSED / COMPLETE
-BOMA C                  NOT STARTED — USER HOLD
+BOMA C                  STARTED — ACCEPTANCE SPEC ACTIVE
+C-DP-001                OPEN — NO ROUTE SELECTED
+C accepted export       NONE
 ```
 
-By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle is to be opened until a new explicit user order is given.
+The current graph therefore extends into C only through acceptance, dependency, learning, and Decision layers. It does not draw a representation-selection arrow that has not been earned by evidence.
