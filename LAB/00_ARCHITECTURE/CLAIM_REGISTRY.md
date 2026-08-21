@@ -1,23 +1,25 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE — N-CORE THROUGH R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
+**Status:** ACTIVE — ACCEPTED N-CORE THROUGH R; C PROVISIONAL REGISTER OPEN  
 **Date:** 2026-08-21  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
 **Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
-**Program:** `PDSA-ARCH-002`
+**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
 
 ## 1. Purpose
 
 Provide the project-level current-state index from accepted mathematical claims to their stage-specific closure audits, canonical producer families, and machine transparency certifications.
 
-The registry is intentionally an **index**, not a duplicate of every stage audit. Detailed statements, dependency classifications, historical evidence, non-claims, sensitivity, and learning sequences remain in the linked records.
+The registry is intentionally an **accepted-export index**, not a duplicate of every stage audit and not a place to pretend provisional claims are already accepted. Detailed statements, dependency classifications, historical evidence, non-claims, sensitivity, and learning sequences remain in the linked records.
 
 ```text
 Construction Unit ≠ Claim Record ≠ Lean theorem
 ```
 
 The registry links these layers without collapsing them.
+
+For C, whose acceptance contract is now active but whose carrier is not yet selected, provisional Claim Records live in a separate ex-ante register and are linked from Section 8 below. They are **not counted as accepted claims** here.
 
 ## 2. Accepted export inventory
 
@@ -29,9 +31,15 @@ The registry links these layers without collapsing them.
 | `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md` |
 | `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md` |
 
-`COMPLETE` means the human-readable declared Claim closure is complete at the program's accepted audit granularity. `PASS — BRANCH-LOCAL` is stronger: the stage has an independent actual Lean dependency extraction, formal-boundary classification, and Claim/producer ancestry comparison with zero residuals on `architecture/claim-transparency-001`.
+`COMPLETE` means the human-readable declared Claim closure is complete at the program's accepted audit granularity. `PASS — BRANCH-LOCAL` records the stage's independent actual Lean dependency extraction, formal-boundary classification, and Claim/producer ancestry comparison with zero residuals on the architecture-program branch before merge.
 
-These certifications do not retroactively relabel historical acceptance commits and do not merge the branch into `main`.
+These certifications do not retroactively relabel historical acceptance commits.
+
+Current C work does not alter the five-row accepted export inventory because:
+
+```text
+C accepted export = NONE
+```
 
 ## 3. N-Core Claim IDs
 
@@ -233,9 +241,46 @@ Classical.byContradiction
 
 This does not make the Dedekind route, quotient identity, or localized classical choices mathematically necessary.
 
-## 8. Cross-stage dependency spine
+## 8. C provisional Claim frontier — NOT PART OF ACCEPTED INVENTORY
 
-At accepted-export granularity:
+C has now been explicitly authorized and its ex-ante acceptance contract is active, but no C mathematical Claim has yet been constructed, V5-verified, or accepted.
+
+Authoritative provisional register:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`
+
+Current target Claim IDs:
+
+```text
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-FIELD-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
+C-CL-COMPARE-001
+C-CL-INTEGRATION-001
+```
+
+Their current state is:
+
+```text
+producer              TBD / none selected
+Lean declaration       none
+source file            none
+V5 evidence            none
+accepted status        NONE
+representation route   C-DP-001 OPEN
+```
+
+The provisional register exists precisely so later construction cannot invent Claim requirements after a favored carrier has already been built.
+
+No `C-CL-ACLOSURE-*` Claim is registered because algebraic closure is explicitly outside the Stage-One acceptance contract at present.
+
+## 9. Cross-stage dependency spine
+
+At **accepted-export** granularity the current spine remains:
 
 ```text
 N-CL-INTEGRATION-001
@@ -249,19 +294,32 @@ Q-CL-INTEGRATION-001
 R-CL-INTEGRATION-001
 ```
 
-This spine is only a high-level current construction view. Internal branches, retained alternatives, Junction contracts, Decision Points, and historical learning paths remain authoritative in their canonical records.
-
-## 9. Current transparency status
+The current **construction frontier** now continues provisionally:
 
 ```text
-N-Core        MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
-N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
-Z             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
-Q             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
-R             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
+R-CL-INTEGRATION-001
+  ↓
+BOMA-C-R-DEP-001
+  ↓
+provisional C Claim targets
 ```
 
-Each stage has an **independent** stage-level machine audit. A downstream stage traversing upstream declarations never substituted for the upstream stage's own certification.
+There is deliberately no accepted `R → C-CL-INTEGRATION-001` spine edge yet because C has no accepted integration Claim.
+
+Internal branches, retained alternatives, Junction contracts, Decision Points, and historical learning paths remain authoritative in their canonical records.
+
+## 10. Current transparency status
+
+```text
+N-Core        MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
+N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
+Z             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
+Q             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
+R             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
+C             EX-ANTE CLAIM REGISTER OPEN — NO C FORMAL CLOSURE YET
+```
+
+Each accepted stage has an independent stage-level machine audit. A downstream stage traversing upstream declarations never substitutes for the upstream stage's own certification.
 
 Root modes preserve accepted architecture rather than forcing uniform packaging:
 
@@ -273,20 +331,23 @@ N-Arithmetic  producer_union over independent routes, convergence, and canonical
 N-Core        producer_union over formal carrier/bridge/Route-B/standardness witnesses
 ```
 
-## 10. Program continuation
+C has no root mode yet because no accepted producer surface exists.
 
-The theorem-level Declared-vs-Actual closure objective is now achieved for every currently accepted export from N-Core through R.
+## 11. Program continuation
 
-The remaining `PDSA-ARCH-002` work is to reconcile the planned generated-view phase with the program completion criteria and produce separate stable views where useful:
+`PDSA-ARCH-002` is closed for the accepted N-Core→R frontier and its read-only guards remain governing. C must apply the same transparency architecture during construction rather than waiting for a post-hoc cleanup.
+
+Current C transparency obligations are:
 
 ```text
-Construction DAG
-Claim Dependency Graph
-Decision / Branch / Junction Map
-Logic and Trust Map
-Learning Graph
+provisional Claim register before carrier selection
+explicit R dependency contract
+C-DP-001 open with no SELECTS edge
+future producer ownership per Claim
+future actual formal closure/classification
+future comparison of declared vs actual dependencies
+future source-surface and integration audits
+Learning Graph preservation of failed probes
 ```
 
-These views must be generated or curated without replacing canonical unit records and without flattening historical failures into an artificial linear story.
-
-No record in this registry authorizes C. `C NOT STARTED — USER HOLD` remains unchanged.
+The previous C hold recorded in older architecture-closure documents is historical provenance. It was explicitly lifted by the user on 2026-08-21; this registry now reflects the authorized but unaccepted C frontier.
