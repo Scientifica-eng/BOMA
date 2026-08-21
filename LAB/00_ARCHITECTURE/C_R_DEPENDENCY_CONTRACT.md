@@ -1,11 +1,12 @@
 # C ← R DEPENDENCY CONTRACT — Accepted Interface Consumption Before Representation
 
 **Document ID:** `BOMA-C-R-DEP-001`  
-**Status:** **ACTIVE — EX-ANTE DEPENDENCY CONTRACT / REPRESENTATION-NEUTRAL**  
+**Status:** **ACTIVE — EX-ANTE CONTRACT + FIRST FORMAL BOUNDARY PROBE EXECUTED / V5 PENDING**  
 **Date:** 2026-08-21  
 **C specification:** `BOMA-C-ACCEPT-001`  
 **Upstream accepted export:** `R-BLOCK-001`  
-**Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`
+**Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
+**Current boundary experiment:** `PDSA-C-002`
 
 ## 1. Purpose
 
@@ -34,9 +35,9 @@ The initial C semantic core requires only the algebraic/order strength needed to
 | `R-CL-NONTRIV-001` | establish `0_R ≠ 1_R`; support nondegeneracy | `MATHEMATICAL_CLAIM` — required |
 | `R-CL-ADD-001` | coefficients, additive laws, negation | `MATHEMATICAL_CLAIM` — required |
 | `R-CL-MUL-001` | coefficient multiplication and ordered-ring interaction | `MATHEMATICAL_CLAIM` — required |
-| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — likely required for field closure |
+| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — likely required for future C field closure; **not used by the first nonsquare boundary proof** |
 | `R-CL-FIELD-001` | accepted field-strength integration of R algebra/order | `MATHEMATICAL_CLAIM` — required package-level input |
-| `R-CL-ORDER-001` | positivity of squares / impossibility of a real square equal to `-1` | `MATHEMATICAL_CLAIM` — required for the standard direct field/noncollapse route |
+| `R-CL-ORDER-001` | positivity of squares / impossibility of a real square equal to `-1` | `MATHEMATICAL_CLAIM` — required by `C-RL-001/002` |
 | `R-CL-INTEGRATION-001` | certifies the preceding accepted R Claims coexist on the accepted R carrier | `MATHEMATICAL_CLAIM` / accepted export gateway |
 
 The table declares the intended acceptance-level dependency surface. The later theorem-level formal closure must measure which specific R declarations are actually consumed.
@@ -47,10 +48,10 @@ The following accepted R properties are **not** currently dependencies of `BOMA-
 
 | R Claim / feature | Current C classification |
 |---|---|
-| `R-CL-COMP-001` — Dedekind LUB completeness | **NOT REQUIRED BY CORE C CONTRACT** |
-| `R-CL-DENSITY-001` — Q density in R | **NOT REQUIRED BY CORE C CONTRACT** |
-| `R-CL-ARCH-001` — Archimedean characterization | **NOT REQUIRED BY CORE C CONTRACT** |
-| `R-CL-QEMBED-001` — explicit Q embedding into R | **NOT REQUIRED DIRECTLY BY CORE C CONTRACT**; remains upstream provenance of R |
+| `R-CL-COMP-001` — Dedekind LUB completeness | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
+| `R-CL-DENSITY-001` — Q density in R | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
+| `R-CL-ARCH-001` — Archimedean characterization | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
+| `R-CL-QEMBED-001` — explicit Q embedding into R | **NOT REQUIRED DIRECTLY BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof**; remains upstream provenance of R |
 
 If a candidate C route later consumes one of these, that use must be classified as one of:
 
@@ -85,13 +86,13 @@ localized proof sites used only to establish those route-specific results
 
 The type name `RBOMA` is, of course, the accepted formal carrier exported by R. The prohibition concerns treating its **internal Dedekind representation/quotient provenance** as a mathematical premise of C.
 
+`PDSA-C-002` strengthens this boundary by proving the first C-support theorems against an explicit abstract `RStageIntegrationCertificate` parameter before instantiating the accepted certificate.
+
 ---
 
 # 4. Route-neutral downstream lemmas expected from R
 
 The C stage may prove ordinary algebraic/order consequences from the accepted R interface without reopening R, provided the proof depends only on accepted Claims.
-
-The first high-value examples are:
 
 ## C-RL-001 — square nonnegativity
 
@@ -101,13 +102,29 @@ Target interface theorem:
 ∀ x : R_BOMA, 0_R ≤ x * x.
 ```
 
-Expected status:
+Current implementation:
 
 ```text
-DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
+square_nonnegative_of_interface
+  (C : RStageIntegrationCertificate)
+
+square_nonnegative_from_accepted_R
 ```
 
-No Dedekind-specific theorem should be required.
+Source:
+
+```text
+LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean
+```
+
+Current classification:
+
+```text
+SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
+V5 CERTIFICATION PENDING RETRIEVABLE EVIDENCE
+```
+
+No Dedekind-specific representation theorem occurs in the abstract proof body.
 
 ## C-RL-002 — minus one is not a real square
 
@@ -117,31 +134,33 @@ Target interface theorem:
 ¬ ∃ x : R_BOMA, x * x = -1_R.
 ```
 
-Expected derivation:
+Current implementation:
 
 ```text
-square nonnegativity
-+
-0_R < 1_R / nontrivial ordered-field consequences
-+
-negation/order facts
+minus_one_not_square_of_interface
+  (C : RStageIntegrationCertificate)
+
+minus_one_not_square_from_accepted_R
 ```
 
-Expected status:
+The abstract proof uses only the ordered-ring/nontriviality interface required to derive square nonnegativity, `0 ≤ 1`, negation reversal, and antisymmetry.
+
+Current classification:
 
 ```text
-DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
+SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
+V5 CERTIFICATION PENDING RETRIEVABLE EVIDENCE
 ```
 
-This result is important for:
+This result is expected to support:
 
 ```text
 I not collapsing to the real image
 coordinate independence
-nonzero denominator a²+b² for inverse formulas
+nonzero denominator a²+b² for coordinate inverse formulas
 ```
 
-but its exact proof route remains open until formally checked against the actual accepted R theorem surface.
+but those downstream uses remain unconstructed.
 
 ## C-RL-003 — sum of two squares vanishes only trivially
 
@@ -165,25 +184,72 @@ This is likely useful to the ordered-pair/rank-two inverse route, but it is not 
 
 ## C-RQ-001 — Formal sufficiency of accepted R interface
 
-**Question:** Can `C-RL-001` and `C-RL-002` be proved in Lean using only declarations belonging to the accepted R Claim surface plus Trusted Base, without importing Dedekind representation-specific proof interfaces?
+**Question:** Can `C-RL-001` and `C-RL-002` be proved in Lean using only declarations belonging to the accepted R Claim surface plus Trusted Base, without importing Dedekind representation-specific proof interfaces as mathematical premises?
 
-**Current status:** `OPEN — FIRST FORMAL DEPENDENCY PROBE`.
-
-**Acceptance of probe:**
+**Current status:**
 
 ```text
-PASS if the actual formal closure lands only in:
-  accepted R mathematical Claims
-  supporting lemmas owned by those Claims
-  declared Trusted Base / verification infrastructure
-
-FAIL / RECLASSIFY if a required dependency reaches:
-  LowerCut/CutEquiv-specific machinery
-  undeclared logical commitment
-  an R theorem absent from accepted export scope
+OPEN — SOURCE-LEVEL SUFFICIENCY SUPPORTED
+FORMAL PAYLOAD STAGED
+V5 OUTCOME NOT YET CERTIFIED
 ```
 
-A failure is not automatically a mathematical obstruction. Study must distinguish:
+Current experiment:
+
+```text
+PDSA-C-002
+LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+.github/workflows/boma-c-r-interface-probe-001.yml
+```
+
+The abstract proof is parameterized by `RStageIntegrationCertificate`; the accepted-R corollary is a separate instantiation. Source inspection shows use of:
+
+```text
+orderTotal
+orderAntisymm
+nontrivial
+addComm
+addAssoc
+addZeroLeft
+addInverseRight
+negOrderReversing
+mulComm
+mulOneLeft
+distribRight
+orderMulNonneg
+```
+
+and no use in the abstract proof of:
+
+```text
+qEmbeddingInjective
+qOrderExact
+strictIrrefl
+addTranslateOrderIff
+inverseExists
+inverseUnique
+positiveInverse
+dedekindLUB
+rationalDensity
+archimedeanUpper
+```
+
+The final formal PASS criterion remains:
+
+```text
+PASS if the verified theorem elaborates at the declared accepted R interface
+and no required mathematical dependency reaches representation-specific R machinery.
+```
+
+Until an exact retrievable workflow run is available:
+
+```text
+PASS is not claimed
+FAIL is not claimed
+```
+
+A later failure is not automatically a mathematical obstruction. Study must distinguish:
 
 ```text
 missing exported lemma
@@ -192,7 +258,9 @@ actual need to strengthen R
 from
 proof-engineering visibility
 from
-route-specific overreach.
+route-specific overreach
+from
+syntax/elaboration failure in the staged probe.
 ```
 
 ## C-RQ-002 — Polynomial infrastructure belongs to C, not R
@@ -232,9 +300,17 @@ logical cost follows the declarations actually consumed
 not the full historical ancestry of R-BLOCK-001.
 ```
 
-Therefore a C Claim that depends only on the exported field/order theorem surface must record its own actual logical closure. It may not be labelled “classical because R was classical” without dependency evidence.
+`PDSA-C-002` illustrates the required distinction precisely:
 
-Conversely, if theorem elaboration reaches a localized classical R declaration, that dependency must remain explicit under `LOGICAL_COMMITMENT` and be studied for replaceability.
+```text
+C probe source introduces no new explicit Classical/Choice call
+≠
+proof is therefore independent of all upstream logical choices
+```
+
+The abstract proof consumes `orderTotal`, and the currently accepted producer of R total comparability carries localized classical provenance under `R-DP-003`. Thus the downstream Claim must retain that dependency at the accepted R Claim/producer boundary unless a future alternative total-order producer reconverges with a different logical profile.
+
+Conversely, C must not inherit unrelated classical sites merely because they occur elsewhere in the R construction history.
 
 ---
 
@@ -252,24 +328,26 @@ Dedekind lower-cut realization of R_BOMA
 
 A C carrier may be constructed from values of `R_BOMA` without thereby becoming Dedekind-specific. Representation dependence exists only if the C construction/proof opens or consumes the upstream representation internals rather than the accepted interface.
 
+The current abstract nonsquare proof is deliberately written against `RStageIntegrationCertificate` and does not inspect `LowerCut`, `CutEquiv`, quotient representatives, cut membership, or reciprocal/multiplication internals.
+
 ---
 
 # 8. Current minimal dependency hypothesis
 
-Before route probes, the C core is expected to have the following high-level dependency shape:
+Before route probes, the C core retains the following high-level dependency shape:
 
 ```text
 R-CL-NONTRIV-001
 R-CL-ADD-001
 R-CL-MUL-001
-R-CL-INV-001
+R-CL-INV-001   [future field-closure need; not C-RL-001/002]
 R-CL-FIELD-001
 R-CL-ORDER-001
 R-CL-INTEGRATION-001
         ↓
 route-neutral R consequences
-  square ≥ 0
-  -1 not a square
+  square ≥ 0       [source-level proof staged]
+  -1 not a square  [source-level proof staged]
         ↓
 C quadratic-extension construction routes
 ```
@@ -283,7 +361,7 @@ R-CL-ARCH-001
 Dedekind representation internals
 ```
 
-This is an ex-ante dependency hypothesis. The theorem-level formal closure experiment must confirm or correct it rather than making the matrix pass by expanding the declared surface indiscriminately.
+`PDSA-C-002` supports this separation at source/interface level but does not yet upgrade it to V5-certified theorem evidence.
 
 ---
 
@@ -294,10 +372,11 @@ Reopen this contract if any of the following occurs:
 ```text
 BOMA-C-ACCEPT-001 changes materially;
 C-DP-001 selects a route with additional R requirements;
-a formal probe finds a necessary undeclared R dependency;
+the formal boundary probe finds a necessary undeclared R dependency;
 an accepted R Claim used by C is revised;
 a route begins consuming Dedekind-specific internals;
-a new logical commitment appears in actual formal closure.
+a new logical commitment appears in actual formal closure;
+V5 elaboration of the staged abstract probe exposes a dependency or packaging assumption not visible in source inspection.
 ```
 
 The corrective action must update the current classification without erasing the PDSA record of the earlier hypothesis and what falsified or refined it.
