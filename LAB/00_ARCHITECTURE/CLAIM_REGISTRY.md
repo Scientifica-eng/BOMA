@@ -1,17 +1,17 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE — DECLARED CLAIM CLOSURES MAPPED; Q/R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
-**Date:** 2026-08-20  
+**Status:** ACTIVE — N-CORE THROUGH R MACHINE-CHECKED TRANSPARENCY PASS ON ARCHITECTURE BRANCH  
+**Date:** 2026-08-21  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
 **Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
 **Program:** `PDSA-ARCH-002`
 
 ## 1. Purpose
 
-Provide the project-level index from accepted mathematical claims to their stage-specific closure audit and canonical producer families.
+Provide the project-level current-state index from accepted mathematical claims to their stage-specific closure audits, canonical producer families, and machine transparency certifications.
 
-The registry is intentionally an **index**, not a duplicate copy of every stage audit. Detailed statements, dependency classifications, evidence, non-claims, and sensitivity belong in the linked claim-closure audit records and canonical unit/evidence files.
+The registry is intentionally an **index**, not a duplicate of every stage audit. Detailed statements, dependency classifications, historical evidence, non-claims, sensitivity, and learning sequences remain in the linked records.
 
 ```text
 Construction Unit ≠ Claim Record ≠ Lean theorem
@@ -21,19 +21,23 @@ The registry links these layers without collapsing them.
 
 ## 2. Accepted export inventory
 
-| Export | Mathematical status | Declared claim closure | Machine transparency | Audit record |
+| Export | Mathematical status | Declared claim closure | Machine transparency | Certification |
 |---|---|---|---|---|
-| `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md` |
-| `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md` |
-| `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | PENDING STAGE-ROOT CERTIFICATION | `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md` |
+| `N-BLOCK-007` | ACCEPTED / `NAC-15` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/N_CORE/N_CORE_TRANSPARENCY_CERTIFICATION_001.md` |
+| `N-ARITH-BLOCK-001` | ACCEPTED / `NAA-18` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_TRANSPARENCY_CERTIFICATION_001.md` |
+| `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Z_STAGE/Z_TRANSPARENCY_CERTIFICATION_001.md` |
 | `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md` |
 | `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md` |
 
-`COMPLETE` in the declared-closure column means human-readable Claim closure at the current audit granularity. `PASS — BRANCH-LOCAL` is stronger: it is backed by theorem-level dependency extraction, boundary classification, and Claim/producer comparison on `architecture/claim-transparency-001`. It does not retroactively relabel historical commits or merge the branch into `main`.
+`COMPLETE` means the human-readable declared Claim closure is complete at the program's accepted audit granularity. `PASS — BRANCH-LOCAL` is stronger: the stage has an independent actual Lean dependency extraction, formal-boundary classification, and Claim/producer ancestry comparison with zero residuals on `architecture/claim-transparency-001`.
+
+These certifications do not retroactively relabel historical acceptance commits and do not merge the branch into `main`.
 
 ## 3. N-Core Claim IDs
 
-Detailed mapping: `N_CORE_CLAIM_CLOSURE_AUDIT_001.md`.
+Declared closure: `LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md`.  
+Machine certification: `LAB/20_FORMALIZATION/N_CORE/N_CORE_TRANSPARENCY_CERTIFICATION_001.md`.  
+Historical theorem ownership: `LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`.
 
 | Claim ID | Role | Primary canonical owner/producer |
 |---|---|---|
@@ -58,13 +62,34 @@ Detailed mapping: `N_CORE_CLAIM_CLOSURE_AUDIT_001.md`.
 | `N-CL-STANDARD-001` | pointwise inverse/standardness | `N-BR-020` |
 | `N-CL-INTEGRATION-001` | accepted N-Core integration | `N-BLOCK-007` / `N-J-002` |
 
-Formal ownership reference:
+Current branch-local machine evidence:
 
-`LAB/20_FORMALIZATION/N_CORE/V5_THEOREM_OWNERSHIP.md`.
+```text
+run                  32455061955
+audited source       ad9ec2850373cdd2a94d584d4c6035352d57ec75
+formal extraction    PROTOTYPE_PASS
+boundary             CLASSIFICATION_PASS
+claim/producer       CLAIM_PRODUCER_PASS
+registry claims      20
+producers            34
+audit targets        21
+internal             97 / 97 owned
+formal residuals     0
+claim residuals      0
+```
+
+The certification preserves the central boundary:
+
+```text
+pre-numerical TCT ≠ backend TCTNF ≠ fresh R-B formal carrier BOMANat
+```
+
+and retains independent constructional no-confusion Route B rather than collapsing it into datatype-internal Route A.
 
 ## 4. N-Arithmetic Claim IDs
 
-Detailed mapping: `N_ARITH_CLAIM_CLOSURE_AUDIT_001.md`.
+Declared closure: `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md`.  
+Machine certification: `LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_TRANSPARENCY_CERTIFICATION_001.md`.
 
 | Claim ID | Role | Primary producer |
 |---|---|---|
@@ -80,9 +105,29 @@ Detailed mapping: `N_ARITH_CLAIM_CLOSURE_AUDIT_001.md`.
 | `NAR-CL-ORDERARITH-001` | arithmetic/order compatibility | `N-ORD-BLOCK-004` |
 | `NAR-CL-INTEGRATION-001` | accepted N-Arithmetic integration | `N-ARITH-J-001` / `N-ARITH-BLOCK-001` |
 
+Current branch-local machine evidence:
+
+```text
+run                  32454880229
+audited source       ee082647af0537620716b896d824048a2bca9347
+formal extraction    PROTOTYPE_PASS
+boundary             CLASSIFICATION_PASS
+claim/producer       CLAIM_PRODUCER_PASS
+registry claims      11
+producers            56
+audit targets        40
+internal             97 / 97 owned
+formal residuals     0
+claim residuals      0
+```
+
+The formal root surface explicitly retains recurse-right/recurse-left computation equations and additive-witness/inductive order routes. First theorem-level comparison passed without residuals, informed by earlier Q/Z/R calibration.
+
 ## 5. Z Claim IDs
 
-Detailed mapping: `Z_CLAIM_CLOSURE_AUDIT_001.md`.
+Declared closure: `LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md`.  
+Machine certification: `LAB/20_FORMALIZATION/Z_STAGE/Z_TRANSPARENCY_CERTIFICATION_001.md`.  
+Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-Z-FORMAL-CLOSURE-STUDY-001.md`.
 
 | Claim ID | Role | Primary producer |
 |---|---|---|
@@ -98,10 +143,28 @@ Detailed mapping: `Z_CLAIM_CLOSURE_AUDIT_001.md`.
 | `Z-CL-ORDER-001` | total ordered-ring interface | `Z-ORD-BLOCK-001` |
 | `Z-CL-INTEGRATION-001` | accepted integer integration | `Z-J-002` / `Z-BLOCK-002` |
 
+Current branch-local machine evidence:
+
+```text
+run                  32454713809
+audited source       8558fb5bf50a0cef07b3124bf882df03f56141e0
+formal extraction    PROTOTYPE_PASS
+boundary             CLASSIFICATION_PASS
+claim/producer       CLAIM_PRODUCER_PASS
+registry claims      11
+producers            48
+audit targets        29
+internal             203 / 203 owned
+formal residuals     0
+claim residuals      0
+```
+
+The first Z run preserved in the Learning Graph exposed **audit-root undercoverage**, not hidden mathematics: `signed_roundtrip`, `embedN_zero`, and `embedN_one` were explicit accepted properties omitted from the initial root set. They were added as roots rather than deleted from Claim ownership.
+
 ## 6. Q Claim IDs
 
-Declared-closure mapping: `Q_CLAIM_CLOSURE_AUDIT_001.md`.  
-Machine transparency certification: `Q_TRANSPARENCY_CERTIFICATION_001.md`.  
+Declared closure: `LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md`.  
+Machine certification: `LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md`.  
 Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-Q-FORMAL-CLOSURE-STUDY-001.md`.
 
 | Claim ID | Role | Primary producer |
@@ -117,30 +180,21 @@ Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-Q-FORMAL-CLOSURE-STUDY-00
 | `Q-CL-ORDER-001` | total ordered rational interface | Q order/compatibility layers |
 | `Q-CL-INTEGRATION-001` | accepted Q integration | `Q-J-002` / `Q-BLOCK-002` |
 
-Historical canonical Q integration evidence remains:
+Historical mathematical integration evidence remains:
 
 ```text
 run             32178326013
 result          PASS
 ```
 
-Current branch-local Q transparency evidence:
+Branch-local machine transparency reached zero residuals in run `32416694028`, source `87b635a15cb057a517e201f8fbf99b54296533b8`; the later concurrency-guard regression run `32417291894` also passed.
 
-```text
-run                  32416694028
-audited source       87b635a15cb057a517e201f8fbf99b54296533b8
-formal extraction    PROTOTYPE_PASS
-boundary             CLASSIFICATION_PASS
-claim/producer       CLAIM_PRODUCER_PASS
-residuals            0
-```
-
-The first Q Claim/producer run intentionally remains part of the Learning Graph: it exposed one over-declared producer (`zmul_ne_zero`) that was valid source code but not consumed by the accepted Claim closure. The producer policy was corrected rather than expanding the audit roots merely to obtain a PASS.
+The first Q comparison remains preserved because it exposed one over-declared producer (`zmul_ne_zero`): valid source code, but not an acceptance producer actually consumed by the accepted Claim closure. It was removed from producer ownership rather than artificially promoted to an audit root.
 
 ## 7. R Claim IDs
 
-Declared-closure calibration: `R_CLAIM_CLOSURE_AUDIT_003.md`.  
-Machine transparency certification: `R_TRANSPARENCY_CERTIFICATION_001.md`.  
+Declared closure: `LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md`.  
+Machine certification: `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md`.  
 Learning sequence: `LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-STUDY-001.md`.  
 Reverse classification: `RE-R-001`.
 
@@ -148,7 +202,7 @@ Reverse classification: `RE-R-001`.
 |---|---|---|
 | `R-CL-CARRIER-001` | real carrier + formal identity | Dedekind identity layer / `R-DP-002` |
 | `R-CL-QEMBED-001` | faithful/order-exact Q embedding | principal-cut embedding layer |
-| `R-CL-ORDER-001` | total-order interface | constructive order core + `R-LOGIC-BR-001` |
+| `R-CL-ORDER-001` | total-order interface | constructive order core + localized classical witness |
 | `R-CL-NONTRIV-001` | `rZero ≠ rOne` | Q strict order + final closure |
 | `R-CL-ADD-001` | additive commutative group | `R-ADD-GROUP-BLOCK-001` |
 | `R-CL-MUL-001` | ordered commutative-ring multiplication | `R-MUL-BLOCK-001` |
@@ -159,7 +213,7 @@ Reverse classification: `RE-R-001`.
 | `R-CL-ARCH-001` | Archimedean upper-bound characterization | `R-ARCH-BLOCK-001` |
 | `R-CL-INTEGRATION-001` | same-carrier acceptance integration | `R-J-002` / `RStageIntegration002.lean` |
 
-Historical canonical R integration evidence on the program baseline remains:
+Historical canonical R integration evidence remains:
 
 ```text
 run             32385379288
@@ -168,18 +222,16 @@ Lean            4.32.1
 result          PASS
 ```
 
-Current branch-local R transparency evidence:
+The theorem-level transparency calibration reached zero residuals after the preserved learning sequence `5 → 2 → 1 → 0`, followed by Claim/producer ancestry PASS. A later concurrency-fix regression run `32417221728` also passed.
+
+The R boundary continues to expose localized logical commitments rather than hide them:
 
 ```text
-run                  32415977469
-audited source       db827c7de13275e55bbe2dcbd320c409f2a1c9ee
-formal extraction    PROTOTYPE_PASS
-boundary             CLASSIFICATION_PASS
-claim/producer       CLAIM_PRODUCER_PASS
-residuals            0
+Classical.em
+Classical.byContradiction
 ```
 
-The canonical integration run and later transparency runs answer different questions and must not be conflated: V5 evidence records mathematical integration at its verified source; architecture runs audit theorem-level dependency/Claim transparency for the feature branch.
+This does not make the Dedekind route, quotient identity, or localized classical choices mathematically necessary.
 
 ## 8. Cross-stage dependency spine
 
@@ -197,39 +249,44 @@ Q-CL-INTEGRATION-001
 R-CL-INTEGRATION-001
 ```
 
-This spine is only a high-level view. Internal branch/Junction dependencies remain authoritative in their canonical unit graphs.
+This spine is only a high-level current construction view. Internal branches, retained alternatives, Junction contracts, Decision Points, and historical learning paths remain authoritative in their canonical records.
 
 ## 9. Current transparency status
 
 ```text
-N-Core        DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
-N-Arithmetic  DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
-Z             DECLARED CLAIM CLOSURE COMPLETE / STAGE-ROOT TRANSPARENCY PENDING
+N-Core        MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
+N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
+Z             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 Q             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 R             MACHINE-CHECKED TRANSPARENCY PASS — BRANCH-LOCAL
 ```
 
-Q and R have independent stage-level machine audits with zero formal-boundary residuals and zero unowned internal declarations. Their different root modes preserve the accepted architecture: R uses its single final integration certificate; Q uses the existing union of integration-package and acceptance-law roots rather than inventing a new theorem.
+Each stage has an **independent** stage-level machine audit. A downstream stage traversing upstream declarations never substituted for the upstream stage's own certification.
 
-## 10. Next program step
-
-Continue in reverse dependency order:
+Root modes preserve accepted architecture rather than forcing uniform packaging:
 
 ```text
-Z
-N-Arithmetic
-N-Core
+R             single_target final integration certificate
+Q             producer_union over existing accepted integration/law roots
+Z             producer_union over representation/reconvergence/ring/order roots
+N-Arithmetic  producer_union over independent routes, convergence, and canonical laws
+N-Core        producer_union over formal carrier/bridge/Route-B/standardness witnesses
 ```
 
-For each remaining stage:
+## 10. Program continuation
+
+The theorem-level Declared-vs-Actual closure objective is now achieved for every currently accepted export from N-Core through R.
+
+The remaining `PDSA-ARCH-002` work is to reconcile the planned generated-view phase with the program completion criteria and produce separate stable views where useful:
 
 ```text
-select the accepted theorem surface without fabricating new mathematics;
-define a machine-readable Claim producer policy;
-extract ActualFormalClosure;
-classify the formal boundary;
-compare Claim Registry ↔ producers ↔ internal ancestry;
-require zero residuals before stage-level transparency promotion.
+Construction DAG
+Claim Dependency Graph
+Decision / Branch / Junction Map
+Logic and Trust Map
+Learning Graph
 ```
+
+These views must be generated or curated without replacing canonical unit records and without flattening historical failures into an artificial linear story.
 
 No record in this registry authorizes C. `C NOT STARTED — USER HOLD` remains unchanged.
