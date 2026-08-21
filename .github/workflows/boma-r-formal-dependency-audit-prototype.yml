@@ -1,44 +1,21 @@
-name: BOMA R Formal Dependency Audit — Prototype
+name: BOMA R Formal Dependency Audit — Manual Diagnostic
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - architecture/claim-transparency-001
-    paths:
-      - 'LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md'
-      - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
-      - 'LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json'
-      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
-      - 'LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean'
-      - 'LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py'
-      - 'LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py'
-      - 'LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py'
-      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
-      - 'LAB/payloads/lean/NCore/**'
-      - 'LAB/payloads/lean/NArithmetic/**'
-      - 'LAB/payloads/lean/ZStage/**'
-      - 'LAB/payloads/lean/QStage/**'
-      - 'LAB/payloads/lean/RStage/**'
-      - 'lean-toolchain'
-      - 'lakefile.toml'
-      - '.github/workflows/boma-r-formal-dependency-audit-prototype.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: boma-formal-transparency-evidence-architecture-claim-transparency-001
-  cancel-in-progress: false
+  group: boma-r-formal-dependency-manual
+  cancel-in-progress: true
 
 jobs:
-  extract-r-closure:
+  diagnose-r:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Lean
         id: setup
@@ -52,252 +29,70 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Extract actual R declaration closure and dependency edges
+      - name: Extract R accepted-claim closure
         id: audit
         if: steps.setup.outcome == 'success'
         continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
+          TARGET_ARGS=()
+          while IFS= read -r target; do
+            [ -n "$target" ] || continue
+            TARGET_ARGS+=(--target "$target")
+          done < <(python3 - <<'PY'
+          import json
+          with open('LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json', encoding='utf-8') as fh:
+              policy = json.load(fh)
+          if policy.get('root_mode') == 'single_target':
+              print(policy['target'])
+          else:
+              for target in policy['audit_targets']:
+                  print(target)
+          PY
+          )
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
-            --target BOMA.R.StageIntegration002.rStageIntegrationCertificate \
-            --json-out /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
-            > /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout 2>&1
-          cat /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
+            "${TARGET_ARGS[@]}" \
+            --json-out /tmp/R_CLOSURE.json
 
-      - name: Classify external boundary against declared policy
+      - name: Classify formal boundary
         id: classify
         if: steps.audit.outcome == 'success'
         continue-on-error: true
-        shell: bash
         run: |
-          set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
-            --closure /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
+            --closure /tmp/R_CLOSURE.json \
             --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
-            --json-out /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
-            > /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout 2>&1
-          cat /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
+            --json-out /tmp/R_CLASSIFICATION.json
 
-      - name: Compare actual closure with R Claim producers
+      - name: Compare Claim producers
         id: claimmap
         if: steps.classify.outcome == 'success'
         continue-on-error: true
-        shell: bash
         run: |
-          set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
-            --closure /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
-            --classification /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
+            --closure /tmp/R_CLOSURE.json \
+            --classification /tmp/R_CLASSIFICATION.json \
             --policy LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json \
             --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
-            --json-out /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
-            > /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout 2>&1
-          cat /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
+            --json-out /tmp/R_PRODUCER.json
 
-      - name: Record prototype evidence on feature branch
-        id: evidence
+      - name: Enforce diagnostic result
         if: always()
-        shell: bash
-        run: |
-          set -euo pipefail
-          RESULT=PROTOTYPE_PASS
-          if [ "${{ steps.setup.outcome }}" != success ] || [ "${{ steps.audit.outcome }}" != success ]; then
-            RESULT=PROTOTYPE_FAIL
-          fi
-
-          CLASSIFICATION_STATUS=NO_OUTPUT
-          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
-            CLASSIFICATION_STATUS="$(python3 - <<'PY'
-          import json
-          with open('/tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json', encoding='utf-8') as fh:
-              print(json.load(fh).get('status', 'UNKNOWN'))
-          PY
-          )"
-          elif [ "${{ steps.classify.outcome }}" = skipped ]; then
-            CLASSIFICATION_STATUS=SKIPPED
-          fi
-
-          CLAIM_PRODUCER_STATUS=NO_OUTPUT
-          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
-            CLAIM_PRODUCER_STATUS="$(python3 - <<'PY'
-          import json
-          with open('/tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json', encoding='utf-8') as fh:
-              print(json.load(fh).get('status', 'UNKNOWN'))
-          PY
-          )"
-          elif [ "${{ steps.claimmap.outcome }}" = skipped ]; then
-            CLAIM_PRODUCER_STATUS=SKIPPED
-          fi
-
-          BRANCH='architecture/claim-transparency-001'
-          VERIFIED_SHA="$GITHUB_SHA"
-          RUN_ID="$GITHUB_RUN_ID"
-          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
-
-          git fetch origin "$BRANCH"
-          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
-          if [ "$CURRENT_HEAD" != "$VERIFIED_SHA" ]; then
-            CHANGED_VERIFICATION_INPUTS="$(git diff --name-only "$VERIFIED_SHA" "$CURRENT_HEAD" -- \
-              LAB/00_ARCHITECTURE/LEAN_FORMAL_DEPENDENCY_AUDIT_DESIGN.md \
-              LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
-              LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json \
-              LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
-              LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean \
-              LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
-              LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
-              LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
-              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
-              LAB/payloads/lean/NCore \
-              LAB/payloads/lean/NArithmetic \
-              LAB/payloads/lean/ZStage \
-              LAB/payloads/lean/QStage \
-              LAB/payloads/lean/RStage \
-              lean-toolchain \
-              lakefile.toml \
-              .github/workflows/boma-r-formal-dependency-audit-prototype.yml)"
-            if [ -n "$CHANGED_VERIFICATION_INPUTS" ]; then
-              echo '::error::R verification inputs changed after this audit started; refusing stale prototype evidence promotion.'
-              printf '%s\n' "$CHANGED_VERIFICATION_INPUTS"
-              exit 1
-            fi
-            echo 'Branch moved only outside R verification inputs; recording evidence against the audited source SHA.'
-          fi
-
-          git checkout -B claim-transparency-evidence "origin/$BRANCH"
-          mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
-
-          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json ]; then
-            cp /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.json \
-              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json
-          else
-            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json <<EOF
-          {
-            "status": "PROTOTYPE_FAIL",
-            "reason": "dependency extractor did not produce JSON output",
-            "verified_commit": "${VERIFIED_SHA}",
-            "workflow_run": "${RUN_ID}"
-          }
-          EOF
-          fi
-
-          if [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json ]; then
-            cp /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.json \
-              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json
-          else
-            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json <<EOF
-          {
-            "status": "${CLASSIFICATION_STATUS}",
-            "reason": "semantic classification did not produce JSON output",
-            "verified_commit": "${VERIFIED_SHA}",
-            "workflow_run": "${RUN_ID}"
-          }
-          EOF
-          fi
-
-          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json ]; then
-            cp /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.json \
-              LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json
-          else
-            cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json <<EOF
-          {
-            "status": "${CLAIM_PRODUCER_STATUS}",
-            "reason": "Claim/producer comparison did not produce JSON output",
-            "verified_commit": "${VERIFIED_SHA}",
-            "workflow_run": "${RUN_ID}"
-          }
-          EOF
-          fi
-
-          cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md <<EOF
-          # R Formal Dependency Closure — Prototype Evidence
-
-          **Status:** ${RESULT}  
-          **Boundary classification:** ${CLASSIFICATION_STATUS}  
-          **Claim/producer comparison:** ${CLAIM_PRODUCER_STATUS}  
-          **Audited source commit:** \`${VERIFIED_SHA}\`  
-          **Workflow run ID:** \`${RUN_ID}\`  
-          **Pinned toolchain:** \`${TOOLCHAIN}\`  
-          **Root declaration:** \`BOMA.R.StageIntegration002.rStageIntegrationCertificate\`  
-          **Accepted assembly manifest:** \`LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt\`
-
-          | Step | Outcome |
-          |---|---|
-          | Lean setup | ${{ steps.setup.outcome }} |
-          | compile accepted assembly + extract transitive declaration closure/edges | ${{ steps.audit.outcome }} |
-          | classify boundary against explicit dependency policy | ${{ steps.classify.outcome }} |
-          | compare actual closure against R Claim/producer policy | ${{ steps.claimmap.outcome }} |
-
-          ## Scope boundary
-
-          A \`PROTOTYPE_PASS\` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA \`TRANSPARENCY PASS\`.
-
-          \`CLASSIFICATION_PASS\` means no external/internal formal dependency remains unclassified under \`FORMAL_DEPENDENCY_POLICY.json\`.
-
-          \`CLAIM_PRODUCER_PASS\` additionally requires the R Claim Registry and machine-readable producer policy to agree, every declared producer to occur in and be reachable through the actual Lean closure, every direct internal dependency of the integration certificate to be explicitly declared or integration-local, and every internal declaration to have producer ancestry. Only the conjunction of these results is eligible for a later transparency-promotion decision.
-          EOF
-
-          if [ -f /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout ]; then
-            {
-              echo
-              echo '## Claim/producer comparison log tail'
-              echo
-              echo '```text'
-              tail -n 120 /tmp/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE.stdout
-              echo '```'
-            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
-          elif [ -f /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout ]; then
-            {
-              echo
-              echo '## Classifier log tail'
-              echo
-              echo '```text'
-              tail -n 80 /tmp/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE.stdout
-              echo '```'
-            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
-          elif [ -f /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout ]; then
-            {
-              echo
-              echo '## Extractor log tail'
-              echo
-              echo '```text'
-              tail -n 80 /tmp/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE.stdout
-              echo '```'
-            } >> LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json \
-            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json \
-            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json \
-            LAB/20_FORMALIZATION/R_STAGE/evidence/R_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Record R formal dependency prototype run ${RUN_ID}"
-            git push origin HEAD:"$BRANCH"
-          fi
-
-      - name: Enforce full prototype comparison
-        if: always()
-        shell: bash
         run: |
           set -e
           test "${{ steps.setup.outcome }}" = success
           test "${{ steps.audit.outcome }}" = success
           test "${{ steps.classify.outcome }}" = success
           test "${{ steps.claimmap.outcome }}" = success
-          test "${{ steps.evidence.outcome }}" = success
 
-      - name: Record scope in job summary
+      - name: Scope note
         if: always()
         run: |
           cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
-          ## R Formal Dependency Closure Prototype
+          ## R manual transparency diagnostic
 
-          This workflow measures transitive Lean declaration dependencies from the accepted R integration certificate, classifies the formal boundary, and compares the internal closure against explicit accepted R Claim producers.
-
-          Extraction success alone is not a final `TRANSPARENCY PASS`. Promotion requires both `CLASSIFICATION_PASS` and `CLAIM_PRODUCER_PASS`, followed by an explicit architecture/status update; this workflow does not authorize C or change the mathematical frontier.
+          This workflow is read-only and does not promote repository evidence. Canonical push-triggered latest evidence is produced by `boma-stage-transparency-matrix-001.yml` in one N-Core→R transaction. Historical R integration evidence remains a separate V5 question.
           EOF
