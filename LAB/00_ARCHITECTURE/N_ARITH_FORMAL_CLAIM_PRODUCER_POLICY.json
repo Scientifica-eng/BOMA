@@ -1,0 +1,177 @@
+{
+  "schema": "BOMA-N-ARITH-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "ACTIVE-PROTOTYPE",
+  "date": "2026-08-21",
+  "stage": "N-Arithmetic",
+  "claim_id_pattern": "NAR-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "N-Arithmetic Claim IDs",
+  "root_mode": "producer_union",
+  "integration_claim": "NAR-CL-INTEGRATION-001",
+  "purpose": "Machine-check the accepted NAA-18 natural-arithmetic Claim surface while preserving independent recurse-right/recurse-left addition and multiplication routes and additive-witness/inductive order routes before their verified reconvergences.",
+  "audit_targets": [
+    "BOMA.NArithmetic.Addition001.addR_z",
+    "BOMA.NArithmetic.Addition001.addR_s",
+    "BOMA.NArithmetic.Addition001.addL_z",
+    "BOMA.NArithmetic.Addition001.addL_s",
+    "BOMA.NArithmetic.Addition001.add_routes_converge",
+    "BOMA.NArithmetic.Addition001.add_z_right",
+    "BOMA.NArithmetic.Addition001.add_z_left",
+    "BOMA.NArithmetic.Addition001.add_s_right",
+    "BOMA.NArithmetic.Addition001.add_s_left",
+    "BOMA.NArithmetic.Addition001.add_comm",
+    "BOMA.NArithmetic.Addition001.add_assoc",
+    "BOMA.NArithmetic.Addition001.add_right_cancel",
+    "BOMA.NArithmetic.Addition001.add_left_cancel",
+    "BOMA.NArithmetic.Multiplication001.mulR_z",
+    "BOMA.NArithmetic.Multiplication001.mulR_s",
+    "BOMA.NArithmetic.Multiplication001.mulL_z",
+    "BOMA.NArithmetic.Multiplication001.mulL_s",
+    "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+    "BOMA.NArithmetic.Multiplication001.mul_z_right",
+    "BOMA.NArithmetic.Multiplication001.mul_z_left",
+    "BOMA.NArithmetic.Multiplication001.mul_s_right",
+    "BOMA.NArithmetic.Multiplication001.mul_s_left",
+    "BOMA.NArithmetic.Multiplication001.mul_comm",
+    "BOMA.NArithmetic.Multiplication001.mul_one_right",
+    "BOMA.NArithmetic.Multiplication001.mul_one_left",
+    "BOMA.NArithmetic.Multiplication001.mul_add_right",
+    "BOMA.NArithmetic.Multiplication001.mul_add_left",
+    "BOMA.NArithmetic.Multiplication001.mul_assoc",
+    "BOMA.NArithmetic.Order001.order_routes_converge",
+    "BOMA.NArithmetic.Order001.le_refl",
+    "BOMA.NArithmetic.Order001.le_trans",
+    "BOMA.NArithmetic.Order001.le_antisymm",
+    "BOMA.NArithmetic.Order001.le_total",
+    "BOMA.NArithmetic.Order001.z_le",
+    "BOMA.NArithmetic.Order001.not_s_le_z",
+    "BOMA.NArithmetic.Order001.le_s_iff",
+    "BOMA.NArithmetic.Order001.add_mono_right",
+    "BOMA.NArithmetic.Order001.add_mono_left",
+    "BOMA.NArithmetic.Order001.mul_mono_right",
+    "BOMA.NArithmetic.Order001.mul_mono_left"
+  ],
+  "integration_local_prefixes": [],
+  "claims": {
+    "NAR-CL-ADDDEF-001": {
+      "role": "independent recurse-right and recurse-left addition routes with computation equations",
+      "producers": [
+        "BOMA.NArithmetic.Addition001.addR",
+        "BOMA.NArithmetic.Addition001.addR_z",
+        "BOMA.NArithmetic.Addition001.addR_s",
+        "BOMA.NArithmetic.Addition001.addL",
+        "BOMA.NArithmetic.Addition001.addL_z",
+        "BOMA.NArithmetic.Addition001.addL_s"
+      ]
+    },
+    "NAR-CL-ADDCONV-001": {
+      "role": "addition route convergence and opposite-side recursion equations",
+      "producers": [
+        "BOMA.NArithmetic.Addition001.addR_z_left",
+        "BOMA.NArithmetic.Addition001.addR_s_left",
+        "BOMA.NArithmetic.Addition001.add_routes_converge"
+      ]
+    },
+    "NAR-CL-ADD-001": {
+      "role": "canonical addition after convergence with identities, successor equations, associativity, commutativity, and cancellation",
+      "producers": [
+        "BOMA.NArithmetic.Addition001.add",
+        "BOMA.NArithmetic.Addition001.add_z_right",
+        "BOMA.NArithmetic.Addition001.add_z_left",
+        "BOMA.NArithmetic.Addition001.add_s_right",
+        "BOMA.NArithmetic.Addition001.add_s_left",
+        "BOMA.NArithmetic.Addition001.add_comm",
+        "BOMA.NArithmetic.Addition001.add_assoc",
+        "BOMA.NArithmetic.Addition001.add_right_cancel",
+        "BOMA.NArithmetic.Addition001.add_left_cancel"
+      ]
+    },
+    "NAR-CL-MULDEF-001": {
+      "role": "independent recurse-right and recurse-left multiplication routes with computation equations",
+      "producers": [
+        "BOMA.NArithmetic.Multiplication001.mulR",
+        "BOMA.NArithmetic.Multiplication001.mulR_z",
+        "BOMA.NArithmetic.Multiplication001.mulR_s",
+        "BOMA.NArithmetic.Multiplication001.mulL",
+        "BOMA.NArithmetic.Multiplication001.mulL_z",
+        "BOMA.NArithmetic.Multiplication001.mulL_s"
+      ]
+    },
+    "NAR-CL-MULCONV-001": {
+      "role": "multiplication route convergence and opposite-side recursion equations",
+      "producers": [
+        "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+        "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+        "BOMA.NArithmetic.Multiplication001.mul_routes_converge"
+      ]
+    },
+    "NAR-CL-MUL-001": {
+      "role": "canonical multiplication with zero/one, successor, associativity, commutativity, and distributivity laws",
+      "producers": [
+        "BOMA.NArithmetic.Multiplication001.one",
+        "BOMA.NArithmetic.Multiplication001.mul",
+        "BOMA.NArithmetic.Multiplication001.mul_z_right",
+        "BOMA.NArithmetic.Multiplication001.mul_z_left",
+        "BOMA.NArithmetic.Multiplication001.mul_s_right",
+        "BOMA.NArithmetic.Multiplication001.mul_s_left",
+        "BOMA.NArithmetic.Multiplication001.mul_comm",
+        "BOMA.NArithmetic.Multiplication001.mul_one_right",
+        "BOMA.NArithmetic.Multiplication001.mul_one_left",
+        "BOMA.NArithmetic.Multiplication001.mul_add_right",
+        "BOMA.NArithmetic.Multiplication001.mul_add_left",
+        "BOMA.NArithmetic.Multiplication001.mul_assoc"
+      ]
+    },
+    "NAR-CL-ORDERDEF-001": {
+      "role": "additive-witness order and independently generated inductive structural order",
+      "producers": [
+        "BOMA.NArithmetic.Order001.LEAdd",
+        "BOMA.NArithmetic.Order001.LEInd"
+      ]
+    },
+    "NAR-CL-ORDERCONV-001": {
+      "role": "extensional convergence of additive-witness and inductive order routes",
+      "producers": [
+        "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+        "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+        "BOMA.NArithmetic.Order001.order_routes_converge"
+      ]
+    },
+    "NAR-CL-ORDER-001": {
+      "role": "canonical natural order with partial/total order, zero-least, and successor laws",
+      "producers": [
+        "BOMA.NArithmetic.Order001.LE",
+        "BOMA.NArithmetic.Order001.le_refl",
+        "BOMA.NArithmetic.Order001.le_trans",
+        "BOMA.NArithmetic.Order001.le_antisymm",
+        "BOMA.NArithmetic.Order001.le_total",
+        "BOMA.NArithmetic.Order001.z_le",
+        "BOMA.NArithmetic.Order001.not_s_le_z",
+        "BOMA.NArithmetic.Order001.le_s_iff"
+      ]
+    },
+    "NAR-CL-ORDERARITH-001": {
+      "role": "addition and multiplication monotonicity on both sides",
+      "producers": [
+        "BOMA.NArithmetic.Order001.add_mono_right",
+        "BOMA.NArithmetic.Order001.add_mono_left",
+        "BOMA.NArithmetic.Order001.mul_mono_right",
+        "BOMA.NArithmetic.Order001.mul_mono_left"
+      ]
+    },
+    "NAR-CL-INTEGRATION-001": {
+      "role": "NAA-18 same-carrier integration of canonical addition, multiplication, and order while retaining route provenance",
+      "producers": [
+        "BOMA.NArithmetic.Addition001.add_routes_converge",
+        "BOMA.NArithmetic.Addition001.add_assoc",
+        "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+        "BOMA.NArithmetic.Multiplication001.mul_assoc",
+        "BOMA.NArithmetic.Order001.order_routes_converge",
+        "BOMA.NArithmetic.Order001.le_total",
+        "BOMA.NArithmetic.Order001.add_mono_right",
+        "BOMA.NArithmetic.Order001.mul_mono_right"
+      ],
+      "transitive_ownership": false
+    }
+  }
+}
