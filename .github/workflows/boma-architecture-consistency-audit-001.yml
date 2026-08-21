@@ -1,0 +1,176 @@
+name: BOMA Architecture Consistency Audit — PDSA-ARCH-002
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md'
+      - 'LAB/00_ARCHITECTURE/TRUSTED_BASE.md'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md'
+      - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
+      - 'LAB/00_ARCHITECTURE/DECISION_LEDGER.md'
+      - 'LAB/00_ARCHITECTURE/*_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
+      - 'LAB/00_ARCHITECTURE/views/**'
+      - 'LAB/10_CONSTRUCTION/**/UNIT.md'
+      - 'LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md'
+      - 'LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md'
+      - 'LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md'
+      - 'LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md'
+      - 'LAB/20_FORMALIZATION/**/**_TRANSPARENCY_CERTIFICATION_001.md'
+      - 'LAB/20_FORMALIZATION/**/evidence/*FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md'
+      - 'LAB/20_FORMALIZATION/**/evidence/*FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json'
+      - 'LAB/20_FORMALIZATION/**/evidence/*FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json'
+      - '.github/workflows/boma-architecture-consistency-audit-001.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boma-architecture-consistency-evidence-architecture-claim-transparency-001
+  cancel-in-progress: true
+
+jobs:
+  audit-architecture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full provenance history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run cross-stage architecture consistency audit
+        id: audit
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            --json-out /tmp/ARCHITECTURE_CONSISTENCY_LATEST.json \
+            > /tmp/ARCHITECTURE_CONSISTENCY_LATEST.stdout 2>&1
+          cat /tmp/ARCHITECTURE_CONSISTENCY_LATEST.stdout
+
+      - name: Record architecture consistency evidence
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCH='architecture/claim-transparency-001'
+          AUDITED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+          STATUS=NO_OUTPUT
+          if [ -f /tmp/ARCHITECTURE_CONSISTENCY_LATEST.json ]; then
+            STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/ARCHITECTURE_CONSISTENCY_LATEST.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          fi
+
+          git fetch origin "$BRANCH"
+          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
+          if [ "$CURRENT_HEAD" != "$AUDITED_SHA" ]; then
+            CHANGED_INPUTS="$(git diff --name-only "$AUDITED_SHA" "$CURRENT_HEAD" -- \
+              LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json \
+              LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md \
+              LAB/00_ARCHITECTURE/TRUSTED_BASE.md \
+              LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+              LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md \
+              LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md \
+              LAB/00_ARCHITECTURE/DECISION_LEDGER.md \
+              LAB/00_ARCHITECTURE/N_CORE_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/Z_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json \
+              LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+              LAB/00_ARCHITECTURE/views \
+              LAB/10_CONSTRUCTION \
+              LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md \
+              LAB/20_FORMALIZATION/N_CORE/N_CORE_TRANSPARENCY_CERTIFICATION_001.md \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_TRANSPARENCY_CERTIFICATION_001.md \
+              LAB/20_FORMALIZATION/Z_STAGE/Z_TRANSPARENCY_CERTIFICATION_001.md \
+              LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md \
+              LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md \
+              LAB/20_FORMALIZATION/N_CORE/evidence \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/evidence \
+              LAB/20_FORMALIZATION/Z_STAGE/evidence \
+              LAB/20_FORMALIZATION/Q_STAGE/evidence \
+              LAB/20_FORMALIZATION/R_STAGE/evidence \
+              .github/workflows/boma-architecture-consistency-audit-001.yml)"
+            if [ -n "$CHANGED_INPUTS" ]; then
+              echo '::error::Architecture-consistency inputs changed after this run started; refusing stale evidence promotion.'
+              printf '%s\n' "$CHANGED_INPUTS"
+              exit 1
+            fi
+          fi
+
+          git checkout -B architecture-consistency-evidence "origin/$BRANCH"
+          mkdir -p LAB/00_ARCHITECTURE/evidence
+          if [ -f /tmp/ARCHITECTURE_CONSISTENCY_LATEST.json ]; then
+            cp /tmp/ARCHITECTURE_CONSISTENCY_LATEST.json \
+              LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.json
+          else
+            printf '{"status":"NO_OUTPUT","audited_source":"%s","workflow_run":"%s"}\n' "$AUDITED_SHA" "$RUN_ID" > \
+              LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.json
+          fi
+
+          cat > LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.md <<EOF
+          # BOMA Architecture Consistency Evidence — PDSA-ARCH-002
+
+          **Status:** ${STATUS}  
+          **Audited source commit:** \`${AUDITED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`
+
+          This gate complements the independent theorem-level stage transparency workflows. It checks current evidence freshness, Claim/policy agreement, required architecture/view records, canonical Unit coverage, and Junction/Decision mapping integrity.
+          EOF
+
+          if [ -f /tmp/ARCHITECTURE_CONSISTENCY_LATEST.stdout ]; then
+            {
+              echo
+              echo '## Audit log tail'
+              echo
+              echo '```text'
+              tail -n 220 /tmp/ARCHITECTURE_CONSISTENCY_LATEST.stdout
+              echo '```'
+            } >> LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.md
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.json \
+            LAB/00_ARCHITECTURE/evidence/ARCHITECTURE_CONSISTENCY_LATEST.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Record architecture consistency run ${RUN_ID}"
+            git push origin HEAD:"$BRANCH"
+          fi
+
+      - name: Enforce architecture consistency
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## PDSA-ARCH-002 Architecture Consistency
+
+          This is a cross-stage architecture/governance gate, not a mathematical construction step. It fails on stale stage transparency evidence, Registry/policy disagreement, missing certification evidence, orphan canonical Units, or stale Junction/Decision mappings.
+
+          It does not authorize C and does not replace the independent theorem-level stage closures.
+          EOF
