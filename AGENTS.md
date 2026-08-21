@@ -12,14 +12,20 @@ LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
 LAB/PDSA/STATUS.md
-LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
+LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
+LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+LAB/00_ARCHITECTURE/TRUSTED_BASE.md
+LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
+LAB/00_ARCHITECTURE/views/
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/GRAPH.md
 ```
 
-Then read the DAG, acceptance specification, closure record, and V5 index for the stage affected by the requested work.
+Then read the DAG, acceptance specification, closure/PDSA record, Claim register, and V5 index relevant to the affected stage.
 
-For the current R frontier, this includes at least:
+For the current R→C frontier, this includes at least:
 
 ```text
 LAB/00_ARCHITECTURE/R_ACCEPTANCE_SPECIFICATION.md
@@ -31,6 +37,15 @@ LAB/20_FORMALIZATION/R_STAGE/R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
 LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
 LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
+LAB/PDSA/PDSA-ARCH-002_CLOSURE_2026-08-21.md
+LAB/PDSA/PDSA-ARCH-002_STATUS.md
+LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
+LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
+LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 ```
 
 ## Current canonical state
@@ -44,10 +59,100 @@ post-Z reverse N      CLOSED
 Q                     ACCEPTED
 R                     ACCEPTED — RA-22
 RE-R-001              CLOSED / COMPLETE
-C                     NOT STARTED — USER HOLD
+C                     STARTED — NOT ACCEPTED
 ```
 
-Do **not** start C until a new explicit user order authorizes it. Do not create a C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle under the existing hold.
+Current C state:
+
+```text
+BOMA-C-ACCEPT-001  ACTIVE
+BOMA-C-R-DEP-001   ACTIVE
+PDSA-C-001         CLOSED
+PDSA-C-002         ACTIVE — V5 outcome pending certified evidence
+C-DP-001           OPEN — NO ROUTE SELECTED
+C carrier           NONE
+C Brick / Block     NONE
+C Junction          NONE
+accepted C export   NONE
+```
+
+The previous C hold recorded in the 2026-08-20 checkpoint and older documents was explicitly lifted by the user on 2026-08-21. Preserve those documents as historical provenance; do not continue enforcing their old hold against the later synchronized frontier.
+
+## C acceptance-first rule
+
+Do **not** select a C carrier or representation before the ex-ante acceptance contract and Decision evidence justify it.
+
+The current Stage-One semantic core is:
+
+```text
+faithful accepted-R embedding
+commutative-field-strength behavior
+distinguished I
+I² = -1
+every z has an expression a+bI with a,b in accepted R
+that expression is unique
+route-neutral comparison adequacy
+```
+
+Do not silently strengthen this to algebraic closure, FTA, analytic completeness, a total order on C, or equivalence with a built-in Complex carrier.
+
+In particular, never infer:
+
+```text
+C = R×R because coordinates are convenient
+C = polynomial quotient because X²+1 presents the extension
+selected route = mathematically necessary route
+Lean identity = mathematical identity
+standard notation a+bi = carrier definition
+```
+
+`C-DP-001` is currently OPEN. Candidate routes are research/Decision branches, not canonical Blocks:
+
+```text
+C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate
+C-ROUTE-Q  polynomial-adjunction / quotient candidate
+C-ROUTE-A  only if genuinely independent
+```
+
+No `SELECTS` edge may be recorded until comparable evidence exists.
+
+## R→C dependency rule
+
+C consumes the **accepted R interface**, not Dedekind internals by default.
+
+Allowed starting boundary:
+
+```text
+accepted R Claim surface
++
+downstream lemmas explicitly derived from that surface
++
+declared C-stage infrastructure
+```
+
+Do not silently use as C mathematical premises:
+
+```text
+LowerCut
+CutEquiv
+cutSetoid identity
+principal-cut representation details
+Dedekind union LUB implementation
+cut membership search/bracketing
+selected signed multiplication internals
+selected reciprocal internals
+```
+
+If C needs a real theorem absent from the accepted export, open an explicit dependency question and classify it as:
+
+```text
+derivable downstream from accepted R Claims
+requires justified strengthening of R
+representation-specific C dependency
+new C-stage supporting lemma/infrastructure
+```
+
+The current `PDSA-C-002` probe is written first against an abstract `RStageIntegrationCertificate`, then instantiated on the accepted certificate. Do not relabel its staged source as V5 PASS until exact run/source evidence is available.
 
 ## Status authority
 
@@ -69,7 +174,9 @@ Historical records are not errors merely because their then-current status is ol
 
 Use **PDSA — Plan, Do, Study, Act**. `PDCA` names are legacy provenance only.
 
-Each new canonical research cycle must identify its question, inputs, construction units affected, evidence, Study result, Act decision, graph effects, and inherited next-cycle constraints.
+Each new canonical research cycle must identify its question, inputs, construction units affected, evidence, Study result, Act decision, graph effects, Learning Graph effects, and inherited next-cycle constraints.
+
+Do not delete failed experiments with explanatory value. Use `HISTORICAL`, `SUPERSEDED`, `REJECTED`, or the relevant current status while preserving provenance.
 
 ## Topology rules
 
@@ -83,6 +190,22 @@ selected route ⇒ universal necessity
 visual meeting ⇒ verified convergence
 ```
 
+Do not create a C Junction before actual incoming producers exist.
+
+## Brick / Block / Claim discipline
+
+Keep the architectural types distinct:
+
+```text
+Brick         smallest independently reviewable/replaceable/branchable named construction unit
+Block         coherent package of Bricks and/or internal components
+Junction      verified compatibility/reconvergence result
+Decision Point explicit selection among alternatives
+Claim         assertion layer independent of Brick/Block granularity
+```
+
+Do not manufacture Bricks merely for symmetry. Q and R legitimately used broader Blocks with internal components. The current C boundary lemmas `C-RL-001/002` are supporting lemmas, not automatic `C-BR-*` units.
+
 ## Accepted-stage discipline
 
 An accepted Block or stage may be modified only with explicit impact analysis against its governing acceptance contract and V5 lineage. Do not silently weaken, strengthen, reinterpret, or broaden an accepted claim.
@@ -90,21 +213,58 @@ An accepted Block or stage may be modified only with explicit impact analysis ag
 For R in particular:
 
 ```text
-accepted carrier     RBOMA := Quotient cutSetoid
-selected route       Dedekind lower cuts
+accepted carrier      RBOMA := Quotient cutSetoid
+selected route        Dedekind lower cuts
 accepted completeness Dedekind LUB completeness
-inverse interface    existence + uniqueness witnesses
-final gate           R-J-002 PASS
-acceptance            RA-22 ACCEPT
+inverse interface     existence + uniqueness witnesses
+final gate            R-J-002 PASS
+acceptance             RA-22 ACCEPT
 ```
 
-Do not silently claim Cauchy/metric/sequential completeness, uniqueness of complete ordered fields, or Dedekind↔Cauchy equivalence unless separately constructed and verified.
+These are accepted current realization facts. They do not imply that Dedekind representation or quotient identity is required downstream.
 
 ## Logical-commitment discipline
 
 Do not collapse the R construction into a blanket label such as “constructive” or “classical.” The accepted path contains a constructive partial-order core plus localized classical commitments recorded in the R audit and reverse-engineering matrix.
 
+If a C theorem consumes the accepted R total-order Claim, record that mathematical dependency and its current producer provenance. Absence of an explicit `Classical` token in downstream C source does not prove independence from the current upstream classical total-comparability route.
+
 If replacing one of those commitments, treat that as a branch/reconstruction problem with explicit downstream acceptance impact, not as documentary cleanup.
+
+## Claim-transparency rule
+
+For every promoted C Claim maintain the `CLAIM_ARCHITECTURE.md` fields:
+
+```text
+Claim ID
+statement / acceptance role
+producer
+mathematical dependencies
+logical dependencies
+representation dependencies
+formalization dependencies
+supporting lemmas
+Lean declaration
+source file
+verification evidence
+alternative producer / branch
+necessity classification
+sensitivity / reopening condition
+```
+
+Use only the canonical dependency vocabulary:
+
+```text
+MATHEMATICAL_CLAIM
+SUPPORTING_LEMMA
+LOGICAL_COMMITMENT
+REPRESENTATION_COMMITMENT
+FORMALIZATION_COMMITMENT
+VERIFICATION_INFRASTRUCTURE
+TRUSTED_METATHEORY
+```
+
+Do not introduce `OTHER`, `IMPLICIT`, or `UNKNOWN` into certified closure.
 
 ## N-Core provenance rule
 
@@ -133,6 +293,16 @@ leanprover/lean4:v4.32.1
 ```
 
 The current Lake manifest has no external packages.
+
+C-stage verification workflows must remain read-only with respect to `main` under the current transparency policy.
+
+## GitHub continuation rule
+
+Do not work directly on `main` for C. Continue on a C feature branch based on a verified current `main` head.
+
+Do not merge to `main` without an explicit user order.
+
+Preserve research commits and historical branches; do not squash away Learning Graph provenance merely for visual cleanliness.
 
 ## Cleanup rule
 
