@@ -45,7 +45,7 @@
       "blocks": 49,
       "junctions": 14,
       "decisions": 10,
-      "orphan_actual_units": 1,
+      "orphan_actual_units": 0,
       "stale_mapped_units": 3
     }
   },
@@ -67,12 +67,6 @@
       "scope": "Q",
       "path": "LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
       "message": "latest PASS evidence is stale relative to current verification inputs: LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md"
-    },
-    {
-      "level": "ERROR",
-      "scope": "UNITS",
-      "path": "LAB/10_CONSTRUCTION/junctions/Z-RE-J-001/UNIT.md",
-      "message": "orphan canonical J unit is absent from the current architecture mapping corpus"
     }
   ]
 }

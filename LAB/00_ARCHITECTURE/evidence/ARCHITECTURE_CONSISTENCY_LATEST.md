@@ -1,8 +1,8 @@
 # BOMA Architecture Consistency Evidence — PDSA-ARCH-002
 
 **Status:** REVIEW_REQUIRED  
-**Audited source commit:** `91ce0868b55dd2da399be421c1e1ee222a61ce74`  
-**Workflow run ID:** `32455874607`
+**Audited source commit:** `28b7895348c068ae23eec3b6b122ddd2f045f760`  
+**Workflow run ID:** `32455932902`
 
 This gate complements the independent theorem-level stage transparency workflows. It checks current evidence freshness, Claim/policy agreement, required architecture/view records, canonical Unit coverage, and Junction/Decision mapping integrity.
 
@@ -56,7 +56,7 @@ This gate complements the independent theorem-level stage transparency workflows
       "blocks": 49,
       "junctions": 14,
       "decisions": 10,
-      "orphan_actual_units": 1,
+      "orphan_actual_units": 0,
       "stale_mapped_units": 3
     }
   },
@@ -78,12 +78,6 @@ This gate complements the independent theorem-level stage transparency workflows
       "scope": "Q",
       "path": "LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
       "message": "latest PASS evidence is stale relative to current verification inputs: LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md"
-    },
-    {
-      "level": "ERROR",
-      "scope": "UNITS",
-      "path": "LAB/10_CONSTRUCTION/junctions/Z-RE-J-001/UNIT.md",
-      "message": "orphan canonical J unit is absent from the current architecture mapping corpus"
     }
   ]
 }
