@@ -1,0 +1,192 @@
+{
+  "schema": "BOMA-N-CORE-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "ACTIVE-PROTOTYPE",
+  "date": "2026-08-21",
+  "stage": "N-Core",
+  "claim_id_pattern": "N-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "N-Core Claim IDs",
+  "root_mode": "producer_union",
+  "integration_claim": "N-CL-INTEGRATION-001",
+  "purpose": "Machine-check the accepted NAC-15 N-Core Claim surface while preserving the boundary between the fresh R-B formal carrier and backend representations of selected pre-numerical TCT presentations, including independent no-confusion Route B and pointwise standardness.",
+  "audit_targets": [
+    "BOMA.NCore.RB001.BOMANat",
+    "BOMA.NCore.RB001.ind",
+    "BOMA.NCore.RB001.s_ne_z",
+    "BOMA.NCore.RB001.s_injective",
+    "BOMA.NCore.RB001.induction_adequacy",
+    "BOMA.NCore.V5.NBLOCK003.all_generated",
+    "BOMA.NCore.RB001.fold",
+    "BOMA.NCore.RB001.fold_z",
+    "BOMA.NCore.RB001.fold_s",
+    "BOMA.NCore.RB001.fold_unique",
+    "BOMA.NCore.RB001.boma_pointwise_initial",
+    "BOMA.NCore.RB001.realize_eps",
+    "BOMA.NCore.RB001.realize_extU",
+    "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+    "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+    "BOMA.NCore.RB001.realize_reify",
+    "BOMA.NCore.RB001.reify_realize",
+    "BOMA.NCore.RB001.reify",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+    "BOMA.NCore.RB001.pointwise_initial_unique"
+  ],
+  "integration_local_prefixes": [],
+  "claims": {
+    "N-CL-CARRIER-001": {
+      "role": "fresh unary R-B carrier with base and successor",
+      "producers": [
+        "BOMA.NCore.RB001.BOMANat",
+        "BOMA.NCore.RB001.BOMANat.z",
+        "BOMA.NCore.RB001.BOMANat.s"
+      ]
+    },
+    "N-CL-ID-001": {
+      "role": "formal equality interface on the selected fresh carrier",
+      "producers": [
+        "BOMA.NCore.RB001.BOMANat"
+      ]
+    },
+    "N-CL-ELIM-001": {
+      "role": "Sort-polymorphic dependent eliminator interface under N-DP-002 scope",
+      "producers": [
+        "BOMA.NCore.RB001.ind"
+      ]
+    },
+    "N-CL-NOCONF-A-001": {
+      "role": "internal formal no-confusion Route A",
+      "producers": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "BOMA.NCore.RB001.s_injective"
+      ]
+    },
+    "N-CL-IND-001": {
+      "role": "proposition-valued induction adequacy",
+      "producers": [
+        "BOMA.NCore.RB001.induction_adequacy"
+      ]
+    },
+    "N-CL-GEN-001": {
+      "role": "backend witness of generatedness/no-junk over the accepted formal carrier",
+      "producers": [
+        "BOMA.NCore.V5.NBLOCK003.Generated",
+        "BOMA.NCore.V5.NBLOCK003.all_generated"
+      ]
+    },
+    "N-CL-REC-001": {
+      "role": "nondependent recursion interface and computation equations",
+      "producers": [
+        "BOMA.NCore.RB001.fold",
+        "BOMA.NCore.RB001.fold_z",
+        "BOMA.NCore.RB001.fold_s"
+      ]
+    },
+    "N-CL-RECUNIQ-001": {
+      "role": "pointwise recursion uniqueness",
+      "producers": [
+        "BOMA.NCore.RB001.fold_unique"
+      ]
+    },
+    "N-CL-INITIAL-001": {
+      "role": "Type-0 pointwise initiality in the selected unary-algebra scope",
+      "producers": [
+        "BOMA.NCore.RB001.UnaryAlgebra",
+        "BOMA.NCore.RB001.Hom",
+        "BOMA.NCore.RB001.PointwiseInitial",
+        "BOMA.NCore.RB001.bomaAlg",
+        "BOMA.NCore.RB001.boma_pointwise_initial"
+      ]
+    },
+    "N-CL-TCTBASE-001": {
+      "role": "selected backend TCT base presentation realizes as formal z",
+      "producers": [
+        "BOMA.NCore.RB001.TCTNF",
+        "BOMA.NCore.RB001.realize",
+        "BOMA.NCore.RB001.realize_eps"
+      ]
+    },
+    "N-CL-TCTEXT-001": {
+      "role": "selected terminal extension realizes as formal successor",
+      "producers": [
+        "BOMA.NCore.RB001.extU",
+        "BOMA.NCore.RB001.realize_extU"
+      ]
+    },
+    "N-CL-TCTPRES-001": {
+      "role": "selected-scope structural identity/equivalence preservation",
+      "producers": [
+        "BOMA.NCore.RB001.bridge_preserves_selected_identity"
+      ]
+    },
+    "N-CL-TCTREFL-001": {
+      "role": "formal identity reflection / bridge faithfulness",
+      "producers": [
+        "BOMA.NCore.RB001.realize_injective",
+        "BOMA.NCore.RB001.bridge_reflects_formal_identity"
+      ]
+    },
+    "N-CL-TCTCOVER-001": {
+      "role": "realization/reification coverage and reconstruction",
+      "producers": [
+        "BOMA.NCore.RB001.reify",
+        "BOMA.NCore.RB001.realize_reify",
+        "BOMA.NCore.RB001.reify_realize"
+      ]
+    },
+    "N-CL-HIST-001": {
+      "role": "constructor-ancestry / structural-extension correspondence, definitionally realized without numerical depth",
+      "producers": [
+        "BOMA.NCore.RB001.reify",
+        "BOMA.NCore.RB001.extU"
+      ]
+    },
+    "N-CL-NOCONF-B-001": {
+      "role": "independent constructional no-confusion transfer Route B",
+      "producers": [
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective"
+      ]
+    },
+    "N-CL-NOCONF-CONV-001": {
+      "role": "N-J-001 reconvergence of internal Route A and constructional Route B on the same no-confusion interface",
+      "producers": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "BOMA.NCore.RB001.s_injective",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective"
+      ],
+      "transitive_ownership": false
+    },
+    "N-CL-COMPARE-001": {
+      "role": "comparison maps between same-universe pointwise-initial unary algebras",
+      "producers": [
+        "BOMA.NCore.RB001.pointwise_initial_unique"
+      ]
+    },
+    "N-CL-STANDARD-001": {
+      "role": "pointwise inverse/standardness certificate for comparison maps",
+      "producers": [
+        "BOMA.NCore.RB001.pointwise_initial_unique"
+      ]
+    },
+    "N-CL-INTEGRATION-001": {
+      "role": "NAC-15 integration of carrier, elimination, generatedness, recursion, converged no-confusion, TCT bridge/history, and standardness under selected R-B formalization commitments",
+      "producers": [
+        "BOMA.NCore.RB001.BOMANat",
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.V5.NBLOCK003.all_generated",
+        "BOMA.NCore.RB001.fold_unique",
+        "BOMA.NCore.RB001.boma_pointwise_initial",
+        "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+        "BOMA.NCore.RB001.realize_reify",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+        "BOMA.NCore.RB001.pointwise_initial_unique"
+      ],
+      "transitive_ownership": false
+    }
+  }
+}
