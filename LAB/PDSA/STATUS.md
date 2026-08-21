@@ -1,10 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
 **Status:** ACTIVE / SYNCHRONIZED  
-**Current status date:** 2026-08-20  
+**Current status date:** 2026-08-21  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
-**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
+**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`  
+**Current C cycle:** `PDSA-C-001 — CLOSED / ex-ante acceptance semantics stabilized`
 
 ## Current canonical frontier
 
@@ -24,13 +25,28 @@ Q                   ACCEPTED
 R                   ACCEPTED
    ↓
 RE-R-001            CLOSED / COMPLETE
-
-C                   NOT STARTED — USER HOLD
+   ↓
+C                   STARTED — ACCEPTANCE SPEC ACTIVE / REPRESENTATION UNSELECTED
 ```
 
-The user has explicitly instructed that **C must not be started until a new explicit order is given**. Therefore no C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle is currently authorized.
+The previous explicit user hold on C was lifted by a new explicit user order on **2026-08-21**. That earlier hold remains historical provenance in pre-authorization records; it no longer controls the current frontier.
 
-The 2026-08-20 project-takeover stabilization records and corrects onboarding/CI provenance defects only. It does not change this mathematical frontier, reopen an accepted stage, or authorize C.
+Current C state:
+
+```text
+BOMA-C-ACCEPT-001   ACTIVE — ex-ante representation-neutral contract
+C Claim register    OPEN — provisional / no accepted C Claim yet
+BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
+PDSA-C-001          CLOSED — acceptance discriminant Study complete
+C-DP-001            OPEN — no route selected
+C Bricks / Blocks   NONE YET
+C Junctions         NONE YET
+C Lean payloads     NONE YET
+C V5 evidence       NONE YET
+accepted C export   NONE
+```
+
+No representation choice is authorized by the mere opening of C. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.
 
 ---
 
@@ -440,11 +456,13 @@ No accepted R theorem was weakened or revoked by the reverse audit.
 
 # Operational takeover / stabilization — RECORDED
 
-The current handoff is recorded in:
+The takeover handoff is recorded in:
 
 `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
 
-The stabilization scope is operational only:
+That checkpoint remains historical/current for the state it captured on 2026-08-20, including the then-active C hold. It is **not rewritten** to pretend C had already been authorized.
+
+The stabilization scope was operational only:
 
 ```text
 README / AGENTS synchronization
@@ -454,31 +472,81 @@ R integration evidence provenance guard
 workflow serialization for evidence recording
 ```
 
-No accepted Lean payload or mathematical unit is modified by this maintenance record. Historical failed experiments, retained alternatives, superseded evidence, and old PDSA records remain preserved when they carry scientific provenance.
+No accepted Lean payload or mathematical unit was modified by that maintenance record. Historical failed experiments, retained alternatives, superseded evidence, and old PDSA records remain preserved when they carry scientific provenance.
 
 ---
 
-# Explicit C hold
+# Complex stage — STARTED / REPRESENTATION UNSELECTED
 
-Normal governance would make the next number-family stage **eligible** after R acceptance and RE-R-001 closure. The current user instruction is stricter:
+The explicit new user order on 2026-08-21 authorizes C and supersedes the earlier hold **for current-state governance only**.
 
-```text
-DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
-```
-
-Therefore:
+First C cycle result:
 
 ```text
-C acceptance specification  NOT OPENED
-C Decision Points           NOT OPENED
-C Bricks / Blocks           NOT CREATED
-C Lean payloads             NOT CREATED
-C workflows                 NOT CREATED
-C PDSA construction cycles  NOT OPENED
-RE-STAGE1-001               SCHEDULED — cannot trigger before accepted C
+PDSA-C-001
+  H1 field extension only                 REJECTED AS UNDER-SPECIFIED
+  H2 field + square root of -1            REJECTED AS STILL UNDER-SPECIFIED
+  H3 field + I²=-1 + unique R+R·I form    ADOPTED AS CORE ACCEPTANCE SEMANTICS
+  H4 H3 + algebraic closure               DEFERRED STRENGTHENING
 ```
 
-Eligibility is not authorization.
+Current C architecture:
+
+```text
+BOMA-C-ACCEPT-001
+   ↓
+BOMA-C-R-DEP-001
+   ↓
+C-DP-001 OPEN
+   ├── C-ROUTE-P ordered-pair / rank-two candidate
+   ├── C-ROUTE-Q polynomial-adjunction / quotient candidate
+   └── C-ROUTE-A only if genuinely independent
+```
+
+No candidate route has been selected or promoted to a canonical C Block.
+
+Initial Claim register:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`
+
+Key acceptance target Claims include:
+
+```text
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-FIELD-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
+C-CL-COMPARE-001
+C-CL-INTEGRATION-001
+```
+
+All are currently unproduced/unverified. No C V5 result is claimed.
+
+Initial R dependency conclusion:
+
+```text
+required core: accepted R nontrivial field/order Claims
+not currently required by core C semantics:
+  Dedekind LUB completeness
+  Q density in R
+  Archimedean characterization
+  Dedekind representation internals
+```
+
+First formal dependency question:
+
+```text
+C-RQ-001
+Can -1 nonsquare / square-nonnegative support be proved
+from the accepted R Claim surface without Dedekind internals?
+```
+
+The representation Decision remains blocked from resolution until comparable route evidence exists.
+
+`RE-STAGE1-001` remains scheduled for after a future accepted C export and the required post-C reverse dependency/necessity audit.
 
 ---
 
@@ -491,17 +559,28 @@ LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
 LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
+LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
+LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+LAB/00_ARCHITECTURE/TRUSTED_BASE.md
+LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/R_ACCEPTANCE_SPECIFICATION.md
 LAB/00_ARCHITECTURE/R_DAG.md
-LAB/00_ARCHITECTURE/REVERSE_ENGINEERING_SCHEDULE.md
+LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
 LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md
 LAB/10_CONSTRUCTION/junctions/R-J-002/UNIT.md
+LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
 LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_V5_INDEX.md
 LAB/20_FORMALIZATION/R_STAGE/R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
 LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
+LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 this STATUS file
 ```
