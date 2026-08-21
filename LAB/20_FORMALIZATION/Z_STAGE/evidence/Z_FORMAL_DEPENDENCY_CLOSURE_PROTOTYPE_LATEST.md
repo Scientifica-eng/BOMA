@@ -1,70 +1,28 @@
-# Z Formal Dependency Closure — Prototype Evidence
+# Z Formal Dependency Closure — Matrix Evidence
 
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
 **Claim/producer comparison:** CLAIM_PRODUCER_PASS  
-**Audited source commit:** `5dc1d9be73c2a931702feb9d2f9cda2ff278daa7`  
-**Workflow run ID:** `32455253359`  
+**Audited source commit:** `8b169bb226a06aa077713a337c131f426aac3cd6`  
+**Workflow run ID:** `32456174410`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
-**Root mode:** `producer_union` over accepted Z representation/ring/order targets  
-**Accepted assembly manifest:** `LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt`
+**Root mode:** `producer_union`  
+**Accepted assembly manifest:** `LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt`  
+**Execution:** canonical cross-stage transparency matrix
 
-| Step | Outcome |
-|---|---|
-| Lean setup | success |
-| compile Z accepted assembly + extract multi-target transitive closure | success |
-| classify boundary against explicit dependency policy | success |
-| compare actual closure against Z Claim/producer policy | success |
+| Step | Return code |
+|---|---:|
+| dependency extraction | 0 |
+| formal boundary classification | 0 |
+| Claim/producer comparison | 0 |
 
-## Scope boundary
+## Scope
 
-This prototype audits the existing accepted Z representation/reconvergence/ring/order surface without introducing a quotient carrier, new theorem statement, or synthetic integration certificate.  alone is not a Z transparency certification.
+The cross-stage workflow serializes execution and evidence promotion only. The mathematical/formal closure for this stage remains independently defined by its own accepted manifest and Claim-producer policy.
 
- requires zero unclassified formal boundary residuals.  requires exact Z Claim-registry agreement, declared producers in the actual closure, audit roots that are themselves declared Claim producers, and zero internal declarations without producer ancestry.
-
-## Claim/producer comparison log tail
+## Audit log tail
 
 ```text
-    {
-      "name": "BOMA.Z.Rep001.pairAdd_respects",
-      "claims": [
-        "Z-CL-ORDER-001",
-        "Z-CL-RING-001"
-      ]
-    },
-    {
-      "name": "BOMA.Z.Rep001.pairMul",
-      "claims": [
-        "Z-CL-ARITHCONV-001",
-        "Z-CL-ORDER-001",
-        "Z-CL-RING-001"
-      ]
-    },
-    {
-      "name": "BOMA.Z.Rep001.pairMul_add_right",
-      "claims": [
-        "Z-CL-ORDER-001",
-        "Z-CL-RING-001"
-      ]
-    },
-    {
-      "name": "BOMA.Z.Rep001.pairMul_comm",
-      "claims": [
-        "Z-CL-ORDER-001",
-        "Z-CL-RING-001"
-      ]
-    },
-    {
-      "name": "BOMA.Z.Rep001.pairMul_respects",
-      "claims": [
-        "Z-CL-ORDER-001",
-        "Z-CL-RING-001"
-      ]
-    },
-    {
-      "name": "BOMA.Z.Rep001.pairMul_respects_left",
-      "claims": [
-        "Z-CL-ORDER-001",
         "Z-CL-RING-001"
       ]
     },

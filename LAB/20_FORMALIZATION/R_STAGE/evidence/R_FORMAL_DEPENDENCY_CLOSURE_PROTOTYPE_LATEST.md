@@ -1,30 +1,26 @@
-# R Formal Dependency Closure — Prototype Evidence
+# R Formal Dependency Closure — Matrix Evidence
 
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
 **Claim/producer comparison:** CLAIM_PRODUCER_PASS  
-**Audited source commit:** `5dc1d9be73c2a931702feb9d2f9cda2ff278daa7`  
-**Workflow run ID:** `32455253501`  
+**Audited source commit:** `8b169bb226a06aa077713a337c131f426aac3cd6`  
+**Workflow run ID:** `32456174410`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
-**Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
-**Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
+**Root mode:** `single_target`  
+**Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`  
+**Execution:** canonical cross-stage transparency matrix
 
-| Step | Outcome |
-|---|---|
-| Lean setup | success |
-| compile accepted assembly + extract transitive declaration closure/edges | success |
-| classify boundary against explicit dependency policy | success |
-| compare actual closure against R Claim/producer policy | success |
+| Step | Return code |
+|---|---:|
+| dependency extraction | 0 |
+| formal boundary classification | 0 |
+| Claim/producer comparison | 0 |
 
-## Scope boundary
+## Scope
 
-A `PROTOTYPE_PASS` means the theorem/declaration closure extractor executed successfully. It is **not** by itself a BOMA `TRANSPARENCY PASS`.
+The cross-stage workflow serializes execution and evidence promotion only. The mathematical/formal closure for this stage remains independently defined by its own accepted manifest and Claim-producer policy.
 
-`CLASSIFICATION_PASS` means no external/internal formal dependency remains unclassified under `FORMAL_DEPENDENCY_POLICY.json`.
-
-`CLAIM_PRODUCER_PASS` additionally requires the R Claim Registry and machine-readable producer policy to agree, every declared producer to occur in and be reachable through the actual Lean closure, every direct internal dependency of the integration certificate to be explicitly declared or integration-local, and every internal declaration to have producer ancestry. Only the conjunction of these results is eligible for a later transparency-promotion decision.
-
-## Claim/producer comparison log tail
+## Audit log tail
 
 ```text
         "R-CL-FIELD-001",
