@@ -1,8 +1,8 @@
 # JUNCTION LEDGER — Convergence Strength and Shared Outputs
 
 **Document ID:** `BOMA-JUNCTION-LEDGER-001`  
-**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R  
-**Date:** 2026-08-20  
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R AND CLOSED POST-Z REVERSE COMPARISON  
+**Date:** 2026-08-21  
 **Program:** `PDSA-ARCH-002`
 
 ## 1. Purpose
@@ -18,6 +18,8 @@ CLASSIFICATION              one representation relation is completely classified
 SAME-DOWNSTREAM-ADEQUACY    distinct producers establish the same certified downstream contribution
 SAME-CARRIER-INTEGRATION    required claims elaborate/coexist on one selected carrier/operation package
 CANONICALITY GATE           representation/recovery is invariant under the declared identity regime
+INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE
+                            extensional interface reconstructs while constructional/epistemic provenance does not
 ```
 
 Detailed theorem statements and evidence remain authoritative in each Junction `UNIT.md` and stage evidence records.
@@ -37,6 +39,7 @@ Detailed theorem statements and evidence remain authoritative in each Junction `
 | `Z-ARITH-J-001` | direct signed arithmetic + pair-mediated arithmetic | `EQUALITY` | pointwise equality of addition/multiplication producers before canonical spelling |
 | `Z-ORD-J-001` | direct signed order + pair cross-sum order | `EQUIVALENCE` | same accepted integer order interface |
 | `Z-J-002` | carrier/identity, ring, embeddings/generation, order/compatibility | `SAME-CARRIER-INTEGRATION` | `ZA-21` integer acceptance integration |
+| `Z-RE-J-001` | independently reconstructed Z-only nonnegative-cone N candidates + frozen bottom-up N/N-Arithmetic reference | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | exact selected-representation round trips and preservation of `0,S,+,*,≤`; original TCT/Decision/PDSA provenance not recovered |
 | `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational acceptance integration |
 | `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration and `RA-22` acceptance eligibility |
 
@@ -58,9 +61,11 @@ translation/equality/equivalence proof
 Junction reopening conditions
 ```
 
-## 4. Claim linkage
+`Z-RE-J-001` makes the provenance rule especially explicit: extensional reconstruction of the natural interface after Z does not reconstruct the original bottom-up TCT/PDSA/Decision history.
 
-Principal Claim Registry links include:
+## 4. Claim and Learning-Graph linkage
+
+Principal forward Claim Registry links include:
 
 ```text
 N-J-001       → N-CL-NOCONF-CONV-001
@@ -79,6 +84,20 @@ R-J-002       → R-CL-INTEGRATION-001
 
 `TCT-J-001` remains a pre-numerical canonicality gate rather than a number-stage acceptance Claim ID in the current registry rollout.
 
+`Z-RE-J-001` is a **post-acceptance reverse/learning Junction**, not a member of the forward accepted Z export Claim closure. Its authoritative result is:
+
+```text
+INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
+```
+
+with V5 comparison run `32171528363` and detailed learning record:
+
+```text
+LAB/PDSA/experiments/PDSA-Z-RE-001_BOTTOM_UP_VS_REVERSE_COMPARISON.md
+```
+
+It must therefore be indexed here without fabricating a forward `Z-CL-*` Claim merely to make the ledger visually uniform.
+
 ## 5. Reopening rule
 
 A Junction must be marked for retest if a change affects:
@@ -91,6 +110,8 @@ a route-local assumption used by the convergence proof;
 the formal theorem/certificate implementing convergence;
 the accepted source assembly for that certificate.
 ```
+
+For reverse/learning Junctions, changes to the frozen reference interface or reverse candidate construction also trigger retest.
 
 A change confined to a branch artifact not consumed by the Junction does not automatically invalidate the shared downstream contribution.
 
