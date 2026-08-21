@@ -1,0 +1,303 @@
+# C ← R DEPENDENCY CONTRACT — Accepted Interface Consumption Before Representation
+
+**Document ID:** `BOMA-C-R-DEP-001`  
+**Status:** **ACTIVE — EX-ANTE DEPENDENCY CONTRACT / REPRESENTATION-NEUTRAL**  
+**Date:** 2026-08-21  
+**C specification:** `BOMA-C-ACCEPT-001`  
+**Upstream accepted export:** `R-BLOCK-001`  
+**Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`
+
+## 1. Purpose
+
+Define exactly what C is initially allowed to ask from accepted R before any complex representation is selected.
+
+The governing rule is:
+
+```text
+C consumes the accepted R interface
+≠
+C inherits the selected Dedekind implementation of R
+```
+
+The current R producer history may remain relevant as provenance, but a C theorem may cite an R representation detail only when a new explicit dependency record justifies that choice.
+
+---
+
+# 2. Accepted R Claim surface relevant to C
+
+The initial C semantic core requires only the algebraic/order strength needed to form and distinguish a quadratic extension.
+
+## 2.1 Initially required mathematical Claim families
+
+| R Claim | Initial C role | Classification at C boundary |
+|---|---|---|
+| `R-CL-NONTRIV-001` | establish `0_R ≠ 1_R`; support nondegeneracy | `MATHEMATICAL_CLAIM` — required |
+| `R-CL-ADD-001` | coefficients, additive laws, negation | `MATHEMATICAL_CLAIM` — required |
+| `R-CL-MUL-001` | coefficient multiplication and ordered-ring interaction | `MATHEMATICAL_CLAIM` — required |
+| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — likely required for field closure |
+| `R-CL-FIELD-001` | accepted field-strength integration of R algebra/order | `MATHEMATICAL_CLAIM` — required package-level input |
+| `R-CL-ORDER-001` | positivity of squares / impossibility of a real square equal to `-1` | `MATHEMATICAL_CLAIM` — required for the standard direct field/noncollapse route |
+| `R-CL-INTEGRATION-001` | certifies the preceding accepted R Claims coexist on the accepted R carrier | `MATHEMATICAL_CLAIM` / accepted export gateway |
+
+The table declares the intended acceptance-level dependency surface. The later theorem-level formal closure must measure which specific R declarations are actually consumed.
+
+## 2.2 Not initially required by the Stage-One C semantic core
+
+The following accepted R properties are **not** currently dependencies of `BOMA-C-ACCEPT-001` core algebra:
+
+| R Claim / feature | Current C classification |
+|---|---|
+| `R-CL-COMP-001` — Dedekind LUB completeness | **NOT REQUIRED BY CORE C CONTRACT** |
+| `R-CL-DENSITY-001` — Q density in R | **NOT REQUIRED BY CORE C CONTRACT** |
+| `R-CL-ARCH-001` — Archimedean characterization | **NOT REQUIRED BY CORE C CONTRACT** |
+| `R-CL-QEMBED-001` — explicit Q embedding into R | **NOT REQUIRED DIRECTLY BY CORE C CONTRACT**; remains upstream provenance of R |
+
+If a candidate C route later consumes one of these, that use must be classified as one of:
+
+```text
+mathematically required by a newly promoted C Claim;
+route-specific convenience;
+supporting lemma choice;
+formalization/proof-engineering choice.
+```
+
+It may not be retroactively described as having been necessary to the ex-ante C contract.
+
+---
+
+# 3. Explicitly prohibited implicit dependencies
+
+No C construction may silently depend on the following R realization details merely because they are present in the accepted R source tree:
+
+```text
+LowerCut
+CutEquiv
+cutSetoid
+RBOMA := Quotient cutSetoid as a representation fact
+principal-cut implementation details
+Dedekind union LUB witness
+cut membership search
+cut bracketing
+positive/negative-part multiplication implementation
+Dedekind reciprocal construction
+localized proof sites used only to establish those route-specific results
+```
+
+The type name `RBOMA` is, of course, the accepted formal carrier exported by R. The prohibition concerns treating its **internal Dedekind representation/quotient provenance** as a mathematical premise of C.
+
+---
+
+# 4. Route-neutral downstream lemmas expected from R
+
+The C stage may prove ordinary algebraic/order consequences from the accepted R interface without reopening R, provided the proof depends only on accepted Claims.
+
+The first high-value examples are:
+
+## C-RL-001 — square nonnegativity
+
+Target interface theorem:
+
+```text
+∀ x : R_BOMA, 0_R ≤ x * x.
+```
+
+Expected status:
+
+```text
+DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
+```
+
+No Dedekind-specific theorem should be required.
+
+## C-RL-002 — minus one is not a real square
+
+Target interface theorem:
+
+```text
+¬ ∃ x : R_BOMA, x * x = -1_R.
+```
+
+Expected derivation:
+
+```text
+square nonnegativity
++
+0_R < 1_R / nontrivial ordered-field consequences
++
+negation/order facts
+```
+
+Expected status:
+
+```text
+DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
+```
+
+This result is important for:
+
+```text
+I not collapsing to the real image
+coordinate independence
+nonzero denominator a²+b² for inverse formulas
+```
+
+but its exact proof route remains open until formally checked against the actual accepted R theorem surface.
+
+## C-RL-003 — sum of two squares vanishes only trivially
+
+Potential target:
+
+```text
+a*a + b*b = 0_R → a = 0_R ∧ b = 0_R.
+```
+
+Expected status:
+
+```text
+DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
+```
+
+This is likely useful to the ordered-pair/rank-two inverse route, but it is not yet classified as required for every C representation. If only one route consumes it, it remains a route-specific supporting lemma rather than a universal C Claim.
+
+---
+
+# 5. Open dependency questions
+
+## C-RQ-001 — Formal sufficiency of accepted R interface
+
+**Question:** Can `C-RL-001` and `C-RL-002` be proved in Lean using only declarations belonging to the accepted R Claim surface plus Trusted Base, without importing Dedekind representation-specific proof interfaces?
+
+**Current status:** `OPEN — FIRST FORMAL DEPENDENCY PROBE`.
+
+**Acceptance of probe:**
+
+```text
+PASS if the actual formal closure lands only in:
+  accepted R mathematical Claims
+  supporting lemmas owned by those Claims
+  declared Trusted Base / verification infrastructure
+
+FAIL / RECLASSIFY if a required dependency reaches:
+  LowerCut/CutEquiv-specific machinery
+  undeclared logical commitment
+  an R theorem absent from accepted export scope
+```
+
+A failure is not automatically a mathematical obstruction. Study must distinguish:
+
+```text
+missing exported lemma
+from
+actual need to strengthen R
+from
+proof-engineering visibility
+from
+route-specific overreach.
+```
+
+## C-RQ-002 — Polynomial infrastructure belongs to C, not R
+
+If the polynomial-quotient candidate is probed, polynomial syntax/ring/evaluation/ideal or congruence infrastructure is **new C-route infrastructure** unless already exported independently elsewhere.
+
+It must not be described as an R acceptance dependency merely because its coefficients are real.
+
+**Status:** `OPEN / ROUTE-CONDITIONAL`.
+
+## C-RQ-003 — Global inverse selection
+
+Accepted R exports unique inverse witnesses rather than forcing a global Choice-backed inverse selector.
+
+A C route that wants a function-valued real inverse for convenience must choose among:
+
+```text
+consume explicit witnesses locally;
+derive a selector using an explicitly declared logical/formalization commitment;
+construct the needed C inverse by a route that avoids a global R selector.
+```
+
+It may not silently strengthen the R interface.
+
+**Status:** `OPEN / ROUTE-CONDITIONAL`.
+
+---
+
+# 6. Logical-commitment boundary
+
+`RE-R-001` showed that the accepted R producer path contains localized classical commitments. C must not inherit those commitments merely by ancestry.
+
+For every C proof:
+
+```text
+logical cost follows the declarations actually consumed
+not the full historical ancestry of R-BLOCK-001.
+```
+
+Therefore a C Claim that depends only on the exported field/order theorem surface must record its own actual logical closure. It may not be labelled “classical because R was classical” without dependency evidence.
+
+Conversely, if theorem elaboration reaches a localized classical R declaration, that dependency must remain explicit under `LOGICAL_COMMITMENT` and be studied for replaceability.
+
+---
+
+# 7. Representation-commitment boundary
+
+The following distinction is mandatory for every candidate route:
+
+```text
+R_BOMA as the accepted upstream carrier
+  = legitimate accepted input
+
+Dedekind lower-cut realization of R_BOMA
+  = upstream producer history, not automatically a C premise
+```
+
+A C carrier may be constructed from values of `R_BOMA` without thereby becoming Dedekind-specific. Representation dependence exists only if the C construction/proof opens or consumes the upstream representation internals rather than the accepted interface.
+
+---
+
+# 8. Current minimal dependency hypothesis
+
+Before route probes, the C core is expected to have the following high-level dependency shape:
+
+```text
+R-CL-NONTRIV-001
+R-CL-ADD-001
+R-CL-MUL-001
+R-CL-INV-001
+R-CL-FIELD-001
+R-CL-ORDER-001
+R-CL-INTEGRATION-001
+        ↓
+route-neutral R consequences
+  square ≥ 0
+  -1 not a square
+        ↓
+C quadratic-extension construction routes
+```
+
+Not currently in that core:
+
+```text
+R-CL-COMP-001
+R-CL-DENSITY-001
+R-CL-ARCH-001
+Dedekind representation internals
+```
+
+This is an ex-ante dependency hypothesis. The theorem-level formal closure experiment must confirm or correct it rather than making the matrix pass by expanding the declared surface indiscriminately.
+
+---
+
+# 9. Reopening rule
+
+Reopen this contract if any of the following occurs:
+
+```text
+BOMA-C-ACCEPT-001 changes materially;
+C-DP-001 selects a route with additional R requirements;
+a formal probe finds a necessary undeclared R dependency;
+an accepted R Claim used by C is revised;
+a route begins consuming Dedekind-specific internals;
+a new logical commitment appears in actual formal closure.
+```
+
+The corrective action must update the current classification without erasing the PDSA record of the earlier hypothesis and what falsified or refined it.
