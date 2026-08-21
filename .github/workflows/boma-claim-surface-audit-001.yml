@@ -115,7 +115,7 @@ jobs:
           **Audited source commit:** \`${AUDITED_SHA}\`  
           **Workflow run ID:** \`${RUN_ID}\`
 
-          This evidence checks the accepted-source manifests for missing/unsafe inputs, `sorry`/`axiom`, undeclared `Classical`, quotient-policy violations, and stale classical whitelists. It complements theorem-level dependency closure; it does not replace it.
+          This evidence checks accepted-source manifests for missing or unsafe inputs, sorry/axiom tokens, undeclared Classical usage, quotient-policy violations, and stale classical whitelists. It complements theorem-level dependency closure; it does not replace it.
           EOF
 
           git config user.name "github-actions[bot]"
