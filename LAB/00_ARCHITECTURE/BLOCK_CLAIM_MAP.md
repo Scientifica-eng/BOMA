@@ -1,9 +1,9 @@
 # BLOCK → CLAIM MAP — Construction Packages and Assertion Exports
 
 **Document ID:** `BOMA-BLOCK-CLAIM-MAP-001`  
-**Status:** ACTIVE / INITIAL ACCEPTED-STAGE MAP  
-**Date:** 2026-08-20  
-**Program:** `PDSA-ARCH-002`
+**Status:** ACTIVE / ACCEPTED-STAGE MAP + C PROVISIONAL FRONTIER  
+**Date:** 2026-08-21  
+**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
 
 ## 1. Purpose
 
@@ -106,9 +106,45 @@ R also uses broader Blocks plus one explicit logic Brick where independent commi
 
 Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, or individual law lemmas remain distinguishable as representation/operation/supporting interfaces; they are not renamed as Bricks merely for diagram symmetry.
 
-## 8. Mapping invariant
+## 8. C — provisional Claim frontier, no Block mapping yet
 
-A future generated construction/claim view should be able to traverse:
+C has been authorized and its ex-ante Claim register is open, but the current architecture deliberately has **no C Block/Brick producer mapping**.
+
+Current state:
+
+```text
+BOMA-C-ACCEPT-001     ACTIVE
+C_CLAIM_REGISTER_001  ACTIVE / PROVISIONAL
+C-DP-001              OPEN
+selected route         NONE
+C Blocks               NONE
+C Bricks               NONE
+C Junctions            NONE
+```
+
+Candidate route labels `C-ROUTE-P`, `C-ROUTE-Q`, and conditional `C-ROUTE-A` are Decision/Learning identifiers only. They are not Blocks.
+
+Provisional target Claims:
+
+```text
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-FIELD-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
+C-CL-COMPARE-001
+C-CL-INTEGRATION-001
+```
+
+They remain intentionally **unmapped to producer units** until a route probe produces independently reviewable construction content. This is not an audit defect; it is the truthful pre-construction state.
+
+A C Brick will be introduced only if the relevant unit is independently replaceable/branchable/sensitive or carries a distinct commitment. A C Block will be introduced only when a coherent cluster actually exists. No `C-BR-*` or `C-BLOCK-*` identities are fabricated for symmetry with earlier stages.
+
+## 9. Mapping invariant
+
+A mature construction/claim view should be able to traverse:
 
 ```text
 Brick or internal component
@@ -121,12 +157,25 @@ Brick or internal component
 
 and the reverse direction where ownership is declared.
 
-Missing links are audit defects; they are not permission to invent a unit identity.
-
-## 9. Current boundary
-
-No C Block, Brick, Claim, Junction, or Decision mapping exists.
+During ex-ante C work the truthful partial traversal is instead:
 
 ```text
-C NOT STARTED — USER HOLD
+Acceptance Claim
+  → producer TBD
+  → C-DP-001 route options
+  → future experiment
 ```
+
+Missing links become audit defects **only after** an artifact claims a producer/acceptance relation that should supply them. They are not permission to invent a unit identity.
+
+## 10. Current boundary
+
+```text
+Accepted Block→Claim mappings   N-Core through R
+C provisional Claims            OPEN
+C Block→Claim mappings          NONE YET
+C representation               UNSELECTED
+C accepted export              NONE
+```
+
+The previous user hold is historical provenance. It was explicitly lifted on 2026-08-21; the absence of C Block mappings now reflects disciplined acceptance-first construction, not lack of authorization.
