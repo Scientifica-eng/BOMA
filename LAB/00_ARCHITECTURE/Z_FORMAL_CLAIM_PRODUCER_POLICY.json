@@ -11,6 +11,7 @@
   "purpose": "Machine-check the accepted ZA-21 integer Claim surface without inventing a synthetic final theorem. Audit roots are the existing representation/arithmetic/order convergence certificates and acceptance-level ring, embedding, generation, and ordered-ring laws on the selected signed carrier.",
   "audit_targets": [
     "BOMA.Z.Rep001.embedN_injective",
+    "BOMA.Z.Rep001.signed_roundtrip",
     "BOMA.Z.Rep001.representation_converges",
     "BOMA.Z.Arithmetic001.zadd_routes_converge",
     "BOMA.Z.Arithmetic001.zmul_routes_converge",
@@ -23,6 +24,8 @@
     "BOMA.Z.Arithmetic001.zmul_comm",
     "BOMA.Z.Arithmetic001.zmul_assoc",
     "BOMA.Z.Arithmetic001.zmul_add_right",
+    "BOMA.Z.Arithmetic001.embedN_zero",
+    "BOMA.Z.Arithmetic001.embedN_one",
     "BOMA.Z.Arithmetic001.embedN_add",
     "BOMA.Z.Arithmetic001.embedN_mul",
     "BOMA.Z.Arithmetic001.generated_by_natural_difference",
