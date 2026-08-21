@@ -3,8 +3,8 @@
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
 **Claim/producer comparison:** CLAIM_PRODUCER_PASS  
-**Audited source commit:** `8558fb5bf50a0cef07b3124bf882df03f56141e0`  
-**Workflow run ID:** `32454713809`  
+**Audited source commit:** `5dc1d9be73c2a931702feb9d2f9cda2ff278daa7`  
+**Workflow run ID:** `32455253359`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root mode:** `producer_union` over accepted Z representation/ring/order targets  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt`
