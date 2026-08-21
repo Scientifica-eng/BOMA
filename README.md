@@ -6,7 +6,7 @@ Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA` 
 
 ## Current canonical frontier
 
-As of 2026-08-20, the synchronized project state is:
+As of 2026-08-21, the synchronized project state is:
 
 ```text
 framework-neutral pre-numerical layer   CALIBRATED
@@ -24,17 +24,25 @@ Q                                       ACCEPTED
 R                                       ACCEPTED
         ↓
 RE-R-001                                CLOSED / COMPLETE
-
-C                                       NOT STARTED — USER HOLD
+        ↓
+C                                       STARTED — NOT ACCEPTED
 ```
 
-The current instruction is explicit:
+Current C boundary:
 
 ```text
-DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
+BOMA-C-ACCEPT-001      ACTIVE — representation-neutral acceptance contract
+BOMA-C-R-DEP-001       ACTIVE — accepted-R dependency boundary
+PDSA-C-001             CLOSED — ex-ante acceptance discriminant
+PDSA-C-002             ACTIVE — R-interface sufficiency probe; V5 not yet certified
+C-DP-001               OPEN — NO ROUTE SELECTED
+C carrier              NONE
+C Brick / Block         NONE
+C Junction              NONE
+accepted C export       NONE
 ```
 
-Eligibility after R acceptance is not authorization.
+The earlier user hold on C recorded in the 2026-08-20 handoff and older R/architecture records was explicitly lifted by a new user order on **2026-08-21**. Those older documents remain valid historical provenance; they are not rewritten to pretend C had already been authorized.
 
 ## Source-of-truth order
 
@@ -60,17 +68,22 @@ Before canonical work, read:
 4. `LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md`
 5. `LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md`
 6. `LAB/PDSA/STATUS.md`
-7. `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
-8. `LAB/00_ARCHITECTURE/REGISTRY.md`
-9. `LAB/00_ARCHITECTURE/GRAPH.md`
-10. the DAG, acceptance specification, closure record, and V5 index relevant to the requested stage
+7. `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`
+8. `LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md`
+9. `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`
+10. `LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md`
+11. `LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md`
+12. `LAB/00_ARCHITECTURE/DECISION_LEDGER.md`
+13. `LAB/00_ARCHITECTURE/views/`
+14. `LAB/00_ARCHITECTURE/REGISTRY.md`
+15. `LAB/00_ARCHITECTURE/GRAPH.md`
+16. the DAG, acceptance specification, PDSA records, and V5 index relevant to the requested stage
 
-For the current closed R frontier, additionally read:
+For the R→C handoff, additionally read:
 
 ```text
 LAB/00_ARCHITECTURE/R_ACCEPTANCE_SPECIFICATION.md
 LAB/00_ARCHITECTURE/R_DAG.md
-LAB/00_ARCHITECTURE/REVERSE_ENGINEERING_SCHEDULE.md
 LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md
 LAB/10_CONSTRUCTION/junctions/R-J-002/UNIT.md
 LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_V5_INDEX.md
@@ -78,6 +91,15 @@ LAB/20_FORMALIZATION/R_STAGE/R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
 LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
 LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
+LAB/PDSA/PDSA-ARCH-002_CLOSURE_2026-08-21.md
+LAB/PDSA/PDSA-ARCH-002_STATUS.md
+LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
+LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
+LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 ```
 
 ## Do not linearize BOMA
@@ -85,6 +107,8 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 The canonical construction is a DAG. Valid topology includes vertical dependency, horizontal independence, parallel contributors, Decision Point branches, and split → independent development → verified reconvergence.
 
 Reconvergence never erases branch provenance. A selected Stage-One route does not become a mathematical necessity merely because it is canonical for that stage.
+
+The same rule now governs C: `C-ROUTE-P`, `C-ROUTE-Q`, and any genuinely independent later route are Decision/Learning branches until actual construction evidence justifies promotion and selection.
 
 ## Accepted natural-number stages
 
@@ -219,6 +243,77 @@ retained alternative branches
 
 Acceptance certifies the selected realization and its exported properties; it does not turn the Dedekind route, quotient identity, localized classical comparability proof, multiplication architecture, or direct reciprocal route into universal mathematical necessities.
 
+## Complex stage — acceptance-first construction started
+
+The first C cycle did **not** select `R × R`, `a+bi`, a quotient, matrices, or any other carrier.
+
+`PDSA-C-001` compared four ex-ante semantic hypotheses:
+
+```text
+H1  field extension only
+    REJECTED — under-specified
+
+H2  field extension + I²=-1
+    REJECTED as complete acceptance contract — still permits larger extensions
+
+H3  field extension + distinguished I + I²=-1
+    + every element has a unique real/imaginary decomposition a+bI
+    ADOPTED as Stage-One acceptance core
+
+H4  H3 + algebraic closure
+    DEFERRED — major later strengthening, not needed to identify the Stage-One quadratic extension
+```
+
+The active representation Decision Point is:
+
+```text
+C-DP-001 OPEN
+  C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate
+  C-ROUTE-Q  polynomial-adjunction / quotient candidate
+  C-ROUTE-A  only if a genuinely independent third route is identified
+
+SELECTS = NONE
+```
+
+`PDSA-C-002` then began the first formal boundary test before any carrier construction. Its staged Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. A read-only V5 workflow is present, but no V5 PASS is claimed until exact retrievable run evidence exists.
+
+This is supporting C-stage infrastructure, not a C Brick by default and not a representation decision.
+
+## Claim transparency
+
+`PDSA-ARCH-002` established the current transparency architecture through accepted R. C must apply it during construction.
+
+For each promoted C Claim, record:
+
+```text
+Claim ID
+Statement / acceptance role
+Producer
+mathematical dependencies
+logical dependencies
+representation dependencies
+formalization dependencies
+supporting lemmas
+Lean declaration / source
+verification evidence
+alternative producer / branch
+necessity classification
+```
+
+Canonical dependency classes remain:
+
+```text
+mathematical claim
+supporting lemma
+logical commitment
+representation commitment
+formalization commitment
+verification infrastructure
+trusted metatheory
+```
+
+Do not introduce a vague fourth dependency category such as `OTHER`, `IMPLICIT`, or `UNKNOWN` into certified closure.
+
 ## Verification environment
 
 The canonical verification environment is deliberately small:
@@ -231,6 +326,26 @@ fixed toolchain      true
 
 V5 workflows verify explicit dependency assemblies and record claim-level evidence. A monolithic type-check alone is not a substitute for the relevant acceptance gate or theorem-by-theorem evidence map.
 
+C verification gates must remain read-only with respect to `main` unless a later explicit governance decision changes that policy.
+
 ## Current operational instruction
 
-The project is handed over at a **closed R frontier**. Synchronization and provenance maintenance may proceed without changing the mathematical frontier. No C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle is authorized until a new explicit user order is given.
+C is authorized to continue under the acceptance-first architecture, but **no representation has been selected**.
+
+The immediate research sequence is:
+
+```text
+finish C-RQ-001 formal verification evidence
+   ↓
+run comparable noncanonical probes for C-ROUTE-P and C-ROUTE-Q
+   ↓
+Study actual assumptions / identity / arithmetic / logic / formalization cost
+   ↓
+resolve C-DP-001 only from evidence
+   ↓
+promote justified Bricks/Blocks
+   ↓
+construct Junctions only when real incoming routes exist
+```
+
+Do not merge C work to `main` without an explicit user order.
