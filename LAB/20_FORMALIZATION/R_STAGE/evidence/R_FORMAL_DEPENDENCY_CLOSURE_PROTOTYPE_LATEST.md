@@ -3,8 +3,8 @@
 **Status:** PROTOTYPE_PASS  
 **Boundary classification:** CLASSIFICATION_PASS  
 **Claim/producer comparison:** CLAIM_PRODUCER_PASS  
-**Audited source commit:** `2c2926b3567cb11fa93a3a4bea4464fdd86f79ce`  
-**Workflow run ID:** `32417221728`  
+**Audited source commit:** `5dc1d9be73c2a931702feb9d2f9cda2ff278daa7`  
+**Workflow run ID:** `32455253501`  
 **Pinned toolchain:** `leanprover/lean4:v4.32.1`  
 **Root declaration:** `BOMA.R.StageIntegration002.rStageIntegrationCertificate`  
 **Accepted assembly manifest:** `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
