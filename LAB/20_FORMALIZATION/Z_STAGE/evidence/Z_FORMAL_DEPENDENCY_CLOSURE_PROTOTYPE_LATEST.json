@@ -5,6 +5,7 @@
   "manifest": "LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt",
   "targets": [
     "BOMA.Z.Rep001.embedN_injective",
+    "BOMA.Z.Rep001.signed_roundtrip",
     "BOMA.Z.Rep001.representation_converges",
     "BOMA.Z.Arithmetic001.zadd_routes_converge",
     "BOMA.Z.Arithmetic001.zmul_routes_converge",
@@ -17,6 +18,8 @@
     "BOMA.Z.Arithmetic001.zmul_comm",
     "BOMA.Z.Arithmetic001.zmul_assoc",
     "BOMA.Z.Arithmetic001.zmul_add_right",
+    "BOMA.Z.Arithmetic001.embedN_zero",
+    "BOMA.Z.Arithmetic001.embedN_one",
     "BOMA.Z.Arithmetic001.embedN_add",
     "BOMA.Z.Arithmetic001.embedN_mul",
     "BOMA.Z.Arithmetic001.generated_by_natural_difference",
@@ -160,15 +163,15 @@
     }
   ],
   "counts": {
-    "internal": 200,
+    "internal": 203,
     "external_boundary": 60,
-    "dependency_edges": 2001,
+    "dependency_edges": 2026,
     "unresolved": 0,
     "raw_unmapped_internal_ranges": 31,
     "generated_source_inferences": 31,
     "unmapped_internal_ranges": 0,
     "internal_axioms": 0,
-    "targets": 26
+    "targets": 29
   },
   "internal_axioms": [],
   "unresolved": [],
@@ -979,6 +982,24 @@
       "kind": "theorem",
       "start_line": 1264,
       "end_line": 1271,
+      "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.embedN_one",
+      "kind": "theorem",
+      "start_line": 1251,
+      "end_line": 1252,
+      "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.Z.Arithmetic001.embedN_zero",
+      "kind": "theorem",
+      "start_line": 1248,
+      "end_line": 1249,
       "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -1951,6 +1972,15 @@
       "kind": "theorem",
       "start_line": 812,
       "end_line": 814,
+      "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.Z.Rep001.signed_roundtrip",
+      "kind": "theorem",
+      "start_line": 765,
+      "end_line": 766,
       "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
       "source_resolution": "direct-range",
       "source_anchor": null
@@ -4880,6 +4910,58 @@
     {
       "consumer": "BOMA.Z.Arithmetic001.embedN_mul",
       "dependency": "of_eq_true"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "BOMA.Z.Arithmetic001.zone"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "BOMA.Z.Rep001.ZSigned"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "BOMA.Z.Rep001.embedN"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_one",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "BOMA.Z.Arithmetic001.zzero"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "BOMA.Z.Rep001.ZSigned"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "BOMA.Z.Rep001.embedN"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.Z.Arithmetic001.embedN_zero",
+      "dependency": "rfl"
     },
     {
       "consumer": "BOMA.Z.Arithmetic001.generated_by_natural_difference",
@@ -9968,6 +10050,54 @@
     {
       "consumer": "BOMA.Z.Rep001.representation_converges",
       "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.ZSigned"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.ZSigned.casesOn"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.ZSigned.neg"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.ZSigned.pos"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.ZSigned.zero"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.normalizePair"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "BOMA.Z.Rep001.pairOfSigned"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.Z.Rep001.signed_roundtrip",
+      "dependency": "Eq.symm"
     },
     {
       "consumer": "BOMA.Z.Rep001.z_add4_swap_last",

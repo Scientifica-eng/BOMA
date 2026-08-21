@@ -5,6 +5,7 @@
   "stage": "Z",
   "targets": [
     "BOMA.Z.Rep001.embedN_injective",
+    "BOMA.Z.Rep001.signed_roundtrip",
     "BOMA.Z.Rep001.representation_converges",
     "BOMA.Z.Arithmetic001.zadd_routes_converge",
     "BOMA.Z.Arithmetic001.zmul_routes_converge",
@@ -17,6 +18,8 @@
     "BOMA.Z.Arithmetic001.zmul_comm",
     "BOMA.Z.Arithmetic001.zmul_assoc",
     "BOMA.Z.Arithmetic001.zmul_add_right",
+    "BOMA.Z.Arithmetic001.embedN_zero",
+    "BOMA.Z.Arithmetic001.embedN_one",
     "BOMA.Z.Arithmetic001.embedN_add",
     "BOMA.Z.Arithmetic001.embedN_mul",
     "BOMA.Z.Arithmetic001.generated_by_natural_difference",
@@ -1070,6 +1073,16 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Z.Arithmetic001.embedN_one",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.embedN_zero",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Z.Arithmetic001.generated_by_natural_difference",
           "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
           "source_resolution": "direct-range"
@@ -1400,6 +1413,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Z.Rep001.signed_roundtrip",
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Z.Rep001.z_add4_swap_last",
           "source": "LAB/payloads/lean/ZStage/ZPairArithmetic.lean",
           "source_resolution": "direct-range"
@@ -1708,6 +1726,11 @@
         },
         {
           "name": "BOMA.Z.Rep001.pair_roundtrip",
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.signed_roundtrip",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
         },
@@ -2044,6 +2067,11 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Z.Rep001.signed_roundtrip",
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Z.Rep001.zeq_common_s",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
@@ -2322,6 +2350,11 @@
         },
         {
           "name": "BOMA.Z.Rep001.pair_roundtrip",
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Rep001.signed_roundtrip",
           "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
           "source_resolution": "direct-range"
         },
@@ -4711,6 +4744,16 @@
           "source_resolution": "direct-range"
         },
         {
+          "name": "BOMA.Z.Arithmetic001.embedN_one",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.Z.Arithmetic001.embedN_zero",
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "source_resolution": "direct-range"
+        },
+        {
           "name": "BOMA.Z.Arithmetic001.generated_by_natural_difference",
           "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
           "source_resolution": "direct-range"
@@ -4728,7 +4771,7 @@
       ],
       "out_of_scope_consumers": [],
       "shortest_target_path": [
-        "BOMA.Z.Arithmetic001.generated_by_natural_difference",
+        "BOMA.Z.Arithmetic001.embedN_zero",
         "rfl"
       ],
       "residual": false

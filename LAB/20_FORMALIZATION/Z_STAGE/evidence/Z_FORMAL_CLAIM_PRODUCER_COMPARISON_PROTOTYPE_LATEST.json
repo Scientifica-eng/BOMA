@@ -1,10 +1,11 @@
 {
-  "status": "CLAIM_PRODUCER_REVIEW_REQUIRED",
+  "status": "CLAIM_PRODUCER_PASS",
   "policy_schema": "BOMA-Z-FORMAL-CLAIM-PRODUCER-POLICY-001",
   "stage": "Z",
   "root_mode": "producer_union",
   "audit_targets": [
     "BOMA.Z.Rep001.embedN_injective",
+    "BOMA.Z.Rep001.signed_roundtrip",
     "BOMA.Z.Rep001.representation_converges",
     "BOMA.Z.Arithmetic001.zadd_routes_converge",
     "BOMA.Z.Arithmetic001.zmul_routes_converge",
@@ -17,6 +18,8 @@
     "BOMA.Z.Arithmetic001.zmul_comm",
     "BOMA.Z.Arithmetic001.zmul_assoc",
     "BOMA.Z.Arithmetic001.zmul_add_right",
+    "BOMA.Z.Arithmetic001.embedN_zero",
+    "BOMA.Z.Arithmetic001.embedN_one",
     "BOMA.Z.Arithmetic001.embedN_add",
     "BOMA.Z.Arithmetic001.embedN_mul",
     "BOMA.Z.Arithmetic001.generated_by_natural_difference",
@@ -63,19 +66,19 @@
     "registry_claims": 11,
     "policy_claims": 11,
     "declared_producers": 48,
-    "audit_targets": 26,
-    "internal_declarations": 200,
-    "owned_internal_declarations": 200,
+    "audit_targets": 29,
+    "internal_declarations": 203,
+    "owned_internal_declarations": 203,
     "unowned_internal_declarations": 0,
     "target_direct_internal_dependencies": 0,
     "undeclared_target_direct_internal_dependencies": 0,
-    "multi_claim_owned_internal_declarations": 164,
-    "residual_groups": 3
+    "multi_claim_owned_internal_declarations": 165,
+    "residual_groups": 0
   },
   "internal_by_source_stage": {
     "N-Arithmetic": 59,
     "N-Core": 18,
-    "Z": 123
+    "Z": 126
   },
   "unowned_by_source_stage": {},
   "target_direct_internal_dependencies": [],
@@ -222,12 +225,14 @@
       "producers": [
         {
           "name": "BOMA.Z.Rep001.signed_roundtrip",
-          "exists_in_internal_closure": false,
-          "reachable_from_audit_root": false,
-          "shortest_audit_path": null,
-          "is_audit_target": false,
-          "source": null,
-          "owned_internal_count": 0
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.Z.Rep001.signed_roundtrip"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean",
+          "owned_internal_count": 25
         },
         {
           "name": "BOMA.Z.Rep001.pair_roundtrip",
@@ -267,7 +272,7 @@
           "owned_internal_count": 58
         }
       ],
-      "owned_internal_count": 58
+      "owned_internal_count": 59
     },
     {
       "claim": "Z-CL-CARRIER-001",
@@ -539,21 +544,25 @@
         },
         {
           "name": "BOMA.Z.Arithmetic001.embedN_zero",
-          "exists_in_internal_closure": false,
-          "reachable_from_audit_root": false,
-          "shortest_audit_path": null,
-          "is_audit_target": false,
-          "source": null,
-          "owned_internal_count": 0
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.Z.Arithmetic001.embedN_zero"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "owned_internal_count": 12
         },
         {
           "name": "BOMA.Z.Arithmetic001.embedN_one",
-          "exists_in_internal_closure": false,
-          "reachable_from_audit_root": false,
-          "shortest_audit_path": null,
-          "is_audit_target": false,
-          "source": null,
-          "owned_internal_count": 0
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.Z.Arithmetic001.embedN_one"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/ZStage/ZArithmeticLaws.lean",
+          "owned_internal_count": 12
         },
         {
           "name": "BOMA.Z.Arithmetic001.embedN_add",
@@ -589,7 +598,7 @@
           "owned_internal_count": 63
         }
       ],
-      "owned_internal_count": 95
+      "owned_internal_count": 99
     },
     {
       "claim": "Z-CL-GEN-001",
@@ -1782,8 +1791,16 @@
       ]
     },
     {
+      "name": "BOMA.Z.Arithmetic001.zone",
+      "claims": [
+        "Z-CL-EMBED-001",
+        "Z-CL-RING-001"
+      ]
+    },
+    {
       "name": "BOMA.Z.Arithmetic001.zzero",
       "claims": [
+        "Z-CL-EMBED-001",
         "Z-CL-ORDER-001",
         "Z-CL-RING-001"
       ]
@@ -2393,21 +2410,5 @@
       ]
     }
   ],
-  "residuals": [
-    {
-      "type": "declared_producer_not_internal",
-      "claim": "Z-CL-REPCONV-001",
-      "producer": "BOMA.Z.Rep001.signed_roundtrip"
-    },
-    {
-      "type": "declared_producer_not_internal",
-      "claim": "Z-CL-EMBED-001",
-      "producer": "BOMA.Z.Arithmetic001.embedN_zero"
-    },
-    {
-      "type": "declared_producer_not_internal",
-      "claim": "Z-CL-EMBED-001",
-      "producer": "BOMA.Z.Arithmetic001.embedN_one"
-    }
-  ]
+  "residuals": []
 }
