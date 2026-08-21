@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "matrix_schema": "BOMA-STAGE-TRANSPARENCY-MATRIX-001",
+  "audited_source": "8b169bb226a06aa077713a337c131f426aac3cd6",
+  "workflow_run": "32456174410",
+  "toolchain": "leanprover/lean4:v4.32.1",
+  "stages": [
+    {
+      "stage": "N-Core",
+      "slug": "N_CORE",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "N-Arithmetic",
+      "slug": "N_ARITH",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "Z",
+      "slug": "Z",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "Q",
+      "slug": "Q",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "R",
+      "slug": "R",
+      "root_mode": "single_target",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    }
+  ]
+}

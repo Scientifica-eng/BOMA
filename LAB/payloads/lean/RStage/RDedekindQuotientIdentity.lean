@@ -61,12 +61,16 @@ theorem rLE_mk_iff (A B : LowerCut) :
   · intro h
     exact ⟨A, B, rfl, rfl, h⟩
 
-/-- The quotient rational embedding preserves and reflects accepted Q order. -/
+/-- The quotient rational embedding preserves and reflects accepted Q order.
+The Iff chain is composed directly rather than rewriting one proposition by an
+Iff theorem, keeping proposition extensionality out of this proof term. -/
 theorem rOfQ_order (q r : QBOMA) :
     rLE (rOfQ q) (rOfQ r) ↔ qLE q r := by
   change rLE (rmk (principalCut q)) (rmk (principalCut r)) ↔ qLE q r
-  rw [rLE_mk_iff]
-  change PrincipalLE q r ↔ qLE q r
-  exact principalLE_iff_qLE q r
+  have hPrincipal :
+      CutLE (principalCut q) (principalCut r) ↔ qLE q r := by
+    change PrincipalLE q r ↔ qLE q r
+    exact principalLE_iff_qLE q r
+  exact (rLE_mk_iff (principalCut q) (principalCut r)).trans hPrincipal
 
 end BOMA.R.DedekindQuotient001

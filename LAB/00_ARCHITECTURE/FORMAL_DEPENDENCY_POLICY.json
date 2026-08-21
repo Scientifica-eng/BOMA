@@ -1,0 +1,119 @@
+{
+  "schema": "BOMA-FORMAL-DEPENDENCY-POLICY-001",
+  "status": "ACTIVE-PROTOTYPE",
+  "date": "2026-08-20",
+  "purpose": "Classify theorem-level external boundary leaves after Lean transitive dependency extraction without silently absorbing logical or representation-sensitive commitments into the Trusted Base.",
+  "module_defaults": {
+    "Init.Core": {
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-001", "TB-META-003"],
+      "note": "Lean core type/equality/logical infrastructure; declaration overrides below remain stronger."
+    },
+    "Init.Prelude": {
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-001", "TB-META-002", "TB-META-003"],
+      "note": "Lean prelude propositions, generated eliminator support, host indexing and basic definitions. Sensitive declarations may be overridden below."
+    },
+    "Init.SimpLemmas": {
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-001", "TB-META-003"],
+      "note": "Kernel-checked prelude simplification lemmas used by elaborated proof terms."
+    }
+  },
+  "declaration_overrides": {
+    "Classical.em": {
+      "classification": "DECLARED_LOGICAL_COMMITMENT",
+      "refs": ["R-DP-003", "R-DP-004", "R-CL-ORDER-001", "R-CL-DENSITY-001"],
+      "allowed_direct_sources": [
+        "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
+        "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
+        "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
+        "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
+      ],
+      "reason": "R theorem-closure auditing exposed an implicit proposition-decidability split in rational strict-order trichotomy. The proof was normalized to an explicit localized Classical.em site in RPreCompletionGateway; downstream principal-cut and negation proofs now reuse that gateway rather than introducing separate decisions."
+    },
+    "Classical.byContradiction": {
+      "classification": "DECLARED_LOGICAL_COMMITMENT",
+      "refs": ["R-DP-006", "R-CL-INV-001", "R-CL-DENSITY-001"],
+      "allowed_direct_sources": [
+        "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
+        "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
+      ]
+    },
+    "Classical.propDecidable": {
+      "classification": "REVIEW_REQUIRED",
+      "reason": "Residual guard: no accepted R proof should consume the global classical proposition-decidability instance after the explicit-trichotomy refactor. Any reappearance must be diagnosed rather than silently allowed."
+    },
+    "propext": {
+      "classification": "REVIEW_REQUIRED",
+      "reason": "External Lean axiom discovered by theorem-level closure. Current direct consumers are proof terms whose source uses proposition-level rewriting; refactor those proofs or explicitly justify proposition extensionality before classification."
+    },
+    "Nat": {
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-002"],
+      "reason": "Edge provenance shows built-in Nat only as the return type of Lean-generated constructor-index declarations for BOMA inductive carriers. It is host/compiler indexing infrastructure, not the object-level BOMA natural-number carrier.",
+      "allowed_direct_sources": [
+        "LAB/payloads/lean/NCore/NCoreRB001.lean",
+        "LAB/payloads/lean/ZStage/ZSigned.lean"
+      ]
+    },
+    "noConfusion_of_Nat": {
+      "classification": "TRUSTED_METATHEORY",
+      "trusted_base_refs": ["TB-META-002"],
+      "reason": "Lean-generated constructor discrimination/no-confusion infrastructure consumed when BOMA proofs eliminate impossible constructor equalities. This is part of the selected inductive formalization regime, not use of built-in Nat as BOMA's mathematical carrier."
+    },
+    "Quotient": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.mk": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.lift": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.lift₂": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.inductionOn": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.sound": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Quotient.exact": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Setoid": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    },
+    "Setoid.mk": {
+      "classification": "TRUSTED_FORMALIZATION_INFRASTRUCTURE",
+      "trusted_base_refs": ["TB-META-004"],
+      "allowed_direct_source_prefixes": ["LAB/payloads/lean/QStage/", "LAB/payloads/lean/RStage/"]
+    }
+  },
+  "rules": {
+    "unknown_external_module": "UNDECLARED_DEPENDENCY",
+    "external_axiom_without_override": "REVIEW_REQUIRED",
+    "internal_axiom": "UNDECLARED_DEPENDENCY",
+    "unresolved_declaration": "UNDECLARED_DEPENDENCY",
+    "internal_without_source_after_generated_inference": "REVIEW_REQUIRED",
+    "restricted_override_with_out_of_scope_consumer": "UNDECLARED_DEPENDENCY"
+  }
+}

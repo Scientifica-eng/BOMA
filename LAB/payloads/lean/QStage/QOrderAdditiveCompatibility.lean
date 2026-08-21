@@ -79,17 +79,29 @@ theorem zle_iff_zero_le_difference (a b : BOMA.Z.Rep001.ZSigned) :
     rw [hright] at ht
     exact ht
 
-/-- On an explicit fraction, nonnegativity is exactly numerator nonnegativity. -/
+/-- On an explicit fraction, nonnegativity is exactly numerator nonnegativity.
+The representative-order Iff is composed explicitly rather than used as a
+proposition rewrite. -/
 theorem qNonNeg_mk_iff (x : RawFrac) :
     qLE qZero (qmk x) ↔ zLE zzero x.num := by
   change qLE (qmk rawZero) (qmk x) ↔ zLE zzero x.num
-  rw [qLE_mk_iff]
-  change
-    zLE (zmul zzero (denZ x.den)) (zmul x.num zone) ↔
-    zLE zzero x.num
-  rw [zmul_zero_left, zmul_one_right]
+  have hRaw : RawLE rawZero x ↔ zLE zzero x.num := by
+    constructor
+    · intro h
+      change
+        zLE (zmul zzero (denZ x.den)) (zmul x.num zone) at h
+      rw [zmul_zero_left, zmul_one_right] at h
+      exact h
+    · intro h
+      change
+        zLE (zmul zzero (denZ x.den)) (zmul x.num zone)
+      rw [zmul_zero_left, zmul_one_right]
+      exact h
+  exact (qLE_mk_iff rawZero x).trans hRaw
 
-/-- Rational order is equivalent to nonnegativity of y-x. -/
+/-- Rational order is equivalent to nonnegativity of y-x.
+The proof composes three Iff interfaces directly, preventing `rw` from turning
+those Iffs into proposition equalities through proposition extensionality. -/
 theorem qle_iff_nonneg_difference (x y : QBOMA) :
     qLE x y ↔ qLE qZero (qAdd y (qNeg x)) := by
   refine Quotient.inductionOn x ?_
@@ -98,16 +110,22 @@ theorem qle_iff_nonneg_difference (x y : QBOMA) :
   intro b
   change qLE (qmk a) (qmk b) ↔
     qLE qZero (qmk (rawAdd b (rawNeg a)))
-  rw [qLE_mk_iff, qNonNeg_mk_iff]
-  change
-    zLE (zmul a.num (denZ b.den)) (zmul b.num (denZ a.den)) ↔
-    zLE zzero
-      (zadd (zmul b.num (denZ a.den))
-        (zmul (zneg a.num) (denZ b.den)))
-  rw [BOMA.Q.Gateway001.zmul_neg_left]
-  exact zle_iff_zero_le_difference
-    (zmul a.num (denZ b.den))
-    (zmul b.num (denZ a.den))
+  have hRaw :
+      RawLE a b ↔ zLE zzero (rawAdd b (rawNeg a)).num := by
+    change
+      zLE (zmul a.num (denZ b.den)) (zmul b.num (denZ a.den)) ↔
+      zLE zzero
+        (zadd (zmul b.num (denZ a.den))
+          (zmul (zneg a.num) (denZ b.den)))
+    rw [BOMA.Q.Gateway001.zmul_neg_left]
+    exact zle_iff_zero_le_difference
+      (zmul a.num (denZ b.den))
+      (zmul b.num (denZ a.den))
+  have hNonNeg :
+      zLE zzero (rawAdd b (rawNeg a)).num ↔
+      qLE qZero (qmk (rawAdd b (rawNeg a))) :=
+    (qNonNeg_mk_iff (rawAdd b (rawNeg a))).symm
+  exact (qLE_mk_iff a b).trans (hRaw.trans hNonNeg)
 
 /-- Translating both sides by the same rational leaves their difference unchanged. -/
 theorem q_difference_translate (x y c : QBOMA) :

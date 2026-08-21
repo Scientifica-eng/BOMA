@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "scope": "accepted-source surface only; not theorem-level transitive dependency closure",
+  "stats": {
+    "N_CORE": {
+      "files_scanned": 9,
+      "errors": 0,
+      "warnings": 0,
+      "classical_files": 0
+    },
+    "N_ARITHMETIC": {
+      "files_scanned": 13,
+      "errors": 0,
+      "warnings": 0,
+      "classical_files": 0
+    },
+    "Z": {
+      "files_scanned": 25,
+      "errors": 0,
+      "warnings": 0,
+      "classical_files": 0
+    },
+    "Q": {
+      "files_scanned": 42,
+      "errors": 0,
+      "warnings": 0,
+      "classical_files": 0
+    },
+    "R": {
+      "files_scanned": 88,
+      "errors": 0,
+      "warnings": 0,
+      "classical_files": 5
+    }
+  },
+  "findings": []
+}

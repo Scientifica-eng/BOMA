@@ -1,0 +1,1934 @@
+{
+  "status": "CLASSIFICATION_PASS",
+  "policy_schema": "BOMA-FORMAL-DEPENDENCY-POLICY-001",
+  "closure_status": "PROTOTYPE_PASS",
+  "stage": "N-Core",
+  "targets": [
+    "BOMA.NCore.RB001.BOMANat",
+    "BOMA.NCore.RB001.ind",
+    "BOMA.NCore.RB001.s_ne_z",
+    "BOMA.NCore.RB001.s_injective",
+    "BOMA.NCore.RB001.induction_adequacy",
+    "BOMA.NCore.V5.NBLOCK003.all_generated",
+    "BOMA.NCore.RB001.fold",
+    "BOMA.NCore.RB001.fold_z",
+    "BOMA.NCore.RB001.fold_s",
+    "BOMA.NCore.RB001.fold_unique",
+    "BOMA.NCore.RB001.boma_pointwise_initial",
+    "BOMA.NCore.RB001.realize_eps",
+    "BOMA.NCore.RB001.realize_extU",
+    "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+    "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+    "BOMA.NCore.RB001.realize_reify",
+    "BOMA.NCore.RB001.reify_realize",
+    "BOMA.NCore.RB001.reify",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+    "BOMA.NCore.RB001.pointwise_initial_unique"
+  ],
+  "counts": {
+    "external_boundary": 40,
+    "classified_external": 40,
+    "external_residuals": 0,
+    "internal_residuals": 0,
+    "total_residuals": 0
+  },
+  "classification_counts": {
+    "TRUSTED_METATHEORY": 40
+  },
+  "residuals": [],
+  "external": [
+    {
+      "name": "Eq.mp",
+      "kind": "definition",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+        "Eq.mp"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.mpr",
+      "kind": "definition",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "Eq.mpr"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.propIntro",
+      "kind": "theorem",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+        "BOMA.NCore.RB001.TCTNF.nonempty.injEq",
+        "Eq.propIntro"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Exists",
+      "kind": "inductive",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.PointwiseInitial",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.pointwise_initial_unique",
+        "Exists"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Exists.casesOn",
+      "kind": "definition",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.pointwise_initial_unique",
+        "Exists.casesOn"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Exists.intro",
+      "kind": "constructor",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.boma_pointwise_initial",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.boma_pointwise_initial",
+        "Exists.intro"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Ne",
+      "kind": "definition",
+      "module": "Init.Core",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "Ne"
+      ],
+      "residual": false
+    },
+    {
+      "name": "And",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.pointwise_initial_unique",
+        "And"
+      ],
+      "residual": false
+    },
+    {
+      "name": "And.intro",
+      "kind": "constructor",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.pointwise_initial_unique",
+        "And.intro"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.Hom.map_base",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.Hom.map_step",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.Hom.mk",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.PointwiseInitial",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.noConfusionType",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.inj",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.inj",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.noConfusionType",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.boma_pointwise_initial",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.foldHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.foldHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.foldHom_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_s",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.idHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.idHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_eps",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_extU",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify.eq_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realize",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "Eq"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.casesOn",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "Eq.casesOn"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.ndrec",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_extU",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realize",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_injective",
+        "Eq.ndrec"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.refl",
+      "kind": "constructor",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.injEq",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.foldHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.idHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_extU",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify.eq_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realize",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "Eq.refl"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.symm",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_extU",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realize",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_injective",
+        "Eq.symm"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Eq.trans",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.realize_reify",
+        "Eq.trans"
+      ],
+      "residual": false
+    },
+    {
+      "name": "False",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "False"
+      ],
+      "residual": false
+    },
+    {
+      "name": "False.elim",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "False.elim"
+      ],
+      "residual": false
+    },
+    {
+      "name": "HEq",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "HEq"
+      ],
+      "residual": false
+    },
+    {
+      "name": "HEq.refl",
+      "kind": "constructor",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "HEq.refl"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Nat",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "declaration_override",
+      "trusted_base_refs": [
+        "TB-META-002"
+      ],
+      "refs": [],
+      "reason": "Edge provenance shows built-in Nat only as the return type of Lean-generated constructor-index declarations for BOMA inductive carriers. It is host/compiler indexing infrastructure, not the object-level BOMA natural-number carrier.",
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.ctorIdx",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ctorIdx",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "BOMA.NCore.RB001.BOMANat.ctorIdx",
+        "Nat"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Not",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+        "Not"
+      ],
+      "residual": false
+    },
+    {
+      "name": "PProd",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.below",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.below",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.BOMANat.brecOn",
+        "BOMA.NCore.RB001.BOMANat.below",
+        "PProd"
+      ],
+      "residual": false
+    },
+    {
+      "name": "PProd.mk",
+      "kind": "constructor",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.BOMANat.brecOn",
+        "BOMA.NCore.RB001.BOMANat.brecOn.go",
+        "PProd.mk"
+      ],
+      "residual": false
+    },
+    {
+      "name": "PUnit",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.below",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.below",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.BOMANat.brecOn",
+        "BOMA.NCore.RB001.BOMANat.below",
+        "PUnit"
+      ],
+      "residual": false
+    },
+    {
+      "name": "PUnit.unit",
+      "kind": "constructor",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn.go",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.BOMANat.brecOn",
+        "BOMA.NCore.RB001.BOMANat.brecOn.go",
+        "PUnit.unit"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Trans.trans",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.fold_unique",
+        "Trans.trans"
+      ],
+      "residual": false
+    },
+    {
+      "name": "True",
+      "kind": "inductive",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.realize_reify",
+        "True"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Unit",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.extU",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.extU.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold._f",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.ind._f",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.ind.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realizePlus._f",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realizePlus.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify._f",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.ind._f",
+        "Unit"
+      ],
+      "residual": false
+    },
+    {
+      "name": "Unit.unit",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.extU.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.ind.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realizePlus.match_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.ind",
+        "BOMA.NCore.RB001.ind._f",
+        "BOMA.NCore.RB001.ind.match_1",
+        "Unit.unit"
+      ],
+      "residual": false
+    },
+    {
+      "name": "congr",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+        "congr"
+      ],
+      "residual": false
+    },
+    {
+      "name": "congrArg",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_injective",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.fold_unique",
+        "congrArg"
+      ],
+      "residual": false
+    },
+    {
+      "name": "congrFun'",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.realize_reify",
+        "congrFun'"
+      ],
+      "residual": false
+    },
+    {
+      "name": "id",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNF.nonempty.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.TCTNFPlus.ext.noConfusion",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "id"
+      ],
+      "residual": false
+    },
+    {
+      "name": "instTransEq",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.compHom._proof_2",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.fold_unique",
+        "instTransEq"
+      ],
+      "residual": false
+    },
+    {
+      "name": "noConfusion_of_Nat",
+      "kind": "theorem",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "declaration_override",
+      "trusted_base_refs": [
+        "TB-META-002"
+      ],
+      "refs": [],
+      "reason": "Lean-generated constructor discrimination/no-confusion infrastructure consumed when BOMA proofs eliminate impossible constructor equalities. This is part of the selected inductive formalization regime, not use of built-in Nat as BOMA's mathematical carrier.",
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.s_ne_z",
+        "noConfusion_of_Nat"
+      ],
+      "residual": false
+    },
+    {
+      "name": "rfl",
+      "kind": "definition",
+      "module": "Init.Prelude",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-002",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.foldHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_s",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_z",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.idHom._proof_1",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "generated-prefix"
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_eps",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.fold_z",
+        "rfl"
+      ],
+      "residual": false
+    },
+    {
+      "name": "eq_false'",
+      "kind": "theorem",
+      "module": "Init.SimpLemmas",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+        "eq_false'"
+      ],
+      "residual": false
+    },
+    {
+      "name": "eq_self",
+      "kind": "theorem",
+      "module": "Init.SimpLemmas",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.realize_reify",
+        "eq_self"
+      ],
+      "residual": false
+    },
+    {
+      "name": "not_false_eq_true",
+      "kind": "theorem",
+      "module": "Init.SimpLemmas",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+        "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+        "not_false_eq_true"
+      ],
+      "residual": false
+    },
+    {
+      "name": "of_eq_true",
+      "kind": "theorem",
+      "module": "Init.SimpLemmas",
+      "classification": "TRUSTED_METATHEORY",
+      "policy_source": "module_default",
+      "trusted_base_refs": [
+        "TB-META-001",
+        "TB-META-003"
+      ],
+      "refs": [],
+      "reason": null,
+      "direct_consumers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realizePlus",
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "source_resolution": "direct-range"
+        }
+      ],
+      "out_of_scope_consumers": [],
+      "shortest_target_path": [
+        "BOMA.NCore.RB001.realize_reify",
+        "of_eq_true"
+      ],
+      "residual": false
+    }
+  ]
+}

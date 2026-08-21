@@ -1,0 +1,98 @@
+name: BOMA Q Formal Dependency Audit — Manual Diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: boma-q-formal-dependency-manual
+  cancel-in-progress: true
+
+jobs:
+  diagnose-q:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Lean
+        id: setup
+        continue-on-error: true
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Extract Q accepted-claim closure
+        id: audit
+        if: steps.setup.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_ARGS=()
+          while IFS= read -r target; do
+            [ -n "$target" ] || continue
+            TARGET_ARGS+=(--target "$target")
+          done < <(python3 - <<'PY'
+          import json
+          with open('LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json', encoding='utf-8') as fh:
+              policy = json.load(fh)
+          if policy.get('root_mode') == 'single_target':
+              print(policy['target'])
+          else:
+              for target in policy['audit_targets']:
+                  print(target)
+          PY
+          )
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage Q \
+            --manifest LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            "${TARGET_ARGS[@]}" \
+            --json-out /tmp/Q_CLOSURE.json
+
+      - name: Classify formal boundary
+        id: classify
+        if: steps.audit.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/Q_CLOSURE.json \
+            --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/Q_CLASSIFICATION.json
+
+      - name: Compare Claim producers
+        id: claimmap
+        if: steps.classify.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/Q_CLOSURE.json \
+            --classification /tmp/Q_CLASSIFICATION.json \
+            --policy LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/Q_PRODUCER.json
+
+      - name: Enforce diagnostic result
+        if: always()
+        run: |
+          set -e
+          test "${{ steps.setup.outcome }}" = success
+          test "${{ steps.audit.outcome }}" = success
+          test "${{ steps.classify.outcome }}" = success
+          test "${{ steps.claimmap.outcome }}" = success
+
+      - name: Scope note
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## Q manual transparency diagnostic
+
+          This workflow is read-only and does not promote repository evidence. Canonical push-triggered latest evidence is produced by `boma-stage-transparency-matrix-001.yml` in one N-Core→R transaction.
+          EOF

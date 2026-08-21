@@ -1,0 +1,163 @@
+name: BOMA Claim Surface Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - architecture/claim-transparency-001
+    paths:
+      - 'LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/TRUSTED_BASE.md'
+      - 'LAB/00_ARCHITECTURE/CLAIM_SURFACE_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/tools/claim_surface_audit.py'
+      - 'LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/**/**CLAIM_CLOSURE_AUDIT*.md'
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - '.github/workflows/boma-claim-surface-audit-001.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: boma-claim-surface-evidence-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  accepted-source-surface:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full provenance history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run accepted-source claim surface audit
+        id: audit
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/claim_surface_audit.py --json \
+            > /tmp/CLAIM_SURFACE_LATEST.json
+          cat /tmp/CLAIM_SURFACE_LATEST.json
+
+      - name: Record claim-surface evidence on architecture branch
+        id: evidence
+        if: always() && github.ref_name == 'architecture/claim-transparency-001'
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCH='architecture/claim-transparency-001'
+          AUDITED_SHA="$GITHUB_SHA"
+          RUN_ID="$GITHUB_RUN_ID"
+
+          if [ ! -f /tmp/CLAIM_SURFACE_LATEST.json ]; then
+            echo '::error::Claim-surface audit produced no JSON output.'
+            exit 1
+          fi
+
+          check_input_drift() {
+            local remote_sha="$1"
+            git diff --quiet "$AUDITED_SHA" "$remote_sha" -- \
+              LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md \
+              LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+              LAB/00_ARCHITECTURE/TRUSTED_BASE.md \
+              LAB/00_ARCHITECTURE/CLAIM_SURFACE_POLICY.json \
+              LAB/00_ARCHITECTURE/tools/claim_surface_audit.py \
+              LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt \
+              LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt \
+              LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+              LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md \
+              LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md \
+              LAB/payloads/lean/NCore \
+              LAB/payloads/lean/NArithmetic \
+              LAB/payloads/lean/ZStage \
+              LAB/payloads/lean/QStage \
+              LAB/payloads/lean/RStage \
+              .github/workflows/boma-claim-surface-audit-001.yml
+          }
+
+          git fetch origin "$BRANCH"
+          CURRENT_HEAD="$(git rev-parse "origin/$BRANCH")"
+          if ! check_input_drift "$CURRENT_HEAD"; then
+            echo '::error::Claim-surface verification inputs changed after this audit started; refusing stale evidence.'
+            exit 1
+          fi
+
+          git checkout -B claim-surface-evidence "origin/$BRANCH"
+          mkdir -p LAB/00_ARCHITECTURE/evidence
+          cp /tmp/CLAIM_SURFACE_LATEST.json LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.json
+          STATUS="$(python3 - <<'PY'
+          import json
+          with open('/tmp/CLAIM_SURFACE_LATEST.json', encoding='utf-8') as fh:
+              print(json.load(fh).get('status', 'UNKNOWN'))
+          PY
+          )"
+          cat > LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.md <<EOF
+          # BOMA Claim Surface Evidence
+
+          **Status:** ${STATUS}  
+          **Audited source commit:** \`${AUDITED_SHA}\`  
+          **Workflow run ID:** \`${RUN_ID}\`
+
+          This evidence checks accepted-source manifests for missing or unsafe inputs, sorry/axiom tokens, undeclared Classical usage, quotient-policy violations, and stale classical whitelists. It complements theorem-level dependency closure; it does not replace it.
+          EOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.json LAB/00_ARCHITECTURE/evidence/CLAIM_SURFACE_LATEST.md
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Record claim surface audit run ${RUN_ID}"
+
+          for attempt in 1 2 3 4; do
+            git fetch origin "$BRANCH"
+            REMOTE_HEAD="$(git rev-parse "origin/$BRANCH")"
+            if ! check_input_drift "$REMOTE_HEAD"; then
+              echo '::error::Claim-surface verification inputs changed while evidence promotion was retrying.'
+              exit 1
+            fi
+            if ! git merge-base --is-ancestor "$REMOTE_HEAD" HEAD; then
+              git rebase "origin/$BRANCH"
+            fi
+            if git push origin HEAD:"$BRANCH"; then
+              exit 0
+            fi
+          done
+          echo '::error::Unable to promote claim-surface evidence after retries.'
+          exit 1
+
+      - name: Enforce claim-surface audit
+        if: always()
+        shell: bash
+        run: |
+          set -e
+          test "${{ steps.audit.outcome }}" = success
+          if [ "${{ github.ref_name }}" = 'architecture/claim-transparency-001' ]; then
+            test "${{ steps.evidence.outcome }}" = success
+          fi
+
+      - name: Record scope in job summary
+        if: always()
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## BOMA Claim Surface Audit
+
+          This gate checks declared accepted-source manifests and sensitive source-level commitments. Its repository evidence is separate from theorem-level transitive dependency evidence.
+          EOF

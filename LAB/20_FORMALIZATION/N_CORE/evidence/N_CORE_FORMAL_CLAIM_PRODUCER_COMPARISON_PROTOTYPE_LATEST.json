@@ -1,0 +1,1496 @@
+{
+  "status": "CLAIM_PRODUCER_PASS",
+  "policy_schema": "BOMA-N-CORE-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "stage": "N-Core",
+  "root_mode": "producer_union",
+  "audit_targets": [
+    "BOMA.NCore.RB001.BOMANat",
+    "BOMA.NCore.RB001.ind",
+    "BOMA.NCore.RB001.s_ne_z",
+    "BOMA.NCore.RB001.s_injective",
+    "BOMA.NCore.RB001.induction_adequacy",
+    "BOMA.NCore.V5.NBLOCK003.all_generated",
+    "BOMA.NCore.RB001.fold",
+    "BOMA.NCore.RB001.fold_z",
+    "BOMA.NCore.RB001.fold_s",
+    "BOMA.NCore.RB001.fold_unique",
+    "BOMA.NCore.RB001.boma_pointwise_initial",
+    "BOMA.NCore.RB001.realize_eps",
+    "BOMA.NCore.RB001.realize_extU",
+    "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+    "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+    "BOMA.NCore.RB001.realize_reify",
+    "BOMA.NCore.RB001.reify_realize",
+    "BOMA.NCore.RB001.reify",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+    "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+    "BOMA.NCore.RB001.pointwise_initial_unique"
+  ],
+  "closure_status": "PROTOTYPE_PASS",
+  "boundary_classification_status": "CLASSIFICATION_PASS",
+  "registry_claims": [
+    "N-CL-CARRIER-001",
+    "N-CL-ID-001",
+    "N-CL-ELIM-001",
+    "N-CL-NOCONF-A-001",
+    "N-CL-IND-001",
+    "N-CL-GEN-001",
+    "N-CL-REC-001",
+    "N-CL-RECUNIQ-001",
+    "N-CL-INITIAL-001",
+    "N-CL-TCTBASE-001",
+    "N-CL-TCTEXT-001",
+    "N-CL-TCTPRES-001",
+    "N-CL-TCTREFL-001",
+    "N-CL-TCTCOVER-001",
+    "N-CL-HIST-001",
+    "N-CL-NOCONF-B-001",
+    "N-CL-NOCONF-CONV-001",
+    "N-CL-COMPARE-001",
+    "N-CL-STANDARD-001",
+    "N-CL-INTEGRATION-001"
+  ],
+  "policy_claims": [
+    "N-CL-CARRIER-001",
+    "N-CL-ID-001",
+    "N-CL-ELIM-001",
+    "N-CL-NOCONF-A-001",
+    "N-CL-IND-001",
+    "N-CL-GEN-001",
+    "N-CL-REC-001",
+    "N-CL-RECUNIQ-001",
+    "N-CL-INITIAL-001",
+    "N-CL-TCTBASE-001",
+    "N-CL-TCTEXT-001",
+    "N-CL-TCTPRES-001",
+    "N-CL-TCTREFL-001",
+    "N-CL-TCTCOVER-001",
+    "N-CL-HIST-001",
+    "N-CL-NOCONF-B-001",
+    "N-CL-NOCONF-CONV-001",
+    "N-CL-COMPARE-001",
+    "N-CL-STANDARD-001",
+    "N-CL-INTEGRATION-001"
+  ],
+  "counts": {
+    "registry_claims": 20,
+    "policy_claims": 20,
+    "declared_producers": 34,
+    "audit_targets": 21,
+    "internal_declarations": 97,
+    "owned_internal_declarations": 97,
+    "unowned_internal_declarations": 0,
+    "target_direct_internal_dependencies": 0,
+    "undeclared_target_direct_internal_dependencies": 0,
+    "multi_claim_owned_internal_declarations": 65,
+    "residual_groups": 0
+  },
+  "internal_by_source_stage": {
+    "N-Core": 97
+  },
+  "unowned_by_source_stage": {},
+  "target_direct_internal_dependencies": [],
+  "claims": [
+    {
+      "claim": "N-CL-CARRIER-001",
+      "role": "fresh unary R-B carrier with base and successor",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.BOMANat"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.ind",
+            "BOMA.NCore.RB001.BOMANat.z"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 2
+        },
+        {
+          "name": "BOMA.NCore.RB001.BOMANat.s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.ind",
+            "BOMA.NCore.RB001.BOMANat.s"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 2
+        }
+      ],
+      "owned_internal_count": 3
+    },
+    {
+      "claim": "N-CL-ID-001",
+      "role": "formal equality interface on the selected fresh carrier",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.BOMANat"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        }
+      ],
+      "owned_internal_count": 1
+    },
+    {
+      "claim": "N-CL-ELIM-001",
+      "role": "Sort-polymorphic dependent eliminator interface under N-DP-002 scope",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.ind",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.ind"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 11
+        }
+      ],
+      "owned_internal_count": 11
+    },
+    {
+      "claim": "N-CL-NOCONF-A-001",
+      "role": "internal formal no-confusion Route A",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.s_ne_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 7
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.s_injective"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 9
+        }
+      ],
+      "owned_internal_count": 11
+    },
+    {
+      "claim": "N-CL-IND-001",
+      "role": "proposition-valued induction adequacy",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.induction_adequacy",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.induction_adequacy"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 12
+        }
+      ],
+      "owned_internal_count": 12
+    },
+    {
+      "claim": "N-CL-GEN-001",
+      "role": "backend witness of generatedness/no-junk over the accepted formal carrier",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.V5.NBLOCK003.Generated",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NBLOCK003.all_generated",
+            "BOMA.NCore.V5.NBLOCK003.Generated"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean",
+          "owned_internal_count": 2
+        },
+        {
+          "name": "BOMA.NCore.V5.NBLOCK003.all_generated",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NBLOCK003.all_generated"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean",
+          "owned_internal_count": 8
+        }
+      ],
+      "owned_internal_count": 8
+    },
+    {
+      "claim": "N-CL-REC-001",
+      "role": "nondependent recursion interface and computation equations",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.fold",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.fold"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 11
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.fold_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 12
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_s",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.fold_s"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 12
+        }
+      ],
+      "owned_internal_count": 13
+    },
+    {
+      "claim": "N-CL-RECUNIQ-001",
+      "role": "pointwise recursion uniqueness",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.fold_unique"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 12
+        }
+      ],
+      "owned_internal_count": 12
+    },
+    {
+      "claim": "N-CL-INITIAL-001",
+      "role": "Type-0 pointwise initiality in the selected unary-algebra scope",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.UnaryAlgebra",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial",
+            "BOMA.NCore.RB001.UnaryAlgebra"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.Hom",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial",
+            "BOMA.NCore.RB001.Hom"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 2
+        },
+        {
+          "name": "BOMA.NCore.RB001.PointwiseInitial",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial",
+            "BOMA.NCore.RB001.PointwiseInitial"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 5
+        },
+        {
+          "name": "BOMA.NCore.RB001.bomaAlg",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial",
+            "BOMA.NCore.RB001.bomaAlg"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 6
+        },
+        {
+          "name": "BOMA.NCore.RB001.boma_pointwise_initial",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 29
+        }
+      ],
+      "owned_internal_count": 29
+    },
+    {
+      "claim": "N-CL-TCTBASE-001",
+      "role": "selected backend TCT base presentation realizes as formal z",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.TCTNF",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_extU",
+            "BOMA.NCore.RB001.TCTNF"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_eps",
+            "BOMA.NCore.RB001.realize"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 21
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_eps",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_eps"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 22
+        }
+      ],
+      "owned_internal_count": 22
+    },
+    {
+      "claim": "N-CL-TCTEXT-001",
+      "role": "selected terminal extension realizes as formal successor",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.extU",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_extU",
+            "BOMA.NCore.RB001.extU"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 10
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_extU",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_extU"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 23
+        }
+      ],
+      "owned_internal_count": 23
+    },
+    {
+      "claim": "N-CL-TCTPRES-001",
+      "role": "selected-scope structural identity/equivalence preservation",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.bridge_preserves_selected_identity",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.bridge_preserves_selected_identity"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 22
+        }
+      ],
+      "owned_internal_count": 22
+    },
+    {
+      "claim": "N-CL-TCTREFL-001",
+      "role": "formal identity reflection / bridge faithfulness",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.realize_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+            "BOMA.NCore.RB001.realize_injective"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 34
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.bridge_reflects_formal_identity"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 35
+        }
+      ],
+      "owned_internal_count": 35
+    },
+    {
+      "claim": "N-CL-TCTCOVER-001",
+      "role": "realization/reification coverage and reconstruction",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.reify",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.reify"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 21
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_reify"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 32
+        },
+        {
+          "name": "BOMA.NCore.RB001.reify_realize",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.reify_realize"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 33
+        }
+      ],
+      "owned_internal_count": 35
+    },
+    {
+      "claim": "N-CL-HIST-001",
+      "role": "constructor-ancestry / structural-extension correspondence, definitionally realized without numerical depth",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.reify",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.reify"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 21
+        },
+        {
+          "name": "BOMA.NCore.RB001.extU",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_extU",
+            "BOMA.NCore.RB001.extU"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 10
+        }
+      ],
+      "owned_internal_count": 21
+    },
+    {
+      "claim": "N-CL-NOCONF-B-001",
+      "role": "independent constructional no-confusion transfer Route B",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+            "BOMA.NCore.V5.NJ001RouteB.tct_extU_ne_eps"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 12
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+            "BOMA.NCore.V5.NJ001RouteB.tct_extU_injective"
+          ],
+          "is_audit_target": false,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 24
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 40
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 50
+        }
+      ],
+      "owned_internal_count": 53
+    },
+    {
+      "claim": "N-CL-NOCONF-CONV-001",
+      "role": "N-J-001 reconvergence of internal Route A and constructional Route B on the same no-confusion interface",
+      "transitive_ownership": false,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.s_ne_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.s_ne_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.s_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.s_injective"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 1
+        }
+      ],
+      "owned_internal_count": 4
+    },
+    {
+      "claim": "N-CL-COMPARE-001",
+      "role": "comparison maps between same-universe pointwise-initial unary algebras",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.pointwise_initial_unique"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 17
+        }
+      ],
+      "owned_internal_count": 17
+    },
+    {
+      "claim": "N-CL-STANDARD-001",
+      "role": "pointwise inverse/standardness certificate for comparison maps",
+      "transitive_ownership": true,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.pointwise_initial_unique"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 17
+        }
+      ],
+      "owned_internal_count": 17
+    },
+    {
+      "claim": "N-CL-INTEGRATION-001",
+      "role": "NAC-15 integration of carrier, elimination, generatedness, recursion, converged no-confusion, TCT bridge/history, and standardness under selected R-B formalization commitments",
+      "transitive_ownership": false,
+      "producers": [
+        {
+          "name": "BOMA.NCore.RB001.BOMANat",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.BOMANat"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.ind",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.ind"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.V5.NBLOCK003.all_generated",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NBLOCK003.all_generated"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_BLOCK_003.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.fold_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.fold_unique"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.boma_pointwise_initial",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.boma_pointwise_initial"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.bridge_reflects_formal_identity"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.realize_reify",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.realize_reify"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/Verify_N_J_001_RouteB.lean",
+          "owned_internal_count": 1
+        },
+        {
+          "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+          "exists_in_internal_closure": true,
+          "reachable_from_audit_root": true,
+          "shortest_audit_path": [
+            "BOMA.NCore.RB001.pointwise_initial_unique"
+          ],
+          "is_audit_target": true,
+          "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+          "owned_internal_count": 1
+        }
+      ],
+      "owned_internal_count": 10
+    }
+  ],
+  "multi_claim_owned_internal": [
+    {
+      "name": "BOMA.NCore.RB001.BOMANat",
+      "claims": [
+        "N-CL-CARRIER-001",
+        "N-CL-ELIM-001",
+        "N-CL-GEN-001",
+        "N-CL-HIST-001",
+        "N-CL-ID-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-INTEGRATION-001",
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.below",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.rec",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-GEN-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s",
+      "claims": [
+        "N-CL-CARRIER-001",
+        "N-CL-ELIM-001",
+        "N-CL-GEN-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.z",
+      "claims": [
+        "N-CL-CARRIER-001",
+        "N-CL-ELIM-001",
+        "N-CL-GEN-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.Hom",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.Hom.map_base",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.Hom.map_step",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.Hom.mk",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.Hom.toFun",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.PointwiseInitial",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNF",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNF.casesOn",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNF.eps",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNF.nonempty",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNF.rec",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.below",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.brecOn.go",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.casesOn",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.ext",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.rec",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.TCTNFPlus.unit",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.UnaryAlgebra",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.UnaryAlgebra.Carrier",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.UnaryAlgebra.base",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.UnaryAlgebra.step",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INITIAL-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.boma_pointwise_initial",
+      "claims": [
+        "N-CL-INITIAL-001",
+        "N-CL-INTEGRATION-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.bridge_reflects_formal_identity",
+      "claims": [
+        "N-CL-INTEGRATION-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.compHom",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.compHom._proof_1",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.compHom._proof_2",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.extU",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.extU.match_1",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold",
+      "claims": [
+        "N-CL-INITIAL-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold._f",
+      "claims": [
+        "N-CL-INITIAL-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold_unique",
+      "claims": [
+        "N-CL-INITIAL-001",
+        "N-CL-INTEGRATION-001",
+        "N-CL-RECUNIQ-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.idHom",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.idHom._proof_1",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.idHom._proof_2",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-IND-001",
+        "N-CL-INTEGRATION-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind._f",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-IND-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind.match_1",
+      "claims": [
+        "N-CL-ELIM-001",
+        "N-CL-HIST-001",
+        "N-CL-IND-001",
+        "N-CL-INITIAL-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-REC-001",
+        "N-CL-RECUNIQ-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.pointwise_initial_unique",
+      "claims": [
+        "N-CL-COMPARE-001",
+        "N-CL-INTEGRATION-001",
+        "N-CL-STANDARD-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realize",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realizePlus",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realizePlus._f",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realizePlus.match_1",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTBASE-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001",
+        "N-CL-TCTPRES-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realize_extU",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTEXT-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realize_injective",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.realize_reify",
+      "claims": [
+        "N-CL-INTEGRATION-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.reify",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.reify._f",
+      "claims": [
+        "N-CL-HIST-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.reify.eq_2",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.reify_realize",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.reify_realizePlus",
+      "claims": [
+        "N-CL-NOCONF-B-001",
+        "N-CL-TCTCOVER-001",
+        "N-CL-TCTREFL-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.s_injective",
+      "claims": [
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-CONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.RB001.s_ne_z",
+      "claims": [
+        "N-CL-NOCONF-A-001",
+        "N-CL-NOCONF-CONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.V5.NBLOCK003.all_generated",
+      "claims": [
+        "N-CL-GEN-001",
+        "N-CL-INTEGRATION-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_injective",
+      "claims": [
+        "N-CL-INTEGRATION-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-NOCONF-CONV-001"
+      ]
+    },
+    {
+      "name": "BOMA.NCore.V5.NJ001RouteB.constructional_s_ne_z",
+      "claims": [
+        "N-CL-INTEGRATION-001",
+        "N-CL-NOCONF-B-001",
+        "N-CL-NOCONF-CONV-001"
+      ]
+    }
+  ],
+  "residuals": []
+}

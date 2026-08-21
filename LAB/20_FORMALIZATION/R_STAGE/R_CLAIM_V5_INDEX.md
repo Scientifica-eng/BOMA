@@ -63,14 +63,16 @@ The final closure audit required specifically named ordered-field consequences t
 
 and consumed by the final integration certificate.
 
-| Claim | Canonical evidence | V5 run | Status |
-|---|---|---:|---|
-| `rZero ≠ rOne` derived through Q strict order | `evidence/R_INTEGRATION_002_V5_LATEST.md` | `32374868448` | PASS |
-| addition translation invariance `x+c ≤ y+c ↔ x≤y` | same | `32374868448` | PASS |
-| negation reverses order | same | `32374868448` | PASS |
-| any inverse witness of a strictly positive real is strictly positive | same | `32374868448` | PASS |
+The original acceptance-strength integration that closed `R-J-002` was run `32374868448` at verified commit `f07363c22b049a3fae028a927df74d4fb28a0680`. After the assembly-manifest/provenance hardening was merged, the same accepted verification inputs were rechecked by run `32385379288`, whose canonical latest evidence records verified source commit `af0a03d83245b1e15e9903df00db89edf3317042`.
 
-The widened integration certificate passed without introducing a global inverse selector.
+| Claim | Canonical evidence | Latest integration V5 | Status |
+|---|---|---:|---|
+| `rZero ≠ rOne` derived through Q strict order | `evidence/R_INTEGRATION_002_V5_LATEST.md` | `32385379288` | PASS |
+| addition translation invariance `x+c ≤ y+c ↔ x≤y` | same | `32385379288` | PASS |
+| negation reverses order | same | `32385379288` | PASS |
+| any inverse witness of a strictly positive real is strictly positive | same | `32385379288` | PASS |
+
+The widened integration certificate passes without introducing a global inverse selector.
 
 ## Density and Archimedean characterization
 
@@ -81,17 +83,27 @@ The widened integration certificate passed without introducing a global inverse 
 
 ## Final integration
 
-| Claim | Canonical evidence | V5 run | Status |
+| Claim | Canonical evidence | Latest V5 run | Status |
 |---|---|---:|---|
-| same-carrier acceptance-strength integration, including explicit ordered-field closure | `evidence/R_INTEGRATION_002_V5_LATEST.md` | `32374868448` | PASS |
+| same-carrier acceptance-strength integration, including explicit ordered-field closure | `evidence/R_INTEGRATION_002_V5_LATEST.md` | `32385379288` | PASS |
 
-Verified commit: `f07363c22b049a3fae028a927df74d4fb28a0680`.
+Latest verified source commit: `af0a03d83245b1e15e9903df00db89edf3317042`.
 
-The canonical ordered source assembly for the R-J-002 workflow is now recorded separately in:
+Historical acceptance-closing integration:
+
+```text
+run             32374868448
+verified commit f07363c22b049a3fae028a927df74d4fb28a0680
+result          PASS
+```
+
+The later run is a post-maintenance re-verification of the hardened assembly/evidence workflow and does not retroactively erase the earlier acceptance evidence.
+
+The canonical ordered source assembly for the R-J-002 workflow is recorded separately in:
 
 `LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt`
 
-This manifest is an operational traceability artifact. Extracting the previously inline source order into the manifest does not revise the accepted theorem set or retroactively alter run `32374868448`; it makes the integration dependency order independently inspectable and reduces workflow-list drift.
+This manifest is an operational traceability artifact. Extracting the previously inline source order into the manifest does not revise the accepted theorem set; it makes the integration dependency order independently inspectable and reduces workflow-list drift.
 
 The integration workflow also guards evidence promotion by checking that its verification inputs have not changed between the actually verified `GITHUB_SHA` and the `main` head on which the evidence record would be committed. Documentation-only movement of `main` may coexist with a verified source state; verification-input drift causes evidence promotion to stop rather than misattribute the run.
 
@@ -123,11 +135,11 @@ The audit corrected a stale completeness run number in `R-COMP-BLOCK-001`; canon
 
 The final RA-09 closure also exposed that one-way addition monotonicity should not be documented as full translation invariance without the reverse implication. Rather than weaken the acceptance wording, explicit derived theorems for translation equivalence, negation reversal, and positive inverse behavior were added and verified in the final integration run.
 
-Historical FAIL/FAIL_OR_INCOMPLETE records remain in the Learning Graph and are classified separately from mathematical counterexamples.
+The 2026-08-20 takeover stabilization later hardened source assembly/evidence provenance and triggered the successful re-verification run `32385379288`. Historical FAIL/FAIL_OR_INCOMPLETE records and the earlier successful acceptance run remain in the Learning Graph.
 
 ## RA-20 result
 
-Every Stage-I acceptance-level mathematical theorem family now has a canonical V5 PASS, and the acceptance-strength full assembly passes as well.
+Every Stage-I acceptance-level mathematical theorem family has a canonical V5 PASS, and the acceptance-strength full assembly passes as well.
 
 ```text
 RA-20 = PASS

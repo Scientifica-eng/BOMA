@@ -1,0 +1,13 @@
+LAB/payloads/lean/NCore/NCoreRB001.lean
+LAB/payloads/lean/NArithmetic/AddRight.lean
+LAB/payloads/lean/NArithmetic/AddLeft.lean
+LAB/payloads/lean/NArithmetic/AddConvergence.lean
+LAB/payloads/lean/NArithmetic/AddLaws.lean
+LAB/payloads/lean/NArithmetic/MulRight.lean
+LAB/payloads/lean/NArithmetic/MulLeft.lean
+LAB/payloads/lean/NArithmetic/MulConvergence.lean
+LAB/payloads/lean/NArithmetic/MulLaws.lean
+LAB/payloads/lean/NArithmetic/OrderAdditive.lean
+LAB/payloads/lean/NArithmetic/OrderInductive.lean
+LAB/payloads/lean/NArithmetic/OrderConvergence.lean
+LAB/payloads/lean/NArithmetic/OrderLaws.lean

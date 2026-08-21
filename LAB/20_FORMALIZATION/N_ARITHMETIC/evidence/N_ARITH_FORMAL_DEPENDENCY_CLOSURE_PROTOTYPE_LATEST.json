@@ -1,0 +1,3985 @@
+{
+  "status": "PROTOTYPE_PASS",
+  "scope": "union of transitive declaration closures inside the compiled accepted assembly module; direct consumer→dependency edges retained; external module leaves are boundary candidates for Trusted Base classification; Claim-Registry semantic comparison remains separate",
+  "stage": "N-Arithmetic",
+  "manifest": "LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt",
+  "targets": [
+    "BOMA.NArithmetic.Addition001.addR_z",
+    "BOMA.NArithmetic.Addition001.addR_s",
+    "BOMA.NArithmetic.Addition001.addL_z",
+    "BOMA.NArithmetic.Addition001.addL_s",
+    "BOMA.NArithmetic.Addition001.add_routes_converge",
+    "BOMA.NArithmetic.Addition001.add_z_right",
+    "BOMA.NArithmetic.Addition001.add_z_left",
+    "BOMA.NArithmetic.Addition001.add_s_right",
+    "BOMA.NArithmetic.Addition001.add_s_left",
+    "BOMA.NArithmetic.Addition001.add_comm",
+    "BOMA.NArithmetic.Addition001.add_assoc",
+    "BOMA.NArithmetic.Addition001.add_right_cancel",
+    "BOMA.NArithmetic.Addition001.add_left_cancel",
+    "BOMA.NArithmetic.Multiplication001.mulR_z",
+    "BOMA.NArithmetic.Multiplication001.mulR_s",
+    "BOMA.NArithmetic.Multiplication001.mulL_z",
+    "BOMA.NArithmetic.Multiplication001.mulL_s",
+    "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+    "BOMA.NArithmetic.Multiplication001.mul_z_right",
+    "BOMA.NArithmetic.Multiplication001.mul_z_left",
+    "BOMA.NArithmetic.Multiplication001.mul_s_right",
+    "BOMA.NArithmetic.Multiplication001.mul_s_left",
+    "BOMA.NArithmetic.Multiplication001.mul_comm",
+    "BOMA.NArithmetic.Multiplication001.mul_one_right",
+    "BOMA.NArithmetic.Multiplication001.mul_one_left",
+    "BOMA.NArithmetic.Multiplication001.mul_add_right",
+    "BOMA.NArithmetic.Multiplication001.mul_add_left",
+    "BOMA.NArithmetic.Multiplication001.mul_assoc",
+    "BOMA.NArithmetic.Order001.order_routes_converge",
+    "BOMA.NArithmetic.Order001.le_refl",
+    "BOMA.NArithmetic.Order001.le_trans",
+    "BOMA.NArithmetic.Order001.le_antisymm",
+    "BOMA.NArithmetic.Order001.le_total",
+    "BOMA.NArithmetic.Order001.z_le",
+    "BOMA.NArithmetic.Order001.not_s_le_z",
+    "BOMA.NArithmetic.Order001.le_s_iff",
+    "BOMA.NArithmetic.Order001.add_mono_right",
+    "BOMA.NArithmetic.Order001.add_mono_left",
+    "BOMA.NArithmetic.Order001.mul_mono_right",
+    "BOMA.NArithmetic.Order001.mul_mono_left"
+  ],
+  "assembly_module": "BOMAAuditNArithmeticAccepted",
+  "source_files": [
+    {
+      "path": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "start_line": 2,
+      "end_line": 247
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+      "start_line": 250,
+      "end_line": 260
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+      "start_line": 263,
+      "end_line": 273
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+      "start_line": 276,
+      "end_line": 308
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "start_line": 311,
+      "end_line": 353
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+      "start_line": 356,
+      "end_line": 367
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+      "start_line": 370,
+      "end_line": 381
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+      "start_line": 384,
+      "end_line": 425
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "start_line": 428,
+      "end_line": 481
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "start_line": 484,
+      "end_line": 512
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "start_line": 515,
+      "end_line": 572
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+      "start_line": 575,
+      "end_line": 605
+    },
+    {
+      "path": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "start_line": 608,
+      "end_line": 669
+    }
+  ],
+  "counts": {
+    "internal": 97,
+    "external_boundary": 40,
+    "dependency_edges": 684,
+    "unresolved": 0,
+    "raw_unmapped_internal_ranges": 16,
+    "generated_source_inferences": 16,
+    "unmapped_internal_ranges": 0,
+    "internal_axioms": 0,
+    "targets": 40
+  },
+  "internal_axioms": [],
+  "unresolved": [],
+  "raw_unmapped_internal_ranges": [
+    "BOMA.NArithmetic.Order001.LEInd.below",
+    "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+    "BOMA.NArithmetic.Order001.LEInd.below.rec",
+    "BOMA.NArithmetic.Order001.LEInd.below.s",
+    "BOMA.NArithmetic.Order001.LEInd.below.z",
+    "BOMA.NArithmetic.Order001.LEInd.brecOn",
+    "BOMA.NArithmetic.Order001.leInd_refl._f",
+    "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+    "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+    "BOMA.NCore.RB001.BOMANat.brecOn.go",
+    "BOMA.NCore.RB001.BOMANat.ctorIdx",
+    "BOMA.NCore.RB001.BOMANat.noConfusionType",
+    "BOMA.NCore.RB001.BOMANat.s.inj",
+    "BOMA.NCore.RB001.BOMANat.s.injEq",
+    "BOMA.NCore.RB001.fold._f",
+    "BOMA.NCore.RB001.ind.match_1"
+  ],
+  "generated_source_inferences": [
+    "BOMA.NArithmetic.Order001.LEInd.below",
+    "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+    "BOMA.NArithmetic.Order001.LEInd.below.rec",
+    "BOMA.NArithmetic.Order001.LEInd.below.s",
+    "BOMA.NArithmetic.Order001.LEInd.below.z",
+    "BOMA.NArithmetic.Order001.LEInd.brecOn",
+    "BOMA.NArithmetic.Order001.leInd_refl._f",
+    "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+    "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+    "BOMA.NCore.RB001.BOMANat.brecOn.go",
+    "BOMA.NCore.RB001.BOMANat.ctorIdx",
+    "BOMA.NCore.RB001.BOMANat.noConfusionType",
+    "BOMA.NCore.RB001.BOMANat.s.inj",
+    "BOMA.NCore.RB001.BOMANat.s.injEq",
+    "BOMA.NCore.RB001.fold._f",
+    "BOMA.NCore.RB001.ind.match_1"
+  ],
+  "unmapped_internal_ranges": [],
+  "external_modules": [
+    "Init.Core",
+    "Init.Prelude"
+  ],
+  "internal": [
+    {
+      "name": "BOMA.NArithmetic.Addition001.add",
+      "kind": "definition",
+      "start_line": 316,
+      "end_line": 317,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addL",
+      "kind": "definition",
+      "start_line": 268,
+      "end_line": 268,
+      "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addL_s",
+      "kind": "theorem",
+      "start_line": 271,
+      "end_line": 271,
+      "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addL_z",
+      "kind": "theorem",
+      "start_line": 270,
+      "end_line": 270,
+      "source": "LAB/payloads/lean/NArithmetic/AddLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR",
+      "kind": "definition",
+      "start_line": 255,
+      "end_line": 255,
+      "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_s",
+      "kind": "theorem",
+      "start_line": 258,
+      "end_line": 258,
+      "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "kind": "theorem",
+      "start_line": 289,
+      "end_line": 295,
+      "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_z",
+      "kind": "theorem",
+      "start_line": 257,
+      "end_line": 257,
+      "source": "LAB/payloads/lean/NArithmetic/AddRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "kind": "theorem",
+      "start_line": 281,
+      "end_line": 287,
+      "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_assoc",
+      "kind": "theorem",
+      "start_line": 328,
+      "end_line": 333,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_comm",
+      "kind": "theorem",
+      "start_line": 324,
+      "end_line": 326,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "kind": "theorem",
+      "start_line": 345,
+      "end_line": 351,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "kind": "theorem",
+      "start_line": 335,
+      "end_line": 343,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "kind": "theorem",
+      "start_line": 297,
+      "end_line": 306,
+      "source": "LAB/payloads/lean/NArithmetic/AddConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_left",
+      "kind": "theorem",
+      "start_line": 322,
+      "end_line": 322,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_s_right",
+      "kind": "theorem",
+      "start_line": 321,
+      "end_line": 321,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_left",
+      "kind": "theorem",
+      "start_line": 320,
+      "end_line": 320,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Addition001.add_z_right",
+      "kind": "theorem",
+      "start_line": 319,
+      "end_line": 319,
+      "source": "LAB/payloads/lean/NArithmetic/AddLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul",
+      "kind": "definition",
+      "start_line": 435,
+      "end_line": 435,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulL",
+      "kind": "definition",
+      "start_line": 376,
+      "end_line": 376,
+      "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "kind": "theorem",
+      "start_line": 379,
+      "end_line": 379,
+      "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "kind": "theorem",
+      "start_line": 378,
+      "end_line": 378,
+      "source": "LAB/payloads/lean/NArithmetic/MulLeft.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR",
+      "kind": "definition",
+      "start_line": 362,
+      "end_line": 362,
+      "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "kind": "theorem",
+      "start_line": 365,
+      "end_line": 365,
+      "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "kind": "theorem",
+      "start_line": 399,
+      "end_line": 412,
+      "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "kind": "theorem",
+      "start_line": 364,
+      "end_line": 364,
+      "source": "LAB/payloads/lean/NArithmetic/MulRight.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "kind": "theorem",
+      "start_line": 390,
+      "end_line": 397,
+      "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "kind": "theorem",
+      "start_line": 465,
+      "end_line": 471,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "kind": "theorem",
+      "start_line": 455,
+      "end_line": 463,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "kind": "theorem",
+      "start_line": 473,
+      "end_line": 479,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "kind": "theorem",
+      "start_line": 442,
+      "end_line": 444,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "kind": "theorem",
+      "start_line": 450,
+      "end_line": 453,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "kind": "theorem",
+      "start_line": 446,
+      "end_line": 448,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "kind": "theorem",
+      "start_line": 414,
+      "end_line": 423,
+      "source": "LAB/payloads/lean/NArithmetic/MulConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "kind": "theorem",
+      "start_line": 440,
+      "end_line": 440,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "kind": "theorem",
+      "start_line": 439,
+      "end_line": 439,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "kind": "theorem",
+      "start_line": 438,
+      "end_line": 438,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "kind": "theorem",
+      "start_line": 437,
+      "end_line": 437,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Multiplication001.one",
+      "kind": "definition",
+      "start_line": 434,
+      "end_line": 434,
+      "source": "LAB/payloads/lean/NArithmetic/MulLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LE",
+      "kind": "definition",
+      "start_line": 615,
+      "end_line": 615,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEAdd",
+      "kind": "definition",
+      "start_line": 490,
+      "end_line": 490,
+      "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd",
+      "kind": "inductive",
+      "start_line": 520,
+      "end_line": 522,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below",
+      "kind": "inductive",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "kind": "recursor",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "kind": "constructor",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "kind": "constructor",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "kind": "theorem",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "kind": "definition",
+      "start_line": 520,
+      "end_line": 522,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "kind": "recursor",
+      "start_line": 520,
+      "end_line": 522,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.s",
+      "kind": "constructor",
+      "start_line": 522,
+      "end_line": 522,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.LEInd.z",
+      "kind": "constructor",
+      "start_line": 521,
+      "end_line": 521,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.add_mono_left",
+      "kind": "theorem",
+      "start_line": 654,
+      "end_line": 656,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.add_mono_right",
+      "kind": "theorem",
+      "start_line": 645,
+      "end_line": 652,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "kind": "theorem",
+      "start_line": 492,
+      "end_line": 492,
+      "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_s",
+      "kind": "theorem",
+      "start_line": 505,
+      "end_line": 510,
+      "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "kind": "theorem",
+      "start_line": 596,
+      "end_line": 600,
+      "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "kind": "theorem",
+      "start_line": 494,
+      "end_line": 501,
+      "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leAdd_z",
+      "kind": "theorem",
+      "start_line": 503,
+      "end_line": 503,
+      "source": "LAB/payloads/lean/NArithmetic/OrderAdditive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "kind": "theorem",
+      "start_line": 589,
+      "end_line": 594,
+      "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "kind": "theorem",
+      "start_line": 539,
+      "end_line": 552,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl",
+      "kind": "theorem",
+      "start_line": 524,
+      "end_line": 526,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.leInd_refl"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.leInd_refl"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "kind": "theorem",
+      "start_line": 565,
+      "end_line": 570,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "kind": "theorem",
+      "start_line": 528,
+      "end_line": 530,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NArithmetic.Order001.leInd_succ_right"
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "kind": "theorem",
+      "start_line": 581,
+      "end_line": 587,
+      "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.leInd_total",
+      "kind": "theorem",
+      "start_line": 554,
+      "end_line": 563,
+      "source": "LAB/payloads/lean/NArithmetic/OrderInductive.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_antisymm",
+      "kind": "theorem",
+      "start_line": 621,
+      "end_line": 622,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_refl",
+      "kind": "theorem",
+      "start_line": 617,
+      "end_line": 617,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_s_iff",
+      "kind": "theorem",
+      "start_line": 636,
+      "end_line": 643,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_total",
+      "kind": "theorem",
+      "start_line": 624,
+      "end_line": 627,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.le_trans",
+      "kind": "theorem",
+      "start_line": 619,
+      "end_line": 619,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "kind": "theorem",
+      "start_line": 665,
+      "end_line": 667,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "kind": "theorem",
+      "start_line": 658,
+      "end_line": 663,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "kind": "theorem",
+      "start_line": 631,
+      "end_line": 634,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "kind": "theorem",
+      "start_line": 602,
+      "end_line": 603,
+      "source": "LAB/payloads/lean/NArithmetic/OrderConvergence.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NArithmetic.Order001.z_le",
+      "kind": "theorem",
+      "start_line": 629,
+      "end_line": 629,
+      "source": "LAB/payloads/lean/NArithmetic/OrderLaws.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat",
+      "kind": "inductive",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.below",
+      "kind": "definition",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "kind": "definition",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.BOMANat.brecOn"
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "kind": "definition",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "kind": "definition",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.rec",
+      "kind": "recursor",
+      "start_line": 21,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s",
+      "kind": "constructor",
+      "start_line": 23,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "kind": "theorem",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "kind": "theorem",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "kind": "definition",
+      "start_line": 23,
+      "end_line": 23,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.BOMANat.z",
+      "kind": "constructor",
+      "start_line": 22,
+      "end_line": 22,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold",
+      "kind": "definition",
+      "start_line": 57,
+      "end_line": 59,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    },
+    {
+      "name": "BOMA.NCore.RB001.fold._f",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-prefix",
+      "source_anchor": "BOMA.NCore.RB001.fold"
+    },
+    {
+      "name": "BOMA.NCore.RB001.ind.match_1",
+      "kind": "definition",
+      "start_line": null,
+      "end_line": null,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "generated-override",
+      "source_anchor": "BOMA.NCore.RB001.ind"
+    },
+    {
+      "name": "BOMA.NCore.RB001.s_injective",
+      "kind": "theorem",
+      "start_line": 33,
+      "end_line": 35,
+      "source": "LAB/payloads/lean/NCore/NCoreRB001.lean",
+      "source_resolution": "direct-range",
+      "source_anchor": null
+    }
+  ],
+  "external_boundary": [
+    {
+      "name": "Eq.mp",
+      "kind": "definition",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Eq.mpr",
+      "kind": "definition",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Eq.propIntro",
+      "kind": "theorem",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Exists",
+      "kind": "inductive",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Exists.casesOn",
+      "kind": "definition",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Exists.intro",
+      "kind": "constructor",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Iff",
+      "kind": "inductive",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Iff.intro",
+      "kind": "constructor",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Iff.mp",
+      "kind": "theorem",
+      "module": "Init.Core"
+    },
+    {
+      "name": "Eq",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Eq.casesOn",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Eq.ndrec",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Eq.refl",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Eq.symm",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Eq.trans",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "False",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "False.elim",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "HEq",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "HEq.refl",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Nat",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Not",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Or",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Or.casesOn",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Or.inl",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Or.inr",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "PProd",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "PProd.mk",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "PUnit",
+      "kind": "inductive",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "PUnit.unit",
+      "kind": "constructor",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Trans.trans",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Unit",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "Unit.unit",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "congr",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "congrArg",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "congrFun'",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "eq_of_heq",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "id",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "instTransEq",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "noConfusion_of_Nat",
+      "kind": "theorem",
+      "module": "Init.Prelude"
+    },
+    {
+      "name": "rfl",
+      "kind": "definition",
+      "module": "Init.Prelude"
+    }
+  ],
+  "edges": [
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL",
+      "dependency": "BOMA.NCore.RB001.fold"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_s",
+      "dependency": "BOMA.NArithmetic.Addition001.addL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_s",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_s",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_z",
+      "dependency": "BOMA.NArithmetic.Addition001.addL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addL_z",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR",
+      "dependency": "BOMA.NCore.RB001.fold"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_s_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.addR_z_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_assoc",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "BOMA.NArithmetic.Addition001.add_routes_converge"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_comm",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "BOMA.NArithmetic.Addition001.add_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "BOMA.NArithmetic.Addition001.add_right_cancel"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_left_cancel",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "BOMA.NCore.RB001.s_injective"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_right_cancel",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NArithmetic.Addition001.addL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NArithmetic.Addition001.addR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NArithmetic.Addition001.addR_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NArithmetic.Addition001.addR_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_routes_converge",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.addR_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_s_right",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_left",
+      "dependency": "BOMA.NArithmetic.Addition001.addR_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Addition001.add_z_right",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL",
+      "dependency": "BOMA.NCore.RB001.fold"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_s",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulL_z",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR",
+      "dependency": "BOMA.NCore.RB001.fold"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add_assoc"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add_s_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_s_left",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add_z_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mulR_z_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_add_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_left",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add_assoc"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_add_right",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_add_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_assoc",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_routes_converge"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_comm",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_one_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.one"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_left",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.one"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_one_right",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulL"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_routes_converge",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_s_right",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mulR_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.mul_z_right",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.one",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.one",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Multiplication001.one",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LE",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LE",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEAdd",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEAdd",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEAdd",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEAdd",
+      "dependency": "Exists"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.below.z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.brecOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.s",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.LEInd.z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "BOMA.NArithmetic.Addition001.add_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "BOMA.NArithmetic.Order001.add_mono_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "congr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add_assoc"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.add_mono_right",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_refl",
+      "dependency": "rfl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "BOMA.NArithmetic.Addition001.add_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_s",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_add_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "Eq.mp"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_to_leInd",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "BOMA.NArithmetic.Addition001.add_assoc"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_trans",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "BOMA.NArithmetic.Addition001.add_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leAdd_z",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_succ_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_add_right",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.ctorIdx"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "False.elim"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "HEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "HEq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_antisymm",
+      "dependency": "noConfusion_of_Nat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_refl._f"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl",
+      "dependency": "BOMA.NCore.RB001.BOMANat.brecOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl._f",
+      "dependency": "Unit"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "Unit"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_refl.match_1_1",
+      "dependency": "Unit.unit"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat.ctorIdx"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "False.elim"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "HEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "HEq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "Iff"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_s_iff",
+      "dependency": "noConfusion_of_Nat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.brecOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.below.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "HEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "HEq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_succ_right.match_1_7",
+      "dependency": "eq_of_heq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Addition001.add_s_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Addition001.add_z_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.injEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Eq.mp"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Eq.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "congrFun'"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_to_leAdd",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Or"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Or.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Or.inl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.leInd_total",
+      "dependency": "Or.inr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_to_leInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_antisymm",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_antisymm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_antisymm",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_antisymm",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_refl",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_refl",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_refl",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_to_leInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_s_iff"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_to_leAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "Iff"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_s_iff",
+      "dependency": "Iff.mp"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_to_leAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_total"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Or"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Or.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Or.inl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_total",
+      "dependency": "Or.inr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_trans",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_trans",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.le_trans",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_comm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "BOMA.NArithmetic.Order001.mul_mono_right"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "Eq.mpr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "congr"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_left",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "BOMA.NArithmetic.Addition001.add"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "BOMA.NArithmetic.Multiplication001.mul_add_left"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "Exists.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "Exists.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "Trans.trans"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "congrArg"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.mul_mono_right",
+      "dependency": "instTransEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.casesOn"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_to_leInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.ctorIdx"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "False"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "False.elim"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "HEq"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "HEq.refl"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "Not"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.not_s_le_z",
+      "dependency": "noConfusion_of_Nat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "BOMA.NArithmetic.Order001.LEAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "BOMA.NArithmetic.Order001.LEInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_to_leInd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "BOMA.NArithmetic.Order001.leInd_to_leAdd"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "Iff"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.order_routes_converge",
+      "dependency": "Iff.intro"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.z_le",
+      "dependency": "BOMA.NArithmetic.Order001.LE"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.z_le",
+      "dependency": "BOMA.NArithmetic.Order001.leAdd_z"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.z_le",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NArithmetic.Order001.z_le",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.below",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.below",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.below",
+      "dependency": "PProd"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.below",
+      "dependency": "PUnit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.below"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.brecOn.go"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "BOMA.NCore.RB001.BOMANat.below"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "PProd"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "PProd.mk"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "PUnit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.brecOn.go",
+      "dependency": "PUnit.unit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.rec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.casesOn",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.ctorIdx",
+      "dependency": "Nat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat.noConfusionType"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusion",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.noConfusionType",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.rec",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.inj",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.inj"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "Eq.propIntro"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.injEq",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.s.noConfusion",
+      "dependency": "id"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.BOMANat.z",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold",
+      "dependency": "BOMA.NCore.RB001.BOMANat.brecOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold",
+      "dependency": "BOMA.NCore.RB001.fold._f"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.below"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "BOMA.NCore.RB001.ind.match_1"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.fold._f",
+      "dependency": "Unit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.casesOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "BOMA.NCore.RB001.BOMANat.z"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "Unit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.ind.match_1",
+      "dependency": "Unit.unit"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "BOMA.NCore.RB001.BOMANat"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "BOMA.NCore.RB001.BOMANat.s.noConfusion"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "Eq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "Eq.casesOn"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "Eq.ndrec"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "Eq.refl"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "Eq.symm"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "HEq"
+    },
+    {
+      "consumer": "BOMA.NCore.RB001.s_injective",
+      "dependency": "HEq.refl"
+    }
+  ]
+}

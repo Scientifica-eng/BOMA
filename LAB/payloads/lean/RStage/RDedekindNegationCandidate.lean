@@ -90,21 +90,19 @@ def rNeg : RBOMA → RBOMA :=
     rNeg (rmk A) = rmk (cutNeg A) := rfl
 
 /-- The negation of a principal rational cut is the principal cut of the
-accepted rational negation. -/
+accepted rational negation. The order comparison is routed through the shared
+trichotomy theorem, avoiding a second implicit `by_cases`/propDecidable site. -/
 theorem cutNeg_principal (q : QBOMA) :
     CutEquiv (cutNeg (principalCut q)) (principalCut (qNeg q)) := by
   intro x
   constructor
   · rintro ⟨r, hrNot, hxr⟩
     have hqr : qLE q r := by
-      rcases qle_total q r with hqr | hrq
-      · exact hqr
-      · by_cases hEq : q = r
-        · rw [hEq]
-          exact qle_refl r
-        · have hrltq : qLT r q :=
-            ⟨hrq, fun hrqEq => hEq hrqEq.symm⟩
-          exact False.elim (hrNot hrltq)
+      rcases qlt_trichotomy q r with hlt | heq | hgt
+      · exact hlt.1
+      · rw [heq]
+        exact qle_refl r
+      · exact False.elim (hrNot hgt)
     have hneg : qLE (qNeg r) (qNeg q) := qneg_reverses hqr
     exact qlt_le_trans hxr hneg
   · intro hx

@@ -1,0 +1,122 @@
+{
+  "schema": "BOMA-R-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "ACTIVE-PROTOTYPE",
+  "date": "2026-08-20",
+  "stage": "R",
+  "claim_id_pattern": "R-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "R Claim IDs",
+  "root_mode": "single_target",
+  "target": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+  "integration_claim": "R-CL-INTEGRATION-001",
+  "purpose": "Machine-check the bridge from accepted R Claim Records to explicit Lean producers and then to the actual theorem-level dependency closure. This policy does not redefine the mathematical claims; it encodes the current accepted producer path for comparison.",
+  "rules": {
+    "registry_claim_set_must_match": true,
+    "all_producers_must_be_internal": true,
+    "all_producers_must_be_reachable_from_target": true,
+    "all_target_direct_internal_dependencies_must_be_declared": true,
+    "all_internal_declarations_must_have_producer_ancestry": true,
+    "integration_claim_transitive_ownership": false,
+    "multiple_claim_ownership_allowed": true
+  },
+  "integration_local_prefixes": [
+    "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
+    "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+  ],
+  "claims": {
+    "R-CL-CARRIER-001": {
+      "role": "real carrier + formal identity",
+      "producers": [
+        "BOMA.R.DedekindQuotient001.cutSetoid",
+        "BOMA.R.DedekindQuotient001.RBOMA",
+        "BOMA.R.DedekindQuotient001.rmk_eq_iff"
+      ]
+    },
+    "R-CL-QEMBED-001": {
+      "role": "faithful/order-exact Q embedding",
+      "producers": [
+        "BOMA.R.DedekindQuotient001.rOfQ_injective",
+        "BOMA.R.DedekindQuotient001.rOfQ_order"
+      ]
+    },
+    "R-CL-ORDER-001": {
+      "role": "total-order interface",
+      "producers": [
+        "BOMA.R.DedekindOrderConstructive001.rLE_refl",
+        "BOMA.R.DedekindOrderConstructive001.rLE_trans",
+        "BOMA.R.DedekindOrderConstructive001.rLE_antisymm",
+        "BOMA.R.DedekindOrderClassical001.rLE_total_classical",
+        "BOMA.R.DedekindStrictOrder001.rlt_irrefl"
+      ]
+    },
+    "R-CL-NONTRIV-001": {
+      "role": "rZero != rOne",
+      "producers": [
+        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field"
+      ]
+    },
+    "R-CL-ADD-001": {
+      "role": "additive commutative group + order compatibility",
+      "producers": [
+        "BOMA.R.DedekindAdditionLaws001.rAdd_comm",
+        "BOMA.R.DedekindAdditionLaws001.rAdd_assoc",
+        "BOMA.R.DedekindAdditionLaws001.rAdd_zero_left",
+        "BOMA.R.DedekindAdditiveInverse001.rAdd_neg_right",
+        "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+        "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing"
+      ]
+    },
+    "R-CL-MUL-001": {
+      "role": "ordered commutative-ring multiplication",
+      "producers": [
+        "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_comm",
+        "BOMA.R.DedekindSignedMulAssociativity001.rMulCandidate_assoc",
+        "BOMA.R.DedekindSignedMulBasicLaws001.rMulCandidate_one_left",
+        "BOMA.R.DedekindSignedMulDistributivity001.rMulCandidate_add_right",
+        "BOMA.R.DedekindOrderedRing001.rMulCandidate_order_compatible"
+      ]
+    },
+    "R-CL-INV-001": {
+      "role": "unique nonzero inverse witness + positivity",
+      "producers": [
+        "BOMA.R.DedekindNonzeroInverse004.r_inverse_exists_nonzero",
+        "BOMA.R.DedekindNonzeroInverse004.r_inverse_witness_unique",
+        "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
+      ]
+    },
+    "R-CL-FIELD-001": {
+      "role": "acceptance-strength ordered-field closure",
+      "producers": [
+        "BOMA.R.DedekindOrderedFieldClosure001.rZero_ne_rOne_field",
+        "BOMA.R.DedekindOrderedFieldClosure001.rLE_add_right_iff",
+        "BOMA.R.DedekindOrderedFieldClosure001.rNeg_order_reversing",
+        "BOMA.R.DedekindOrderedFieldClosure001.rInverse_positive_of_positive"
+      ]
+    },
+    "R-CL-COMP-001": {
+      "role": "Dedekind least-upper-bound completeness",
+      "producers": [
+        "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists"
+      ]
+    },
+    "R-CL-DENSITY-001": {
+      "role": "strict rational-image density",
+      "producers": [
+        "BOMA.R.DedekindRationalDensity001.r_rational_image_dense"
+      ]
+    },
+    "R-CL-ARCH-001": {
+      "role": "Archimedean strict upper-bound characterization",
+      "producers": [
+        "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper"
+      ]
+    },
+    "R-CL-INTEGRATION-001": {
+      "role": "same-carrier acceptance integration",
+      "producers": [
+        "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+      ],
+      "transitive_ownership": false
+    }
+  }
+}

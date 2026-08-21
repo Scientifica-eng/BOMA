@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "program": "PDSA-ARCH-002",
+  "description": "Source-surface transparency policy. This is not a theorem-level dependency proof.",
+  "global": {
+    "forbidden_tokens": ["sorry", "axiom"],
+    "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+    "trusted_base": "LAB/00_ARCHITECTURE/TRUSTED_BASE.md",
+    "claim_architecture": "LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md"
+  },
+  "stages": {
+    "N_CORE": {
+      "manifest": "LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/N_CORE/N_CORE_CLAIM_CLOSURE_AUDIT_001.md",
+      "integration_claim": "N-CL-INTEGRATION-001",
+      "allow_quotient": false,
+      "classical_allowed_files": []
+    },
+    "N_ARITHMETIC": {
+      "manifest": "LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md",
+      "integration_claim": "NAR-CL-INTEGRATION-001",
+      "allow_quotient": false,
+      "classical_allowed_files": []
+    },
+    "Z": {
+      "manifest": "LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md",
+      "integration_claim": "Z-CL-INTEGRATION-001",
+      "allow_quotient": false,
+      "classical_allowed_files": []
+    },
+    "Q": {
+      "manifest": "LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md",
+      "integration_claim": "Q-CL-INTEGRATION-001",
+      "allow_quotient": true,
+      "classical_allowed_files": []
+    },
+    "R": {
+      "manifest": "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md",
+      "integration_claim": "R-CL-INTEGRATION-001",
+      "allow_quotient": true,
+      "classical_allowed_files": [
+        "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
+        "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
+        "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
+        "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
+        "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
+      ]
+    }
+  }
+}
