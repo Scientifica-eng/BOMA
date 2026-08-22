@@ -1,7 +1,7 @@
 # PDSA-C-006 — Representation-Neutral Quadratic Field Comparison
 
 **Cycle ID:** `PDSA-C-006`  
-**Status:** ACTIVE — PLAN FROZEN / DO NOT STARTED  
+**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-005 — CLOSED / constructive field audit V5 32574920935 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -104,7 +104,29 @@ isomorphism, the selected pair presentation is instantiated, `CA-11` is mapped
 precisely, Route Q remains retained/probe-only, and ACT opens a separately
 frozen final integration/acceptance cycle.
 
-# DO — NOT STARTED
+# DO — ACTIVE / FIRST FORMAL VERIFICATION PENDING
+
+## D1 — Stage a carrier-neutral quadratic-field presentation and comparison
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CQuadraticComparison001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt
+.github/workflows/boma-c-quadratic-comparison-001.yml
+LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
+```
+
+The source defines a carrier-neutral full quadratic-field presentation and instantiates it from the selected witness-based Route P field. For arbitrary presentations it constructs the same-real-coefficients relation, proves totality and uniqueness in both directions, and transports zero, one, the accepted-real embedding, the distinguished generator, negation, addition, multiplication, and inverse-witness equations.
+
+A separate `CoordinateExtractor` structure makes constructive coordinate data explicit. Only presentations supplying such data receive actual mutually inverse algebra functions; the selected Route P extractor consists of its direct record projections. The retained Route Q probe is neither included in the assembly nor presented as a completed field or Junction.
+
+```text
+carrier-neutral comparison V5  PENDING
+Route Q completed field        NO
+new coordinate Choice          NONE
+CA-20 acceptance               NOT ELIGIBLE
+```
 
 # STUDY — NOT STARTED
 

@@ -1,0 +1,142 @@
+name: BOMA C Representation-Neutral Quadratic Comparison 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CRoutePairProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CPairCore001.lean'
+      - 'LAB/payloads/lean/CStage/CPairNormInverse001.lean'
+      - 'LAB/payloads/lean/CStage/CQuadraticComparison001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt'
+      - '.github/workflows/boma-c-quadratic-comparison-001.yml'
+      - 'lean-toolchain'
+  push:
+    branches:
+      - 'feature/c-stage-*'
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CRoutePairProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CPairCore001.lean'
+      - 'LAB/payloads/lean/CStage/CPairNormInverse001.lean'
+      - 'LAB/payloads/lean/CStage/CQuadraticComparison001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt'
+      - '.github/workflows/boma-c-quadratic-comparison-001.yml'
+      - 'lean-toolchain'
+
+concurrency:
+  group: boma-c-quadratic-comparison-001-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify universal quadratic graph and constructive field isomorphism
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact carrier-neutral comparison provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          {
+            printf '## BOMA C representation-neutral quadratic comparison\n'
+            printf -- '- Event: `%s`\n' "$GITHUB_EVENT_NAME"
+            printf -- '- Run ID: `%s`\n' "$GITHUB_RUN_ID"
+            printf -- '- Verified source commit: `%s`\n' "$actual_sha"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Validate exact comparison assembly and no-choice boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifests=(
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt
+          )
+          for manifest in "${manifests[@]}"; do
+            test -s "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+            done < "$manifest"
+          done
+          selected=LAB/payloads/lean/CStage/CQuadraticComparison001.lean
+          test "$(cat LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt)" = "$selected"
+          forbidden='RouteQuadraticQuotientProbe001|LowerCut|CutEquiv|Classical\.|by_contra|by_cases|dedekindLUB|rationalDensity|archimedeanUpper|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "$selected"; then
+            printf 'Comparison producer contains a forbidden dependency or choice principle\n' >&2
+            exit 1
+          fi
+
+      - name: Verify representation-neutral quadratic-field comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMACQuadraticComparison001.lean
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          printf '\n#print axioms BOMA.R.StageIntegration002.rStageIntegrationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.PairNormInverse001.cPairFieldCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.QuadraticComparison001.quadraticComparison\n' >> "$target"
+          printf '#print axioms BOMA.C.QuadraticComparison001.constructiveQuadraticIsomorphism\n' >> "$target"
+          printf '#print axioms BOMA.C.QuadraticComparison001.acceptedSelectedSelfComparison\n' >> "$target"
+          lake env lean "$target"
