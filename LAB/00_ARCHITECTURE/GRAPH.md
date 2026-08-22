@@ -249,12 +249,14 @@ acceptance discriminant CLOSED
    ├──► PDSA-C-002 CLOSED — accepted-R interface V5 32564789630 PASS
    │      C-RL-001 / C-RL-002 verified supporting theorems
    │      C-RQ-001 CLOSED / PASS
-   └──► PDSA-C-003 ACTIVE — frozen common route-comparison PLAN
-          C-DP-001 OPEN
-          ├──► C-ROUTE-P ordered-pair / rank-two candidate
-          ├──► C-ROUTE-Q polynomial-adjunction / quotient candidate
+   └──► PDSA-C-003 CLOSED — V5 32565335033 PASS
+          C-DP-001 OPEN — DECISION-READY
+          ├──► C-ROUTE-P V5 PASS / RECOMMENDED
+          ├──► C-ROUTE-Q V5 PASS / RETAINED
           └──► C-ROUTE-A only if genuinely independent
 
+run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
+C-DP-001 = OPEN / user ratification pending
 SELECTS = NONE
 ```
 
