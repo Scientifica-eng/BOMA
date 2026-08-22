@@ -5,7 +5,7 @@
 **Stage:** `C`  
 **Governing specification:** `BOMA-C-ACCEPT-001`  
 **Input export:** `R-BLOCK-001`  
-**Representation Decision:** `C-DP-001 OPEN — NONE SELECTED`  
+**Representation Decision:** `C-DP-001 RESOLVED — USER-SELECTED C-ROUTE-P / C-ROUTE-Q RETAINED`  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`
 
 ## 1. Purpose
@@ -284,9 +284,9 @@ This register must not invent `C-CL-ACLOSURE-*`, `C-CL-CONJ-*`, or `C-CL-NORM-*`
 # 6. Current producer/evidence state
 
 ```text
-C-DP-001                  OPEN
-selected carrier           NONE
-selected identity          NONE
+C-DP-001                  RESOLVED — C-ROUTE-P USER-SELECTED
+selected carrier           Route P record — canonical producer under construction
+selected identity          explicit two-coordinate structure equality
 C construction Blocks      NONE
 C construction Bricks      NONE
 C Junctions                NONE
@@ -294,7 +294,7 @@ C accepted-Claim declarations NONE
 C supporting Lean declarations VERIFIED — PDSA-C-002 / not accepted Claims
 C exploratory route probes     BOTH V5 PASS — PDSA-C-003 / noncanonical
 C route evidence               32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
-C-DP-001                       OPEN — Route P recommended / user ratification pending
+C-DP-001                       RESOLVED — C-ROUTE-P selected; C-ROUTE-Q retained
 C accepted-Claim V5 evidence   NONE
 accepted C Claims              NONE
 accepted C export          NONE
