@@ -1,7 +1,7 @@
 # PDSA-C-004 — Selected Pair Carrier and Commutative-Ring Core
 
 **Cycle ID:** `PDSA-C-004`  
-**Status:** ACTIVE — PLAN FROZEN / DO NOT STARTED  
+**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-003 — CLOSED / run 32565335033 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -87,7 +87,32 @@ A failure is recorded in DO/STUDY. The PLAN is never edited after freeze.
 
 Close only after the selected-route source passes an exact retrievable V5 run, the selected producer/Claim status is synchronized without claiming an inverse or accepted C export, and the ACT decision identifies the separate norm/inverse cycle.
 
-# DO — NOT STARTED
+# DO — ACTIVE / FIRST FORMAL VERIFICATION PENDING
+
+## D1 — Promote the user-selected, previously verified Route P carrier
+
+Created the selected canonical carrier as an explicitly declared alias of the independently verified `RoutePairProbe001.PairCandidate` record. Added canonical zero, one, negation, addition, multiplication, faithful accepted-real embedding, distinguished generator, additive/multiplicative laws, real-embedding preservation, generation, coordinate uniqueness, and non-real collapse targets.
+
+The producer exports `CPairRingCoreCertificate`, deliberately named and scoped as a commutative-ring core rather than a completed field certificate.
+
+## D2 — Stage the exact selected-route V5 assembly
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CPairCore001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt
+.github/workflows/boma-c-pair-core-001.yml
+LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md
+```
+
+The read-only workflow assembles exactly accepted R + verified C-R boundary support + previously verified Route P + the selected pair core. Its selected-source guard excludes Route Q, real representation internals, out-of-contract completeness/density/Archimedean fields, explicit classical invocations, and unproved logical placeholders.
+
+```text
+selected ring-core V5   PENDING
+nonzero inverse         OUTSIDE THIS FROZEN CYCLE
+CA-20 acceptance        NOT ELIGIBLE
+```
 
 # STUDY — NOT STARTED
 
