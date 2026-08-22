@@ -559,10 +559,12 @@ PDSA-C-002
   representation selection  NONE
 
 PDSA-C-003
-  common probe rubric        PLAN FROZEN
-  C-ROUTE-P                  SOURCE STAGED / V5 PENDING
-  C-ROUTE-Q                  SOURCE STAGED / V5 PENDING
-  representation selection   NONE
+  common probe rubric        CLOSED UNCHANGED
+  C-ROUTE-P                  V5 PASS / RECOMMENDED
+  C-ROUTE-Q                  V5 PASS / RETAINED
+  run                         32565335033
+  verified source             3f670372a022d1eb95109d36cde255b3504dda12
+  representation selection   NONE — user ratification pending
 ```
 
 The representation Decision remains blocked from resolution until comparable route evidence exists.
