@@ -3,13 +3,15 @@
 **View ID:** `BOMA-VIEW-DECISION-BRANCH-JUNCTION-001`  
 **Status:** GENERATED / DERIVED VIEW  
 **Date:** 2026-08-21  
-**Program:** `PDSA-ARCH-002`
+**Program:** `PDSA-ARCH-002` + C continuation under `PDSA-C-001/002`
 
 ## Governing rule
 
 ```text
 SELECTED ≠ DERIVED NECESSITY
 RECONVERGED ≠ HISTORICALLY IDENTICAL
+OPEN ≠ PARTIALLY SELECTED
+CANDIDATE ROUTE ≠ CANONICAL BLOCK
 ```
 
 This view combines the current Decision and Junction ledgers. Exact rationale, sensitivity, and acceptance consequences remain authoritative in canonical Decision/Junction records.
@@ -161,13 +163,34 @@ flowchart TD
     RRI --> RJ
   end
 
+  subgraph C[C — active unaccepted frontier]
+    CAC[BOMA-C-ACCEPT-001\ncommon semantic contract]
+    CBD[PDSA-C-002\nshared R-boundary probe]
+    CDP{C-DP-001\nOPEN — SELECTS NONE}
+    CP[C-ROUTE-P\nrank-two / ordered-pair\nCANDIDATE]
+    CQ[C-ROUTE-Q\npolynomial-adjunction / quotient\nCANDIDATE]
+    CA[C-ROUTE-A\nconditional genuinely independent\nCANDIDATE SLOT]
+    FUTURE[future comparison Junction\nONLY IF multiple actual producers exist]
+
+    CAC --> CDP
+    CBD -. common evidence .-> CDP
+    CDP --> CP
+    CDP --> CQ
+    CDP --> CA
+    CP -. no Junction yet .-> FUTURE
+    CQ -. no Junction yet .-> FUTURE
+  end
+
   NJ2 --> ADDR
   NJ2 --> ADDL
   NAI --> ZS
   NAI --> ZD
   ZJ2 --> QDP
   QJ --> RDP1
+  RJ --> CAC
 ```
+
+The dotted C arrows toward the future comparison node are **expectation markers only**. They do not assert that either route has been built or that a Junction currently exists.
 
 ## Junction strength index
 
@@ -187,6 +210,8 @@ flowchart TD
 | `Q-J-002` | `SAME-CARRIER-INTEGRATION` | accepted Q package coexists |
 | `R-J-002` | `SAME-CARRIER-INTEGRATION` | accepted R package coexists |
 
+There is currently **no C Junction row**. A future C representation comparison, if triggered, should state the actual strength, preferably an R-algebra/field isomorphism preserving the real embedding and distinguished `I` if that is what is proved.
+
 ## Provenance invariants
 
 Every reconverged route keeps four separate facts visible:
@@ -200,10 +225,24 @@ strength of reconvergence
 
 A downstream canonical spelling may use the shared output, but it must not rewrite the repository as though the alternate producer never existed.
 
-## Current boundary
-
-No C Decision Point or Junction is present.
+For C this rule applies before selection as well:
 
 ```text
-C NOT STARTED — USER HOLD
+first route to type-check ≠ selected by theorem
+selected later route ≠ necessary representation
+future isomorphism ≠ identical construction history
 ```
+
+## Current boundary
+
+```text
+C-DP-001           OPEN
+C-ROUTE-P          CANDIDATE / UNBUILT AS CANONICAL BLOCK
+C-ROUTE-Q          CANDIDATE / UNBUILT AS CANONICAL BLOCK
+C-ROUTE-A          CONDITIONAL SLOT
+SELECTS             NONE
+C Junctions         NONE
+C accepted export   NONE
+```
+
+The earlier C hold is historical provenance only; it was explicitly lifted on 2026-08-21.

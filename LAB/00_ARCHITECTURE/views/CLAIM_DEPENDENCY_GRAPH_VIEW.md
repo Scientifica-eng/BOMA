@@ -1,18 +1,20 @@
-# CLAIM DEPENDENCY GRAPH VIEW — Accepted Assertion Architecture
+# CLAIM DEPENDENCY GRAPH VIEW — Accepted Assertion Architecture + Provisional C Frontier
 
 **View ID:** `BOMA-VIEW-CLAIM-GRAPH-001`  
 **Status:** GENERATED / DERIVED VIEW  
 **Date:** 2026-08-21  
-**Program:** `PDSA-ARCH-002`
+**Program:** `PDSA-ARCH-002` + C continuation under `PDSA-C-001/002`
 
 ## Authority boundary
 
-This view summarizes **Claim-family dependencies and packaging**, not every Lean theorem edge. Exact theorem-level actual closures are the evidence JSON files produced by the stage transparency workflows.
+This view summarizes **Claim-family dependencies and packaging**, not every Lean theorem edge. Exact theorem-level actual closures are the evidence JSON files produced by stage transparency workflows.
 
 ```text
 Claim-family arrow ≠ direct theorem dependency
 Claim Record ≠ Construction Unit
 Claim producer ≠ mathematical necessity of its selected route
+provisional C Claim ≠ accepted Claim
+supporting lemma ≠ automatic Brick
 ```
 
 Primary sources:
@@ -20,6 +22,8 @@ Primary sources:
 ```text
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
 LAB/20_FORMALIZATION/*/*CLAIM_CLOSURE_AUDIT*.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/*_FORMAL_CLAIM_PRODUCER_POLICY.json
 ```
 
@@ -31,9 +35,12 @@ flowchart LR
   NA --> Z[Z-CL-INTEGRATION-001\nZ]
   Z --> Q[Q-CL-INTEGRATION-001\nQ]
   Q --> R[R-CL-INTEGRATION-001\nR]
+  R -. accepted interface input .-> CPROV[Provisional C Claim frontier\nNOT ACCEPTED]
 ```
 
-Every node above has an independent machine transparency certification on the architecture branch. The arrow means accepted downstream construction consumes the upstream accepted interface; it does not mean the upstream production history can be reconstructed from the downstream carrier.
+Every accepted node through R has independent machine transparency certification on the architecture branch. The solid arrows mean accepted downstream construction consumes the upstream accepted interface; they do not mean the upstream production history can be reconstructed from the downstream carrier.
+
+The dotted R→C edge records an active construction frontier only. There is no accepted `C-CL-INTEGRATION-001` spine node yet.
 
 ## N-Core Claim-family graph
 
@@ -261,22 +268,65 @@ flowchart TD
 
 R's actual theorem closure additionally exposes localized logical leaves (`Classical.em`, `Classical.byContradiction`) under explicit Claim/Decision references. They belong in the Logic/Trust view rather than being disguised as ordinary mathematical Claim nodes.
 
+## C provisional Claim-family graph — not accepted
+
+```mermaid
+flowchart TD
+  RINT[R accepted field/order interface]
+  CRL1[C-RL-001\nsquare nonnegative\nSUPPORTING LEMMA\nV5 PASS]
+  CRL2[C-RL-002\n-1 not a real square\nSUPPORTING LEMMA\nV5 PASS]
+
+  CC[C-CL-CARRIER-001\nUNPRODUCED]
+  CE[C-CL-REMBED-001\nUNPRODUCED]
+  CF[C-CL-FIELD-001\nUNPRODUCED]
+  CI[C-CL-I-001\nUNPRODUCED]
+  CG[C-CL-GEN-001\nUNPRODUCED]
+  CU[C-CL-COORDUNIQ-001\nUNPRODUCED]
+  CN[C-CL-NONREAL-001\nDERIVED-REQUIRED / UNPRODUCED]
+  CMP[C-CL-COMPARE-001\nUNPRODUCED]
+  CINT[C-CL-INTEGRATION-001\nNO JUNCTION / UNPRODUCED]
+
+  RINT --> CRL1 --> CRL2
+  RINT -. future construction input .-> CC
+  CC --> CE --> CF --> CI --> CG --> CU
+  CRL2 -. possible supporting input .-> CU
+  CU --> CN
+  CU --> CMP
+  CRL2 -. possible supporting input .-> CN
+  CMP --> CINT
+  CF --> CINT
+  CE --> CINT
+  CI --> CINT
+  CG --> CINT
+  CU --> CINT
+```
+
+The C graph is **ex-ante/provisional**. It records acceptance targets and supporting-lemma hypotheses before representation selection. The arrows to `C-RL-002` are possible route-neutral support relationships, not proof that every future coordinate-uniqueness producer must consume that lemma.
+
+No algebraic-closure Claim is present because `BOMA-C-ACCEPT-001` explicitly defers that strengthening from Stage-One acceptance.
+
 ## Machine transparency summary
 
-| Stage | Registered Claims | Producer-policy Claims | Residuals |
-|---|---:|---:|---:|
+| Stage | Registered accepted Claims | Producer-policy Claims | Residuals / state |
+|---|---:|---:|---|
 | N-Core | 20 | 20 | 0 |
 | N-Arithmetic | 11 | 11 | 0 |
 | Z | 11 | 11 | 0 |
 | Q | 10 | 10 | 0 |
 | R | 12 | 12 | 0 |
+| C | 0 accepted; 9 provisional targets | 0 accepted | route-neutral supporting boundary V5 32564789630 PASS; no accepted C Claim |
 
-The exact declaration-level dependency graph remains in the corresponding `*_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json` evidence files.
+The exact declaration-level dependency graph for accepted stages remains in the corresponding `*_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json` evidence files.
 
 ## Current boundary
 
-No `C-CL-*` Claim Record exists or is authorized.
-
 ```text
-C NOT STARTED — USER HOLD
+C provisional Claim register     OPEN
+C accepted Claims                NONE
+C-RL-001 / C-RL-002 source proof V5 VERIFIED — supporting only
+C-RQ-001 formal V5 outcome       32564789630 PASS / CLOSED
+C-DP-001                         OPEN
+C accepted export                NONE
 ```
+
+The previous C hold is historical provenance only; it was explicitly lifted on 2026-08-21.

@@ -5,7 +5,8 @@
 **N-Core:** `N_CORE_DAG.md`  
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
 **Q:** `Q_DAG.md`  
-**R:** `R_DAG.md`
+**R:** `R_DAG.md`  
+**C:** `C_DAG.md`
 
 Operational, verification, and epistemic status remain separate.
 
@@ -250,6 +251,48 @@ R density + Archimedean   acceptance-required properties with route-specific pro
 
 The reverse audit does not revoke or weaken `RA-22`.
 
+## Complex stage — ACCEPTED / CA-20
+
+### Ex-ante acceptance and dependency architecture
+
+| Unit / record | Role | Status |
+|---|---|---|
+| `BOMA-C-ACCEPT-001` | representation-neutral Stage-One C acceptance specification | ACTIVE |
+| `BOMA-C-R-DEP-001` | accepted-R dependency contract | ACTIVE |
+| `PDSA-C-001` | acceptance-contract discriminant | CLOSED |
+| `PDSA-C-002` | route-neutral accepted-R interface sufficiency probe | CLOSED — V5 32564789630 PASS |
+| `PDSA-C-003` | independently assembled comparable candidate-route probes | CLOSED — both routes V5 32565335033 PASS |
+| `PDSA-C-004` | selected Route P carrier and commutative-ring core | CLOSED — V5 32574270735 PASS |
+| `PDSA-C-005` | conjugate, norm, and witness-based complex field closure | CLOSED — axiom-audited V5 32574920935 PASS |
+| `PDSA-C-006` | representation-neutral quadratic-field comparison | CLOSED — V5 32575465002 PASS |
+| `PDSA-C-007` | final C integration and Claim-level transparency | CLOSED — V5 32585583815 PASS / zero residuals |
+| `PDSA-C-008` | separate Stage-One complex acceptance decision | CLOSED — CA-20 ACCEPT / run 32586145793 PASS |
+| `PDSA-C-009` | mandatory accepted-complex reverse dependency audit | CLOSED — RE-C-001 COMPLETE |
+| `PDSA-STAGE1-001` | global accepted number-chain reverse dependency audit | CLOSED — RE-STAGE1-001 COMPLETE |
+| `STAGE-TWO-LAB` | controlled single-change branch experiment register | READY — 13 CANDIDATES / NO ACTIVE BRANCH |
+| `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
+| `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |
+| `C-BLOCK-001` | selected accepted-export Route P witness-based commutative-field producer | ACTIVE / V5 PASS / ACCEPTED PRODUCER |
+| `C-BLOCK-002` | final downstream Stage-One complex export | ACTIVE — ACCEPTED / CA-20 |
+| `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
+
+`C-DP-001` currently retains:
+
+```text
+C-ROUTE-P  SELECTED ordered-pair / rank-two Stage-One producer
+C-ROUTE-Q  RETAINED verified polynomial-adjunction / quotient alternative
+C-ROUTE-A  conditional genuinely independent alternative
+```
+
+`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is an accepted internal producer; the separately accepted export is `C-BLOCK-002`. `C-J-001` passes exact run `32585583815` with zero Claim/producer residuals. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-STAGE1-001 / RE-STAGE1-001` and mandatory `RE-C-001` are both closed.
+The Stage-Two laboratory is ready; no experiment is active or selected.
+
+Initial Claim targets are recorded in:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
+
+Current acceptance semantics require a faithful real field extension with a distinguished `I`, `I²=-1`, and unique representation of every element as `a+bI`. Full algebraic closure is explicitly deferred from Stage-One acceptance.
+
 ## Current frontier
 
 ```text
@@ -261,7 +304,12 @@ post-Z reverse N    CLOSED
 Q                   ACCEPTED
 R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
-C                   NOT STARTED — USER HOLD
+C                   ACCEPTED — CA-20 / C-BLOCK-002
+RE-C-001            CLOSED / COMPLETE
+RE-STAGE1-001       CLOSED / COMPLETE
+STAGE-TWO-LAB       READY / NO ACTIVE EXPERIMENT
+C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
+C accepted export   C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle may be opened until a new explicit user order is given.
+The previous C hold remains historical provenance in earlier records. It was explicitly lifted by the user on 2026-08-21. No merge to `main` is implied by this branch state.

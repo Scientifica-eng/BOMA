@@ -1,0 +1,78 @@
+# C_CLAIM_V5_INDEX — Complex-Stage Verification and Evidence Map
+
+**Status:** ACTIVE — WITNESS FIELD + QUADRATIC COMPARISON VERIFIED / FINAL INTEGRATION ACTIVE  
+**Date:** 2026-08-22  
+**Current acceptance contract:** `BOMA-C-ACCEPT-001`  
+**Representation Decision:** `C-DP-001 RESOLVED / USER-SELECTED C-ROUTE-P`
+
+## Evidence classification
+
+A supporting theorem is not automatically a canonical Brick, construction Block, accepted Claim, or acceptance Junction.
+
+| Evidence ID | Question / family | Producer | Exact run | Verified source | Outcome |
+|---|---|---|---|---|---|
+| `C-V5-R-INTERFACE-001` | `C-RQ-001`; `C-RL-001/002` supporting theorems | `CRInterfaceNoSquareProbe001.lean` | `32564789630` | `a6c894e62c48919712341cea1c0ea588590f9e5f` | PASS — supporting source assembly |
+| `C-V5-ROUTE-PROBE-001` | `PDSA-C-003`; noncanonical Route P rubric | `CRoutePairProbe001.lean` | `32565335033` / job `97013042899` | `3f670372a022d1eb95109d36cde255b3504dda12` | PASS — independent route assembly |
+| `C-V5-ROUTE-Q-PROBE-001` | `PDSA-C-003`; noncanonical Route Q rubric | `CRouteQuadraticQuotientProbe001.lean` | `32565335033` / job `97013042973` | `3f670372a022d1eb95109d36cde255b3504dda12` | PASS — independent route assembly |
+| `C-V5-PAIR-CORE-001` | `PDSA-C-004`; selected carrier, embedding, generator, commutative-ring core | `CPairCore001.lean` | `32574270735` / job `97034186851` | `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb` | PASS — exact selected Route P assembly |
+| `C-V5-PAIR-FIELD-001` | `PDSA-C-005`; conjugate, norm, inverse witnesses, inherited-axiom comparison | `CPairNormInverse001.lean` | `32574920935` / job `97035726339` | `ccf41e062b37ab39f46dc18a1cbbbf90728807ff` | PASS — exact witness-field assembly / no new axioms over R |
+| `C-V5-QUADRATIC-COMPARE-001` | `PDSA-C-006`; universal algebra graph + constructive functional isomorphism | `CQuadraticComparison001.lean` | `32575465002` / job `97037061967` | `2cdd1d391a3ecbbecc9feaf0f3ad89d158bf04c9` | PASS — exact common-interface comparison / no new axioms over R |
+| `C-V5-INTEGRATION-001` | `PDSA-C-007`; same-carrier final certificate + three independent formal transparency gates | `CStageIntegration001.lean` | `32585583815` / job `97061334663` | `9a6f9e34639202c2a04d2a629e2b994f5d1562b8` | PASS — 783 owned declarations / nine Claims / zero residuals |
+
+Detailed manifest, job, declaration, and provenance mappings:
+
+```text
+LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_V5_EVIDENCE.md
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PROBES_001_V5_EVIDENCE.md
+```
+
+## Supporting theorem mapping
+
+```text
+C-RL-001
+  abstract producer  square_nonnegative_of_interface
+  accepted instance  square_nonnegative_from_accepted_R
+  evidence           C-V5-R-INTERFACE-001 PASS
+
+C-RL-002
+  abstract producer  minus_one_not_square_of_interface
+  accepted instance  minus_one_not_square_from_accepted_R
+  evidence           C-V5-R-INTERFACE-001 PASS
+```
+
+The remaining nine declarations in the same source are supporting equational/order lemmas. The run verifies all 13 declarations; it does not assert independent extracted dependency closure for each theorem.
+
+## Current C acceptance state
+
+```text
+accepted C Claims          NINE / CA-20 ACCEPT
+canonical C carrier         CBOMA / C-BLOCK-001 witness-field producer / V5 PASS
+selected C representation   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
+C nonzero inverse           VERIFIED existential + unique witnesses / run 32574920935
+C integration Junction      C-J-001 PASS / V5 32585583815
+CA-20 acceptance            ACCEPT / PDSA-C-008 / six-stage run 32586145793
+```
+
+A later changed source, inherited R assembly, workflow semantics, or pinned toolchain requires fresh exact verification evidence.
+
+## Selected ring-core Claim mapping
+
+```text
+C-CL-CARRIER-001      CBOMA / c_ext                          PRODUCED / V5 PASS
+C-CL-REMBED-001       c_ofR_injective + preservation laws   PRODUCED / V5 PASS
+C-CL-FIELD-001        CPairFieldCertificate                 PRODUCED / V5 PASS
+C-CL-I-001            cI / c_i_squared                      PRODUCED / V5 PASS
+C-CL-GEN-001          c_generation                          PRODUCED / V5 PASS
+C-CL-COORDUNIQ-001    c_coordinate_unique                   PRODUCED / V5 PASS
+C-CL-NONREAL-001      c_i_not_real                          PRODUCED / V5 PASS
+C-CL-COMPARE-001      quadraticComparison / extractor iso    PRODUCED / V5 PASS
+C-CL-INTEGRATION-001  cStageIntegrationCertificate / C-J-001  PRODUCED / V5 PASS
+```
+
+`PRODUCED / V5 PASS` does not mean `ACCEPTED`; final C acceptance still requires the final integration and Claim-transparency gate.
+
+## Separate final acceptance evidence
+
+`PDSA-C-008 / CA-20 = ACCEPT`: exact run `32586145793`, job `97062695622`,
+source `6820278f566fc637c39582c3efa648d5c1d136df`; six independent stage
+closures and architecture consistency PASS across 148 canonical units.

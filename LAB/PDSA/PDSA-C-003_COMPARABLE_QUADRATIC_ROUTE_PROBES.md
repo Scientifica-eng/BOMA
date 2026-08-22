@@ -1,0 +1,280 @@
+# PDSA-C-003 — Comparable Noncanonical Quadratic-Extension Route Probes
+
+**Cycle ID:** `PDSA-C-003`  
+**Status:** **CLOSED — BOTH ROUTE PROBES V5 PASS / ROUTE P RECOMMENDED / DECISION AWAITS USER RATIFICATION**  
+**Plan date:** 2026-08-22  
+**Parent:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
+**Decision:** `C-DP-001 — OPEN / NO SELECTION`  
+**Acceptance contract:** `BOMA-C-ACCEPT-001`
+
+## Research question
+
+Can two materially distinct noncanonical C realizations expose the same small, representation-neutral quadratic-extension interface using only the accepted R certificate and the now-verified route-neutral boundary support, and what additional representation, identity, logical, and formalization commitments does each route actually require?
+
+---
+
+# PLAN — FROZEN
+
+## Frozen input boundary
+
+```text
+R-BLOCK-001 accepted Stage-One real interface
+RStageIntegrationCertificate
+PDSA-C-002 / C-V5-R-INTERFACE-001 PASS
+C-RL-001 / C-RL-002 as supporting lemmas only
+BOMA-C-ACCEPT-001 unchanged
+BOMA-C-R-DEP-001 unchanged unless a new explicit question is opened
+C-DP-001 OPEN
+```
+
+No accepted N/Z/Q/R source, accepted theorem, or frozen `PDSA-C-002` PLAN is modified by this experiment.
+
+## Exactly two required candidate routes
+
+```text
+C-ROUTE-P
+  independent local rank-two / coordinate carrier
+  declared record/product identity
+  route-local operations and real embedding
+
+C-ROUTE-Q
+  independent local formal quadratic-expression syntax
+  explicit normalization/equivalence
+  quotient-style formal identity
+  route-local operations and real embedding
+```
+
+Route Q may use its own local normal-form coefficient record; it must not import or call Route P's declarations. A normalized quadratic-expression quotient is a quotient-style adjunction probe; it must not be mislabeled as a completed formal construction of the full polynomial ring `R[X]`.
+
+No third route is added during this frozen cycle.
+
+## Common probe rubric
+
+Each route must independently declare or prove, at its own carrier/equality level:
+
+```text
+P/Q-01  explicit noncanonical candidate carrier and identity regime
+P/Q-02  accepted-real embedding
+P/Q-03  faithful embedding theorem
+P/Q-04  distinguished imaginary generator
+P/Q-05  route-local zero, one, negation, addition, and multiplication interfaces
+P/Q-06  I * I = -1 at candidate equality
+P/Q-07  every candidate has an R + R*I decomposition
+P/Q-08  coefficients in that decomposition are unique
+P/Q-09  no collapse of I into the real embedding
+P/Q-10  exact independently assembled Lean V5 result
+P/Q-11  explicit mathematical/logical/representation/formalization commitments
+```
+
+The probe does **not** claim full field closure, a nonzero complex inverse, full polynomial-ring universal properties, algebraic closure, FTA, a canonical C Block, a representation Junction, or `CA-20` acceptance.
+
+## Equal evidence discipline
+
+Create separate Lean files and verify each from an independent assembly:
+
+```text
+accepted R manifest
++
+verified C boundary-support source
++
+exactly one candidate route source
+```
+
+Do not concatenate Route P before Route Q and then describe Route Q as independent. The workflow remains `permissions: contents: read`, resolves exact head SHA, and makes successful or failed candidate runs retrievable through draft PR #5.
+
+## Predeclared failure classes
+
+```text
+F1  missing helper derivable from accepted R certificate
+F2  route requires a new R theorem not presently exported
+F3  quotient/setoid elimination introduces a declared formalization cost
+F4  probe accidentally depends on the other route
+F5  probe accidentally consumes Dedekind-specific internals
+F6  a new local classical/Choice commitment is actually required
+F7  selected common target cannot be discharged at the advertised identity level
+F8  verification infrastructure or checkout provenance failure
+```
+
+A failure is recorded in DO/STUDY. It does not justify retroactively changing this frozen PLAN. Corrective source iterations remain within the declared hypotheses and common rubric.
+
+## Success and exit conditions
+
+The cycle exits only when both route outcomes are explicitly classified, each successful formal source has an exact retrievable run/source mapping, the common rubric has a route-by-route evidence table, and the ACT decision records whether `C-DP-001` can be responsibly resolved or must remain open.
+
+A favorable route-comparison result alone does not authorize merging to `main` or accepting C.
+
+---
+
+# DO — SOURCES STAGED / FIRST VERIFICATION PENDING
+
+## D1 — Implement the independent Route P candidate
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CRoutePairProbe001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt
+```
+
+The exploratory carrier is a route-local two-field record. It declares zero, one, embedding, generator, negation, addition, and multiplication. Its candidate theorem targets are faithful embedding, the quadratic generator relation, generation, coordinate uniqueness, and non-real collapse.
+
+## D2 — Implement the independent Route Q candidate
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CRouteQuadraticQuotientProbe001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_QUADRATIC_QUOTIENT_PROBE_001_INPUTS.txt
+```
+
+The candidate declares its own finite quadratic-expression syntax, route-local coefficient normal forms, normalization equivalence, explicit Setoid, quotient carrier, and lifted operations. It does not reference the Route P namespace or declarations.
+
+This is a generator/relation normalization quotient probe. It is not represented as a completed construction of the full polynomial ring `R[X]`.
+
+## D3 — Add an independently assembled, read-only matrix V5 gate
+
+Created:
+
+```text
+.github/workflows/boma-c-quadratic-route-probes-001.yml
+```
+
+Each matrix job independently assembles:
+
+```text
+accepted R manifest
++
+verified C-R interface support
++
+one and only one candidate route source
+```
+
+An explicit negative namespace check rejects accidental candidate-to-candidate dependence. Checkout provenance is verified against the exact feature-branch head. The workflow keeps `permissions: contents: read` and can be inspected through draft PR #5.
+
+## D4 — First formal failure retained as evidence
+
+The independently assembled first verification run was:
+
+```text
+run             32565250372
+source commit   d3265c395bb17173565970d682c884897429a5ef
+Route P job     97012847906 — FAIL
+Route Q job     97012847824 — FAIL
+checkout guard  PASS on both jobs
+independence    PASS on both jobs
+Lean            4.32.1
+```
+
+Both candidates independently exposed the same undeclared proof-engineering assumption: core Lean does not automatically generate `PairCandidate.ext` or `NormalForm.ext` for these local structures. Additional `cases`/`rfl` steps also followed rewrites that had already closed their goals.
+
+Failure classification:
+
+```text
+F1 — missing ordinary route-local structure-equality helper
+NOT an accepted-R mathematical insufficiency
+NOT a new classical/Choice requirement
+NOT cross-route dependence
+NOT a need to modify the frozen PLAN
+```
+
+The correction declares separate `pair_ext` and `normal_ext` theorems directly from each structure's two coordinate equalities and removes the already-discharged trailing proof steps. The failed run and source commit remain preserved as Learning-Graph evidence.
+
+## D5 — Corrected V5 outcome
+
+```text
+run               32565335033 — COMPLETED / SUCCESS
+source commit     3f670372a022d1eb95109d36cde255b3504dda12
+C-ROUTE-P job     97013042899 — SUCCESS
+C-ROUTE-Q job     97013042973 — SUCCESS
+checkout guard    PASS on both jobs
+independence      PASS on both jobs
+Lean              4.32.1
+C-DP-001          OPEN — DECISION-READY
+SELECTS            NONE
+accepted C Claim  NONE
+```
+
+Canonical evidence:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PROBES_001_V5_EVIDENCE.md`
+
+The frozen PLAN above has not changed.
+
+# STUDY — CLOSED
+
+The first paired failure falsified only a proof-engineering assumption about generated structure extensionality. The corrected sources preserve the same mathematical targets and independent assemblies, and both now pass under the exact same workflow, source commit, accepted-R manifest, C-boundary support, and toolchain.
+
+## Route-by-route comparison
+
+| Criterion | C-ROUTE-P | C-ROUTE-Q |
+|---|---|---|
+| Carrier / identity | two-field record; structure equality | expression syntax modulo equality of normalized quadratic forms |
+| R embedding / injectivity | PASS | PASS |
+| Distinguished I and I²=-1 | PASS | PASS |
+| Generation / uniqueness | direct coordinate projection; PASS | normalization plus quotient equality; PASS |
+| Non-real collapse | PASS | PASS |
+| New local Classical/Choice | none observed | none observed |
+| Representation commitment | explicit rank-two coordinates | generator/relation syntax plus two-coefficient normal form |
+| Formalization commitment | record + explicit extensionality helper | inductive syntax + normalization + Setoid + Quotient lifts |
+| Field inverse burden | not tested; expected sum-of-squares/nonzero denominator support | not tested; normalization does not remove the same coefficient-level burden |
+| Proof-engineering surface | smaller | materially larger |
+| Future branch value | transparent Stage-One producer | useful retained adjunction/quotient comparison branch |
+
+## Scientific interpretation
+
+Both routes satisfy the frozen small quadratic-extension probe. Route Q is a genuinely separate formalization/identity route, but this probe does not show additional mathematical strength: its quotient is classified by a route-local two-coefficient normal form and its arithmetic reduces to the same coefficient formulas measured by Route P.
+
+The evidence therefore supports:
+
+```text
+Stage-One producer recommendation  C-ROUTE-P
+retained comparison branch         C-ROUTE-Q
+mathematical necessity claim       NONE
+full field closure established     NO
+cross-route Junction established   NO
+```
+
+Route P is recommended because it reaches the same verified probe surface with fewer representation and formalization commitments and a smaller dependency/proof-engineering surface. Route Q remains scientifically valuable for later reconvergence and generalized adjunction study.
+
+# ACT — CLOSED / SELECTION RECOMMENDATION ISSUED
+
+```text
+PDSA-C-003  CLOSED
+C-ROUTE-P   RECOMMENDED FOR STAGE-ONE PRODUCER
+C-ROUTE-Q   RETAINED VERIFIED NONCANONICAL BRANCH
+C-DP-001    OPEN — DECISION-READY / AWAITS USER RATIFICATION
+SELECTS      NONE
+accepted C Claim / export NONE
+```
+
+The cycle does not record a `SELECTS` edge because final choice between two admissible, comparably tested construction routes remains a user-authority decision under the executive handoff. If Route P is ratified, the next cycle may construct its field-closure prerequisites and acceptance-Claim producers. If it is not ratified, the reason becomes an explicit next-cycle input rather than a retroactive edit of this Study.
+
+# ConstructionGraphEffects — OBSERVED
+
+```text
+PDSA-C-002 verified shared R-boundary support
+  ├── C-ROUTE-P exploratory producer candidate
+  └── C-ROUTE-Q exploratory producer candidate
+
+C-DP-001 remains open until comparable observations exist.
+```
+
+# LearningGraphEffects — OBSERVED
+
+```text
+accepted-R interface sufficiency certified
+  ↓
+one frozen route-neutral comparison rubric
+  ↓
+independently assembled pair and quadratic-quotient probes
+  ↓
+first symmetric F1 proof-engineering failure preserved
+  ↓
+explicit extensionality repair without Plan change
+  ↓
+both routes PASS at exact source 3f670372...
+  ↓
+same probe adequacy / unequal formalization cost
+  ↓
+Route P recommended; Route Q retained; user ratification pending
+```

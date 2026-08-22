@@ -1,7 +1,7 @@
 {
   "schema": "BOMA-ARCHITECTURE-CONSISTENCY-POLICY-001",
   "status": "ACTIVE-PROTOTYPE",
-  "date": "2026-08-21",
+  "date": "2026-08-22",
   "program": "PDSA-ARCH-002",
   "required_records": [
     "LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md",
@@ -32,7 +32,8 @@
     "LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_CLAIM_CLOSURE_AUDIT_001.md",
     "LAB/20_FORMALIZATION/Z_STAGE/Z_CLAIM_CLOSURE_AUDIT_001.md",
     "LAB/20_FORMALIZATION/Q_STAGE/Q_CLAIM_CLOSURE_AUDIT_001.md",
-    "LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md"
+    "LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_CLOSURE_AUDIT_003.md",
+    "LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_CLOSURE_AUDIT_001.md"
   ],
   "stages": {
     "N-Core": {
@@ -174,6 +175,37 @@
         "lakefile.toml",
         ".github/workflows/boma-stage-transparency-matrix-001.yml"
       ]
+    },
+    "C": {
+      "claim_pattern": "C-CL-[A-Z0-9-]+",
+      "registry_section": "C Claim IDs",
+      "claim_audit": "LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_CLOSURE_AUDIT_001.md",
+      "certification": "LAB/20_FORMALIZATION/C_STAGE/C_TRANSPARENCY_CERTIFICATION_001.md",
+      "producer_policy": "LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "closure_evidence": "LAB/20_FORMALIZATION/C_STAGE/evidence/C_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.md",
+      "classification_evidence": "LAB/20_FORMALIZATION/C_STAGE/evidence/C_FORMAL_DEPENDENCY_CLASSIFICATION_PROTOTYPE_LATEST.json",
+      "producer_evidence": "LAB/20_FORMALIZATION/C_STAGE/evidence/C_FORMAL_CLAIM_PRODUCER_COMPARISON_PROTOTYPE_LATEST.json",
+      "freshness_inputs": [
+        "LAB/00_ARCHITECTURE/STAGE_TRANSPARENCY_MATRIX.json",
+        "LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json",
+        "LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json",
+        "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+        "LAB/00_ARCHITECTURE/tools/LeanDependencyExtractor.lean",
+        "LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py",
+        "LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py",
+        "LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py",
+        "LAB/00_ARCHITECTURE/tools/run_stage_transparency_matrix.py",
+        "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt",
+        "LAB/payloads/lean/NCore",
+        "LAB/payloads/lean/NArithmetic",
+        "LAB/payloads/lean/ZStage",
+        "LAB/payloads/lean/QStage",
+        "LAB/payloads/lean/RStage",
+        "LAB/payloads/lean/CStage",
+        "lean-toolchain",
+        "lakefile.toml",
+        ".github/workflows/boma-stage-transparency-matrix-001.yml"
+      ]
     }
   },
   "junction_claim_links": {
@@ -188,6 +220,7 @@
     "Z-ORD-J-001": "Z-CL-ORDERCONV-001",
     "Z-J-002": "Z-CL-INTEGRATION-001",
     "Q-J-002": "Q-CL-INTEGRATION-001",
-    "R-J-002": "R-CL-INTEGRATION-001"
+    "R-J-002": "R-CL-INTEGRATION-001",
+    "C-J-001": "C-CL-INTEGRATION-001"
   }
 }

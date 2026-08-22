@@ -1,13 +1,56 @@
 {
   "schema": "BOMA-STAGE-TRANSPARENCY-MATRIX-001",
   "status": "ACTIVE",
-  "date": "2026-08-21",
+  "date": "2026-08-22",
   "program": "PDSA-ARCH-002",
   "stages": [
-    {"stage":"N-Core","slug":"N_CORE","manifest":"LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt","producer_policy":"LAB/00_ARCHITECTURE/N_CORE_FORMAL_CLAIM_PRODUCER_POLICY.json","evidence_dir":"LAB/20_FORMALIZATION/N_CORE/evidence","evidence_prefix":"N_CORE"},
-    {"stage":"N-Arithmetic","slug":"N_ARITH","manifest":"LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt","producer_policy":"LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json","evidence_dir":"LAB/20_FORMALIZATION/N_ARITHMETIC/evidence","evidence_prefix":"N_ARITH"},
-    {"stage":"Z","slug":"Z","manifest":"LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt","producer_policy":"LAB/00_ARCHITECTURE/Z_FORMAL_CLAIM_PRODUCER_POLICY.json","evidence_dir":"LAB/20_FORMALIZATION/Z_STAGE/evidence","evidence_prefix":"Z"},
-    {"stage":"Q","slug":"Q","manifest":"LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt","producer_policy":"LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json","evidence_dir":"LAB/20_FORMALIZATION/Q_STAGE/evidence","evidence_prefix":"Q"},
-    {"stage":"R","slug":"R","manifest":"LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt","producer_policy":"LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json","evidence_dir":"LAB/20_FORMALIZATION/R_STAGE/evidence","evidence_prefix":"R"}
+    {
+      "stage": "N-Core",
+      "slug": "N_CORE",
+      "manifest": "LAB/20_FORMALIZATION/N_CORE/N_CORE_ACCEPTED_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/N_CORE_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/N_CORE/evidence",
+      "evidence_prefix": "N_CORE"
+    },
+    {
+      "stage": "N-Arithmetic",
+      "slug": "N_ARITH",
+      "manifest": "LAB/20_FORMALIZATION/N_ARITHMETIC/N_ARITH_ACCEPTED_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/N_ARITH_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/N_ARITHMETIC/evidence",
+      "evidence_prefix": "N_ARITH"
+    },
+    {
+      "stage": "Z",
+      "slug": "Z",
+      "manifest": "LAB/20_FORMALIZATION/Z_STAGE/Z_ACCEPTED_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/Z_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/Z_STAGE/evidence",
+      "evidence_prefix": "Z"
+    },
+    {
+      "stage": "Q",
+      "slug": "Q",
+      "manifest": "LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/Q_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/Q_STAGE/evidence",
+      "evidence_prefix": "Q"
+    },
+    {
+      "stage": "R",
+      "slug": "R",
+      "manifest": "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/R_STAGE/evidence",
+      "evidence_prefix": "R"
+    },
+    {
+      "stage": "C",
+      "slug": "C",
+      "manifest": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt",
+      "producer_policy": "LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json",
+      "evidence_dir": "LAB/20_FORMALIZATION/C_STAGE/evidence",
+      "evidence_prefix": "C"
+    }
   ]
 }

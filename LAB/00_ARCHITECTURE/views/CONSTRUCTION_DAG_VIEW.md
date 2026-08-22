@@ -1,9 +1,9 @@
-# CONSTRUCTION DAG VIEW — Current Accepted Construction Architecture
+# CONSTRUCTION DAG VIEW — Current Accepted Construction Architecture + Active C Frontier
 
 **View ID:** `BOMA-VIEW-CONSTRUCTION-DAG-001`  
 **Status:** GENERATED / DERIVED VIEW  
 **Date:** 2026-08-21  
-**Program:** `PDSA-ARCH-002`
+**Program:** `PDSA-ARCH-002` + C continuation under `PDSA-C-001/002`
 
 ## Authority boundary
 
@@ -13,6 +13,8 @@ This file is a **derived view**. It does not replace canonical `UNIT.md` records
 view arrow ≠ necessity theorem
 reconvergence ≠ erased route history
 selected route ≠ rejected alternative
+candidate route ≠ canonical Block
+formal probe ≠ accepted C construction
 ```
 
 Primary sources:
@@ -22,9 +24,11 @@ LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
 LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/DECISION_LEDGER.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+LAB/00_ARCHITECTURE/C_DAG.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 ```
 
-## Current accepted construction DAG
+## Current accepted construction DAG plus active frontier
 
 ```mermaid
 flowchart TD
@@ -221,7 +225,25 @@ flowchart TD
   end
 
   RB1 --> RRE[RE-R-001\nCLOSED / dependency classification]
-  RRE -. no authorization .-> CHOLD[C\nNOT STARTED — USER HOLD]
+
+  subgraph C[C — STARTED / NOT ACCEPTED]
+    CA[BOMA-C-ACCEPT-001\nrepresentation-neutral acceptance]
+    CRD[BOMA-C-R-DEP-001\naccepted-R dependency boundary]
+    CP1[PDSA-C-001\nH1/H2 rejected; H3 adopted; H4 deferred]
+    CP2[PDSA-C-002\nabstract R-interface probe\nV5 32564789630 PASS]
+    CDP{C-DP-001\nOPEN — SELECTS NONE}
+    RP[C-ROUTE-P\nrank-two / ordered-pair candidate]
+    RQ[C-ROUTE-Q\npolynomial-adjunction / quotient candidate]
+    RA[C-ROUTE-A\nconditional independent candidate]
+
+    RRE --> CA --> CRD --> CP1
+    CRD --> CP2
+    CP1 --> CDP
+    CP2 -. shared boundary evidence .-> CDP
+    CDP --> RP
+    CDP --> RQ
+    CDP --> RA
+  end
 ```
 
 ## Retained alternatives that must remain visible
@@ -238,15 +260,30 @@ flowchart TD
 | `R-DP-004` | reusable Q approximation gateway | direct one-off cut bracketing |
 | `R-DP-005` | positive/negative decomposition multiplication | direct sign-case or shift-to-positive architectures |
 | `R-DP-006` | direct positive reciprocal | completeness/supremum inverse route |
+| `C-DP-001` | **NONE — OPEN** | ordered-pair/rank-two; polynomial-adjunction/quotient; third route only if genuinely independent |
 
-## Current frontier
+## C frontier interpretation
+
+The accepted-export chain still ends at R:
 
 ```text
 pre-numerical → N-Core → N-Arithmetic → Z → Q → R
 ```
 
-All five accepted number-stage exports currently have branch-local machine transparency certification under `PDSA-ARCH-002`.
+C is an **active research frontier**, not an accepted extension of that spine yet.
+
+Current distinctions:
 
 ```text
-C NOT STARTED — USER HOLD
+C acceptance specification   ACTIVE
+C provisional Claims         OPEN
+C R-boundary formal probe    PRESENT
+C V5 boundary result         32564789630 PASS — supporting theorems only
+C active research cycle       PDSA-C-003 — comparable-route PLAN frozen
+C representation             UNSELECTED
+C canonical Block            NONE
+C Junction                   NONE
+C accepted export            NONE
 ```
+
+All five accepted number-stage exports through R retain branch-local machine transparency certification under `PDSA-ARCH-002`. C must earn its own evidence as Claims are constructed; earlier stage PASS records do not transfer automatically.

@@ -5,7 +5,8 @@
 **N-Core:** `N_CORE_DAG.md`  
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
 **Q:** `Q_DAG.md`  
-**R:** `R_DAG.md`
+**R:** `R_DAG.md`  
+**C:** `C_DAG.md`
 
 ## Pre-numerical trunk
 
@@ -228,6 +229,70 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 
 No accepted R theorem was changed by the reverse audit.
 
+## Complex stage — STARTED / C-ROUTE-P SELECTED
+
+The prior C hold was explicitly lifted by the user on 2026-08-21. Current C work begins at the acceptance layer:
+
+```text
+R-BLOCK-001 ACCEPTED
+   ↓
+RE-R-001 CLOSED / COMPLETE
+   ↓
+BOMA-C-ACCEPT-001
+ex-ante representation-neutral contract
+   ↓
+BOMA-C-R-DEP-001
+accepted-R dependency boundary
+   ↓
+PDSA-C-001
+acceptance discriminant CLOSED
+   ├──► PDSA-C-002 CLOSED — accepted-R interface V5 32564789630 PASS
+   │      C-RL-001 / C-RL-002 verified supporting theorems
+   │      C-RQ-001 CLOSED / PASS
+   └──► PDSA-C-003 CLOSED — V5 32565335033 PASS
+          C-DP-001 RESOLVED — USER-RATIFIED
+          ├──SELECTS──► C-ROUTE-P V5 PASS / SELECTED
+          ├──────────► C-ROUTE-Q V5 PASS / RETAINED
+          └──► C-ROUTE-A only if genuinely independent
+
+run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
+C-DP-001 = RESOLVED / user ratification 2026-08-22
+SELECTS = C-ROUTE-P
+PDSA-C-004 = CLOSED / selected ring-core V5 32574270735 PASS
+C-BLOCK-001 = ACTIVE / accepted selected witness-field producer
+PDSA-C-005 = CLOSED / witness field V5 32574920935 PASS
+PDSA-C-006 = CLOSED / quadratic comparison V5 32575465002 PASS
+C-COMPARE-BLOCK-001 = ACTIVE / universal graph + constructive map / V5 PASS
+PDSA-C-007 = CLOSED / final integration V5 32585583815 PASS
+C-J-001 = PASS / 783 declarations / nine claims / zero residuals
+PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
+C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
+PDSA-C-009 = CLOSED / RE-C-001 exact dependency classification COMPLETE
+PDSA-STAGE1-001 = CLOSED / RE-STAGE1-001 global reverse audit COMPLETE
+STAGE-TWO-LAB = READY / 13 CANDIDATES / NO ACTIVE BRANCH
+```
+
+The accepted semantic target is:
+
+```text
+faithful R field embedding
++
+distinguished I with I²=-1
++
+every C element has a unique a+bI decomposition over R
+```
+
+`C-BLOCK-001` is now an independently reviewable, V5-verified selected Route P canonical **witness-field-strength Block**. The following remain unproduced:
+
+```text
+C-ROUTE-Q as a canonical Block
+a second completed C field or route-comparison Junction
+a completed Route Q field, a two-field reconvergence Junction,
+or completed RE-C-001 / RE-STAGE1-001 reverse audits
+```
+
+Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
+
 ## Verification evidence
 
 ```text
@@ -267,7 +332,10 @@ R rational density             32359834460
 R Archimedean                  32359869558
 R final integration            32374868448
 Lean                           4.32.1
+C boundary supporting V5       32564789630 PASS
 ```
+
+No C proof result is inferred from the historical N→R evidence.
 
 ## Current frontier
 
@@ -280,7 +348,11 @@ post-Z reverse N        CLOSED
 BOMA Q                  ACCEPTED
 BOMA R                  ACCEPTED
 RE-R-001                CLOSED / COMPLETE
-BOMA C                  NOT STARTED — USER HOLD
+BOMA C                  ACCEPTED — CA-20 / C-BLOCK-002
+C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
+C accepted export       C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle is to be opened until a new explicit user order is given.
+The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block and final `C-J-001` integration are V5
+verified; separate `CA-20` accepts `C-BLOCK-002`, with mandatory reverse audits
+still explicitly required. The edge expresses a methodological choice, not mathematical necessity.

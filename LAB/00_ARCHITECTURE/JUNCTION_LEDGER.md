@@ -1,9 +1,9 @@
 # JUNCTION LEDGER — Convergence Strength and Shared Outputs
 
 **Document ID:** `BOMA-JUNCTION-LEDGER-001`  
-**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R AND CLOSED POST-Z REVERSE COMPARISON  
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R + OPEN C FRONTIER  
 **Date:** 2026-08-21  
-**Program:** `PDSA-ARCH-002`
+**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
 
 ## 1. Purpose
 
@@ -42,6 +42,10 @@ Detailed theorem statements and evidence remain authoritative in each Junction `
 | `Z-RE-J-001` | independently reconstructed Z-only nonnegative-cone N candidates + frozen bottom-up N/N-Arithmetic reference | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | exact selected-representation round trips and preservation of `0,S,+,*,≤`; original TCT/Decision/PDSA provenance not recovered |
 | `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational acceptance integration |
 | `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration and `RA-22` acceptance eligibility |
+| `C-J-001` | selected pair witness field + quadratic comparison + actual nine-Claim dependency closure | `SAME-CARRIER-INTEGRATION` | `C-CL-INTEGRATION-001` / `CA-19` PASS / V5 `32585583815`; separate `CA-20` decision required |
+
+`C-J-001` integrates one actual completed selected field; it is not a two-route
+reconvergence Junction, because retained Route Q remains a probe.
 
 ## 3. Provenance rule
 
@@ -62,6 +66,8 @@ Junction reopening conditions
 ```
 
 `Z-RE-J-001` makes the provenance rule especially explicit: extensional reconstruction of the natural interface after Z does not reconstruct the original bottom-up TCT/PDSA/Decision history.
+
+The same rule is now binding on C in advance: a future route isomorphism may establish interface equivalence without erasing the fact that one route used coordinate data and another used polynomial/congruence machinery.
 
 ## 4. Claim and Learning-Graph linkage
 
@@ -98,7 +104,37 @@ LAB/PDSA/experiments/PDSA-Z-RE-001_BOTTOM_UP_VS_REVERSE_COMPARISON.md
 
 It must therefore be indexed here without fabricating a forward `Z-CL-*` Claim merely to make the ledger visually uniform.
 
-## 5. Reopening rule
+For C, provisional `C-CL-COMPARE-001` and `C-CL-INTEGRATION-001` define **future Claim targets**, not current Junction evidence. Their presence does not authorize an empty `C-J-*` unit.
+
+## 5. C future-Junction discipline
+
+`BOMA-C-ACCEPT-001` identifies two materially different possible Junction roles that must not be conflated:
+
+### Representation reconvergence
+
+Triggered only if two candidate C carriers are built far enough to satisfy the shared contract.
+
+Preferred target strength:
+
+```text
+R-algebra / field isomorphism preserving the embedded R and distinguished I
+```
+
+A weaker result must be labelled by its actual strength.
+
+### Final same-carrier integration
+
+Triggered only after one selected carrier has actual producers for the acceptance-level field/embedding/generator/decomposition Claims.
+
+Likely strength:
+
+```text
+SAME-CARRIER-INTEGRATION
+```
+
+No Junction ID is reserved merely for naming convenience. An ID is allocated when the incoming producer set and question are concrete.
+
+## 6. Reopening rule
 
 A Junction must be marked for retest if a change affects:
 
@@ -115,10 +151,15 @@ For reverse/learning Junctions, changes to the frozen reference interface or rev
 
 A change confined to a branch artifact not consumed by the Junction does not automatically invalidate the shared downstream contribution.
 
-## 6. Current boundary
-
-No C Junction exists or is authorized.
+## 7. Current boundary
 
 ```text
-C NOT STARTED — USER HOLD
+C authorization       ACTIVE
+C-DP-001              OPEN
+C candidate routes    IDENTIFIED / UNBUILT
+C Junctions           NONE
+C reconvergence claim NONE YET
+C final integration   NONE YET
 ```
+
+The absence of a C Junction is now a truthful construction-state fact, not a prohibition on C. The previous user hold remains historical provenance and was explicitly lifted on 2026-08-21.

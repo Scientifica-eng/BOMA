@@ -1,10 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
 **Status:** ACTIVE / SYNCHRONIZED  
-**Current status date:** 2026-08-20  
+**Current status date:** 2026-08-22  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
-**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
+**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
+**Current program frontier:** `STAGE TWO LAB READY / no branch selected / no active experiment`
 
 ## Current canonical frontier
 
@@ -24,13 +25,39 @@ Q                   ACCEPTED
 R                   ACCEPTED
    ↓
 RE-R-001            CLOSED / COMPLETE
-
-C                   NOT STARTED — USER HOLD
+   ↓
+C                   ACCEPTED — CA-20 / C-BLOCK-002 / C-ROUTE-P
 ```
 
-The user has explicitly instructed that **C must not be started until a new explicit order is given**. Therefore no C acceptance specification, Decision Point, Brick, Block, Lean payload, workflow, or PDSA construction cycle is currently authorized.
+The previous explicit user hold on C was lifted by a new explicit user order on **2026-08-21**. That earlier hold remains historical provenance in pre-authorization records; it no longer controls the current frontier.
 
-The 2026-08-20 project-takeover stabilization records and corrects onboarding/CI provenance defects only. It does not change this mathematical frontier, reopen an accepted stage, or authorize C.
+Current C state:
+
+```text
+BOMA-C-ACCEPT-001   ACTIVE — ex-ante representation-neutral contract
+C Claim register    ACCEPTED — nine exact C Claim families / CA-20
+BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
+PDSA-C-001          CLOSED — acceptance discriminant Study complete
+PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
+PDSA-C-003          CLOSED — both route probes V5 32565335033 PASS
+PDSA-C-004          CLOSED — selected pair ring core V5 32574270735 PASS
+PDSA-C-005          CLOSED — witness field + inherited-axiom audit V5 32574920935 PASS
+PDSA-C-006          CLOSED — quadratic comparison V5 32575465002 PASS
+PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 PASS
+PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
+PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
+PDSA-STAGE1-001     CLOSED — RE-STAGE1-001 COMPLETE / 73 accepted Claims
+STAGE-TWO-LAB       READY — 13 registered candidates / NO ACTIVE EXPERIMENT
+C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
+C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
+C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
+C Junctions         C-J-001 PASS / exact V5 32585583815 / zero audit residuals
+C Lean payloads     VERIFIED boundary + routes + pair ring + witness field + quadratic comparison
+C V5 evidence       boundary/routes/ring/field PASS; 32575465002 quadratic comparison PASS
+accepted C export   C-BLOCK-002 / CA-20 ACCEPT
+```
+
+The user explicitly ratified `C-ROUTE-P` on 2026-08-22 after symmetric route evidence; `C-ROUTE-Q` remains retained. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.
 
 ---
 
@@ -440,11 +467,17 @@ No accepted R theorem was weakened or revoked by the reverse audit.
 
 # Operational takeover / stabilization — RECORDED
 
-The current handoff is recorded in:
+The current executive-takeover checkpoint is:
+
+`LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`
+
+The earlier operational takeover remains preserved in:
 
 `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
 
-The stabilization scope is operational only:
+That checkpoint remains historical/current for the state it captured on 2026-08-20, including the then-active C hold. It is **not rewritten** to pretend C had already been authorized.
+
+The stabilization scope was operational only:
 
 ```text
 README / AGENTS synchronization
@@ -454,31 +487,103 @@ R integration evidence provenance guard
 workflow serialization for evidence recording
 ```
 
-No accepted Lean payload or mathematical unit is modified by this maintenance record. Historical failed experiments, retained alternatives, superseded evidence, and old PDSA records remain preserved when they carry scientific provenance.
+No accepted Lean payload or mathematical unit was modified by that maintenance record. Historical failed experiments, retained alternatives, superseded evidence, and old PDSA records remain preserved when they carry scientific provenance.
 
 ---
 
-# Explicit C hold
+# Complex stage — STARTED / C-ROUTE-P SELECTED / VERIFIED WITNESS FIELD
 
-Normal governance would make the next number-family stage **eligible** after R acceptance and RE-R-001 closure. The current user instruction is stricter:
+The explicit new user order on 2026-08-21 authorizes C and supersedes the earlier hold **for current-state governance only**.
 
-```text
-DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
-```
-
-Therefore:
+First C cycle result:
 
 ```text
-C acceptance specification  NOT OPENED
-C Decision Points           NOT OPENED
-C Bricks / Blocks           NOT CREATED
-C Lean payloads             NOT CREATED
-C workflows                 NOT CREATED
-C PDSA construction cycles  NOT OPENED
-RE-STAGE1-001               SCHEDULED — cannot trigger before accepted C
+PDSA-C-001
+  H1 field extension only                 REJECTED AS UNDER-SPECIFIED
+  H2 field + square root of -1            REJECTED AS STILL UNDER-SPECIFIED
+  H3 field + I²=-1 + unique R+R·I form    ADOPTED AS CORE ACCEPTANCE SEMANTICS
+  H4 H3 + algebraic closure               DEFERRED STRENGTHENING
 ```
 
-Eligibility is not authorization.
+Current C architecture:
+
+```text
+BOMA-C-ACCEPT-001
+   ↓
+BOMA-C-R-DEP-001
+   ↓
+C-DP-001 RESOLVED — C-ROUTE-P SELECTED
+   ├── C-ROUTE-P ordered-pair / rank-two candidate
+   ├── C-ROUTE-Q polynomial-adjunction / quotient candidate
+   └── C-ROUTE-A only if genuinely independent
+```
+
+Route P is user-selected and promoted to `C-BLOCK-001`, a V5-verified **commutative-field-strength producer**, not yet an accepted C export. Route Q remains retained.
+
+Initial Claim register:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`
+
+Key acceptance target Claims include:
+
+```text
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-FIELD-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
+C-CL-COMPARE-001
+C-CL-INTEGRATION-001
+```
+
+Carrier, faithful real embedding, generator, generation, coordinate uniqueness, and non-real-collapse producers are verified by selected-core run `32574270735` but remain pending final stage acceptance. `C-CL-FIELD-001` is now V5-verified with unique existential inverse witnesses; representation-neutral comparison and final integration remain open. The separate route-neutral `PDSA-C-002` supporting-theorem payload remains verified by exact run `32564789630`.
+
+Initial R dependency conclusion:
+
+```text
+required core: accepted R nontrivial field/order Claims
+not currently required by core C semantics:
+  Dedekind LUB completeness
+  Q density in R
+  Archimedean characterization
+  Dedekind representation internals
+```
+
+First formal dependency question and active cycle:
+
+```text
+C-RQ-001
+Can -1 nonsquare / square-nonnegative support be proved
+from the accepted R Claim surface without Dedekind internals?
+
+PDSA-C-002
+  source                    CRInterfaceNoSquareProbe001.lean
+  abstract interface proof  VERIFIED
+  accepted-R instantiation  VERIFIED
+  read-only V5 workflow     PASS — run 32564789630
+  verified source commit    a6c894e62c48919712341cea1c0ea588590f9e5f
+  representation selection  NONE
+
+PDSA-C-003
+  common probe rubric        CLOSED UNCHANGED
+  C-ROUTE-P                  V5 PASS / USER-SELECTED
+  C-ROUTE-Q                  V5 PASS / RETAINED
+  run                         32565335033
+  verified source             3f670372a022d1eb95109d36cde255b3504dda12
+  representation selection   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
+```
+
+PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` closed after witness-field run `32574920935`, including an exact inherited-axiom baseline comparison. `PDSA-C-006` closed after quadratic comparison run `32575465002`, preserving the initial proposition/data failure. `PDSA-C-007` closed after exact integration V5 `32585583815`; separate
+`PDSA-C-008` accepted C through six-stage run `32586145793`; `PDSA-C-009`
+completed the local C reverse audit; `PDSA-STAGE1-001` completed the global
+accepted-chain reverse audit. The Stage-Two laboratory is ready, with no active
+or selected experiment.
+
+The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
+
+`RE-STAGE1-001` remains scheduled for after a future accepted C export and the required post-C reverse dependency/necessity audit.
 
 ---
 
@@ -491,17 +596,36 @@ LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
 LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
+LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md
+LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
+LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+LAB/00_ARCHITECTURE/TRUSTED_BASE.md
+LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/R_ACCEPTANCE_SPECIFICATION.md
 LAB/00_ARCHITECTURE/R_DAG.md
-LAB/00_ARCHITECTURE/REVERSE_ENGINEERING_SCHEDULE.md
+LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
 LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md
 LAB/10_CONSTRUCTION/junctions/R-J-002/UNIT.md
+LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
 LAB/20_FORMALIZATION/R_STAGE/R_CLAIM_V5_INDEX.md
 LAB/20_FORMALIZATION/R_STAGE/R_STAGE_ACCEPTANCE_CLOSURE_AUDIT_002.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
 LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
+LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
+LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
+LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
+LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
+LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md
+LAB/PDSA/PDSA-C-007_FINAL_INTEGRATION_AND_CLAIM_TRANSPARENCY.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```

@@ -1,0 +1,53 @@
+# STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
+
+**Status:** `READY / NO BRANCH SELECTED / NO EXPERIMENT ACTIVE`  
+**Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
+**Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
+**Owner sovereignty:** foundational/logical changes and merge to `main` require
+the existing explicit owner authorization.
+
+## Experiment admission rule
+
+```text
+accepted reference checkpoint
+  → one explicitly named Decision / boundary / assumption
+  → one declared alternative or controlled weakening
+  → predicted invariant(s), divergence(s), and downstream impact cone
+  → separately frozen PDSA PLAN
+  → independent build / exact verification / logical dependency audit
+  → explicit comparison / convergence or non-convergence
+  → retained baseline, retained failures, and STUDY result
+```
+
+No numbered candidate below is selected, constructed, merged, or accepted.
+Priority describes expected information value, not an execution decision.
+
+## Evidence-derived candidate inventory
+
+| Candidate | Single change point | Baseline | Alternative | Expected invariant / divergence | Affected cone | Required verification | Priority / state |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | HIGH / OPEN |
+| `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained polynomial-adjunction Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; trigger CA-14 only after completion; explicit comparison Junction | HIGH / OPEN |
+| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve declared accepted-real interface or explicitly revise contract | R and C; completeness/identity/order | independent R assembly; comparison gate; downstream C rebuild | HIGH / OPEN |
+| `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, C square positivity, norm, inverse | formal closure diff; classify any lost/changed acceptance claim | HIGH / OPEN |
+| `ST2-EXP-005` | Q-DP-001 | fraction quotient carrier | canonical reduced rational representatives | same rational field/order and integer embedding | Q → R → C identity/transport | independent Q laws + explicit equivalence + downstream interface test | MEDIUM / OPEN |
+| `ST2-EXP-006` | N-DP-001 | fresh unary BOMA-specific inductive carrier | categorical NNO or explicitly specified free algebra | preserve induction, recursion, successor, scoped standardness | N-Core → all accepted stages | state metatheory/initiality prerequisites; independent acceptance matrix | MEDIUM / OPEN |
+| `ST2-EXP-007` | N-DP-002 | current eliminator / universe scope | cross-universe or deliberately weaker eliminator | measure exact recursion/initiality consequences | N-Core proofs and downstream definability | single-scope change; theorem/claim impact audit | MEDIUM / OPEN |
+| `ST2-EXP-008` | Z-DP-001 | signed canonical integer carrier | canonical difference-pair realization | same ring/order/embeddings with distinct identity regime | Z → Q → R → C | reuse verified reconvergence; compare downstream transport | MEDIUM / OPEN |
+| `ST2-EXP-009` | R-DP-002 | Dedekind quotient identity | raw cut carrier with explicit external CutEquiv | preserve accepted R interface where feasible | R equality, quotient commitment, C inherited closure | formal equality/transport audit; no assumed carrier identity | MEDIUM / OPEN |
+| `ST2-EXP-010` | R-DP-006 / C witness use | existential and unique inverse witnesses | explicit selector under declared extra principle | separate operation convenience from added Choice/logical cost | R inversion and C field implementation | paired closure comparison; explicitly preserve or revise constructivity scope | MEDIUM / OPEN |
+| `ST2-EXP-011` | C comparison interface | universal comparison relation plus supplied extractors | vary/withhold constructive coordinate-extractor data | preserve graph theorem; expose exact functional-map conditions | C comparison and retained route reconvergence | prove relation and function separately; reject silent global choice | MEDIUM / OPEN |
+| `ST2-EXP-012` | calibrated pre-numerical choices | current declared ε / U / ⊙ foundational path | change exactly one declared founding commitment per cycle | measure object/meta firewall and downstream reconstructibility | entire number chain and explicit metatheory contract | freeze one-change PDSA; preserve baseline; classify first divergence | RESEARCH / OPEN |
+| `ST2-EXP-013` | complex scope strengthening | accepted quadratic field only | independent algebraic closure / FTA research layer | do not retroactively alter CA-20 reference | R completeness, polynomial roots, logical commitments | new acceptance contract; separately classified imported analysis | DEFERRED / OPEN |
+
+## Baseline protection
+
+The reference path and every frozen Plan remain immutable evidence. A branch
+does not rewrite previous choices into necessities, remove historical failed
+runs, claim an unfinished alternative has converged, suppress an inherited
+logical dependency, silently weaken an accepted interface, or treat a global
+selector as computationally free.
+
+Exactly one experiment may become active after an explicit project decision.
+Until then the laboratory is prepared and the active mathematical front is
+`NONE`. Nothing in this register authorizes a merge into `main`.

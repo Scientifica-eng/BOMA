@@ -1,0 +1,102 @@
+name: BOMA C Accepted-R Interface Probe 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-r-interface-probe-001.yml'
+      - 'lean-toolchain'
+  push:
+    branches:
+      - main
+      - 'feature/c-stage-*'
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-r-interface-probe-001.yml'
+      - 'lean-toolchain'
+
+concurrency:
+  group: boma-c-r-interface-probe-001-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify checked-out source provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          {
+            printf '## BOMA C accepted-R boundary verification\n'
+            printf -- '- Event: `%s`\n' "$GITHUB_EVENT_NAME"
+            printf -- '- Run ID: `%s`\n' "$GITHUB_RUN_ID"
+            printf -- '- Verified source commit: `%s`\n' "$actual_sha"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Validate inherited R assembly and C probe manifest
+        shell: bash
+        run: |
+          test -s LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          test -s LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+
+      - name: Verify accepted-R boundary theorems
+        shell: bash
+        run: |
+          : > /tmp/CRInterfaceNoSquareProbe001.lean
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> /tmp/CRInterfaceNoSquareProbe001.lean
+            printf '\n' >> /tmp/CRInterfaceNoSquareProbe001.lean
+          done < LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> /tmp/CRInterfaceNoSquareProbe001.lean
+            printf '\n' >> /tmp/CRInterfaceNoSquareProbe001.lean
+          done < LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+          lake env lean /tmp/CRInterfaceNoSquareProbe001.lean

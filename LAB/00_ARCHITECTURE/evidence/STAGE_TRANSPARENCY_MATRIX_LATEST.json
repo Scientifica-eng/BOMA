@@ -1,8 +1,8 @@
 {
   "status": "PASS",
   "matrix_schema": "BOMA-STAGE-TRANSPARENCY-MATRIX-001",
-  "audited_source": "8b169bb226a06aa077713a337c131f426aac3cd6",
-  "workflow_run": "32456174410",
+  "audited_source": "ff3d18d37492eaeba7019d659704d1d74c15a79f",
+  "workflow_run": "32586781546",
   "toolchain": "leanprover/lean4:v4.32.1",
   "stages": [
     {
@@ -56,6 +56,18 @@
     {
       "stage": "R",
       "slug": "R",
+      "root_mode": "single_target",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "C",
+      "slug": "C",
       "root_mode": "single_target",
       "audit_rc": 0,
       "classify_rc": 0,

@@ -1,9 +1,9 @@
 # BLOCK → CLAIM MAP — Construction Packages and Assertion Exports
 
 **Document ID:** `BOMA-BLOCK-CLAIM-MAP-001`  
-**Status:** ACTIVE / INITIAL ACCEPTED-STAGE MAP  
-**Date:** 2026-08-20  
-**Program:** `PDSA-ARCH-002`
+**Status:** ACTIVE / ACCEPTED-STAGE MAP + C PROVISIONAL FRONTIER  
+**Date:** 2026-08-21  
+**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
 
 ## 1. Purpose
 
@@ -106,9 +106,25 @@ R also uses broader Blocks plus one explicit logic Brick where independent commi
 
 Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, or individual law lemmas remain distinguishable as representation/operation/supporting interfaces; they are not renamed as Bricks merely for diagram symmetry.
 
-## 8. Mapping invariant
+## 8. C — accepted selected-route producer mapping / CA-20
 
-A future generated construction/claim view should be able to traverse:
+`C-DP-001` is user-ratified: `C-ROUTE-P` is the selected working producer;
+`C-ROUTE-Q` remains a retained independently verified probe.
+
+| Existing unit | Actual producer role | Provisional Claims |
+| --- | --- | --- |
+| `C-BLOCK-001` | selected carrier, embedding, ring, witness field | `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001`, `C-CL-NONREAL-001` |
+| `C-COMPARE-BLOCK-001` | universal relation and extractor-scoped isomorphism | `C-CL-COMPARE-001` |
+| `C-J-001` | same-carrier integration; V5 32585583815 PASS | `C-CL-INTEGRATION-001` |
+| `C-BLOCK-002` | accepted Stage-One complex downstream export / `CA-20` | `C-CL-INTEGRATION-001` and the selected nine-Claim package |
+
+Mappings document actual producer units; separate `CA-20` accepts only the
+final `C-BLOCK-002` export, not the retained Route Q probe. No C Brick
+or completed alternative field is fabricated for naming symmetry.
+
+## 9. Mapping invariant
+
+A mature construction/claim view should be able to traverse:
 
 ```text
 Brick or internal component
@@ -121,12 +137,25 @@ Brick or internal component
 
 and the reverse direction where ownership is declared.
 
-Missing links are audit defects; they are not permission to invent a unit identity.
-
-## 9. Current boundary
-
-No C Block, Brick, Claim, Junction, or Decision mapping exists.
+During ex-ante C work the truthful partial traversal is instead:
 
 ```text
-C NOT STARTED — USER HOLD
+Acceptance Claim
+  → producer TBD
+  → C-DP-001 route options
+  → future experiment
 ```
+
+Missing links become audit defects **only after** an artifact claims a producer/acceptance relation that should supply them. They are not permission to invent a unit identity.
+
+## 10. Current boundary
+
+```text
+Accepted Block→Claim mappings   N-Core through R
+C provisional Claims            OPEN
+C Block→Claim mappings          COMPLETE / CA-20 ACCEPT
+C representation               C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
+C accepted export              C-BLOCK-002 / CA-20 ACCEPT
+```
+
+The previous user hold is historical provenance. It was explicitly lifted on 2026-08-21; the absence of C Block mappings now reflects disciplined acceptance-first construction, not lack of authorization.

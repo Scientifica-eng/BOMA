@@ -1,0 +1,101 @@
+name: BOMA C Stage Acceptance and Six-Stage Transparency 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/00_ARCHITECTURE/**'
+      - 'LAB/20_FORMALIZATION/C_STAGE/**'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/**'
+      - '.github/workflows/boma-c-stage-acceptance-001.yml'
+  push:
+    branches: ['feature/c-stage-*']
+    paths:
+      - 'LAB/00_ARCHITECTURE/**'
+      - 'LAB/20_FORMALIZATION/C_STAGE/**'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/**'
+      - '.github/workflows/boma-c-stage-acceptance-001.yml'
+
+concurrency:
+  group: boma-c-stage-acceptance-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify separate C acceptance and every prior stage independently
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Check exact source and acceptance-policy boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
+          python3 -c 'import json; m=json.load(open("LAB/00_ARCHITECTURE/STAGE_TRANSPARENCY_MATRIX.json")); assert [x["stage"] for x in m["stages"]]==["N-Core","N-Arithmetic","Z","Q","R","C"]; p=json.load(open("LAB/00_ARCHITECTURE/CLAIM_SURFACE_POLICY.json")); assert "C" in p["stages"]; a=json.load(open("LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json")); assert a["junction_claim_links"]["C-J-001"]=="C-CL-INTEGRATION-001"'
+          printf 'Exact six-stage acceptance candidate: %s / run %s\n' "$(git rev-parse HEAD)" "$GITHUB_RUN_ID"
+
+      - name: Verify declared six-stage accepted-source surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-c-acceptance
+          python3 LAB/00_ARCHITECTURE/tools/claim_surface_audit.py --json > /tmp/boma-c-acceptance/CLAIM_SURFACE.json
+          python3 -c 'import json; p=json.load(open("/tmp/boma-c-acceptance/CLAIM_SURFACE.json")); print(json.dumps({"status":p["status"],"stages":p["stats"]}))'
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Independently reverify all six mathematical claim closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-c-acceptance/work /tmp/boma-c-acceptance/rendered
+          python3 LAB/00_ARCHITECTURE/tools/run_stage_transparency_matrix.py \
+            --work-dir /tmp/boma-c-acceptance/work \
+            --rendered-root /tmp/boma-c-acceptance/rendered \
+            --audited-sha "$(git rev-parse HEAD)" \
+            --run-id "$GITHUB_RUN_ID" \
+            --toolchain "$(cat lean-toolchain)" \
+            --summary-out /tmp/boma-c-acceptance/MATRIX_SUMMARY.json \
+            > /tmp/boma-c-acceptance/MATRIX.log
+          python3 -c 'import json; p=json.load(open("/tmp/boma-c-acceptance/MATRIX_SUMMARY.json")); assert len(p["stages"])==6; print(json.dumps({"status":p["status"],"stages":[{"stage":x["stage"],"passed":x["passed"]} for x in p["stages"]]}))'
+
+      - name: Overlay fresh evidence and enforce architecture consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp -a /tmp/boma-c-acceptance/rendered/. .
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            --json-out /tmp/boma-c-acceptance/ARCHITECTURE_CONSISTENCY.json \
+            > /tmp/boma-c-acceptance/ARCHITECTURE.log
+          python3 -c 'import json; p=json.load(open("/tmp/boma-c-acceptance/ARCHITECTURE_CONSISTENCY.json")); print(json.dumps({"status":p["status"],"stats":p.get("stats",{})}))'
+
+      - name: Preserve six-stage exact-head evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boma-c-stage-acceptance-${{ github.run_id }}
+          path: |
+            /tmp/boma-c-acceptance/rendered/
+            /tmp/boma-c-acceptance/MATRIX_SUMMARY.json
+            /tmp/boma-c-acceptance/CLAIM_SURFACE.json
+            /tmp/boma-c-acceptance/ARCHITECTURE_CONSISTENCY.json
+            /tmp/boma-c-acceptance/MATRIX.log
+            /tmp/boma-c-acceptance/ARCHITECTURE.log
+          if-no-files-found: warn
+          retention-days: 30
