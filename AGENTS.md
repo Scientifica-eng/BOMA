@@ -71,8 +71,8 @@ BOMA-C-ACCEPT-001  ACTIVE
 BOMA-C-R-DEP-001   ACTIVE
 PDSA-C-001         CLOSED
 PDSA-C-002         CLOSED — V5 32564789630 PASS / C-RQ-001 CLOSED
-PDSA-C-003         ACTIVE — comparable-route PLAN frozen / DO not started
-C-DP-001           OPEN — NO ROUTE SELECTED
+PDSA-C-003         CLOSED — V5 32565335033 PASS / Route P recommended
+C-DP-001           OPEN — DECISION-READY / NO ROUTE SELECTED
 C carrier           NONE
 C Brick / Block     NONE
 C Junction          NONE
