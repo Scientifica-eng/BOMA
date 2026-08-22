@@ -555,7 +555,8 @@ C carrier            C-BLOCK-001 / selected Route P ring core / V5 32574270735 P
 C accepted export    C-BLOCK-002 / CA-20 ACCEPT
 C final integration  C-J-001 PASS / V5 32585583815
 C reverse audit      RE-C-001 COMPLETE / PDSA-C-009
-Global reverse gate  RE-STAGE1-001 OPEN / PDSA-STAGE1-001
+Global reverse gate  RE-STAGE1-001 CLOSED / COMPLETE
+Stage-Two laboratory READY / 13 CANDIDATES / NO ACTIVE BRANCH
 algebraic closure    NOT A STAGE-ONE ACCEPTANCE CLAIM
 ```
 
