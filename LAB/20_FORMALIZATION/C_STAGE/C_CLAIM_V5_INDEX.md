@@ -3,7 +3,7 @@
 **Status:** ACTIVE — BOUNDARY + COMPARABLE ROUTE PROBES VERIFIED / NO ACCEPTED C CLAIM  
 **Date:** 2026-08-22  
 **Current acceptance contract:** `BOMA-C-ACCEPT-001`  
-**Representation Decision:** `C-DP-001 OPEN`
+**Representation Decision:** `C-DP-001 RESOLVED / USER-SELECTED C-ROUTE-P`
 
 ## Evidence classification
 
@@ -43,7 +43,7 @@ The remaining nine declarations in the same source are supporting equational/ord
 ```text
 accepted C Claims          NONE
 canonical C carrier         NONE
-selected C representation   NONE — Route P recommended / user ratification pending
+selected C representation   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 C integration Junction      NONE
 CA-20 acceptance            NOT ELIGIBLE
 ```
