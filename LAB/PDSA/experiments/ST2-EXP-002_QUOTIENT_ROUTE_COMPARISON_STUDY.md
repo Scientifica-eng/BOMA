@@ -47,6 +47,17 @@ experimental C consumers; the accepted policy remains untouched.
 - Correction: pass the unchanged accepted-R parameter explicitly, unfold the
   relevant local definitions, and retain the exact same frozen Plan.
 
+### Attempt 2 — retained elaboration edge case / F1
+
+- Source commit: `b97fe52112e8b9a17ec7fc519522e3d0c4a719e0`.
+- Exact V5 run: `32596968581` — `FAIL`, still before any P comparison.
+- All prior coordinate obligations were resolved and the independent Q axiom
+  print already matched accepted R exactly: `[propext, Classical.choice,
+  Quot.sound]`. However the normal-form rewrite closed its goal automatically,
+  so an extra subsequent `cases` tactic caused Lean's `No goals to be solved`.
+- Correction: remove the redundant tactics; do not alter the statement,
+  logical commitments, fixed R boundary, or frozen Plan.
+
 ## Study and Act
 
 Pending exact-head V5 evidence. Route Q is not accepted; CA-20 and selected

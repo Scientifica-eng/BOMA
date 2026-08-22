@@ -239,8 +239,6 @@ theorem q_normal_of_normal
     qNormal (qOfNormal u) = u := by
   change qNormal (qCoord u.re u.im) = u
   rw [q_normal_coord R]
-  cases u
-  rfl
 
 theorem q_inverse_exists
     (R : RStageIntegrationCertificate) (z : QBOMA)
