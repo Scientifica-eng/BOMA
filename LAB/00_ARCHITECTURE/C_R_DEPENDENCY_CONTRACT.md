@@ -7,7 +7,8 @@
 **Upstream accepted export:** `R-BLOCK-001`  
 **Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
 **Verified boundary experiment:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
-**Next route experiment:** `PDSA-C-003 — ACTIVE / frozen common rubric`
+**Route comparison:** `PDSA-C-003 — CLOSED / both probes V5 32565335033 PASS`  
+**Selected route experiment:** `PDSA-C-004 — ACTIVE / user-selected C-ROUTE-P`
 
 ## 1. Purpose
 
@@ -347,7 +348,7 @@ R-CL-ORDER-001
 R-CL-INTEGRATION-001
         ↓
 route-neutral R consequences
-  square ≥ 0       [source-level proof staged]
+  square ≥ 0       [V5 32564789630 PASS]
   -1 not a square  [V5 32564789630 PASS]
         ↓
 C quadratic-extension construction routes
