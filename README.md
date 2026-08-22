@@ -35,9 +35,9 @@ BOMA-C-ACCEPT-001      ACTIVE — representation-neutral acceptance contract
 BOMA-C-R-DEP-001       ACTIVE — accepted-R dependency boundary
 PDSA-C-001             CLOSED — ex-ante acceptance discriminant
 PDSA-C-002             CLOSED — R-interface sufficiency; V5 32564789630 PASS
-PDSA-C-003             ACTIVE — frozen comparable-route probe PLAN
+PDSA-C-003             CLOSED — V5 32565335033 PASS / Route P recommended
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
-C-DP-001               OPEN — NO ROUTE SELECTED
+C-DP-001               OPEN — DECISION-READY / NO ROUTE SELECTED
 C carrier              NONE
 C Brick / Block         NONE
 C Junction              NONE
