@@ -1,10 +1,10 @@
 # BOMA-C-ACCEPT-001 — Stage-One Complex-Number Acceptance Specification
 
-**Status:** **ACTIVE — EX-ANTE GOVERNING SPECIFICATION / C AUTHORIZED / REPRESENTATION UNSELECTED**  
+**Status:** **ACTIVE — EX-ANTE GOVERNING SPECIFICATION / C AUTHORIZED / C-ROUTE-P SELECTED**  
 **Authorization date:** 2026-08-21  
 **Input:** `R-BLOCK-001 — Accepted Stage-One Real Interface`  
 **Construction branch:** `feature/c-stage-acceptance-001`  
-**Representation Decision Point:** `C-DP-001 — OPEN`  
+**Representation Decision Point:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
 **Accepted export:** **NONE YET**
 
 ## 1. Purpose
@@ -550,7 +550,7 @@ A future reverse-gate ID may be allocated when the acceptance/export actually ex
 R-BLOCK-001          ACCEPTED input
 RE-R-001             CLOSED / COMPLETE
 BOMA-C-ACCEPT-001    ACTIVE — ex-ante governing specification
-C-DP-001             OPEN — no route selected
+C-DP-001             RESOLVED — C-ROUTE-P user-selected; C-ROUTE-Q retained
 C carrier            NOT YET CONSTRUCTED
 C accepted export    NONE
 algebraic closure    NOT A STAGE-ONE ACCEPTANCE CLAIM
