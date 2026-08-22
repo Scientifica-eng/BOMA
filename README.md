@@ -35,9 +35,10 @@ BOMA-C-ACCEPT-001      ACTIVE — representation-neutral acceptance contract
 BOMA-C-R-DEP-001       ACTIVE — accepted-R dependency boundary
 PDSA-C-001             CLOSED — ex-ante acceptance discriminant
 PDSA-C-002             CLOSED — R-interface sufficiency; V5 32564789630 PASS
-PDSA-C-003             CLOSED — V5 32565335033 PASS / Route P recommended
+PDSA-C-003             CLOSED — V5 32565335033 PASS / both routes verified
+PDSA-C-004             ACTIVE — selected pair carrier and ring-core PLAN frozen
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
-C-DP-001               OPEN — DECISION-READY / NO ROUTE SELECTED
+C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              NONE
 C Brick / Block         NONE
 C Junction              NONE
@@ -103,6 +104,7 @@ LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
@@ -271,17 +273,17 @@ H4  H3 + algebraic closure
 The active representation Decision Point is:
 
 ```text
-C-DP-001 OPEN
+C-DP-001 RESOLVED — C-ROUTE-P SELECTED
   C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate
   C-ROUTE-Q  polynomial-adjunction / quotient candidate
   C-ROUTE-A  only if a genuinely independent third route is identified
 
-SELECTS = NONE
+SELECTS = C-ROUTE-P / C-ROUTE-Q RETAINED
 ```
 
 `PDSA-C-002` closed the first formal boundary test before any carrier construction. Its Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. Read-only V5 run `32564789630` verified exact source commit `a6c894e62c48919712341cea1c0ea588590f9e5f` under Lean `4.32.1`. These are supporting theorems only; they are not accepted C Claims.
 
-`PDSA-C-003` is the only active frontier. Its PLAN freezes a common rubric for independently assembled pair and quadratic-expression-quotient probes before any representation selection.
+`PDSA-C-003` is closed after independent V5 PASS evidence for both routes. The user ratified `C-ROUTE-P`; `PDSA-C-004` is the only active frontier and freezes the selected pair carrier plus commutative-ring core. `C-ROUTE-Q` remains a retained verified alternative.
 
 This is supporting C-stage infrastructure, not a C Brick by default and not a representation decision.
 
@@ -343,11 +345,11 @@ The immediate research sequence is:
 ```text
 finish C-RQ-001 formal verification evidence
    ↓
-run comparable noncanonical probes for C-ROUTE-P and C-ROUTE-Q
+construct the selected C-ROUTE-P carrier and ring core under PDSA-C-004
    ↓
 Study actual assumptions / identity / arithmetic / logic / formalization cost
    ↓
-resolve C-DP-001 only from evidence
+preserve the user-ratified C-DP-001 selection and retained Route Q evidence
    ↓
 promote justified Bricks/Blocks
    ↓
