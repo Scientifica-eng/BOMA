@@ -259,13 +259,15 @@ run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
 C-DP-001 = RESOLVED / user ratification 2026-08-22
 SELECTS = C-ROUTE-P
 PDSA-C-004 = CLOSED / selected ring-core V5 32574270735 PASS
-C-BLOCK-001 = ACTIVE / verified witness field / NOT ACCEPTED
+C-BLOCK-001 = ACTIVE / accepted selected witness-field producer
 PDSA-C-005 = CLOSED / witness field V5 32574920935 PASS
 PDSA-C-006 = CLOSED / quadratic comparison V5 32575465002 PASS
 C-COMPARE-BLOCK-001 = ACTIVE / universal graph + constructive map / V5 PASS
 PDSA-C-007 = CLOSED / final integration V5 32585583815 PASS
 C-J-001 = PASS / 783 declarations / nine claims / zero residuals
-PDSA-C-008 = ACTIVE / separately frozen CA-20 acceptance PLAN
+PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
+C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
+PDSA-C-009 = ACTIVE / mandatory RE-C-001 reverse-audit PLAN
 ```
 
 The accepted semantic target is:
@@ -283,7 +285,8 @@ every C element has a unique a+bI decomposition over R
 ```text
 C-ROUTE-Q as a canonical Block
 a second completed C field or route-comparison Junction
-any accepted C aggregate Block before the separate CA-20 decision
+a completed Route Q field, a two-field reconvergence Junction,
+or completed RE-C-001 / RE-STAGE1-001 reverse audits
 ```
 
 Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
@@ -343,9 +346,11 @@ post-Z reverse N        CLOSED
 BOMA Q                  ACCEPTED
 BOMA R                  ACCEPTED
 RE-R-001                CLOSED / COMPLETE
-BOMA C                  STARTED — ACCEPTANCE SPEC ACTIVE
+BOMA C                  ACCEPTED — CA-20 / C-BLOCK-002
 C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
-C accepted export       NONE
+C accepted export       C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block is V5 verified; final integration remains under construction. The edge expresses a methodological choice, not mathematical necessity.
+The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block and final `C-J-001` integration are V5
+verified; separate `CA-20` accepts `C-BLOCK-002`, with mandatory reverse audits
+still explicitly required. The edge expresses a methodological choice, not mathematical necessity.

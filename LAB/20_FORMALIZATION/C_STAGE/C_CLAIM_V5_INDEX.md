@@ -45,12 +45,12 @@ The remaining nine declarations in the same source are supporting equational/ord
 ## Current C acceptance state
 
 ```text
-accepted C Claims          NONE
+accepted C Claims          NINE / CA-20 ACCEPT
 canonical C carrier         CBOMA / C-BLOCK-001 witness-field producer / V5 PASS
 selected C representation   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 C nonzero inverse           VERIFIED existential + unique witnesses / run 32574920935
 C integration Junction      C-J-001 PASS / V5 32585583815
-CA-20 acceptance            ELIGIBLE / PDSA-C-008 DECISION PENDING
+CA-20 acceptance            ACCEPT / PDSA-C-008 / six-stage run 32586145793
 ```
 
 A later changed source, inherited R assembly, workflow semantics, or pinned toolchain requires fresh exact verification evidence.
@@ -70,3 +70,9 @@ C-CL-INTEGRATION-001  cStageIntegrationCertificate / C-J-001  PRODUCED / V5 PASS
 ```
 
 `PRODUCED / V5 PASS` does not mean `ACCEPTED`; final C acceptance still requires the final integration and Claim-transparency gate.
+
+## Separate final acceptance evidence
+
+`PDSA-C-008 / CA-20 = ACCEPT`: exact run `32586145793`, job `97062695622`,
+source `6820278f566fc637c39582c3efa648d5c1d136df`; six independent stage
+closures and architecture consistency PASS across 148 canonical units.

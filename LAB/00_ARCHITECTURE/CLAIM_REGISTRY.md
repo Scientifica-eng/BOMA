@@ -1,7 +1,7 @@
 # CLAIM REGISTRY — Accepted-Claim Traceability Index
 
 **Document ID:** `BOMA-CLAIM-REGISTRY-001`  
-**Status:** ACTIVE — ACCEPTED N-CORE THROUGH R; C PROVISIONAL REGISTER OPEN  
+**Status:** ACTIVE — ACCEPTED N-CORE THROUGH C / 73 CLAIM FAMILIES  
 **Date:** 2026-08-21  
 **Schema:** `LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md`  
 **Trusted boundary:** `LAB/00_ARCHITECTURE/TRUSTED_BASE.md`  
@@ -19,7 +19,9 @@ Construction Unit ≠ Claim Record ≠ Lean theorem
 
 The registry links these layers without collapsing them.
 
-For C, whose acceptance contract is now active but whose carrier is not yet selected, provisional Claim Records live in a separate ex-ante register and are linked from Section 8 below. They are **not counted as accepted claims** here.
+The selected `C-ROUTE-P` complex export was separately accepted under
+`CA-20`; its nine fully verified Claim families are included in the accepted
+inventory while the retained `C-ROUTE-Q` probe remains unaccepted.
 
 ## 2. Accepted export inventory
 
@@ -30,16 +32,14 @@ For C, whose acceptance contract is now active but whose carrier is not yet sele
 | `Z-BLOCK-002` | ACCEPTED / `ZA-21` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Z_STAGE/Z_TRANSPARENCY_CERTIFICATION_001.md` |
 | `Q-BLOCK-002` | ACCEPTED / `QA-23` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/Q_STAGE/Q_TRANSPARENCY_CERTIFICATION_001.md` |
 | `R-BLOCK-001` | ACCEPTED / `RA-22` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/R_STAGE/R_TRANSPARENCY_CERTIFICATION_001.md` |
+| `C-BLOCK-002` | ACCEPTED / `CA-20` | COMPLETE | **PASS — BRANCH-LOCAL** | `LAB/20_FORMALIZATION/C_STAGE/C_TRANSPARENCY_CERTIFICATION_001.md` |
 
 `COMPLETE` means the human-readable declared Claim closure is complete at the program's accepted audit granularity. `PASS — BRANCH-LOCAL` records the stage's independent actual Lean dependency extraction, formal-boundary classification, and Claim/producer ancestry comparison with zero residuals on the architecture-program branch before merge.
 
 These certifications do not retroactively relabel historical acceptance commits.
 
-Current C work does not alter the five-row accepted export inventory because:
-
-```text
-C accepted export = NONE
-```
+The six-row accepted inventory now ends at `C-BLOCK-002 / CA-20`; its nine
+C Claim families increase the accepted inventory from 64 to 73.
 
 ## 3. N-Core Claim IDs
 
@@ -241,12 +241,12 @@ Classical.byContradiction
 
 This does not make the Dedekind route, quotient identity, or localized classical choices mathematically necessary.
 
-## 8. C Claim IDs — VERIFIED PREACCEPTANCE / NOT PART OF ACCEPTED INVENTORY
+## 8. C Claim IDs — ACCEPTED / CA-20
 
 `C-DP-001` is user-ratified as `C-ROUTE-P`; `C-ROUTE-Q` remains a retained
-verified probe. Eight families already have exact V5-verified producers; the
-ninth integration family passed exact run `32585583815`. No C Claim is accepted
-before the separate `CA-20` decision.
+verified probe. All nine Claim families have exact V5-verified and formally
+owned producers. Separate `PDSA-C-008 / CA-20` accepted `C-BLOCK-002` after
+six-stage exact run `32586145793` passed.
 
 Detailed register: `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
 
@@ -260,10 +260,11 @@ Detailed register: `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
 | `C-CL-COORDUNIQ-001` | `C-BLOCK-001` | `c_coordinate_unique` | 32574270735 PASS |
 | `C-CL-NONREAL-001` | `C-BLOCK-001` | `c_i_not_real` | 32574270735 PASS |
 | `C-CL-COMPARE-001` | `C-COMPARE-BLOCK-001` | `selected graph / extractor-scoped isomorphism` | 32575465002 PASS |
-| `C-CL-INTEGRATION-001` | `C-J-001` | `cStageIntegrationCertificate` | 32585583815 PASS / NOT ACCEPTED |
+| `C-CL-INTEGRATION-001` | `C-J-001` | `cStageIntegrationCertificate` | 32585583815 PASS / CA-20 ACCEPT |
 
 Formal policy: `LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json`.
-`C_ACCEPTED_INPUTS.txt` is a PREACCEPTANCE assembly, not proof of acceptance.
+`C_ACCEPTED_INPUTS.txt` is now the accepted selected-route assembly; its
+94 source files include inherited accepted-R commitments explicitly.
 Algebraic closure remains outside the Stage-One contract.
 
 ## 9. Cross-stage dependency spine
@@ -292,7 +293,10 @@ BOMA-C-R-DEP-001
 provisional C Claim targets
 ```
 
-There is deliberately no accepted `R → C-CL-INTEGRATION-001` spine edge yet because C has no accepted integration Claim.
+The accepted dependency spine now continues `R-CL-INTEGRATION-001 →
+C-CL-INTEGRATION-001`; accepted R is an interface input, not proof that its
+whole current representation or bundled theorem package is mathematically
+necessary for every C construction.
 
 Internal branches, retained alternatives, Junction contracts, Decision Points, and historical learning paths remain authoritative in their canonical records.
 
@@ -304,7 +308,7 @@ N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certific
 Z             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 Q             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 R             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
-C             NINE PRODUCERS + FORMAL CLOSURE PASS — CA-20 PENDING
+C             MACHINE-CHECKED TRANSPARENCY PASS — CA-20 ACCEPT
 ```
 
 Each accepted stage has an independent stage-level machine audit. A downstream stage traversing upstream declarations never substitutes for the upstream stage's own certification.
@@ -328,13 +332,13 @@ C uses a provisional `single_target` audit; this does not accept C.
 Current C transparency obligations are:
 
 ```text
-provisional Claim register before carrier selection
-explicit R dependency contract
-C-DP-001 open with no SELECTS edge
-future producer ownership per Claim
-future actual formal closure/classification
-future comparison of declared vs actual dependencies
-future source-surface and integration audits
+original ex-ante Claim register preserved before route selection
+explicit accepted-R dependency contract and actual direct-consumer analysis
+C-DP-001 resolved / C-ROUTE-P selected / C-ROUTE-Q retained
+nine accepted Claims with explicit producer ownership
+actual theorem closure, boundary classification, and producer audit PASS
+six-stage source-surface and architecture-consistency audits PASS
+mandatory RE-C-001 and global RE-STAGE1-001 reverse audits follow acceptance
 Learning Graph preservation of failed probes
 ```
 

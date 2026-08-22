@@ -1,12 +1,12 @@
 # C_STAGE_ACCEPTANCE_AUDIT_001 — Separate Stage-One C Decision Audit
 
 **Cycle:** `PDSA-C-008`  
-**Status:** `PREACCEPTANCE CANDIDATE / CA-20 NOT DECIDED`  
+**Status:** `FINAL / CA-20 ACCEPT`  
 **Governing contract:** `BOMA-C-ACCEPT-001`  
 **Selected route:** `C-ROUTE-P — explicitly user-ratified`  
 **Retained route:** `C-ROUTE-Q — verified probe, not a completed field`  
 **Input:** `R-BLOCK-001 — ACCEPTED`  
-**Candidate export:** `C-BLOCK-002 — CANDIDATE / NOT ACCEPTED`
+**Candidate export:** `C-BLOCK-002 — ACTIVE / ACCEPTED`
 
 ## Individually frozen obligations
 
@@ -54,5 +54,12 @@ included in this Stage-One acceptance decision.
 
 ## Final decision
 
-`CA-20 = PENDING — independent six-stage matrix, source-surface guard, and
-cross-stage architecture-consistency audit must first pass on the exact head`.
+`CA-20 = ACCEPT`.
+
+Exact acceptance run `32586145793`, job `97062695622`, source
+`6820278f566fc637c39582c3efa648d5c1d136df` verifies the six-stage source
+surface, all six independent theorem/Claim producer audits, and architectural
+consistency across 148 canonical units with zero orphan or stale records.
+
+Mandatory `RE-C-001` and subsequent global `RE-STAGE1-001` remain separate
+audit gates; accepting C does not preempt either reverse-engineering result.

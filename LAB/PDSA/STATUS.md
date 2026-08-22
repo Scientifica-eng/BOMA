@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-008 — ACTIVE / separate CA-20 acceptance PLAN frozen`
+**Current C cycle:** `PDSA-C-009 — ACTIVE / mandatory RE-C-001 reverse-engineering PLAN frozen`
 
 ## Current canonical frontier
 
@@ -26,7 +26,7 @@ R                   ACCEPTED
    ↓
 RE-R-001            CLOSED / COMPLETE
    ↓
-C                   STARTED — C-ROUTE-P SELECTED / NOT ACCEPTED
+C                   ACCEPTED — CA-20 / C-BLOCK-002 / C-ROUTE-P
 ```
 
 The previous explicit user hold on C was lifted by a new explicit user order on **2026-08-21**. That earlier hold remains historical provenance in pre-authorization records; it no longer controls the current frontier.
@@ -35,7 +35,7 @@ Current C state:
 
 ```text
 BOMA-C-ACCEPT-001   ACTIVE — ex-ante representation-neutral contract
-C Claim register    OPEN — provisional / no accepted C Claim yet
+C Claim register    ACCEPTED — nine exact C Claim families / CA-20
 BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
 PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
@@ -44,14 +44,15 @@ PDSA-C-004          CLOSED — selected pair ring core V5 32574270735 PASS
 PDSA-C-005          CLOSED — witness field + inherited-axiom audit V5 32574920935 PASS
 PDSA-C-006          CLOSED — quadratic comparison V5 32575465002 PASS
 PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 PASS
-PDSA-C-008          ACTIVE — separate final CA-20 acceptance PLAN FROZEN
+PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
+PDSA-C-009          ACTIVE — mandatory RE-C-001 reverse-engineering PLAN FROZEN
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
-C Blocks            C-BLOCK-001 witness field + C-COMPARE-BLOCK-001 comparison / NOT ACCEPTED
+C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
 C Junctions         C-J-001 PASS / exact V5 32585583815 / zero audit residuals
 C Lean payloads     VERIFIED boundary + routes + pair ring + witness field + quadratic comparison
 C V5 evidence       boundary/routes/ring/field PASS; 32575465002 quadratic comparison PASS
-accepted C export   NONE
+accepted C export   C-BLOCK-002 / CA-20 ACCEPT
 ```
 
 The user explicitly ratified `C-ROUTE-P` on 2026-08-22 after symmetric route evidence; `C-ROUTE-Q` remains retained. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.

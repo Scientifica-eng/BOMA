@@ -106,7 +106,7 @@ R also uses broader Blocks plus one explicit logic Brick where independent commi
 
 Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, or individual law lemmas remain distinguishable as representation/operation/supporting interfaces; they are not renamed as Bricks merely for diagram symmetry.
 
-## 8. C — provisional selected-route producer mapping / NOT ACCEPTED
+## 8. C — accepted selected-route producer mapping / CA-20
 
 `C-DP-001` is user-ratified: `C-ROUTE-P` is the selected working producer;
 `C-ROUTE-Q` remains a retained independently verified probe.
@@ -116,9 +116,10 @@ Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, 
 | `C-BLOCK-001` | selected carrier, embedding, ring, witness field | `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001`, `C-CL-NONREAL-001` |
 | `C-COMPARE-BLOCK-001` | universal relation and extractor-scoped isomorphism | `C-CL-COMPARE-001` |
 | `C-J-001` | same-carrier integration; V5 32585583815 PASS | `C-CL-INTEGRATION-001` |
-| `C-BLOCK-002` | downstream export CANDIDATE; no acceptance decision yet | `C-CL-INTEGRATION-001` and the selected nine-Claim package |
+| `C-BLOCK-002` | accepted Stage-One complex downstream export / `CA-20` | `C-CL-INTEGRATION-001` and the selected nine-Claim package |
 
-Mappings document actual producer units, never CA-20 acceptance. No C Brick
+Mappings document actual producer units; separate `CA-20` accepts only the
+final `C-BLOCK-002` export, not the retained Route Q probe. No C Brick
 or completed alternative field is fabricated for naming symmetry.
 
 ## 9. Mapping invariant
@@ -152,9 +153,9 @@ Missing links become audit defects **only after** an artifact claims a producer/
 ```text
 Accepted Block→Claim mappings   N-Core through R
 C provisional Claims            OPEN
-C Block→Claim mappings          PRODUCERS MAPPED / NOT ACCEPTED
+C Block→Claim mappings          COMPLETE / CA-20 ACCEPT
 C representation               C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
-C accepted export              NONE
+C accepted export              C-BLOCK-002 / CA-20 ACCEPT
 ```
 
 The previous user hold is historical provenance. It was explicitly lifted on 2026-08-21; the absence of C Block mappings now reflects disciplined acceptance-first construction, not lack of authorization.

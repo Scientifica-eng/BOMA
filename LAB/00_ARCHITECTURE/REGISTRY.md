@@ -251,7 +251,7 @@ R density + Archimedean   acceptance-required properties with route-specific pro
 
 The reverse audit does not revoke or weaken `RA-22`.
 
-## Complex stage — STARTED / NOT ACCEPTED
+## Complex stage — ACCEPTED / CA-20
 
 ### Ex-ante acceptance and dependency architecture
 
@@ -266,11 +266,12 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `PDSA-C-005` | conjugate, norm, and witness-based complex field closure | CLOSED — axiom-audited V5 32574920935 PASS |
 | `PDSA-C-006` | representation-neutral quadratic-field comparison | CLOSED — V5 32575465002 PASS |
 | `PDSA-C-007` | final C integration and Claim-level transparency | CLOSED — V5 32585583815 PASS / zero residuals |
-| `PDSA-C-008` | separate Stage-One complex acceptance decision | ACTIVE — PLAN FROZEN |
+| `PDSA-C-008` | separate Stage-One complex acceptance decision | CLOSED — CA-20 ACCEPT / run 32586145793 PASS |
+| `PDSA-C-009` | mandatory accepted-complex reverse dependency audit | ACTIVE — PLAN FROZEN |
 | `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
 | `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |
 | `C-BLOCK-001` | selected canonical Route P witness-based commutative field | ACTIVE / V5 PASS / NOT ACCEPTED |
-| `C-BLOCK-002` | final downstream complex-export candidate | CANDIDATE / CA-20 PENDING |
+| `C-BLOCK-002` | final downstream Stage-One complex export | ACTIVE — ACCEPTED / CA-20 |
 | `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
 
 `C-DP-001` currently retains:
@@ -281,7 +282,7 @@ C-ROUTE-Q  RETAINED verified polynomial-adjunction / quotient alternative
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is not yet an accepted C export. `C-J-001` passes exact run `32585583815` with zero Claim/producer residuals. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-C-008` is the sole active separately frozen acceptance frontier.
+`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is an accepted internal producer; the separately accepted export is `C-BLOCK-002`. `C-J-001` passes exact run `32585583815` with zero Claim/producer residuals. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-C-009 / RE-C-001` is the sole active mandatory post-C reverse-audit frontier.
 
 Initial Claim targets are recorded in:
 
@@ -300,9 +301,10 @@ post-Z reverse N    CLOSED
 Q                   ACCEPTED
 R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
-C                   STARTED — C-J-001 PASS / PDSA-C-008 ACCEPTANCE ACTIVE
+C                   ACCEPTED — CA-20 / C-BLOCK-002
+RE-C-001            ACTIVE — mandatory post-acceptance reverse audit
 C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
-C accepted export   NONE
+C accepted export   C-BLOCK-002 / CA-20 ACCEPT
 ```
 
 The previous C hold remains historical provenance in earlier records. It was explicitly lifted by the user on 2026-08-21. No merge to `main` is implied by this branch state.

@@ -1,7 +1,7 @@
 # C_CLAIM_CLOSURE_AUDIT_001 — Selected Route P Preacceptance Closure
 
 **Cycle:** `PDSA-C-007`  
-**Status:** `NOT ACCEPTED / CA-20 NOT AUTHORIZED`  
+**Status:** `ACCEPTED / CA-20 / NINE CLAIMS FORMALLY CERTIFIED`  
 **Root:** `BOMA.C.StageIntegration001.cStageIntegrationCertificate`  
 **Root mode:** `single_target`
 
@@ -18,7 +18,7 @@ assembly followed by exactly these selected-route sources:
 - `LAB/payloads/lean/CStage/CStageIntegration001.lean`
 
 Its filename names a future acceptance assembly; its current state is
-PREACCEPTANCE CANDIDATE. Retained Route Q is excluded.
+ACCEPTED SELECTED ASSEMBLY after `CA-20`. Retained Route Q is excluded.
 
 ## Claim ownership and formal boundary
 

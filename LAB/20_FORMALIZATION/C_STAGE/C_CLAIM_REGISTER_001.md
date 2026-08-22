@@ -1,6 +1,6 @@
 # C_CLAIM_REGISTER_001 — Ex-Ante Stage-One Complex Claim Register
 
-**Status:** **ACTIVE — PROVISIONAL / EX-ANTE / NO C CLAIM ACCEPTED YET**  
+**Status:** **ACTIVE — NINE C CLAIMS ACCEPTED / CA-20**  
 **Date:** 2026-08-21  
 **Stage:** `C`  
 **Governing specification:** `BOMA-C-ACCEPT-001`  
@@ -14,7 +14,7 @@ Open the C Claim layer **before** a carrier or Lean representation is selected.
 
 The records below preserve the original ex-ante mathematical assertions and now map
 their actual selected producer, formalization commitments, Lean declaration,
-source, and exact V5 evidence. The separate CA-20 acceptance decision remains pending.
+source, and exact V5 evidence. Separate `PDSA-C-008 / CA-20 = ACCEPT` promoted all nine verified Claim families.
 
 This is not an acceptance certificate.
 
@@ -56,8 +56,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-01`, `CA-02`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** an explicit `C_BOMA` carrier exists with an explicit accepted equality/identity regime; no built-in complex carrier is silently identified as BOMA C.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** accepted `R-BLOCK-001` only at the level required by the selected construction; exact C-side ancestry `PairCandidate`, `CBOMA`, and `c_ext`.
@@ -76,8 +76,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-03`, `CA-05`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** construct `ιR : R_BOMA → C_BOMA`, prove injectivity, and prove preservation of `0,1,-,+,*`.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** `R-CL-NONTRIV-001`, `R-CL-ADD-001`, `R-CL-MUL-001`, `R-CL-FIELD-001` or their accepted integration export; exact minimal closure to be measured.
@@ -96,8 +96,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-04`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** the accepted C carrier has nontrivial commutative field behavior, including nonzero inverse existence at an explicitly declared interface scope.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-005 selected Route P witness-field producer`.
 - **Consumes mathematical Claims:** at minimum accepted R field/nontriviality Claims plus C arithmetic definitions; selected explicit Route P `CPairFieldCertificate` producer.
@@ -116,8 +116,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-06`, `CA-07`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** there is a distinguished `I : C_BOMA` satisfying `I * I = -1_C`.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** `C-CL-CARRIER-001`, `C-CL-FIELD-001`, `C-CL-REMBED-001` for the interpretation of `-1_C`.
@@ -136,8 +136,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-08`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** every `z : C_BOMA` is expressible as `ιR(a) + ιR(b) * I` for some `a,b : R_BOMA`.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`.
@@ -156,8 +156,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-09`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** if two `a+bI` expressions represent the same C value, the corresponding real coefficients are equal.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** `C-CL-REMBED-001`, `C-CL-I-001`, `C-CL-FIELD-001`; may additionally consume the R fact that `-1` is not a real square or another route-equivalent independence lemma.
@@ -176,8 +176,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-10`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** `¬ ∃ r : R_BOMA, I = ιR(r)` or an explicitly equivalent non-collapse theorem.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** expected from `C-CL-I-001` + `C-CL-COORDUNIQ-001`, or from `C-CL-I-001` + accepted R ordered-field facts.
@@ -196,8 +196,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-11`
-- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
-- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
+- **Operational status:** `ACCEPTED / V5 PASS / CA-20`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** candidate realizations satisfying the common accepted interface are related by the canonical coordinate-preserving R-algebra/field isomorphism sending distinguished `I` to distinguished `I`.
 - **Producer unit(s):** `C-COMPARE-BLOCK-001 / PDSA-C-006 representation-neutral quadratic comparison`.
 - **Consumes mathematical Claims:** `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001` for both compared candidates.
@@ -216,10 +216,10 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-17`, `CA-18`, `CA-19`, prerequisite to `CA-20`
-- **Operational status:** `C-J-001 PASS / V5 32585583815 / FINAL ACCEPTANCE PENDING`
-- **Epistemic status:** `DERIVED / FORMALLY AUDITED / FINAL ACCEPTANCE PENDING`
+- **Operational status:** `ACCEPTED / C-J-001 PASS / V5 32585583815 / CA-20`
+- **Epistemic status:** `DERIVED / FORMALLY AUDITED / ACCEPTED UNDER CA-20`
 - **Statement / scope:** all promoted C Claims coexist on one selected carrier/equality/operation/embedding/generator package and their declared dependency closure matches the verified formal closure at the governed audit granularity.
-- **Producer unit(s):** `C-J-001` over actual `C-BLOCK-001` and `C-COMPARE-BLOCK-001`; accepted aggregate remains unauthorized.
+- **Producer unit(s):** `C-J-001` over actual `C-BLOCK-001` and `C-COMPARE-BLOCK-001`; accepted aggregate is `C-BLOCK-002 / CA-20`.
 - **Consumes mathematical Claims:** all accepted C Claim families above.
 - **Logical commitments:** union of actually consumed declared commitments only; no ancestry-wide inflation.
 - **Representation commitments:** selected `C-DP-001` route and any later explicit Decisions.
@@ -292,14 +292,14 @@ selected identity          explicit two-coordinate structure equality
 C construction Blocks      C-BLOCK-001 + C-COMPARE-BLOCK-001 + C-BLOCK-002 CANDIDATE
 C construction Bricks      NONE
 C Junctions                C-J-001 PASS / V5 32585583815
-C accepted-Claim declarations NONE
+C accepted-Claim declarations NINE / EXACT LEAN PRODUCERS MAPPED
 C supporting Lean declarations VERIFIED — boundary, selected field, comparison, integration
 C exploratory route probes     BOTH V5 PASS — PDSA-C-003 / noncanonical
 C route evidence               32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
 C-DP-001                       RESOLVED — C-ROUTE-P selected; C-ROUTE-Q retained
-C Claim V5 evidence           ALL NINE PRODUCER FAMILIES PASS / CA-20 PENDING
-accepted C Claims              NONE
-accepted C export          NONE
+C Claim V5 evidence           ALL NINE PRODUCER FAMILIES PASS / CA-20 ACCEPT
+accepted C Claims              NINE / CA-20 ACCEPT
+accepted C export          C-BLOCK-002 / CA-20 ACCEPT
 ```
 
 The absence of accepted-Claim producers is intentional: transparency began at the **acceptance-Claim layer before representation selection**. The existing `PDSA-C-002` Lean declarations are route-neutral supporting lemmas verified by exact run `32564789630`; they do not select a representation, create a canonical construction unit, or certify an acceptance Claim.

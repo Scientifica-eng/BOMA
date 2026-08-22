@@ -1,7 +1,7 @@
 # C_TRANSPARENCY_CERTIFICATION_001 — Machine-Checked C Claim Closure
 
-**Status:** `C TRANSPARENCY PASS — PREACCEPTANCE BRANCH-LOCAL CERTIFICATION`  
-**Stage acceptance:** `CA-20 PENDING / NOT ACCEPTED`  
+**Status:** `C TRANSPARENCY PASS — ACCEPTED BRANCH-LOCAL CERTIFICATION`  
+**Stage acceptance:** `CA-20 ACCEPT / C-BLOCK-002 ACTIVE — ACCEPTED`  
 **Date:** `2026-08-22`  
 **Exact workflow run ID:** `32585583815`  
 **Exact verified source commit:** `9a6f9e34639202c2a04d2a629e2b994f5d1562b8`  
@@ -25,5 +25,6 @@ Every C Claim is independently mapped in `C_CLAIM_CLOSURE_AUDIT_001.md` and
 principle, standard complex carrier, complete Route Q field, or algebraic
 closure theorem is silently promoted.
 
-This certificate proves mathematical/transparency evidence, not the still
-separate `CA-20` acceptance decision.
+Separate six-stage acceptance run `32586145793` independently reverified all
+six stages and global architecture consistency before `PDSA-C-008` set
+`CA-20 = ACCEPT`. Mandatory `RE-C-001` remains independent.

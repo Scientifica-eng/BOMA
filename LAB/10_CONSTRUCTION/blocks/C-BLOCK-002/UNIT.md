@@ -1,7 +1,7 @@
 # C-BLOCK-002 — Stage-One Complex Downstream Export Candidate
 
-- **Operational status:** `CANDIDATE / NOT ACCEPTED`
-- **Pending decision:** `PDSA-C-008 / CA-20`
+- **Operational status:** `ACTIVE — ACCEPTED`
+- **Pending decision:** `PDSA-C-008 / CA-20 = ACCEPT`
 - **Selected producer:** `C-BLOCK-001 / C-ROUTE-P`
 - **Neutral comparison:** `C-COMPARE-BLOCK-001`
 - **Integration gate:** `C-J-001 PASS / exact V5 32585583815`
@@ -29,4 +29,8 @@ The pair carrier is user-selected, not mathematically forced. Logical axioms
 are inherited exactly from accepted R. No algebraic closure, completed Route Q
 field, choice-based coordinate selector, or merge into `main` is implied.
 
-The block becomes an accepted export only after separate `CA-20 = ACCEPT`.
+Separate `CA-20 = ACCEPT` is justified by exact six-stage run `32586145793`,
+job `97062695622`, source `6820278f566fc637c39582c3efa648d5c1d136df`.
+
+The mandatory post-acceptance `RE-C-001` audit remains open; this export does
+not declare the entire Stage-One dependency chain reverse-audited.

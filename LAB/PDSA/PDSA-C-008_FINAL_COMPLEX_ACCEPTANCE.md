@@ -1,7 +1,7 @@
 # PDSA-C-008 — Separate Stage-One Complex Acceptance Decision
 
 **Cycle ID:** `PDSA-C-008`  
-**Status:** `ACTIVE — PLAN FROZEN / DO IN PROGRESS`  
+**Status:** `CLOSED — CA-20 ACCEPT / SIX-STAGE TRANSPARENCY PASS`  
 **Plan date:** `2026-08-22`  
 **Precondition:** `C-J-001 PASS / exact V5 32585583815`  
 **Parent:** `PDSA-C-007 — CLOSED / actual formal closure + producer PASS`  
@@ -89,17 +89,49 @@ reverse-engineering cycle before starting any new mathematical family/branch.
    retained the original ex-ante statements and route-choice history.
 4. Extended accepted-source surface, theorem transparency matrix, and global
    architecture-consistency policies to evaluate all six stages independently.
-5. Prepared exact-head read-only acceptance workflow: source-surface audit,
-   six independent formal closures, refreshed evidence overlay, and complete
-   architecture-consistency audit. Fresh exact evidence is pending.
+5. Exact read-only acceptance run `32586145793` / job `97062695622` verified
+   source `6820278f566fc637c39582c3efa648d5c1d136df`; source surface, all
+   six independent formal closures, and global architecture consistency PASS.
+6. Exact consistency inventory: `148` canonical units (`70` Bricks, `52`
+   Blocks, `15` Junctions, `11` Decisions); `73` registered accepted-stage
+   Claim families across the six stages; zero orphan units, stale mappings,
+   stale verification inputs, unresolved dependency leaves, or producer gaps.
+7. Preserved six-stage evidence artifact `9479098990`; final accepted-head
+   evidence must be refreshed after the acceptance-document promotion.
 
-# STUDY — NOT STARTED
+# STUDY — COMPLETE
 
-# ACT — NOT STARTED
+Every `CA-01..CA-13` and `CA-15..CA-19` requirement passes against actual
+Lean declarations and exact prior runs. `CA-14 = NOT TRIGGERED` because only
+selected Route P is a completed field; retained Route Q remains a verified
+probe. The universal comparison graph is unconditional; actual functional
+isomorphisms require explicit coordinate-extractor data.
+
+The accepted C certificate inherits exactly `[propext, Classical.choice,
+Quot.sound]` from the selected accepted-R realization; there is no new C
+axiom and no claim of global intuitionistic purity. Actual full closure also
+includes accepted-R completeness/density/Archimedean producers through the
+bundled `rStageIntegrationCertificate`; those projections are not directly
+consumed by C and require explicit classification in mandatory `RE-C-001`.
+
+The six-stage source surface, each independent theorem-closure audit, and
+cross-stage architectural integrity all passed on exact candidate source.
+
+# ACT — COMPLETE / CA-20 ACCEPT
+
+Set `CA-20 = ACCEPT` and promote `C-BLOCK-002` as the canonical accepted
+Stage-One complex downstream export. Preserve `C-BLOCK-001` and
+`C-COMPARE-BLOCK-001` as actual producer units, the user-selected `C-ROUTE-P`,
+and the uncompleted retained `C-ROUTE-Q` branch.
+
+Close `PDSA-C-008`; immediately open the sole separately frozen mandatory
+post-acceptance cycle `PDSA-C-009 / RE-C-001`. Do not claim the whole Stage-One
+chain epistemically closed until the later independent `RE-STAGE1-001` global
+audit also closes. No merge into `main` is authorized.
 
 ```text
-CA-20         ELIGIBLE / NO ACCEPTANCE DECISION YET
-C export      NONE
-post-C audit  REQUIRED AFTER ACCEPTANCE
+CA-20         ACCEPT / separate run 32586145793 PASS
+C export      C-BLOCK-002 ACTIVE — ACCEPTED
+post-C audit  RE-C-001 ACTIVE / mandatory before global Stage-One closure
 main merge    NOT AUTHORIZED
 ```

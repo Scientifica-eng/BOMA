@@ -5,8 +5,8 @@
 - **Cycle:** `PDSA-C-007 — CLOSED / ALL GATES PASS`
 - **Carrier:** `CBOMA := BOMA.C.RoutePairProbe001.PairCandidate`
 - **Incoming:** `C-BLOCK-001`, `C-COMPARE-BLOCK-001`, accepted `R-BLOCK-001`
-- **Output:** `C-CL-INTEGRATION-001 — PROVISIONAL / NOT ACCEPTED`
-- **CA-20:** `NOT AUTHORIZED BY THIS CYCLE`
+- **Output:** `C-CL-INTEGRATION-001 — ACCEPTED / CA-20`
+- **CA-20:** `ACCEPTED IN SEPARATE PDSA-C-008`
 
 ## Integrated mathematical package
 
@@ -32,5 +32,5 @@ Claims `CLAIM_PRODUCER_PASS`: `9` Claims, `19` producers, `783/783` owned,
 Both accepted-R and final-C certificates depend exactly on
 `[propext, Classical.choice, Quot.sound]`.
 
-`CA-20` is now eligible only through separate active `PDSA-C-008`; this gate
-does not by itself accept or export C.
+Separate `PDSA-C-008` subsequently set `CA-20 = ACCEPT` after independent
+six-stage run `32586145793`; this gate remains distinct from that decision.
