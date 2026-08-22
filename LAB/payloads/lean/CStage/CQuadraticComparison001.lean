@@ -380,7 +380,7 @@ structure ConstructiveQuadraticIsomorphism {R : RStageIntegrationCertificate}
     forward (A.mul x y) = B.mul (forward x) (forward y)
 
 /-- Actual functional R-field isomorphism requires extractor data on both sides. -/
-theorem constructiveQuadraticIsomorphism
+def constructiveQuadraticIsomorphism
     {R : RStageIntegrationCertificate}
     (A B : QuadraticFieldPresentation R)
     (EA : CoordinateExtractor A) (EB : CoordinateExtractor B) :
@@ -405,7 +405,7 @@ theorem selectedQuadraticComparison
   quadraticComparison (selectedPresentation R) B
 
 /-- Selected Route P compares functionally with every constructively coordinatized peer. -/
-theorem selectedConstructiveQuadraticIsomorphism
+def selectedConstructiveQuadraticIsomorphism
     (R : RStageIntegrationCertificate)
     (B : QuadraticFieldPresentation R)
     (EB : CoordinateExtractor B) :

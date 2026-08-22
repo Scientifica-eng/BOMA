@@ -128,6 +128,26 @@ new coordinate Choice          NONE
 CA-20 acceptance               NOT ELIGIBLE
 ```
 
+## D2 — Preserve the first failed verification and correct proposition/data classification
+
+```text
+run             32575390470
+job             97036877699
+source commit   b88c02770b08d527acd47ee4e5638f10cbd27ad5
+result          FAILURE — two declaration-kind errors
+```
+
+Lean accepted the universal graph comparison and the algebraic construction, but rejected `theorem constructiveQuadraticIsomorphism` and `theorem selectedConstructiveQuadraticIsomorphism` because their return structure contains actual forward/backward functions and therefore lives in `Type`, not `Prop`. A proof-only certificate belongs to `theorem`; an explicit functional-isomorphism data object belongs to `def`.
+
+```text
+failure class     F1 / formalization-kind and proposition-vs-data boundary
+mathematical flaw NONE
+new axiom         NONE
+Choice extraction NONE
+repair            change exactly the two data-producing declarations from theorem to def
+frozen PLAN       UNCHANGED
+```
+
 # STUDY — NOT STARTED
 
 # ACT — NOT STARTED
