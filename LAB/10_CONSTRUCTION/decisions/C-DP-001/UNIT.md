@@ -1,6 +1,6 @@
 # C-DP-001 — Stage-One Complex Construction Realization Route
 
-- **Operational Status:** **OPEN — NO OPTION SELECTED**
+- **Operational Status:** **OPEN — DECISION-READY / ROUTE P RECOMMENDED / USER RATIFICATION PENDING**
 - **Epistemic Status:** **DECLARED CHOICE PROBLEM / PENDING EVIDENCE**
 - **Opened:** 2026-08-21
 - **PDSA:** `PDSA-C-001` opens the Decision; `PDSA-C-003` stages comparable independent noncanonical probes
@@ -72,7 +72,7 @@ risk of conflating convenient coordinates with mathematical necessity
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NONCANONICAL PROBE STAGED / V5 PENDING / NOT SELECTED
+ADMISSIBLE CANDIDATE / NONCANONICAL PROBE V5 PASS / NOT SELECTED
 ```
 
 ## C-ROUTE-Q — Polynomial adjunction / quotient-style realization
@@ -107,7 +107,7 @@ potentially more Trusted-Base/formalization surface
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NONCANONICAL PROBE STAGED / V5 PENDING / NOT SELECTED
+ADMISSIBLE CANDIDATE / NONCANONICAL PROBE V5 PASS / NOT SELECTED
 ```
 
 ## C-ROUTE-A — Alternative explicit quadratic-adjunction realization
@@ -228,12 +228,37 @@ The common comparison Claim `C-CL-COMPARE-001` provides the representation-neutr
 
 ---
 
-# 8. Current decision state
+# 8. PDSA-C-003 result and recommendation
+
+Exact comparable evidence:
 
 ```text
-C-DP-001           OPEN
-C-ROUTE-P          RETAINED / NONCANONICAL PROBE STAGED / V5 PENDING
-C-ROUTE-Q          RETAINED / NONCANONICAL PROBE STAGED / V5 PENDING
+run               32565335033 — SUCCESS
+source            3f670372a022d1eb95109d36cde255b3504dda12
+C-ROUTE-P job     97013042899 — SUCCESS
+C-ROUTE-Q job     97013042973 — SUCCESS
+independent assembly / negative cross-namespace guards PASS
+```
+
+Both routes discharge the same frozen noncanonical probe surface. Route P does so with a direct two-field record and structure equality. Route Q introduces independent expression syntax, normalization, a Setoid, Quotient identity, and lifted operations, but its current mathematical content still reduces to the same two real coefficients and formulas.
+
+Recommendation:
+
+```text
+Stage-One producer  C-ROUTE-P
+Retained branch     C-ROUTE-Q
+Reason              equal verified probe adequacy with lower
+                    representation/formalization/proof cost
+```
+
+This is a methodological Stage-One recommendation, not a theorem that complex numbers are necessarily ordered pairs or that Route Q is mathematically inferior.
+
+# 9. Current decision state
+
+```text
+C-DP-001           OPEN — DECISION-READY / USER RATIFICATION PENDING
+C-ROUTE-P          VERIFIED PROBE / RECOMMENDED / NOT SELECTED
+C-ROUTE-Q          VERIFIED PROBE / RETAINED / NOT SELECTED
 C-ROUTE-A          CONDITIONAL CANDIDATE SLOT
 SELECTS             NONE
 canonical C carrier NONE
