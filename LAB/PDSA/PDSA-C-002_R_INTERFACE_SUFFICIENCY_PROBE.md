@@ -182,6 +182,24 @@ writes no evidence back to main
 
 This preserves the post-`PDSA-ARCH-002` rule that transparency/verification guards on `main` are read-only.
 
+## D4 — Make exact run evidence retrievable without granting write permissions
+
+Executive takeover identified an operational evidence-visibility limitation: the available connector retrieves workflow runs associated with `pull_request` events, but does not expose a listing of branch `push` runs for this new workflow.
+
+The existing V5 workflow was therefore extended to accept a path-filtered pull request targeting `main` while preserving:
+
+```text
+permissions: contents: read
+same accepted-R input manifest
+same single C supporting-theorem source
+same pinned Lean toolchain
+no writeback to main or to the feature branch
+```
+
+Checkout explicitly resolves to the actual pull-request head SHA, not an untracked synthetic merge commit. A read-only provenance step checks that `git rev-parse HEAD` equals that expected source SHA and records the exact event, run ID, and source commit in the job summary.
+
+A draft pull request is only an evidence/review surface. It does not merge, approve, or accept C. This execution refinement changes DO and verification observability; the previously frozen PLAN is unchanged.
+
 ---
 
 # STUDY — CURRENT
@@ -259,9 +277,9 @@ This distinction is the main scientific purpose of the probe.
 
 ## S4 — Verification-state limitation
 
-At the time of this record, the available GitHub connector exposes neither a list endpoint for push-triggered runs of this new feature-branch workflow nor a run ID that can be inspected through the job/log tools.
+The available GitHub connector exposes no list endpoint for push-triggered runs of this feature-branch workflow. The read-only pull-request trigger and explicit source-provenance guard are staged as an operational recovery path; certification still requires an actual retrievable completed run and exact source SHA.
 
-Accordingly:
+Until that evidence exists:
 
 ```text
 V5 PASS = NOT CLAIMED

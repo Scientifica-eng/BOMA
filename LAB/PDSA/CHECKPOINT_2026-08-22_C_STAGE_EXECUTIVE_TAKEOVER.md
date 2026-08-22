@@ -94,6 +94,15 @@ The existing accepted-R total-order producer has localized classical ancestry. A
 
 Steps 6–10 are inherited future constraints, not an assertion that they have started or passed.
 
+
+## Verification-evidence visibility correction
+
+The available GitHub connector cannot list push-triggered runs for the staged C workflow, while it can retrieve pull-request-triggered runs for an exact source commit. The read-only workflow may therefore also run on a path-filtered draft pull request targeting `main`.
+
+The workflow must keep `permissions: contents: read`, check out the actual pull-request head commit, verify that checkout SHA before Lean runs, and record the run/source identifiers in its job summary. Opening a draft review surface is not merge authorization and does not alter `main`.
+
+This changes verification observability only; the frozen `PDSA-C-002` PLAN and acceptance targets remain unchanged.
+
 ## Representation and acceptance boundary
 
 ```text
