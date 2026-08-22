@@ -32,9 +32,20 @@ experimental C consumers; the accepted policy remains untouched.
 
 ## Iteration and failures
 
-No completed verification result exists for the initial implementation commit.
-Failed V5 attempts, if any, will be recorded here without modifying the frozen
-Plan.
+### Attempt 1 — retained negative evidence / F1
+
+- Source commit: `025fe2d445dc90556d3ddd2ca92b70658b1a7db7`.
+- Exact V5 run: `32596872373` — `FAIL`, at the **independent Q field** step.
+- Lean's Q-normal coordinate rewrite had an explicit whole-R certificate that
+  could not be inferred from its conclusion; omitting that argument left
+  unresolved `RStageIntegrationCertificate` goals.
+- Extractor soundness additionally needed the `qRe`/`qIm` projections unfolded;
+  normal re-encoding needed its `qOfNormal` abbreviation unfolded before rewrite.
+- The checker refused to reach any P/Q comparison or Claim-promotion step.
+  Its temporary `sorryAx` output describes unresolved failed elaboration, not
+  accepted evidence or a new trusted axiom.
+- Correction: pass the unchanged accepted-R parameter explicitly, unfold the
+  relevant local definitions, and retain the exact same frozen Plan.
 
 ## Study and Act
 

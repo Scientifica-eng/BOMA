@@ -178,38 +178,39 @@ def qIm (z : QBOMA) : RBOMA := (qNormal z).im
 theorem q_extract_sound (R : RStageIntegrationCertificate) (z : QBOMA) :
     z = qCoord (qRe z) (qIm z) := by
   apply q_ext
-  rw [q_normal_coord]
+  rw [q_normal_coord R]
+  change qNormal z = ⟨(qNormal z).re, (qNormal z).im⟩
   cases qNormal z
   rfl
 
 theorem q_coordinate_zero (R : RStageIntegrationCertificate) :
     qCoord rZero rZero = qZero := by
   apply q_ext
-  rw [q_normal_coord, q_normal_zero]
+  rw [q_normal_coord R, q_normal_zero]
   rfl
 
 theorem q_coordinate_one (R : RStageIntegrationCertificate) :
     qCoord rOne rZero = qOne := by
   apply q_ext
-  rw [q_normal_coord, q_normal_one]
+  rw [q_normal_coord R, q_normal_one]
   rfl
 
 theorem q_coordinate_real (R : RStageIntegrationCertificate) (a : RBOMA) :
     qCoord a rZero = qOfR a := by
   apply q_ext
-  rw [q_normal_coord, q_normal_ofR]
+  rw [q_normal_coord R, q_normal_ofR]
   rfl
 
 theorem q_coordinate_imag (R : RStageIntegrationCertificate) :
     qCoord rZero rOne = qI := by
   apply q_ext
-  rw [q_normal_coord, q_normal_imag]
+  rw [q_normal_coord R, q_normal_imag]
   rfl
 
 theorem q_coordinate_neg (R : RStageIntegrationCertificate) (a b : RBOMA) :
     qNeg (qCoord a b) = qCoord (rNeg a) (rNeg b) := by
   apply q_ext
-  rw [q_normal_neg, q_normal_coord, q_normal_coord]
+  rw [q_normal_neg, q_normal_coord R, q_normal_coord R]
   rfl
 
 theorem q_coordinate_add
@@ -217,7 +218,7 @@ theorem q_coordinate_add
     qAdd (qCoord a b) (qCoord c d) =
       qCoord (rAdd a c) (rAdd b d) := by
   apply q_ext
-  rw [q_normal_add, q_normal_coord, q_normal_coord, q_normal_coord]
+  rw [q_normal_add, q_normal_coord R, q_normal_coord R, q_normal_coord R]
   rfl
 
 theorem q_coordinate_mul
@@ -227,7 +228,7 @@ theorem q_coordinate_mul
         (rAdd (rMulCandidate a c) (rNeg (rMulCandidate b d)))
         (rAdd (rMulCandidate a d) (rMulCandidate b c)) := by
   apply q_ext
-  rw [q_normal_mul, q_normal_coord, q_normal_coord, q_normal_coord]
+  rw [q_normal_mul, q_normal_coord R, q_normal_coord R, q_normal_coord R]
   rfl
 
 /-- Encode a Q-local normal form by the quotient's declared expression syntax. -/
@@ -236,7 +237,8 @@ def qOfNormal (u : QNormal) : QBOMA := qCoord u.re u.im
 theorem q_normal_of_normal
     (R : RStageIntegrationCertificate) (u : QNormal) :
     qNormal (qOfNormal u) = u := by
-  rw [q_normal_coord]
+  change qNormal (qCoord u.re u.im) = u
+  rw [q_normal_coord R]
   cases u
   rfl
 
