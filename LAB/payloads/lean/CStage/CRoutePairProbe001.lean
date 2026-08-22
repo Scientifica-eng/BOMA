@@ -18,6 +18,16 @@ structure PairCandidate where
   re : RBOMA
   im : RBOMA
 
+/-- Core Lean does not generate a structure extensionality theorem automatically. -/
+theorem pair_ext {z w : PairCandidate}
+    (hre : z.re = w.re) (him : z.im = w.im) :
+    z = w := by
+  cases z
+  cases w
+  cases hre
+  cases him
+  rfl
+
 def zero : PairCandidate := ⟨rZero, rZero⟩
 def one : PairCandidate := ⟨rOne, rZero⟩
 def ofR (a : RBOMA) : PairCandidate := ⟨a, rZero⟩
@@ -56,7 +66,7 @@ theorem ofR_injective {a b : RBOMA}
 theorem embed_mul_imag
     (C : RStageIntegrationCertificate) (b : RBOMA) :
     mul (ofR b) imag = ⟨rZero, b⟩ := by
-  apply PairCandidate.ext
+  apply pair_ext
   · change
       rAdd (rMulCandidate b rZero)
         (rNeg (rMulCandidate rZero rOne)) = rZero
@@ -76,7 +86,7 @@ theorem coordinate_expression
     (C : RStageIntegrationCertificate) (a b : RBOMA) :
     add (ofR a) (mul (ofR b) imag) = ⟨a, b⟩ := by
   rw [embed_mul_imag C b]
-  apply PairCandidate.ext
+  apply pair_ext
   · exact add_zero_right_from_interface C a
   · exact C.addZeroLeft b
 
@@ -84,7 +94,7 @@ theorem coordinate_expression
 theorem imag_squared
     (C : RStageIntegrationCertificate) :
     mul imag imag = neg one := by
-  apply PairCandidate.ext
+  apply pair_ext
   · change
       rAdd (rMulCandidate rZero rZero)
         (rNeg (rMulCandidate rOne rOne)) = rNeg rOne
@@ -105,8 +115,6 @@ theorem decomposition
     ∃ a b : RBOMA, z = add (ofR a) (mul (ofR b) imag) := by
   refine ⟨z.re, z.im, ?_⟩
   rw [coordinate_expression C z.re z.im]
-  cases z
-  rfl
 
 /-- P/Q-08: real/imaginary coordinates are unique at Route P equality. -/
 theorem decomposition_unique

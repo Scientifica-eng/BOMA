@@ -19,6 +19,16 @@ structure NormalForm where
   re : RBOMA
   im : RBOMA
 
+/-- Core Lean does not supply a generated structure-extensionality lemma. -/
+theorem normal_ext {u v : NormalForm}
+    (hre : u.re = v.re) (him : u.im = v.im) :
+    u = v := by
+  cases u
+  cases v
+  cases hre
+  cases him
+  rfl
+
 def nfReal (a : RBOMA) : NormalForm := ⟨a, rZero⟩
 def nfImag : NormalForm := ⟨rZero, rOne⟩
 
@@ -141,7 +151,7 @@ theorem normalized_coordinate_expression
     (C : RStageIntegrationCertificate) (a b : RBOMA) :
     normalize (.add (.coeff a) (.mul (.coeff b) .generator)) =
       ⟨a, b⟩ := by
-  apply NormalForm.ext
+  apply normal_ext
   · change
       rAdd a
         (rAdd (rMulCandidate b rZero)
@@ -166,7 +176,7 @@ theorem imag_squared
     mul imag imag = neg one := by
   apply Quotient.sound
   change nfMul nfImag nfImag = nfNeg (nfReal rOne)
-  apply NormalForm.ext
+  apply normal_ext
   · change
       rAdd (rMulCandidate rZero rZero)
         (rNeg (rMulCandidate rOne rOne)) = rNeg rOne
@@ -195,8 +205,6 @@ theorem representative_decomposition
           (.mul (.coeff (normalize e).im) .generator))
   rw [normalized_coordinate_expression C
       (normalize e).re (normalize e).im]
-  cases normalize e
-  rfl
 
 /-- P/Q-07: every quotient value has a real/imaginary decomposition. -/
 theorem decomposition

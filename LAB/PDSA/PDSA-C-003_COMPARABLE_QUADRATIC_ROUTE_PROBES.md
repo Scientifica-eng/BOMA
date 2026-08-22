@@ -151,7 +151,35 @@ one and only one candidate route source
 
 An explicit negative namespace check rejects accidental candidate-to-candidate dependence. Checkout provenance is verified against the exact feature-branch head. The workflow keeps `permissions: contents: read` and can be inspected through draft PR #5.
 
-## D4 — Initial evidence state
+## D4 — First formal failure retained as evidence
+
+The independently assembled first verification run was:
+
+```text
+run             32565250372
+source commit   d3265c395bb17173565970d682c884897429a5ef
+Route P job     97012847906 — FAIL
+Route Q job     97012847824 — FAIL
+checkout guard  PASS on both jobs
+independence    PASS on both jobs
+Lean            4.32.1
+```
+
+Both candidates independently exposed the same undeclared proof-engineering assumption: core Lean does not automatically generate `PairCandidate.ext` or `NormalForm.ext` for these local structures. Additional `cases`/`rfl` steps also followed rewrites that had already closed their goals.
+
+Failure classification:
+
+```text
+F1 — missing ordinary route-local structure-equality helper
+NOT an accepted-R mathematical insufficiency
+NOT a new classical/Choice requirement
+NOT cross-route dependence
+NOT a need to modify the frozen PLAN
+```
+
+The correction declares separate `pair_ext` and `normal_ext` theorems directly from each structure's two coordinate equalities and removes the already-discharged trailing proof steps. The failed run and source commit remain preserved as Learning-Graph evidence.
+
+## D5 — Corrected evidence state
 
 ```text
 C-ROUTE-P         SOURCE STAGED / V5 NOT YET OBSERVED
@@ -163,9 +191,9 @@ accepted C Claim  NONE
 
 The frozen PLAN above has not changed.
 
-# STUDY — PENDING FIRST V5 OUTCOMES
+# STUDY — FIRST FAILURE CLASSIFIED / CORRECTED V5 PENDING
 
-Do not infer correctness, independence, or route selection from a staged source before exact job conclusions and source commits are retrieved.
+The first paired failure falsified the proof-engineering assumption that a generated structure `.ext` lemma was available in the deliberately minimal Lean environment. Both candidates retain their original mathematical targets and independent assembly. No corrected success is claimed before exact completed job conclusions and source commits are retrieved.
 
 # ACT — NOT STARTED
 
