@@ -261,7 +261,7 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `BOMA-C-R-DEP-001` | accepted-R dependency contract | ACTIVE |
 | `PDSA-C-001` | acceptance-contract discriminant | CLOSED |
 | `PDSA-C-002` | route-neutral accepted-R interface sufficiency probe | CLOSED — V5 32564789630 PASS |
-| `PDSA-C-003` | independently assembled comparable candidate-route probes | ACTIVE — SOURCES STAGED / V5 PENDING |
+| `PDSA-C-003` | independently assembled comparable candidate-route probes | CLOSED — V5 32565335033 PASS / Route P recommended |
 | `C-DP-001` | Stage-One construction realization route | OPEN — NO SELECTION |
 
 `C-DP-001` currently retains:
@@ -272,7 +272,7 @@ C-ROUTE-Q  polynomial-adjunction / quotient candidate
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-No route has been promoted to a canonical C Brick or Block. No C Junction exists. One route-neutral C supporting-theorem Lean payload is V5-verified under `PDSA-C-002` / run `32564789630`; it is neither a construction Block nor an accepted C Claim. `PDSA-C-003` has frozen a common noncanonical route-comparison plan and staged two independent exploratory sources. Neither is a canonical construction Block or accepted Claim; their V5 outcomes remain pending.
+No route has been promoted to a canonical C Brick or Block. No C Junction exists. One route-neutral C supporting-theorem Lean payload is V5-verified under `PDSA-C-002` / run `32564789630`; it is neither a construction Block nor an accepted C Claim. `PDSA-C-003` independently verified both exploratory routes in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. Route P is recommended for the Stage-One producer because it reaches the same probe surface with fewer commitments; Route Q is retained. `C-DP-001` remains open pending user ratification, so neither probe is yet a canonical construction Block or accepted Claim.
 
 Initial Claim targets are recorded in:
 
