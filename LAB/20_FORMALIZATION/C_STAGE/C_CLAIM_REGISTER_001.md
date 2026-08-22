@@ -292,8 +292,11 @@ C construction Bricks      NONE
 C Junctions                NONE
 C accepted-Claim declarations NONE
 C supporting Lean declarations VERIFIED — PDSA-C-002 / not accepted Claims
-C V5 evidence              32564789630 PASS — supporting theorems only
-accepted C Claims          NONE
+C exploratory route probes     BOTH V5 PASS — PDSA-C-003 / noncanonical
+C route evidence               32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
+C-DP-001                       OPEN — Route P recommended / user ratification pending
+C accepted-Claim V5 evidence   NONE
+accepted C Claims              NONE
 accepted C export          NONE
 ```
 
