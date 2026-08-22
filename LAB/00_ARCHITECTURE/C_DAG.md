@@ -36,8 +36,8 @@ ex-ante acceptance discriminant — CLOSED
    ├──► PDSA-C-002 — CLOSED accepted-R interface probe / V5 32564789630 PASS
    │      C-RL-001 / C-RL-002 verified supporting theorems
    │      C-RQ-001 CLOSED / PASS
-   └──► PDSA-C-003 — ACTIVE independently assembled route probes / V5 pending
-          C-DP-001 — OPEN
+   └──► PDSA-C-003 — CLOSED / both route probes V5 PASS
+          C-DP-001 — OPEN / DECISION-READY
           ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
           ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
           └──► C-ROUTE-A — conditional genuinely independent alternative
@@ -312,10 +312,10 @@ C-DP-001              OPEN
 selected route        NONE
 constructed C Block   NONE
 C Junction            NONE
-C Lean payload        VERIFIED boundary support + two unverified exploratory sources
-C V5                  32564789630 PASS — supporting source only
-C active cycle        PDSA-C-003 — SOURCE PROBES STAGED / V5 PENDING
+C Lean payload        VERIFIED boundary support + two independently verified exploratory sources
+C V5                  32564789630 boundary PASS; 32565335033 route probes PASS
+C active cycle        NONE — PDSA-C-003 CLOSED / user route decision pending
 C acceptance          NOT YET ELIGIBLE
 ```
 
-The next scientific work is route-neutral R-interface sufficiency verification followed by comparable candidate route probes. A representation must not be selected before those observations exist.
+The comparable observations now exist. Route P is recommended because it reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. No representation is selected until the user ratifies the Decision Point.
