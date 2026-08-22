@@ -10,7 +10,7 @@
 
 ## 1. Purpose
 
-Expose the current C construction topology without pretending that a carrier has already been selected or that candidate routes have already reconverged.
+Expose the current C construction topology, including the user-selected and verified partial Route P carrier/ring core, without pretending that Route Q has reconverged or that full C acceptance has occurred.
 
 The present graph is intentionally short at the canonical-construction level because C has begun at the acceptance/decision layer rather than by manufacturing representation-specific Blocks.
 
@@ -43,13 +43,13 @@ ex-ante acceptance discriminant — CLOSED
           └──► C-ROUTE-A — conditional genuinely independent alternative
 
 SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
-NO C CARRIER YET
-NO C BRICK/BLOCK PRODUCER YET
+CBOMA / C-BLOCK-001 VERIFIED PAIR RING CORE — V5 32574270735 PASS
+PDSA-C-005 ACTIVE — NORM AND WITNESS-BASED FIELD CLOSURE
 NO C JUNCTION YET
 NO C ACCEPTED EXPORT YET
 ```
 
-The candidate branches are Decision options / research routes. They are not yet canonical Blocks merely because they have names.
+Route P is user-selected and independently promoted to the verified partial `C-BLOCK-001`; Route Q remains an unselected research alternative, not a canonical Block merely because it has a name.
 
 ---
 
@@ -299,6 +299,8 @@ Authoritative PDSA records:
 
 `LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md`.
 
+`LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md`.
+
 This sequence must remain visible even after a later route is selected.
 
 ---
@@ -308,16 +310,16 @@ This sequence must remain visible even after a later route is selected.
 ```text
 C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
-C Claim register      OPEN / EX-ANTE
+C Claim register      OPEN / RING-CORE PRODUCERS V5 VERIFIED / NO ACCEPTANCE
 C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
 C-DP-001              RESOLVED / USER-RATIFIED
 selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
-constructed C Block   NONE
+constructed C Block   C-BLOCK-001 — selected ring core V5 PASS / NOT ACCEPTED
 C Junction            NONE
-C Lean payload        VERIFIED boundary support + two independently verified exploratory sources
-C V5                  32564789630 boundary PASS; 32565335033 route probes PASS
-C active cycle        PDSA-C-004 — selected pair carrier/ring-core PLAN frozen
+C Lean payload        VERIFIED boundary + two independent route probes + selected pair ring core
+C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring core — ALL PASS
+C active cycle        PDSA-C-005 — norm and witness-field-closure PLAN frozen
 C acceptance          NOT YET ELIGIBLE
 ```
 
-The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` now constructs the selected Route P producer without altering the acceptance contract.
+The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected Route P ring-core producer without altering the acceptance contract; `PDSA-C-005` now targets its still-missing witness-based field closure.

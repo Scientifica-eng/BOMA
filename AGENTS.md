@@ -48,6 +48,7 @@ LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
 LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
+LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
@@ -73,10 +74,11 @@ BOMA-C-R-DEP-001   ACTIVE
 PDSA-C-001         CLOSED
 PDSA-C-002         CLOSED — V5 32564789630 PASS / C-RQ-001 CLOSED
 PDSA-C-003         CLOSED — V5 32565335033 PASS / both routes verified
-PDSA-C-004         ACTIVE — selected pair carrier/ring-core PLAN frozen
+PDSA-C-004         CLOSED — selected pair ring core V5 32574270735 PASS
+PDSA-C-005         ACTIVE — conjugate/norm/witness-field-closure PLAN frozen
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
-C carrier           NONE
-C Brick / Block     NONE
+C carrier           CBOMA — selected pair record / V5 PASS
+C Brick / Block     C-BLOCK-001 — verified ring core / NOT ACCEPTED
 C Junction          NONE
 accepted C export   NONE
 ```
@@ -111,7 +113,7 @@ Lean identity = mathematical identity
 standard notation a+bi = carrier definition
 ```
 
-`C-DP-001` is RESOLVED by explicit user ratification on 2026-08-22. `C-ROUTE-P` is the selected Stage-One producer; `C-ROUTE-Q` remains a retained verified alternative. A selected route is not a canonical Block until its actual producer is constructed:
+`C-DP-001` is RESOLVED by explicit user ratification on 2026-08-22. `C-ROUTE-P` is the selected Stage-One producer; `C-ROUTE-Q` remains a retained verified alternative. The selected Route P is now promoted to the verified partial `C-BLOCK-001` ring core; it is not yet an accepted C export. Route options remain:
 
 ```text
 C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate

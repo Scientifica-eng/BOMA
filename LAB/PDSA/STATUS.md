@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-004 — ACTIVE / selected pair carrier and ring-core PLAN frozen`
+**Current C cycle:** `PDSA-C-005 — ACTIVE / conjugate, norm, and witness-based field closure PLAN frozen`
 
 ## Current canonical frontier
 
@@ -40,13 +40,14 @@ BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
 PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
 PDSA-C-003          CLOSED — both route probes V5 32565335033 PASS
-PDSA-C-004          ACTIVE — selected pair carrier/ring-core PLAN frozen
+PDSA-C-004          CLOSED — selected pair ring core V5 32574270735 PASS
+PDSA-C-005          ACTIVE — conjugate/norm/witness-based field closure PLAN frozen
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
-C Bricks / Blocks   NONE YET
+C Blocks            C-BLOCK-001 — verified commutative-ring core / NOT ACCEPTED
 C Junctions         NONE YET
-C Lean payloads     VERIFIED boundary support + two independently verified route probes
-C V5 evidence       32564789630 boundary PASS; 32565335033 route probes PASS; no accepted C Claim
+C Lean payloads     VERIFIED boundary + two independent route probes + selected pair ring core
+C V5 evidence       32564789630 boundary; 32565335033 routes; 32574270735 pair ring core — ALL PASS
 accepted C export   NONE
 ```
 
@@ -484,7 +485,7 @@ No accepted Lean payload or mathematical unit was modified by that maintenance r
 
 ---
 
-# Complex stage — STARTED / REPRESENTATION UNSELECTED
+# Complex stage — STARTED / C-ROUTE-P SELECTED / VERIFIED RING CORE
 
 The explicit new user order on 2026-08-21 authorizes C and supersedes the earlier hold **for current-state governance only**.
 
@@ -511,7 +512,7 @@ C-DP-001 RESOLVED — C-ROUTE-P SELECTED
    └── C-ROUTE-A only if genuinely independent
 ```
 
-No candidate route has been selected or promoted to a canonical C Block.
+Route P is user-selected and promoted to `C-BLOCK-001`, a V5-verified **partial commutative-ring producer**, not an accepted C export. Route Q remains retained.
 
 Initial Claim register:
 
@@ -531,7 +532,7 @@ C-CL-COMPARE-001
 C-CL-INTEGRATION-001
 ```
 
-All acceptance-level C Claims remain unproduced/unverified. The separate route-neutral `PDSA-C-002` supporting-theorem payload is verified by exact run `32564789630`; no acceptance-level C Claim is promoted by that supporting-theorem result.
+Carrier, faithful real embedding, generator, generation, coordinate uniqueness, and non-real-collapse producers are verified by selected-core run `32574270735` but remain pending final stage acceptance. `C-CL-FIELD-001` is partial because nonzero inverses are still unproduced; comparison and integration remain open. The separate route-neutral `PDSA-C-002` supporting-theorem payload remains verified by exact run `32564789630`.
 
 Initial R dependency conclusion:
 
@@ -561,12 +562,14 @@ PDSA-C-002
 
 PDSA-C-003
   common probe rubric        CLOSED UNCHANGED
-  C-ROUTE-P                  V5 PASS / RECOMMENDED
+  C-ROUTE-P                  V5 PASS / USER-SELECTED
   C-ROUTE-Q                  V5 PASS / RETAINED
   run                         32565335033
   verified source             3f670372a022d1eb95109d36cde255b3504dda12
   representation selection   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 ```
+
+PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` is the sole active frozen cycle for conjugation, norm, and unique existential inverse witnesses.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
@@ -610,6 +613,7 @@ LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
 LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
+LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```

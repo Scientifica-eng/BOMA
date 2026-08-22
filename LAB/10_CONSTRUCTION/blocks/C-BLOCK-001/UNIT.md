@@ -1,13 +1,14 @@
 # C-BLOCK-001 — Selected Route P Complex Core
 
-- **Operational status:** **ACTIVE — PARTIAL PRODUCER / NOT ACCEPTED**
+- **Operational status:** **ACTIVE — V5-VERIFIED COMMUTATIVE-RING CORE / NOT ACCEPTED**
 - **Epistemic status:** **USER-RATIFIED REPRESENTATION CHOICE + DERIVED CORE**
 - **Decision:** `C-DP-001 — C-ROUTE-P SELECTED`
-- **Current cycle:** `PDSA-C-004`
+- **Verified core cycle:** `PDSA-C-004 — CLOSED / run 32574270735 PASS`
+- **Current cycle:** `PDSA-C-005 — witness-based field closure PLAN FROZEN`
 - **Input domain:** `R-BLOCK-001 — Accepted Stage-One Real Interface`
 - **Alternative:** `C-ROUTE-Q — VERIFIED NONCANONICAL PROBE / RETAINED`
 - **Acceptance:** `CA-20 = NOT ELIGIBLE`
-- **Verification:** `SELECTED CORE V5 PENDING`
+- **Verification:** `SELECTED RING CORE V5 32574270735 PASS / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`
 
 ## Selected carrier and identity
 
@@ -39,7 +40,7 @@ All scalar equational proof inputs are taken from an abstract
 `RStageIntegrationCertificate` and the separately verified interface-derived
 C-boundary helpers.
 
-## Current frozen scope
+## Verified ring-core scope
 
 ```text
 nontrivial commutative-ring laws

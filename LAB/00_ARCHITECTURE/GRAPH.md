@@ -258,7 +258,9 @@ acceptance discriminant CLOSED
 run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
 C-DP-001 = RESOLVED / user ratification 2026-08-22
 SELECTS = C-ROUTE-P
-PDSA-C-004 = ACTIVE / selected carrier and ring-core PLAN frozen
+PDSA-C-004 = CLOSED / selected ring-core V5 32574270735 PASS
+C-BLOCK-001 = ACTIVE / verified pair ring core / NOT ACCEPTED
+PDSA-C-005 = ACTIVE / norm and witness-field-closure PLAN frozen
 ```
 
 The accepted semantic target is:
@@ -271,13 +273,12 @@ distinguished I with I²=-1
 every C element has a unique a+bI decomposition over R
 ```
 
-The following are **not** yet canonical graph nodes because no independently reviewable construction unit exists for them:
+`C-BLOCK-001` is now an independently reviewable, V5-verified selected Route P canonical **partial ring-core Block**. The following remain unproduced:
 
 ```text
-C-ROUTE-P as a Block
-C-ROUTE-Q as a Block
-any C Brick
+C-ROUTE-Q as a canonical Block
 any C Junction
+nonzero complex inverse / full field closure
 any accepted C aggregate Block
 ```
 
@@ -343,4 +344,4 @@ C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
 C accepted export       NONE
 ```
 
-The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/Block remains under construction; the edge expresses a methodological choice, not mathematical necessity.
+The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/partial ring-core Block is V5 verified; field closure remains under construction. The edge expresses a methodological choice, not mathematical necessity.

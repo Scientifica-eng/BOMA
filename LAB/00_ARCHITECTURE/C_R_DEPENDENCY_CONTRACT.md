@@ -8,7 +8,8 @@
 **Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
 **Verified boundary experiment:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
 **Route comparison:** `PDSA-C-003 — CLOSED / both probes V5 32565335033 PASS`  
-**Selected route experiment:** `PDSA-C-004 — ACTIVE / user-selected C-ROUTE-P`
+**Selected route core:** `PDSA-C-004 — CLOSED / ring-core V5 32574270735 PASS`
+**Current dependency experiment:** `PDSA-C-005 — ACTIVE / norm and witness-based inverse`
 
 ## 1. Purpose
 

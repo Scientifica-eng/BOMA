@@ -1,7 +1,7 @@
 # PDSA-C-004 — Selected Pair Carrier and Commutative-Ring Core
 
 **Cycle ID:** `PDSA-C-004`  
-**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
+**Status:** CLOSED — SELECTED PAIR RING CORE V5 PASS / FIELD CLOSURE OPENED  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-003 — CLOSED / run 32565335033 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -109,14 +109,64 @@ LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md
 The read-only workflow assembles exactly accepted R + verified C-R boundary support + previously verified Route P + the selected pair core. Its selected-source guard excludes Route Q, real representation internals, out-of-contract completeness/density/Archimedean fields, explicit classical invocations, and unproved logical placeholders.
 
 ```text
-selected ring-core V5   PENDING
+selected ring-core V5   32574270735 PASS / job 97034186851 / first attempt
 nonzero inverse         OUTSIDE THIS FROZEN CYCLE
 CA-20 acceptance        NOT ELIGIBLE
 ```
 
-# STUDY — NOT STARTED
+# STUDY — COMPLETE
 
-# ACT — NOT STARTED
+## S1 — Exact successful first-attempt formal evidence
+
+```text
+workflow        BOMA C Selected Pair Ring Core 001 — V5
+run             32574270735
+job             97034186851
+event           pull_request / draft PR #5
+source commit   a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb
+source blob     ef95f9d9a2b202a4c60f68ecf3c5f282097c52f7
+Lean            leanprover/lean4:v4.32.1
+permissions     contents: read
+result          COMPLETED / SUCCESS
+```
+
+The checkout-provenance guard, exact four-manifest assembly, forbidden-dependency guard, and complete Lean compilation all passed on the first attempt. The prior boundary and independent route-probe workflows also passed again on this exact commit.
+
+## S2 — Frozen-target results
+
+```text
+C4-01  PASS  CBOMA aliases the verified PairCandidate record; c_ext declares identity
+C4-02  PASS  cZero/cOne/cNeg/cAdd/cMul/cOfR and injective real embedding
+C4-03  PASS  c_zero_ne_one from accepted real nontriviality
+C4-04  PASS  additive commutative-group laws and involutive negation
+C4-05  PASS  multiplication associativity, commutativity, left/right identity
+C4-06  PASS  both distributivity directions and both zero-annihilation directions
+C4-07  PASS  cOfR preserves zero, one, negation, addition, multiplication
+C4-08  PASS  cI²=-1, generation, coordinate uniqueness, non-real collapse
+C4-09  PASS  exact R + C-boundary + Route P + selected-core assembly
+C4-10  PASS  CPairRingCoreCertificate explicitly excludes multiplicative inversion
+```
+
+The producer contains 33 Lean theorem declarations and one explicitly scoped ring-core certificate. Scalar helper lemmas are derived from the abstract `RStageIntegrationCertificate`; no Dedekind internals, completeness, density, Archimedean property, Route Q, explicit classical principle, global inverse selector, or new axiom is consumed.
+
+The successful assembled log contains existing upstream linter warnings and 11 non-fatal unused-simp-argument warnings in the new proof-engineering normalizers. These warnings are not proof failures and are recorded without changing an exactly verified source merely for cosmetic cleanup.
+
+## S3 — Precise acceptance boundary
+
+```text
+selected carrier / partial C-BLOCK-001    PRODUCED / V5 PASS
+faithful embedding / imaginary generator  PRODUCED / V5 PASS
+coordinate generation / uniqueness        PRODUCED / V5 PASS
+commutative-ring strength                 PRODUCED / V5 PASS
+nonzero complex inverse                   NOT PRODUCED
+complex field Claim                       PARTIAL / NOT ACCEPTED
+representation-neutral comparison         NOT PRODUCED
+final C integration / CA-20               NOT ELIGIBLE
+```
+
+# ACT — CLOSED / OPEN PDSA-C-005
+
+Freeze a separate `PDSA-C-005` cycle for conjugation, the sum-of-squares norm, constructive denominator nonzeroness, and unique existential inverse witnesses. Do not infer a full field, completed comparison, final C acceptance, or permission to merge from this ring-core run.
 
 ```text
 C-DP-001    RESOLVED / C-ROUTE-P SELECTED

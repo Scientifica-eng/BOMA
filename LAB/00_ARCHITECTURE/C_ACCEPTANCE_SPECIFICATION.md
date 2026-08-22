@@ -437,7 +437,7 @@ Until then:
 
 ```text
 C = STARTED / NOT ACCEPTED
-representation = UNSELECTED
+representation = C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
 accepted C export = NONE
 ```
 
@@ -551,7 +551,7 @@ R-BLOCK-001          ACCEPTED input
 RE-R-001             CLOSED / COMPLETE
 BOMA-C-ACCEPT-001    ACTIVE — ex-ante governing specification
 C-DP-001             RESOLVED — C-ROUTE-P user-selected; C-ROUTE-Q retained
-C carrier            NOT YET CONSTRUCTED
+C carrier            C-BLOCK-001 / selected Route P ring core / V5 32574270735 PASS
 C accepted export    NONE
 algebraic closure    NOT A STAGE-ONE ACCEPTANCE CLAIM
 ```
