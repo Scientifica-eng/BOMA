@@ -122,6 +122,8 @@ replaceability
 
 A first V5 success by one route will not by itself resolve the Decision if the comparison would remain materially asymmetric.
 
+`PDSA-C-003` has now produced symmetric exact evidence: both Route P and Route Q pass the same frozen noncanonical probe in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. The Study recommends Route P for the Stage-One producer because the same verified probe adequacy is achieved with a smaller representation/formalization/proof surface. Route Q remains a verified retained branch. The recommendation is not yet a `SELECTS` edge; user ratification is pending.
+
 ## 4. Decision integrity rules
 
 For every downstream Claim Record that consumes a selected Decision Point:
@@ -145,8 +147,8 @@ For an **OPEN** Decision Point additionally:
 ```text
 BOMA-C-ACCEPT-001  ACTIVE
 PDSA-C-001         CLOSED — semantic discriminant complete
-C-DP-001           OPEN
-SELECTS             NONE
+C-DP-001           OPEN — DECISION-READY / ROUTE P RECOMMENDED
+SELECTS             NONE — USER RATIFICATION PENDING
 C carrier           NONE
 C Block             NONE
 C Junction          NONE
