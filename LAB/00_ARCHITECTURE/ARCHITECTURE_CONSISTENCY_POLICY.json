@@ -205,7 +205,10 @@
         "lean-toolchain",
         "lakefile.toml",
         ".github/workflows/boma-stage-transparency-matrix-001.yml"
-      ]
+      ],
+      "manifest_scoped_freshness_inputs": {
+        "LAB/payloads/lean/CStage": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt"
+      }
     }
   },
   "junction_claim_links": {

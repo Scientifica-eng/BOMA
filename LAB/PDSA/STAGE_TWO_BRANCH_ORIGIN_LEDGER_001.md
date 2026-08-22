@@ -119,6 +119,14 @@ research Junctions through this origin ledger, requires their real experiment
 record and explicit nonaccepted scope, and keeps them distinct from accepted
 filesystem-grounded units.
 
+The first post-merge `main` architecture run, workflow execution `#26` on
+commit `c5981ef8e6bdd092edd0bb8dd7a6258007636fce`, exposed a separate
+freshness-boundary error: twelve research Lean sources shared the accepted
+`CStage` directory, but none belonged to `C_ACCEPTED_INPUTS.txt`. Accepted C
+freshness now follows all six actual manifest-listed C sources while keeping
+the manifest itself protected; research sources do not silently become
+accepted inputs merely by sharing their directory.
+
 ## 6. Required fields for future controlled branches
 
 Before a new cycle leaves Plan, record:

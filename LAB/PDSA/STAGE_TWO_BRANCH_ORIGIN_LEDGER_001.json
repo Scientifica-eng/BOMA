@@ -26,6 +26,14 @@
       "workflow": "BOMA C Stage Acceptance and Six-Stage Transparency 001 — V5",
       "error_id": "ERR-ST2-015",
       "root_cause": "The repository-wide architecture auditor treated a documented research-only Junction as a canonical unit solely because its identifier matches canonical Junction syntax."
+    },
+    {
+      "run_number": 26,
+      "commit": "c5981ef8e6bdd092edd0bb8dd7a6258007636fce",
+      "workflow": "BOMA Architecture Consistency Audit — PDSA-ARCH-002",
+      "trigger": "push / main / post-merge",
+      "error_id": "ERR-ST2-016",
+      "root_cause": "A whole CStage directory freshness rule treated twelve research-only Lean files as changes to the six unchanged accepted C sources."
     }
   ],
   "records": [

@@ -149,6 +149,63 @@ def stale_inputs(root: Path, audited_sha: str, paths: list[str]) -> list[str]:
     return [line for line in proc.stdout.splitlines() if line.strip()]
 
 
+def manifest_scoped_freshness_inputs(
+    root: Path,
+    stage: str,
+    cfg: dict[str, Any],
+    findings: list[Finding],
+) -> tuple[list[str], int]:
+    """Narrow declared directories to every accepted source in their manifest."""
+    configured = cfg.get("freshness_inputs", [])
+    if not isinstance(configured, list) or not all(isinstance(path, str) for path in configured):
+        add(findings, "ERROR", stage, str(DEFAULT_POLICY), "freshness inputs must be a list of repository paths")
+        return [], 0
+
+    scopes = cfg.get("manifest_scoped_freshness_inputs", {})
+    if not isinstance(scopes, dict):
+        add(findings, "ERROR", stage, str(DEFAULT_POLICY), "manifest-scoped freshness inputs must be a directory-to-manifest mapping")
+        return list(configured), 0
+
+    effective = list(configured)
+    source_count = 0
+    root_resolved = root.resolve()
+    for directory, manifest in scopes.items():
+        if not isinstance(directory, str) or not isinstance(manifest, str):
+            add(findings, "ERROR", stage, str(DEFAULT_POLICY), "manifest-scoped freshness keys and manifests must be repository paths")
+            continue
+        if directory not in configured:
+            add(findings, "ERROR", stage, str(DEFAULT_POLICY), f"manifest scope is not a declared freshness directory: {directory}")
+            continue
+        if manifest not in configured:
+            add(findings, "ERROR", stage, str(DEFAULT_POLICY), f"accepted-input manifest must itself remain a freshness input: {manifest}")
+            continue
+
+        manifest_path = (root / manifest).resolve()
+        if not manifest_path.is_relative_to(root_resolved) or not manifest_path.is_file():
+            add(findings, "ERROR", stage, manifest, "accepted-input manifest is absent or outside the repository")
+            continue
+        entries = [line.strip() for line in manifest_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        selected = [path for path in entries if path.startswith(directory.rstrip("/") + "/")]
+        if not selected or len(set(selected)) != len(selected):
+            add(findings, "ERROR", stage, manifest, f"accepted-input manifest has no unique sources for scoped directory: {directory}")
+            continue
+
+        invalid = []
+        for relative in selected:
+            candidate = (root / relative).resolve()
+            if not candidate.is_relative_to(root_resolved) or not candidate.is_file():
+                invalid.append(relative)
+        if invalid:
+            add(findings, "ERROR", stage, manifest, f"accepted manifest source is absent or outside the repository: {invalid}")
+            continue
+
+        position = effective.index(directory)
+        effective[position : position + 1] = selected
+        source_count += len(selected)
+
+    return effective, source_count
+
+
 def add(findings: list[Finding], level: str, scope: str, path: str, message: str) -> None:
     findings.append(Finding(level, scope, path, message))
 
@@ -340,11 +397,14 @@ def audit(root: Path, policy_rel: Path) -> tuple[list[Finding], dict[str, Any]]:
         sha_match = AUDITED_SHA_RE.search(closure_text)
         audited_sha = sha_match.group(1) if sha_match else None
         stale: list[str] = []
+        freshness_paths, scoped_sources = manifest_scoped_freshness_inputs(
+            root, stage, cfg, findings
+        )
         if audited_sha is None:
             add(findings, "ERROR", stage, cfg["closure_evidence"], "cannot parse audited source commit")
         else:
             try:
-                stale = stale_inputs(root, audited_sha, list(cfg.get("freshness_inputs", [])))
+                stale = stale_inputs(root, audited_sha, freshness_paths)
             except RuntimeError as exc:
                 add(findings, "ERROR", stage, cfg["closure_evidence"], str(exc))
             if stale:
@@ -363,6 +423,7 @@ def audit(root: Path, policy_rel: Path) -> tuple[list[Finding], dict[str, Any]]:
             "policy_claims": len(policy_claims),
             "audited_sha": audited_sha,
             "stale_inputs": len(stale),
+            "manifest_scoped_sources": scoped_sources,
         }
 
     # Filesystem-grounded canonical-unit coverage.

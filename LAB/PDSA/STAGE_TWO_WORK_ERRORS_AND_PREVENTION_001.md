@@ -29,6 +29,7 @@ current-state authorities are synchronized.
 | `ERR-ST2-013` | Identical kernel axioms could conceal a changed formalization placement | Both routes inherited `[propext, Classical.choice, Quot.sound]` from accepted R | An axiom list alone does not identify the C-stage direct consumers of quotient infrastructure | Retain branch-only exact-source quotient policy and classify direct eliminator / Setoid / Quotient use | Compare both kernel axioms and source-attributed declaration closures |
 | `ERR-ST2-014` | Earlier successful evidence could be incorrectly attached to a later documentation head | First proof PASS was run `32597030998`; the later complete head passed `32597346281` | Verification identity belongs to an exact Git commit, not to a mutable branch name | Preserve both historical proof-source evidence and independent exact-head final verification | Pin checkout to event head, print actual SHA, and require every modified final head to pass again |
 | `ERR-ST2-015` | Repository-wide unit audit misclassified an explicitly indexed research Junction as a missing accepted unit | Six-stage exact-head V5 failed in run `32599546288` although all six stage proofs passed | `ST2-EXP-002-PQ-J-001` matches canonical identifier syntax, and the previous audit inferred canonical ownership from spelling alone | Read explicitly typed research Junctions from the origin ledger, require their actual research source and explicit nonaccepted status, and exclude only validated research IDs from canonical-unit coverage | Cross-stage audits must distinguish identifier syntax, recorded artifact scope, filesystem unit ownership, and canonical acceptance; reject an undeclared exemption or a research/canonical identity collision |
+| `ERR-ST2-016` | The first post-merge `main` audit rejected unchanged accepted C evidence because research files shared its source directory | Main architecture audit execution `#26` failed on merge commit `c5981ef8e6bdd092edd0bb8dd7a6258007636fce` | Stage C freshness was scoped to the entire `CStage` directory, so twelve research-only sources were falsely classified as modifications to accepted C inputs | Resolve freshness from every C source explicitly listed in the unchanged `C_ACCEPTED_INPUTS.txt`, and keep that manifest itself under freshness protection | Compare research additions against the exact accepted-input manifest; test both false-positive research additions and real accepted-source modifications; monitor `push/main` checks independently from pull-request-only run listings |
 
 ## 2. Root causes rather than isolated symptoms
 
@@ -63,6 +64,8 @@ Before Plan is frozen:
   synchronization if the experiment succeeds.
 - Predict whether a research artifact's identifier can be mistaken for an
   accepted canonical unit by an existing repository-wide audit.
+- Identify the accepted-input manifest and distinguish accepted source
+  ownership from a shared source-directory location.
 
 During Do:
 
@@ -92,6 +95,8 @@ During Act:
 - Validate noncanonical research Junctions against their typed origin ledger
   and actual experiment record; never create a canonical `UNIT.md` solely to
   silence a unit-coverage audit.
+- Verify post-merge `push/main` guards separately; a pull-request-only
+  workflow query is not evidence that main has no checks or that they passed.
 - Run the automated Stage-Two governance audit and all relevant exact-head V5
   checks.
 - Do not authorize another experiment or merge without the owner's separate
