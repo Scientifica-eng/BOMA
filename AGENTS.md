@@ -47,6 +47,7 @@ LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
@@ -71,8 +72,9 @@ BOMA-C-ACCEPT-001  ACTIVE
 BOMA-C-R-DEP-001   ACTIVE
 PDSA-C-001         CLOSED
 PDSA-C-002         CLOSED — V5 32564789630 PASS / C-RQ-001 CLOSED
-PDSA-C-003         CLOSED — V5 32565335033 PASS / Route P recommended
-C-DP-001           OPEN — DECISION-READY / NO ROUTE SELECTED
+PDSA-C-003         CLOSED — V5 32565335033 PASS / both routes verified
+PDSA-C-004         ACTIVE — selected pair carrier/ring-core PLAN frozen
+C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           NONE
 C Brick / Block     NONE
 C Junction          NONE
@@ -109,7 +111,7 @@ Lean identity = mathematical identity
 standard notation a+bi = carrier definition
 ```
 
-`C-DP-001` is currently OPEN. Candidate routes are research/Decision branches, not canonical Blocks:
+`C-DP-001` is RESOLVED by explicit user ratification on 2026-08-22. `C-ROUTE-P` is the selected Stage-One producer; `C-ROUTE-Q` remains a retained verified alternative. A selected route is not a canonical Block until its actual producer is constructed:
 
 ```text
 C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate
@@ -117,7 +119,7 @@ C-ROUTE-Q  polynomial-adjunction / quotient candidate
 C-ROUTE-A  only if genuinely independent
 ```
 
-No `SELECTS` edge may be recorded until comparable evidence exists.
+The `SELECTS → C-ROUTE-P` edge is justified by symmetric V5 run `32565335033` plus explicit user ratification. Treat it as a methodological choice, never mathematical necessity.
 
 ## R→C dependency rule
 
