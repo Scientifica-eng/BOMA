@@ -76,6 +76,20 @@ actual declaration closure, P-exclusion enforcement, and Q classification all
 finish **before** P, the accepted generic comparison, or the combined Junction
 are admitted to the second assembly.
 
+## Final-head verification interruption — retained negative evidence / F8
+
+- Documentation/closure commit: `e9152533e7b65b9d7ad081c7918dc1aaad5707bd`.
+- Exact V5 run: `32597282848` — `FAIL` at accepted-baseline preservation,
+  before Lean or comparison execution.
+- The previous-experiment guard used the overly broad path expression
+  `ST2*EXP*001*`. It incorrectly matched the new
+  `ST2-EXP-002_PQ_RECONVERGENCE_JUNCTION_001.md` because that second-experiment
+  Junction is numbered `001`. No ST2-EXP-001 file had actually changed.
+- Correction: preserve the original protection while using exact experiment-ID
+  prefixes `ST2-EXP-001`, `ST2_EXP_001`, `ST2Exp001`, and
+  `PDSA-ST2-EXP-001`. This distinguishes an experiment identity from an
+  unrelated Junction sequence number and does not weaken baseline protection.
+
 ## STUDY — observed construction and reconvergence
 
 ### 1. What actually changed

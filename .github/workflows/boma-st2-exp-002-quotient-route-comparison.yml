@@ -59,7 +59,9 @@ jobs:
             LAB/payloads/lean/CStage/CPairNormInverse001.lean \
             LAB/payloads/lean/CStage/CQuadraticComparison001.lean \
             LAB/payloads/lean/CStage/CStageIntegration001.lean \
-            ':(glob)LAB/**/ST2*EXP*001*' \
+            ':(glob)LAB/**/ST2-EXP-001*' \
+            ':(glob)LAB/**/ST2_EXP_001*' \
+            ':(glob)LAB/**/ST2Exp001*' \
             ':(glob)LAB/**/PDSA-ST2-EXP-001*'
           printf 'Verified source head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
             "$actual_sha" "$frozen_plan" "$baseline"

@@ -45,6 +45,13 @@
       "failure_class": "F1",
       "stage": "independent Q field",
       "reason": "coordinate rewrite solved the goal before a redundant tactic"
+    },
+    {
+      "id": 32597282848,
+      "source": "e9152533e7b65b9d7ad081c7918dc1aaad5707bd",
+      "failure_class": "F8",
+      "stage": "final-head accepted-baseline preservation",
+      "reason": "overbroad experiment-001 path glob misidentified a new experiment-002 Junction numbered 001"
     }
   ],
   "fixed_real_interface": "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
