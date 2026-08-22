@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `READY / ST2-EXP-001 CLOSED PASS / NO EXPERIMENT ACTIVE`  
+**Status:** `ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 SELECTED`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
 **Owner sovereignty:** foundational/logical changes and merge to `main` require
@@ -21,15 +21,17 @@ accepted reference checkpoint
 
 `ST2-EXP-001` was explicitly approved and completed with exact V5 run
 `32593045224`; its immutable Plan remains
-`LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md`. All twelve remaining
-candidates are unselected; priority is not execution authorization.
+`LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md`. The owner additionally
+selected only `ST2-EXP-002` on 2026-08-22; its immutable Plan is
+`LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md`. Eleven other
+candidates remain unselected; priority is not execution authorization.
 
 ## Evidence-derived candidate inventory
 
 | Candidate | Single change point | Baseline | Alternative | Expected invariant / divergence | Affected cone | Required verification | Priority / state |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | CLOSED / PASS — V5 32593045224 |
-| `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained polynomial-adjunction Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; trigger CA-14 only after completion; explicit comparison Junction | HIGH / OPEN |
+| `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained polynomial-adjunction Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; trigger CA-14 only after completion; explicit comparison Junction | HIGH / SELECTED — OWNER APPROVED / ACTIVE |
 | `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve declared accepted-real interface or explicitly revise contract | R and C; completeness/identity/order | independent R assembly; comparison gate; downstream C rebuild | HIGH / OPEN |
 | `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, C square positivity, norm, inverse | formal closure diff; classify any lost/changed acceptance claim | HIGH / OPEN |
 | `ST2-EXP-005` | Q-DP-001 | fraction quotient carrier | canonical reduced rational representatives | same rational field/order and integer embedding | Q → R → C identity/transport | independent Q laws + explicit equivalence + downstream interface test | MEDIUM / OPEN |
@@ -53,5 +55,7 @@ selector as computationally free.
 `ST2-EXP-001 / PDSA-ST2-EXP-001` is CLOSED / PASS: the same nine C Claims
 were reconstructed from sixteen real fields, and the bundled full R
 certificate plus completeness/density/Archimedean producers disappeared from
-actual closure. No other experiment is active or selected. The frozen accepted
-reference remains `b473d236309770762e102517ef8a79c628cb43ed`; nothing here authorizes a merge into `main`.
+actual closure. `ST2-EXP-002` alone is now active under its independently
+frozen Plan; its current accepted reference is `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498`. Earlier
+ST2-EXP-001 evidence retains its own original frozen reference. Nothing here
+authorizes a merge into `main`.

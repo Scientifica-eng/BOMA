@@ -86,7 +86,7 @@ PDSA-C-007         CLOSED — final integration / nine-Claim V5 32585583815 PASS
 PDSA-C-008         CLOSED — CA-20 ACCEPT / six-stage run 32586145793 PASS
 PDSA-C-009         CLOSED — RE-C-001 complete / exact dependency classification
 PDSA-STAGE1-001    CLOSED — global RE-STAGE1-001 COMPLETE
-STAGE-TWO-LAB      READY — ST2-EXP-001 CLOSED PASS / no active experiment
+STAGE-TWO-LAB      ACTIVE — ST2-EXP-001 CLOSED PASS / ST2-EXP-002 selected
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           CBOMA — selected pair record / V5 PASS
 C Brick / Block     C-BLOCK-001 producer / C-BLOCK-002 ACCEPTED
@@ -331,7 +331,8 @@ Repository cleanup must distinguish operational debris from research provenance.
 `CA-20`, `RE-C-001`, and `RE-STAGE1-001` are complete. The only current research
 frontier is the controlled candidate register
 `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`; owner-approved
-`ST2-EXP-001` is CLOSED / PASS in exact run `32593045224`, and no experiment
-is currently active. Preserve its immutable Plan, failure and success evidence,
-the accepted N→C baseline, all twelve unselected alternatives, and never merge
-into `main` without the owner's separate explicit instruction.
+`ST2-EXP-001` is CLOSED / PASS in exact run `32593045224`. The owner selected
+only `ST2-EXP-002`; follow its separately frozen
+`LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md` Plan. Preserve the
+accepted N→C baseline, the prior experiment, all eleven unselected
+alternatives, and never merge into `main` without separate explicit approval.
