@@ -263,7 +263,9 @@ C-BLOCK-001 = ACTIVE / verified witness field / NOT ACCEPTED
 PDSA-C-005 = CLOSED / witness field V5 32574920935 PASS
 PDSA-C-006 = CLOSED / quadratic comparison V5 32575465002 PASS
 C-COMPARE-BLOCK-001 = ACTIVE / universal graph + constructive map / V5 PASS
-PDSA-C-007 = ACTIVE / final integration and Claim-transparency PLAN frozen
+PDSA-C-007 = CLOSED / final integration V5 32585583815 PASS
+C-J-001 = PASS / 783 declarations / nine claims / zero residuals
+PDSA-C-008 = ACTIVE / separately frozen CA-20 acceptance PLAN
 ```
 
 The accepted semantic target is:
@@ -280,9 +282,8 @@ every C element has a unique a+bI decomposition over R
 
 ```text
 C-ROUTE-Q as a canonical Block
-any C Junction
-final C integration Junction
-any accepted C aggregate Block
+a second completed C field or route-comparison Junction
+any accepted C aggregate Block before the separate CA-20 decision
 ```
 
 Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.

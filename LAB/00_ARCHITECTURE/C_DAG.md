@@ -46,7 +46,9 @@ SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
 CBOMA / C-BLOCK-001 VERIFIED PAIR RING CORE — V5 32574270735 PASS
 VERIFIED WITNESS FIELD + INHERITED AXIOM AUDIT — V5 32574920935 PASS
 PDSA-C-006 CLOSED — QUADRATIC COMPARISON V5 32575465002 PASS
-PDSA-C-007 ACTIVE — FINAL INTEGRATION AND CLAIM TRANSPARENCY
+PDSA-C-007 CLOSED — FINAL INTEGRATION V5 32585583815 PASS
+C-J-001 PASS — ACTUAL NINE-CLAIM FORMAL CLOSURE
+PDSA-C-008 ACTIVE — SEPARATE CA-20 ACCEPTANCE PLAN
 NO C JUNCTION YET
 NO C ACCEPTED EXPORT YET
 ```
@@ -201,7 +203,8 @@ No dependency graph is admitted until a genuinely independent candidate is speci
 
 # 7. Future Junction discipline
 
-No C Junction exists at present.
+`C-J-001` now exists as the verified selected-carrier integration Junction; no
+multi-route reconvergence Junction exists because Route Q is not a complete field.
 
 Potential future Junction roles include:
 
@@ -321,11 +324,12 @@ C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
 C-DP-001              RESOLVED / USER-RATIFIED
 selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
 constructed C Block   C-BLOCK-001 — selected witness field V5 PASS / NOT ACCEPTED
-C Junction            NONE
+C Junction            C-J-001 PASS / V5 32585583815
 C Lean payload        VERIFIED boundary + route probes + pair ring core + witness field
 C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring; 32574920935 field — PASS
-C active cycle        PDSA-C-007 — final integration / Claim transparency PLAN frozen
+C active cycle        PDSA-C-008 — separate final acceptance PLAN frozen
 C acceptance          NOT YET ELIGIBLE
 ```
 
-The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` now targets final integration and Claim-level dependency transparency.
+The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` closed after exact V5 `32585583815` and zero-residual Claim-level
+transparency; `PDSA-C-008` now governs the separate final acceptance decision.

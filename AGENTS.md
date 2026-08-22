@@ -51,6 +51,7 @@ LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
 LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md
 LAB/PDSA/PDSA-C-007_FINAL_INTEGRATION_AND_CLAIM_TRANSPARENCY.md
+LAB/PDSA/PDSA-C-008_FINAL_COMPLEX_ACCEPTANCE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
@@ -79,11 +80,12 @@ PDSA-C-003         CLOSED — V5 32565335033 PASS / both routes verified
 PDSA-C-004         CLOSED — selected pair ring core V5 32574270735 PASS
 PDSA-C-005         CLOSED — witness field + inherited-axiom V5 32574920935 PASS
 PDSA-C-006         CLOSED — quadratic comparison V5 32575465002 PASS
-PDSA-C-007         ACTIVE — final integration / Claim transparency PLAN frozen
+PDSA-C-007         CLOSED — final integration / nine-Claim V5 32585583815 PASS
+PDSA-C-008         ACTIVE — separate final CA-20 acceptance PLAN FROZEN
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           CBOMA — selected pair record / V5 PASS
 C Brick / Block     C-BLOCK-001 — verified witness field / NOT ACCEPTED
-C Junction          NONE
+C Junction          C-J-001 PASS / formal closure + producer ownership
 accepted C export   NONE
 ```
 

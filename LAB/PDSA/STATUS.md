@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-007 — ACTIVE / frozen PLAN; integration and formal-audit DO in progress`
+**Current C cycle:** `PDSA-C-008 — ACTIVE / separate CA-20 acceptance PLAN frozen`
 
 ## Current canonical frontier
 
@@ -43,11 +43,12 @@ PDSA-C-003          CLOSED — both route probes V5 32565335033 PASS
 PDSA-C-004          CLOSED — selected pair ring core V5 32574270735 PASS
 PDSA-C-005          CLOSED — witness field + inherited-axiom audit V5 32574920935 PASS
 PDSA-C-006          CLOSED — quadratic comparison V5 32575465002 PASS
-PDSA-C-007          ACTIVE — final integration / Claim transparency DO IN PROGRESS
+PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 PASS
+PDSA-C-008          ACTIVE — separate final CA-20 acceptance PLAN FROZEN
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 witness field + C-COMPARE-BLOCK-001 comparison / NOT ACCEPTED
-C Junctions         C-J-001 PRODUCED / exact V5 + transparency audits PENDING
+C Junctions         C-J-001 PASS / exact V5 32585583815 / zero audit residuals
 C Lean payloads     VERIFIED boundary + routes + pair ring + witness field + quadratic comparison
 C V5 evidence       boundary/routes/ring/field PASS; 32575465002 quadratic comparison PASS
 accepted C export   NONE

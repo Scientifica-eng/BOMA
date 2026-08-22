@@ -42,8 +42,10 @@ Detailed theorem statements and evidence remain authoritative in each Junction `
 | `Z-RE-J-001` | independently reconstructed Z-only nonnegative-cone N candidates + frozen bottom-up N/N-Arithmetic reference | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | exact selected-representation round trips and preservation of `0,S,+,*,≤`; original TCT/Decision/PDSA provenance not recovered |
 | `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational acceptance integration |
 | `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration and `RA-22` acceptance eligibility |
+| `C-J-001` | selected pair witness field + quadratic comparison + actual nine-Claim dependency closure | `SAME-CARRIER-INTEGRATION` | `CA-19` PASS / V5 `32585583815`; separate `CA-20` decision required |
 
-No C Junction row is present because no C route has yet produced two reconverging outputs or a final same-carrier package.
+`C-J-001` integrates one actual completed selected field; it is not a two-route
+reconvergence Junction, because retained Route Q remains a probe.
 
 ## 3. Provenance rule
 

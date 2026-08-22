@@ -39,12 +39,13 @@ PDSA-C-003             CLOSED — V5 32565335033 PASS / both routes verified
 PDSA-C-004             CLOSED — selected pair ring core V5 32574270735 PASS
 PDSA-C-005             CLOSED — witness field + inherited-axiom V5 32574920935 PASS
 PDSA-C-006             CLOSED — quadratic comparison V5 32575465002 PASS
-PDSA-C-007             ACTIVE — final integration / Claim transparency PLAN frozen
+PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
+PDSA-C-008             ACTIVE — separate final CA-20 acceptance PLAN FROZEN
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
 C Brick / Block         C-BLOCK-001 — verified witness field / NOT ACCEPTED
-C Junction              NONE
+C Junction              C-J-001 PASS / final integration / V5 32585583815
 accepted C export       NONE
 ```
 

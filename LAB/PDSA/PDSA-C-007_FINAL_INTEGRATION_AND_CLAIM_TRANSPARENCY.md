@@ -1,7 +1,7 @@
 # PDSA-C-007 — Final C Integration and Claim-Level Transparency Gate
 
 **Cycle ID:** `PDSA-C-007`  
-**Status:** ACTIVE — PLAN FROZEN / DO IN PROGRESS  
+**Status:** CLOSED — C-J-001 PASS / CLAIM TRANSPARENCY PASS  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-006 — CLOSED / representation-neutral quadratic comparison PASS`  
 **Acceptance targets:** `CA-17`, `CA-18`, `CA-19`  
@@ -110,14 +110,39 @@ CA-20 acceptance cycle.
    false positive, not a mathematical or logical-commitment failure.
 7. Rephrased that comment as `logical commitment`; no executable declaration,
    proof term, manifest, selected route, or frozen PLAN was changed.
-8. Fresh exact workflow verification and audit residual inspection remain pending.
+8. Exact PR-head V5 run `32585583815` / job `97061334663` / source
+   `9a6f9e34639202c2a04d2a629e2b994f5d1562b8` PASSED all gates.
+9. Preserved downloadable formal artifact `9478954700`: closure, boundary
+   classification, and explicit nine-Claim producer reports.
 
-# STUDY — NOT STARTED
+# STUDY — COMPLETE
 
-# ACT — NOT STARTED
+- `CStageIntegrationCertificate` type-checks over the actual selected carrier;
+  its computational comparison content correctly remains a `def`.
+- Formal closure: `783` internal declarations, `76` external boundary leaves,
+  `9,629` dependency edges, zero unresolved declarations, zero internal axioms,
+  and zero unmapped source ranges after `73` generated-source inferences.
+- Boundary classification: `CLASSIFICATION_PASS / 0 residuals`.
+- Producer comparison: `9` registered Claims, `19` exact producers, `783/783`
+  owned declarations, `10` direct dependencies, zero undeclared dependencies,
+  zero ownership gaps, and explicit stage counts `C=161`, `R=295`, `Q=136`,
+  `Z=113`, `N-Arithmetic=59`, `N-Core=19`.
+- Accepted R and final C certificates have exactly `[propext, Classical.choice,
+  Quot.sound]`; no new logical axiom is introduced by C.
+- First run `32585516075` remains preserved as a comment-text false positive;
+  the successful corrected source is explicitly distinct.
+- Only one complete C field exists. Route Q remains an independently verified
+  probe, so conditional CA-14 is not triggered.
+
+# ACT — COMPLETE
+
+Close `PDSA-C-007` and mark `C-J-001 PASS`. Make CA-20 eligible but do not
+accept it in this cycle. Open the sole new active cycle
+`PDSA-C-008_FINAL_COMPLEX_ACCEPTANCE.md` with a separately frozen acceptance
+PLAN. No merge into `main` is authorized.
 
 ```text
-C-J-001              NOT PRODUCED
-CA-20 acceptance     NOT ELIGIBLE
+C-J-001              PASS / V5 32585583815 / ZERO FORMAL RESIDUALS
+CA-20 acceptance     ELIGIBLE / SEPARATE PDSA-C-008 REQUIRED
 main merge           NOT AUTHORIZED
 ```
