@@ -229,7 +229,7 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 
 No accepted R theorem was changed by the reverse audit.
 
-## Complex stage — STARTED / REPRESENTATION UNSELECTED
+## Complex stage — STARTED / C-ROUTE-P SELECTED
 
 The prior C hold was explicitly lifted by the user on 2026-08-21. Current C work begins at the acceptance layer:
 
@@ -250,14 +250,15 @@ acceptance discriminant CLOSED
    │      C-RL-001 / C-RL-002 verified supporting theorems
    │      C-RQ-001 CLOSED / PASS
    └──► PDSA-C-003 CLOSED — V5 32565335033 PASS
-          C-DP-001 OPEN — DECISION-READY
-          ├──► C-ROUTE-P V5 PASS / RECOMMENDED
-          ├──► C-ROUTE-Q V5 PASS / RETAINED
+          C-DP-001 RESOLVED — USER-RATIFIED
+          ├──SELECTS──► C-ROUTE-P V5 PASS / SELECTED
+          ├──────────► C-ROUTE-Q V5 PASS / RETAINED
           └──► C-ROUTE-A only if genuinely independent
 
 run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
-C-DP-001 = OPEN / user ratification pending
-SELECTS = NONE
+C-DP-001 = RESOLVED / user ratification 2026-08-22
+SELECTS = C-ROUTE-P
+PDSA-C-004 = ACTIVE / selected carrier and ring-core PLAN frozen
 ```
 
 The accepted semantic target is:
@@ -338,8 +339,8 @@ BOMA Q                  ACCEPTED
 BOMA R                  ACCEPTED
 RE-R-001                CLOSED / COMPLETE
 BOMA C                  STARTED — ACCEPTANCE SPEC ACTIVE
-C-DP-001                OPEN — NO ROUTE SELECTED
+C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
 C accepted export       NONE
 ```
 
-The current graph therefore extends into C only through acceptance, dependency, learning, and Decision layers. It does not draw a representation-selection arrow that has not been earned by evidence.
+The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/Block remains under construction; the edge expresses a methodological choice, not mathematical necessity.
