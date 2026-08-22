@@ -273,8 +273,8 @@ R's actual theorem closure additionally exposes localized logical leaves (`Class
 ```mermaid
 flowchart TD
   RINT[R accepted field/order interface]
-  CRL1[C-RL-001\nsquare nonnegative\nSUPPORTING LEMMA\nsource proof staged]
-  CRL2[C-RL-002\n-1 not a real square\nSUPPORTING LEMMA\nsource proof staged]
+  CRL1[C-RL-001\nsquare nonnegative\nSUPPORTING LEMMA\nV5 PASS]
+  CRL2[C-RL-002\n-1 not a real square\nSUPPORTING LEMMA\nV5 PASS]
 
   CC[C-CL-CARRIER-001\nUNPRODUCED]
   CE[C-CL-REMBED-001\nUNPRODUCED]
@@ -314,7 +314,7 @@ No algebraic-closure Claim is present because `BOMA-C-ACCEPT-001` explicitly def
 | Z | 11 | 11 | 0 |
 | Q | 10 | 10 | 0 |
 | R | 12 | 12 | 0 |
-| C | 0 accepted; 9 provisional targets | 0 accepted | formal boundary probe staged; no C V5 certification yet |
+| C | 0 accepted; 9 provisional targets | 0 accepted | route-neutral supporting boundary V5 32564789630 PASS; no accepted C Claim |
 
 The exact declaration-level dependency graph for accepted stages remains in the corresponding `*_FORMAL_DEPENDENCY_CLOSURE_PROTOTYPE_LATEST.json` evidence files.
 
@@ -323,8 +323,8 @@ The exact declaration-level dependency graph for accepted stages remains in the 
 ```text
 C provisional Claim register     OPEN
 C accepted Claims                NONE
-C-RL-001 / C-RL-002 source proof PRESENT
-C-RQ-001 formal V5 outcome       PENDING CERTIFIED EVIDENCE
+C-RL-001 / C-RL-002 source proof V5 VERIFIED — supporting only
+C-RQ-001 formal V5 outcome       32564789630 PASS / CLOSED
 C-DP-001                         OPEN
 C accepted export                NONE
 ```

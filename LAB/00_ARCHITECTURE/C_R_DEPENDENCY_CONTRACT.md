@@ -1,12 +1,13 @@
 # C ← R DEPENDENCY CONTRACT — Accepted Interface Consumption Before Representation
 
 **Document ID:** `BOMA-C-R-DEP-001`  
-**Status:** **ACTIVE — EX-ANTE CONTRACT + FIRST FORMAL BOUNDARY PROBE EXECUTED / V5 PENDING**  
+**Status:** **ACTIVE — FIRST FORMAL BOUNDARY QUESTION CLOSED / V5 32564789630 PASS**  
 **Date:** 2026-08-21  
 **C specification:** `BOMA-C-ACCEPT-001`  
 **Upstream accepted export:** `R-BLOCK-001`  
 **Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
-**Current boundary experiment:** `PDSA-C-002`
+**Verified boundary experiment:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
+**Next route experiment:** `PDSA-C-003 — ACTIVE / frozen common rubric`
 
 ## 1. Purpose
 
@@ -121,7 +122,7 @@ Current classification:
 
 ```text
 SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
-V5 CERTIFICATION PENDING RETRIEVABLE EVIDENCE
+V5 CERTIFICATION PASS — RUN 32564789630 / SOURCE a6c894e62c48919712341cea1c0ea588590f9e5f
 ```
 
 No Dedekind-specific representation theorem occurs in the abstract proof body.
@@ -149,7 +150,7 @@ Current classification:
 
 ```text
 SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
-V5 CERTIFICATION PENDING RETRIEVABLE EVIDENCE
+V5 CERTIFICATION PASS — RUN 32564789630 / SOURCE a6c894e62c48919712341cea1c0ea588590f9e5f
 ```
 
 This result is expected to support:
@@ -180,7 +181,7 @@ This is likely useful to the ordered-pair/rank-two inverse route, but it is not 
 
 ---
 
-# 5. Open dependency questions
+# 5. Dependency questions and closure state
 
 ## C-RQ-001 — Formal sufficiency of accepted R interface
 
@@ -189,9 +190,9 @@ This is likely useful to the ordered-pair/rank-two inverse route, but it is not 
 **Current status:**
 
 ```text
-OPEN — SOURCE-LEVEL SUFFICIENCY SUPPORTED
-FORMAL PAYLOAD STAGED
-V5 OUTCOME NOT YET CERTIFIED
+CLOSED / PASS — ACCEPTED-R INTERFACE SUFFICIENT FOR C-RL-001/002
+FORMAL PAYLOAD VERIFIED AT a6c894e62c48919712341cea1c0ea588590f9e5f
+V5 RUN 32564789630 COMPLETED / SUCCESS
 ```
 
 Current experiment:
@@ -347,7 +348,7 @@ R-CL-INTEGRATION-001
         ↓
 route-neutral R consequences
   square ≥ 0       [source-level proof staged]
-  -1 not a square  [source-level proof staged]
+  -1 not a square  [V5 32564789630 PASS]
         ↓
 C quadratic-extension construction routes
 ```
@@ -361,7 +362,7 @@ R-CL-ARCH-001
 Dedekind representation internals
 ```
 
-`PDSA-C-002` supports this separation at source/interface level but does not yet upgrade it to V5-certified theorem evidence.
+`PDSA-C-002` verifies this separation at source/interface level through exact V5 run `32564789630` on commit `a6c894e62c48919712341cea1c0ea588590f9e5f`. The result remains supporting-theorem evidence; it is not an accepted C Claim or an extracted theorem-level dependency-closure certificate.
 
 ---
 

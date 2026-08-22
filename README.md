@@ -34,7 +34,9 @@ Current C boundary:
 BOMA-C-ACCEPT-001      ACTIVE — representation-neutral acceptance contract
 BOMA-C-R-DEP-001       ACTIVE — accepted-R dependency boundary
 PDSA-C-001             CLOSED — ex-ante acceptance discriminant
-PDSA-C-002             ACTIVE — R-interface sufficiency probe; V5 not yet certified
+PDSA-C-002             CLOSED — R-interface sufficiency; V5 32564789630 PASS
+PDSA-C-003             ACTIVE — frozen comparable-route probe PLAN
+C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               OPEN — NO ROUTE SELECTED
 C carrier              NONE
 C Brick / Block         NONE
@@ -100,6 +102,8 @@ LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
+LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
 ## Do not linearize BOMA
@@ -275,7 +279,9 @@ C-DP-001 OPEN
 SELECTS = NONE
 ```
 
-`PDSA-C-002` then began the first formal boundary test before any carrier construction. Its staged Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. A read-only V5 workflow is present, but no V5 PASS is claimed until exact retrievable run evidence exists.
+`PDSA-C-002` closed the first formal boundary test before any carrier construction. Its Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. Read-only V5 run `32564789630` verified exact source commit `a6c894e62c48919712341cea1c0ea588590f9e5f` under Lean `4.32.1`. These are supporting theorems only; they are not accepted C Claims.
+
+`PDSA-C-003` is the only active frontier. Its PLAN freezes a common rubric for independently assembled pair and quadratic-expression-quotient probes before any representation selection.
 
 This is supporting C-stage infrastructure, not a C Brick by default and not a representation decision.
 

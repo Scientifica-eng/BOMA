@@ -1,8 +1,11 @@
 # PDSA-C-002 — Accepted-R Interface Sufficiency Probe for the First C Boundary Lemmas
 
 **CycleID:** `PDSA-C-002`  
-**Status:** **ACTIVE — FORMAL PAYLOAD STAGED / V5 OUTCOME NOT YET CERTIFIED**  
+**Status:** **CLOSED — V5 PASS / ACCEPTED-R INTERFACE SUFFICIENCY CERTIFIED**  
 **Date:** 2026-08-21  
+**Closure date:** 2026-08-22  
+**Verified run:** `32564789630`  
+**Verified source commit:** `a6c894e62c48919712341cea1c0ea588590f9e5f`  
 **Branch:** `feature/c-stage-acceptance-001`  
 **Parent:** `PDSA-C-001`  
 **Dependency question:** `C-RQ-001`  
@@ -202,7 +205,7 @@ A draft pull request is only an evidence/review surface. It does not merge, appr
 
 ---
 
-# STUDY — CURRENT
+# STUDY — CLOSED
 
 ## S1 — Mathematical dependency result
 
@@ -235,7 +238,7 @@ source-level dependency inspection
 V5 certification
 ```
 
-The theorem remains formally uncertified until a retrievable workflow result proves that the assembled source elaborates under the pinned toolchain.
+This distinction controlled the intermediate state: the source was not promoted until the exact completed successful workflow run `32564789630` checked source commit `a6c894e62c48919712341cea1c0ea588590f9e5f` under Lean `4.32.1`. Formal assembly elaboration is now certified; source-level dependency observations remain observations unless independently machine-extracted.
 
 ## S2 — Logical commitment result
 
@@ -275,21 +278,27 @@ R completeness/density/Archimedean properties  NO USE
 
 This distinction is the main scientific purpose of the probe.
 
-## S4 — Verification-state limitation
+## S4 — Exact V5 outcome and historical visibility limitation
 
-The available GitHub connector exposes no list endpoint for push-triggered runs of this feature-branch workflow. The read-only pull-request trigger and explicit source-provenance guard are staged as an operational recovery path; certification still requires an actual retrievable completed run and exact source SHA.
-
-Until that evidence exists:
+The original connector limitation was operational: branch-push runs could not be enumerated. A read-only draft pull request provided a retrievable pull-request-triggered run without modifying `main`.
 
 ```text
-V5 PASS = NOT CLAIMED
-V5 FAIL = NOT CLAIMED
-workflow gate = PRESENT
-formal payload = PRESENT
-verification outcome = PENDING RETRIEVABLE EVIDENCE
+workflow     BOMA C Accepted-R Interface Probe 001 — V5
+run          32564789630
+job          97011737741
+event        pull_request
+PR           #5 — DRAFT / NOT MERGED
+source SHA   a6c894e62c48919712341cea1c0ea588590f9e5f
+source blob  0317956f52aa86078948722ccc923bd2bdeb8fa7
+toolchain    leanprover/lean4:v4.32.1
+checkout     exact head SHA — provenance step PASS
+R manifest   R_INTEGRATION_002_INPUTS.txt — validated
+C manifest   C_R_INTERFACE_PROBE_001_INPUTS.txt — validated
+Lean         lake env lean /tmp/CRInterfaceNoSquareProbe001.lean
+outcome      COMPLETED / SUCCESS
 ```
 
-This limitation is operational evidence state, not a reason to downgrade the mathematical dependency observation or to fabricate a PASS.
+All verification job steps completed successfully. The assembled accepted-R lineage emits historical Lean lint warnings; no elaboration error occurred. This run certifies all 13 declarations in the staged C boundary source at the exact stated commit. It does not accept C, select a representation, or claim a theorem-level dependency extractor result.
 
 ---
 
@@ -330,15 +339,15 @@ Dedekind completeness used by abstract proof    NO
 R density/Archimedean used by abstract proof    NO
 real inverse selector introduced                NO
 new explicit C Classical/Choice call            NO
-read-only V5 gate staged                        YES
-certified V5 outcome available                  NOT YET
+read-only V5 gate staged                        YES — contents: read
+certified V5 outcome available                  YES — run 32564789630 PASS
 ```
 
 ---
 
 # HiddenAssumptions / Risks
 
-1. The Lean source has been inspected for dependency discipline but is not yet certified by a retrievable V5 run.
+1. The exact Lean source is V5-certified at commit `a6c894e62c48919712341cea1c0ea588590f9e5f`; any changed source or inherited verification assembly requires fresh evidence.
 2. The current accepted total-order Claim has localized classical producer provenance; downstream use of that Claim must retain that logical ancestry even though the C proof source adds no classical call.
 3. `C-RL-003` (sum of squares zero only trivially) has not yet been formalized. It is likely useful to the coordinate route but should not be promoted as a universal C Claim unless route comparison shows that status is warranted.
 4. The accepted R inverse-witness interface is not needed by `C-RL-001/002`, but a future proof that a chosen C carrier is a field probably will consume inverse strength. That later use must be measured independently.
@@ -353,23 +362,25 @@ certified V5 outcome available                  NOT YET
 3. C does not currently need R completeness to establish the first quadratic-extension separation fact.
 4. The most valuable first formal C experiment was indeed a boundary experiment rather than an ordered-pair implementation.
 5. Formal verification status and mathematical dependency diagnosis must remain separate states.
+6. A read-only draft pull request can recover exact source/run provenance when a connector cannot enumerate feature-branch push runs; this does not authorize merge or promote a mathematical Claim.
 
 ---
 
-# ACT — CURRENT
+# ACT — CLOSED
 
-## A1 — Retain `C-RQ-001` as verification-pending, not closed
+## A1 — Close `C-RQ-001` at its declared boundary
 
-Current classification:
+Final classification:
 
 ```text
 C-RQ-001
-  mathematical/source-level diagnosis: SUPPORTS SUFFICIENCY
-  formal V5 certification: PENDING RETRIEVABLE EVIDENCE
-  final status: OPEN
+  mathematical/source-level diagnosis: ACCEPTED-R INTERFACE SUFFICIENT
+  formal V5 certification: RUN 32564789630 PASS
+  verified source commit: a6c894e62c48919712341cea1c0ea588590f9e5f
+  final status: CLOSED / PASS
 ```
 
-Do not mark the question `PASS` until an exact workflow run / verified source state can be cited.
+The result is limited to `C-RL-001` and `C-RL-002`. It does not assert that every future C inverse, representation, or comparison theorem has the same dependency profile.
 
 ## A2 — Preserve the abstract theorem as reusable downstream support
 
@@ -386,9 +397,9 @@ SELECTS = NONE
 
 The boundary result supplies evidence to all candidate routes equally. It is not evidence in favor of the pair carrier over the polynomial route.
 
-## A4 — Next formal work after V5 evidence is available
+## A4 — Open the next frozen route-comparison cycle
 
-After `C-RQ-001` receives formal PASS evidence, begin **comparable, noncanonical probes** of at least:
+`C-RQ-001` has exact PASS evidence. The next and only active mathematical frontier is `PDSA-C-003`, which freezes a common comparison rubric before implementing **comparable, noncanonical probes** of at least:
 
 ```text
 C-ROUTE-P
@@ -431,7 +442,13 @@ source-level dependency diagnosis supports accepted-R sufficiency
    ↓
 read-only V5 gate staged
    ↓
-formal outcome intentionally left OPEN until exact evidence is retrievable
+formal outcome intentionally left OPEN while evidence was unavailable
+   ↓
+read-only PR evidence surface + exact checkout provenance
+   ↓
+run 32564789630 SUCCESS at a6c894e62c48919712341cea1c0ea588590f9e5f
+   ↓
+C-RQ-001 CLOSED / PASS; representation remains unselected
 ```
 
 This learning sequence must remain visible after eventual V5 PASS or any later proof simplification.

@@ -230,7 +230,7 @@ flowchart TD
     CA[BOMA-C-ACCEPT-001\nrepresentation-neutral acceptance]
     CRD[BOMA-C-R-DEP-001\naccepted-R dependency boundary]
     CP1[PDSA-C-001\nH1/H2 rejected; H3 adopted; H4 deferred]
-    CP2[PDSA-C-002\nabstract R-interface probe\nformal payload staged / V5 pending]
+    CP2[PDSA-C-002\nabstract R-interface probe\nV5 32564789630 PASS]
     CDP{C-DP-001\nOPEN — SELECTS NONE}
     RP[C-ROUTE-P\nrank-two / ordered-pair candidate]
     RQ[C-ROUTE-Q\npolynomial-adjunction / quotient candidate]
@@ -278,7 +278,8 @@ Current distinctions:
 C acceptance specification   ACTIVE
 C provisional Claims         OPEN
 C R-boundary formal probe    PRESENT
-C V5 boundary result         NOT YET CERTIFIED
+C V5 boundary result         32564789630 PASS — supporting theorems only
+C active research cycle       PDSA-C-003 — comparable-route PLAN frozen
 C representation             UNSELECTED
 C canonical Block            NONE
 C Junction                   NONE

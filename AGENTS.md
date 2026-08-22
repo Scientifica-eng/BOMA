@@ -46,6 +46,8 @@ LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
+LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
 ## Current canonical state
@@ -68,7 +70,8 @@ Current C state:
 BOMA-C-ACCEPT-001  ACTIVE
 BOMA-C-R-DEP-001   ACTIVE
 PDSA-C-001         CLOSED
-PDSA-C-002         ACTIVE — V5 outcome pending certified evidence
+PDSA-C-002         CLOSED — V5 32564789630 PASS / C-RQ-001 CLOSED
+PDSA-C-003         ACTIVE — comparable-route PLAN frozen / DO not started
 C-DP-001           OPEN — NO ROUTE SELECTED
 C carrier           NONE
 C Brick / Block     NONE
@@ -152,7 +155,7 @@ representation-specific C dependency
 new C-stage supporting lemma/infrastructure
 ```
 
-The current `PDSA-C-002` probe is written first against an abstract `RStageIntegrationCertificate`, then instantiated on the accepted certificate. Do not relabel its staged source as V5 PASS until exact run/source evidence is available.
+The closed `PDSA-C-002` probe is written first against an abstract `RStageIntegrationCertificate`, then instantiated on the accepted certificate. Its exact V5 PASS evidence is run `32564789630` at source commit `a6c894e62c48919712341cea1c0ea588590f9e5f`. Do not transfer that evidence to a changed source, changed inherited manifest, a different route probe, or an acceptance-level C Claim.
 
 ## Status authority
 

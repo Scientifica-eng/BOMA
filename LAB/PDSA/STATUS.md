@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-002 — ACTIVE / accepted-R interface probe staged / V5 evidence pending`
+**Current C cycle:** `PDSA-C-003 — ACTIVE / frozen comparable quadratic-route probe plan`
 
 ## Current canonical frontier
 
@@ -38,13 +38,14 @@ BOMA-C-ACCEPT-001   ACTIVE — ex-ante representation-neutral contract
 C Claim register    OPEN — provisional / no accepted C Claim yet
 BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
-PDSA-C-002          ACTIVE — accepted-R interface probe staged / V5 pending
-C-RQ-001            OPEN — formal certification pending retrievable evidence
+PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
+PDSA-C-003          ACTIVE — comparable route-probe PLAN frozen / DO not started
+C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            OPEN — no route selected
 C Bricks / Blocks   NONE YET
 C Junctions         NONE YET
-C Lean payloads     STAGED — route-neutral accepted-R boundary probe only
-C V5 evidence       PENDING — no exact retrievable run/source evidence yet
+C Lean payloads     VERIFIED — route-neutral accepted-R boundary source only
+C V5 evidence       32564789630 PASS — supporting theorems; no accepted C Claim
 accepted C export   NONE
 ```
 
@@ -529,7 +530,7 @@ C-CL-COMPARE-001
 C-CL-INTEGRATION-001
 ```
 
-All acceptance-level C Claims remain unproduced/unverified. The separate route-neutral `PDSA-C-002` supporting-theorem payload exists, but no exact C V5 result is claimed until retrievable evidence is available.
+All acceptance-level C Claims remain unproduced/unverified. The separate route-neutral `PDSA-C-002` supporting-theorem payload is verified by exact run `32564789630`; no acceptance-level C Claim is promoted by that supporting-theorem result.
 
 Initial R dependency conclusion:
 
@@ -551,11 +552,17 @@ from the accepted R Claim surface without Dedekind internals?
 
 PDSA-C-002
   source                    CRInterfaceNoSquareProbe001.lean
-  abstract interface proof  STAGED
-  accepted-R instantiation  STAGED
-  read-only V5 workflow     PRESENT
-  exact verified outcome    PENDING RETRIEVABLE EVIDENCE
+  abstract interface proof  VERIFIED
+  accepted-R instantiation  VERIFIED
+  read-only V5 workflow     PASS — run 32564789630
+  verified source commit    a6c894e62c48919712341cea1c0ea588590f9e5f
   representation selection  NONE
+
+PDSA-C-003
+  common probe rubric        PLAN FROZEN
+  C-ROUTE-P                  DO NOT STARTED
+  C-ROUTE-Q                  DO NOT STARTED
+  representation selection   NONE
 ```
 
 The representation Decision remains blocked from resolution until comparable route evidence exists.
@@ -598,5 +605,7 @@ LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
+LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```

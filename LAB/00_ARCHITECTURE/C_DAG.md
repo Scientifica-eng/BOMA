@@ -33,10 +33,11 @@ accepted-R dependency boundary
    ↓
 PDSA-C-001
 ex-ante acceptance discriminant — CLOSED
-   ├──► PDSA-C-002 — ACTIVE accepted-R interface sufficiency probe
-   │      C-RL-001 / C-RL-002 supporting Lean source STAGED
-   │      exact V5 result PENDING RETRIEVABLE EVIDENCE
-   └──► C-DP-001 — OPEN
+   ├──► PDSA-C-002 — CLOSED accepted-R interface probe / V5 32564789630 PASS
+   │      C-RL-001 / C-RL-002 verified supporting theorems
+   │      C-RQ-001 CLOSED / PASS
+   └──► PDSA-C-003 — ACTIVE frozen route-comparison PLAN
+          C-DP-001 — OPEN
           ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
           ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
           └──► C-ROUTE-A — conditional genuinely independent alternative
@@ -282,6 +283,10 @@ abstract accepted-R interface and concrete accepted producer separated
 C-RL-001 / C-RL-002 supporting source staged
   ↓
 formal certification deliberately held pending exact retrievable evidence
+  ↓
+read-only PR workflow run 32564789630 PASS on exact source a6c894e62c48919712341cea1c0ea588590f9e5f
+  ↓
+C-RQ-001 CLOSED / PASS; one comparable-route PLAN frozen
 ```
 
 Authoritative PDSA records:
@@ -289,6 +294,8 @@ Authoritative PDSA records:
 `LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md`.
 
 `LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md`.
+
+`LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md`.
 
 This sequence must remain visible even after a later route is selected.
 
@@ -300,13 +307,14 @@ This sequence must remain visible even after a later route is selected.
 C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
 C Claim register      OPEN / EX-ANTE
-C R dependency        DECLARED / C-RQ-001 probe STAGED, V5 pending
+C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
 C-DP-001              OPEN
 selected route        NONE
 constructed C Block   NONE
 C Junction            NONE
-C Lean payload        STAGED — route-neutral boundary supporting source only
-C V5                  PENDING — exact evidence not yet retrievable
+C Lean payload        VERIFIED — route-neutral boundary supporting source only
+C V5                  32564789630 PASS — supporting source only
+C active cycle        PDSA-C-003 — PLAN FROZEN / DO NOT STARTED
 C acceptance          NOT YET ELIGIBLE
 ```
 

@@ -291,10 +291,10 @@ C construction Blocks      NONE
 C construction Bricks      NONE
 C Junctions                NONE
 C accepted-Claim declarations NONE
-C supporting Lean declarations STAGED — PDSA-C-002 / not accepted Claims
-C V5 evidence              PENDING — exact source/run not yet certified
+C supporting Lean declarations VERIFIED — PDSA-C-002 / not accepted Claims
+C V5 evidence              32564789630 PASS — supporting theorems only
 accepted C Claims          NONE
 accepted C export          NONE
 ```
 
-The absence of accepted-Claim producers is intentional: transparency began at the **acceptance-Claim layer before representation selection**. The existing `PDSA-C-002` Lean declarations are route-neutral supporting lemmas under an open verification question; they do not select a representation, create a canonical construction unit, or certify an acceptance Claim.
+The absence of accepted-Claim producers is intentional: transparency began at the **acceptance-Claim layer before representation selection**. The existing `PDSA-C-002` Lean declarations are route-neutral supporting lemmas verified by exact run `32564789630`; they do not select a representation, create a canonical construction unit, or certify an acceptance Claim.
