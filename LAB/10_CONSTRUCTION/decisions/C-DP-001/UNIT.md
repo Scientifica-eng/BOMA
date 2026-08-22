@@ -1,9 +1,10 @@
 # C-DP-001 — Stage-One Complex Construction Realization Route
 
-- **Operational Status:** **OPEN — DECISION-READY / ROUTE P RECOMMENDED / USER RATIFICATION PENDING**
-- **Epistemic Status:** **DECLARED CHOICE PROBLEM / PENDING EVIDENCE**
+- **Operational Status:** **RESOLVED / SELECTED — C-ROUTE-P**
+- **Epistemic Status:** **USER-RATIFIED METHODOLOGICAL / FORMALIZATION CHOICE**
 - **Opened:** 2026-08-21
-- **PDSA:** `PDSA-C-001` opens the Decision; `PDSA-C-003` stages comparable independent noncanonical probes
+- **User ratification:** 2026-08-22 — explicit instruction: `أعتمد C-ROUTE-P`
+- **PDSA:** `PDSA-C-001` opens the Decision; `PDSA-C-003` verifies both independent probes; `PDSA-C-004` begins selected Route P construction
 - **Input:** `R-BLOCK-001` through `BOMA-C-R-DEP-001`
 - **Governing acceptance contract:** `BOMA-C-ACCEPT-001`
 - **Downstream accepted carrier:** **NONE**
@@ -72,7 +73,7 @@ risk of conflating convenient coordinates with mathematical necessity
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NONCANONICAL PROBE V5 PASS / NOT SELECTED
+SELECTED STAGE-ONE PRODUCER / PRIOR NONCANONICAL PROBE V5 PASS
 ```
 
 ## C-ROUTE-Q — Polynomial adjunction / quotient-style realization
@@ -251,17 +252,17 @@ Reason              equal verified probe adequacy with lower
                     representation/formalization/proof cost
 ```
 
-This is a methodological Stage-One recommendation, not a theorem that complex numbers are necessarily ordered pairs or that Route Q is mathematically inferior.
+The user explicitly ratified this recommendation on 2026-08-22. Selection is a methodological/formalization choice, not a theorem that complex numbers are necessarily ordered pairs or that Route Q is mathematically inferior.
 
 # 9. Current decision state
 
 ```text
-C-DP-001           OPEN — DECISION-READY / USER RATIFICATION PENDING
-C-ROUTE-P          VERIFIED PROBE / RECOMMENDED / NOT SELECTED
+C-DP-001           RESOLVED / USER-RATIFIED
+C-ROUTE-P          VERIFIED PROBE / SELECTED STAGE-ONE PRODUCER
 C-ROUTE-Q          VERIFIED PROBE / RETAINED / NOT SELECTED
-C-ROUTE-A          CONDITIONAL CANDIDATE SLOT
-SELECTS             NONE
-canonical C carrier NONE
+C-ROUTE-A          CONDITIONAL FUTURE CANDIDATE SLOT
+SELECTS             C-ROUTE-P
+canonical C carrier PENDING PDSA-C-004 CONSTRUCTION
 ```
 
 ## Reopening / sensitivity
@@ -277,4 +278,4 @@ a claimed route reconvergence fails;
 a downstream theorem requires representation details the common interface failed to expose.
 ```
 
-Until selection, no C document may draw an arrow from this Decision Point to one option as though it were a derived theorem.
+The recorded `SELECTS → C-ROUTE-P` edge is an explicit user-ratified methodological choice, never a derived mathematical-necessity edge. Route Q and its V5 evidence remain retained.
