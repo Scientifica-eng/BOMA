@@ -43,7 +43,7 @@ PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
 PDSA-C-008             CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009             CLOSED — RE-C-001 complete / bundled-interface costs classified
 PDSA-STAGE1-001        CLOSED — global RE-STAGE1-001 reverse audit COMPLETE
-STAGE-TWO-LAB          READY — 13 scoped candidates / NO ACTIVE EXPERIMENT
+STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 selected / one frozen PDSA experiment
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
@@ -373,5 +373,6 @@ Do not merge C work to `main` without an explicit user order.
 The accepted reference chain through `C-BLOCK-002` is complete and both the
 local C and whole-chain reverse audits are closed. Consult
 `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md` for 13 evidence-derived
-single-change candidates. No candidate is selected or executing; preserve the
-accepted baseline and freeze a new PDSA Plan before starting one.
+single-change candidates. The owner selected only `ST2-EXP-001` on 2026-08-22;
+its immutable Plan is `LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md`.
+Preserve the accepted baseline and every unselected alternative.
