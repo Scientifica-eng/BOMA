@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-003 — ACTIVE / independent route probes staged / exact V5 pending`
+**Current C cycle:** `PDSA-C-004 — ACTIVE / selected pair carrier and ring-core PLAN frozen`
 
 ## Current canonical frontier
 
@@ -26,7 +26,7 @@ R                   ACCEPTED
    ↓
 RE-R-001            CLOSED / COMPLETE
    ↓
-C                   STARTED — ACCEPTANCE SPEC ACTIVE / REPRESENTATION UNSELECTED
+C                   STARTED — C-ROUTE-P SELECTED / NOT ACCEPTED
 ```
 
 The previous explicit user hold on C was lifted by a new explicit user order on **2026-08-21**. That earlier hold remains historical provenance in pre-authorization records; it no longer controls the current frontier.
@@ -39,17 +39,18 @@ C Claim register    OPEN — provisional / no accepted C Claim yet
 BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
 PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
-PDSA-C-003          ACTIVE — independent pair/quotient probes staged / V5 pending
+PDSA-C-003          CLOSED — both route probes V5 32565335033 PASS
+PDSA-C-004          ACTIVE — selected pair carrier/ring-core PLAN frozen
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
-C-DP-001            OPEN — no route selected
+C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Bricks / Blocks   NONE YET
 C Junctions         NONE YET
-C Lean payloads     VERIFIED boundary support + two unverified noncanonical route probes
-C V5 evidence       32564789630 PASS — supporting theorems; no accepted C Claim
+C Lean payloads     VERIFIED boundary support + two independently verified route probes
+C V5 evidence       32564789630 boundary PASS; 32565335033 route probes PASS; no accepted C Claim
 accepted C export   NONE
 ```
 
-No representation choice is authorized by the mere opening of C. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.
+The user explicitly ratified `C-ROUTE-P` on 2026-08-22 after symmetric route evidence; `C-ROUTE-Q` remains retained. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.
 
 ---
 
@@ -504,7 +505,7 @@ BOMA-C-ACCEPT-001
    ↓
 BOMA-C-R-DEP-001
    ↓
-C-DP-001 OPEN
+C-DP-001 RESOLVED — C-ROUTE-P SELECTED
    ├── C-ROUTE-P ordered-pair / rank-two candidate
    ├── C-ROUTE-Q polynomial-adjunction / quotient candidate
    └── C-ROUTE-A only if genuinely independent
@@ -564,10 +565,10 @@ PDSA-C-003
   C-ROUTE-Q                  V5 PASS / RETAINED
   run                         32565335033
   verified source             3f670372a022d1eb95109d36cde255b3504dda12
-  representation selection   NONE — user ratification pending
+  representation selection   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 ```
 
-The representation Decision remains blocked from resolution until comparable route evidence exists.
+The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
 `RE-STAGE1-001` remains scheduled for after a future accepted C export and the required post-C reverse dependency/necessity audit.
 
@@ -608,6 +609,7 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
 LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
+LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```
