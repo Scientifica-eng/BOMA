@@ -135,6 +135,8 @@ def source_stage(source: str | None) -> str:
         return "Q"
     if "/RStage/" in source:
         return "R"
+    if "/CStage/" in source:
+        return "C"
     return "OTHER"
 
 

@@ -243,40 +243,27 @@ This does not make the Dedekind route, quotient identity, or localized classical
 
 ## 8. C provisional Claim frontier — NOT PART OF ACCEPTED INVENTORY
 
-C has now been explicitly authorized and its ex-ante acceptance contract is active, but no C mathematical Claim has yet been constructed, V5-verified, or accepted.
+`C-DP-001` is user-ratified as `C-ROUTE-P`; `C-ROUTE-Q` remains a retained
+verified probe. Eight families already have exact V5-verified producers; the
+ninth integration family is under final audit. No C Claim is accepted.
 
-Authoritative provisional register:
+Detailed register: `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
 
-`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`
+| Provisional Claim | Producer unit | Formal producer | Evidence |
+| --- | --- | --- | --- |
+| `C-CL-CARRIER-001` | `C-BLOCK-001` | `CBOMA / c_ext` | 32574270735 PASS |
+| `C-CL-REMBED-001` | `C-BLOCK-001` | `c_ofR_injective / preservation` | 32574270735 PASS |
+| `C-CL-FIELD-001` | `C-BLOCK-001` | `cPairFieldCertificateFromAcceptedR` | 32574920935 PASS |
+| `C-CL-I-001` | `C-BLOCK-001` | `cI / c_i_squared` | 32574270735 PASS |
+| `C-CL-GEN-001` | `C-BLOCK-001` | `c_generation` | 32574270735 PASS |
+| `C-CL-COORDUNIQ-001` | `C-BLOCK-001` | `c_coordinate_unique` | 32574270735 PASS |
+| `C-CL-NONREAL-001` | `C-BLOCK-001` | `c_i_not_real` | 32574270735 PASS |
+| `C-CL-COMPARE-001` | `C-COMPARE-BLOCK-001` | `selected graph / extractor-scoped isomorphism` | 32575465002 PASS |
+| `C-CL-INTEGRATION-001` | `C-J-001` | `cStageIntegrationCertificate` | V5 PENDING — NOT ACCEPTED |
 
-Current target Claim IDs:
-
-```text
-C-CL-CARRIER-001
-C-CL-REMBED-001
-C-CL-FIELD-001
-C-CL-I-001
-C-CL-GEN-001
-C-CL-COORDUNIQ-001
-C-CL-NONREAL-001
-C-CL-COMPARE-001
-C-CL-INTEGRATION-001
-```
-
-Their current state is:
-
-```text
-producer              TBD / none selected
-Lean declaration       none
-source file            none
-V5 evidence            none
-accepted status        NONE
-representation route   C-DP-001 OPEN
-```
-
-The provisional register exists precisely so later construction cannot invent Claim requirements after a favored carrier has already been built.
-
-No `C-CL-ACLOSURE-*` Claim is registered because algebraic closure is explicitly outside the Stage-One acceptance contract at present.
+Formal policy: `LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json`.
+`C_ACCEPTED_INPUTS.txt` is a PREACCEPTANCE assembly, not proof of acceptance.
+Algebraic closure remains outside the Stage-One contract.
 
 ## 9. Cross-stage dependency spine
 
@@ -316,7 +303,7 @@ N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certific
 Z             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 Q             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 R             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
-C             EX-ANTE CLAIM REGISTER OPEN — NO C FORMAL CLOSURE YET
+C             PREACCEPTANCE PRODUCERS MAPPED — FINAL AUDIT PENDING
 ```
 
 Each accepted stage has an independent stage-level machine audit. A downstream stage traversing upstream declarations never substitutes for the upstream stage's own certification.
@@ -331,7 +318,7 @@ N-Arithmetic  producer_union over independent routes, convergence, and canonical
 N-Core        producer_union over formal carrier/bridge/Route-B/standardness witnesses
 ```
 
-C has no root mode yet because no accepted producer surface exists.
+C uses a provisional `single_target` audit; this does not accept C.
 
 ## 11. Program continuation
 

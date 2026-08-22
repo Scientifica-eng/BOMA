@@ -106,41 +106,19 @@ R also uses broader Blocks plus one explicit logic Brick where independent commi
 
 Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, or individual law lemmas remain distinguishable as representation/operation/supporting interfaces; they are not renamed as Bricks merely for diagram symmetry.
 
-## 8. C — provisional Claim frontier, no Block mapping yet
+## 8. C — provisional selected-route producer mapping / NOT ACCEPTED
 
-C has been authorized and its ex-ante Claim register is open, but the current architecture deliberately has **no C Block/Brick producer mapping**.
+`C-DP-001` is user-ratified: `C-ROUTE-P` is the selected working producer;
+`C-ROUTE-Q` remains a retained independently verified probe.
 
-Current state:
+| Existing unit | Actual producer role | Provisional Claims |
+| --- | --- | --- |
+| `C-BLOCK-001` | selected carrier, embedding, ring, witness field | `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001`, `C-CL-NONREAL-001` |
+| `C-COMPARE-BLOCK-001` | universal relation and extractor-scoped isomorphism | `C-CL-COMPARE-001` |
+| `C-J-001` | same-carrier integration; exact V5 and audit pending | `C-CL-INTEGRATION-001` |
 
-```text
-BOMA-C-ACCEPT-001     ACTIVE
-C_CLAIM_REGISTER_001  ACTIVE / PROVISIONAL
-C-DP-001              OPEN
-selected route         NONE
-C Blocks               NONE
-C Bricks               NONE
-C Junctions            NONE
-```
-
-Candidate route labels `C-ROUTE-P`, `C-ROUTE-Q`, and conditional `C-ROUTE-A` are Decision/Learning identifiers only. They are not Blocks.
-
-Provisional target Claims:
-
-```text
-C-CL-CARRIER-001
-C-CL-REMBED-001
-C-CL-FIELD-001
-C-CL-I-001
-C-CL-GEN-001
-C-CL-COORDUNIQ-001
-C-CL-NONREAL-001
-C-CL-COMPARE-001
-C-CL-INTEGRATION-001
-```
-
-They remain intentionally **unmapped to producer units** until a route probe produces independently reviewable construction content. This is not an audit defect; it is the truthful pre-construction state.
-
-A C Brick will be introduced only if the relevant unit is independently replaceable/branchable/sensitive or carries a distinct commitment. A C Block will be introduced only when a coherent cluster actually exists. No `C-BR-*` or `C-BLOCK-*` identities are fabricated for symmetry with earlier stages.
+Mappings document actual producer units, never CA-20 acceptance. No C Brick
+or completed alternative field is fabricated for naming symmetry.
 
 ## 9. Mapping invariant
 
@@ -173,8 +151,8 @@ Missing links become audit defects **only after** an artifact claims a producer/
 ```text
 Accepted Block→Claim mappings   N-Core through R
 C provisional Claims            OPEN
-C Block→Claim mappings          NONE YET
-C representation               UNSELECTED
+C Block→Claim mappings          PRODUCERS MAPPED / NOT ACCEPTED
+C representation               C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
 C accepted export              NONE
 ```
 

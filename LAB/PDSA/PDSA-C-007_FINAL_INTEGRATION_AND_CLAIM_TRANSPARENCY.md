@@ -1,7 +1,7 @@
 # PDSA-C-007 — Final C Integration and Claim-Level Transparency Gate
 
 **Cycle ID:** `PDSA-C-007`  
-**Status:** ACTIVE — PLAN FROZEN / DO NOT STARTED  
+**Status:** ACTIVE — PLAN FROZEN / DO IN PROGRESS  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-006 — CLOSED / representation-neutral quadratic comparison PASS`  
 **Acceptance targets:** `CA-17`, `CA-18`, `CA-19`  
@@ -94,7 +94,16 @@ audits, all nine C Claim families have actual source/declaration mappings, the
 retained Route Q remains probe-only, and ACT opens a separately frozen final
 CA-20 acceptance cycle.
 
-# DO — NOT STARTED
+# DO — IN PROGRESS
+
+1. Produced the same-carrier data-valued C integration certificate.
+2. Flattened the full accepted-R plus exactly six selected-route sources.
+3. Synchronized project Claim/Block mappings with actual V5-verified producers.
+4. Produced provisional `C-J-001`, a nine-claim exact producer policy, and an
+   exact-head read-only V5 workflow with three theorem-level dependency gates.
+5. Fixed anticipated failure F3: `/CStage/` now classifies as `C` without
+   altering N-Core, N-Arithmetic, Z, Q, or R behavior.
+6. Exact workflow verification and residual inspection remain pending.
 
 # STUDY — NOT STARTED
 

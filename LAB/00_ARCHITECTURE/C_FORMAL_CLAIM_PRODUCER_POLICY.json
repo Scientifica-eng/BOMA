@@ -1,0 +1,92 @@
+{
+  "schema": "BOMA-C-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "ACTIVE-PREACCEPTANCE",
+  "date": "2026-08-22",
+  "stage": "C",
+  "claim_id_pattern": "C-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "C provisional Claim frontier",
+  "root_mode": "single_target",
+  "target": "BOMA.C.StageIntegration001.cStageIntegrationCertificate",
+  "integration_claim": "C-CL-INTEGRATION-001",
+  "rules": {
+    "registry_claim_set_must_match": true,
+    "all_producers_must_be_internal": true,
+    "all_producers_must_be_reachable_from_target": true,
+    "all_target_direct_internal_dependencies_must_be_declared": true,
+    "all_internal_declarations_must_have_producer_ancestry": true,
+    "integration_claim_transitive_ownership": false,
+    "multiple_claim_ownership_allowed": true
+  },
+  "integration_local_prefixes": [
+    "BOMA.C.StageIntegration001.CStageIntegrationCertificate",
+    "BOMA.C.StageIntegration001.cStageIntegrationCertificate"
+  ],
+  "claims": {
+    "C-CL-CARRIER-001": {
+      "role": "selected real-pair carrier and extensional identity",
+      "producers": [
+        "BOMA.C.RoutePairProbe001.PairCandidate",
+        "BOMA.C.PairCore001.CBOMA",
+        "BOMA.C.PairCore001.c_ext"
+      ]
+    },
+    "C-CL-REMBED-001": {
+      "role": "injective structure-preserving accepted-real embedding",
+      "producers": [
+        "BOMA.C.PairCore001.c_ofR_injective",
+        "BOMA.C.PairCore001.c_ofR_zero",
+        "BOMA.C.PairCore001.c_ofR_one",
+        "BOMA.C.PairCore001.c_ofR_neg",
+        "BOMA.C.PairCore001.c_ofR_add",
+        "BOMA.C.PairCore001.c_ofR_mul"
+      ]
+    },
+    "C-CL-FIELD-001": {
+      "role": "selected witness-based commutative field",
+      "producers": [
+        "BOMA.C.PairNormInverse001.cPairFieldCertificateFromAcceptedR"
+      ]
+    },
+    "C-CL-I-001": {
+      "role": "distinguished imaginary generator squares to minus one",
+      "producers": [
+        "BOMA.C.PairCore001.c_i_squared"
+      ]
+    },
+    "C-CL-GEN-001": {
+      "role": "real-plus-imaginary generation",
+      "producers": [
+        "BOMA.C.PairCore001.c_generation"
+      ]
+    },
+    "C-CL-COORDUNIQ-001": {
+      "role": "unique real and imaginary coefficients",
+      "producers": [
+        "BOMA.C.PairCore001.c_coordinate_unique"
+      ]
+    },
+    "C-CL-NONREAL-001": {
+      "role": "imaginary generator is not an embedded real",
+      "producers": [
+        "BOMA.C.PairCore001.c_i_not_real"
+      ]
+    },
+    "C-CL-COMPARE-001": {
+      "role": "quadratic graph and extractor-scoped constructive isomorphism",
+      "producers": [
+        "BOMA.C.QuadraticComparison001.selectedPresentation",
+        "BOMA.C.QuadraticComparison001.selectedQuadraticComparison",
+        "BOMA.C.QuadraticComparison001.selectedConstructiveQuadraticIsomorphism"
+      ]
+    },
+    "C-CL-INTEGRATION-001": {
+      "role": "same-carrier integration and its direct accepted-real input",
+      "producers": [
+        "BOMA.C.StageIntegration001.cStageIntegrationCertificate",
+        "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+      ],
+      "transitive_ownership": false
+    }
+  }
+}

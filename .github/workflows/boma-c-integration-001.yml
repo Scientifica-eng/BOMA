@@ -1,0 +1,145 @@
+name: BOMA C Same-Carrier Integration and Claim Transparency 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/**'
+      - 'LAB/20_FORMALIZATION/C_STAGE/**'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/**'
+      - '.github/workflows/boma-c-integration-001.yml'
+      - 'lean-toolchain'
+  push:
+    branches: ['feature/c-stage-*']
+    paths:
+      - 'LAB/payloads/lean/**'
+      - 'LAB/20_FORMALIZATION/C_STAGE/**'
+      - 'LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/**'
+      - '.github/workflows/boma-c-integration-001.yml'
+
+concurrency:
+  group: boma-c-integration-001-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify selected C integration and theorem-level claim ownership
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact selected source
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          printf 'Exact C source: %s / run: %s\n' "$actual_sha" "$GITHUB_RUN_ID"
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Validate selected assembly and frozen boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          test -s "$manifest"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$manifest"
+          selected=LAB/payloads/lean/CStage/CStageIntegration001.lean
+          test "$(cat LAB/20_FORMALIZATION/C_STAGE/C_STAGE_INTEGRATION_001_INPUTS.txt)" = "$selected"
+          test "$(grep -c '/CStage/' "$manifest")" -eq 6
+          if grep -En 'RouteQuadraticQuotient' "$manifest"; then exit 1; fi
+          forbidden='RouteQuadraticQuotient|LowerCut|CutEquiv|Classical\.|by_contra|by_cases|dedekindLUB|rationalDensity|archimedeanUpper|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "$selected"; then exit 1; fi
+          python3 -m py_compile LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py
+
+      - name: Verify same-carrier integration and inherited axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMACStageIntegration001.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          printf '\n#print axioms BOMA.R.StageIntegration002.rStageIntegrationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.PairNormInverse001.cPairFieldCertificateFromAcceptedR\n' >> "$target"
+          printf '#print axioms BOMA.C.StageIntegration001.cStageIntegrationCertificate\n' >> "$target"
+          lake env lean "$target"
+
+      - name: Extract actual integration declaration closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-c-formal-audit
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            --target BOMA.C.StageIntegration001.cStageIntegrationCertificate \
+            --json-out /tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLOSURE.json \
+            > /tmp/boma-c-formal-audit/closure.log
+          python3 -c 'import json; p=json.load(open("/tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLOSURE.json")); print(json.dumps({"status":p["status"],"counts":p["counts"]}))'
+
+      - name: Classify inherited boundary and reveal residuals
+        shell: bash
+        run: |
+          set -euo pipefail
+          report=/tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLASSIFICATION.json
+          if ! python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLOSURE.json \
+            --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            --json-out "$report" > /tmp/boma-c-formal-audit/classification.log; then
+            python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); print(json.dumps({"status":p.get("status"),"counts":p.get("counts"),"residuals":p.get("residuals",[])},indent=2))' "$report"
+            exit 1
+          fi
+          python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); print(json.dumps({"status":p["status"],"counts":p["counts"]}))' "$report"
+
+      - name: Compare nine C claims with reachable producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          report=/tmp/boma-c-formal-audit/C_FORMAL_CLAIM_PRODUCER_COMPARISON.json
+          if ! python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLOSURE.json \
+            --classification /tmp/boma-c-formal-audit/C_FORMAL_DEPENDENCY_CLASSIFICATION.json \
+            --policy LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out "$report" > /tmp/boma-c-formal-audit/producers.log; then
+            python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); print(json.dumps({"status":p.get("status"),"counts":p.get("counts"),"residuals":p.get("residuals",[])},indent=2))' "$report"
+            exit 1
+          fi
+          python3 -c 'import json,sys; p=json.load(open(sys.argv[1])); assert p["internal_by_source_stage"].get("C",0)>0; assert "OTHER" not in p["internal_by_source_stage"]; print(json.dumps({"status":p["status"],"counts":p["counts"],"by_stage":p["internal_by_source_stage"]}))' "$report"
+
+      - name: Preserve exact formal-audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boma-c-integration-formal-audit-${{ github.run_id }}
+          path: /tmp/boma-c-formal-audit/
+          if-no-files-found: warn
+          retention-days: 30

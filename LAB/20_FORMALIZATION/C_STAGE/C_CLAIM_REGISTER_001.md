@@ -214,18 +214,18 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-17`, `CA-18`, `CA-19`, prerequisite to `CA-20`
-- **Operational status:** `INTEGRATION-REQUIRED / NO JUNCTION EXISTS YET`
+- **Operational status:** `C-J-001 PRODUCED / FINAL V5 + FORMAL AUDITS PENDING / NOT ACCEPTED`
 - **Epistemic status:** `PENDING`
 - **Statement / scope:** all promoted C Claims coexist on one selected carrier/equality/operation/embedding/generator package and their declared dependency closure matches the verified formal closure at the governed audit granularity.
-- **Producer unit(s):** future C integration Junction + accepted aggregate Block; IDs are not fabricated before incoming producers exist.
+- **Producer unit(s):** `C-J-001` over actual `C-BLOCK-001` and `C-COMPARE-BLOCK-001`; accepted aggregate remains unauthorized.
 - **Consumes mathematical Claims:** all accepted C Claim families above.
 - **Logical commitments:** union of actually consumed declared commitments only; no ancestry-wide inflation.
 - **Representation commitments:** selected `C-DP-001` route and any later explicit Decisions.
 - **Formalization commitments:** selected identity/packaging and verification assembly.
 - **Supporting lemmas:** final integration certificate and transparency audit.
-- **Lean theorem/declaration:** none yet.
-- **Lean source:** none yet.
-- **Verification evidence:** `UNMAPPED / NO V5 YET`.
+- **Lean theorem/declaration:** `BOMA.C.StageIntegration001.cStageIntegrationCertificate`.
+- **Lean source:** `LAB/payloads/lean/CStage/CStageIntegration001.lean`.
+- **Verification evidence:** `C-V5-INTEGRATION-001 PENDING`; exact V5, dependency extraction, boundary classification, and producer ownership must all pass.
 - **Alternative producer / branch:** depends on which candidate route is selected; other completed routes remain comparison inputs.
 - **Necessity classification:** **BOMA ACCEPTANCE-GOVERNANCE REQUIREMENT**.
 - **Sensitivity:** any accepted C Claim, producer, decision, toolchain, or dependency-policy change can reopen integration.
