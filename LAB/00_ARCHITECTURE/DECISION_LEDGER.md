@@ -30,7 +30,7 @@ The authoritative detailed rationale remains each Decision Point's `UNIT.md`. Th
 | `R-DP-004` | approximation route needed for additive inverse | reusable Q Archimedean approximation gateway + isolated finite cut search | direct one-off Dedekind bracketing route | mathematical route choice |
 | `R-DP-005` | signed real multiplication architecture | positive/negative-part decomposition over nonnegative kernel | direct sign-case multiplication; shift-to-positive multiplication | mathematical / architectural choice |
 | `R-DP-006` | nonzero real inverse architecture | direct positive Dedekind reciprocal + signed extension | completeness/supremum inverse route | methodological choice + verified route |
-| `C-DP-001` | Stage-One complex construction realization route | **NONE — OPEN** | `C-ROUTE-P` ordered-pair/rank-two; `C-ROUTE-Q` polynomial-adjunction/quotient; third route only if genuinely independent | mathematical construction / representation / formalization choice |
+| `C-DP-001` | Stage-One complex construction realization route | **C-ROUTE-P — USER-RATIFIED 2026-08-22** | `C-ROUTE-Q` verified polynomial-adjunction/quotient branch; third route only if genuinely independent | mathematical construction / representation / formalization choice |
 
 ## 3. Decision-specific transparency notes
 
@@ -122,7 +122,7 @@ replaceability
 
 A first V5 success by one route will not by itself resolve the Decision if the comparison would remain materially asymmetric.
 
-`PDSA-C-003` has now produced symmetric exact evidence: both Route P and Route Q pass the same frozen noncanonical probe in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. The Study recommends Route P for the Stage-One producer because the same verified probe adequacy is achieved with a smaller representation/formalization/proof surface. Route Q remains a verified retained branch. The recommendation is not yet a `SELECTS` edge; user ratification is pending.
+`PDSA-C-003` has now produced symmetric exact evidence: both Route P and Route Q pass the same frozen noncanonical probe in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. The Study recommends Route P for the Stage-One producer because the same verified probe adequacy is achieved with a smaller representation/formalization/proof surface. Route Q remains a verified retained branch. The user explicitly ratified `C-ROUTE-P` on 2026-08-22. The resulting `SELECTS` edge records a methodological choice, not mathematical necessity; `C-ROUTE-Q` and its verified evidence remain retained.
 
 ## 4. Decision integrity rules
 
@@ -147,8 +147,9 @@ For an **OPEN** Decision Point additionally:
 ```text
 BOMA-C-ACCEPT-001  ACTIVE
 PDSA-C-001         CLOSED — semantic discriminant complete
-C-DP-001           OPEN — DECISION-READY / ROUTE P RECOMMENDED
-SELECTS             NONE — USER RATIFICATION PENDING
+C-DP-001           RESOLVED / USER-RATIFIED
+SELECTS             C-ROUTE-P
+RETAINED            C-ROUTE-Q — verified alternative
 C carrier           NONE
 C Block             NONE
 C Junction          NONE
