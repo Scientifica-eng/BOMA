@@ -1,6 +1,6 @@
-# C DAG — Stage-One Complex Construction, Ex-Ante Frontier
+# C DAG — Accepted Stage-One Complex Construction and Preserved Branch Frontier
 
-**Status:** **ACTIVE — C STARTED / ACCEPTANCE CONTRACT ACTIVE / C-ROUTE-P SELECTED**  
+**Status:** **ACCEPTED — CA-20 / RE-C-001 COMPLETE / C-ROUTE-P SELECTED**  
 **Date:** 2026-08-21  
 **Input:** `R-BLOCK-001 — Accepted Stage-One Real Interface`  
 **Governing specification:** `BOMA-C-ACCEPT-001`  
@@ -10,7 +10,10 @@
 
 ## 1. Purpose
 
-Expose the current C construction topology, including the user-selected and verified partial Route P carrier/ring core, without pretending that Route Q has reconverged or that full C acceptance has occurred.
+Expose the current accepted C construction topology, including the
+user-selected, verified complete Route P witness field, `C-J-001` integration,
+`C-BLOCK-002 / CA-20` export, and both completed reverse audits, without
+pretending that retained Route Q is a completed or reconverged field.
 
 The present graph is intentionally short at the canonical-construction level because C has begun at the acceptance/decision layer rather than by manufacturing representation-specific Blocks.
 
@@ -84,14 +87,17 @@ C-CL-COORDUNIQ-001
                     ↓
           C-CL-INTEGRATION-001
                     ↓
-           future CA-20 decision
+           CA-20 = ACCEPT
                     ↓
-           future accepted C Block
+           C-BLOCK-002 ACCEPTED
                     ↓
-      mandatory post-C reverse audit
+      RE-C-001 COMPLETE / RE-STAGE1-001 COMPLETE
 ```
 
-This is a Claim/acceptance planning view. It is not yet an actual theorem dependency graph.
+This is an acceptance-level Claim topology, not the full theorem dependency
+graph. The independently extracted actual final closure contains 783 internal
+declarations and 9,629 edges; complete machine evidence is stored in the
+C-stage evidence directory.
 
 ---
 
@@ -323,17 +329,18 @@ This sequence must remain visible even after a later route is selected.
 ```text
 C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
-C Claim register      OPEN / WITNESS FIELD PRODUCERS V5 VERIFIED / NO ACCEPTANCE
+C Claim register      ACCEPTED / NINE VERIFIED C CLAIMS / CA-20
 C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
 C-DP-001              RESOLVED / USER-RATIFIED
 selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
 constructed C Block   C-BLOCK-001 witness producer + C-BLOCK-002 ACCEPTED
 C Junction            C-J-001 PASS / V5 32585583815
-C Lean payload        VERIFIED boundary + route probes + pair ring core + witness field
-C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring; 32574920935 field — PASS
+C Lean payload        VERIFIED boundary + route probes + field + comparison + integration
+C V5                  boundary 32564789630; routes 32565335033; ring 32574270735
+                      field 32574920935; comparison 32575465002; integration 32585583815
 C reverse audit       RE-C-001 CLOSED / COMPLETE
 Program frontier      STAGE-TWO LAB READY / NO ACTIVE EXPERIMENT
-C acceptance          NOT YET ELIGIBLE
+C acceptance          CA-20 ACCEPT / C-BLOCK-002
 ```
 
 The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` closed after exact V5 `32585583815` and zero-residual Claim-level

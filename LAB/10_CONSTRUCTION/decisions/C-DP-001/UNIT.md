@@ -7,7 +7,7 @@
 - **PDSA:** `PDSA-C-001` opens the Decision; `PDSA-C-003` verifies both independent probes; `PDSA-C-004` begins selected Route P construction
 - **Input:** `R-BLOCK-001` through `BOMA-C-R-DEP-001`
 - **Governing acceptance contract:** `BOMA-C-ACCEPT-001`
-- **Downstream accepted carrier:** **NONE**
+- **Downstream accepted carrier:** **`CBOMA / C-BLOCK-002 / CA-20 ACCEPT`**
 
 ## 1. Question
 
@@ -258,16 +258,16 @@ The user explicitly ratified this recommendation on 2026-08-22. Selection is a m
 
 ```text
 C-DP-001           RESOLVED / USER-RATIFIED
-C-ROUTE-P          VERIFIED PROBE / SELECTED STAGE-ONE PRODUCER
+C-ROUTE-P          VERIFIED COMPLETE FIELD / SELECTED ACCEPTED-STAGE PRODUCER
 C-ROUTE-Q          VERIFIED PROBE / RETAINED / NOT SELECTED
 C-ROUTE-A          CONDITIONAL FUTURE CANDIDATE SLOT
 SELECTS             C-ROUTE-P
-canonical C carrier PENDING PDSA-C-004 CONSTRUCTION
+canonical C carrier CBOMA / C-BLOCK-001 PRODUCER / C-BLOCK-002 ACCEPTED
 ```
 
 ## Reopening / sensitivity
 
-After eventual resolution, reopen if:
+After resolution and accepted export, reopen if:
 
 ```text
 the acceptance semantics change;

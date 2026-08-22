@@ -336,7 +336,7 @@ The current abstract nonsquare proof is deliberately written against `RStageInte
 
 ---
 
-# 8. Current minimal dependency hypothesis
+# 8. Historical pre-route minimal dependency hypothesis
 
 Before route probes, the C core retains the following high-level dependency shape:
 
@@ -344,7 +344,7 @@ Before route probes, the C core retains the following high-level dependency shap
 R-CL-NONTRIV-001
 R-CL-ADD-001
 R-CL-MUL-001
-R-CL-INV-001   [future field-closure need; not C-RL-001/002]
+R-CL-INV-001   [now directly used by selected C field closure; not C-RL-001/002]
 R-CL-FIELD-001
 R-CL-ORDER-001
 R-CL-INTEGRATION-001
@@ -384,7 +384,7 @@ V5 elaboration of the staged abstract probe exposes a dependency or packaging as
 ```
 
 The corrective action must update the current classification without erasing the PDSA record of the earlier hypothesis and what falsified or refined it.
-# 9. RE-C-001 actual post-acceptance dependency classification
+# 10. RE-C-001 actual post-acceptance dependency classification
 
 `CA-20 = ACCEPT / C-BLOCK-002`; `RE-C-001` extracted 441 direct C-source →
 R-source edges over 25 distinct R declarations. Exactly 16 accepted-real
