@@ -1,7 +1,7 @@
 # PDSA-C-003 — Comparable Noncanonical Quadratic-Extension Route Probes
 
 **Cycle ID:** `PDSA-C-003`  
-**Status:** ACTIVE — PLAN FROZEN / INDEPENDENT ROUTE SOURCES STAGED / V5 PENDING  
+**Status:** **CLOSED — BOTH ROUTE PROBES V5 PASS / ROUTE P RECOMMENDED / DECISION AWAITS USER RATIFICATION**  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
 **Decision:** `C-DP-001 — OPEN / NO SELECTION`  
@@ -179,31 +179,77 @@ NOT a need to modify the frozen PLAN
 
 The correction declares separate `pair_ext` and `normal_ext` theorems directly from each structure's two coordinate equalities and removes the already-discharged trailing proof steps. The failed run and source commit remain preserved as Learning-Graph evidence.
 
-## D5 — Corrected evidence state
+## D5 — Corrected V5 outcome
 
 ```text
-C-ROUTE-P         SOURCE STAGED / V5 NOT YET OBSERVED
-C-ROUTE-Q         SOURCE STAGED / V5 NOT YET OBSERVED
-C-DP-001          OPEN
+run               32565335033 — COMPLETED / SUCCESS
+source commit     3f670372a022d1eb95109d36cde255b3504dda12
+C-ROUTE-P job     97013042899 — SUCCESS
+C-ROUTE-Q job     97013042973 — SUCCESS
+checkout guard    PASS on both jobs
+independence      PASS on both jobs
+Lean              4.32.1
+C-DP-001          OPEN — DECISION-READY
 SELECTS            NONE
 accepted C Claim  NONE
 ```
 
+Canonical evidence:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PROBES_001_V5_EVIDENCE.md`
+
 The frozen PLAN above has not changed.
 
-# STUDY — FIRST FAILURE CLASSIFIED / CORRECTED V5 PENDING
+# STUDY — CLOSED
 
-The first paired failure falsified the proof-engineering assumption that a generated structure `.ext` lemma was available in the deliberately minimal Lean environment. Both candidates retain their original mathematical targets and independent assembly. No corrected success is claimed before exact completed job conclusions and source commits are retrieved.
+The first paired failure falsified only a proof-engineering assumption about generated structure extensionality. The corrected sources preserve the same mathematical targets and independent assemblies, and both now pass under the exact same workflow, source commit, accepted-R manifest, C-boundary support, and toolchain.
 
-# ACT — NOT STARTED
+## Route-by-route comparison
+
+| Criterion | C-ROUTE-P | C-ROUTE-Q |
+|---|---|---|
+| Carrier / identity | two-field record; structure equality | expression syntax modulo equality of normalized quadratic forms |
+| R embedding / injectivity | PASS | PASS |
+| Distinguished I and I²=-1 | PASS | PASS |
+| Generation / uniqueness | direct coordinate projection; PASS | normalization plus quotient equality; PASS |
+| Non-real collapse | PASS | PASS |
+| New local Classical/Choice | none observed | none observed |
+| Representation commitment | explicit rank-two coordinates | generator/relation syntax plus two-coefficient normal form |
+| Formalization commitment | record + explicit extensionality helper | inductive syntax + normalization + Setoid + Quotient lifts |
+| Field inverse burden | not tested; expected sum-of-squares/nonzero denominator support | not tested; normalization does not remove the same coefficient-level burden |
+| Proof-engineering surface | smaller | materially larger |
+| Future branch value | transparent Stage-One producer | useful retained adjunction/quotient comparison branch |
+
+## Scientific interpretation
+
+Both routes satisfy the frozen small quadratic-extension probe. Route Q is a genuinely separate formalization/identity route, but this probe does not show additional mathematical strength: its quotient is classified by a route-local two-coefficient normal form and its arithmetic reduces to the same coefficient formulas measured by Route P.
+
+The evidence therefore supports:
 
 ```text
-C-DP-001 OPEN
-SELECTS NONE
-accepted C export NONE
+Stage-One producer recommendation  C-ROUTE-P
+retained comparison branch         C-ROUTE-Q
+mathematical necessity claim       NONE
+full field closure established     NO
+cross-route Junction established   NO
 ```
 
-# ConstructionGraphEffects — PLANNED
+Route P is recommended because it reaches the same verified probe surface with fewer representation and formalization commitments and a smaller dependency/proof-engineering surface. Route Q remains scientifically valuable for later reconvergence and generalized adjunction study.
+
+# ACT — CLOSED / SELECTION RECOMMENDATION ISSUED
+
+```text
+PDSA-C-003  CLOSED
+C-ROUTE-P   RECOMMENDED FOR STAGE-ONE PRODUCER
+C-ROUTE-Q   RETAINED VERIFIED NONCANONICAL BRANCH
+C-DP-001    OPEN — DECISION-READY / AWAITS USER RATIFICATION
+SELECTS      NONE
+accepted C Claim / export NONE
+```
+
+The cycle does not record a `SELECTS` edge because final choice between two admissible, comparably tested construction routes remains a user-authority decision under the executive handoff. If Route P is ratified, the next cycle may construct its field-closure prerequisites and acceptance-Claim producers. If it is not ratified, the reason becomes an explicit next-cycle input rather than a retroactive edit of this Study.
+
+# ConstructionGraphEffects — OBSERVED
 
 ```text
 PDSA-C-002 verified shared R-boundary support
@@ -213,7 +259,7 @@ PDSA-C-002 verified shared R-boundary support
 C-DP-001 remains open until comparable observations exist.
 ```
 
-# LearningGraphEffects — PLANNED
+# LearningGraphEffects — OBSERVED
 
 ```text
 accepted-R interface sufficiency certified
@@ -222,5 +268,13 @@ one frozen route-neutral comparison rubric
   ↓
 independently assembled pair and quadratic-quotient probes
   ↓
-measured commitment and proof-cost comparison
+first symmetric F1 proof-engineering failure preserved
+  ↓
+explicit extensionality repair without Plan change
+  ↓
+both routes PASS at exact source 3f670372...
+  ↓
+same probe adequacy / unequal formalization cost
+  ↓
+Route P recommended; Route Q retained; user ratification pending
 ```
