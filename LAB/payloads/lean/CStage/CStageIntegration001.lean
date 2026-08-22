@@ -25,7 +25,7 @@ structure CStageIntegrationCertificate where
       ConstructiveQuadraticIsomorphism
         (selectedPresentation rStageIntegrationCertificate) B
 
-/-- Final certificate adds no carrier, operation, inverse selector, or axiom. -/
+/-- Final certificate adds no carrier, operation, inverse selector, or logical commitment. -/
 def cStageIntegrationCertificate : CStageIntegrationCertificate where
   field := cPairFieldCertificateFromAcceptedR
   generatorSquared := c_i_squared rStageIntegrationCertificate

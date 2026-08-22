@@ -103,7 +103,14 @@ CA-20 acceptance cycle.
    exact-head read-only V5 workflow with three theorem-level dependency gates.
 5. Fixed anticipated failure F3: `/CStage/` now classifies as `C` without
    altering N-Core, N-Arithmetic, Z, Q, or R behavior.
-6. Exact workflow verification and residual inspection remain pending.
+6. First exact V5 run `32585516075` / job `97061174355` / source
+   `3288012fab942f6e8b7c0b5fd75c8ea7a8c8cc42` FAILED before Lean: the
+   frozen-boundary text guard matched the English word `axiom` in a comment
+   explicitly denying any added axiom. This is a verification-infrastructure
+   false positive, not a mathematical or logical-commitment failure.
+7. Rephrased that comment as `logical commitment`; no executable declaration,
+   proof term, manifest, selected route, or frozen PLAN was changed.
+8. Fresh exact workflow verification and audit residual inspection remain pending.
 
 # STUDY — NOT STARTED
 
