@@ -43,7 +43,7 @@ PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
 PDSA-C-008             CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009             CLOSED — RE-C-001 complete / bundled-interface costs classified
 PDSA-STAGE1-001        CLOSED — global RE-STAGE1-001 reverse audit COMPLETE
-STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 CLOSED PASS / ST2-EXP-002 selected
+STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
@@ -376,7 +376,10 @@ local C and whole-chain reverse audits are closed. Consult
 single-change candidates. Owner-approved `ST2-EXP-001` completed with V5
 `32593045224`: the same nine C Claims require only sixteen real fields, and
 bundled completeness/density/Archimedean producers disappear from actual
-closure. Its immutable Plan and baseline are preserved. The owner selected
-only `ST2-EXP-002`; its separately frozen Plan compares the independently
-completed expression-quotient route with accepted Route P over the same R
-interface. Eleven alternatives remain unselected.
+closure. Its immutable Plan and baseline are preserved. Independently approved
+`ST2-EXP-002` also closed PASS in exact V5 `32597030998`: the expression-quotient
+field was completed with zero selected-P dependencies before an explicit
+mutually inverse P/Q field isomorphism preserved the same nine C Claims.
+Its separate frozen Plan, retained failures, exact quotient cost, and Study/Act
+are documented on the research branch. Accepted Route P and CA-20 are
+unchanged. Eleven alternatives remain unselected; no experiment is active.

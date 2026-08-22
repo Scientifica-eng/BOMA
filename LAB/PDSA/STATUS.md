@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-002 selected / PDSA-ST2-EXP-002 PLAN FROZEN`
+**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / NO ACTIVE EXPERIMENT`
 
 ## Current canonical frontier
 
@@ -47,7 +47,7 @@ PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 
 PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
 PDSA-STAGE1-001     CLOSED — RE-STAGE1-001 COMPLETE / 73 accepted Claims
-STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 CLOSED PASS / ST2-EXP-002 selected / one active
+STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
@@ -578,8 +578,12 @@ PDSA-C-003
 PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` closed after witness-field run `32574920935`, including an exact inherited-axiom baseline comparison. `PDSA-C-006` closed after quadratic comparison run `32575465002`, preserving the initial proposition/data failure. `PDSA-C-007` closed after exact integration V5 `32585583815`; separate
 `PDSA-C-008` accepted C through six-stage run `32586145793`; `PDSA-C-009`
 completed the local C reverse audit; `PDSA-STAGE1-001` completed the global
-accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed
-PASS in exact V5 run 32593045224; ST2-EXP-002 alone is owner-selected and active.
+accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed PASS in exact V5 run
+32593045224. Independently owner-approved ST2-EXP-002 also closed PASS in
+exact V5 run 32597030998: the formal-expression quotient is a completed
+P-independent field, its actual closure contains zero P declarations, and its
+explicit P/Q inverse Junction preserves all nine accepted C Claim families.
+Accepted Route P and CA-20 remain unchanged; no branch experiment is active.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
