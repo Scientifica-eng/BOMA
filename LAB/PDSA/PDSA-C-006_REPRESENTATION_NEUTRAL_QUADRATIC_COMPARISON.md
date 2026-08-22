@@ -1,7 +1,7 @@
 # PDSA-C-006 — Representation-Neutral Quadratic Field Comparison
 
 **Cycle ID:** `PDSA-C-006`  
-**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
+**Status:** CLOSED — REPRESENTATION-NEUTRAL QUADRATIC COMPARISON V5 PASS  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-005 — CLOSED / constructive field audit V5 32574920935 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -148,9 +148,62 @@ repair            change exactly the two data-producing declarations from theore
 frozen PLAN       UNCHANGED
 ```
 
-# STUDY — NOT STARTED
+# STUDY — COMPLETE
 
-# ACT — NOT STARTED
+## S1 — Failure, correction, and exact successful evidence
+
+```text
+first run       32575390470 / job 97036877699 / FAILURE
+first source    b88c02770b08d527acd47ee4e5638f10cbd27ad5
+failure         theorem declarations attempted to return Type-valued function data
+repair          exactly two theorem → def changes; frozen PLAN unchanged
+successful run  32575465002 / job 97037061967 / PASS
+verified source 2cdd1d391a3ecbbecc9feaf0f3ad89d158bf04c9
+Lean            leanprover/lean4:v4.32.1
+permissions     contents: read
+```
+
+The failure identifies a genuine Lean formalization boundary: proposition-valued certificates may be `theorem`, while a structure carrying actual forward/backward functions is data in `Type` and must be `def`. No mathematical obligation was removed.
+
+## S2 — Constructive comparison strength
+
+For every two common quadratic-field presentations, `quadraticComparison` supplies a canonical same-coordinate relation that is total and single-valued in both directions and preserves zero, one, the real embedding, negation, addition, multiplication, the distinguished imaginary unit, and inverse-witness equations.
+
+A genuine `ConstructiveQuadraticIsomorphism` exists when both presentations supply explicit `CoordinateExtractor` data. The selected Route P extractor is direct coordinate projection. Existential generation alone is never silently converted into a global selector.
+
+```text
+Route Q completed field       NO
+Route P ↔ Route Q Junction    NOT TRIGGERED
+CA-11 comparison principle    VERIFIED AT DECLARED GRAPH / EXTRACTOR SCOPE
+```
+
+## S3 — Actual inherited-axiom baseline
+
+```text
+accepted rStageIntegrationCertificate       [propext, Classical.choice, Quot.sound]
+selected cPairFieldCertificate              [propext, Classical.choice, Quot.sound]
+quadraticComparison                         [propext, Classical.choice, Quot.sound]
+constructiveQuadraticIsomorphism            [propext, Classical.choice, Quot.sound]
+acceptedSelectedSelfComparison              [propext, Classical.choice, Quot.sound]
+```
+
+No new transitive axiom is added over the accepted R and previously verified C baseline.
+
+## S4 — Frozen targets
+
+```text
+C6-01..06  PASS  common field presentation / canonical full algebra-equivalence graph
+C6-07      PASS  actual inverse functions require explicit constructive extractors
+C6-08      PASS  selected pair presentation and direct extractor
+C6-09      PASS  retained Route Q remains probe-only; no fictitious Junction
+C6-10      PASS  exact six-manifest read-only V5 run
+C6-11      PASS  axiom set identical to accepted R
+C6-12      PASS  CA-11 producer mapped; CA-20 remains unaccepted
+```
+
+# ACT — CLOSED / OPEN PDSA-C-007
+
+Open separately frozen final same-carrier integration, C Claim-producer mapping, actual theorem dependency extraction, and `C-J-001`. A passing integration Junction may make CA-20 eligible; it does not itself accept C.
 
 ```text
 C-ROUTE-Q completed field   NO

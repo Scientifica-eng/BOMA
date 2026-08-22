@@ -38,7 +38,8 @@ PDSA-C-002             CLOSED — R-interface sufficiency; V5 32564789630 PASS
 PDSA-C-003             CLOSED — V5 32565335033 PASS / both routes verified
 PDSA-C-004             CLOSED — selected pair ring core V5 32574270735 PASS
 PDSA-C-005             CLOSED — witness field + inherited-axiom V5 32574920935 PASS
-PDSA-C-006             ACTIVE — representation-neutral comparison PLAN frozen
+PDSA-C-006             CLOSED — quadratic comparison V5 32575465002 PASS
+PDSA-C-007             ACTIVE — final integration / Claim transparency PLAN frozen
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
@@ -109,6 +110,7 @@ LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
 LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
 LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md
+LAB/PDSA/PDSA-C-007_FINAL_INTEGRATION_AND_CLAIM_TRANSPARENCY.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 ```
 
@@ -287,9 +289,9 @@ SELECTS = C-ROUTE-P / C-ROUTE-Q RETAINED
 
 `PDSA-C-002` closed the first formal boundary test before any carrier construction. Its Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. Read-only V5 run `32564789630` verified exact source commit `a6c894e62c48919712341cea1c0ea588590f9e5f` under Lean `4.32.1`. These are supporting theorems only; they are not accepted C Claims.
 
-`PDSA-C-003` closed after independent V5 PASS evidence for both routes. The user ratified `C-ROUTE-P`; `PDSA-C-004` then verified the selected canonical pair carrier and commutative-ring core on the first attempt in run `32574270735`. `PDSA-C-005` then verified conjugation, constructive nonzero norm, unique inverse witnesses, and the exact inherited R axiom baseline in run `32574920935`. `C-BLOCK-001` is a verified field producer but remains unaccepted until representation-neutral comparison and final integration. `PDSA-C-006` is the sole active comparison frontier. `C-ROUTE-Q` remains a retained verified alternative.
+`PDSA-C-003` closed after independent V5 PASS evidence for both routes. The user ratified `C-ROUTE-P`; `PDSA-C-004` then verified the selected canonical pair carrier and commutative-ring core on the first attempt in run `32574270735`. `PDSA-C-005` then verified conjugation, constructive nonzero norm, unique inverse witnesses, and the exact inherited R axiom baseline in run `32574920935`. `C-BLOCK-001` is a verified field producer and `PDSA-C-006` verified universal representation-neutral quadratic comparison in run `32575465002`. Final C acceptance still awaits the `PDSA-C-007` same-carrier integration and Claim-level transparency gate. `C-ROUTE-Q` remains a retained verified alternative.
 
-The selected producer is a verified witness-based commutative field; it is not yet an accepted export or a completed representation comparison.
+The selected producer is a verified witness-based commutative field with verified representation-neutral comparison; it is not yet an accepted export.
 
 ## Claim transparency
 
@@ -349,7 +351,7 @@ The immediate research sequence is:
 ```text
 finish C-RQ-001 formal verification evidence
    ↓
-prove representation-neutral quadratic-field comparison under PDSA-C-006
+verify final same-carrier integration and Claim transparency under PDSA-C-007
    ↓
 Study actual assumptions / identity / arithmetic / logic / formalization cost
    ↓

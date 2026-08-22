@@ -1,6 +1,6 @@
 # C_CLAIM_V5_INDEX — Complex-Stage Verification and Evidence Map
 
-**Status:** ACTIVE — SELECTED WITNESS FIELD VERIFIED / COMPARISON ACTIVE / NO ACCEPTED C CLAIM  
+**Status:** ACTIVE — WITNESS FIELD + QUADRATIC COMPARISON VERIFIED / FINAL INTEGRATION ACTIVE  
 **Date:** 2026-08-22  
 **Current acceptance contract:** `BOMA-C-ACCEPT-001`  
 **Representation Decision:** `C-DP-001 RESOLVED / USER-SELECTED C-ROUTE-P`
@@ -16,6 +16,7 @@ A supporting theorem is not automatically a canonical Brick, construction Block,
 | `C-V5-ROUTE-Q-PROBE-001` | `PDSA-C-003`; noncanonical Route Q rubric | `CRouteQuadraticQuotientProbe001.lean` | `32565335033` / job `97013042973` | `3f670372a022d1eb95109d36cde255b3504dda12` | PASS — independent route assembly |
 | `C-V5-PAIR-CORE-001` | `PDSA-C-004`; selected carrier, embedding, generator, commutative-ring core | `CPairCore001.lean` | `32574270735` / job `97034186851` | `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb` | PASS — exact selected Route P assembly |
 | `C-V5-PAIR-FIELD-001` | `PDSA-C-005`; conjugate, norm, inverse witnesses, inherited-axiom comparison | `CPairNormInverse001.lean` | `32574920935` / job `97035726339` | `ccf41e062b37ab39f46dc18a1cbbbf90728807ff` | PASS — exact witness-field assembly / no new axioms over R |
+| `C-V5-QUADRATIC-COMPARE-001` | `PDSA-C-006`; universal algebra graph + constructive functional isomorphism | `CQuadraticComparison001.lean` | `32575465002` / job `97037061967` | `2cdd1d391a3ecbbecc9feaf0f3ad89d158bf04c9` | PASS — exact common-interface comparison / no new axioms over R |
 
 Detailed manifest, job, declaration, and provenance mappings:
 
@@ -63,8 +64,8 @@ C-CL-I-001            cI / c_i_squared                      PRODUCED / V5 PASS
 C-CL-GEN-001          c_generation                          PRODUCED / V5 PASS
 C-CL-COORDUNIQ-001    c_coordinate_unique                   PRODUCED / V5 PASS
 C-CL-NONREAL-001      c_i_not_real                          PRODUCED / V5 PASS
-C-CL-COMPARE-001      no producer                           OPEN
+C-CL-COMPARE-001      quadraticComparison / extractor iso    PRODUCED / V5 PASS
 C-CL-INTEGRATION-001  no Junction                           OPEN
 ```
 
-`PRODUCED / V5 PASS` does not mean `ACCEPTED`; final C acceptance requires the still-missing representation-neutral comparison and integration gates.
+`PRODUCED / V5 PASS` does not mean `ACCEPTED`; final C acceptance still requires the final integration and Claim-transparency gate.

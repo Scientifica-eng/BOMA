@@ -194,18 +194,18 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-11`
-- **Operational status:** `EX-ANTE REQUIRED / UNPRODUCED`
-- **Epistemic status:** `PENDING`
+- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
+- **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
 - **Statement / scope:** candidate realizations satisfying the common accepted interface are related by the canonical coordinate-preserving R-algebra/field isomorphism sending distinguished `I` to distinguished `I`.
-- **Producer unit(s):** `TBD`; may be a general comparison theorem and later support a Junction.
+- **Producer unit(s):** `C-COMPARE-BLOCK-001 / PDSA-C-006 representation-neutral quadratic comparison`.
 - **Consumes mathematical Claims:** `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001` for both compared candidates.
 - **Logical commitments:** none forced by the intended explicit coordinate map; actual formal proof to be audited.
 - **Representation commitments:** deliberately none in statement beyond the two candidate interfaces being compared.
 - **Formalization commitments:** theorem packaging `TBD`.
 - **Supporting lemmas:** canonical map well-definedness, homomorphism, injectivity, surjectivity.
-- **Lean theorem/declaration:** none yet.
-- **Lean source:** none yet.
-- **Verification evidence:** `UNMAPPED / NO V5 YET`.
+- **Lean theorem/declaration:** `QuadraticFieldPresentation`, `quadraticComparison`, `constructiveQuadraticIsomorphism`, `selectedQuadraticComparison`.
+- **Lean source:** `LAB/payloads/lean/CStage/CQuadraticComparison001.lean`.
+- **Verification evidence:** `C-V5-QUADRATIC-COMPARE-001 / run 32575465002 / source 2cdd1d391a3ecbbecc9feaf0f3ad89d158bf04c9 / PASS`.
 - **Alternative producer / branch:** direct universal comparison or pairwise route Junction proofs.
 - **Necessity classification:** **ACCEPTANCE-REQUIRED COMPARISON PRINCIPLE; MAY ALSO SERVE RECONVERGENCE**.
 - **Sensitivity:** change to the semantic core of `BOMA-C-ACCEPT-001` reopens this Claim.

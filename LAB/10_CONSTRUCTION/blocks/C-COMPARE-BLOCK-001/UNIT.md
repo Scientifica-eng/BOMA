@@ -1,8 +1,9 @@
 # C-COMPARE-BLOCK-001 — Representation-Neutral Quadratic Field Comparison
 
-- **Operational status:** **ACTIVE — PRODUCER STAGED / V5 PENDING**
+- **Operational status:** **ACTIVE — UNIVERSAL QUADRATIC COMPARISON V5 32575465002 PASS**
 - **Epistemic status:** **DERIVED CARRIER-NEUTRAL COMPARISON / CONSTRUCTIVE SCOPE DECLARED**
-- **Current cycle:** `PDSA-C-006`
+- **Verified cycle:** `PDSA-C-006 — CLOSED / run 32575465002 PASS`
+- **Current cycle:** `PDSA-C-007 — final integration PLAN FROZEN`
 - **Input:** accepted real certificate + `C-BLOCK-001` selected witness-field producer
 - **Acceptance target:** `CA-11 / C-CL-COMPARE-001`
 - **Route Q:** **RETAINED VERIFIED PROBE ONLY / NOT A COMPLETED FIELD**
@@ -29,7 +30,7 @@ Related(A,B,x,y)
        x = coordA(a,b) ∧ y = coordB(a,b).
 ```
 
-Its planned certificate states:
+Its verified `QuadraticComparisonCertificate` states:
 
 ```text
 total in both directions

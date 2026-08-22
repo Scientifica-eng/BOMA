@@ -5,7 +5,8 @@
 - **Decision:** `C-DP-001 — C-ROUTE-P SELECTED`
 - **Verified core cycle:** `PDSA-C-004 — CLOSED / run 32574270735 PASS`
 - **Verified field cycle:** `PDSA-C-005 — CLOSED / axiom-audited V5 32574920935 PASS`
-- **Current cycle:** `PDSA-C-006 — representation-neutral quadratic comparison PLAN FROZEN`
+- **Verified comparison:** `C-COMPARE-BLOCK-001 / run 32575465002 PASS`
+- **Current cycle:** `PDSA-C-007 — final integration and Claim transparency PLAN FROZEN`
 - **Input domain:** `R-BLOCK-001 — Accepted Stage-One Real Interface`
 - **Alternative:** `C-ROUTE-Q — VERIFIED NONCANONICAL PROBE / RETAINED`
 - **Acceptance:** `CA-20 = NOT ELIGIBLE`
@@ -66,8 +67,7 @@ Its formal surfaces are `CPairRingCoreCertificate` and `CPairFieldCertificate`. 
 ## Explicitly unproduced
 
 ```text
-representation-neutral comparison theorem / Junction
-final C integration and dependency audit
+final C integration Junction and dependency audit
 accepted C export
 CA-20 acceptance
 ```
