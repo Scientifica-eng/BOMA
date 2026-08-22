@@ -261,18 +261,19 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `BOMA-C-R-DEP-001` | accepted-R dependency contract | ACTIVE |
 | `PDSA-C-001` | acceptance-contract discriminant | CLOSED |
 | `PDSA-C-002` | route-neutral accepted-R interface sufficiency probe | CLOSED — V5 32564789630 PASS |
-| `PDSA-C-003` | independently assembled comparable candidate-route probes | CLOSED — V5 32565335033 PASS / Route P recommended |
-| `C-DP-001` | Stage-One construction realization route | OPEN — NO SELECTION |
+| `PDSA-C-003` | independently assembled comparable candidate-route probes | CLOSED — both routes V5 32565335033 PASS |
+| `PDSA-C-004` | selected Route P carrier and commutative-ring core | ACTIVE — PLAN FROZEN |
+| `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
 
 `C-DP-001` currently retains:
 
 ```text
-C-ROUTE-P  ordered-pair / rank-two coordinate candidate
-C-ROUTE-Q  polynomial-adjunction / quotient candidate
+C-ROUTE-P  SELECTED ordered-pair / rank-two Stage-One producer
+C-ROUTE-Q  RETAINED verified polynomial-adjunction / quotient alternative
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-No route has been promoted to a canonical C Brick or Block. No C Junction exists. One route-neutral C supporting-theorem Lean payload is V5-verified under `PDSA-C-002` / run `32564789630`; it is neither a construction Block nor an accepted C Claim. `PDSA-C-003` independently verified both exploratory routes in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. Route P is recommended for the Stage-One producer because it reaches the same probe surface with fewer commitments; Route Q is retained. `C-DP-001` remains open pending user ratification, so neither probe is yet a canonical construction Block or accepted Claim.
+No route has been promoted to a canonical C Brick or Block. No C Junction exists. One route-neutral C supporting-theorem Lean payload is V5-verified under `PDSA-C-002` / run `32564789630`; it is neither a construction Block nor an accepted C Claim. `PDSA-C-003` independently verified both exploratory routes in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. The user selected Route P for the Stage-One producer after that comparison; Route Q remains retained. `PDSA-C-004` now constructs the canonical selected-route producer. No canonical C Block or accepted Claim is asserted before its actual construction and evidence.
 
 Initial Claim targets are recorded in:
 
@@ -291,8 +292,8 @@ post-Z reverse N    CLOSED
 Q                   ACCEPTED
 R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
-C                   STARTED — ACCEPTANCE SPEC ACTIVE / C-DP-001 OPEN
-C representation    UNSELECTED
+C                   STARTED — C-ROUTE-P SELECTED / PDSA-C-004 ACTIVE
+C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
 C accepted export   NONE
 ```
 
