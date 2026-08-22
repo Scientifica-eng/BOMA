@@ -129,11 +129,24 @@ The producer constructs selected-coordinate conjugation and the real sum-of-squa
 The source exposes `CPairFieldCertificate` with existential inversion only. Exact verification assembles accepted R + C-boundary support + verified Route P + verified pair ring core + the new norm/inverse producer. The workflow prints theorem axiom dependencies for both the abstract-interface theorem and accepted-real instantiation.
 
 ```text
-selected witness-field V5   PENDING
+selected witness-field V5   32574812227 PASS / expanded inherited-axiom audit pending
 new equality decidability   NONE
 new global inverse          NONE
 CA-20 acceptance            NOT ELIGIBLE
 ```
+
+## D2 — Preserve the first successful field run and extend inherited-axiom audit
+
+```text
+first field run      32574812227
+job                  97035471002
+source commit        f5207e944d1c10f5459b1855af3504639d6f4a37
+formal result        COMPLETED / SUCCESS on the first attempt
+reported axioms      [propext, Classical.choice, Quot.sound]
+classification       INHERITED VERSUS INTRODUCED — NOT YET ESTABLISHED
+```
+
+The source contains no explicit classical invocation, equality case split, global inverse selector, or new axiom. Nevertheless, its transitive Lean declaration reports `Classical.choice`, `propext`, and `Quot.sound`; source-token absence is insufficient evidence that these commitments are absent. Extend the same frozen verification workflow to print exact axiom baselines for accepted R, C boundary, Route P, ring core, each new constructive proof layer, and both field certificates. Do not claim that the new field proof is axiom-free until those actual cones are compared.
 
 # STUDY — NOT STARTED
 
