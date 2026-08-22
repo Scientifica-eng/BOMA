@@ -1,0 +1,171 @@
+name: BOMA ST2-EXP-001 Narrow R Interface and Exact C Closure — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp001Narrow*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_*'
+      - 'LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md'
+      - 'LAB/PDSA/experiments/ST2_EXP_001_COMPARE_CLOSURES.py'
+      - '.github/workflows/boma-st2-exp-001-narrow-r-interface.yml'
+  push:
+    branches: ['feature/stage-two-st2-exp-001-*']
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp001Narrow*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_*'
+      - 'LAB/PDSA/experiments/ST2_EXP_001_COMPARE_CLOSURES.py'
+      - '.github/workflows/boma-st2-exp-001-narrow-r-interface.yml'
+
+concurrency:
+  group: boma-st2-exp-001-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: compare accepted and narrow-interface C proofs exactly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Enforce exact source, frozen Plan, and unchanged accepted baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected_sha"
+          frozen_plan=e95420699a8177e9368e4baac5b624ea22b71b36
+          frozen_baseline=b473d236309770762e102517ef8a79c628cb43ed
+          plan=LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git merge-base --is-ancestor "$frozen_baseline" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- "$plan"
+          git diff --exit-code "$frozen_baseline" HEAD -- \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            LAB/payloads/lean/CStage/CStageIntegration001.lean \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean
+          printf 'Frozen Plan %s / exact head %s / run %s\n' \
+            "$frozen_plan" "$expected_sha" "$GITHUB_RUN_ID"
+
+      - name: Validate single-change manifest and narrow producer boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_NARROW_R_INPUTS.txt
+          test -s "$manifest"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$manifest"
+          test "$(grep -c '/CStage/ST2Exp001Narrow' "$manifest")" -eq 7
+          files=(LAB/payloads/lean/CStage/ST2Exp001Narrow*.lean)
+          forbidden='RStageIntegrationCertificate|rStageIntegrationCertificate|dedekindLUB|rationalDensity|archimedeanUpper|Classical\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "${files[@]}"; then exit 1; fi
+          python3 -m py_compile LAB/PDSA/experiments/ST2_EXP_001_COMPARE_CLOSURES.py
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Verify same-carrier narrow C field and inherited axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-st2-exp-001
+          target=/tmp/BOMAST2Exp001NarrowInterface.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_NARROW_R_INPUTS.txt
+          printf '\n#check BOMA.C.StageTwo.NarrowIntegration001.sameAcceptedCarrier\n' >> "$target"
+          printf '#check BOMA.C.StageTwo.NarrowIntegration001.sameAcceptedAddition\n' >> "$target"
+          printf '#check BOMA.C.StageTwo.NarrowIntegration001.sameAcceptedMultiplication\n' >> "$target"
+          printf '#print axioms BOMA.R.StageIntegration002.rStageIntegrationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate\n' >> "$target"
+          lake env lean "$target" | tee /tmp/boma-st2-exp-001/AXIOMS_AND_TYPECHECK.log
+
+      - name: Extract exact accepted and experimental declaration closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            --target BOMA.C.StageIntegration001.cStageIntegrationCertificate \
+            --json-out /tmp/boma-st2-exp-001/BASELINE_CLOSURE.json \
+            > /tmp/boma-st2-exp-001/BASELINE_CLOSURE.log
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_NARROW_R_INPUTS.txt \
+            --target BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate \
+            --json-out /tmp/boma-st2-exp-001/NARROW_CLOSURE.json \
+            > /tmp/boma-st2-exp-001/NARROW_CLOSURE.log
+
+      - name: Classify both real logical dependency boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          for label in BASELINE NARROW; do
+            python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+              --closure "/tmp/boma-st2-exp-001/${label}_CLOSURE.json" \
+              --policy LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+              --json-out "/tmp/boma-st2-exp-001/${label}_CLASSIFICATION.json" \
+              > "/tmp/boma-st2-exp-001/${label}_CLASSIFICATION.log"
+          done
+
+      - name: Verify the same nine accepted C Claim families independently
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/boma-st2-exp-001/BASELINE_CLOSURE.json \
+            --classification /tmp/boma-st2-exp-001/BASELINE_CLASSIFICATION.json \
+            --policy LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/boma-st2-exp-001/BASELINE_PRODUCERS.json \
+            > /tmp/boma-st2-exp-001/BASELINE_PRODUCERS.log
+          python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/boma-st2-exp-001/NARROW_CLOSURE.json \
+            --classification /tmp/boma-st2-exp-001/NARROW_CLASSIFICATION.json \
+            --policy LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_001_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/boma-st2-exp-001/NARROW_PRODUCERS.json \
+            > /tmp/boma-st2-exp-001/NARROW_PRODUCERS.log
+
+      - name: Compare exact bundle, claims, and sensitive upstream producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/PDSA/experiments/ST2_EXP_001_COMPARE_CLOSURES.py \
+            --baseline-closure /tmp/boma-st2-exp-001/BASELINE_CLOSURE.json \
+            --branch-closure /tmp/boma-st2-exp-001/NARROW_CLOSURE.json \
+            --baseline-producers /tmp/boma-st2-exp-001/BASELINE_PRODUCERS.json \
+            --branch-producers /tmp/boma-st2-exp-001/NARROW_PRODUCERS.json \
+            --interface-source LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean \
+            --json-out /tmp/boma-st2-exp-001/ST2_EXP_001_COMPARISON.json
+
+      - name: Preserve exact baseline and branch research evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boma-st2-exp-001-narrow-r-${{ github.run_id }}
+          path: /tmp/boma-st2-exp-001/
+          if-no-files-found: warn
+          retention-days: 30

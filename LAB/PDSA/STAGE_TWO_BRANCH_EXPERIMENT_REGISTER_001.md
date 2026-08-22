@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `READY / NO BRANCH SELECTED / NO EXPERIMENT ACTIVE`  
+**Status:** `READY / ST2-EXP-001 CLOSED PASS / NO EXPERIMENT ACTIVE`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
 **Owner sovereignty:** foundational/logical changes and merge to `main` require
@@ -19,14 +19,16 @@ accepted reference checkpoint
   → retained baseline, retained failures, and STUDY result
 ```
 
-No numbered candidate below is selected, constructed, merged, or accepted.
-Priority describes expected information value, not an execution decision.
+`ST2-EXP-001` was explicitly approved and completed with exact V5 run
+`32593045224`; its immutable Plan remains
+`LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md`. All twelve remaining
+candidates are unselected; priority is not execution authorization.
 
 ## Evidence-derived candidate inventory
 
 | Candidate | Single change point | Baseline | Alternative | Expected invariant / divergence | Affected cone | Required verification | Priority / state |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | HIGH / OPEN |
+| `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | CLOSED / PASS — V5 32593045224 |
 | `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained polynomial-adjunction Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; trigger CA-14 only after completion; explicit comparison Junction | HIGH / OPEN |
 | `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve declared accepted-real interface or explicitly revise contract | R and C; completeness/identity/order | independent R assembly; comparison gate; downstream C rebuild | HIGH / OPEN |
 | `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, C square positivity, norm, inverse | formal closure diff; classify any lost/changed acceptance claim | HIGH / OPEN |
@@ -48,6 +50,8 @@ runs, claim an unfinished alternative has converged, suppress an inherited
 logical dependency, silently weaken an accepted interface, or treat a global
 selector as computationally free.
 
-Exactly one experiment may become active after an explicit project decision.
-Until then the laboratory is prepared and the active mathematical front is
-`NONE`. Nothing in this register authorizes a merge into `main`.
+`ST2-EXP-001 / PDSA-ST2-EXP-001` is CLOSED / PASS: the same nine C Claims
+were reconstructed from sixteen real fields, and the bundled full R
+certificate plus completeness/density/Archimedean producers disappeared from
+actual closure. No other experiment is active or selected. The frozen accepted
+reference remains `b473d236309770762e102517ef8a79c628cb43ed`; nothing here authorizes a merge into `main`.
