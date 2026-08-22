@@ -1,7 +1,7 @@
 # PDSA-C-005 — Conjugate, Norm, and Witness-Based Complex Field Closure
 
 **Cycle ID:** `PDSA-C-005`  
-**Status:** ACTIVE — PLAN FROZEN / DO NOT STARTED  
+**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-004 — CLOSED / selected ring-core V5 32574270735 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -112,7 +112,28 @@ field certificate, all promoted producer claims and retained limits are
 synchronized, and ACT opens a separately frozen representation-neutral
 comparison/integration cycle.
 
-# DO — NOT STARTED
+# DO — ACTIVE / FIRST FORMAL VERIFICATION PENDING
+
+## D1 — Stage constructive conjugation, norm, and witness-based inverse
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CPairNormInverse001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt
+.github/workflows/boma-c-pair-norm-inverse-001.yml
+```
+
+The producer constructs selected-coordinate conjugation and the real sum-of-squares norm, derives zero summands from nonnegative order, and proves only double-negated coordinate/complex equality when the norm is zero. Combining that weaker result with the supplied nonzero complex hypothesis makes the norm nonzero without deciding equality or eliminating double negation. Accepted real `inverseExists` then supplies an existential denominator witness; conjugation and verified ring laws construct the complex witness and prove uniqueness.
+
+The source exposes `CPairFieldCertificate` with existential inversion only. Exact verification assembles accepted R + C-boundary support + verified Route P + verified pair ring core + the new norm/inverse producer. The workflow prints theorem axiom dependencies for both the abstract-interface theorem and accepted-real instantiation.
+
+```text
+selected witness-field V5   PENDING
+new equality decidability   NONE
+new global inverse          NONE
+CA-20 acceptance            NOT ELIGIBLE
+```
 
 # STUDY — NOT STARTED
 

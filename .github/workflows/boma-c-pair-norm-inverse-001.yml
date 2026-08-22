@@ -1,0 +1,133 @@
+name: BOMA C Selected Pair Norm and Witness Field 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CRoutePairProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CPairCore001.lean'
+      - 'LAB/payloads/lean/CStage/CPairNormInverse001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-pair-norm-inverse-001.yml'
+      - 'lean-toolchain'
+  push:
+    branches:
+      - 'feature/c-stage-*'
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CRoutePairProbe001.lean'
+      - 'LAB/payloads/lean/CStage/CPairCore001.lean'
+      - 'LAB/payloads/lean/CStage/CPairNormInverse001.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-pair-norm-inverse-001.yml'
+      - 'lean-toolchain'
+
+concurrency:
+  group: boma-c-pair-norm-inverse-001-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify selected Route P norm and witness-based field closure
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact selected field-source provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          {
+            printf '## BOMA C selected Route P witness-field closure\n'
+            printf -- '- Event: `%s`\n' "$GITHUB_EVENT_NAME"
+            printf -- '- Run ID: `%s`\n' "$GITHUB_RUN_ID"
+            printf -- '- Verified source commit: `%s`\n' "$actual_sha"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Validate exact field assembly and constructive boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifests=(
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt
+          )
+          for manifest in "${manifests[@]}"; do
+            test -s "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+            done < "$manifest"
+          done
+          selected=LAB/payloads/lean/CStage/CPairNormInverse001.lean
+          test "$(cat LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt)" = "$selected"
+          forbidden='RouteQuadraticQuotientProbe001|LowerCut|CutEquiv|Classical\.|by_contra|by_cases|dedekindLUB|rationalDensity|archimedeanUpper|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)|def[[:space:]]+cInv([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "$selected"; then
+            printf 'Field producer contains a forbidden dependency, selector, or logical principle\n' >&2
+            exit 1
+          fi
+
+      - name: Verify the exact witness-based complex-field closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMACSelectedPairWitnessField001.lean
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          printf '\n#print axioms BOMA.C.PairNormInverse001.cPairFieldCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.PairNormInverse001.cPairFieldCertificateFromAcceptedR\n' >> "$target"
+          lake env lean "$target"
