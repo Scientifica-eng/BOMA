@@ -1,6 +1,6 @@
 # C_CLAIM_V5_INDEX — Complex-Stage Verification and Evidence Map
 
-**Status:** ACTIVE — SUPPORTING BOUNDARY VERIFIED / NO ACCEPTED C CLAIM  
+**Status:** ACTIVE — BOUNDARY + COMPARABLE ROUTE PROBES VERIFIED / NO ACCEPTED C CLAIM  
 **Date:** 2026-08-22  
 **Current acceptance contract:** `BOMA-C-ACCEPT-001`  
 **Representation Decision:** `C-DP-001 OPEN`
@@ -12,10 +12,15 @@ A supporting theorem is not automatically a canonical Brick, construction Block,
 | Evidence ID | Question / family | Producer | Exact run | Verified source | Outcome |
 |---|---|---|---|---|---|
 | `C-V5-R-INTERFACE-001` | `C-RQ-001`; `C-RL-001/002` supporting theorems | `CRInterfaceNoSquareProbe001.lean` | `32564789630` | `a6c894e62c48919712341cea1c0ea588590f9e5f` | PASS — supporting source assembly |
+| `C-V5-ROUTE-PROBE-001` | `PDSA-C-003`; noncanonical Route P rubric | `CRoutePairProbe001.lean` | `32565335033` / job `97013042899` | `3f670372a022d1eb95109d36cde255b3504dda12` | PASS — independent route assembly |
+| `C-V5-ROUTE-Q-PROBE-001` | `PDSA-C-003`; noncanonical Route Q rubric | `CRouteQuadraticQuotientProbe001.lean` | `32565335033` / job `97013042973` | `3f670372a022d1eb95109d36cde255b3504dda12` | PASS — independent route assembly |
 
-Detailed manifest, job, declaration, and provenance mapping:
+Detailed manifest, job, declaration, and provenance mappings:
 
-`LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_V5_EVIDENCE.md`
+```text
+LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_V5_EVIDENCE.md
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PROBES_001_V5_EVIDENCE.md
+```
 
 ## Supporting theorem mapping
 
@@ -38,7 +43,7 @@ The remaining nine declarations in the same source are supporting equational/ord
 ```text
 accepted C Claims          NONE
 canonical C carrier         NONE
-selected C representation   NONE
+selected C representation   NONE — Route P recommended / user ratification pending
 C integration Junction      NONE
 CA-20 acceptance            NOT ELIGIBLE
 ```
