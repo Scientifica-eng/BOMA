@@ -19,6 +19,15 @@
     "upstream_accepted_unit": "R-BLOCK-001",
     "dependency_contract": "BOMA-C-R-DEP-001"
   },
+  "cross_stage_governance_failure_runs": [
+    {
+      "id": 32599546288,
+      "commit": "0050c5f6852eab2e94dcea321c851dbc93b9e0df",
+      "workflow": "BOMA C Stage Acceptance and Six-Stage Transparency 001 — V5",
+      "error_id": "ERR-ST2-015",
+      "root_cause": "The repository-wide architecture auditor treated a documented research-only Junction as a canonical unit solely because its identifier matches canonical Junction syntax."
+    }
+  ],
   "records": [
     {
       "experiment_id": "ST2-EXP-001",

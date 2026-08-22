@@ -23,6 +23,7 @@ on:
       - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
       - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md'
       - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md'
       - 'LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md'

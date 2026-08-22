@@ -12,6 +12,7 @@ from typing import Any
 LEDGER = "LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json"
 LEDGER_MD = "LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md"
 LESSONS = "LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md"
+ARCHITECTURE_AUDIT = "LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py"
 WORKFLOW = ".github/workflows/boma-st2-exp-002-quotient-route-comparison.yml"
 EVIDENCE = "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_VERIFIED_EVIDENCE_RUN_32597030998.json"
 JUNCTION = "ST2-EXP-002-PQ-J-001"
@@ -372,7 +373,7 @@ def check_retained_failures(
 ) -> None:
     lessons = read_text(root, LESSONS)
     ledger_document = read_text(root, LEDGER_MD)
-    for number in range(1, 15):
+    for number in range(1, 16):
         error_id = f"ERR-ST2-{number:03d}"
         if error_id not in lessons:
             add_error(residuals, "retained_error_record_missing", error=error_id)
@@ -412,6 +413,30 @@ def check_retained_failures(
             "machine_evidence_lost_failed_runs",
             actual=sorted(evidence_failures),
         )
+
+    ledger = json.loads(read_text(root, LEDGER))
+    cross_stage = ledger.get("cross_stage_governance_failure_runs", [])
+    if not isinstance(cross_stage, list):
+        add_error(residuals, "cross_stage_failure_records_not_list")
+        return
+    required = next(
+        (item for item in cross_stage if isinstance(item, dict) and item.get("id") == 32599546288),
+        None,
+    )
+    if required is None or required.get("error_id") != "ERR-ST2-015":
+        add_error(residuals, "cross_stage_research_junction_failure_not_retained")
+    elif str(required["id"]) not in lessons or str(required["id"]) not in ledger_document:
+        add_error(residuals, "cross_stage_research_junction_failure_not_documented")
+
+    architecture_audit = read_text(root, ARCHITECTURE_AUDIT)
+    for control in (
+        "def declared_research_junctions(",
+        "indexed_junction_ids - research_junction_ids",
+        "NOT A CANONICAL ACCEPTANCE JUNCTION",
+        "NOT AN ACCEPTED EXPORT",
+    ):
+        if control not in architecture_audit:
+            add_error(residuals, "cross_stage_research_scope_control_missing", control=control)
 
 
 def check_exact_experiment_identity(
@@ -492,10 +517,14 @@ def main() -> int:
             "closed_experiments": len(records),
             "current_state_documents": len(CURRENT_STATE_FILES),
             "junction_index_documents": len(JUNCTION_REQUIRED_FILES),
-            "retained_error_classes": 14,
+            "retained_error_classes": 15,
             "retained_failed_runs": sum(
                 len(record.get("preserved_failure_runs", []))
                 for record in records.values()
+            ) + len(
+                json.loads(read_text(root, LEDGER)).get(
+                    "cross_stage_governance_failure_runs", []
+                )
             ),
             "residuals": len(residuals),
         },

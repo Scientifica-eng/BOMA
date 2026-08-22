@@ -112,6 +112,13 @@ multiplication, the accepted-real embedding, and the distinguished
 imaginary generator. Its maps are mutually inverse; incoming Route Q was
 proved independently before Route P entered the comparison assembly.
 
+The first synchronized architecture head exposed cross-stage failure
+`32599546288`: an identifier shaped like a canonical Junction was mistaken
+for an actual canonical `UNIT.md`. The repository-wide auditor now resolves
+research Junctions through this origin ledger, requires their real experiment
+record and explicit nonaccepted scope, and keeps them distinct from accepted
+filesystem-grounded units.
+
 ## 6. Required fields for future controlled branches
 
 Before a new cycle leaves Plan, record:

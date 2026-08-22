@@ -28,6 +28,7 @@ current-state authorities are synchronized.
 | `ERR-ST2-012` | Expression quotient could be overstated as a complete formal polynomial ring | Historical candidate terminology said “polynomial adjunction / quotient” | Intended mathematical analogy was mistaken for the exact implemented object | Specify “formal-expression normalization quotient”; explicitly state no independent full `R[X]` implementation | Record the actual implemented carrier and prohibit claims exceeding the verified construction |
 | `ERR-ST2-013` | Identical kernel axioms could conceal a changed formalization placement | Both routes inherited `[propext, Classical.choice, Quot.sound]` from accepted R | An axiom list alone does not identify the C-stage direct consumers of quotient infrastructure | Retain branch-only exact-source quotient policy and classify direct eliminator / Setoid / Quotient use | Compare both kernel axioms and source-attributed declaration closures |
 | `ERR-ST2-014` | Earlier successful evidence could be incorrectly attached to a later documentation head | First proof PASS was run `32597030998`; the later complete head passed `32597346281` | Verification identity belongs to an exact Git commit, not to a mutable branch name | Preserve both historical proof-source evidence and independent exact-head final verification | Pin checkout to event head, print actual SHA, and require every modified final head to pass again |
+| `ERR-ST2-015` | Repository-wide unit audit misclassified an explicitly indexed research Junction as a missing accepted unit | Six-stage exact-head V5 failed in run `32599546288` although all six stage proofs passed | `ST2-EXP-002-PQ-J-001` matches canonical identifier syntax, and the previous audit inferred canonical ownership from spelling alone | Read explicitly typed research Junctions from the origin ledger, require their actual research source and explicit nonaccepted status, and exclude only validated research IDs from canonical-unit coverage | Cross-stage audits must distinguish identifier syntax, recorded artifact scope, filesystem unit ownership, and canonical acceptance; reject an undeclared exemption or a research/canonical identity collision |
 
 ## 2. Root causes rather than isolated symptoms
 
@@ -60,6 +61,8 @@ Before Plan is frozen:
 - Specify the actual carrier and avoid unimplemented mathematical shorthand.
 - Determine which current-state registries and topology documents will need
   synchronization if the experiment succeeds.
+- Predict whether a research artifact's identifier can be mistaken for an
+  accepted canonical unit by an existing repository-wide audit.
 
 During Do:
 
@@ -86,6 +89,9 @@ During Act:
   graph, unit status, Junction ledger, Claim map, and operational documents.
 - Preserve canonical acceptance and separately label verified research
   alternatives and Junctions.
+- Validate noncanonical research Junctions against their typed origin ledger
+  and actual experiment record; never create a canonical `UNIT.md` solely to
+  silence a unit-coverage audit.
 - Run the automated Stage-Two governance audit and all relevant exact-head V5
   checks.
 - Do not authorize another experiment or merge without the owner's separate
@@ -109,6 +115,7 @@ Automated current-state / origin / exact-ID auditor:
 
 ```text
 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py
+LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py
 ```
 
 Verification is integrated into the existing exact-head

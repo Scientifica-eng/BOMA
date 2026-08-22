@@ -35,6 +35,7 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_POLICY = Path("LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json")
+STAGE_TWO_ORIGIN_LEDGER = Path("LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json")
 
 UNIT_ID_RE = re.compile(
     r"^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)*-(BR|BLOCK|J|DP)-\d{3}$"
@@ -150,6 +151,89 @@ def stale_inputs(root: Path, audited_sha: str, paths: list[str]) -> list[str]:
 
 def add(findings: list[Finding], level: str, scope: str, path: str, message: str) -> None:
     findings.append(Finding(level, scope, path, message))
+
+
+def declared_research_junctions(
+    root: Path,
+    junction_text: str,
+    canonical_unit_ids: set[str],
+    findings: list[Finding],
+) -> set[str]:
+    """Resolve explicitly documented research Junctions without inventing units."""
+    ledger_path = root / STAGE_TWO_ORIGIN_LEDGER
+    if not ledger_path.is_file():
+        return set()
+
+    ledger = load_json(ledger_path)
+    if ledger.get("schema") != "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001":
+        add(
+            findings,
+            "ERROR",
+            "JUNCTION",
+            str(STAGE_TWO_ORIGIN_LEDGER),
+            "research Junction authority has an invalid architectural-origin schema",
+        )
+        return set()
+
+    records = ledger.get("records")
+    if not isinstance(records, list):
+        add(
+            findings,
+            "ERROR",
+            "JUNCTION",
+            str(STAGE_TWO_ORIGIN_LEDGER),
+            "research Junction authority does not contain an experiment-record list",
+        )
+        return set()
+
+    research: set[str] = set()
+    allowed_record_root = (root / "LAB/PDSA/experiments").resolve()
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        junction_id = record.get("reconvergence_junction_id")
+        if junction_id is None:
+            continue
+
+        origin = str(STAGE_TWO_ORIGIN_LEDGER)
+        if not isinstance(junction_id, str) or not UNIT_ID_RE.fullmatch(junction_id):
+            add(findings, "ERROR", "JUNCTION", origin, f"invalid declared research Junction identifier: {junction_id!r}")
+            continue
+        if unit_kind(junction_id) != "J":
+            add(findings, "ERROR", "JUNCTION", origin, f"research convergence identifier is not a Junction: {junction_id}")
+            continue
+
+        junction_status = str(record.get("junction_status", ""))
+        product_status = str(record.get("experimental_product_status", ""))
+        if (
+            "RESEARCH JUNCTION" not in junction_status
+            or "NOT A CANONICAL ACCEPTANCE JUNCTION" not in junction_status
+            or "NOT AN ACCEPTED EXPORT" not in product_status
+        ):
+            add(findings, "ERROR", "JUNCTION", origin, f"research Junction lacks explicit noncanonical/nonaccepted classification: {junction_id}")
+            continue
+
+        record_relative = record.get("junction_record")
+        if not isinstance(record_relative, str):
+            add(findings, "ERROR", "JUNCTION", origin, f"research Junction has no documented source record: {junction_id}")
+            continue
+        record_path = (root / record_relative).resolve()
+        if not record_path.is_relative_to(allowed_record_root) or not record_path.is_file():
+            add(findings, "ERROR", "JUNCTION", origin, f"research Junction source is absent or outside research records: {junction_id}")
+            continue
+        record_text = record_path.read_text(encoding="utf-8")
+        if junction_id not in record_text or str(record.get("experiment_id", "")) not in record_text:
+            add(findings, "ERROR", "JUNCTION", record_relative, f"research Junction source does not confirm experiment and identifier: {junction_id}")
+            continue
+        if junction_id not in junction_text:
+            add(findings, "ERROR", "JUNCTION", origin, f"declared research Junction is absent from the central ledger: {junction_id}")
+            continue
+        if junction_id in canonical_unit_ids:
+            add(findings, "ERROR", "JUNCTION", origin, f"research-only Junction collides with a canonical UNIT.md: {junction_id}")
+            continue
+        research.add(junction_id)
+
+    return research
 
 
 def audit(root: Path, policy_rel: Path) -> tuple[list[Finding], dict[str, Any]]:
@@ -299,7 +383,11 @@ def audit(root: Path, policy_rel: Path) -> tuple[list[Finding], dict[str, Any]]:
     junction_text = read_text(root, str(policy["junction_ledger"])) if (root / str(policy["junction_ledger"])).is_file() else ""
     decision_text = read_text(root, str(policy["decision_ledger"])) if (root / str(policy["decision_ledger"])).is_file() else ""
     block_ids = {i for i in expanded_ids(block_text) if unit_kind(i) == "BLOCK"}
-    junction_ids = {i for i in expanded_ids(junction_text) if unit_kind(i) == "J"}
+    indexed_junction_ids = {i for i in expanded_ids(junction_text) if unit_kind(i) == "J"}
+    research_junction_ids = declared_research_junctions(
+        root, junction_text, set(units), findings
+    )
+    junction_ids = indexed_junction_ids - research_junction_ids
     decision_ids = {i for i in expanded_ids(decision_text) if unit_kind(i) == "DP"}
 
     coverage_sets = {
@@ -335,6 +423,7 @@ def audit(root: Path, policy_rel: Path) -> tuple[list[Finding], dict[str, Any]]:
         "bricks": len(by_kind["BR"]),
         "blocks": len(by_kind["BLOCK"]),
         "junctions": len(by_kind["J"]),
+        "research_junctions": len(research_junction_ids),
         "decisions": len(by_kind["DP"]),
         "orphan_actual_units": sum(1 for f in findings if f.level == "ERROR" and "orphan canonical" in f.message),
         "stale_mapped_units": sum(1 for f in findings if f.level == "ERROR" and "stale " in f.message.lower()),
