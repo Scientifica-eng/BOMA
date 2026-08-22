@@ -246,11 +246,13 @@ accepted-R dependency boundary
    ↓
 PDSA-C-001
 acceptance discriminant CLOSED
-   ↓
-C-DP-001 OPEN
-   ├──► C-ROUTE-P ordered-pair / rank-two candidate
-   ├──► C-ROUTE-Q polynomial-adjunction / quotient candidate
-   └──► C-ROUTE-A only if genuinely independent
+   ├──► PDSA-C-002 ACTIVE — accepted-R interface sufficiency probe
+   │      C-RL-001 / C-RL-002 supporting Lean payload STAGED
+   │      C-RQ-001 verification outcome PENDING RETRIEVABLE EVIDENCE
+   └──► C-DP-001 OPEN
+          ├──► C-ROUTE-P ordered-pair / rank-two candidate
+          ├──► C-ROUTE-Q polynomial-adjunction / quotient candidate
+          └──► C-ROUTE-A only if genuinely independent
 
 SELECTS = NONE
 ```
@@ -316,7 +318,7 @@ R rational density             32359834460
 R Archimedean                  32359869558
 R final integration            32374868448
 Lean                           4.32.1
-C V5                           NONE YET
+C boundary probe V5            PENDING — no retrievable exact evidence yet
 ```
 
 No C proof result is inferred from the historical N→R evidence.

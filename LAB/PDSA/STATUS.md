@@ -1,11 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
 **Status:** ACTIVE / SYNCHRONIZED  
-**Current status date:** 2026-08-21  
+**Current status date:** 2026-08-22  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
-**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-001 — CLOSED / ex-ante acceptance semantics stabilized`
+**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
+**Current C cycle:** `PDSA-C-002 — ACTIVE / accepted-R interface probe staged / V5 evidence pending`
 
 ## Current canonical frontier
 
@@ -38,11 +38,13 @@ BOMA-C-ACCEPT-001   ACTIVE — ex-ante representation-neutral contract
 C Claim register    OPEN — provisional / no accepted C Claim yet
 BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
+PDSA-C-002          ACTIVE — accepted-R interface probe staged / V5 pending
+C-RQ-001            OPEN — formal certification pending retrievable evidence
 C-DP-001            OPEN — no route selected
 C Bricks / Blocks   NONE YET
 C Junctions         NONE YET
-C Lean payloads     NONE YET
-C V5 evidence       NONE YET
+C Lean payloads     STAGED — route-neutral accepted-R boundary probe only
+C V5 evidence       PENDING — no exact retrievable run/source evidence yet
 accepted C export   NONE
 ```
 
@@ -456,7 +458,11 @@ No accepted R theorem was weakened or revoked by the reverse audit.
 
 # Operational takeover / stabilization — RECORDED
 
-The takeover handoff is recorded in:
+The current executive-takeover checkpoint is:
+
+`LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`
+
+The earlier operational takeover remains preserved in:
 
 `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
 
@@ -523,7 +529,7 @@ C-CL-COMPARE-001
 C-CL-INTEGRATION-001
 ```
 
-All are currently unproduced/unverified. No C V5 result is claimed.
+All acceptance-level C Claims remain unproduced/unverified. The separate route-neutral `PDSA-C-002` supporting-theorem payload exists, but no exact C V5 result is claimed until retrievable evidence is available.
 
 Initial R dependency conclusion:
 
@@ -536,12 +542,20 @@ not currently required by core C semantics:
   Dedekind representation internals
 ```
 
-First formal dependency question:
+First formal dependency question and active cycle:
 
 ```text
 C-RQ-001
 Can -1 nonsquare / square-nonnegative support be proved
 from the accepted R Claim surface without Dedekind internals?
+
+PDSA-C-002
+  source                    CRInterfaceNoSquareProbe001.lean
+  abstract interface proof  STAGED
+  accepted-R instantiation  STAGED
+  read-only V5 workflow     PRESENT
+  exact verified outcome    PENDING RETRIEVABLE EVIDENCE
+  representation selection  NONE
 ```
 
 The representation Decision remains blocked from resolution until comparable route evidence exists.
@@ -559,6 +573,7 @@ LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
 LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
+LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
 LAB/00_ARCHITECTURE/TRUSTED_BASE.md
@@ -582,5 +597,6 @@ LAB/PDSA/PDSA-R-014_STAGE_ONE_REAL_CLOSURE.md
 LAB/PDSA/PDSA-R-015_REAL_STAGE_REVERSE_ENGINEERING.md
 LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md
+LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 this STATUS file
 ```

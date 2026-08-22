@@ -260,6 +260,7 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `BOMA-C-ACCEPT-001` | representation-neutral Stage-One C acceptance specification | ACTIVE |
 | `BOMA-C-R-DEP-001` | accepted-R dependency contract | ACTIVE |
 | `PDSA-C-001` | acceptance-contract discriminant | CLOSED |
+| `PDSA-C-002` | route-neutral accepted-R interface sufficiency probe | ACTIVE — V5 EVIDENCE PENDING |
 | `C-DP-001` | Stage-One construction realization route | OPEN — NO SELECTION |
 
 `C-DP-001` currently retains:
@@ -270,7 +271,7 @@ C-ROUTE-Q  polynomial-adjunction / quotient candidate
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-No route has been promoted to a canonical C Brick or Block. No C Junction exists. No C Lean payload or V5 evidence exists.
+No route has been promoted to a canonical C Brick or Block. No C Junction exists. One route-neutral C supporting-theorem Lean payload is staged under `PDSA-C-002`; it is neither a construction Block nor an accepted C Claim. Exact V5 run/source evidence remains pending.
 
 Initial Claim targets are recorded in:
 

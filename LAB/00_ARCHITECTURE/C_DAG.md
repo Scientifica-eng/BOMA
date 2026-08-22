@@ -32,12 +32,14 @@ BOMA-C-R-DEP-001
 accepted-R dependency boundary
    ↓
 PDSA-C-001
-ex-ante acceptance discriminant
-   ↓
-C-DP-001 — OPEN
-   ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
-   ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
-   └──► C-ROUTE-A — conditional genuinely independent alternative
+ex-ante acceptance discriminant — CLOSED
+   ├──► PDSA-C-002 — ACTIVE accepted-R interface sufficiency probe
+   │      C-RL-001 / C-RL-002 supporting Lean source STAGED
+   │      exact V5 result PENDING RETRIEVABLE EVIDENCE
+   └──► C-DP-001 — OPEN
+          ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
+          ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
+          └──► C-ROUTE-A — conditional genuinely independent alternative
 
 NO SELECTED ROUTE YET
 NO C CARRIER YET
@@ -272,11 +274,21 @@ algebraic closure classified as later strengthening, not carrier-defining necess
 R dependency surface narrowed to accepted field/order Claims
   ↓
 C-DP-001 opened without selection
+  ↓
+first direct-certificate proof draft examined
+  ↓
+abstract accepted-R interface and concrete accepted producer separated
+  ↓
+C-RL-001 / C-RL-002 supporting source staged
+  ↓
+formal certification deliberately held pending exact retrievable evidence
 ```
 
-Authoritative PDSA record:
+Authoritative PDSA records:
 
 `LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md`.
+
+`LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md`.
 
 This sequence must remain visible even after a later route is selected.
 
@@ -288,13 +300,13 @@ This sequence must remain visible even after a later route is selected.
 C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
 C Claim register      OPEN / EX-ANTE
-C R dependency        DECLARED / first formal sufficiency question OPEN
+C R dependency        DECLARED / C-RQ-001 probe STAGED, V5 pending
 C-DP-001              OPEN
 selected route        NONE
 constructed C Block   NONE
 C Junction            NONE
-C Lean payload        NONE
-C V5                  NONE
+C Lean payload        STAGED — route-neutral boundary supporting source only
+C V5                  PENDING — exact evidence not yet retrievable
 C acceptance          NOT YET ELIGIBLE
 ```
 
