@@ -109,7 +109,10 @@ Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, 
 ## 8. C — accepted selected-route producer mapping / CA-20
 
 `C-DP-001` is user-ratified: `C-ROUTE-P` is the selected working producer;
-`C-ROUTE-Q` remains a retained independently verified probe.
+`C-ROUTE-Q` is a `VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED
+EXPORT` under `ST2-EXP-002`. Its branch-only nine-Claim producer mapping and
+research Junction do not create a canonical Q Block or modify accepted C
+Claim ownership.
 
 | Existing unit | Actual producer role | Provisional Claims |
 | --- | --- | --- |
@@ -118,9 +121,12 @@ Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, 
 | `C-J-001` | same-carrier integration; V5 32585583815 PASS | `C-CL-INTEGRATION-001` |
 | `C-BLOCK-002` | accepted Stage-One complex downstream export / `CA-20` | `C-CL-INTEGRATION-001` and the selected nine-Claim package |
 
-Mappings document actual producer units; separate `CA-20` accepts only the
-final `C-BLOCK-002` export, not the retained Route Q probe. No C Brick
-or completed alternative field is fabricated for naming symmetry.
+Mappings above document **accepted canonical** producer units; `CA-20`
+accepts only the final `C-BLOCK-002` export. The completed Q field and
+`ST2-EXP-002-PQ-J-001` are real, verified **research** producers indexed in
+the Stage-Two origin ledger and Junction ledger. They are not canonical
+Blocks, accepted exports, or replacements for accepted Claim producer policy.
+No C Brick or canonical Q Block is fabricated for naming symmetry.
 
 ## 9. Mapping invariant
 
@@ -151,11 +157,14 @@ Missing links become audit defects **only after** an artifact claims a producer/
 ## 10. Current boundary
 
 ```text
-Accepted Block→Claim mappings   N-Core through R
-C provisional Claims            OPEN
+Accepted Block→Claim mappings   N-Core through C
+C accepted Claims               VERIFIED / NINE / CA-20 ACCEPT
 C Block→Claim mappings          COMPLETE / CA-20 ACCEPT
-C representation               C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
+C representation               C-ROUTE-P SELECTED / C-ROUTE-Q VERIFIED RESEARCH FIELD
+C research reconvergence       ST2-EXP-002-PQ-J-001 / NOT CANONICAL ACCEPTANCE
 C accepted export              C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-The previous user hold is historical provenance. It was explicitly lifted on 2026-08-21; the absence of C Block mappings now reflects disciplined acceptance-first construction, not lack of authorization.
+The previous user hold is historical provenance and was explicitly lifted on
+2026-08-21. Accepted C Block mappings are complete; research-only Q producer
+mappings stay separate from canonical accepted ownership.

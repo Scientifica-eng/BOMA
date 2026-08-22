@@ -8,7 +8,9 @@
 - **Verified comparison:** `C-COMPARE-BLOCK-001 / run 32575465002 PASS`
 - **Current cycle:** `PDSA-C-004/005 CLOSED; C-J-001 PASS; CA-20 ACCEPT; reverse audits CLOSED`
 - **Input domain:** `R-BLOCK-001 — Accepted Stage-One Real Interface`
-- **Alternative:** `C-ROUTE-Q — VERIFIED NONCANONICAL PROBE / RETAINED`
+- **Alternative:** `C-ROUTE-Q — VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT`
+- **Research reconvergence:** `ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / V5 32597346281 PASS`
+- **Architectural origins:** `ST2-EXP-001: BOMA-C-R-DEP-001 dependency edge`; `ST2-EXP-002: C-DP-001 decision`
 - **Acceptance:** `CA-20 = ACCEPT / downstream export C-BLOCK-002`
 - **Ring verification:** `32574270735 PASS / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`
 - **Field verification:** `32574920935 PASS / source ccf41e062b37ab39f46dc18a1cbbbf90728807ff`
@@ -78,3 +80,12 @@ algebraic closure / FTA       NOT CLAIMED
 
 This Block is the actual selected field producer, not a competing accepted
 export. No merge into `main` is authorized.
+
+## Research distinction
+
+`ST2-EXP-002` independently completed the retained formal-expression quotient
+field and then compared it with this accepted selected P producer. The
+resulting `ST2-EXP-002-PQ-J-001` is research-only and preserves the accepted
+real embedding and imaginary generator; it does not replace this Block or
+promote Q to an accepted export. `ST2-EXP-001` instead modifies the upstream
+interface edge without changing this original carrier or its operations.

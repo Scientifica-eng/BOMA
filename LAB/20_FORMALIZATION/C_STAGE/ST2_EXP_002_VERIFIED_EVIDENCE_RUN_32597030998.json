@@ -1,0 +1,221 @@
+{
+  "schema": "BOMA-ST2-EXP-002-VERIFIED-EVIDENCE-001",
+  "experiment": "ST2-EXP-002",
+  "status": "VERIFIED_PASS",
+  "verified_source_commit": "2d8077a5403fca6de930a13add88038b3fe89eec",
+  "frozen_accepted_baseline": "878a52c3d833b9db9ea66f1ff4fcd207ca6ab498",
+  "frozen_plan_commit": "94a79eb07a2dddebbcba0e8fbd11508514ecca6c",
+  "research_branch": "feature/stage-two-st2-exp-002-quotient-route-comparison",
+  "pull_request": 7,
+  "lean_toolchain": "leanprover/lean4:v4.32.1",
+  "dedicated_v5_run": {
+    "id": 32597030998,
+    "conclusion": "success",
+    "artifact_id": 9481837137,
+    "artifact_name": "st2-exp-002-route-comparison-32597030998"
+  },
+  "accepted_baseline_guard_runs": [
+    {
+      "id": 32597030966,
+      "scope": "accepted comparable C route probes",
+      "conclusion": "success"
+    },
+    {
+      "id": 32597031076,
+      "scope": "accepted C and six-stage transparency",
+      "conclusion": "success"
+    },
+    {
+      "id": 32597031086,
+      "scope": "accepted same-carrier integration and Claim transparency",
+      "conclusion": "success"
+    }
+  ],
+  "preserved_failed_runs": [
+    {
+      "id": 32596872373,
+      "source": "025fe2d445dc90556d3ddd2ca92b70658b1a7db7",
+      "failure_class": "F1",
+      "stage": "independent Q field",
+      "reason": "explicit R certificate and quotient coordinate definitions not discharged"
+    },
+    {
+      "id": 32596968581,
+      "source": "b97fe52112e8b9a17ec7fc519522e3d0c4a719e0",
+      "failure_class": "F1",
+      "stage": "independent Q field",
+      "reason": "coordinate rewrite solved the goal before a redundant tactic"
+    },
+    {
+      "id": 32597282848,
+      "source": "e9152533e7b65b9d7ad081c7918dc1aaad5707bd",
+      "failure_class": "F8",
+      "stage": "final-head accepted-baseline preservation",
+      "reason": "overbroad experiment-001 path glob misidentified a new experiment-002 Junction numbered 001"
+    }
+  ],
+  "fixed_real_interface": "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
+  "accepted_R_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "independent_Q_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "pq_junction_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "independent_closure": {
+    "status": "PROTOTYPE_PASS",
+    "internal": 778,
+    "external_boundary": 78,
+    "dependency_edges": 9466,
+    "unresolved": 0,
+    "raw_unmapped_internal_ranges": 69,
+    "generated_source_inferences": 69,
+    "unmapped_internal_ranges": 0,
+    "internal_axioms": 0,
+    "targets": 1,
+    "forbidden_selected_p": []
+  },
+  "independent_classification": {
+    "status": "CLASSIFICATION_PASS",
+    "external_boundary": 78,
+    "classified_external": 78,
+    "external_residuals": 0,
+    "internal_residuals": 0,
+    "total_residuals": 0,
+    "classes": {
+      "DECLARED_LOGICAL_COMMITMENT": 2,
+      "TRUSTED_FORMALIZATION_INFRASTRUCTURE": 10,
+      "TRUSTED_METATHEORY": 66
+    }
+  },
+  "combined_closure": {
+    "status": "PROTOTYPE_PASS",
+    "internal": 933,
+    "external_boundary": 78,
+    "dependency_edges": 11043,
+    "unresolved": 0,
+    "raw_unmapped_internal_ranges": 82,
+    "generated_source_inferences": 82,
+    "unmapped_internal_ranges": 0,
+    "internal_axioms": 0,
+    "targets": 1
+  },
+  "combined_classification": {
+    "status": "CLASSIFICATION_PASS",
+    "external_boundary": 78,
+    "classified_external": 78,
+    "external_residuals": 0,
+    "internal_residuals": 0,
+    "total_residuals": 0,
+    "classes": {
+      "DECLARED_LOGICAL_COMMITMENT": 2,
+      "TRUSTED_FORMALIZATION_INFRASTRUCTURE": 10,
+      "TRUSTED_METATHEORY": 66
+    }
+  },
+  "claim_producer_ownership": {
+    "status": "CLAIM_PRODUCER_PASS",
+    "registry_claims": 9,
+    "policy_claims": 9,
+    "declared_producers": 22,
+    "audit_targets": 1,
+    "internal_declarations": 933,
+    "owned_internal_declarations": 933,
+    "unowned_internal_declarations": 0,
+    "target_direct_internal_dependencies": 8,
+    "undeclared_target_direct_internal_dependencies": 0,
+    "multi_claim_owned_internal_declarations": 572,
+    "residual_groups": 0,
+    "claim_ids": [
+      "C-CL-CARRIER-001",
+      "C-CL-REMBED-001",
+      "C-CL-FIELD-001",
+      "C-CL-I-001",
+      "C-CL-GEN-001",
+      "C-CL-COORDUNIQ-001",
+      "C-CL-NONREAL-001",
+      "C-CL-COMPARE-001",
+      "C-CL-INTEGRATION-001"
+    ]
+  },
+  "comparison": {
+    "schema": "BOMA-ST2-EXP-002-COMPARISON-001",
+    "status": "COMPARISON_PASS",
+    "single_changed_decision": "C-DP-001 representation: C-ROUTE-P vs C-ROUTE-Q",
+    "fixed_real_interface": "BOMA.R.StageIntegration002.RStageIntegrationCertificate",
+    "accepted_route": "C-ROUTE-P / pair-record carrier / CA-20 unchanged",
+    "experimental_route": "C-ROUTE-Q / formal-expression normalization quotient",
+    "independent_target": "BOMA.C.StageTwo.QQuotientField002.qFieldCertificateFromAcceptedR",
+    "junction_target": "BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate",
+    "counts": {
+      "independent_q_internal": 778,
+      "independent_q_external": 78,
+      "junction_internal": 933,
+      "junction_external": 78,
+      "selected_p_in_junction": 42,
+      "forbidden_p_in_independent_q": 0,
+      "narrow_interface_contamination": 0,
+      "claim_families": 9,
+      "q_quotient_external_boundary": 8
+    },
+    "claim_ids": [
+      "C-CL-CARRIER-001",
+      "C-CL-COMPARE-001",
+      "C-CL-COORDUNIQ-001",
+      "C-CL-FIELD-001",
+      "C-CL-GEN-001",
+      "C-CL-I-001",
+      "C-CL-INTEGRATION-001",
+      "C-CL-NONREAL-001",
+      "C-CL-REMBED-001"
+    ],
+    "q_quotient_external_boundary": [
+      "Quotient",
+      "Quotient.exact",
+      "Quotient.inductionOn",
+      "Quotient.inductionOn₂",
+      "Quotient.lift",
+      "Quotient.lift₂",
+      "Quotient.mk",
+      "Quotient.sound"
+    ],
+    "selected_p_representative_declarations": [
+      "BOMA.C.PairCore001.CBOMA",
+      "BOMA.C.PairCore001.cAdd",
+      "BOMA.C.PairCore001.cI",
+      "BOMA.C.PairCore001.cMul",
+      "BOMA.C.PairCore001.cNeg",
+      "BOMA.C.PairCore001.cOfR",
+      "BOMA.C.PairCore001.cOne",
+      "BOMA.C.PairCore001.cZero",
+      "BOMA.C.PairCore001.c_add_assoc",
+      "BOMA.C.PairCore001.c_add_comm",
+      "BOMA.C.PairCore001.c_add_neg_right",
+      "BOMA.C.PairCore001.c_add_zero_left"
+    ],
+    "hypotheses": {
+      "H1": true,
+      "H2": true,
+      "H3": true,
+      "H4": true,
+      "H5": true
+    },
+    "limitations": [
+      "Route Q is a formal-expression quotient, not a separately implemented full polynomial ring R[X].",
+      "Quotient infrastructure is branch-specifically classified; the accepted formal-dependency policy is unchanged.",
+      "Route P remains the accepted CA-20 carrier; Route Q is a research alternative."
+    ],
+    "residuals": []
+  },
+  "act": "CLOSE ST2-EXP-002 PASS; preserve P as accepted CA-20 route and Q as verified independent alternative; no merge authorized",
+  "scope_limitation": "Q is a formal-expression normalization quotient, not an independently implemented full polynomial ring R[X].",
+  "evidence_provenance_note": "This record binds run 32597030998 to the exact proof-source commit above. Later documentation-only heads require their own workflow verification and do not rewrite this historical evidence."
+}

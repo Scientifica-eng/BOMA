@@ -86,7 +86,7 @@ PDSA-C-007         CLOSED — final integration / nine-Claim V5 32585583815 PASS
 PDSA-C-008         CLOSED — CA-20 ACCEPT / six-stage run 32586145793 PASS
 PDSA-C-009         CLOSED — RE-C-001 complete / exact dependency classification
 PDSA-STAGE1-001    CLOSED — global RE-STAGE1-001 COMPLETE
-STAGE-TWO-LAB      READY — ST2-EXP-001 CLOSED PASS / no active experiment
+STAGE-TWO-LAB      ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           CBOMA — selected pair record / V5 PASS
 C Brick / Block     C-BLOCK-001 producer / C-BLOCK-002 ACCEPTED
@@ -124,7 +124,12 @@ Lean identity = mathematical identity
 standard notation a+bi = carrier definition
 ```
 
-`C-DP-001` is RESOLVED by explicit user ratification on 2026-08-22. `C-ROUTE-P` is the selected Stage-One producer; `C-ROUTE-Q` remains a retained verified alternative. The selected Route P is now promoted to the verified `C-BLOCK-001` witness-based field; it is not yet an accepted C export. Route options remain:
+`C-DP-001` is RESOLVED by explicit user ratification on 2026-08-22.
+`C-ROUTE-P` is the selected `C-BLOCK-001` witness-field producer and
+`C-BLOCK-002 / CA-20` is the accepted C export. `ST2-EXP-002` independently
+completed retained `C-ROUTE-Q` as a `VERIFIED INDEPENDENT RESEARCH FIELD /
+NOT AN ACCEPTED EXPORT` and verified its research-only P/Q isomorphism.
+Route options remain:
 
 ```text
 C-ROUTE-P  ordered-pair / explicit rank-two coordinate candidate
@@ -331,7 +336,30 @@ Repository cleanup must distinguish operational debris from research provenance.
 `CA-20`, `RE-C-001`, and `RE-STAGE1-001` are complete. The only current research
 frontier is the controlled candidate register
 `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`; owner-approved
-`ST2-EXP-001` is CLOSED / PASS in exact run `32593045224`, and no experiment
-is currently active. Preserve its immutable Plan, failure and success evidence,
-the accepted N→C baseline, all twelve unselected alternatives, and never merge
-into `main` without the owner's separate explicit instruction.
+`ST2-EXP-001` is CLOSED / PASS in exact run `32593045224`; independently
+approved `ST2-EXP-002` is CLOSED / PASS in exact run `32597030998`. Its frozen
+`LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md` Plan and separate
+`LAB/PDSA/experiments/ST2-EXP-002_QUOTIENT_ROUTE_COMPARISON_STUDY.md` preserve
+independent Q closure, explicit P/Q reconvergence, quotient commitments, and
+failed iterations. No experiment is currently active. Preserve the accepted
+N→C baseline, both closed experiments, all eleven unselected alternatives;
+do not start another candidate or merge into `main` without separate explicit
+owner approval.
+
+## Mandatory Stage-Two branch-origin and error-prevention controls
+
+Before opening or continuing a branch experiment, read:
+
+```text
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
+```
+
+Identify the exact typed origin (`BRICK`, `BLOCK`, `DECISION_POINT`,
+`DEPENDENCY_EDGE`, `CLAIM`, or `SUPPORTING_LEMMA`), upstream and affected
+units, frozen accepted baseline, changed factor, fixed controls, affected
+cone, evidence, and actual research/acceptance status. Never invent a Brick
+for an edge, revise a frozen Plan, confuse a research Junction with
+`C-J-001`, treat identical kernel axioms as identical source commitments, or
+skip exact-head governance and Lean verification.

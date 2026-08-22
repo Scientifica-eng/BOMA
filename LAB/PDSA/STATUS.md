@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current program frontier:** `STAGE TWO READY / ST2-EXP-001 CLOSED PASS / no active experiment`
+**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / NO ACTIVE EXPERIMENT`
 
 ## Current canonical frontier
 
@@ -47,17 +47,22 @@ PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 
 PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
 PDSA-STAGE1-001     CLOSED — RE-STAGE1-001 COMPLETE / 73 accepted Claims
-STAGE-TWO-LAB       READY — ST2-EXP-001 CLOSED PASS / 12 unselected / NO ACTIVE EXPERIMENT
+STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
-C Junctions         C-J-001 PASS / exact V5 32585583815 / zero audit residuals
+C Junctions         C-J-001 ACCEPTED-INTEGRATION PASS / ST2-EXP-002-PQ-J-001 RESEARCH PASS
 C Lean payloads     VERIFIED boundary + routes + pair ring + witness field + quadratic comparison
 C V5 evidence       boundary/routes/ring/field PASS; 32575465002 quadratic comparison PASS
 accepted C export   C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-The user explicitly ratified `C-ROUTE-P` on 2026-08-22 after symmetric route evidence; `C-ROUTE-Q` remains retained. The current feature branch is `feature/c-stage-acceptance-001`, created from `main@3190db79c52b1a5f8077210d386c265f46fb85a7`.
+The user explicitly ratified `C-ROUTE-P` on 2026-08-22; `C-BLOCK-002 / CA-20`
+is accepted. `C-ROUTE-Q` is a verified independent research field, not an
+accepted export. The current research feature branch is
+`feature/stage-two-st2-exp-002-quotient-route-comparison`, based on frozen
+`main@878a52c3d833b9db9ea66f1ff4fcd207ca6ab498`; the earlier
+`feature/c-stage-acceptance-001` belongs to historical acceptance provenance.
 
 ---
 
@@ -518,9 +523,12 @@ C-DP-001 RESOLVED — C-ROUTE-P SELECTED
    └── C-ROUTE-A only if genuinely independent
 ```
 
-Route P is user-selected and promoted to `C-BLOCK-001`, a V5-verified **commutative-field-strength producer**, not yet an accepted C export. Route Q remains retained.
+Route P is the selected `C-BLOCK-001` verified **commutative-field-strength
+producer**; `C-BLOCK-002 / CA-20` is the accepted C export. Route Q is a
+`VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT`, with a
+separate P/Q research Junction.
 
-Initial Claim register:
+Accepted nine-Claim register:
 
 `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`
 
@@ -538,7 +546,13 @@ C-CL-COMPARE-001
 C-CL-INTEGRATION-001
 ```
 
-Carrier, faithful real embedding, generator, generation, coordinate uniqueness, and non-real-collapse producers are verified by selected-core run `32574270735` but remain pending final stage acceptance. `C-CL-FIELD-001` is now V5-verified with unique existential inverse witnesses; representation-neutral comparison and final integration remain open. The separate route-neutral `PDSA-C-002` supporting-theorem payload remains verified by exact run `32564789630`.
+Carrier, faithful real embedding, generator, generation, coordinate
+uniqueness, and non-real-collapse Claims are accepted through
+`C-BLOCK-002 / CA-20`. `C-CL-FIELD-001` has verified unique existential inverse
+witnesses; representation-neutral comparison and accepted final integration
+are closed. The separate route-neutral `PDSA-C-002` supporting-theorem
+payload remains verified by exact run `32564789630`; later `ST2-EXP-002`
+adds a noncanonical independent Q field and verified P/Q research Junction.
 
 Initial R dependency conclusion:
 
@@ -551,7 +565,7 @@ not currently required by core C semantics:
   Dedekind representation internals
 ```
 
-First formal dependency question and active cycle:
+Historical first formal dependency question and completed cycles:
 
 ```text
 C-RQ-001
@@ -575,15 +589,23 @@ PDSA-C-003
   representation selection   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 ```
 
-PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` closed after witness-field run `32574920935`, including an exact inherited-axiom baseline comparison. `PDSA-C-006` closed after quadratic comparison run `32575465002`, preserving the initial proposition/data failure. `PDSA-C-007` closed after exact integration V5 `32585583815`; separate
+PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` was then a partial verified producer; later `PDSA-C-005`
+completed its witness field and `PDSA-C-008` accepted the distinct
+`C-BLOCK-002` export. `PDSA-C-005` closed after witness-field run `32574920935`, including an exact inherited-axiom baseline comparison. `PDSA-C-006` closed after quadratic comparison run `32575465002`, preserving the initial proposition/data failure. `PDSA-C-007` closed after exact integration V5 `32585583815`; separate
 `PDSA-C-008` accepted C through six-stage run `32586145793`; `PDSA-C-009`
 completed the local C reverse audit; `PDSA-STAGE1-001` completed the global
-accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed
-PASS in exact V5 run 32593045224; no other experiment is selected or active.
+accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed PASS in exact V5 run
+32593045224. Independently owner-approved ST2-EXP-002 also closed PASS in
+exact V5 run 32597030998: the formal-expression quotient is a completed
+P-independent field, its actual closure contains zero P declarations, and its
+explicit P/Q inverse Junction preserves all nine accepted C Claim families.
+Accepted Route P and CA-20 remain unchanged; no branch experiment is active.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
-`RE-STAGE1-001` remains scheduled for after a future accepted C export and the required post-C reverse dependency/necessity audit.
+`RE-STAGE1-001` and `RE-C-001` are both CLOSED / COMPLETE after the accepted
+`C-BLOCK-002 / CA-20` export. No additional reverse audit or Stage-Two
+experiment is currently authorized.
 
 ---
 
@@ -629,3 +651,12 @@ LAB/PDSA/PDSA-C-007_FINAL_INTEGRATION_AND_CLAIM_TRANSPARENCY.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```
+
+## Stage-Two architectural attachment and retained error controls
+
+Typed dependency-edge versus decision-point experiment origins are maintained
+in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md` and its machine-readable
+JSON companion. Observed stale-state, proof-elaboration, exact-ID guard,
+quotient-scope, inherited-axiom, and evidence-head errors are preserved in
+`LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md`; the automated
+governance audit runs before Lean verification.

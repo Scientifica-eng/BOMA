@@ -1,0 +1,265 @@
+name: BOMA ST2-EXP-002 Independent Quotient Route and Pair Junction — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp002*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_*'
+      - 'LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md'
+      - 'LAB/PDSA/experiments/ST2*EXP*002*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
+      - 'LAB/00_ARCHITECTURE/C_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md'
+      - 'LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md'
+      - 'README.md'
+      - 'AGENTS.md'
+      - '.github/workflows/boma-st2-exp-002-quotient-route-comparison.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-002-*'
+
+concurrency:
+  group: boma-st2-exp-002-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: prove Q independently before admitting explicit P/Q reconvergence
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin exact head and preserve accepted baseline and frozen Plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          baseline="878a52c3d833b9db9ea66f1ff4fcd207ca6ab498"
+          frozen_plan="94a79eb07a2dddebbcba0e8fbd11508514ecca6c"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/00_ARCHITECTURE/FORMAL_DEPENDENCY_POLICY.json \
+            LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean \
+            LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean \
+            LAB/payloads/lean/CStage/CRoutePairProbe001.lean \
+            LAB/payloads/lean/CStage/CRouteQuadraticQuotientProbe001.lean \
+            LAB/payloads/lean/CStage/CPairCore001.lean \
+            LAB/payloads/lean/CStage/CPairNormInverse001.lean \
+            LAB/payloads/lean/CStage/CQuadraticComparison001.lean \
+            LAB/payloads/lean/CStage/CStageIntegration001.lean \
+            ':(glob)LAB/**/ST2-EXP-001*' \
+            ':(glob)LAB/**/ST2_EXP_001*' \
+            ':(glob)LAB/**/ST2Exp001*' \
+            ':(glob)LAB/**/PDSA-ST2-EXP-001*'
+          printf 'Verified source head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
+            "$actual_sha" "$frozen_plan" "$baseline"
+
+      - name: Validate frozen single-change manifests and source separation
+        shell: bash
+        run: |
+          set -euo pipefail
+          independent=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_INDEPENDENT_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_PQ_JUNCTION_INPUTS.txt
+          accepted=LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          for manifest in "$independent" "$combined"; do
+            test -s "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+            done < "$manifest"
+          done
+          forbidden_path='CRoutePairProbe001|CPairCore001|CPairNormInverse001|CQuadraticComparison001|CStageIntegration001|ST2Exp001|ST2Exp002PQJunction'
+          if grep -En "$forbidden_path" "$independent"; then
+            printf 'Independent Q manifest imports selected P, prior experiment, or junction\n' >&2
+            exit 1
+          fi
+          head -n "$(wc -l < "$accepted")" "$combined" | cmp - "$accepted"
+          forbidden_source='BOMA\.C\.(RoutePairProbe001|PairCore001|PairNormInverse001|QuadraticComparison001|StageIntegration001|StageTwo\.Narrow)|Classical\.|by_contra|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          for src in \
+            LAB/payloads/lean/CStage/ST2Exp002QNormalRoute.lean \
+            LAB/payloads/lean/CStage/ST2Exp002QNormalCore.lean \
+            LAB/payloads/lean/CStage/ST2Exp002QNormalNormInverse.lean \
+            LAB/payloads/lean/CStage/ST2Exp002QQuotientField.lean; do
+            if grep -En "$forbidden_source" "$src"; then
+              printf 'Independent Q source contains a forbidden producer or undeclared principle\n' >&2
+              exit 1
+            fi
+          done
+          python3 -m py_compile LAB/PDSA/experiments/ST2_EXP_002_COMPARE_ROUTES.py
+          python3 -m json.tool LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_FORMAL_DEPENDENCY_POLICY.json >/dev/null
+          python3 -m json.tool LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_CLAIM_PRODUCER_POLICY.json >/dev/null
+
+      - name: Audit typed branch origins and synchronized current architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            --json-out /tmp/st2-exp-002-branch-governance.json
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: FIRST prove independent Route-Q quotient field without Route P
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_INDEPENDENT_INPUTS.txt
+          target=/tmp/BOMAST2Exp002IndependentQ.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.StageIntegration002.rStageIntegrationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.QQuotientField002.qFieldCertificateFromAcceptedR\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-002-independent-lean.log
+
+      - name: Extract and enforce actual P-free independent Q closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_INDEPENDENT_INPUTS.txt \
+            --target BOMA.C.StageTwo.QQuotientField002.qFieldCertificateFromAcceptedR \
+            --json-out /tmp/st2-exp-002-q-closure.json \
+            > /tmp/st2-exp-002-q-audit.log
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); p=('BOMA.C.RoutePairProbe001','BOMA.C.PairCore001','BOMA.C.PairNormInverse001','BOMA.C.QuadraticComparison001','BOMA.C.StageIntegration001','BOMA.C.StageTwo.Narrow'); bad=[r['name'] for r in d['internal'] if r['name'].startswith(p)]; print(json.dumps({'status':d['status'],'counts':d['counts'],'forbidden_selected_p':bad},indent=2)); sys.exit(bool(bad) or d['status']!='PROTOTYPE_PASS')" \
+            /tmp/st2-exp-002-q-closure.json
+          if ! python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/st2-exp-002-q-closure.json \
+            --policy LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/st2-exp-002-q-classification.json \
+            > /tmp/st2-exp-002-q-classification.log; then
+            python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d.get('status'),'counts':d.get('counts'),'residuals':d.get('residuals',[])[:16]},indent=2))" /tmp/st2-exp-002-q-classification.json
+            exit 1
+          fi
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d['status'],'counts':d['counts'],'classes':d['classification_counts']},indent=2))" /tmp/st2-exp-002-q-classification.json
+
+      - name: THEN admit P and prove explicit reciprocal P/Q isomorphism
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_PQ_JUNCTION_INPUTS.txt
+          target=/tmp/BOMAST2Exp002PQJunction.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.StageIntegration002.rStageIntegrationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.QQuotientField002.qFieldCertificateFromAcceptedR\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.PQJunction002.pqIsomorphism\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-002-pq-lean.log
+
+      - name: Audit combined Junction and classify declared quotient costs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_PQ_JUNCTION_INPUTS.txt \
+            --target BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate \
+            --json-out /tmp/st2-exp-002-pq-closure.json \
+            > /tmp/st2-exp-002-pq-audit.log
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d['status'],'counts':d['counts']},indent=2))" /tmp/st2-exp-002-pq-closure.json
+          if ! python3 LAB/00_ARCHITECTURE/tools/formal_dependency_classify.py \
+            --closure /tmp/st2-exp-002-pq-closure.json \
+            --policy LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_FORMAL_DEPENDENCY_POLICY.json \
+            --json-out /tmp/st2-exp-002-pq-classification.json \
+            > /tmp/st2-exp-002-pq-classification.log; then
+            python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d.get('status'),'counts':d.get('counts'),'residuals':d.get('residuals',[])[:16]},indent=2))" /tmp/st2-exp-002-pq-classification.json
+            exit 1
+          fi
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d['status'],'counts':d['counts'],'classes':d['classification_counts']},indent=2))" /tmp/st2-exp-002-pq-classification.json
+
+      - name: Verify exact ownership of all nine accepted C Claim families
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! python3 LAB/00_ARCHITECTURE/tools/formal_claim_producer_compare.py \
+            --closure /tmp/st2-exp-002-pq-closure.json \
+            --classification /tmp/st2-exp-002-pq-classification.json \
+            --policy LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_CLAIM_PRODUCER_POLICY.json \
+            --registry LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md \
+            --json-out /tmp/st2-exp-002-pq-producers.json \
+            > /tmp/st2-exp-002-pq-producers.log; then
+            python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d.get('status'),'counts':d.get('counts'),'residuals':d.get('residuals',[])[:20]},indent=2))" /tmp/st2-exp-002-pq-producers.json
+            exit 1
+          fi
+          python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(json.dumps({'status':d['status'],'counts':d['counts'],'claims':d['registry_claims']},indent=2))" /tmp/st2-exp-002-pq-producers.json
+
+      - name: Compare independent routes and evaluate H1 through H5
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/PDSA/experiments/ST2_EXP_002_COMPARE_ROUTES.py \
+            --independent-closure /tmp/st2-exp-002-q-closure.json \
+            --independent-classification /tmp/st2-exp-002-q-classification.json \
+            --junction-closure /tmp/st2-exp-002-pq-closure.json \
+            --junction-classification /tmp/st2-exp-002-pq-classification.json \
+            --junction-producers /tmp/st2-exp-002-pq-producers.json \
+            --json-out /tmp/st2-exp-002-route-comparison.json
+          {
+            printf '## ST2-EXP-002 — independent quadratic quotient and P/Q Junction\n'
+            printf -- '- Verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Frozen Plan: `%s`\n' "94a79eb07a2dddebbcba0e8fbd11508514ecca6c"
+            printf -- '- Accepted baseline: `%s`\n' "878a52c3d833b9db9ea66f1ff4fcd207ca6ab498"
+            printf -- '- Route Q verified before Route P entered the assembly.\n'
+            printf -- '- CA-20 and selected Route P remain unchanged.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve exact-head comparison evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-002-route-comparison-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-002-branch-governance.json
+            /tmp/st2-exp-002-q-closure.json
+            /tmp/st2-exp-002-q-classification.json
+            /tmp/st2-exp-002-pq-closure.json
+            /tmp/st2-exp-002-pq-classification.json
+            /tmp/st2-exp-002-pq-producers.json
+            /tmp/st2-exp-002-route-comparison.json
+            /tmp/st2-exp-002-independent-lean.log
+            /tmp/st2-exp-002-pq-lean.log
+          if-no-files-found: warn

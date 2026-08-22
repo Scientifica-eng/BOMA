@@ -43,7 +43,7 @@ PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
 PDSA-C-008             CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009             CLOSED — RE-C-001 complete / bundled-interface costs classified
 PDSA-STAGE1-001        CLOSED — global RE-STAGE1-001 reverse audit COMPLETE
-STAGE-TWO-LAB          READY — ST2-EXP-001 CLOSED PASS / no active experiment
+STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
@@ -293,9 +293,18 @@ SELECTS = C-ROUTE-P / C-ROUTE-Q RETAINED
 
 `PDSA-C-002` closed the first formal boundary test before any carrier construction. Its Lean probe derives square nonnegativity and “`-1` is not a real square” from an **abstract `RStageIntegrationCertificate`**, then separately instantiates the accepted R certificate. The source-level proof does not inspect Dedekind representation internals and does not use R completeness, density, Archimedean, or inverse fields. Read-only V5 run `32564789630` verified exact source commit `a6c894e62c48919712341cea1c0ea588590f9e5f` under Lean `4.32.1`. These are supporting theorems only; they are not accepted C Claims.
 
-`PDSA-C-003` closed after independent V5 PASS evidence for both routes. The user ratified `C-ROUTE-P`; `PDSA-C-004` then verified the selected canonical pair carrier and commutative-ring core on the first attempt in run `32574270735`. `PDSA-C-005` then verified conjugation, constructive nonzero norm, unique inverse witnesses, and the exact inherited R axiom baseline in run `32574920935`. `C-BLOCK-001` is a verified field producer and `PDSA-C-006` verified universal representation-neutral quadratic comparison in run `32575465002`. Final C acceptance still awaits the `PDSA-C-007` same-carrier integration and Claim-level transparency gate. `C-ROUTE-Q` remains a retained verified alternative.
+`PDSA-C-003` closed after independent V5 PASS evidence for both routes. The user ratified `C-ROUTE-P`; `PDSA-C-004` then verified the selected canonical pair carrier and commutative-ring core on the first attempt in run `32574270735`. `PDSA-C-005` then verified conjugation, constructive nonzero norm, unique inverse witnesses, and the exact inherited R axiom baseline in run `32574920935`. `C-BLOCK-001` is the selected accepted-stage field producer and `PDSA-C-006`
+verified universal representation-neutral quadratic comparison in run
+`32575465002`. `PDSA-C-007` completed accepted same-carrier integration and
+Claim-level transparency; `PDSA-C-008` accepted `C-BLOCK-002 / CA-20`.
+`ST2-EXP-002` separately completed retained Route Q as a `VERIFIED INDEPENDENT
+RESEARCH FIELD / NOT AN ACCEPTED EXPORT` and proved research-only P/Q field
+reconvergence.
 
-The selected producer is a verified witness-based commutative field with verified representation-neutral comparison; it is not yet an accepted export.
+The selected producer is a verified witness-based commutative field with
+verified representation-neutral comparison; the accepted downstream export is
+`C-BLOCK-002 / CA-20 ACCEPT`. The separate research Q field does not change
+that canonical acceptance.
 
 ## Claim transparency
 
@@ -348,22 +357,25 @@ C verification gates must remain read-only with respect to `main` unless a later
 
 ## Current operational instruction
 
-C is authorized to continue under the acceptance-first architecture, but **no representation has been selected**.
+C is accepted under `CA-20`; `C-ROUTE-P` is explicitly selected,
+`C-BLOCK-002` is the accepted export, and `C-ROUTE-Q` is an independently
+verified **research-only** field. The actual P/Q reconvergence
+`ST2-EXP-002-PQ-J-001` does not replace accepted `C-J-001`.
 
-The immediate research sequence is:
+The current research instruction is:
 
 ```text
-finish C-RQ-001 formal verification evidence
+preserve accepted N → C baseline and resolved C-DP-001 selection
    ↓
-verify final same-carrier integration and Claim transparency under PDSA-C-007
+retain both closed Stage-Two experiments and their frozen Plans
    ↓
-Study actual assumptions / identity / arithmetic / logic / formalization cost
+record each typed architectural origin and affected cone
    ↓
-preserve the user-ratified C-DP-001 selection and retained Route Q evidence
+classify research producer / Junction separately from canonical acceptance
    ↓
-promote justified Bricks/Blocks
+retain observed failures, source commitments, and prevention controls
    ↓
-construct Junctions only when real incoming routes exist
+wait for explicit owner approval before another experiment or merge
 ```
 
 Do not merge C work to `main` without an explicit user order.
@@ -376,5 +388,15 @@ local C and whole-chain reverse audits are closed. Consult
 single-change candidates. Owner-approved `ST2-EXP-001` completed with V5
 `32593045224`: the same nine C Claims require only sixteen real fields, and
 bundled completeness/density/Archimedean producers disappear from actual
-closure. Its immutable Plan and baseline are preserved; twelve alternatives
-remain unselected and no experiment is active.
+closure. Its immutable Plan and baseline are preserved. Independently approved
+`ST2-EXP-002` also closed PASS in exact V5 `32597030998`: the expression-quotient
+field was completed with zero selected-P dependencies before an explicit
+mutually inverse P/Q field isomorphism preserved the same nine C Claims.
+Its separate frozen Plan, retained failures, exact quotient cost, and Study/Act
+are documented on the research branch. Accepted Route P and CA-20 are
+unchanged. Eleven alternatives remain unselected; no experiment is active.
+
+Typed branch origins and source units:
+`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md` and its JSON companion.
+Retained execution/governance errors and mandatory preventive controls:
+`LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md`.

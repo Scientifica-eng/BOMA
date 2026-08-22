@@ -1,0 +1,95 @@
+{
+  "schema": "BOMA-ST2-EXP-002-Q-CLAIM-PRODUCER-POLICY-001",
+  "status": "BRANCH-ONLY-EXPERIMENT",
+  "date": "2026-08-22",
+  "stage": "C",
+  "claim_id_pattern": "C-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "C Claim IDs",
+  "root_mode": "single_target",
+  "target": "BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate",
+  "integration_claim": "C-CL-INTEGRATION-001",
+  "rules": {
+    "registry_claim_set_must_match": true,
+    "all_producers_must_be_internal": true,
+    "all_producers_must_be_reachable_from_target": true,
+    "all_target_direct_internal_dependencies_must_be_declared": true,
+    "all_internal_declarations_must_have_producer_ancestry": true,
+    "integration_claim_transitive_ownership": false,
+    "multiple_claim_ownership_allowed": true
+  },
+  "integration_local_prefixes": [
+    "BOMA.C.StageTwo.PQJunction002.QPairJunctionCertificate",
+    "BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate"
+  ],
+  "claims": {
+    "C-CL-CARRIER-001": {
+      "role": "independently completed quadratic-expression quotient carrier and normal-form extensional identity",
+      "producers": [
+        "BOMA.C.RouteQuadraticQuotientProbe001.QuotientCandidate",
+        "BOMA.C.StageTwo.QQuotientField002.q_ext"
+      ]
+    },
+    "C-CL-REMBED-001": {
+      "role": "injective structure-preserving embedding of the unchanged accepted real field",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_injective",
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_zero",
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_one",
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_neg",
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_add",
+        "BOMA.C.StageTwo.QQuotientField002.q_ofR_mul"
+      ]
+    },
+    "C-CL-FIELD-001": {
+      "role": "independently completed quotient witness-based commutative field",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.qFieldCertificateFromAcceptedR"
+      ]
+    },
+    "C-CL-I-001": {
+      "role": "quotient imaginary generator squares to minus one",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.q_i_squared"
+      ]
+    },
+    "C-CL-GEN-001": {
+      "role": "quotient real-plus-imaginary generation",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.q_generation"
+      ]
+    },
+    "C-CL-COORDUNIQ-001": {
+      "role": "unique quotient coefficients and constructive extraction",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.q_coordinate_unique",
+        "BOMA.C.StageTwo.QQuotientField002.q_extract_sound"
+      ]
+    },
+    "C-CL-NONREAL-001": {
+      "role": "quotient imaginary generator is not an embedded real",
+      "producers": [
+        "BOMA.C.StageTwo.QQuotientField002.q_i_not_real"
+      ]
+    },
+    "C-CL-COMPARE-001": {
+      "role": "post-completion explicit pair/quotient inverse R-field isomorphism",
+      "producers": [
+        "BOMA.C.QuadraticComparison001.selectedPresentation",
+        "BOMA.C.QuadraticComparison001.quadraticComparison",
+        "BOMA.C.StageTwo.PQJunction002.quotientPresentation",
+        "BOMA.C.StageTwo.PQJunction002.pqIsomorphism",
+        "BOMA.C.StageTwo.PQJunction002.pairToQuotient_formula",
+        "BOMA.C.StageTwo.PQJunction002.quotientToPair_formula"
+      ]
+    },
+    "C-CL-INTEGRATION-001": {
+      "role": "research reconvergence integration and unchanged concrete accepted-real input",
+      "producers": [
+        "BOMA.C.StageTwo.PQJunction002.qPairJunctionCertificate",
+        "BOMA.R.StageIntegration002.rStageIntegrationCertificate"
+      ],
+      "transitive_ownership": false
+    }
+  }
+}

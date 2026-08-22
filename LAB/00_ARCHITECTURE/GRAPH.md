@@ -229,7 +229,7 @@ LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
 
 No accepted R theorem was changed by the reverse audit.
 
-## Complex stage — STARTED / C-ROUTE-P SELECTED
+## Complex stage — ACCEPTED / C-ROUTE-P SELECTED / RESEARCH Q RECONVERGENCE
 
 The prior C hold was explicitly lifted by the user on 2026-08-21. Current C work begins at the acceptance layer:
 
@@ -252,7 +252,7 @@ acceptance discriminant CLOSED
    └──► PDSA-C-003 CLOSED — V5 32565335033 PASS
           C-DP-001 RESOLVED — USER-RATIFIED
           ├──SELECTS──► C-ROUTE-P V5 PASS / SELECTED
-          ├──────────► C-ROUTE-Q V5 PASS / RETAINED
+          ├──────────► C-ROUTE-Q INDEPENDENT RESEARCH FIELD / RETAINED / NOT ACCEPTED
           └──► C-ROUTE-A only if genuinely independent
 
 run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
@@ -269,7 +269,10 @@ PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
 C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
 PDSA-C-009 = CLOSED / RE-C-001 exact dependency classification COMPLETE
 PDSA-STAGE1-001 = CLOSED / RE-STAGE1-001 global reverse audit COMPLETE
-STAGE-TWO-LAB = READY / 13 CANDIDATES / NO ACTIVE BRANCH
+ST2-EXP-001 = CLOSED / DEPENDENCY_EDGE BOMA-C-R-DEP-001 / V5 32593045224
+ST2-EXP-002 = CLOSED / DECISION_POINT C-DP-001 / V5 32597346281
+ST2-EXP-002-PQ-J-001 = PASS / RESEARCH R-FIELD-ISOMORPHISM
+STAGE-TWO-LAB = ACTIVE / TWO CLOSED / 11 UNSELECTED / NO ACTIVE EXPERIMENT
 ```
 
 The accepted semantic target is:
@@ -282,13 +285,17 @@ distinguished I with I²=-1
 every C element has a unique a+bI decomposition over R
 ```
 
-`C-BLOCK-001` is now an independently reviewable, V5-verified selected Route P canonical **witness-field-strength Block**. The following remain unproduced:
+`C-BLOCK-001` remains the selected canonical **witness-field-strength Block**
+and `C-BLOCK-002` remains the accepted `CA-20` export. `ST2-EXP-002` completed
+an independent Route Q formal-expression quotient field and the research-only
+`ST2-EXP-002-PQ-J-001` R-field isomorphism. `RE-C-001` and `RE-STAGE1-001` are
+complete. The following remain unproduced or unapproved:
 
 ```text
-C-ROUTE-Q as a canonical Block
-a second completed C field or route-comparison Junction
-a completed Route Q field, a two-field reconvergence Junction,
-or completed RE-C-001 / RE-STAGE1-001 reverse audits
+C-ROUTE-Q as an accepted canonical Block or accepted export
+an independently implemented full polynomial ring R[X]
+algebraic closure / FTA as an accepted complex-stage layer
+any additional owner-approved Stage-Two experiment
 ```
 
 Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
@@ -356,3 +363,13 @@ C accepted export       C-BLOCK-002 / CA-20 ACCEPT
 The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block and final `C-J-001` integration are V5
 verified; separate `CA-20` accepts `C-BLOCK-002`, with mandatory reverse audits
 still explicitly required. The edge expresses a methodological choice, not mathematical necessity.
+
+## Stage-Two architectural attachment authority
+
+`ST2-EXP-001` branches from dependency edge `R-BLOCK-001 --
+BOMA-C-R-DEP-001 --> C-BLOCK-001`. `ST2-EXP-002` branches from Decision
+`C-DP-001` and compares selected `C-BLOCK-001 / C-ROUTE-P` against the
+independently verified research-only Q field. The accepted reference remains
+`C-BLOCK-002 / CA-20 ACCEPT`. Exact typed records and the research Junction are
+maintained in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` and
+`LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md`.
