@@ -1,11 +1,11 @@
 # C DAG — Stage-One Complex Construction, Ex-Ante Frontier
 
-**Status:** **ACTIVE — C STARTED / ACCEPTANCE CONTRACT ACTIVE / REPRESENTATION UNSELECTED**  
+**Status:** **ACTIVE — C STARTED / ACCEPTANCE CONTRACT ACTIVE / C-ROUTE-P SELECTED**  
 **Date:** 2026-08-21  
 **Input:** `R-BLOCK-001 — Accepted Stage-One Real Interface`  
 **Governing specification:** `BOMA-C-ACCEPT-001`  
 **Dependency contract:** `BOMA-C-R-DEP-001`  
-**Current Decision Point:** `C-DP-001 OPEN`  
+**Current Decision Point:** `C-DP-001 RESOLVED / USER-RATIFIED C-ROUTE-P`  
 **Accepted export:** **NONE**
 
 ## 1. Purpose
@@ -37,12 +37,12 @@ ex-ante acceptance discriminant — CLOSED
    │      C-RL-001 / C-RL-002 verified supporting theorems
    │      C-RQ-001 CLOSED / PASS
    └──► PDSA-C-003 — CLOSED / both route probes V5 PASS
-          C-DP-001 — OPEN / DECISION-READY
-          ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
-          ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
+          C-DP-001 — RESOLVED / USER-RATIFIED
+          ├──SELECTS──► C-ROUTE-P — ordered-pair / rank-two producer
+          ├──────────► C-ROUTE-Q — verified retained alternative
           └──► C-ROUTE-A — conditional genuinely independent alternative
 
-NO SELECTED ROUTE YET
+SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
 NO C CARRIER YET
 NO C BRICK/BLOCK PRODUCER YET
 NO C JUNCTION YET
@@ -297,6 +297,8 @@ Authoritative PDSA records:
 
 `LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md`.
 
+`LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md`.
+
 This sequence must remain visible even after a later route is selected.
 
 ---
@@ -308,14 +310,14 @@ C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
 C Claim register      OPEN / EX-ANTE
 C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
-C-DP-001              OPEN
-selected route        NONE
+C-DP-001              RESOLVED / USER-RATIFIED
+selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
 constructed C Block   NONE
 C Junction            NONE
 C Lean payload        VERIFIED boundary support + two independently verified exploratory sources
 C V5                  32564789630 boundary PASS; 32565335033 route probes PASS
-C active cycle        NONE — PDSA-C-003 CLOSED / user route decision pending
+C active cycle        PDSA-C-004 — selected pair carrier/ring-core PLAN frozen
 C acceptance          NOT YET ELIGIBLE
 ```
 
-The comparable observations now exist. Route P is recommended because it reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. No representation is selected until the user ratifies the Decision Point.
+The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` now constructs the selected Route P producer without altering the acceptance contract.
