@@ -34,4 +34,5 @@ job `97062695622`, source `6820278f566fc637c39582c3efa648d5c1d136df`.
 
 The mandatory local `RE-C-001` audit is complete. Its detailed matrix exposes
 whole-R-certificate bundling, actual order/logical dependencies, and retained
-alternatives. The separate global `RE-STAGE1-001` chain audit remains open.
+alternatives. The separate global `RE-STAGE1-001` chain audit is complete; the accepted
+reference remains frozen while the Stage-Two candidate register is prepared.

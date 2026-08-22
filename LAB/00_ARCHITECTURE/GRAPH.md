@@ -268,7 +268,8 @@ C-J-001 = PASS / 783 declarations / nine claims / zero residuals
 PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
 C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
 PDSA-C-009 = CLOSED / RE-C-001 exact dependency classification COMPLETE
-PDSA-STAGE1-001 = ACTIVE / global RE-STAGE1-001 reverse-audit PLAN
+PDSA-STAGE1-001 = CLOSED / RE-STAGE1-001 global reverse audit COMPLETE
+STAGE-TWO-LAB = READY / 13 CANDIDATES / NO ACTIVE BRANCH
 ```
 
 The accepted semantic target is:

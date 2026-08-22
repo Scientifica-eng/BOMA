@@ -211,7 +211,19 @@ now accepted under `CA-20`.
 RE-R-001        CLOSED / COMPLETE — PDSA-R-015
 C stage         ACCEPTED — CA-20 / C-BLOCK-002
 RE-C-001        CLOSED / COMPLETE — PDSA-C-009
-RE-STAGE1-001   ACTIVE — PDSA-STAGE1-001 / separate PLAN frozen
+RE-STAGE1-001   CLOSED / COMPLETE — PDSA-STAGE1-001
+Stage Two       LAB READY / NO EXPERIMENT SELECTED
 ```
 
 This schedule remains canonical architecture.
+
+## Completed global reverse handoff
+
+`PDSA-STAGE1-001 / RE-STAGE1-001` completed the six-stage reverse dependency
+matrix after `CA-20` and `RE-C-001`, without changing accepted mathematical
+sources. Detailed evidence:
+
+- `LAB/PDSA/experiments/PDSA-STAGE1-001-RE-STAGE1-001-GLOBAL-DEPENDENCY-CLASSIFICATION.md`.
+- `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`.
+
+Thirteen controlled candidates are registered; none is active or selected.

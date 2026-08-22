@@ -85,7 +85,8 @@ PDSA-C-006         CLOSED — quadratic comparison V5 32575465002 PASS
 PDSA-C-007         CLOSED — final integration / nine-Claim V5 32585583815 PASS
 PDSA-C-008         CLOSED — CA-20 ACCEPT / six-stage run 32586145793 PASS
 PDSA-C-009         CLOSED — RE-C-001 complete / exact dependency classification
-PDSA-STAGE1-001    ACTIVE — global RE-STAGE1-001 PLAN FROZEN
+PDSA-STAGE1-001    CLOSED — global RE-STAGE1-001 COMPLETE
+STAGE-TWO-LAB      READY — 13 candidates / NO ACTIVE EXPERIMENT
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           CBOMA — selected pair record / V5 PASS
 C Brick / Block     C-BLOCK-001 producer / C-BLOCK-002 ACCEPTED
@@ -324,3 +325,12 @@ Preserve research commits and historical branches; do not squash away Learning G
 ## Cleanup rule
 
 Repository cleanup must distinguish operational debris from research provenance. Do not delete historical failed experiments, retained alternatives, superseded evidence, or old PDSA records merely because a later route succeeded. Remove or archive only material whose deletion cannot erase scientifically relevant dependency, decision, failure, or learning history.
+
+## Stage-Two handoff after accepted C
+
+`CA-20`, `RE-C-001`, and `RE-STAGE1-001` are complete. The only current research
+frontier is the controlled candidate register
+`LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`; no branch experiment
+has been selected or started. Preserve the accepted N→C baseline, require one
+frozen PDSA Plan per single-change experiment, retain alternative histories,
+and never merge into `main` without the owner's explicit instruction.

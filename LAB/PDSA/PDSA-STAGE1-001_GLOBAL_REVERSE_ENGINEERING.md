@@ -2,7 +2,7 @@
 
 **Cycle ID:** `PDSA-STAGE1-001`  
 **Gate:** `RE-STAGE1-001`  
-**Status:** `ACTIVE — PLAN FROZEN / DO NOT STARTED`  
+**Status:** `CLOSED — RE-STAGE1-001 COMPLETE / STAGE-TWO LAB READY`  
 **Date:** `2026-08-22`  
 **Preconditions:** `CA-20 ACCEPT`, `RE-R-001 COMPLETE`, `RE-C-001 COMPLETE`  
 **Accepted mathematical chain:** `N-Core → N-Arithmetic → Z → Q → R → C`
@@ -64,16 +64,50 @@ PLANs, weaken existing acceptance contracts, claim Route Q/Cauchy completion,
 start a branch experiment, remove inherited classical evidence, or merge to
 `main` without a separately explicit user order.
 
-# DO — NOT STARTED
+# DO — COMPLETE
 
-# STUDY — NOT STARTED
+1. Traversed the entire accepted export chain backward from C through R, Q, Z,
+   N-Arithmetic, N-Core, calibrated pre-numerical choices, and explicit
+   metatheory.
+2. Produced the global reverse classification matrix covering 73 Claims, six
+   accepted stages, 148 canonical units, and all 11 named Decision Points.
+3. Incorporated accepted post-Z reconvergence, completed `RE-R-001`, exact C
+   producer audit, and completed `RE-C-001` bundled-interface findings.
+4. Opened a controlled Stage-Two candidate register with 13 explicitly scoped
+   single-change experiments; selected or executed none.
+5. Synchronized the authoritative schedule, status, accepted C DAG, registry,
+   graph, README, and agent handoff without modifying Lean mathematical source.
 
-# ACT — NOT STARTED
+# STUDY — COMPLETE
+
+The accepted mathematical interface spine is stable, while carrier realizations,
+quotient identities, recursion/eliminator scope, integer presentation, Dedekind
+completion, real total-order producer, inverse construction, selected C pair
+carrier, and whole-real-certificate packaging remain independently branchable.
+
+Neither Dedekind cuts nor accepted-real completeness/density/Archimedean claims
+are direct mathematical prerequisites of the selected C quadratic interface;
+the latter nevertheless occur in current concrete formal closure through
+accepted-R packaging. Localized upstream classical commitments remain real and
+must not be rewritten as global intuitionistic independence.
+
+Alternative natural, rational, real, and complex routes vary in maturity.
+Integer and natural-arithmetic alternatives have actual reconvergence evidence;
+Cauchy and completed Route Q do not. Stage Two must preserve this maturity
+distinction and run one evidence-scoped experiment at a time.
+
+# ACT — COMPLETE / RE-STAGE1-001 CLOSED
+
+Close global `RE-STAGE1-001`; declare the accepted N→Z→Q→R→C reference chain
+forward-built and reverse-audited at the explicitly stated BOMA scope. Open the
+controlled Stage-Two experiment laboratory in `READY / NO ACTIVE BRANCH`
+state. Do not select the first candidate, weaken the accepted baseline, start a
+new mathematical domain, or merge into `main`.
 
 ```text
 CA-20              ACCEPT / UNCHANGED
 RE-C-001           COMPLETE
-RE-STAGE1-001      OPEN / REQUIRED
-Stage-Two branch   NOT SELECTED
+RE-STAGE1-001      CLOSED / COMPLETE
+Stage-Two branch   LAB READY / NO EXPERIMENT SELECTED
 main merge         NOT AUTHORIZED
 ```

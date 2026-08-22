@@ -268,10 +268,11 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `PDSA-C-007` | final C integration and Claim-level transparency | CLOSED — V5 32585583815 PASS / zero residuals |
 | `PDSA-C-008` | separate Stage-One complex acceptance decision | CLOSED — CA-20 ACCEPT / run 32586145793 PASS |
 | `PDSA-C-009` | mandatory accepted-complex reverse dependency audit | CLOSED — RE-C-001 COMPLETE |
-| `PDSA-STAGE1-001` | global accepted number-chain reverse dependency audit | ACTIVE — PLAN FROZEN |
+| `PDSA-STAGE1-001` | global accepted number-chain reverse dependency audit | CLOSED — RE-STAGE1-001 COMPLETE |
+| `STAGE-TWO-LAB` | controlled single-change branch experiment register | READY — 13 CANDIDATES / NO ACTIVE BRANCH |
 | `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
 | `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |
-| `C-BLOCK-001` | selected canonical Route P witness-based commutative field | ACTIVE / V5 PASS / NOT ACCEPTED |
+| `C-BLOCK-001` | selected accepted-export Route P witness-based commutative-field producer | ACTIVE / V5 PASS / ACCEPTED PRODUCER |
 | `C-BLOCK-002` | final downstream Stage-One complex export | ACTIVE — ACCEPTED / CA-20 |
 | `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
 
@@ -283,8 +284,8 @@ C-ROUTE-Q  RETAINED verified polynomial-adjunction / quotient alternative
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is an accepted internal producer; the separately accepted export is `C-BLOCK-002`. `C-J-001` passes exact run `32585583815` with zero Claim/producer residuals. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-STAGE1-001 / RE-STAGE1-001` is the sole active global accepted-chain
-reverse-audit frontier; mandatory `RE-C-001` is closed.
+`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is an accepted internal producer; the separately accepted export is `C-BLOCK-002`. `C-J-001` passes exact run `32585583815` with zero Claim/producer residuals. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-STAGE1-001 / RE-STAGE1-001` and mandatory `RE-C-001` are both closed.
+The Stage-Two laboratory is ready; no experiment is active or selected.
 
 Initial Claim targets are recorded in:
 
@@ -305,7 +306,8 @@ R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
 C                   ACCEPTED — CA-20 / C-BLOCK-002
 RE-C-001            CLOSED / COMPLETE
-RE-STAGE1-001       ACTIVE — global accepted-chain reverse audit
+RE-STAGE1-001       CLOSED / COMPLETE
+STAGE-TWO-LAB       READY / NO ACTIVE EXPERIMENT
 C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
 C accepted export   C-BLOCK-002 / CA-20 ACCEPT
 ```
