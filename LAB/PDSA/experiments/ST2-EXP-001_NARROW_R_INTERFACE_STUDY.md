@@ -27,6 +27,24 @@ nine accepted C Claim IDs, and compare the four frozen sensitive producer
 declarations. Until that workflow actually completes, no success, closure
 reduction, or logical independence is claimed.
 
+## Preserved first V5 failure — proof-engineering only
+
+Exact head `d83a5d85d492993d7c9fafc0fe127363af7552fa`; pull-request V5
+run `32592959836`; job `97079511454`. Frozen-Plan protection, unchanged
+accepted-baseline protection, narrow source-boundary checks, and pinned Lean
+setup all passed. Three Lean goals failed in the experimental pair core:
+commutative multiplication, associative multiplication, and right
+distribution.
+
+The branch intentionally aliases the original accepted `cMul` and `cAdd`.
+The copied normalization proofs unfolded the branch abbreviation and the
+underlying Route-P record operation but did not explicitly unfold the
+intermediate original accepted `BOMA.C.PairCore001.cMul` /
+`BOMA.C.PairCore001.cAdd` wrappers. Consequently simplification left the
+accepted operations opaque. The correction adds those existing wrappers to
+the three local simp sets; it changes no field, mathematical assumption,
+carrier, operation, producer, Claim, or frozen Plan.
+
 ## STUDY — PENDING EXACT V5 EVIDENCE
 
 No hypothesis is marked confirmed before retrieving exact source/run evidence.

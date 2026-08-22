@@ -131,14 +131,16 @@ theorem c_neg_involutive (C : NarrowROrderedFieldCertificate) (z : CBOMA) :
 theorem c_mul_comm (C : NarrowROrderedFieldCertificate) (z w : CBOMA) :
     cMul z w = cMul w z := by
   cases z <;> cases w <;>
-    simp [cMul, BOMA.C.RoutePairProbe001.mul, C.mulComm, C.addComm]
+    simp [cMul, BOMA.C.PairCore001.cMul,
+      BOMA.C.RoutePairProbe001.mul, C.mulComm, C.addComm]
 
 /-- Associativity is an explicit consequence of the accepted real ring laws. -/
 theorem c_mul_assoc
     (C : NarrowROrderedFieldCertificate) (z w v : CBOMA) :
     cMul (cMul z w) v = cMul z (cMul w v) := by
   cases z <;> cases w <;> cases v <;>
-    simp [cMul, BOMA.C.RoutePairProbe001.mul,
+    simp [cMul, BOMA.C.PairCore001.cMul,
+      BOMA.C.RoutePairProbe001.mul,
       r_mul_add_left_from_interface C, C.distribRight,
       mul_neg_left_from_interface C, mul_neg_right_from_interface C,
       r_neg_add_from_interface C, neg_involutive_from_interface C,
@@ -169,7 +171,8 @@ theorem c_mul_add_right
     (C : NarrowROrderedFieldCertificate) (z w v : CBOMA) :
     cMul z (cAdd w v) = cAdd (cMul z w) (cMul z v) := by
   cases z <;> cases w <;> cases v <;>
-    simp [cMul, cAdd, BOMA.C.RoutePairProbe001.mul,
+    simp [cMul, cAdd, BOMA.C.PairCore001.cMul,
+      BOMA.C.PairCore001.cAdd, BOMA.C.RoutePairProbe001.mul,
       BOMA.C.RoutePairProbe001.add,
       r_mul_add_left_from_interface C, C.distribRight,
       mul_neg_left_from_interface C, mul_neg_right_from_interface C,
