@@ -3,7 +3,7 @@
 - **Operational Status:** **OPEN — NO OPTION SELECTED**
 - **Epistemic Status:** **DECLARED CHOICE PROBLEM / PENDING EVIDENCE**
 - **Opened:** 2026-08-21
-- **PDSA:** `PDSA-C-001` opens the Decision after stabilizing the ex-ante acceptance semantics
+- **PDSA:** `PDSA-C-001` opens the Decision; `PDSA-C-003` stages comparable independent noncanonical probes
 - **Input:** `R-BLOCK-001` through `BOMA-C-R-DEP-001`
 - **Governing acceptance contract:** `BOMA-C-ACCEPT-001`
 - **Downstream accepted carrier:** **NONE**
@@ -72,7 +72,7 @@ risk of conflating convenient coordinates with mathematical necessity
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NOT SELECTED / NOT YET BUILT AS CANONICAL BLOCK
+ADMISSIBLE CANDIDATE / NONCANONICAL PROBE STAGED / V5 PENDING / NOT SELECTED
 ```
 
 ## C-ROUTE-Q — Polynomial adjunction / quotient-style realization
@@ -107,7 +107,7 @@ potentially more Trusted-Base/formalization surface
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NOT SELECTED / NOT YET BUILT AS CANONICAL BLOCK
+ADMISSIBLE CANDIDATE / NONCANONICAL PROBE STAGED / V5 PENDING / NOT SELECTED
 ```
 
 ## C-ROUTE-A — Alternative explicit quadratic-adjunction realization
@@ -232,8 +232,8 @@ The common comparison Claim `C-CL-COMPARE-001` provides the representation-neutr
 
 ```text
 C-DP-001           OPEN
-C-ROUTE-P          RETAINED CANDIDATE / UNBUILT
-C-ROUTE-Q          RETAINED CANDIDATE / UNBUILT
+C-ROUTE-P          RETAINED / NONCANONICAL PROBE STAGED / V5 PENDING
+C-ROUTE-Q          RETAINED / NONCANONICAL PROBE STAGED / V5 PENDING
 C-ROUTE-A          CONDITIONAL CANDIDATE SLOT
 SELECTS             NONE
 canonical C carrier NONE

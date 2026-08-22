@@ -1,7 +1,7 @@
 # PDSA-C-003 — Comparable Noncanonical Quadratic-Extension Route Probes
 
 **Cycle ID:** `PDSA-C-003`  
-**Status:** ACTIVE — PLAN FROZEN / DO NOT STARTED  
+**Status:** ACTIVE — PLAN FROZEN / INDEPENDENT ROUTE SOURCES STAGED / V5 PENDING  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
 **Decision:** `C-DP-001 — OPEN / NO SELECTION`  
@@ -105,13 +105,67 @@ A favorable route-comparison result alone does not authorize merging to `main` o
 
 ---
 
-# DO — NOT STARTED
+# DO — SOURCES STAGED / FIRST VERIFICATION PENDING
 
-No candidate source has been created at Plan freeze.
+## D1 — Implement the independent Route P candidate
 
-# STUDY — NOT STARTED
+Created:
 
-No route has been selected and no result is fabricated.
+```text
+LAB/payloads/lean/CStage/CRoutePairProbe001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt
+```
+
+The exploratory carrier is a route-local two-field record. It declares zero, one, embedding, generator, negation, addition, and multiplication. Its candidate theorem targets are faithful embedding, the quadratic generator relation, generation, coordinate uniqueness, and non-real collapse.
+
+## D2 — Implement the independent Route Q candidate
+
+Created:
+
+```text
+LAB/payloads/lean/CStage/CRouteQuadraticQuotientProbe001.lean
+LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_QUADRATIC_QUOTIENT_PROBE_001_INPUTS.txt
+```
+
+The candidate declares its own finite quadratic-expression syntax, route-local coefficient normal forms, normalization equivalence, explicit Setoid, quotient carrier, and lifted operations. It does not reference the Route P namespace or declarations.
+
+This is a generator/relation normalization quotient probe. It is not represented as a completed construction of the full polynomial ring `R[X]`.
+
+## D3 — Add an independently assembled, read-only matrix V5 gate
+
+Created:
+
+```text
+.github/workflows/boma-c-quadratic-route-probes-001.yml
+```
+
+Each matrix job independently assembles:
+
+```text
+accepted R manifest
++
+verified C-R interface support
++
+one and only one candidate route source
+```
+
+An explicit negative namespace check rejects accidental candidate-to-candidate dependence. Checkout provenance is verified against the exact feature-branch head. The workflow keeps `permissions: contents: read` and can be inspected through draft PR #5.
+
+## D4 — Initial evidence state
+
+```text
+C-ROUTE-P         SOURCE STAGED / V5 NOT YET OBSERVED
+C-ROUTE-Q         SOURCE STAGED / V5 NOT YET OBSERVED
+C-DP-001          OPEN
+SELECTS            NONE
+accepted C Claim  NONE
+```
+
+The frozen PLAN above has not changed.
+
+# STUDY — PENDING FIRST V5 OUTCOMES
+
+Do not infer correctness, independence, or route selection from a staged source before exact job conclusions and source commits are retrieved.
 
 # ACT — NOT STARTED
 

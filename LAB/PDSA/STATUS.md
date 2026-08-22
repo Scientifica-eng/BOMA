@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-003 — ACTIVE / frozen comparable quadratic-route probe plan`
+**Current C cycle:** `PDSA-C-003 — ACTIVE / independent route probes staged / exact V5 pending`
 
 ## Current canonical frontier
 
@@ -39,12 +39,12 @@ C Claim register    OPEN — provisional / no accepted C Claim yet
 BOMA-C-R-DEP-001    ACTIVE — accepted-R dependency boundary
 PDSA-C-001          CLOSED — acceptance discriminant Study complete
 PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
-PDSA-C-003          ACTIVE — comparable route-probe PLAN frozen / DO not started
+PDSA-C-003          ACTIVE — independent pair/quotient probes staged / V5 pending
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            OPEN — no route selected
 C Bricks / Blocks   NONE YET
 C Junctions         NONE YET
-C Lean payloads     VERIFIED — route-neutral accepted-R boundary source only
+C Lean payloads     VERIFIED boundary support + two unverified noncanonical route probes
 C V5 evidence       32564789630 PASS — supporting theorems; no accepted C Claim
 accepted C export   NONE
 ```
@@ -560,8 +560,8 @@ PDSA-C-002
 
 PDSA-C-003
   common probe rubric        PLAN FROZEN
-  C-ROUTE-P                  DO NOT STARTED
-  C-ROUTE-Q                  DO NOT STARTED
+  C-ROUTE-P                  SOURCE STAGED / V5 PENDING
+  C-ROUTE-Q                  SOURCE STAGED / V5 PENDING
   representation selection   NONE
 ```
 

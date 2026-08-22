@@ -36,7 +36,7 @@ ex-ante acceptance discriminant — CLOSED
    ├──► PDSA-C-002 — CLOSED accepted-R interface probe / V5 32564789630 PASS
    │      C-RL-001 / C-RL-002 verified supporting theorems
    │      C-RQ-001 CLOSED / PASS
-   └──► PDSA-C-003 — ACTIVE frozen route-comparison PLAN
+   └──► PDSA-C-003 — ACTIVE independently assembled route probes / V5 pending
           C-DP-001 — OPEN
           ├──► C-ROUTE-P — ordered-pair / rank-two coordinate candidate
           ├──► C-ROUTE-Q — polynomial-adjunction / quotient candidate
@@ -312,9 +312,9 @@ C-DP-001              OPEN
 selected route        NONE
 constructed C Block   NONE
 C Junction            NONE
-C Lean payload        VERIFIED — route-neutral boundary supporting source only
+C Lean payload        VERIFIED boundary support + two unverified exploratory sources
 C V5                  32564789630 PASS — supporting source only
-C active cycle        PDSA-C-003 — PLAN FROZEN / DO NOT STARTED
+C active cycle        PDSA-C-003 — SOURCE PROBES STAGED / V5 PENDING
 C acceptance          NOT YET ELIGIBLE
 ```
 

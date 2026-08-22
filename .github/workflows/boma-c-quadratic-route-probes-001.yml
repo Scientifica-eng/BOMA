@@ -1,0 +1,129 @@
+name: BOMA C Comparable Quadratic Route Probes 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/**'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_QUADRATIC_QUOTIENT_PROBE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-quadratic-route-probes-001.yml'
+      - 'lean-toolchain'
+  push:
+    branches:
+      - 'feature/c-stage-*'
+    paths:
+      - 'LAB/payloads/lean/NCore/**'
+      - 'LAB/payloads/lean/NArithmetic/**'
+      - 'LAB/payloads/lean/ZStage/**'
+      - 'LAB/payloads/lean/QStage/**'
+      - 'LAB/payloads/lean/RStage/**'
+      - 'LAB/payloads/lean/CStage/**'
+      - 'LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_QUADRATIC_QUOTIENT_PROBE_001_INPUTS.txt'
+      - '.github/workflows/boma-c-quadratic-route-probes-001.yml'
+      - 'lean-toolchain'
+
+concurrency:
+  group: boma-c-quadratic-route-probes-001-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify (${{ matrix.route.id }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        route:
+          - id: pair
+            manifest: LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt
+            forbidden_namespace: BOMA.C.RouteQuadraticQuotientProbe001
+          - id: quadratic-quotient
+            manifest: LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_QUADRATIC_QUOTIENT_PROBE_001_INPUTS.txt
+            forbidden_namespace: BOMA.C.RoutePairProbe001
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact candidate-source provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          {
+            printf '## BOMA C route probe: %s\n' '${{ matrix.route.id }}'
+            printf -- '- Event: `%s`\n' "$GITHUB_EVENT_NAME"
+            printf -- '- Run ID: `%s`\n' "$GITHUB_RUN_ID"
+            printf -- '- Verified source commit: `%s`\n' "$actual_sha"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Validate shared inputs and candidate independence
+        shell: bash
+        run: |
+          set -euo pipefail
+          r_manifest=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          boundary_manifest=LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
+          candidate_manifest='${{ matrix.route.manifest }}'
+          test -s "$r_manifest"
+          test -s "$boundary_manifest"
+          test -s "$candidate_manifest"
+          for manifest in "$r_manifest" "$boundary_manifest" "$candidate_manifest"; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+            done < "$manifest"
+          done
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            if grep -Fq '${{ matrix.route.forbidden_namespace }}' "$src"; then
+              printf 'Candidate illegally depends on other route: %s\n' "$src" >&2
+              exit 1
+            fi
+          done < "$candidate_manifest"
+
+      - name: Independently verify the candidate route
+        shell: bash
+        run: |
+          set -euo pipefail
+          target="/tmp/BOMACRoute-${{ matrix.route.id }}.lean"
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt \
+            '${{ matrix.route.manifest }}'; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          lake env lean "$target"
