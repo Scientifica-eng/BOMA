@@ -1,7 +1,7 @@
 # PDSA-C-005 — Conjugate, Norm, and Witness-Based Complex Field Closure
 
 **Cycle ID:** `PDSA-C-005`  
-**Status:** ACTIVE — PLAN FROZEN / DO STARTED / V5 PENDING  
+**Status:** CLOSED — CONSTRUCTIVE WITNESS FIELD V5 PASS / INHERITED AXIOMS AUDITED  
 **Plan date:** 2026-08-22  
 **Parent:** `PDSA-C-004 — CLOSED / selected ring-core V5 32574270735 PASS`  
 **Decision:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
@@ -148,9 +148,74 @@ classification       INHERITED VERSUS INTRODUCED — NOT YET ESTABLISHED
 
 The source contains no explicit classical invocation, equality case split, global inverse selector, or new axiom. Nevertheless, its transitive Lean declaration reports `Classical.choice`, `propext`, and `Quot.sound`; source-token absence is insufficient evidence that these commitments are absent. Extend the same frozen verification workflow to print exact axiom baselines for accepted R, C boundary, Route P, ring core, each new constructive proof layer, and both field certificates. Do not claim that the new field proof is axiom-free until those actual cones are compared.
 
-# STUDY — NOT STARTED
+# STUDY — COMPLETE
 
-# ACT — NOT STARTED
+## S1 — Exact successful field and axiom-audit evidence
+
+```text
+first field run        32574812227 / job 97035471002 / PASS
+first source commit    f5207e944d1c10f5459b1855af3504639d6f4a37
+expanded audit run     32574920935 / job 97035726339 / PASS
+verified source        ccf41e062b37ab39f46dc18a1cbbbf90728807ff
+field source blob      d20bd40edb5bf9366951dd215dc34dbb892531b0
+Lean                   leanprover/lean4:v4.32.1
+event                  pull_request / draft PR #5
+permissions            contents: read
+```
+
+The field producer passed on its first formal attempt. The second successful run added explicit theorem-level axiom-baseline comparisons without changing the field source.
+
+## S2 — Constructive proof result and exact logical scope
+
+A zero sum of nonnegative squares gives zero for each **square**. The accepted real inverse interface then proves only:
+
+```text
+a² = 0  →  ¬¬(a = 0)
+norm(z) = 0  →  ¬¬(z = 0)
+z ≠ 0  →  norm(z) ≠ 0
+```
+
+The last implication follows by applying the double-negated equality to the already supplied nonzero hypothesis. No equality decidability, double-negation elimination, explicit classical case split, or global inverse selector is used in the C proof. A real inverse **witness** for `norm(z)` yields the complex witness `ιR(t) * conjugate(z)`; ring associativity proves inverse uniqueness.
+
+## S3 — Actual transitive axiom comparison
+
+Every printed declaration has exactly the same Lean axiom set:
+
+```text
+accepted rStageIntegrationCertificate             [propext, Classical.choice, Quot.sound]
+C square_nonnegative_of_interface                 [propext, Classical.choice, Quot.sound]
+Route P imag_squared                              [propext, Classical.choice, Quot.sound]
+selected cPairRingCoreCertificate                 [propext, Classical.choice, Quot.sound]
+r_square_zero_not_nonzero                         [propext, Classical.choice, Quot.sound]
+c_norm_zero_not_nonzero                           [propext, Classical.choice, Quot.sound]
+c_inverse_exists                                  [propext, Classical.choice, Quot.sound]
+cPairFieldCertificate                             [propext, Classical.choice, Quot.sound]
+cPairFieldCertificateFromAcceptedR                [propext, Classical.choice, Quot.sound]
+```
+
+Therefore the construction is **not globally axiom-free or globally constructive**: accepted R already carries proof extensionality, quotient soundness, and classical choice. The new C witness-field proof introduces **no additional axiom beyond that measured upstream baseline** and adds no new explicit classical/Choice use.
+
+## S4 — Frozen-target results
+
+```text
+C5-01  PASS  cConj and real-valued cNorm
+C5-02  PASS  conjugation involution / real embedding / addition
+C5-03  PASS  both conjugate-product directions
+C5-04  PASS  zero norm implies only double-negated complex zero
+C5-05  PASS  supplied nonzero z constructively makes norm(z) nonzero
+C5-06  PASS  accepted abstract C.inverseExists produces real norm witness
+C5-07  PASS  explicit conjugate-scaled complex witness
+C5-08  PASS  left and right inverse equations
+C5-09  PASS  uniqueness from the already verified ring laws
+C5-10  PASS  CPairFieldCertificate without a global inverse function
+C5-11  PASS  accepted-real instantiation
+C5-12  PASS  exact five-manifest read-only V5 assembly
+C5-13  PASS  field producer verified; comparison/integration still open
+```
+
+# ACT — CLOSED / OPEN PDSA-C-006
+
+Freeze `PDSA-C-006` for the representation-neutral comparison gate. Separate a universal total/functional algebra-equivalence graph from actual inverse functions that require explicitly supplied constructive coordinate-extraction data. Keep Route Q retained/probe-only and do not fabricate a field reconvergence Junction or final C acceptance.
 
 ```text
 C-DP-001    RESOLVED / C-ROUTE-P SELECTED

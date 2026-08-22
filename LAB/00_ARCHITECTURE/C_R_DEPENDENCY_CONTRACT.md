@@ -9,7 +9,8 @@
 **Verified boundary experiment:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
 **Route comparison:** `PDSA-C-003 — CLOSED / both probes V5 32565335033 PASS`  
 **Selected route core:** `PDSA-C-004 — CLOSED / ring-core V5 32574270735 PASS`
-**Current dependency experiment:** `PDSA-C-005 — ACTIVE / norm and witness-based inverse`
+**Selected witness field:** `PDSA-C-005 — CLOSED / V5 32574920935 PASS / no additional axiom over R`
+**Current experiment:** `PDSA-C-006 — ACTIVE / representation-neutral comparison`
 
 ## 1. Purpose
 

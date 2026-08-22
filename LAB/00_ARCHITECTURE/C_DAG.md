@@ -44,12 +44,13 @@ ex-ante acceptance discriminant — CLOSED
 
 SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
 CBOMA / C-BLOCK-001 VERIFIED PAIR RING CORE — V5 32574270735 PASS
-PDSA-C-005 ACTIVE — NORM AND WITNESS-BASED FIELD CLOSURE
+VERIFIED WITNESS FIELD + INHERITED AXIOM AUDIT — V5 32574920935 PASS
+PDSA-C-006 ACTIVE — REPRESENTATION-NEUTRAL QUADRATIC COMPARISON
 NO C JUNCTION YET
 NO C ACCEPTED EXPORT YET
 ```
 
-Route P is user-selected and independently promoted to the verified partial `C-BLOCK-001`; Route Q remains an unselected research alternative, not a canonical Block merely because it has a name.
+Route P is user-selected and independently promoted to the verified witness-field `C-BLOCK-001`; Route Q remains an unselected research alternative, not a canonical Block merely because it has a name.
 
 ---
 
@@ -301,6 +302,8 @@ Authoritative PDSA records:
 
 `LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md`.
 
+`LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md`.
+
 This sequence must remain visible even after a later route is selected.
 
 ---
@@ -310,16 +313,16 @@ This sequence must remain visible even after a later route is selected.
 ```text
 C authorization       YES — explicit user order 2026-08-21
 C acceptance spec     ACTIVE
-C Claim register      OPEN / RING-CORE PRODUCERS V5 VERIFIED / NO ACCEPTANCE
+C Claim register      OPEN / WITNESS FIELD PRODUCERS V5 VERIFIED / NO ACCEPTANCE
 C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
 C-DP-001              RESOLVED / USER-RATIFIED
 selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
-constructed C Block   C-BLOCK-001 — selected ring core V5 PASS / NOT ACCEPTED
+constructed C Block   C-BLOCK-001 — selected witness field V5 PASS / NOT ACCEPTED
 C Junction            NONE
-C Lean payload        VERIFIED boundary + two independent route probes + selected pair ring core
-C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring core — ALL PASS
-C active cycle        PDSA-C-005 — norm and witness-field-closure PLAN frozen
+C Lean payload        VERIFIED boundary + route probes + pair ring core + witness field
+C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring; 32574920935 field — PASS
+C active cycle        PDSA-C-006 — representation-neutral comparison PLAN frozen
 C acceptance          NOT YET ELIGIBLE
 ```
 
-The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected Route P ring-core producer without altering the acceptance contract; `PDSA-C-005` now targets its still-missing witness-based field closure.
+The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` now targets representation-neutral comparison.

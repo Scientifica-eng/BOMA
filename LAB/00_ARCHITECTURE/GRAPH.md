@@ -259,8 +259,9 @@ run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
 C-DP-001 = RESOLVED / user ratification 2026-08-22
 SELECTS = C-ROUTE-P
 PDSA-C-004 = CLOSED / selected ring-core V5 32574270735 PASS
-C-BLOCK-001 = ACTIVE / verified pair ring core / NOT ACCEPTED
-PDSA-C-005 = ACTIVE / norm and witness-field-closure PLAN frozen
+C-BLOCK-001 = ACTIVE / verified witness field / NOT ACCEPTED
+PDSA-C-005 = CLOSED / witness field V5 32574920935 PASS
+PDSA-C-006 = ACTIVE / representation-neutral comparison PLAN frozen
 ```
 
 The accepted semantic target is:
@@ -273,12 +274,12 @@ distinguished I with I²=-1
 every C element has a unique a+bI decomposition over R
 ```
 
-`C-BLOCK-001` is now an independently reviewable, V5-verified selected Route P canonical **partial ring-core Block**. The following remain unproduced:
+`C-BLOCK-001` is now an independently reviewable, V5-verified selected Route P canonical **witness-field-strength Block**. The following remain unproduced:
 
 ```text
 C-ROUTE-Q as a canonical Block
 any C Junction
-nonzero complex inverse / full field closure
+representation-neutral quadratic comparison / integration
 any accepted C aggregate Block
 ```
 
@@ -344,4 +345,4 @@ C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
 C accepted export       NONE
 ```
 
-The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/partial ring-core Block is V5 verified; field closure remains under construction. The edge expresses a methodological choice, not mathematical necessity.
+The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block is V5 verified; comparison and final integration remain under construction. The edge expresses a methodological choice, not mathematical necessity.

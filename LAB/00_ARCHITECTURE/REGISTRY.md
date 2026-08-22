@@ -263,8 +263,9 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `PDSA-C-002` | route-neutral accepted-R interface sufficiency probe | CLOSED — V5 32564789630 PASS |
 | `PDSA-C-003` | independently assembled comparable candidate-route probes | CLOSED — both routes V5 32565335033 PASS |
 | `PDSA-C-004` | selected Route P carrier and commutative-ring core | CLOSED — V5 32574270735 PASS |
-| `PDSA-C-005` | conjugate, norm, and witness-based complex field closure | ACTIVE — PLAN FROZEN |
-| `C-BLOCK-001` | selected canonical Route P carrier and commutative-ring core | ACTIVE / V5 PASS / PARTIAL / NOT ACCEPTED |
+| `PDSA-C-005` | conjugate, norm, and witness-based complex field closure | CLOSED — axiom-audited V5 32574920935 PASS |
+| `PDSA-C-006` | representation-neutral quadratic-field comparison | ACTIVE — PLAN FROZEN |
+| `C-BLOCK-001` | selected canonical Route P witness-based commutative field | ACTIVE / V5 PASS / NOT ACCEPTED |
 | `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
 
 `C-DP-001` currently retains:
@@ -275,7 +276,7 @@ C-ROUTE-Q  RETAINED verified polynomial-adjunction / quotient alternative
 C-ROUTE-A  conditional genuinely independent alternative
 ```
 
-`C-BLOCK-001` is the user-selected canonical Route P **partial producer**, verified as a commutative-ring-strength core in run `32574270735`; it is not an accepted C export and does not yet contain a nonzero inverse. No C Junction exists. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-C-005` is the sole active field-closure frontier.
+`C-BLOCK-001` is the user-selected canonical Route P **witness-based field producer**, verified at ring strength in run `32574270735` and field/inherited-axiom strength in run `32574920935`; it is not yet an accepted C export. No C Junction exists. The route-neutral C supporting source passed run `32564789630`; independent Route P and Route Q exploratory sources passed run `32565335033`. Route Q remains retained. `PDSA-C-006` is the sole active representation-neutral comparison frontier.
 
 Initial Claim targets are recorded in:
 
@@ -294,7 +295,7 @@ post-Z reverse N    CLOSED
 Q                   ACCEPTED
 R                   ACCEPTED
 RE-R-001            CLOSED / COMPLETE
-C                   STARTED — VERIFIED PAIR RING CORE / PDSA-C-005 ACTIVE
+C                   STARTED — VERIFIED WITNESS FIELD / PDSA-C-006 ACTIVE
 C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q RETAINED
 C accepted export   NONE
 ```

@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-005 — ACTIVE / conjugate, norm, and witness-based field closure PLAN frozen`
+**Current C cycle:** `PDSA-C-006 — ACTIVE / representation-neutral quadratic comparison PLAN frozen`
 
 ## Current canonical frontier
 
@@ -41,13 +41,14 @@ PDSA-C-001          CLOSED — acceptance discriminant Study complete
 PDSA-C-002          CLOSED — accepted-R interface V5 run 32564789630 PASS
 PDSA-C-003          CLOSED — both route probes V5 32565335033 PASS
 PDSA-C-004          CLOSED — selected pair ring core V5 32574270735 PASS
-PDSA-C-005          ACTIVE — conjugate/norm/witness-based field closure PLAN frozen
+PDSA-C-005          CLOSED — witness field + inherited-axiom audit V5 32574920935 PASS
+PDSA-C-006          ACTIVE — representation-neutral quadratic comparison PLAN frozen
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
-C Blocks            C-BLOCK-001 — verified commutative-ring core / NOT ACCEPTED
+C Blocks            C-BLOCK-001 — verified witness-based commutative field / NOT ACCEPTED
 C Junctions         NONE YET
-C Lean payloads     VERIFIED boundary + two independent route probes + selected pair ring core
-C V5 evidence       32564789630 boundary; 32565335033 routes; 32574270735 pair ring core — ALL PASS
+C Lean payloads     VERIFIED boundary + route probes + selected pair ring core + witness field
+C V5 evidence       32564789630 boundary; 32565335033 routes; 32574270735 ring; 32574920935 field — PASS
 accepted C export   NONE
 ```
 
@@ -485,7 +486,7 @@ No accepted Lean payload or mathematical unit was modified by that maintenance r
 
 ---
 
-# Complex stage — STARTED / C-ROUTE-P SELECTED / VERIFIED RING CORE
+# Complex stage — STARTED / C-ROUTE-P SELECTED / VERIFIED WITNESS FIELD
 
 The explicit new user order on 2026-08-21 authorizes C and supersedes the earlier hold **for current-state governance only**.
 
@@ -512,7 +513,7 @@ C-DP-001 RESOLVED — C-ROUTE-P SELECTED
    └── C-ROUTE-A only if genuinely independent
 ```
 
-Route P is user-selected and promoted to `C-BLOCK-001`, a V5-verified **partial commutative-ring producer**, not an accepted C export. Route Q remains retained.
+Route P is user-selected and promoted to `C-BLOCK-001`, a V5-verified **commutative-field-strength producer**, not yet an accepted C export. Route Q remains retained.
 
 Initial Claim register:
 
@@ -532,7 +533,7 @@ C-CL-COMPARE-001
 C-CL-INTEGRATION-001
 ```
 
-Carrier, faithful real embedding, generator, generation, coordinate uniqueness, and non-real-collapse producers are verified by selected-core run `32574270735` but remain pending final stage acceptance. `C-CL-FIELD-001` is partial because nonzero inverses are still unproduced; comparison and integration remain open. The separate route-neutral `PDSA-C-002` supporting-theorem payload remains verified by exact run `32564789630`.
+Carrier, faithful real embedding, generator, generation, coordinate uniqueness, and non-real-collapse producers are verified by selected-core run `32574270735` but remain pending final stage acceptance. `C-CL-FIELD-001` is now V5-verified with unique existential inverse witnesses; representation-neutral comparison and final integration remain open. The separate route-neutral `PDSA-C-002` supporting-theorem payload remains verified by exact run `32564789630`.
 
 Initial R dependency conclusion:
 
@@ -569,7 +570,7 @@ PDSA-C-003
   representation selection   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 ```
 
-PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` is the sole active frozen cycle for conjugation, norm, and unique existential inverse witnesses.
+PDSA-C-004 closed after first-attempt selected Route P commutative-ring verification in run `32574270735` / source `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb`; `C-BLOCK-001` is a partial verified producer, not an accepted field/export. `PDSA-C-005` closed after witness-field run `32574920935`, including an exact inherited-axiom baseline comparison. `PDSA-C-006` is the sole active frozen representation-neutral comparison cycle.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
@@ -614,6 +615,7 @@ LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md
 LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md
 LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md
 LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md
+LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md
 LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_V5_INDEX.md
 this STATUS file
 ```

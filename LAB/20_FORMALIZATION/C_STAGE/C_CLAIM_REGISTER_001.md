@@ -94,18 +94,18 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligation:** `CA-04`
-- **Operational status:** `PARTIAL / COMMUTATIVE-RING CORE V5 PASS / NONZERO INVERSE OPEN`
+- **Operational status:** `PRODUCED / V5 PASS / PENDING FINAL ACCEPTANCE`
 - **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
 - **Statement / scope:** the accepted C carrier has nontrivial commutative field behavior, including nonzero inverse existence at an explicitly declared interface scope.
-- **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
+- **Producer unit(s):** `C-BLOCK-001 / PDSA-C-005 selected Route P witness-field producer`.
 - **Consumes mathematical Claims:** at minimum accepted R field/nontriviality Claims plus C arithmetic definitions; precise producer route `TBD`.
 - **Logical commitments:** none forced by the abstract field Claim; witness-selection choices must be declared if introduced by a producer.
-- **Representation commitments:** selected Route P coordinate ring; inverse formula not yet produced.
+- **Representation commitments:** selected Route P coordinate field; conjugate-scaled inverse witnesses, no global selector.
 - **Formalization commitments:** no global inverse function is forced; a witness-based interface is permitted.
 - **Supporting lemmas:** expected nonzero norm/denominator or route-equivalent machinery; `TBD`.
-- **Lean theorem/declaration:** `CPairRingCoreCertificate`; full field certificate and inverse witness NOT PRODUCED.
-- **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
-- **Verification evidence:** `C-V5-PAIR-CORE-001 / run 32574270735 / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb / PASS`.
+- **Lean theorem/declaration:** `c_norm_nonzero`, `c_inverse_exists`, `c_inverse_unique`, `CPairFieldCertificate`, `cPairFieldCertificateFromAcceptedR`.
+- **Lean source:** `LAB/payloads/lean/CStage/CPairNormInverse001.lean`.
+- **Verification evidence:** `C-V5-PAIR-FIELD-001 / run 32574920935 / source ccf41e062b37ab39f46dc18a1cbbbf90728807ff / PASS`.
 - **Alternative producer / branch:** coordinate norm route; quotient/polynomial field route; other route proving the same interface.
 - **Necessity classification:** **ACCEPTANCE-REQUIRED PROPERTY; CONSTRUCTION FORMULA NOT NECESSARY**.
 - **Sensitivity:** any arithmetic or equality change reopens this Claim and final integration.
