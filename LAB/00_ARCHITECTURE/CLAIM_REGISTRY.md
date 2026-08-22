@@ -241,11 +241,12 @@ Classical.byContradiction
 
 This does not make the Dedekind route, quotient identity, or localized classical choices mathematically necessary.
 
-## 8. C provisional Claim frontier — NOT PART OF ACCEPTED INVENTORY
+## 8. C Claim IDs — VERIFIED PREACCEPTANCE / NOT PART OF ACCEPTED INVENTORY
 
 `C-DP-001` is user-ratified as `C-ROUTE-P`; `C-ROUTE-Q` remains a retained
 verified probe. Eight families already have exact V5-verified producers; the
-ninth integration family is under final audit. No C Claim is accepted.
+ninth integration family passed exact run `32585583815`. No C Claim is accepted
+before the separate `CA-20` decision.
 
 Detailed register: `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
 
@@ -259,7 +260,7 @@ Detailed register: `LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
 | `C-CL-COORDUNIQ-001` | `C-BLOCK-001` | `c_coordinate_unique` | 32574270735 PASS |
 | `C-CL-NONREAL-001` | `C-BLOCK-001` | `c_i_not_real` | 32574270735 PASS |
 | `C-CL-COMPARE-001` | `C-COMPARE-BLOCK-001` | `selected graph / extractor-scoped isomorphism` | 32575465002 PASS |
-| `C-CL-INTEGRATION-001` | `C-J-001` | `cStageIntegrationCertificate` | V5 PENDING — NOT ACCEPTED |
+| `C-CL-INTEGRATION-001` | `C-J-001` | `cStageIntegrationCertificate` | 32585583815 PASS / NOT ACCEPTED |
 
 Formal policy: `LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json`.
 `C_ACCEPTED_INPUTS.txt` is a PREACCEPTANCE assembly, not proof of acceptance.
@@ -303,7 +304,7 @@ N-Arithmetic  MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certific
 Z             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 Q             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
 R             MACHINE-CHECKED TRANSPARENCY PASS — accepted historical certification
-C             PREACCEPTANCE PRODUCERS MAPPED — FINAL AUDIT PENDING
+C             NINE PRODUCERS + FORMAL CLOSURE PASS — CA-20 PENDING
 ```
 
 Each accepted stage has an independent stage-level machine audit. A downstream stage traversing upstream declarations never substitutes for the upstream stage's own certification.

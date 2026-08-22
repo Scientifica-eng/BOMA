@@ -270,6 +270,7 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
 | `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |
 | `C-BLOCK-001` | selected canonical Route P witness-based commutative field | ACTIVE / V5 PASS / NOT ACCEPTED |
+| `C-BLOCK-002` | final downstream complex-export candidate | CANDIDATE / CA-20 PENDING |
 | `C-DP-001` | Stage-One construction realization route | RESOLVED — USER-SELECTED C-ROUTE-P; C-ROUTE-Q RETAINED |
 
 `C-DP-001` currently retains:

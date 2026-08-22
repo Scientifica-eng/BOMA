@@ -115,7 +115,8 @@ Internal constructions such as `LowerCut`, `CutEquiv`, `rAdd`, `rMulCandidate`, 
 | --- | --- | --- |
 | `C-BLOCK-001` | selected carrier, embedding, ring, witness field | `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001`, `C-CL-NONREAL-001` |
 | `C-COMPARE-BLOCK-001` | universal relation and extractor-scoped isomorphism | `C-CL-COMPARE-001` |
-| `C-J-001` | same-carrier integration; exact V5 and audit pending | `C-CL-INTEGRATION-001` |
+| `C-J-001` | same-carrier integration; V5 32585583815 PASS | `C-CL-INTEGRATION-001` |
+| `C-BLOCK-002` | downstream export CANDIDATE; no acceptance decision yet | `C-CL-INTEGRATION-001` and the selected nine-Claim package |
 
 Mappings document actual producer units, never CA-20 acceptance. No C Brick
 or completed alternative field is fabricated for naming symmetry.

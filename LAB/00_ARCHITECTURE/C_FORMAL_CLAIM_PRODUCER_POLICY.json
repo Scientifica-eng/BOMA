@@ -1,11 +1,11 @@
 {
   "schema": "BOMA-C-FORMAL-CLAIM-PRODUCER-POLICY-001",
-  "status": "ACTIVE-PREACCEPTANCE",
+  "status": "ACTIVE",
   "date": "2026-08-22",
   "stage": "C",
   "claim_id_pattern": "C-CL-[A-Z0-9-]+",
   "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
-  "registry_section": "C provisional Claim frontier",
+  "registry_section": "C Claim IDs",
   "root_mode": "single_target",
   "target": "BOMA.C.StageIntegration001.cStageIntegrationCertificate",
   "integration_claim": "C-CL-INTEGRATION-001",

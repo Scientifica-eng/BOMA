@@ -1,7 +1,7 @@
 # PDSA-C-008 — Separate Stage-One Complex Acceptance Decision
 
 **Cycle ID:** `PDSA-C-008`  
-**Status:** `ACTIVE — PLAN FROZEN / DO NOT STARTED`  
+**Status:** `ACTIVE — PLAN FROZEN / DO IN PROGRESS`  
 **Plan date:** `2026-08-22`  
 **Precondition:** `C-J-001 PASS / exact V5 32585583815`  
 **Parent:** `PDSA-C-007 — CLOSED / actual formal closure + producer PASS`  
@@ -79,7 +79,19 @@ intuitionistic purity, add polynomial closure, select a global inverse, or
 merge to `main`. After acceptance, open the mandatory separate `RE-C-001`
 reverse-engineering cycle before starting any new mathematical family/branch.
 
-# DO — NOT STARTED
+# DO — IN PROGRESS
+
+1. Audited all `CA-01..CA-19` against actual declarations and exact source/run
+   evidence; marked the conditional two-complete-route clause `NOT TRIGGERED`.
+2. Produced `C-BLOCK-002` as a downstream export CANDIDATE ONLY; `CA-20`
+   remains undecided until all independent six-stage machine gates pass.
+3. Removed obsolete `TBD` producer/commitment fields from the C Claim register;
+   retained the original ex-ante statements and route-choice history.
+4. Extended accepted-source surface, theorem transparency matrix, and global
+   architecture-consistency policies to evaluate all six stages independently.
+5. Prepared exact-head read-only acceptance workflow: source-surface audit,
+   six independent formal closures, refreshed evidence overlay, and complete
+   architecture-consistency audit. Fresh exact evidence is pending.
 
 # STUDY — NOT STARTED
 

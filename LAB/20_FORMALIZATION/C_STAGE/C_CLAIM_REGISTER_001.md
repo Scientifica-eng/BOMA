@@ -12,7 +12,9 @@
 
 Open the C Claim layer **before** a carrier or Lean representation is selected.
 
-The records below describe the mathematical assertions that an accepted Stage-One C package must eventually certify. They intentionally leave producer, representation, Lean declaration, source file, and V5 evidence unresolved where no construction yet exists.
+The records below preserve the original ex-ante mathematical assertions and now map
+their actual selected producer, formalization commitments, Lean declaration,
+source, and exact V5 evidence. The separate CA-20 acceptance decision remains pending.
 
 This is not an acceptance certificate.
 
@@ -58,11 +60,11 @@ DEFERRED / NON-CLAIM
 - **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
 - **Statement / scope:** an explicit `C_BOMA` carrier exists with an explicit accepted equality/identity regime; no built-in complex carrier is silently identified as BOMA C.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
-- **Consumes mathematical Claims:** accepted `R-BLOCK-001` only at the level required by the selected construction; exact C-side ancestry `TBD`.
+- **Consumes mathematical Claims:** accepted `R-BLOCK-001` only at the level required by the selected construction; exact C-side ancestry `PairCandidate`, `CBOMA`, and `c_ext`.
 - **Logical commitments:** none forced by the statement.
 - **Representation commitments:** `C-DP-001 / C-ROUTE-P`: explicit two-field record and Lean record equality.
-- **Formalization commitments:** `TBD`.
-- **Supporting lemmas / proof interfaces:** `TBD`.
+- **Formalization commitments:** selected explicit real-pair record, record equality, and Lean-generated eliminators.
+- **Supporting lemmas / proof interfaces:** `PairCandidate`, `CBOMA`, `c_ext`, and selected coordinate projections.
 - **Lean theorem/declaration:** `CBOMA`, `c_ext`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
 - **Verification evidence:** `C-V5-PAIR-CORE-001 / run 32574270735 / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb / PASS`.
@@ -81,8 +83,8 @@ DEFERRED / NON-CLAIM
 - **Consumes mathematical Claims:** `R-CL-NONTRIV-001`, `R-CL-ADD-001`, `R-CL-MUL-001`, `R-CL-FIELD-001` or their accepted integration export; exact minimal closure to be measured.
 - **Logical commitments:** none forced by the Claim statement.
 - **Representation commitments:** selected coordinate embedding `a ↦ (a,0)`.
-- **Formalization commitments:** `TBD`.
-- **Supporting lemmas:** route-specific preservation lemmas `TBD`.
+- **Formalization commitments:** selected explicit real-pair record, record equality, and Lean-generated eliminators.
+- **Supporting lemmas:** `c_ofR_zero`, `c_ofR_one`, `c_ofR_neg`, `c_ofR_add`, `c_ofR_mul`.
 - **Lean theorem/declaration:** `cOfR`, `c_ofR_injective`, `c_ofR_zero`, `c_ofR_one`, `c_ofR_neg`, `c_ofR_add`, `c_ofR_mul`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
 - **Verification evidence:** `C-V5-PAIR-CORE-001 / run 32574270735 / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb / PASS`.
@@ -98,11 +100,11 @@ DEFERRED / NON-CLAIM
 - **Epistemic status:** `DERIVED / V5 VERIFIED / PENDING STAGE ACCEPTANCE`
 - **Statement / scope:** the accepted C carrier has nontrivial commutative field behavior, including nonzero inverse existence at an explicitly declared interface scope.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-005 selected Route P witness-field producer`.
-- **Consumes mathematical Claims:** at minimum accepted R field/nontriviality Claims plus C arithmetic definitions; precise producer route `TBD`.
+- **Consumes mathematical Claims:** at minimum accepted R field/nontriviality Claims plus C arithmetic definitions; selected explicit Route P `CPairFieldCertificate` producer.
 - **Logical commitments:** none forced by the abstract field Claim; witness-selection choices must be declared if introduced by a producer.
 - **Representation commitments:** selected Route P coordinate field; conjugate-scaled inverse witnesses, no global selector.
 - **Formalization commitments:** no global inverse function is forced; a witness-based interface is permitted.
-- **Supporting lemmas:** expected nonzero norm/denominator or route-equivalent machinery; `TBD`.
+- **Supporting lemmas:** `c_norm_nonzero`, `c_inverse_exists`, `c_inverse_unique`, conjugation, and the accepted-real inverse witness.
 - **Lean theorem/declaration:** `c_norm_nonzero`, `c_inverse_exists`, `c_inverse_unique`, `CPairFieldCertificate`, `cPairFieldCertificateFromAcceptedR`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairNormInverse001.lean`.
 - **Verification evidence:** `C-V5-PAIR-FIELD-001 / run 32574920935 / source ccf41e062b37ab39f46dc18a1cbbbf90728807ff / PASS`.
@@ -121,8 +123,8 @@ DEFERRED / NON-CLAIM
 - **Consumes mathematical Claims:** `C-CL-CARRIER-001`, `C-CL-FIELD-001`, `C-CL-REMBED-001` for the interpretation of `-1_C`.
 - **Logical commitments:** none forced by the statement.
 - **Representation commitments:** selected generator `(0,1)`; claim remains representation-neutral.
-- **Formalization commitments:** `TBD`.
-- **Supporting lemmas:** `TBD`.
+- **Formalization commitments:** selected explicit real-pair record, record equality, and Lean-generated eliminators.
+- **Supporting lemmas:** selected coordinate ring laws and `c_i_squared`.
 - **Lean theorem/declaration:** `cI`, `c_i_squared`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
 - **Verification evidence:** `C-V5-PAIR-CORE-001 / run 32574270735 / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb / PASS`.
@@ -141,8 +143,8 @@ DEFERRED / NON-CLAIM
 - **Consumes mathematical Claims:** `C-CL-CARRIER-001`, `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`.
 - **Logical commitments:** none forced by the mathematical statement; constructive witness production versus classical existence must be recorded by the producer.
 - **Representation commitments:** constructive selected-coordinate projection; claim remains representation-neutral.
-- **Formalization commitments:** `TBD`.
-- **Supporting lemmas:** route-specific decomposition theorem `TBD`.
+- **Formalization commitments:** selected explicit real-pair record, record equality, and Lean-generated eliminators.
+- **Supporting lemmas:** selected-route explicit-coordinate theorem `c_generation`.
 - **Lean theorem/declaration:** `c_generation`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
 - **Verification evidence:** `C-V5-PAIR-CORE-001 / run 32574270735 / source a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb / PASS`.
@@ -159,9 +161,9 @@ DEFERRED / NON-CLAIM
 - **Statement / scope:** if two `a+bI` expressions represent the same C value, the corresponding real coefficients are equal.
 - **Producer unit(s):** `C-BLOCK-001 / PDSA-C-004 selected Route P ring-core producer`.
 - **Consumes mathematical Claims:** `C-CL-REMBED-001`, `C-CL-I-001`, `C-CL-FIELD-001`; may additionally consume the R fact that `-1` is not a real square or another route-equivalent independence lemma.
-- **Logical commitments:** `TBD after proof route`.
+- **Logical commitments:** no new C-local principle; accepted-R inherited commitments are recorded by exact closure.
 - **Representation commitments:** selected record coordinate equality; claim remains representation-neutral.
-- **Formalization commitments:** `TBD`.
+- **Formalization commitments:** selected explicit real-pair record, record equality, and Lean-generated eliminators.
 - **Supporting lemmas:** `C-RQ-001` dependency question in `C_R_DEPENDENCY_CONTRACT.md` is relevant.
 - **Lean theorem/declaration:** `c_coordinate_unique`.
 - **Lean source:** `LAB/payloads/lean/CStage/CPairCore001.lean`.
@@ -201,7 +203,7 @@ DEFERRED / NON-CLAIM
 - **Consumes mathematical Claims:** `C-CL-REMBED-001`, `C-CL-FIELD-001`, `C-CL-I-001`, `C-CL-GEN-001`, `C-CL-COORDUNIQ-001` for both compared candidates.
 - **Logical commitments:** none forced by the intended explicit coordinate map; actual formal proof to be audited.
 - **Representation commitments:** deliberately none in statement beyond the two candidate interfaces being compared.
-- **Formalization commitments:** theorem packaging `TBD`.
+- **Formalization commitments:** universal relation certificate; function-valued isomorphism only from explicit extractor data.
 - **Supporting lemmas:** canonical map well-definedness, homomorphism, injectivity, surjectivity.
 - **Lean theorem/declaration:** `QuadraticFieldPresentation`, `quadraticComparison`, `constructiveQuadraticIsomorphism`, `selectedQuadraticComparison`.
 - **Lean source:** `LAB/payloads/lean/CStage/CQuadraticComparison001.lean`.
@@ -214,8 +216,8 @@ DEFERRED / NON-CLAIM
 
 - **Stage:** C
 - **Acceptance obligations:** `CA-17`, `CA-18`, `CA-19`, prerequisite to `CA-20`
-- **Operational status:** `C-J-001 PRODUCED / FINAL V5 + FORMAL AUDITS PENDING / NOT ACCEPTED`
-- **Epistemic status:** `PENDING`
+- **Operational status:** `C-J-001 PASS / V5 32585583815 / FINAL ACCEPTANCE PENDING`
+- **Epistemic status:** `DERIVED / FORMALLY AUDITED / FINAL ACCEPTANCE PENDING`
 - **Statement / scope:** all promoted C Claims coexist on one selected carrier/equality/operation/embedding/generator package and their declared dependency closure matches the verified formal closure at the governed audit granularity.
 - **Producer unit(s):** `C-J-001` over actual `C-BLOCK-001` and `C-COMPARE-BLOCK-001`; accepted aggregate remains unauthorized.
 - **Consumes mathematical Claims:** all accepted C Claim families above.
@@ -225,7 +227,7 @@ DEFERRED / NON-CLAIM
 - **Supporting lemmas:** final integration certificate and transparency audit.
 - **Lean theorem/declaration:** `BOMA.C.StageIntegration001.cStageIntegrationCertificate`.
 - **Lean source:** `LAB/payloads/lean/CStage/CStageIntegration001.lean`.
-- **Verification evidence:** `C-V5-INTEGRATION-001 PENDING`; exact V5, dependency extraction, boundary classification, and producer ownership must all pass.
+- **Verification evidence:** `C-V5-INTEGRATION-001 / run 32585583815 / job 97061334663 / source 9a6f9e34639202c2a04d2a629e2b994f5d1562b8 / all formal closure and producer gates PASS`.
 - **Alternative producer / branch:** depends on which candidate route is selected; other completed routes remain comparison inputs.
 - **Necessity classification:** **BOMA ACCEPTANCE-GOVERNANCE REQUIREMENT**.
 - **Sensitivity:** any accepted C Claim, producer, decision, toolchain, or dependency-policy change can reopen integration.
@@ -287,15 +289,15 @@ This register must not invent `C-CL-ACLOSURE-*`, `C-CL-CONJ-*`, or `C-CL-NORM-*`
 C-DP-001                  RESOLVED — C-ROUTE-P USER-SELECTED
 selected carrier           Route P record — canonical producer under construction
 selected identity          explicit two-coordinate structure equality
-C construction Blocks      NONE
+C construction Blocks      C-BLOCK-001 + C-COMPARE-BLOCK-001 + C-BLOCK-002 CANDIDATE
 C construction Bricks      NONE
-C Junctions                NONE
+C Junctions                C-J-001 PASS / V5 32585583815
 C accepted-Claim declarations NONE
-C supporting Lean declarations VERIFIED — PDSA-C-002 / not accepted Claims
+C supporting Lean declarations VERIFIED — boundary, selected field, comparison, integration
 C exploratory route probes     BOTH V5 PASS — PDSA-C-003 / noncanonical
 C route evidence               32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
 C-DP-001                       RESOLVED — C-ROUTE-P selected; C-ROUTE-Q retained
-C accepted-Claim V5 evidence   NONE
+C Claim V5 evidence           ALL NINE PRODUCER FAMILIES PASS / CA-20 PENDING
 accepted C Claims              NONE
 accepted C export          NONE
 ```

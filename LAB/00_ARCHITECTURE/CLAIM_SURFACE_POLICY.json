@@ -3,7 +3,10 @@
   "program": "PDSA-ARCH-002",
   "description": "Source-surface transparency policy. This is not a theorem-level dependency proof.",
   "global": {
-    "forbidden_tokens": ["sorry", "axiom"],
+    "forbidden_tokens": [
+      "sorry",
+      "axiom"
+    ],
     "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
     "trusted_base": "LAB/00_ARCHITECTURE/TRUSTED_BASE.md",
     "claim_architecture": "LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md"
@@ -49,6 +52,20 @@
         "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
         "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
       ]
+    },
+    "C": {
+      "manifest": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt",
+      "claim_audit": "LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_CLOSURE_AUDIT_001.md",
+      "integration_claim": "C-CL-INTEGRATION-001",
+      "allow_quotient": true,
+      "classical_allowed_files": [
+        "LAB/payloads/lean/RStage/RPreCompletionGateway.lean",
+        "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean",
+        "LAB/payloads/lean/RStage/RDedekindFiniteExitSearch.lean",
+        "LAB/payloads/lean/RStage/RDedekindPositiveRepresentativeWitness002.lean",
+        "LAB/payloads/lean/RStage/RDedekindRationalDensity.lean"
+      ],
+      "note": "Complete C assembly includes inherited accepted R quotient and localized classical sites; no new CStage site is permitted."
     }
   }
 }

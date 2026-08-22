@@ -17,6 +17,7 @@ A supporting theorem is not automatically a canonical Brick, construction Block,
 | `C-V5-PAIR-CORE-001` | `PDSA-C-004`; selected carrier, embedding, generator, commutative-ring core | `CPairCore001.lean` | `32574270735` / job `97034186851` | `a6c8e2518dfb8da42367d6282b1a3f958b8c9ceb` | PASS — exact selected Route P assembly |
 | `C-V5-PAIR-FIELD-001` | `PDSA-C-005`; conjugate, norm, inverse witnesses, inherited-axiom comparison | `CPairNormInverse001.lean` | `32574920935` / job `97035726339` | `ccf41e062b37ab39f46dc18a1cbbbf90728807ff` | PASS — exact witness-field assembly / no new axioms over R |
 | `C-V5-QUADRATIC-COMPARE-001` | `PDSA-C-006`; universal algebra graph + constructive functional isomorphism | `CQuadraticComparison001.lean` | `32575465002` / job `97037061967` | `2cdd1d391a3ecbbecc9feaf0f3ad89d158bf04c9` | PASS — exact common-interface comparison / no new axioms over R |
+| `C-V5-INTEGRATION-001` | `PDSA-C-007`; same-carrier final certificate + three independent formal transparency gates | `CStageIntegration001.lean` | `32585583815` / job `97061334663` | `9a6f9e34639202c2a04d2a629e2b994f5d1562b8` | PASS — 783 owned declarations / nine Claims / zero residuals |
 
 Detailed manifest, job, declaration, and provenance mappings:
 
@@ -48,8 +49,8 @@ accepted C Claims          NONE
 canonical C carrier         CBOMA / C-BLOCK-001 witness-field producer / V5 PASS
 selected C representation   C-ROUTE-P — user-ratified; C-ROUTE-Q retained
 C nonzero inverse           VERIFIED existential + unique witnesses / run 32574920935
-C integration Junction      NONE
-CA-20 acceptance            NOT ELIGIBLE
+C integration Junction      C-J-001 PASS / V5 32585583815
+CA-20 acceptance            ELIGIBLE / PDSA-C-008 DECISION PENDING
 ```
 
 A later changed source, inherited R assembly, workflow semantics, or pinned toolchain requires fresh exact verification evidence.
@@ -65,7 +66,7 @@ C-CL-GEN-001          c_generation                          PRODUCED / V5 PASS
 C-CL-COORDUNIQ-001    c_coordinate_unique                   PRODUCED / V5 PASS
 C-CL-NONREAL-001      c_i_not_real                          PRODUCED / V5 PASS
 C-CL-COMPARE-001      quadraticComparison / extractor iso    PRODUCED / V5 PASS
-C-CL-INTEGRATION-001  no Junction                           OPEN
+C-CL-INTEGRATION-001  cStageIntegrationCertificate / C-J-001  PRODUCED / V5 PASS
 ```
 
 `PRODUCED / V5 PASS` does not mean `ACCEPTED`; final C acceptance still requires the final integration and Claim-transparency gate.

@@ -38,4 +38,20 @@ Route Q field, algebraic closure, or merge into `main` is authorized.
 
 ## Result
 
-`PENDING — exact V5 and three formal transparency gates`.
+`PASS — exact run 32585583815 / source 9a6f9e34639202c2a04d2a629e2b994f5d1562b8`.
+
+| Claim | Actual producer family |
+| --- | --- |
+| `C-CL-CARRIER-001` | `PairCandidate`, `CBOMA`, `c_ext` |
+| `C-CL-REMBED-001` | injectivity and all embedding-preservation lemmas |
+| `C-CL-FIELD-001` | `cPairFieldCertificateFromAcceptedR` |
+| `C-CL-I-001` | `c_i_squared` |
+| `C-CL-GEN-001` | `c_generation` |
+| `C-CL-COORDUNIQ-001` | `c_coordinate_unique` |
+| `C-CL-NONREAL-001` | `c_i_not_real` |
+| `C-CL-COMPARE-001` | selected universal graph and extractor-scoped isomorphism |
+| `C-CL-INTEGRATION-001` | `cStageIntegrationCertificate` and explicit accepted-R input |
+
+Actual closure: 783 internal declarations, 9,629 edges, 76 classified external
+leaves, nine claims, 19 producers, zero ownership gaps, zero undeclared direct
+inputs, and zero logical-boundary residuals.
