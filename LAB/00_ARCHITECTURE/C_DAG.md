@@ -12,8 +12,10 @@
 
 Expose the current accepted C construction topology, including the
 user-selected, verified complete Route P witness field, `C-J-001` integration,
-`C-BLOCK-002 / CA-20` export, and both completed reverse audits, without
-pretending that retained Route Q is a completed or reconverged field.
+`C-BLOCK-002 / CA-20` export, both completed reverse audits, and the distinct
+Stage-Two research layer. Retained Route Q is a `VERIFIED INDEPENDENT RESEARCH
+FIELD / NOT AN ACCEPTED EXPORT`; its explicit P/Q reconvergence is a research
+Junction, not a replacement canonical Block or acceptance decision.
 
 The present graph is intentionally short at the canonical-construction level because C has begun at the acceptance/decision layer rather than by manufacturing representation-specific Blocks.
 
@@ -42,7 +44,7 @@ ex-ante acceptance discriminant — CLOSED
    └──► PDSA-C-003 — CLOSED / both route probes V5 PASS
           C-DP-001 — RESOLVED / USER-RATIFIED
           ├──SELECTS──► C-ROUTE-P — ordered-pair / rank-two producer
-          ├──────────► C-ROUTE-Q — verified retained alternative
+          ├──────────► C-ROUTE-Q — VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
           └──► C-ROUTE-A — conditional genuinely independent alternative
 
 SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
@@ -55,12 +57,20 @@ PDSA-C-008 CLOSED — CA-20 ACCEPT / SIX-STAGE V5 32586145793
 C-BLOCK-002 ACCEPTED — STAGE-ONE COMPLEX EXPORT
 PDSA-C-009 CLOSED — RE-C-001 COMPLETE / EXACT DEPENDENCY MATRIX
 PDSA-STAGE1-001 CLOSED — GLOBAL ACCEPTED-CHAIN REVERSE COMPLETE
-STAGE-TWO LAB READY — NO SELECTED BRANCH
+ST2-EXP-001 CLOSED / DEPENDENCY-EDGE EXPERIMENT / V5 32593045224 PASS
+ST2-EXP-002 CLOSED / DECISION-POINT EXPERIMENT / V5 32597346281 PASS
+ST2-EXP-002-PQ-J-001 PASS / R-FIELD-ISOMORPHISM / RESEARCH ONLY
+STAGE-TWO LAB ACTIVE / TWO CLOSED / NO ACTIVE EXPERIMENT
 C-J-001 PASS / CA-19 / V5 32585583815
 C-BLOCK-002 ACCEPTED / CA-20
 ```
 
-Route P is user-selected and independently promoted to the verified witness-field `C-BLOCK-001`; Route Q remains an unselected research alternative, not a canonical Block merely because it has a name.
+Route P is user-selected and supplies the accepted witness-field producer
+`C-BLOCK-001` and export `C-BLOCK-002`. Route Q is an independently verified
+formal-expression quotient research field, reconverged through
+`ST2-EXP-002-PQ-J-001`; it is **not** a selected or accepted canonical Block.
+Architectural origins distinguish the first experiment's dependency edge
+`BOMA-C-R-DEP-001` from the second experiment's Decision `C-DP-001`.
 
 ---
 
@@ -211,10 +221,13 @@ No dependency graph is admitted until a genuinely independent candidate is speci
 
 ---
 
-# 7. Future Junction discipline
+# 7. Accepted and research Junction discipline
 
-`C-J-001` now exists as the verified selected-carrier integration Junction; no
-multi-route reconvergence Junction exists because Route Q is not a complete field.
+`C-J-001` is the accepted selected-carrier integration Junction.
+`ST2-EXP-002-PQ-J-001` separately verifies actual Route P / Route Q
+representation reconvergence at `R-FIELD-ISOMORPHISM` strength after Q was
+proved independently. It is a research Junction only; it does not alter
+`C-J-001`, `C-BLOCK-002`, or `CA-20`.
 
 Potential future Junction roles include:
 
@@ -339,11 +352,16 @@ C Lean payload        VERIFIED boundary + route probes + field + comparison + in
 C V5                  boundary 32564789630; routes 32565335033; ring 32574270735
                       field 32574920935; comparison 32575465002; integration 32585583815
 C reverse audit       RE-C-001 CLOSED / COMPLETE
-Program frontier      STAGE-TWO LAB READY / NO ACTIVE EXPERIMENT
+Program frontier      STAGE-TWO LAB ACTIVE / TWO CLOSED / NO ACTIVE EXPERIMENT
+research Q field      VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
+research Junction     ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / PASS
 C acceptance          CA-20 ACCEPT / C-BLOCK-002
 ```
 
 The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` closed after exact V5 `32585583815` and zero-residual Claim-level
 transparency; `PDSA-C-008` separately accepted `C-BLOCK-002`; `PDSA-C-009` completed the mandatory local complex reverse audit;
 `PDSA-STAGE1-001` completed the global accepted-chain audit; the controlled
-Stage-Two laboratory is ready with no selected experiment.
+Stage-Two laboratory has closed `ST2-EXP-001` and `ST2-EXP-002`; eleven
+candidates remain unselected and no experiment is active. Their exact
+architectural attachments are recorded separately in
+`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`.

@@ -108,7 +108,8 @@ potentially more Trusted-Base/formalization surface
 Current status:
 
 ```text
-ADMISSIBLE CANDIDATE / NONCANONICAL PROBE V5 PASS / NOT SELECTED
+VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT / NOT SELECTED
+ST2-EXP-002 FIELD + P/Q R-ISOMORPHISM V5 32597346281 PASS
 ```
 
 ## C-ROUTE-A — Alternative explicit quadratic-adjunction realization
@@ -213,7 +214,7 @@ A full accepted carrier is not required before the Decision; however, a route ma
 
 ---
 
-# 7. Relationship to future Junctions
+# 7. Relationship to accepted and research Junctions
 
 `C-DP-001` chooses a Stage-One producer. It is not itself a convergence proof.
 
@@ -225,7 +226,7 @@ R-algebra / field isomorphism preserving the real embedding and I
 
 or a weaker result if that is all the evidence supports.
 
-The common comparison Claim `C-CL-COMPARE-001` provides the representation-neutral target. No Junction ID is created before actual incoming routes exist.
+The common comparison Claim `C-CL-COMPARE-001` provides the representation-neutral target. No Junction ID is created before actual incoming routes exist. The accepted same-carrier integration is `C-J-001`; independently completed P/Q routes now meet at research-only `ST2-EXP-002-PQ-J-001`, without changing `C-BLOCK-002 / CA-20 ACCEPT`.
 
 ---
 
@@ -259,11 +260,25 @@ The user explicitly ratified this recommendation on 2026-08-22. Selection is a m
 ```text
 C-DP-001           RESOLVED / USER-RATIFIED
 C-ROUTE-P          VERIFIED COMPLETE FIELD / SELECTED ACCEPTED-STAGE PRODUCER
-C-ROUTE-Q          VERIFIED PROBE / RETAINED / NOT SELECTED
+C-ROUTE-Q          VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
 C-ROUTE-A          CONDITIONAL FUTURE CANDIDATE SLOT
 SELECTS             C-ROUTE-P
 canonical C carrier CBOMA / C-BLOCK-001 PRODUCER / C-BLOCK-002 ACCEPTED
+research Junction   ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / NOT ACCEPTANCE
 ```
+
+## Stage-Two decision-point research result
+
+`ST2-EXP-002` reopens the **alternative for research**, not the resolved
+canonical selection. It independently completes the retained Q
+formal-expression normalization quotient field over the unchanged whole
+accepted R interface, then proves mutually inverse P/Q R-field maps in
+`ST2-EXP-002-PQ-J-001` / exact final-head run `32597346281`.
+
+The implemented object is not a separately implemented full polynomial ring
+`R[X]`. Route P remains selected; `C-BLOCK-002 / CA-20` remains accepted; Q
+is research-only. Exact architectural attachment is recorded in
+`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`.
 
 ## Reopening / sensitivity
 

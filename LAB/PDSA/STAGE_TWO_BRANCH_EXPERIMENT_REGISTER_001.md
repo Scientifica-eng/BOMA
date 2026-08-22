@@ -29,6 +29,23 @@ failures and Study/Act are in
 Eleven other candidates remain unselected and no experiment is currently
 active; priority is not execution authorization.
 
+## Architectural attachment and prevention authorities
+
+Frozen Git ancestry and constructional origin are distinct. The two closed
+experiments have explicit typed records in:
+
+```text
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
+```
+
+`ST2-EXP-001` attaches to dependency edge `BOMA-C-R-DEP-001` from
+`R-BLOCK-001` to selected `C-BLOCK-001`; `ST2-EXP-002` attaches to Decision
+`C-DP-001` above the same upstream R Block, selected P Block, and accepted
+`C-BLOCK-002` export. The completed Q field and
+`ST2-EXP-002-PQ-J-001` remain research-only; neither is an accepted Block.
+
 ## Evidence-derived candidate inventory
 
 | Candidate | Single change point | Baseline | Alternative | Expected invariant / divergence | Affected cone | Required verification | Priority / state |

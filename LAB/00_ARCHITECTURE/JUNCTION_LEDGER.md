@@ -1,8 +1,8 @@
 # JUNCTION LEDGER — Convergence Strength and Shared Outputs
 
 **Document ID:** `BOMA-JUNCTION-LEDGER-001`  
-**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R + OPEN C FRONTIER  
-**Date:** 2026-08-21  
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED C + STAGE-TWO RESEARCH JUNCTION  
+**Date:** 2026-08-22  
 **Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
 
 ## 1. Purpose
@@ -17,6 +17,7 @@ EQUIVALENCE                 iff/extensional equivalence of relations/interfaces
 CLASSIFICATION              one representation relation is completely classified by another identity regime
 SAME-DOWNSTREAM-ADEQUACY    distinct producers establish the same certified downstream contribution
 SAME-CARRIER-INTEGRATION    required claims elaborate/coexist on one selected carrier/operation package
+R-FIELD-ISOMORPHISM         mutually inverse field maps preserving the accepted R embedding and I
 CANONICALITY GATE           representation/recovery is invariant under the declared identity regime
 INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE
                             extensional interface reconstructs while constructional/epistemic provenance does not
@@ -42,10 +43,15 @@ Detailed theorem statements and evidence remain authoritative in each Junction `
 | `Z-RE-J-001` | independently reconstructed Z-only nonnegative-cone N candidates + frozen bottom-up N/N-Arithmetic reference | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | exact selected-representation round trips and preservation of `0,S,+,*,≤`; original TCT/Decision/PDSA provenance not recovered |
 | `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational acceptance integration |
 | `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration and `RA-22` acceptance eligibility |
-| `C-J-001` | selected pair witness field + quadratic comparison + actual nine-Claim dependency closure | `SAME-CARRIER-INTEGRATION` | `C-CL-INTEGRATION-001` / `CA-19` PASS / V5 `32585583815`; separate `CA-20` decision required |
+| `C-J-001` | selected pair witness field + quadratic comparison + actual nine-Claim dependency closure | `SAME-CARRIER-INTEGRATION` | `C-CL-INTEGRATION-001` / `CA-19` PASS / V5 `32585583815`; separately accepted by `CA-20` |
+| `ST2-EXP-002-PQ-J-001` | accepted selected Route P field + independently verified Route Q formal-expression quotient field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | explicit mutually inverse maps preserving embedded R and I / V5 `32597346281`; not canonical acceptance |
 
-`C-J-001` integrates one actual completed selected field; it is not a two-route
-reconvergence Junction, because retained Route Q remains a probe.
+`C-J-001` remains the accepted selected-carrier integration Junction.
+`ST2-EXP-002-PQ-J-001` is a different **research-only** representation
+reconvergence Junction between the accepted P field and the independently
+verified Q field. Route Q is `VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN
+ACCEPTED EXPORT`; neither its completion nor the research Junction changes
+`CA-20`, creates a canonical Q Block, or replaces `C-J-001`.
 
 ## 3. Provenance rule
 
@@ -104,9 +110,13 @@ LAB/PDSA/experiments/PDSA-Z-RE-001_BOTTOM_UP_VS_REVERSE_COMPARISON.md
 
 It must therefore be indexed here without fabricating a forward `Z-CL-*` Claim merely to make the ledger visually uniform.
 
-For C, provisional `C-CL-COMPARE-001` and `C-CL-INTEGRATION-001` define **future Claim targets**, not current Junction evidence. Their presence does not authorize an empty `C-J-*` unit.
+For accepted C, `C-CL-COMPARE-001` and `C-CL-INTEGRATION-001` have
+actual verified producers and accepted same-carrier Junction `C-J-001`.
+The distinct `ST2-EXP-002-PQ-J-001` consumes two completed incoming research
+routes and supplies verified R-field representation reconvergence without
+creating a second accepted export or inventing an empty canonical `C-J-*` unit.
 
-## 5. C future-Junction discipline
+## 5. C accepted-versus-research Junction discipline
 
 `BOMA-C-ACCEPT-001` identifies two materially different possible Junction roles that must not be conflated:
 
@@ -154,12 +164,19 @@ A change confined to a branch artifact not consumed by the Junction does not aut
 ## 7. Current boundary
 
 ```text
-C authorization       ACTIVE
-C-DP-001              OPEN
-C candidate routes    IDENTIFIED / UNBUILT
-C Junctions           NONE
-C reconvergence claim NONE YET
-C final integration   NONE YET
+C authorization              ACTIVE / STAGE ACCEPTED
+C-DP-001                     RESOLVED / C-ROUTE-P SELECTED
+C selected producer          C-BLOCK-001 / ACCEPTED P FIELD PRODUCER
+C accepted export            C-BLOCK-002 / CA-20 ACCEPT
+C accepted integration       C-J-001 / SAME-CARRIER-INTEGRATION / PASS
+C retained alternative       VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
+C research reconvergence     ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / PASS
+ST2-EXP-001 / ST2-EXP-002     CLOSED / PASS
+active experiment            NONE
 ```
 
-The absence of a C Junction is now a truthful construction-state fact, not a prohibition on C. The previous user hold remains historical provenance and was explicitly lifted on 2026-08-21.
+The previous user hold and earlier preconstruction Junction descriptions are
+historical provenance; they do not override this synchronized current
+boundary. Accepted and research Junctions stay separate. Typed branch
+attachments are indexed in
+`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`.

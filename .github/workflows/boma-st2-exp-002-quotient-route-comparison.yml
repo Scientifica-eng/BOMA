@@ -13,6 +13,21 @@ on:
       - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_*'
       - 'LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md'
       - 'LAB/PDSA/experiments/ST2*EXP*002*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
+      - 'LAB/00_ARCHITECTURE/C_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md'
+      - 'LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md'
+      - 'LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md'
+      - 'README.md'
+      - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-002-quotient-route-comparison.yml'
   push:
     branches:
@@ -100,6 +115,13 @@ jobs:
           python3 -m py_compile LAB/PDSA/experiments/ST2_EXP_002_COMPARE_ROUTES.py
           python3 -m json.tool LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_FORMAL_DEPENDENCY_POLICY.json >/dev/null
           python3 -m json.tool LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_002_Q_CLAIM_PRODUCER_POLICY.json >/dev/null
+
+      - name: Audit typed branch origins and synchronized current architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            --json-out /tmp/st2-exp-002-branch-governance.json
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -230,6 +252,7 @@ jobs:
         with:
           name: st2-exp-002-route-comparison-${{ github.run_id }}
           path: |
+            /tmp/st2-exp-002-branch-governance.json
             /tmp/st2-exp-002-q-closure.json
             /tmp/st2-exp-002-q-classification.json
             /tmp/st2-exp-002-pq-closure.json
