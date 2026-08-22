@@ -1,0 +1,145 @@
+{
+  "schema": "BOMA-ST2-EXP-001-VERIFIED-EVIDENCE-001",
+  "experiment": "ST2-EXP-001",
+  "cycle": "PDSA-ST2-EXP-001",
+  "status": "V5_PASS / CLOSED / REFERENCE UNCHANGED",
+  "frozen_baseline_sha": "b473d236309770762e102517ef8a79c628cb43ed",
+  "frozen_plan_commit": "e95420699a8177e9368e4baac5b624ea22b71b36",
+  "exact_verified_source_sha": "8eac1523b54fa71c4acaced2f6cfcb5ff90965de",
+  "workflow": {
+    "run_id": 32593045224,
+    "job_id": 97079720092,
+    "name": "BOMA ST2-EXP-001 Narrow R Interface and Exact C Closure — V5",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 9480835013,
+    "name": "boma-st2-exp-001-narrow-r-32593045224",
+    "size_in_bytes": 444451,
+    "digest": "sha256:c80c6bd77d11ebc2fbdb1682e80b568756ca9ef97521ade126eecb2933ede06c",
+    "created_at": "2026-08-22T19:13:42Z",
+    "expires_at": "2026-09-21T19:13:41Z"
+  },
+  "preserved_failed_attempt": {
+    "source_sha": "d83a5d85d492993d7c9fafc0fe127363af7552fa",
+    "run_id": 32592959836,
+    "job_id": 97079511454,
+    "class": "FORMALIZATION / PROOF-ENGINEERING ONLY",
+    "cause": "copied simp sets did not unfold the original accepted cMul/cAdd wrappers"
+  },
+  "comparison": {
+    "claim_ids": [
+      "C-CL-CARRIER-001",
+      "C-CL-COMPARE-001",
+      "C-CL-COORDUNIQ-001",
+      "C-CL-FIELD-001",
+      "C-CL-GEN-001",
+      "C-CL-I-001",
+      "C-CL-INTEGRATION-001",
+      "C-CL-NONREAL-001",
+      "C-CL-REMBED-001"
+    ],
+    "counts": {
+      "baseline_edges": 9629,
+      "baseline_internal": 783,
+      "branch_edges": 9248,
+      "branch_internal": 778,
+      "new_branch_declarations": 174,
+      "removed_declarations": 179
+    },
+    "failures": [],
+    "fields": [
+      "addAssoc",
+      "addComm",
+      "addInverseRight",
+      "addTranslateOrderIff",
+      "addZeroLeft",
+      "distribRight",
+      "inverseExists",
+      "mulAssoc",
+      "mulComm",
+      "mulOneLeft",
+      "negOrderReversing",
+      "nontrivial",
+      "orderAntisymm",
+      "orderMulNonneg",
+      "orderTotal",
+      "orderTrans"
+    ],
+    "hypotheses": {
+      "H1_exact_sixteen_fields": "CONFIRMED",
+      "H2_same_nine_claims": "CONFIRMED",
+      "H3_unused_bundle_eliminated": "CONFIRMED",
+      "H4_logical_provenance": "REQUIRES_SEPARATE_AXIOM_AND_CLASSIFICATION_REVIEW"
+    },
+    "limitations": [
+      "A removed whole-certificate edge does not remove genuine upstream logical commitments of accepted order and inverse producers.",
+      "A surviving named producer is reported as actual dependency, not hidden or classified away.",
+      "Identical Claim IDs establish audited contract coverage, not definitional equality of all branch proof terms."
+    ],
+    "removed_sensitive_producers": [
+      "whole_accepted_r_certificate",
+      "dedekind_completeness",
+      "rational_density",
+      "archimedean_upper"
+    ],
+    "schema": "BOMA-ST2-EXP-001-CLOSURE-COMPARISON-001",
+    "sensitive_producers": {
+      "archimedean_upper": {
+        "baseline_present": true,
+        "branch_present": false,
+        "declaration": "BOMA.R.DedekindArchimedean001.r_archimedean_strict_upper",
+        "removed": true
+      },
+      "dedekind_completeness": {
+        "baseline_present": true,
+        "branch_present": false,
+        "declaration": "BOMA.R.DedekindCompleteness001.rDedekind_lub_exists",
+        "removed": true
+      },
+      "rational_density": {
+        "baseline_present": true,
+        "branch_present": false,
+        "declaration": "BOMA.R.DedekindRationalDensity001.r_rational_image_dense",
+        "removed": true
+      },
+      "whole_accepted_r_certificate": {
+        "baseline_present": true,
+        "branch_present": false,
+        "declaration": "BOMA.R.StageIntegration002.rStageIntegrationCertificate",
+        "removed": true
+      }
+    },
+    "status": "COMPARISON_PASS",
+    "surviving_sensitive_producers": []
+  },
+  "logical_boundary": {
+    "baseline_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "narrow_real_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "narrow_complex_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "new_axioms": [],
+    "classification_baseline": "CLASSIFICATION_PASS",
+    "classification_branch": "CLASSIFICATION_PASS",
+    "assessment": "H4 CONFIRMED: no new axiom or suppressed genuine inherited order/inverse commitment",
+    "constructive_independence_claimed": false
+  },
+  "acceptance": {
+    "baseline_ca_20": "UNCHANGED",
+    "claim_count": 9,
+    "branch_is_new_accepted_stage": false,
+    "main_merge_authorized": false
+  }
+}
