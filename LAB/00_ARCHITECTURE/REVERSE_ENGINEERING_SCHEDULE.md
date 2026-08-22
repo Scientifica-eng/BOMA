@@ -105,6 +105,19 @@ RA-13 Archimedean property           acceptance-required
 
 No accepted R theorem was revised by the reverse audit.
 
+## Gate RE-C-001 — local reverse engineering of the accepted complex stage
+
+**Status:** `CLOSED / COMPLETE — PDSA-C-009`.
+
+After `CA-20 = ACCEPT`, the selected complex export was reverse-audited without
+changing its mathematical source. The audit classified the exact 16 directly
+used real-certificate projections, witness-only inverses, representation choice,
+inherited logical sites, retained Route Q, and the distinction between
+mathematical R requirements and whole-certificate bundling contamination.
+
+Detailed matrix:
+`LAB/PDSA/experiments/PDSA-C-009-RE-C-001-DEPENDENCY-CLASSIFICATION.md`.
+
 ## Gate RE-STAGE1-001 — global reverse engineering of the completed number-system chain
 
 **Trigger:** immediately after the Stage-One complex-number interface is accepted and before broad Stage-Two branching experiments begin.
@@ -179,7 +192,7 @@ These are candidates only; none is started by this schedule update.
 
 `RE-STAGE1-001` must not be executed before C acceptance: its purpose is to reverse-engineer the complete Stage-One number-system architecture as a finished chain.
 
-## Explicit user hold on C
+## Historical explicit user hold on C — SUPERSEDED
 
 Although completion of `RE-R-001` satisfies the governance prerequisite that would normally make the canonical C stage eligible, the user has explicitly instructed:
 
@@ -187,16 +200,18 @@ Although completion of `RE-R-001` satisfies the governance prerequisite that wou
 DO NOT START C UNTIL A NEW EXPLICIT USER ORDER IS GIVEN.
 ```
 
-Therefore eligibility is not authorization.
-
-No C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle may be opened until that explicit order is received.
+That historical instruction was superseded by the user's explicit new order on
+2026-08-21 and explicit `C-ROUTE-P` ratification on 2026-08-22. Preserve the
+original hold as historical provenance, not as a current prohibition: C is
+now accepted under `CA-20`.
 
 ## Current status
 
 ```text
 RE-R-001        CLOSED / COMPLETE — PDSA-R-015
-C stage         NOT STARTED — USER HOLD
-RE-STAGE1-001   SCHEDULED — cannot trigger before accepted C
+C stage         ACCEPTED — CA-20 / C-BLOCK-002
+RE-C-001        CLOSED / COMPLETE — PDSA-C-009
+RE-STAGE1-001   ACTIVE — PDSA-STAGE1-001 / separate PLAN frozen
 ```
 
 This schedule remains canonical architecture.

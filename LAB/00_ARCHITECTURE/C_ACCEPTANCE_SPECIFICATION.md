@@ -1,11 +1,11 @@
 # BOMA-C-ACCEPT-001 — Stage-One Complex-Number Acceptance Specification
 
-**Status:** **ACTIVE — EX-ANTE GOVERNING SPECIFICATION / C AUTHORIZED / C-ROUTE-P SELECTED**  
+**Status:** **SATISFIED — CA-20 ACCEPT / C-ROUTE-P SELECTED / RE-C-001 COMPLETE**  
 **Authorization date:** 2026-08-21  
 **Input:** `R-BLOCK-001 — Accepted Stage-One Real Interface`  
 **Construction branch:** `feature/c-stage-acceptance-001`  
 **Representation Decision Point:** `C-DP-001 — RESOLVED / USER-RATIFIED C-ROUTE-P`  
-**Accepted export:** **NONE YET**
+**Accepted export:** **`C-BLOCK-002 / CA-20 ACCEPT`**
 
 ## 1. Purpose
 
@@ -552,7 +552,10 @@ RE-R-001             CLOSED / COMPLETE
 BOMA-C-ACCEPT-001    ACTIVE — ex-ante governing specification
 C-DP-001             RESOLVED — C-ROUTE-P user-selected; C-ROUTE-Q retained
 C carrier            C-BLOCK-001 / selected Route P ring core / V5 32574270735 PASS
-C accepted export    NONE
+C accepted export    C-BLOCK-002 / CA-20 ACCEPT
+C final integration  C-J-001 PASS / V5 32585583815
+C reverse audit      RE-C-001 COMPLETE / PDSA-C-009
+Global reverse gate  RE-STAGE1-001 OPEN / PDSA-STAGE1-001
 algebraic closure    NOT A STAGE-ONE ACCEPTANCE CLAIM
 ```
 

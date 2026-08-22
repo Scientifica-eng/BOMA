@@ -32,5 +32,6 @@ field, choice-based coordinate selector, or merge into `main` is implied.
 Separate `CA-20 = ACCEPT` is justified by exact six-stage run `32586145793`,
 job `97062695622`, source `6820278f566fc637c39582c3efa648d5c1d136df`.
 
-The mandatory post-acceptance `RE-C-001` audit remains open; this export does
-not declare the entire Stage-One dependency chain reverse-audited.
+The mandatory local `RE-C-001` audit is complete. Its detailed matrix exposes
+whole-R-certificate bundling, actual order/logical dependencies, and retained
+alternatives. The separate global `RE-STAGE1-001` chain audit remains open.

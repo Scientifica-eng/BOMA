@@ -5,7 +5,7 @@
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current C cycle:** `PDSA-C-009 — ACTIVE / mandatory RE-C-001 reverse-engineering PLAN frozen`
+**Current C cycle:** `PDSA-STAGE1-001 — ACTIVE / global Stage-One reverse-engineering PLAN frozen`
 
 ## Current canonical frontier
 
@@ -45,7 +45,8 @@ PDSA-C-005          CLOSED — witness field + inherited-axiom audit V5 32574920
 PDSA-C-006          CLOSED — quadratic comparison V5 32575465002 PASS
 PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 PASS
 PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
-PDSA-C-009          ACTIVE — mandatory RE-C-001 reverse-engineering PLAN FROZEN
+PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
+PDSA-STAGE1-001     ACTIVE — global RE-STAGE1-001 reverse-engineering PLAN FROZEN
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002

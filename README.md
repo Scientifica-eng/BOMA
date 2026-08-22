@@ -41,7 +41,8 @@ PDSA-C-005             CLOSED — witness field + inherited-axiom V5 32574920935
 PDSA-C-006             CLOSED — quadratic comparison V5 32575465002 PASS
 PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
 PDSA-C-008             CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
-PDSA-C-009             ACTIVE — mandatory post-C reverse audit PLAN FROZEN
+PDSA-C-009             CLOSED — RE-C-001 complete / bundled-interface costs classified
+PDSA-STAGE1-001        ACTIVE — whole-chain RE-STAGE1-001 PLAN FROZEN
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS

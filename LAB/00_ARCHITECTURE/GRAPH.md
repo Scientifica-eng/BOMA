@@ -267,7 +267,8 @@ PDSA-C-007 = CLOSED / final integration V5 32585583815 PASS
 C-J-001 = PASS / 783 declarations / nine claims / zero residuals
 PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
 C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
-PDSA-C-009 = ACTIVE / mandatory RE-C-001 reverse-audit PLAN
+PDSA-C-009 = CLOSED / RE-C-001 exact dependency classification COMPLETE
+PDSA-STAGE1-001 = ACTIVE / global RE-STAGE1-001 reverse-audit PLAN
 ```
 
 The accepted semantic target is:

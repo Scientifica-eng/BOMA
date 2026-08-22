@@ -39,7 +39,7 @@ The initial C semantic core requires only the algebraic/order strength needed to
 | `R-CL-NONTRIV-001` | establish `0_R ≠ 1_R`; support nondegeneracy | `MATHEMATICAL_CLAIM` — required |
 | `R-CL-ADD-001` | coefficients, additive laws, negation | `MATHEMATICAL_CLAIM` — required |
 | `R-CL-MUL-001` | coefficient multiplication and ordered-ring interaction | `MATHEMATICAL_CLAIM` — required |
-| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — likely required for future C field closure; **not used by the first nonsquare boundary proof** |
+| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — actually used by selected Route P field closure through `inverseExists`; not used by the first nonsquare boundary proof |
 | `R-CL-FIELD-001` | accepted field-strength integration of R algebra/order | `MATHEMATICAL_CLAIM` — required package-level input |
 | `R-CL-ORDER-001` | positivity of squares / impossibility of a real square equal to `-1` | `MATHEMATICAL_CLAIM` — required by `C-RL-001/002` |
 | `R-CL-INTEGRATION-001` | certifies the preceding accepted R Claims coexist on the accepted R carrier | `MATHEMATICAL_CLAIM` / accepted export gateway |
@@ -289,7 +289,7 @@ construct the needed C inverse by a route that avoids a global R selector.
 
 It may not silently strengthen the R interface.
 
-**Status:** `OPEN / ROUTE-CONDITIONAL`.
+**Status:** `RESOLVED FOR SELECTED ROUTE — witness-only inverse; no global selector`; retained as a future branch question for other routes.
 
 ---
 
@@ -384,3 +384,31 @@ V5 elaboration of the staged abstract probe exposes a dependency or packaging as
 ```
 
 The corrective action must update the current classification without erasing the PDSA record of the earlier hypothesis and what falsified or refined it.
+# 9. RE-C-001 actual post-acceptance dependency classification
+
+`CA-20 = ACCEPT / C-BLOCK-002`; `RE-C-001` extracted 441 direct C-source →
+R-source edges over 25 distinct R declarations. Exactly 16 accepted-real
+certificate projections are used:
+
+```text
+addAssoc, addComm, addInverseRight, addTranslateOrderIff, addZeroLeft,
+distribRight, inverseExists, mulAssoc, mulComm, mulOneLeft,
+negOrderReversing, nontrivial, orderAntisymm, orderMulNonneg,
+orderTotal, orderTrans
+```
+
+There is no direct C projection of completeness, rational density,
+Archimedean bounds, or Q embedding. Nevertheless the concrete final C producer
+passes the whole `rStageIntegrationCertificate`, so its **actual formal
+closure** also contains the accepted real LUB, density, Archimedean, Dedekind,
+quotient, and classical producer histories. These edges are explicitly
+classified as `INHERITED BUNDLED-INTERFACE DEPENDENCY` or selected upstream
+formalization provenance; they are not erased and are not mathematical
+necessity claims about C.
+
+In particular, one `Classical.byContradiction` path enters through unused
+bundled rational density, while `Classical.em` also enters through actually
+projected real totality. A future narrower R interface is a separately
+controlled branch candidate, never an already-performed refactor.
+
+Full evidence: `LAB/PDSA/experiments/PDSA-C-009-RE-C-001-DEPENDENCY-CLASSIFICATION.md`.

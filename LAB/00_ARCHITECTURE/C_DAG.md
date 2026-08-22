@@ -50,7 +50,8 @@ PDSA-C-007 CLOSED — FINAL INTEGRATION V5 32585583815 PASS
 C-J-001 PASS — ACTUAL NINE-CLAIM FORMAL CLOSURE
 PDSA-C-008 CLOSED — CA-20 ACCEPT / SIX-STAGE V5 32586145793
 C-BLOCK-002 ACCEPTED — STAGE-ONE COMPLEX EXPORT
-PDSA-C-009 ACTIVE — MANDATORY RE-C-001 REVERSE AUDIT
+PDSA-C-009 CLOSED — RE-C-001 COMPLETE / EXACT DEPENDENCY MATRIX
+PDSA-STAGE1-001 ACTIVE — GLOBAL ACCEPTED-CHAIN REVERSE AUDIT
 NO C JUNCTION YET
 C-BLOCK-002 ACCEPTED / CA-20
 ```
@@ -329,10 +330,11 @@ constructed C Block   C-BLOCK-001 witness producer + C-BLOCK-002 ACCEPTED
 C Junction            C-J-001 PASS / V5 32585583815
 C Lean payload        VERIFIED boundary + route probes + pair ring core + witness field
 C V5                  32564789630 boundary; 32565335033 routes; 32574270735 ring; 32574920935 field — PASS
-C active cycle        PDSA-C-009 — mandatory reverse audit PLAN frozen
+C reverse audit       RE-C-001 CLOSED / COMPLETE
+Program active cycle  PDSA-STAGE1-001 — global reverse audit PLAN frozen
 C acceptance          NOT YET ELIGIBLE
 ```
 
 The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` closed after exact V5 `32585583815` and zero-residual Claim-level
-transparency; `PDSA-C-008` separately accepted `C-BLOCK-002`; `PDSA-C-009` now governs
-the mandatory local complex-stage reverse audit.
+transparency; `PDSA-C-008` separately accepted `C-BLOCK-002`; `PDSA-C-009` completed the mandatory local complex reverse audit;
+`PDSA-STAGE1-001` now governs the global accepted-chain audit.
