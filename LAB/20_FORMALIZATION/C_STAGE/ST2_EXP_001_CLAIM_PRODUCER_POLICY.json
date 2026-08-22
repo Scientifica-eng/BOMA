@@ -1,0 +1,94 @@
+{
+  "schema": "BOMA-ST2-EXP-001-NARROW-R-FORMAL-CLAIM-PRODUCER-POLICY-001",
+  "status": "EXPERIMENTAL / OWNER APPROVED / NO ACCEPTED-POLICY MUTATION",
+  "date": "2026-08-22",
+  "stage": "C",
+  "claim_id_pattern": "C-CL-[A-Z0-9-]+",
+  "registry": "LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md",
+  "registry_section": "C Claim IDs",
+  "root_mode": "single_target",
+  "target": "BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate",
+  "integration_claim": "C-CL-INTEGRATION-001",
+  "rules": {
+    "registry_claim_set_must_match": true,
+    "all_producers_must_be_internal": true,
+    "all_producers_must_be_reachable_from_target": true,
+    "all_target_direct_internal_dependencies_must_be_declared": true,
+    "all_internal_declarations_must_have_producer_ancestry": true,
+    "integration_claim_transitive_ownership": false,
+    "multiple_claim_ownership_allowed": true
+  },
+  "integration_local_prefixes": [
+    "BOMA.C.StageTwo.NarrowIntegration001.CNarrowStageIntegrationCertificate",
+    "BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate"
+  ],
+  "claims": {
+    "C-CL-CARRIER-001": {
+      "role": "unchanged accepted selected real-pair carrier and extensional identity",
+      "producers": [
+        "BOMA.C.RoutePairProbe001.PairCandidate",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ext"
+      ]
+    },
+    "C-CL-REMBED-001": {
+      "role": "same injective structure-preserving accepted-real embedding",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_injective",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_zero",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_one",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_neg",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_add",
+        "BOMA.C.StageTwo.NarrowPairCore001.c_ofR_mul"
+      ]
+    },
+    "C-CL-FIELD-001": {
+      "role": "same selected witness-based commutative field from narrow accepted-real producers",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairNormInverse001.cPairFieldCertificateFromNarrowR"
+      ]
+    },
+    "C-CL-I-001": {
+      "role": "unchanged distinguished imaginary generator squares to minus one",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairCore001.c_i_squared"
+      ]
+    },
+    "C-CL-GEN-001": {
+      "role": "unchanged real-plus-imaginary generation",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairCore001.c_generation"
+      ]
+    },
+    "C-CL-COORDUNIQ-001": {
+      "role": "unchanged unique real and imaginary coefficients",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairCore001.c_coordinate_unique"
+      ]
+    },
+    "C-CL-NONREAL-001": {
+      "role": "unchanged imaginary generator is not an embedded real",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowPairCore001.c_i_not_real"
+      ]
+    },
+    "C-CL-COMPARE-001": {
+      "role": "same universal quadratic graph and extractor-scoped constructive isomorphism",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowQuadraticComparison001.selectedPresentation",
+        "BOMA.C.StageTwo.NarrowQuadraticComparison001.selectedQuadraticComparison",
+        "BOMA.C.StageTwo.NarrowQuadraticComparison001.selectedConstructiveQuadraticIsomorphism"
+      ]
+    },
+    "C-CL-INTEGRATION-001": {
+      "role": "same-carrier integration plus directly assembled narrow accepted-real input",
+      "producers": [
+        "BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate",
+        "BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers"
+      ],
+      "transitive_ownership": false
+    }
+  },
+  "experiment": "ST2-EXP-001",
+  "frozen_baseline_sha": "b473d236309770762e102517ef8a79c628cb43ed",
+  "frozen_plan_commit": "e95420699a8177e9368e4baac5b624ea22b71b36"
+}
