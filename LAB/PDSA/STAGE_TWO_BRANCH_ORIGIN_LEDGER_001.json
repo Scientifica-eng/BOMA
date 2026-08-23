@@ -137,7 +137,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / INDEPENDENT CAUCHY SEQUENTIALLY COMPLETE ORDERED FIELD PASS / DEDEKIND LUB BRIDGE OPEN",
+      "status": "ACTIVE / INDEPENDENT CAUCHY DEDEKIND-LUB CONTRACT PASS / H5 COMPARISON READY",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -181,17 +181,19 @@
         "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
         "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
-      "reconvergence_strength": "NOT YET EVALUATED / H4 DEDEKIND LUB BRIDGE OPEN / NO RESEARCH JUNCTION YET",
-      "experimental_product_status": "VERIFIED INDEPENDENT SEQUENTIALLY CAUCHY-COMPLETE TOTALLY ORDERED FIELD / H4 ACTIVE / NOT AN ACCEPTED REAL EXPORT",
+      "reconvergence_strength": "H4 EXACT LUB CONTRACT PASS / H5 RECONVERGENCE NOT YET BUILT / NO RESEARCH JUNCTION YET",
+      "experimental_product_status": "VERIFIED INDEPENDENT DEDEKIND-COMPLETE CAUCHY TOTALLY ORDERED FIELD / H5 COMPARISON READY / NOT AN ACCEPTED REAL EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
       "study": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_REAL_ROUTE_STUDY_CONTINUATION_H3.md",
+      "h4_study": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md",
       "verified_run": null,
       "preserved_failure_runs": [
         32630769132, 32631916749, 32631997598, 32632080736,
         32632711528, 32633098730, 32633963578, 32637335056,
-        32637512588, 32638074040, 32640562655, 32640838804
+        32637512588, 32638074040, 32640562655, 32640838804,
+        32641626366, 32643073959, 32643253314
       ],
       "unit_sources": {
         "Q-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/Q-BLOCK-002/UNIT.md",
@@ -231,7 +233,12 @@
       "verified_cauchy_completion_run": 32641010707,
       "verified_cauchy_completion_source_commit": "26565faa7b609f285615d86bc3a6bc0260a40041",
       "cauchy_completion_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_COMPLETION_VERIFIED_EVIDENCE_RUN_32641010707.json",
-      "cauchy_completion_milestone": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_COMPLETENESS_MILESTONE_001.md"
+      "cauchy_completion_milestone": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_COMPLETENESS_MILESTONE_001.md",
+      "verified_lub_run": 32643579395,
+      "verified_lub_source_commit": "0f4a706d94c394b8e8a9eec836859caac772a944",
+      "lub_source_completion_commit": "cb31e12e2b4fb7a07488a09c2a9394d4ab61946c",
+      "lub_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_LUB_VERIFIED_EVIDENCE_RUN_32643579395.json",
+      "lub_milestone": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md"
     }
   ]
 }
