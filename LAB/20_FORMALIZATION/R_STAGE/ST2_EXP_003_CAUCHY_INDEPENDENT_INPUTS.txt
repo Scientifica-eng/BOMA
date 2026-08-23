@@ -56,3 +56,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyOrderCore.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyOrderTotal.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyOrderedRing.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyNonzeroGap.lean
+LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean
