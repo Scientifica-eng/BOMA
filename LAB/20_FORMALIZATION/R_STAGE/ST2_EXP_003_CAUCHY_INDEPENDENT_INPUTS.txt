@@ -48,3 +48,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyCloseness.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyQuotient.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyAdditive.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyBounded.lean
+LAB/payloads/lean/RStage/ST2Exp003CauchyProductBounds.lean

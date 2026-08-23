@@ -267,3 +267,17 @@ inverse, order, completeness, comparison, and downstream C remain open.
 Machine-readable evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_BOUNDEDNESS_VERIFIED_EVIDENCE_RUN_32632806907.json`.
+
+## DO — bounded product estimate in verification
+
+The next source does not yet descend multiplication to the quotient. It first
+proves interval arithmetic for signed rationals, the exact algebraic identity
+
+```text
+x·y - a·b = x·(y-b) + b·(x-a),
+```
+
+and the resulting product-closeness estimate under one explicit common bound
+and scale equation. Its certificate consumes the verified boundedness
+certificate, preventing an isolated lemma from being reported as an integrated
+milestone. Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
