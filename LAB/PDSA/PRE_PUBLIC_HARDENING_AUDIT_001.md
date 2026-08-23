@@ -148,3 +148,16 @@ This audit does not:
 - claim H5 PASS.
 
 Those boundaries are intentional.
+
+## 11. Workflow supply-chain boundary
+
+The evidence-producing workflows with repository write capability also invoke reusable third-party actions through moving major-version tags, notably `leanprover/lean-action@v1`. The official `actions/checkout@v4` action is likewise referenced by a major-version tag.
+
+A tagged action reference is operationally convenient but is not the same security boundary as a full immutable commit SHA. This is especially important for workflows that possess `contents: write` or any future bypass permission for `main`.
+
+Before granting any workflow or GitHub App a bypass around the public `main` ruleset, BOMA should either:
+
+1. remove the direct-write requirement entirely, which is preferred; or
+2. pin every nontrivial external action executed inside that privileged workflow to a reviewed full commit SHA and maintain those pins explicitly.
+
+No action pin is changed in this audit because those workflows are part of the existing canonical verification machinery and must be reverified after any such supply-chain change.
