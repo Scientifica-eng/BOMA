@@ -1,0 +1,185 @@
+name: BOMA ST2-EXP-003 Dedekind-Cauchy Comparison — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
+      - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
+      - '.github/workflows/boma-st2-exp-003-dedekind-cauchy-comparison.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-003-*'
+
+concurrency:
+  group: boma-st2-exp-003-h5-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    name: compare completed Dedekind and Cauchy real routes
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin H5 after immutable H4 and preserve accepted producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          baseline="ea920b6b1e56444eddaf38ca91e6f7a968f10e0d"
+          frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          h4_verified="0f4a706d94c394b8e8a9eec836859caac772a944"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git merge-base --is-ancestor "$h4_verified" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean
+          printf 'H5 exact head: %s\nFrozen Plan: %s\nH4 verified ancestor: %s\n' \
+            "$actual_sha" "$frozen_plan" "$h4_verified"
+
+      - name: Require audited H4 before combined comparison
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h4-governance.json
+          grep -Fq '"status": "H4_GOVERNANCE_PASS"' /tmp/st2-exp-003-h4-governance.json
+          grep -Fq '"h5_comparison_allowed": true' /tmp/st2-exp-003-h4-governance.json
+
+      - name: Validate independent and combined manifest separation
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          target=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean
+          test -s "$accepted"
+          test -s "$independent"
+          test -s "$combined"
+          test -f "$target"
+          if grep -Fxq "$target" "$independent"; then
+            printf 'H5 comparison source contaminated the independent Cauchy manifest\n' >&2
+            exit 1
+          fi
+          grep -Fxq "$target" "$combined"
+          if grep -En 'RDedekind|RStageIntegration002|/CStage/' "$independent"; then
+            printf 'Independent Cauchy manifest lost its selected-Dedekind-free boundary\n' >&2
+            exit 1
+          fi
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$accepted"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$combined"
+          dup=/tmp/st2-exp-003-h5-duplicate-inputs.txt
+          comm -12 <(sort "$accepted") <(sort "$combined") > "$dup"
+          test ! -s "$dup"
+          if grep -En '(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)' "$target"; then
+            printf 'H5 comparison source contains a placeholder or new axiom\n' >&2
+            exit 1
+          fi
+          grep -Fq 'no research Junction is declared here' "$target"
+          grep -Fq 'Classical.choose (cToD_lub_exists x)' "$target"
+          grep -Fq 'Classical.choose (dToC_lub_exists x)' "$target"
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Prove H5 comparison foundation on combined route assembly
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          manifest=/tmp/st2-exp-003-h5-combined-manifest.txt
+          target=/tmp/BOMAST2Exp003DedekindCauchyComparison.lean
+          cat "$accepted" "$combined" > "$manifest"
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekind_rational_strict_lower_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_rational\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_rational\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_mono\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_mono\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonFoundationCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-lean.log
+
+      - name: Extract combined H5 foundation closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          manifest=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_H5_TEMP_COMBINED_INPUTS.txt
+          cat "$accepted" "$combined" > "$manifest"
+          trap 'rm -f "$manifest"' EXIT
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage R \
+            --manifest "$manifest" \
+            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonFoundationCertificate \
+            --json-out /tmp/st2-exp-003-h5-closure.json \
+            > /tmp/st2-exp-003-h5-dependency-audit.log
+
+      - name: Publish H5 foundation scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '## ST2-EXP-003 H5 — combined Dedekind/Cauchy comparison foundation\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Independent H4 remains separately verified and selected-Dedekind-free.\n'
+            printf -- '- Combined H5 assembly reuses the unchanged accepted R manifest plus a research-only Cauchy addendum.\n'
+            printf -- '- Proved at this gate: comparison maps in both directions, exact rational preservation, and monotonicity.\n'
+            printf -- '- NOT YET CLAIMED: order reflection, mutual inverse, field isomorphism, or research Junction.\n'
+            printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve H5 foundation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-003-h5-foundation-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-h4-governance.json
+            /tmp/st2-exp-003-h5-lean.log
+            /tmp/st2-exp-003-h5-closure.json
+            /tmp/st2-exp-003-h5-dependency-audit.log
+          if-no-files-found: warn
+          retention-days: 30
