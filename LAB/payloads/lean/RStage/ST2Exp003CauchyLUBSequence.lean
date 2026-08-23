@@ -128,10 +128,10 @@ noncomputable def h4LowerCauchySeq
 /-- H4 sequence-stage certificate. -/
 structure CauchyLUBSequenceCertificate where
   bracket : CauchyLUBBracketCertificate
-  lowerCauchy : ∀ (F : RCBOMA → Prop),
-    (∃ x : RCBOMA, F x) →
-    ∀ U : RCBOMA, RCUpperBound F U →
-      IsCauchy (fun n => h4Lower F ‹∃ x : RCBOMA, F x› U ‹RCUpperBound F U› n)
+  lowerCauchy : ∀ (F : RCBOMA → Prop)
+    (hne : ∃ x : RCBOMA, F x)
+    (U : RCBOMA) (hUB : RCUpperBound F U),
+      IsCauchy (fun n => h4Lower F hne U hUB n)
 
 theorem cauchyLUBSequenceCertificate : CauchyLUBSequenceCertificate where
   bracket := cauchyLUBBracketCertificate
