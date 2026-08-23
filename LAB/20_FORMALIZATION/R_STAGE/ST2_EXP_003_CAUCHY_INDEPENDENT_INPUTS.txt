@@ -66,3 +66,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyApproximation.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyCompletion.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyLUBBracket.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyLUBSequence.lean
+LAB/payloads/lean/RStage/ST2Exp003CauchyLUB.lean
