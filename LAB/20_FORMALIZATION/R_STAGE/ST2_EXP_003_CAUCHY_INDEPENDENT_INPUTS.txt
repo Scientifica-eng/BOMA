@@ -61,3 +61,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyNonzeroGap.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyScale.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyCompletionCore.lean
+LAB/payloads/lean/RStage/ST2Exp003CauchyDensity.lean
