@@ -1,0 +1,56 @@
+{
+  "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-ORDERED-FIELD-EVIDENCE-001",
+  "experiment": "ST2-EXP-003",
+  "milestone_status": "ORDERED_FIELD_PASS / EXPERIMENT ACTIVE",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "R-DP-001",
+  "upstream_accepted_unit": "Q-BLOCK-002",
+  "accepted_baseline_unit": "R-BLOCK-001",
+  "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
+  "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
+  "verified_source_commit": "fc1ac4fc9c8aebb90ff728619c347bea41f060bb",
+  "verified_run": 32637591596,
+  "workflow": "BOMA ST2-EXP-003 Independent Cauchy Real Route — V5",
+  "independent_manifest": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt",
+  "actual_internal_declarations": 514,
+  "selected_dedekind_declarations": [],
+  "downstream_complex_declarations": [],
+  "verified_targets": [
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.nonzero_eventually_sign_separated",
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.cauchyNonzeroGapCertificate",
+    "BOMA.R.StageTwo.CauchyInverse003.qClose_reciprocals_of_positive_lower",
+    "BOMA.R.StageTwo.CauchyInverse003.positive_gap_inverse_sequence_exists",
+    "BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists_unique",
+    "BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate"
+  ],
+  "logical_provenance": {
+    "kernel_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reciprocal_sequence_data_selection": "explicit Classical.choose over accepted pointwise Q inverse witnesses after eventual fixed-sign separation",
+    "new_source_level_choice_commitment": true,
+    "classification_note": "The kernel axiom set was already present upstream, but this milestone introduces a new source-level use of Classical.choose to construct reciprocal sequence data; equal kernel axiom names do not erase that provenance difference.",
+    "sorryAx_in_successful_targets": false
+  },
+  "artifact": {
+    "id": 9492731261,
+    "sha256": "325f581ae5fc185854e770d176dfc498a1e9f34d643d410fd26726b1b7548453"
+  },
+  "cauchy_foundation_completed": true,
+  "commutative_ring_completed": true,
+  "partial_order_completed": true,
+  "total_order_completed": true,
+  "ordered_ring_compatibility_completed": true,
+  "eventual_nonzero_sign_separation_completed": true,
+  "ordered_field_completed": true,
+  "cauchy_completeness_proved": false,
+  "dedekind_completeness_bridge_proved": false,
+  "route_comparison_proved": false,
+  "downstream_complex_rebuilt": false,
+  "alternative_accepted": false,
+  "experiment_closed": false,
+  "accepted_dedekind_real_changed": false,
+  "accepted_complex_ca20_changed": false
+}
