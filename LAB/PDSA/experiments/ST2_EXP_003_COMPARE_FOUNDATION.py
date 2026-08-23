@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the current independently assembled Cauchy route through sequential completeness."""
+"""Audit the independently assembled Cauchy route through the exact H4 LUB contract."""
 from __future__ import annotations
 
 import argparse
@@ -87,6 +87,16 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyCompletion003.selected_approximation_converges",
     "BOMA.R.StageTwo.CauchyCompletion003.rCCauchyComplete",
     "BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate",
+    "BOMA.R.StageTwo.CauchyLUBBracket003.rational_lub_bracket_exists",
+    "BOMA.R.StageTwo.CauchyLUBBracket003.cauchyLUBBracketCertificate",
+    "BOMA.R.StageTwo.CauchyLUBSequence003.h4Lower_cauchy",
+    "BOMA.R.StageTwo.CauchyLUBSequence003.cauchyLUBSequenceCertificate",
+    "BOMA.R.StageTwo.CauchyLUB003.h4Upper_cauchy",
+    "BOMA.R.StageTwo.CauchyLUB003.h4LowerUpper_equiv",
+    "BOMA.R.StageTwo.CauchyLUB003.rcle_pointwise_to_class",
+    "BOMA.R.StageTwo.CauchyLUB003.rcle_class_to_pointwise",
+    "BOMA.R.StageTwo.CauchyLUB003.rCauchy_lub_exists",
+    "BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate",
 }
 
 
@@ -121,11 +131,11 @@ def main() -> int:
     passed = not residuals
     result = {
         "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-CURRENT-001",
-        "status": "CAUCHY_COMPLETE_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
+        "status": "DEDEKIND_LUB_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "independent sequentially complete Cauchy totally ordered field at witness-only quotient interface",
+        "verified_milestone": "independent Cauchy totally ordered field with sequential completeness and the exact bounded-nonempty-family least-upper-bound contract",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
@@ -145,8 +155,10 @@ def main() -> int:
         "reciprocal_sequence_selection_uses_classical_choice": True,
         "vanishing_scale_selection_uses_classical_choice": True,
         "countable_rational_approximation_selection_uses_classical_choice": True,
+        "finite_lub_bracket_search_uses_classical_em": True,
+        "countable_lub_bracket_selection_uses_classical_choice": True,
         "cauchy_completeness_proved": passed,
-        "dedekind_lub_bridge_proved": False,
+        "dedekind_lub_bridge_proved": passed,
         "dedekind_comparison_proved": False,
         "downstream_complex_rebuilt": False,
         "alternative_accepted": False,
