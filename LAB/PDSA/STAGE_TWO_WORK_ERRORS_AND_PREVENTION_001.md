@@ -42,6 +42,8 @@ current-state authorities are synchronized.
 | `ERR-ST2-025` | The first product-bound assembly opened two namespaces that export `qNeg_zero` | ST2-EXP-003 exact V5 run `32633098730` failed on source `6379633ab68fbbf092208b2102cd6f85c50282c0` before the new interval-product proofs were evaluated | The existing Cauchy probe and the later boundedness source both provide the same zero-negation fact; unqualified lookup became ambiguous only in the combined new namespace | Keep both provenance-bearing declarations and qualify the intended boundedness theorem at its two uses | Treat independently assembled namespaces as collision-prone; qualify shared algebra lemmas when more than one opened producer exports the same short name |
 | `ERR-ST2-026` | The first total-order source used `by_contra`, which is unavailable in the pinned core Lean environment | ST2-EXP-003 exact V5 run `32633963578` failed on source `6b2645093fade72739a73ba080d8e0bee86f1e9a` at the negated-universal witness theorem | The draft assumed a tactic normally supplied by a broader tactic environment rather than the repository's minimal pinned Lean toolchain | Rewrite every contradiction step as an explicit `by_cases` branch and construct the relevant existential/universal counter-witnesses directly | Treat tactic availability as part of the formalization boundary; prefer core term/case constructions for foundational sources |
 | `ERR-ST2-027` | The total-order source omitted the accepted rational ordered-field and Cauchy-quotient namespace opens | The same run `32633963578` reported unknown `qadd_mono_right` and interpreted `RCBOMA` as a fresh type variable, cascading into invalid quotient and certificate errors | Namespace context from previous concatenated files is not inherited into a newly declared namespace | Open `BOMA.Q.OrderedField001` and `BOMA.R.StageTwo.CauchyQuotient003` explicitly in the new source | Each source must state the namespaces owning every unqualified operation and carrier; cascading type errors after an unknown carrier should be diagnosed from the first lookup failure |
+| `ERR-ST2-028` | Automated congruence misidentified the algebraic subterms in the first reciprocal-difference factorization | ST2-EXP-003 exact V5 run `32637335056` on source `5b0aa06ecad92ae750cbc63cedf43189ab8ea031` failed inside `q_reciprocal_difference` after distributivity | A broad `congr` step asked Lean to infer correspondence between nested commutative products instead of stating the two intended equalities | Prove the positive and negative distributed terms separately as `hfirst` and `hsecond`, then rewrite both explicitly | For quotient-field algebra with reordered products, prefer named intermediate equalities over automated congruence when the target has multiple structurally similar subterms |
+| `ERR-ST2-029` | The first ordered-field closure omitted the declared nonzero-gap certificate wrapper even though its theorem was reachable | ST2-EXP-003 run `32637512588` on source `bf3efe665d2131770ac7e312c21ea3c678b062b0` passed Lean and extracted 511 declarations with zero selected Dedekind declarations, but the strict comparison gate reported `CauchyNonzeroGap003.cauchyNonzeroGapCertificate` missing | The inverse proof consumed `nonzero_eventually_sign_separated` directly, so theorem reachability did not imply certificate-level milestone ownership | Add `nonzeroGapCertificate : CauchyNonzeroGapCertificate` to the final ordered-field certificate and keep the comparator strict | Distinguish theorem reachability from declared integration ownership; every milestone certificate claimed as part of the final invariant must be explicitly consumed by the final certificate rather than inferred from nearby reachable lemmas |
 
 ## 2. Root causes rather than isolated symptoms
 
@@ -53,11 +55,11 @@ The observed defects cluster into four causal families:
 2. **State-propagation gap:** a correct new result was added in one document
    while other active current-state records kept stronger obsolete claims.
 3. **Proof-elaboration gap:** Lean definitional wrappers, noninferable
-   interface arguments, quotient elimination, and solved goals were not
-   locally tested before whole-chain verification.
+   interface arguments, quotient elimination, algebraic target matching, and
+   solved goals were not locally tested before whole-chain verification.
 4. **Evidence-boundary gap:** glob patterns, inherited axiom reports, frozen
-   Plans, proof-source commits, and later documentation heads were given
-   overly broad or ambiguous identities.
+   Plans, proof-source commits, certificate ownership, and later documentation
+   heads were given overly broad or ambiguous identities.
 
 The appropriate response is structural controls, not deleting failed runs,
 rewriting historical Plans, inventing canonical Blocks, or silently treating a
@@ -84,11 +86,15 @@ During Do:
 - Never rewrite a frozen Plan or erase a failed exact-head run.
 - Prove an alternative independently before introducing any comparison route.
 - Check explicit interface arguments, definitional wrappers, quotient
-  eliminators, extractor data, and witness-only inversion.
+  eliminators, extractor data, witness-only inversion, and certificate-level
+  ownership.
 - Guard exact experiment IDs; test that unrelated experiment names ending in
   `001` are not misclassified.
 - Extract actual dependency closures and classify source-level infrastructure
   separately from inherited kernel axioms.
+- When Choice constructs data rather than merely discharging a proposition,
+  record that source-level commitment even if the kernel axiom list was already
+  present upstream.
 
 During Study:
 
