@@ -243,3 +243,27 @@ error class    ERR-ST2-024 / post-substitution type drift
 The failed axiom output contains transient `sorryAx` only because Lean created
 error-recovery declarations after these two type errors. It is not successful
 boundedness evidence and must be absent from the corrected exact-head run.
+
+## Corrected eventual boundedness — exact run 32632806907 PASS
+
+```text
+verified source commit    34769d190df49dc95bf9050e86bd85f5c6c050bb
+exact GitHub V5 run       32632806907
+actual declaration count  407
+selected Dedekind closure  0 declarations
+all nine branch workflows PASS on the exact verified head
+eventual bound theorem     [propext, Quot.sound]
+integrated certificate     [propext, Classical.choice, Quot.sound]
+successful sorryAx         absent
+```
+
+The `Classical.choice` in the integrated certificate is inherited through its
+explicit prior additive-certificate field and ultimately the faithful-Q
+reflection proof. The boundedness theorem itself needs neither that choice
+nor a Dedekind producer. It proves only the bound needed to start product
+estimates; pointwise multiplication, quotient compatibility, field laws,
+inverse, order, completeness, comparison, and downstream C remain open.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_BOUNDEDNESS_VERIFIED_EVIDENCE_RUN_32632806907.json`.
