@@ -44,6 +44,9 @@ current-state authorities are synchronized.
 | `ERR-ST2-027` | The total-order source omitted the accepted rational ordered-field and Cauchy-quotient namespace opens | The same run `32633963578` reported unknown `qadd_mono_right` and interpreted `RCBOMA` as a fresh type variable, cascading into invalid quotient and certificate errors | Namespace context from previous concatenated files is not inherited into a newly declared namespace | Open `BOMA.Q.OrderedField001` and `BOMA.R.StageTwo.CauchyQuotient003` explicitly in the new source | Each source must state the namespaces owning every unqualified operation and carrier; cascading type errors after an unknown carrier should be diagnosed from the first lookup failure |
 | `ERR-ST2-028` | Automated congruence misidentified the algebraic subterms in the first reciprocal-difference factorization | ST2-EXP-003 exact V5 run `32637335056` on source `5b0aa06ecad92ae750cbc63cedf43189ab8ea031` failed inside `q_reciprocal_difference` after distributivity | A broad `congr` step asked Lean to infer correspondence between nested commutative products instead of stating the two intended equalities | Prove the positive and negative distributed terms separately as `hfirst` and `hsecond`, then rewrite both explicitly | For quotient-field algebra with reordered products, prefer named intermediate equalities over automated congruence when the target has multiple structurally similar subterms |
 | `ERR-ST2-029` | The first ordered-field closure omitted the declared nonzero-gap certificate wrapper even though its theorem was reachable | ST2-EXP-003 run `32637512588` on source `bf3efe665d2131770ac7e312c21ea3c678b062b0` passed Lean and extracted 511 declarations with zero selected Dedekind declarations, but the strict comparison gate reported `CauchyNonzeroGap003.cauchyNonzeroGapCertificate` missing | The inverse proof consumed `nonzero_eventually_sign_separated` directly, so theorem reachability did not imply certificate-level milestone ownership | Add `nonzeroGapCertificate : CauchyNonzeroGapCertificate` to the final ordered-field certificate and keep the comparator strict | Distinguish theorem reachability from declared integration ownership; every milestone certificate claimed as part of the final invariant must be explicitly consumed by the final certificate rather than inferred from nearby reachable lemmas |
+| `ERR-ST2-030` | The first completion-core assembly mixed a missing positivity namespace with a misoriented additive monotonicity reuse | ST2-EXP-003 exact V5 run `32638074040` on source head `954de1dd58b4c55eaa199efe17ff0525f6c0f6bc` could not resolve `qPos` and could not match the desired right-added radius order | The new file omitted `BOMA.R.Gateway001`, and `rcle_add_right` produced addition in the opposite syntactic order from `rCClose_mono` | Open the exact positivity namespace and make the two commutativity rewrites explicit before applying transitivity | Treat namespace ownership and operation orientation as separate proof obligations; inspect the exact output shape of reused monotonicity lemmas instead of assuming commutative normalization |
+| `ERR-ST2-031` | Quotient induction made a wrapper-level density rewrite brittle | ST2-EXP-003 exact V5 run `32640562655` on head `9d9d5b7a57352bb7661f0d88ee52c046c0b2065c` failed in the second half of `rational_approximation_exists` because `rw [rCAdd_mk]` did not match | After quotient induction the goal exposed `Quotient.mk` directly, while the rewrite theorem was stated through the local `rCmk` wrapper | Replace the wrapper rewrite by an explicit `change` to the representative-level `rCLE (rCmk ...) (rCmk ...)` goal | Under quotient induction, prefer an explicit representation change when the kernel exposes the quotient constructor; do not rely on wrapper spelling surviving elaboration |
+| `ERR-ST2-032` | The first full completeness source omitted the accepted rational-order namespace | ST2-EXP-003 exact V5 run `32640838804` on source head `5965aeca240ffd1b681c10ebdd795142b524c734` reached the final completion file but reported unknown `qLE` and `qle_trans` | Namespace opens are source-local; earlier density and approximation files opening `BOMA.Q.Order001` did not export that elaboration context into the completion source | Open `BOMA.Q.Order001` explicitly in `ST2Exp003CauchyCompletion.lean` without changing the completeness statement or error budget | Every new foundational source must open the namespace owning each unqualified relation and transitivity law it consumes; a successful predecessor file is not namespace context for its successor |
 
 ## 2. Root causes rather than isolated symptoms
 
@@ -55,8 +58,9 @@ The observed defects cluster into four causal families:
 2. **State-propagation gap:** a correct new result was added in one document
    while other active current-state records kept stronger obsolete claims.
 3. **Proof-elaboration gap:** Lean definitional wrappers, noninferable
-   interface arguments, quotient elimination, algebraic target matching, and
-   solved goals were not locally tested before whole-chain verification.
+   interface arguments, quotient elimination, algebraic target matching,
+   operation orientation, source-local namespaces, and solved goals were not
+   locally tested before whole-chain verification.
 4. **Evidence-boundary gap:** glob patterns, inherited axiom reports, frozen
    Plans, proof-source commits, certificate ownership, and later documentation
    heads were given overly broad or ambiguous identities.
@@ -95,6 +99,8 @@ During Do:
 - When Choice constructs data rather than merely discharging a proposition,
   record that source-level commitment even if the kernel axiom list was already
   present upstream.
+- Treat quotient-induction representation and source-local namespace context as
+  explicit elaboration boundaries in completion proofs.
 
 During Study:
 
