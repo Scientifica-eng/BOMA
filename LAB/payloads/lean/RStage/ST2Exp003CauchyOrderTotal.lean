@@ -7,9 +7,11 @@ open BOMA.NCore.RB001
 open BOMA.NArithmetic.Order001
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.CauchyProbe001
 open BOMA.R.StageTwo.CauchyCloseness003
+open BOMA.R.StageTwo.CauchyQuotient003
 open BOMA.R.StageTwo.CauchyMultiplicative003
 open BOMA.R.StageTwo.CauchyOrderCore003
 
@@ -20,20 +22,35 @@ theorem not_cauchyLE_witness {u v : CauchySeq} (hnot : ¬ CauchyLE u v) :
       ∀ N : BOMANat, ∃ n : BOMANat, LE N n ∧
         ¬ qLE (u.seq n) (qAdd (v.seq n) eps) := by
   classical
-  by_contra hnone
-  apply hnot
-  intro eps heps
-  by_contra hnoN
-  apply hnone
-  refine ⟨eps, heps, ?_⟩
-  intro N
-  by_contra hnoCounter
-  apply hnoN
-  refine ⟨N, ?_⟩
-  intro n hn
-  by_contra hle
-  apply hnoCounter
-  exact ⟨n, hn, hle⟩
+  by_cases hex :
+      ∃ eps : QBOMA, qPos eps ∧
+        ∀ N : BOMANat, ∃ n : BOMANat, LE N n ∧
+          ¬ qLE (u.seq n) (qAdd (v.seq n) eps)
+  · exact hex
+  · have hle : CauchyLE u v := by
+      intro eps heps
+      by_cases hN :
+          ∃ N : BOMANat, ∀ n : BOMANat, LE N n →
+            qLE (u.seq n) (qAdd (v.seq n) eps)
+      · exact hN
+      · have hcounter :
+            ∀ N : BOMANat, ∃ n : BOMANat, LE N n ∧
+              ¬ qLE (u.seq n) (qAdd (v.seq n) eps) := by
+          intro N
+          by_cases hc :
+              ∃ n : BOMANat, LE N n ∧
+                ¬ qLE (u.seq n) (qAdd (v.seq n) eps)
+          · exact hc
+          · have hall :
+                ∀ n : BOMANat, LE N n →
+                  qLE (u.seq n) (qAdd (v.seq n) eps) := by
+              intro n hn
+              by_cases hlePoint : qLE (u.seq n) (qAdd (v.seq n) eps)
+              · exact hlePoint
+              · exact False.elim (hc ⟨n, hn, hlePoint⟩)
+            exact False.elim (hN ⟨N, hall⟩)
+        exact False.elim (hex ⟨eps, heps, hcounter⟩)
+    exact False.elim (hnot hle)
 
 /-- Any two Cauchy representatives are comparable in approximate order. -/
 theorem cauchyLE_total (u v : CauchySeq) :

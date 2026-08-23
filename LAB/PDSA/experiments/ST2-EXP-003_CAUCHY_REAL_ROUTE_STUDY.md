@@ -229,6 +229,23 @@ unconnected theorem in the same manifest for milestone ownership.
 
 Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
 
+### Preserved first totality assembly failure — run 32633963578
+
+```text
+source commit  6b2645093fade72739a73ba080d8e0bee86f1e9a
+failure 1      by_contra unavailable in pinned core Lean
+correction 1   explicit nested by_cases witness construction
+error class    ERR-ST2-026 / tactic-environment assumption
+
+failure 2      qadd_mono_right unknown; RCBOMA parsed as a type variable
+correction 2   open the exact ordered-Q and Cauchy-quotient namespaces
+error class    ERR-ST2-027 / missing namespace ownership
+```
+
+The cascading certificate errors came from the unresolved carrier, not from a
+verified counterexample to totality. The same totality statement and closure
+requirements remain in force.
+
 ### Preserved first boundedness failure — run 32632711528
 
 ```text
