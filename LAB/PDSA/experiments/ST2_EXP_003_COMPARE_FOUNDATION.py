@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the current independently assembled Cauchy route without overstating completion."""
+"""Audit the current independently assembled Cauchy route through sequential completeness."""
 from __future__ import annotations
 
 import argparse
@@ -72,6 +72,21 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists",
     "BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists_unique",
     "BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate",
+    "BOMA.R.StageTwo.CauchyScale003.qCauchyScale_tends_zero",
+    "BOMA.R.StageTwo.CauchyScale003.cauchyScaleCertificate",
+    "BOMA.R.StageTwo.CauchyCompletionCore003.rCClose_trans_add",
+    "BOMA.R.StageTwo.CauchyCompletionCore003.rCClose_mono",
+    "BOMA.R.StageTwo.CauchyCompletionCore003.cauchyCompletionCoreCertificate",
+    "BOMA.R.StageTwo.CauchyDensity003.rCClose_ofQ_iff",
+    "BOMA.R.StageTwo.CauchyDensity003.rational_approximation_exists",
+    "BOMA.R.StageTwo.CauchyDensity003.cauchyDensityCertificate",
+    "BOMA.R.StageTwo.CauchyApproximation003.qApproxAtScale_close",
+    "BOMA.R.StageTwo.CauchyApproximation003.qApproxSeq_cauchy",
+    "BOMA.R.StageTwo.CauchyApproximation003.cauchyApproximationCertificate",
+    "BOMA.R.StageTwo.CauchyCompletion003.embedded_terms_converge_to_class",
+    "BOMA.R.StageTwo.CauchyCompletion003.selected_approximation_converges",
+    "BOMA.R.StageTwo.CauchyCompletion003.rCCauchyComplete",
+    "BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate",
 }
 
 
@@ -106,11 +121,11 @@ def main() -> int:
     passed = not residuals
     result = {
         "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-CURRENT-001",
-        "status": "ORDERED_FIELD_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
+        "status": "CAUCHY_COMPLETE_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "independent Cauchy totally ordered field at witness-only quotient interface",
+        "verified_milestone": "independent sequentially complete Cauchy totally ordered field at witness-only quotient interface",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
@@ -125,8 +140,12 @@ def main() -> int:
         "ordered_ring_compatibility_completed": passed,
         "eventual_nonzero_sign_separation_completed": passed,
         "ordered_field_completed": passed,
+        "rational_density_completed": passed,
+        "vanishing_rational_scale_completed": passed,
         "reciprocal_sequence_selection_uses_classical_choice": True,
-        "cauchy_completeness_proved": False,
+        "vanishing_scale_selection_uses_classical_choice": True,
+        "countable_rational_approximation_selection_uses_classical_choice": True,
+        "cauchy_completeness_proved": passed,
         "dedekind_lub_bridge_proved": False,
         "dedekind_comparison_proved": False,
         "downstream_complex_rebuilt": False,
