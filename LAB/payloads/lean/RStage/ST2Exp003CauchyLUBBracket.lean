@@ -125,7 +125,8 @@ theorem rational_strict_lower_exists (x : RCBOMA) (delta : QBOMA)
           rCAdd_assoc x (rCOfQ delta) (rCOfQ (qNeg delta))
         _ = rCAdd x (rCOfQ (qAdd delta (qNeg delta))) := by
           rw [rCOfQ_add]
-        _ = rCAdd x rCZero := by rw [qAdd_neg_right]
+        _ = rCAdd x (rCOfQ qZero) := by rw [qAdd_neg_right]
+        _ = rCAdd x rCZero := by rfl
         _ = x := rCAdd_zero_right x
     rw [hleft, hright] at htranslated
     exact htranslated
