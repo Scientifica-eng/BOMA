@@ -66,7 +66,7 @@ field isomorphism, canonical equivalence, or a research Junction.
 Workflow:
 `.github/workflows/boma-st2-exp-003-dedekind-cauchy-comparison.yml`
 
-Workflow commit:
+Initial workflow commit:
 `8cb20eb9fc7c15204f1e08d48d22f6f3f6f9085a`
 
 The workflow is designed to:
@@ -86,32 +86,99 @@ The workflow is designed to:
 GitHub Actions run `32653354891` at exact head
 `8cb20eb9fc7c15204f1e08d48d22f6f3f6f9085a` failed before any workflow step
 record was created. A rerun of the failed jobs (`run_attempt = 2`) failed in the
-same pre-step condition. The corresponding H4 and C-stage workflows on the
-same commit also terminated with no step records.
+same pre-step condition. The corresponding H4 and C-stage PR-triggered
+workflows on the same commit also terminated with no step records.
 
-Therefore these executions are **not classified as mathematical, Lean,
+A controlled H5-only runner-image probe changed `runs-on` from `ubuntu-latest`
+to `ubuntu-22.04` at commit
+`a111e4659f729048d549dceb91d5e1b1803a12f5`. PR-triggered run
+`32654478378` again terminated with `steps = null`. This excludes the selected
+Ubuntu image as the observed cause. The H5 workflow was then restored to
+`ubuntu-latest` at commit
+`31bed714fb7e196aaf403da6f3b1b5f0735983f5`.
+
+The available GitHub connector's commit-run listing is explicitly restricted to
+pull-request-triggered runs. Therefore this record makes no claim about an
+unobserved push-triggered execution unless its run ID becomes independently
+available.
+
+These pre-step executions are **not classified as mathematical, Lean,
 manifest, H5 governance, or experiment failure evidence**. No `ERR-ST2-*` class
 is assigned from them, and no H5 claim is promoted to PASS.
 
 The public GitHub status page reported Actions operational during the
 investigation, so the exact repository/account hosted-runner cause remains
 unresolved from the available evidence. The repository record therefore states
-only the directly observed fact: jobs terminated before step 1 and produced no
-usable Lean log.
+only the directly observed fact: the visible PR jobs terminated before step 1
+and produced no usable Lean log.
 
-## 6. Proof-engineering analysis while verification is blocked
+## 6. Current proof route after foundation
 
-A second comparison design was identified that may become useful if the
-symmetric LUB maps make order reflection unnecessarily expensive. For a Cauchy
-real `x`, define a buffered rational lower predicate conceptually by
+The current LUB-selected maps remain the preferred H5 route. A direct buffered
+lower-cut map was analyzed but does not remove the need for an inner rational
+approximation theorem when proving the inverse compositions, so it is retained
+only as a fallback design.
 
-`q in L_x  <->  exists delta > 0, rCOfQ (q + delta) <= x`.
+The next theorem required after the foundation is a Cauchy-route analogue of
+accepted Dedekind rational density:
 
-This predicate is naturally downward closed and rounded by splitting `delta`.
-It may permit a direct Cauchy-to-Dedekind lower-cut map and an inverse proof via
-cut membership, without introducing a new strict-density or locatedness
-principle. This is currently a design observation only; it has not replaced the
-foundation source and carries no proof status.
+```lean
+theorem rC_rational_image_dense {x y : RCBOMA} (hxy : rCLT x y) :
+    ∃ q : QBOMA,
+      rCLT x (rCOfQ q) ∧ rCLT (rCOfQ q) y
+```
+
+A proof route has been reduced to already verified independent interfaces:
+
+1. translate `x < y` to a positive additive difference
+   `d = rCAdd y (rCNeg x)` using `rcle_add_right`, additive inverse laws,
+   total-order strictness, and antisymmetry;
+2. obtain one fixed positive rational gap below `d` from the already verified
+   nonzero-gap machinery (`eventually_positive_gap_of_nonzero` or the same
+   representative-level witness mechanism);
+3. split that rational gap into smaller positive error budgets using the
+   accepted-Q `positive_half_exists` gateway;
+4. use `rational_approximation_exists` at a sufficiently small radius to pick a
+   rational approximation to `x`;
+5. translate the approximation inequalities to obtain a rational strictly
+   above `x` but still below `x + gap <= y`.
+
+No selected Dedekind producer, new locatedness principle, or new axiom is
+expected in this density lemma. Any explicit data selection introduced by the
+chosen proof must still be source-attributed separately from the inherited
+kernel axiom list.
+
+Once strict rational density is verified, H5 should proceed by rational-envelope
+reflection rather than by ad hoc field algebra:
+
+```text
+Cauchy reflection:
+  rLE (rOfQ q) (cToD x)  ->  rCLE (rCOfQ q) x
+
+Dedekind reflection:
+  rCLE (rCOfQ q) (dToC z)  ->  rLE (rOfQ q) z
+```
+
+The intended contradiction pattern is the same on both sides: if the reflected
+order failed, totality plus strict rational density supplies an embedded
+rational strictly between the alleged upper endpoint and the source element;
+that rational is then a member of the relevant rational-envelope family, which
+contradicts the LUB inequality.
+
+With reflection in hand, the rational envelopes below `x` and below
+`dToC (cToD x)` coincide exactly, and likewise on the Dedekind side. LUB
+uniqueness then gives the two composition laws:
+
+```lean
+dToC (cToD x) = x
+cToD (dToC z) = z
+```
+
+Only after those equalities pass exact-head Lean should H5 promote the maps to
+an order isomorphism. Preservation of addition, negation, multiplication, and
+nonzero inverse witnesses remains a subsequent obligation. A research-only
+R-route Junction is forbidden until that stronger comparison is actually
+proved and its dependency/logical costs are audited.
 
 ## 7. Current H5 boundary
 
