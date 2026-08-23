@@ -9,6 +9,25 @@
 **Exact V5 run:** `32637591596`  
 **Canonical accepted R/C:** unchanged
 
+## Continuation provenance
+
+This continuation record supplements the earlier execution Study and retains
+its complete failed-run lineage. The previously preserved exact failures are:
+
+```text
+32630769132  quotient identity elaboration
+32631916749  additive namespace boundary
+32631997598  additive rewrite-target mismatch
+32632080736  additive certificate ownership gap
+32632711528  eventual-boundedness post-substitution drift
+32633098730  product-bound namespace collision
+32633963578  total-order tactic/namespace assumptions
+```
+
+The ordered-field continuation adds exact failures `32637335056` and
+`32637512588` below. Nothing in this file rewrites the mechanisms already
+recorded in `ST2-EXP-003_CAUCHY_REAL_ROUTE_STUDY.md`.
+
 ## Result
 
 The independent rational-Cauchy branch now proves a **totally ordered field at
