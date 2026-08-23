@@ -14,7 +14,6 @@ EVIDENCE = "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_LUB_VERIFIED_EVIDENCE_RUN_3
 MANIFEST = "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt"
 COMPARATOR = "LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py"
 WORKFLOW = ".github/workflows/boma-st2-exp-003-cauchy-real-route.yml"
-
 EXPECTED_RUN = 32643579395
 EXPECTED_SOURCE = "0f4a706d94c394b8e8a9eec836859caac772a944"
 EXPECTED_SOURCE_COMPLETION = "cb31e12e2b4fb7a07488a09c2a9394d4ab61946c"
@@ -60,18 +59,15 @@ def main() -> int:
     args = parser.parse_args()
     root = args.root.resolve()
     residuals: list[dict[str, Any]] = []
-
     try:
         ledger = json.loads(read_text(root, LEDGER))
-        records = {
-            item.get("experiment_id"): item
-            for item in ledger.get("records", [])
-            if isinstance(item, dict)
-        }
-        record = records.get("ST2-EXP-003")
+        record = next(
+            (item for item in ledger.get("records", [])
+             if isinstance(item, dict) and item.get("experiment_id") == "ST2-EXP-003"),
+            None,
+        )
         if not isinstance(record, dict):
             raise ValueError("missing ST2-EXP-003 ledger record")
-
         if record.get("verified_run") is not None:
             add_error(residuals, "active_experiment_top_level_verification_must_remain_null")
         for field, expected in {
@@ -83,14 +79,7 @@ def main() -> int:
             "h4_study": H4_STUDY,
         }.items():
             if record.get(field) != expected:
-                add_error(
-                    residuals,
-                    "h4_ledger_identity_drift",
-                    field=field,
-                    expected=expected,
-                    actual=record.get(field),
-                )
-
+                add_error(residuals, "h4_ledger_identity_drift", field=field, expected=expected, actual=record.get(field))
         status = str(record.get("status", ""))
         product = str(record.get("experimental_product_status", ""))
         strength = str(record.get("reconvergence_strength", ""))
@@ -105,14 +94,9 @@ def main() -> int:
         if "H5 COMPARISON READY" in status and record.get("reconvergence_junction_id"):
             add_error(residuals, "premature_h5_reconvergence_junction")
 
-        failures = set(record.get("preserved_failure_runs", []))
-        if not EXPECTED_H4_FAILURES.issubset(failures):
-            add_error(
-                residuals,
-                "h4_failure_lineage_lost",
-                expected_subset=sorted(EXPECTED_H4_FAILURES),
-                actual=sorted(failures),
-            )
+        failures = set(record.get("h4_preserved_failure_runs", []))
+        if failures != EXPECTED_H4_FAILURES:
+            add_error(residuals, "h4_failure_lineage_drift", expected=sorted(EXPECTED_H4_FAILURES), actual=sorted(failures))
         lessons = read_text(root, H4_LESSONS)
         study = read_text(root, H4_STUDY)
         for number, run in zip(range(33, 36), sorted(EXPECTED_H4_FAILURES)):
@@ -132,43 +116,28 @@ def main() -> int:
             "actual_internal_declarations": EXPECTED_DECLARATIONS,
         }.items():
             if evidence.get(field) != expected:
-                add_error(
-                    residuals,
-                    "h4_evidence_scalar_drift",
-                    field=field,
-                    expected=expected,
-                    actual=evidence.get(field),
-                )
+                add_error(residuals, "h4_evidence_scalar_drift", field=field, expected=expected, actual=evidence.get(field))
         if evidence.get("selected_dedekind_declarations") != []:
             add_error(residuals, "h4_selected_dedekind_dependency")
         if evidence.get("residuals") != []:
             add_error(residuals, "h4_machine_evidence_has_residuals")
         for field in (
-            "ordered_field_completed",
-            "cauchy_completeness_proved",
-            "rational_lub_bracketing_proved",
-            "shrinking_lub_bracket_sequence_proved",
+            "ordered_field_completed", "cauchy_completeness_proved",
+            "rational_lub_bracketing_proved", "shrinking_lub_bracket_sequence_proved",
             "dedekind_lub_bridge_proved",
         ):
             if evidence.get(field) is not True:
                 add_error(residuals, "h4_positive_scope_missing", field=field)
         for field in (
-            "dedekind_comparison_proved",
-            "downstream_complex_rebuilt",
-            "alternative_accepted",
-            "experiment_closed",
-            "accepted_dedekind_real_changed",
-            "accepted_complex_ca20_changed",
+            "dedekind_comparison_proved", "downstream_complex_rebuilt",
+            "alternative_accepted", "experiment_closed",
+            "accepted_dedekind_real_changed", "accepted_complex_ca20_changed",
         ):
             if evidence.get(field) is not False:
                 add_error(residuals, "h4_scope_inflated", field=field)
         targets = set(evidence.get("verified_targets", []))
         if not EXPECTED_TARGETS.issubset(targets):
-            add_error(
-                residuals,
-                "h4_verified_target_set_incomplete",
-                missing=sorted(EXPECTED_TARGETS - targets),
-            )
+            add_error(residuals, "h4_verified_target_set_incomplete", missing=sorted(EXPECTED_TARGETS - targets))
         provenance = evidence.get("logical_provenance", {})
         if provenance.get("kernel_axioms") != ["propext", "Classical.choice", "Quot.sound"]:
             add_error(residuals, "h4_kernel_axiom_report_drift", actual=provenance.get("kernel_axioms"))
@@ -182,17 +151,9 @@ def main() -> int:
         if artifact.get("id") != EXPECTED_ARTIFACT_ID or artifact.get("sha256") != EXPECTED_ARTIFACT_SHA256:
             add_error(residuals, "h4_artifact_identity_drift", actual=artifact)
 
-        manifest_lines = {
-            line.strip()
-            for line in read_text(root, MANIFEST).splitlines()
-            if line.strip()
-        }
+        manifest_lines = {line.strip() for line in read_text(root, MANIFEST).splitlines() if line.strip()}
         if not EXPECTED_H4_SOURCES.issubset(manifest_lines):
-            add_error(
-                residuals,
-                "h4_sources_missing_from_independent_manifest",
-                missing=sorted(EXPECTED_H4_SOURCES - manifest_lines),
-            )
+            add_error(residuals, "h4_sources_missing_from_independent_manifest", missing=sorted(EXPECTED_H4_SOURCES - manifest_lines))
         comparator = read_text(root, COMPARATOR)
         workflow = read_text(root, WORKFLOW)
         for target in EXPECTED_TARGETS:
