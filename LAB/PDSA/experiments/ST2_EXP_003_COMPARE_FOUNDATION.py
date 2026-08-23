@@ -33,6 +33,15 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyProductBounds003.q_product_difference",
     "BOMA.R.StageTwo.CauchyProductBounds003.qClose_mul_of_common_bound",
     "BOMA.R.StageTwo.CauchyProductBounds003.cauchyProductBoundCertificate",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.seqMul_cauchy",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.cMulSeq_respects",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_comm",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_assoc",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_one_left",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_zero_left",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_add_right",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.rCOfQ_mul",
+    "BOMA.R.StageTwo.CauchyMultiplicative003.cauchyCommutativeRingCertificate",
 }
 
 
@@ -70,7 +79,7 @@ def main() -> int:
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "Cauchy quotient / additive group / eventual boundedness / bounded rational product estimate",
+        "verified_milestone": "Cauchy quotient / faithful Q embedding / commutative ring / bounded product construction",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
@@ -78,6 +87,8 @@ def main() -> int:
         "additive_group_completed": not residuals,
         "eventual_boundedness_completed": not residuals,
         "bounded_product_estimate_completed": not residuals,
+        "multiplicative_monoid_completed": not residuals,
+        "commutative_ring_completed": not residuals,
         "ordered_field_completed": False,
         "cauchy_completeness_proved": False,
         "dedekind_comparison_proved": False,

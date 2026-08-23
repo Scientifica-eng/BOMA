@@ -315,3 +315,14 @@ the quotient, and therefore does not establish a multiplicative monoid.
 Machine-readable evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PRODUCT_BOUND_VERIFIED_EVIDENCE_RUN_32633183941.json`.
+
+## DO — quotient multiplication and commutative-ring core in verification
+
+The next source constructs the epsilon scale from a positive half and the
+accepted witness-only rational inverse, proves pointwise products are Cauchy,
+proves multiplication respects asymptotic identity in both inputs, descends
+it to `RCBOMA`, and proves commutativity, associativity, one, zero,
+distributivity, and preservation of rational multiplication. This is a ring
+milestone only; it does not supply real order, nonzero inverse, or Cauchy
+completeness. Status before exact-head V5:
+`SOURCE ASSEMBLED / VERIFICATION PENDING`.
