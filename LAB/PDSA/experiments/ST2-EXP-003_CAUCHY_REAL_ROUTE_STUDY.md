@@ -246,6 +246,30 @@ The cascading certificate errors came from the unresolved carrier, not from a
 verified counterexample to totality. The same totality statement and closure
 requirements remain in force.
 
+## Corrected total approximate order — exact run 32634079706 PASS
+
+```text
+verified source commit    04150cf8424e3ecc497e3cb14b55e6373dab6878
+exact GitHub V5 run       32634079706
+actual declaration count  467
+selected Dedekind closure  0 declarations
+all nine branch workflows PASS on the exact verified head
+witness extraction        [propext, Classical.choice, Quot.sound]
+sequence totality          [propext, Classical.choice, Quot.sound]
+successful sorryAx         absent
+```
+
+The new classical cost is source-local and mathematically attributable: it
+converts failure of the eventual universal comparison into a fixed positive
+gap witnessed arbitrarily late. The partial order, ring construction, and
+boundedness proofs retain their previously recorded smaller commitments.
+Compatibility with addition and nonnegative multiplication is not inferred
+merely from totality.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_TOTAL_ORDER_VERIFIED_EVIDENCE_RUN_32634079706.json`.
+
 ### Preserved first boundedness failure — run 32632711528
 
 ```text

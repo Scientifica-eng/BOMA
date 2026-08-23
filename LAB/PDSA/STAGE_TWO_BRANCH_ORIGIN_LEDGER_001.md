@@ -173,6 +173,11 @@ Representative-invariant approximate order then passed exact V5
 `32633758238` at source `97015c7a3a6d53453f6101be6b77d62cf5516f25`;
 its partial-order and rational-order-extension closure has 461 declarations
 and zero selected-Dedekind declarations. Totality remains unclaimed.
+Totality then passed exact V5 `32634079706` at source
+`04150cf8424e3ecc497e3cb14b55e6373dab6878`; its 467-declaration closure
+contains zero selected-Dedekind declarations. The classical witness extraction
+is localized to the totality source. Ordered-ring compatibility, inverse, and
+completeness remain open.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.
