@@ -21,6 +21,14 @@ open BOMA.R.StageTwo.CauchyScale003
 open BOMA.R.StageTwo.CauchyLUBBracket003
 open BOMA.R.StageTwo.CauchyLUBSequence003
 
+/-- Local accepted-natural common upper bound. Keeping this lemma in the H4
+    source avoids relying on an unrelated namespace-open side effect. -/
+theorem h4_common_upper_bound (a b : BOMANat) :
+    ∃ N : BOMANat, LE a N ∧ LE b N := by
+  rcases le_total a b with hab | hba
+  · exact ⟨b, hab, le_refl b⟩
+  · exact ⟨a, le_refl a, hba⟩
+
 /-- The matching upper endpoint is definitionally the selected lower endpoint
     plus the current shrinking rational scale. -/
 noncomputable def h4UpperValue
@@ -144,7 +152,7 @@ theorem rcle_pointwise_to_class
   have hfixed := hu Nd
   change CauchyLE u (cauchyOfQ (d.seq Nd)) at hfixed
   rcases hfixed delta hdelta with ⟨Nu, hNu⟩
-  rcases common_upper_bound Nd Nu with ⟨N, hNdN, hNuN⟩
+  rcases h4_common_upper_bound Nd Nu with ⟨N, hNdN, hNuN⟩
   refine ⟨N, ?_⟩
   intro n hn
   have huFixed := hNu n (le_trans hNuN hn)
@@ -170,7 +178,7 @@ theorem rcle_class_to_pointwise
   have hfixed := hv Nd
   change CauchyLE (cauchyOfQ (d.seq Nd)) v at hfixed
   rcases hfixed delta hdelta with ⟨Nv, hNv⟩
-  rcases common_upper_bound Nd Nv with ⟨N, hNdN, hNvN⟩
+  rcases h4_common_upper_bound Nd Nv with ⟨N, hNdN, hNvN⟩
   refine ⟨N, ?_⟩
   intro n hn
   have hnToFixed := qClose_to_le_add
