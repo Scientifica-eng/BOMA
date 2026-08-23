@@ -42,6 +42,8 @@ LAB/payloads/lean/QStage/QGeneration.lean
 LAB/payloads/lean/QStage/QIntegrationCertificate.lean
 LAB/payloads/lean/RStage/RPreCompletionGateway.lean
 LAB/payloads/lean/RStage/QRationalDensityGateway.lean
+LAB/payloads/lean/RStage/QArchimedeanUpperBoundProbe.lean
+LAB/payloads/lean/RStage/QArchimedeanScalingProbe.lean
 LAB/payloads/lean/RStage/QPositiveMultiplicativeApproximation.lean
 LAB/payloads/lean/RStage/QInverseOrderForReciprocal.lean
 LAB/payloads/lean/RStage/RCauchyProbe.lean
