@@ -2,6 +2,7 @@ name: BOMA R Stage-One Integration 002 — V5
 
 permissions:
   contents: write
+  pull-requests: write
 
 on:
   workflow_dispatch:
@@ -18,7 +19,7 @@ on:
       - 'lean-toolchain'
 
 concurrency:
-  group: boma-r-integration-002-evidence-main
+  group: boma-r-integration-002-evidence-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -47,6 +48,7 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
+          set -euo pipefail
           test -s LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
           while IFS= read -r src || [ -n "$src" ]; do
             [ -z "$src" ] && continue
@@ -59,6 +61,7 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
+          set -euo pipefail
           : > /tmp/RStageIntegration002.lean
           while IFS= read -r src || [ -n "$src" ]; do
             [ -z "$src" ] && continue
@@ -67,20 +70,14 @@ jobs:
           done < LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
           lake env lean /tmp/RStageIntegration002.lean
 
-      - name: Record evidence
+      - name: Check verification-input freshness
+        id: freshness
         if: always()
+        continue-on-error: true
         shell: bash
         run: |
-          RESULT=PASS
-          for x in "${{ steps.setup.outcome }}" "${{ steps.manifest.outcome }}" "${{ steps.integration.outcome }}"; do
-            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
-          done
-
+          set -euo pipefail
           git fetch origin main
-
-          # Evidence may be committed on top of a newer documentation-only main head,
-          # but never on top of a main head whose verification inputs differ from
-          # the source state actually checked by this run.
           if ! git diff --quiet "${GITHUB_SHA}" origin/main -- \
               LAB/payloads/lean/NCore \
               LAB/payloads/lean/NArithmetic \
@@ -91,45 +88,72 @@ jobs:
               .github/workflows/boma-r-integration-002.yml \
               lean-toolchain; then
             echo "::error::R-J-002 verification inputs changed on main after this run started; refusing to promote stale evidence."
-            git diff --name-only "${GITHUB_SHA}" origin/main -- \
-              LAB/payloads/lean/NCore \
-              LAB/payloads/lean/NArithmetic \
-              LAB/payloads/lean/ZStage \
-              LAB/payloads/lean/QStage \
-              LAB/payloads/lean/RStage \
-              LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
-              .github/workflows/boma-r-integration-002.yml \
-              lean-toolchain
             exit 1
           fi
 
-          git checkout -B rstageintegration002-evidence origin/main
-          mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
-          cat > LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md <<EOF
+      - name: Generate evidence
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -u
+          mkdir -p /tmp/boma-evidence
+          RESULT=PASS
+          for x in "${{ steps.setup.outcome }}" "${{ steps.manifest.outcome }}" "${{ steps.integration.outcome }}" "${{ steps.freshness.outcome }}"; do
+            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
+          done
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+          cat > /tmp/boma-evidence/R_INTEGRATION_002_V5_LATEST.md <<EOF
           # R-J-002 Stage-One R Integration V5 Evidence
           **Status:** ${RESULT}  
           **Verified commit:** \`${GITHUB_SHA}\`  
           **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
-          **Pinned toolchain:** \`$(cat lean-toolchain)\`
+          **Pinned toolchain:** \`${TOOLCHAIN}\`
 
           | Target | Outcome |
           |---|---|
           | Lean setup | ${{ steps.setup.outcome }} |
           | assembly manifest validation | ${{ steps.manifest.outcome }} |
           | same-carrier identity/order/Q embedding/additive group/explicit ordered-field closure/inverse witness/Dedekind LUB/density/Archimedean integration certificate | ${{ steps.integration.outcome }} |
+          | verification-input freshness | ${{ steps.freshness.outcome }} |
+
+          The verified source commit is the source state actually checked by this run. Evidence promotion is refused when verification inputs drift before the evidence branch is created.
           EOF
 
+      - name: Upload immutable verification artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r-integration-002-v5-evidence-${{ github.run_id }}
+          path: /tmp/boma-evidence/R_INTEGRATION_002_V5_LATEST.md
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Promote evidence to dedicated branch and PR
+        if: steps.setup.outcome == 'success' && steps.manifest.outcome == 'success' && steps.integration.outcome == 'success' && steps.freshness.outcome == 'success'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          BRANCH="evidence/r-integration-002-${GITHUB_RUN_ID}"
+          git fetch origin main
+          git checkout -B "$BRANCH" origin/main
+          mkdir -p LAB/20_FORMALIZATION/R_STAGE/evidence
+          cp /tmp/boma-evidence/R_INTEGRATION_002_V5_LATEST.md LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Record R-J-002 integration V5 run ${GITHUB_RUN_ID}"
-            git push origin HEAD:main
-          fi
+          git commit -m "Record R-J-002 integration V5 run ${GITHUB_RUN_ID}"
+          git push origin "HEAD:${BRANCH}"
+          gh pr create --base main --head "$BRANCH" --draft --title "Evidence: R-J-002 integration V5 run ${GITHUB_RUN_ID}" --body "Automated evidence promotion for verified commit ${GITHUB_SHA}. The evidence-promotion gate must confirm that all R verification inputs remain unchanged on main before merge."
 
       - name: Enforce
         if: always()
+        shell: bash
         run: |
           test "${{ steps.setup.outcome }}" = success
           test "${{ steps.manifest.outcome }}" = success
           test "${{ steps.integration.outcome }}" = success
+          test "${{ steps.freshness.outcome }}" = success
+          test "${{ steps.evidence.outcome }}" = success
