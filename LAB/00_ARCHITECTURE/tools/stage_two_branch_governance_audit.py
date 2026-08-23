@@ -368,6 +368,29 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                     ):
                         if evidence.get(field) is not False:
                             add_error(residuals, "active_cauchy_boundedness_scope_inflated", field=field)
+            product_bound_run = record.get("verified_product_bound_run")
+            if product_bound_run is not None:
+                evidence_path = record.get("product_bound_evidence")
+                if not isinstance(product_bound_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_product_bound_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != product_bound_run:
+                        add_error(residuals, "active_cauchy_product_bound_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_product_bound_source_commit"):
+                        add_error(residuals, "active_cauchy_product_bound_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_product_bound_selected_real_dependency")
+                    if evidence.get("bounded_product_estimate_completed") is not True:
+                        add_error(residuals, "active_cauchy_product_bound_claim_missing")
+                    for field in (
+                        "multiplicative_monoid_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_product_bound_scope_inflated", field=field)
         elif len(cone) != 9:
             add_error(
                 residuals,

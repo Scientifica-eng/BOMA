@@ -294,3 +294,24 @@ error class    ERR-ST2-025 / namespace collision
 
 The run did not verify the product estimate. No mathematical requirement was
 removed, and the corrected source must still pass the same strict closure gate.
+
+## Corrected bounded product estimate — exact run 32633183941 PASS
+
+```text
+verified source commit    02cfe95d16d87fabebc885d729d589bbf6ca8498
+exact GitHub V5 run       32633183941
+actual declaration count  418
+selected Dedekind closure  0 declarations
+product-closeness axioms   [propext, Quot.sound]
+integrated certificate     [propext, Classical.choice, Quot.sound]
+successful sorryAx         absent
+```
+
+The result supplies the signed interval multiplication estimate and product
+difference transport required by both Cauchy preservation and representative
+compatibility. It does not yet define multiplication on Cauchy sequences or
+the quotient, and therefore does not establish a multiplicative monoid.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PRODUCT_BOUND_VERIFIED_EVIDENCE_RUN_32633183941.json`.

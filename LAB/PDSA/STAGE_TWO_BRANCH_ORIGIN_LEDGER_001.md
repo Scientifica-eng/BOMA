@@ -160,6 +160,11 @@ additive certificate. Eventual symmetric boundedness then passed exact V5
 `32632806907` at source `34769d190df49dc95bf9050e86bd85f5c6c050bb`;
 the extracted closure contains 407 declarations and zero selected-Dedekind
 declarations. Multiplication, field, and completeness remain open.
+The signed interval-product estimate and exact product-difference identity
+passed exact V5 `32633183941` at source
+`02cfe95d16d87fabebc885d729d589bbf6ca8498`; its 418-declaration closure
+also contains zero selected-Dedekind declarations. It is not yet a quotient
+multiplication operation.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.
