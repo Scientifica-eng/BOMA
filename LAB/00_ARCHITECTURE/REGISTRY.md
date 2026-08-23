@@ -272,7 +272,7 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `STAGE-TWO-LAB` | controlled single-change branch experiment register and typed architectural origins | ACTIVE — TWO CLOSED / ST2-EXP-003 ACTIVE / 10 UNSELECTED |
 | `ST2-EXP-001` | dependency-edge experiment on `BOMA-C-R-DEP-001` | CLOSED / V5 32593045224 PASS |
 | `ST2-EXP-002` | `C-DP-001` Route P / independent quotient Route Q experiment | CLOSED / V5 32597346281 PASS |
-| `ST2-EXP-003` | `R-DP-001` accepted Dedekind / independent retained Cauchy real route | ACTIVE / FOUNDATION V5 32630874354 PASS / FIELD COMPLETION OPEN / RESEARCH ONLY |
+| `ST2-EXP-003` | `R-DP-001` accepted Dedekind / independent retained Cauchy real route | ACTIVE / ADDITIVE V5 32632176869 PASS / MULTIPLICATION+COMPLETION OPEN / RESEARCH ONLY |
 | `ST2-EXP-002-PQ-J-001` | explicit P/Q R-field isomorphism preserving R and I | VERIFIED RESEARCH JUNCTION / NOT CANONICAL ACCEPTANCE |
 | `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
 | `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |

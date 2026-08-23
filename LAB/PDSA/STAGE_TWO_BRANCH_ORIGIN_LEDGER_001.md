@@ -153,6 +153,10 @@ Independent quotient/faithful rational embedding: exact V5 `32630874354`
 at source `557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1`; 365 internal
 declarations and zero selected-Dedekind declarations. This verifies only a
 foundation milestone, not an ordered real field or a completeness theorem.
+Independent additive quotient: exact V5 `32632176869` at source
+`8cfb44c13ba5354baba416bc787eac30fb306577`; 394 declarations, zero
+selected-Dedekind declarations, and an explicit faithful-Q field in the
+additive certificate. Multiplication, field, and completeness remain open.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.

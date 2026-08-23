@@ -176,3 +176,36 @@ error class    ERR-ST2-023 / claimed-invariant ownership gap
 The correction strengthens the experimental certificate; it does not relax
 the dependency comparison or infer the missing ownership from mere presence
 of a theorem in the source manifest.
+
+## Corrected additive quotient — exact run 32632176869 PASS
+
+```text
+verified source commit    8cfb44c13ba5354baba416bc787eac30fb306577
+exact GitHub V5 run       32632176869
+actual declaration count  394
+selected Dedekind closure  0 declarations
+pointwise addition         Cauchy-preserving / equivalence-respecting
+pointwise negation         Cauchy-preserving / equivalence-respecting
+quotient additive laws     commutative / associative / zero / inverse
+Q operation preservation  addition / negation
+Q embedding injectivity   explicit certificate field
+additive-law axioms        [propext, Quot.sound]
+integrated certificate     [propext, Classical.choice, Quot.sound]
+successful sorryAx         absent
+```
+
+The logical split is source-attributed: the additive quotient laws themselves
+do not use `Classical.choice`; the combined certificate inherits it through
+the previously verified rational-embedding injectivity proof and its use of
+shared rational trichotomy. This does not make the additive construction
+classical by itself.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ADDITIVE_VERIFIED_EVIDENCE_RUN_32632176869.json`.
+
+Multiplication is not inferred from pointwise syntax. The next proof gate must
+first establish eventual rational boundedness of every Cauchy representative,
+then prove pointwise products preserve Cauchy convergence and quotient
+identity. Field, order, inverse, completeness, comparison, and downstream C
+remain open.
