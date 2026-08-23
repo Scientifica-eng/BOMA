@@ -209,3 +209,22 @@ first establish eventual rational boundedness of every Cauchy representative,
 then prove pointwise products preserve Cauchy convergence and quotient
 identity. Field, order, inverse, completeness, comparison, and downstream C
 remain open.
+
+## DO — eventual boundedness milestone in verification
+
+The next source isolates the analytic prerequisite for multiplication. It
+defines a symmetric rational bound
+
+```text
+-B ≤ u(n) ≤ B
+```
+
+and proves that every rational Cauchy sequence satisfies such a bound from
+some accepted-natural index onward. The proof uses only the accepted rational
+ordered-field operations, epsilon `1`, and one fixed term of the sequence.
+It neither defines pointwise multiplication nor claims that multiplication
+respects asymptotic identity. Its integration certificate consumes the prior
+additive certificate explicitly so that closure extraction cannot mistake an
+unconnected theorem in the same manifest for milestone ownership.
+
+Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.

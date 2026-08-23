@@ -27,6 +27,8 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyAdditive003.rCOfQ_add",
     "BOMA.R.StageTwo.CauchyAdditive003.rCOfQ_neg",
     "BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate",
+    "BOMA.R.StageTwo.CauchyBounded003.cauchy_eventually_bounded",
+    "BOMA.R.StageTwo.CauchyBounded003.cauchyBoundedCertificate",
 }
 
 
@@ -64,12 +66,13 @@ def main() -> int:
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "rational epsilon laws / Cauchy quotient / faithful Q embedding / additive group and Q-homomorphism",
+        "verified_milestone": "rational epsilon laws / Cauchy quotient / faithful Q embedding / additive group / eventual boundedness",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
         "accepted_real_replacement": False,
         "additive_group_completed": not residuals,
+        "eventual_boundedness_completed": not residuals,
         "ordered_field_completed": False,
         "cauchy_completeness_proved": False,
         "dedekind_comparison_proved": False,
