@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ACTIVE LAB / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / NO ACTIVE EXPERIMENT`  
+**Status:** `ACTIVE LAB / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
 **Owner sovereignty:** foundational/logical changes and merge to `main` require
@@ -26,8 +26,10 @@ in exact independent-field / P-Q Junction V5 run `32597030998`. Its immutable
 Plan remains `LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md`; retained
 failures and Study/Act are in
 `LAB/PDSA/experiments/ST2-EXP-002_QUOTIENT_ROUTE_COMPARISON_STUDY.md`.
-Eleven other candidates remain unselected and no experiment is currently
-active; priority is not execution authorization.
+The owner explicitly authorized `ST2-EXP-003` on 2026-08-23; its immutable
+Plan is `LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md`. It is
+the single active experiment. Ten other candidates remain unselected;
+priority is not execution authorization.
 
 ## Architectural attachment and prevention authorities
 
@@ -45,6 +47,9 @@ LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
 `C-DP-001` above the same upstream R Block, selected P Block, and accepted
 `C-BLOCK-002` export. The completed Q field and
 `ST2-EXP-002-PQ-J-001` remain research-only; neither is an accepted Block.
+`ST2-EXP-003` attaches to `R-DP-001` above accepted `Q-BLOCK-002`; its
+reference producer is accepted `R-BLOCK-001`, and its affected cone reaches
+accepted `C-BLOCK-001 / C-BLOCK-002` without changing their acceptance.
 
 ## Evidence-derived candidate inventory
 
@@ -52,7 +57,7 @@ LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | CLOSED / PASS — V5 32593045224 |
 | `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained expression-normalization quotient Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; trigger CA-14 only after completion; explicit comparison Junction | CLOSED / PASS — V5 32597030998 |
-| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve declared accepted-real interface or explicitly revise contract | R and C; completeness/identity/order | independent R assembly; comparison gate; downstream C rebuild | HIGH / OPEN |
+| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve declared accepted-real interface or explicitly revise contract | R and C; completeness/identity/order | independent R assembly; comparison gate; downstream C rebuild | ACTIVE / OWNER-APPROVED / PLAN FROZEN |
 | `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, C square positivity, norm, inverse | formal closure diff; classify any lost/changed acceptance claim | HIGH / OPEN |
 | `ST2-EXP-005` | Q-DP-001 | fraction quotient carrier | canonical reduced rational representatives | same rational field/order and integer embedding | Q → R → C identity/transport | independent Q laws + explicit equivalence + downstream interface test | MEDIUM / OPEN |
 | `ST2-EXP-006` | N-DP-001 | fresh unary BOMA-specific inductive carrier | categorical NNO or explicitly specified free algebra | preserve induction, recursion, successor, scoped standardness | N-Core → all accepted stages | state metatheory/initiality prerequisites; independent acceptance matrix | MEDIUM / OPEN |
@@ -80,5 +85,7 @@ declarations, its post-completion Junction gives an explicit P/Q field
 isomorphism, all nine Claim families are preserved, and quotient formalization
 cost is explicitly classified. Its frozen accepted reference remains
 `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498`; earlier ST2-EXP-001 evidence
-retains its own original frozen reference. No branch experiment is active;
+retains its own original frozen reference. `ST2-EXP-003` is the sole active
+experiment, based on `main@ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`;
 nothing here authorizes a merge into `main` or starts another candidate.
+

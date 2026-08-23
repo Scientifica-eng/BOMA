@@ -1,11 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
 **Status:** ACTIVE / SYNCHRONIZED  
-**Current status date:** 2026-08-22  
+**Current status date:** 2026-08-23  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / NO ACTIVE EXPERIMENT`
+**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE`
 
 ## Current canonical frontier
 
@@ -47,7 +47,7 @@ PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 
 PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
 PDSA-STAGE1-001     CLOSED — RE-STAGE1-001 COMPLETE / 73 accepted Claims
-STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
+STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
@@ -60,8 +60,8 @@ accepted C export   C-BLOCK-002 / CA-20 ACCEPT
 The user explicitly ratified `C-ROUTE-P` on 2026-08-22; `C-BLOCK-002 / CA-20`
 is accepted. `C-ROUTE-Q` is a verified independent research field, not an
 accepted export. The current research feature branch is
-`feature/stage-two-st2-exp-002-quotient-route-comparison`, based on frozen
-`main@878a52c3d833b9db9ea66f1ff4fcd207ca6ab498`; the earlier
+`feature/stage-two-st2-exp-003-cauchy-real-route-comparison`, based on frozen
+`main@ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`; the earlier
 `feature/c-stage-acceptance-001` belongs to historical acceptance provenance.
 
 ---
@@ -599,13 +599,14 @@ accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed PASS
 exact V5 run 32597030998: the formal-expression quotient is a completed
 P-independent field, its actual closure contains zero P declarations, and its
 explicit P/Q inverse Junction preserves all nine accepted C Claim families.
-Accepted Route P and CA-20 remain unchanged; no branch experiment is active.
+Accepted Route P and CA-20 remain unchanged; `ST2-EXP-003` is the sole
+active owner-approved experiment, attached to `R-DP-001 / Q-BLOCK-002`.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
 `RE-STAGE1-001` and `RE-C-001` are both CLOSED / COMPLETE after the accepted
 `C-BLOCK-002 / CA-20` export. No additional reverse audit or Stage-Two
-experiment is currently authorized.
+experiment beyond explicitly owner-approved `ST2-EXP-003` is authorized.
 
 ---
 

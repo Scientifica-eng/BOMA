@@ -43,7 +43,7 @@ PDSA-C-007             CLOSED — C-J-001 + nine-Claim audit V5 32585583815 PASS
 PDSA-C-008             CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009             CLOSED — RE-C-001 complete / bundled-interface costs classified
 PDSA-STAGE1-001        CLOSED — global RE-STAGE1-001 reverse audit COMPLETE
-STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
+STAGE-TWO-LAB          ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE
 C-RQ-001               CLOSED / PASS — verified accepted-R boundary support
 C-DP-001               RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier              CBOMA — selected pair record / V5 PASS
@@ -394,9 +394,15 @@ field was completed with zero selected-P dependencies before an explicit
 mutually inverse P/Q field isomorphism preserved the same nine C Claims.
 Its separate frozen Plan, retained failures, exact quotient cost, and Study/Act
 are documented on the research branch. Accepted Route P and CA-20 are
-unchanged. Eleven alternatives remain unselected; no experiment is active.
+unchanged. The owner approved `ST2-EXP-003` on 2026-08-23: it branches
+from `R-DP-001 / Q-BLOCK-002` to independently build the retained Cauchy
+real route against the accepted Dedekind baseline. Its frozen Plan is
+`LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md`; the alternative
+is active research, not an accepted real export. Ten alternatives remain
+unselected; no additional experiment or merge is authorized.
 
 Typed branch origins and source units:
 `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md` and its JSON companion.
 Retained execution/governance errors and mandatory preventive controls:
 `LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md`.
+

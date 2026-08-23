@@ -272,7 +272,8 @@ PDSA-STAGE1-001 = CLOSED / RE-STAGE1-001 global reverse audit COMPLETE
 ST2-EXP-001 = CLOSED / DEPENDENCY_EDGE BOMA-C-R-DEP-001 / V5 32593045224
 ST2-EXP-002 = CLOSED / DECISION_POINT C-DP-001 / V5 32597346281
 ST2-EXP-002-PQ-J-001 = PASS / RESEARCH R-FIELD-ISOMORPHISM
-STAGE-TWO-LAB = ACTIVE / TWO CLOSED / 11 UNSELECTED / NO ACTIVE EXPERIMENT
+ST2-EXP-003 = ACTIVE / DECISION_POINT R-DP-001 / Q-BLOCK-002
+STAGE-TWO-LAB = ACTIVE / TWO CLOSED / ST2-EXP-003 ACTIVE / 10 UNSELECTED
 ```
 
 The accepted semantic target is:
@@ -295,7 +296,7 @@ complete. The following remain unproduced or unapproved:
 C-ROUTE-Q as an accepted canonical Block or accepted export
 an independently implemented full polynomial ring R[X]
 algebraic closure / FTA as an accepted complex-stage layer
-any additional owner-approved Stage-Two experiment
+any Stage-Two experiment beyond the owner-approved active ST2-EXP-003
 ```
 
 Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
@@ -369,7 +370,12 @@ still explicitly required. The edge expresses a methodological choice, not mathe
 `ST2-EXP-001` branches from dependency edge `R-BLOCK-001 --
 BOMA-C-R-DEP-001 --> C-BLOCK-001`. `ST2-EXP-002` branches from Decision
 `C-DP-001` and compares selected `C-BLOCK-001 / C-ROUTE-P` against the
-independently verified research-only Q field. The accepted reference remains
+independently verified research-only Q field. `ST2-EXP-003` branches
+from `R-DP-001` above `Q-BLOCK-002`, comparing accepted Dedekind
+`R-BLOCK-001` against a retained, not-yet-complete Cauchy route; its
+affected cone includes both accepted R and downstream C Claim families.
+The accepted reference remains
 `C-BLOCK-002 / CA-20 ACCEPT`. Exact typed records and the research Junction are
 maintained in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` and
 `LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md`.
+

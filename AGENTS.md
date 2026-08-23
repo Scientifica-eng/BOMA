@@ -86,7 +86,7 @@ PDSA-C-007         CLOSED — final integration / nine-Claim V5 32585583815 PASS
 PDSA-C-008         CLOSED — CA-20 ACCEPT / six-stage run 32586145793 PASS
 PDSA-C-009         CLOSED — RE-C-001 complete / exact dependency classification
 PDSA-STAGE1-001    CLOSED — global RE-STAGE1-001 COMPLETE
-STAGE-TWO-LAB      ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
+STAGE-TWO-LAB      ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE
 C-DP-001           RESOLVED — C-ROUTE-P selected / C-ROUTE-Q retained
 C carrier           CBOMA — selected pair record / V5 PASS
 C Brick / Block     C-BLOCK-001 producer / C-BLOCK-002 ACCEPTED
@@ -341,8 +341,13 @@ approved `ST2-EXP-002` is CLOSED / PASS in exact run `32597030998`. Its frozen
 `LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md` Plan and separate
 `LAB/PDSA/experiments/ST2-EXP-002_QUOTIENT_ROUTE_COMPARISON_STUDY.md` preserve
 independent Q closure, explicit P/Q reconvergence, quotient commitments, and
-failed iterations. No experiment is currently active. Preserve the accepted
-N→C baseline, both closed experiments, all eleven unselected alternatives;
+failed iterations. Owner-approved `ST2-EXP-003` is the sole active
+experiment; its frozen Plan is
+`LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md`, and its typed
+origin is `R-DP-001` above `Q-BLOCK-002`. Its retained Cauchy product is
+research-only until proved; never use accepted Dedekind producers in its
+independent closure. Preserve the accepted N→C baseline, both closed
+experiments, and all ten unselected alternatives;
 do not start another candidate or merge into `main` without separate explicit
 owner approval.
 
@@ -363,3 +368,4 @@ cone, evidence, and actual research/acceptance status. Never invent a Brick
 for an edge, revise a frozen Plan, confuse a research Junction with
 `C-J-001`, treat identical kernel axioms as identical source commitments, or
 skip exact-head governance and Lean verification.
+

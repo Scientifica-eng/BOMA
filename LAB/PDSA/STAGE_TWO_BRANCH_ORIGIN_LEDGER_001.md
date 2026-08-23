@@ -1,8 +1,8 @@
 # STAGE_TWO_BRANCH_ORIGIN_LEDGER_001 — Architectural Branch Attachment
 
 **Document ID:** `BOMA-ST2-ORIGIN-LEDGER-001`  
-**Status:** `ACTIVE / TWO CLOSED EXPERIMENTS / NO ACTIVE EXPERIMENT`  
-**Date:** `2026-08-22`  
+**Status:** `ACTIVE / TWO CLOSED EXPERIMENTS / ST2-EXP-003 ACTIVE`  
+**Date:** `2026-08-23`  
 **Machine-readable authority:**
 `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
 
@@ -127,7 +127,33 @@ freshness now follows all six actual manifest-listed C sources while keeping
 the manifest itself protected; research sources do not silently become
 accepted inputs merely by sharing their directory.
 
-## 6. Required fields for future controlled branches
+## 6. ST2-EXP-003 — independent real completion decision
+
+Architectural attachment:
+
+```text
+Q-BLOCK-002 / accepted rational ordered field
+   --> R-DP-001
+       |-- selected accepted Dedekind / R-BLOCK-001
+       '-- retained Cauchy / ACTIVE RESEARCH / NOT ACCEPTED
+                 |
+       downstream affected C-BLOCK-001 / accepted C-BLOCK-002
+```
+
+The typed origin is a real **DECISION_POINT**, not a new Brick or Block.
+`Q-BLOCK-002` is the common independent input; `R-BLOCK-001` is the
+accepted reference to compare against later, never an upstream dependency
+for an allegedly independent Cauchy producer. All twelve R and nine C
+Claim families form the explicitly recorded affected cone.
+
+Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.
+Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.
+Current status: `ACTIVE / NO VERIFIED COMPLETION / NO RESEARCH JUNCTION`.
+The old accepted R and C exports, both prior experiments, and selected
+`C-ROUTE-P` are unchanged. No comparison Junction is claimed before
+independent Cauchy completion and exact V5 evidence exist.
+
+## 7. Required fields for future controlled branches
 
 Before a new cycle leaves Plan, record:
 

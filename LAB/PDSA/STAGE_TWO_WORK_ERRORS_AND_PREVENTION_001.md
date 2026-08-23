@@ -2,9 +2,10 @@
 
 **Document ID:** `BOMA-ST2-ERROR-PREVENTION-001`  
 **Status:** `ACTIVE / APPLIES TO FUTURE STAGE-TWO CYCLES`  
-**Date:** `2026-08-22`  
-**Scope:** closed `ST2-EXP-001`, closed `ST2-EXP-002`, current-state
-architecture synchronization, and exact-head verification discipline.
+**Date:** `2026-08-23`  
+**Scope:** closed `ST2-EXP-001`, closed `ST2-EXP-002`, active
+`ST2-EXP-003`, current-state architecture synchronization, and exact-head
+verification discipline.
 
 This is a lessons-learned record, not a retroactive amendment to either
 frozen PDSA Plan. Historical statements remain historical; only
@@ -30,6 +31,9 @@ current-state authorities are synchronized.
 | `ERR-ST2-014` | Earlier successful evidence could be incorrectly attached to a later documentation head | First proof PASS was run `32597030998`; the later complete head passed `32597346281` | Verification identity belongs to an exact Git commit, not to a mutable branch name | Preserve both historical proof-source evidence and independent exact-head final verification | Pin checkout to event head, print actual SHA, and require every modified final head to pass again |
 | `ERR-ST2-015` | Repository-wide unit audit misclassified an explicitly indexed research Junction as a missing accepted unit | Six-stage exact-head V5 failed in run `32599546288` although all six stage proofs passed | `ST2-EXP-002-PQ-J-001` matches canonical identifier syntax, and the previous audit inferred canonical ownership from spelling alone | Read explicitly typed research Junctions from the origin ledger, require their actual research source and explicit nonaccepted status, and exclude only validated research IDs from canonical-unit coverage | Cross-stage audits must distinguish identifier syntax, recorded artifact scope, filesystem unit ownership, and canonical acceptance; reject an undeclared exemption or a research/canonical identity collision |
 | `ERR-ST2-016` | The first post-merge `main` audit rejected unchanged accepted C evidence because research files shared its source directory | Main architecture audit execution `#26` failed on merge commit `c5981ef8e6bdd092edd0bb8dd7a6258007636fce` | Stage C freshness was scoped to the entire `CStage` directory, so twelve research-only sources were falsely classified as modifications to accepted C inputs | Resolve freshness from every C source explicitly listed in the unchanged `C_ACCEPTED_INPUTS.txt`, and keep that manifest itself under freshness protection | Compare research additions against the exact accepted-input manifest; test both false-positive research additions and real accepted-source modifications; monitor `push/main` checks independently from pull-request-only run listings |
+| `ERR-ST2-017` | Stage-Two governance was hard-coded to exactly two closed experiments and C-only attachment endpoints | ST2-EXP-003 preflight rejected the valid real origin before any Lean verification | The previous auditor treated historical examples as the complete experiment universe and required a verified run before an active build could begin | Preserve exact historical origin/run checks while validating the third typed Q-to-R origin, active lifecycle, twelve R plus nine C Claims, and absent-yet-honest verification evidence | Derive status-sensitive required evidence from explicit typed origin records; test closed and active records together without weakening protected historical assertions |
+| `ERR-ST2-018` | Accepted-real freshness repeated the previously fixed shared-directory mistake at a new stage | ST2-EXP-003 preflight found both R and downstream C still watched the entire `RStage` directory | The CStage manifest fix was localized and not propagated to research files appearing under RStage | Scope RStage freshness to `R_INTEGRATION_002_INPUTS.txt` for R and `C_ACCEPTED_INPUTS.txt` for downstream C while retaining both accepted manifests as protected inputs | Apply accepted-source ownership independently at every inherited stage boundary; test research additions and actual accepted-source changes for each scoped directory |
+| `ERR-ST2-019` | The active real DAG still asserted that C had not started and remained under an owner hold after C acceptance | ST2-EXP-003 preflight found `R_DAG.md` current-frontier blocks contradicting accepted `C-BLOCK-002 / CA-20` | Prior synchronization audited C-facing records but omitted the upstream real DAG from current-state checks | Synchronize the R DAG with accepted C and the approved real-route experiment; include it in bounded stale-state governance checks | Reopen every directly affected upstream DAG when its downstream acceptance or branch state changes; preserve actual dated historical records instead of stale present-tense prohibitions |
 
 ## 2. Root causes rather than isolated symptoms
 
@@ -123,6 +127,7 @@ LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py
 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py
 ```
 
-Verification is integrated into the existing exact-head
-`ST2-EXP-002` V5 workflow before independent Lean verification. This document
+Verification is integrated into the existing exact-head `ST2-EXP-002`
+workflow and the dedicated active `ST2-EXP-003` exact-head workflow before
+independent Lean verification. This document
 supplements the immutable historical PDSA Plans and does not change them.

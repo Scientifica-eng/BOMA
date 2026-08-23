@@ -1,0 +1,188 @@
+name: BOMA ST2-EXP-003 Independent Cauchy Real Route — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/RStage/ST2Exp003*.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_*'
+      - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/R_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'README.md'
+      - 'AGENTS.md'
+      - '.github/workflows/boma-st2-exp-003-cauchy-real-route.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-003-*'
+
+concurrency:
+  group: boma-st2-exp-003-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: prove Cauchy quotient independently without claiming full completion
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin exact head, immutable Plan, and accepted Q/R/C producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          baseline="ea920b6b1e56444eddaf38ca91e6f7a968f10e0d"
+          frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean \
+            LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md \
+            LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md
+          changed=/tmp/st2-exp-003-changed-paths.txt
+          git diff --name-only "$baseline" HEAD > "$changed"
+          for accepted in \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              if grep -Fxq "$src" "$changed"; then
+                printf 'Accepted Q/R/C producer changed: %s\n' "$src" >&2
+                exit 1
+              fi
+            done < "$accepted"
+          done
+          printf 'Verified head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
+            "$actual_sha" "$frozen_plan" "$baseline"
+
+      - name: Validate independent Cauchy assembly and no fake-completion boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          accepted_q=LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+          test -s "$independent"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$independent"
+          head -n "$(wc -l < "$accepted_q")" "$independent" | cmp - "$accepted_q"
+          forbidden_path='RDedekind|RStageIntegration002|/CStage/|ST2Exp001|ST2Exp002'
+          if grep -En "$forbidden_path" "$independent"; then
+            printf 'Independent Cauchy manifest imports a selected real or downstream producer\n' >&2
+            exit 1
+          fi
+          forbidden_source='BOMA\.R\.(Dedekind|StageIntegration002)|BOMA\.C\.|Classical\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          for src in \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyCloseness.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyQuotient.lean; do
+            if grep -En "$forbidden_source" "$src"; then
+              printf 'Independent Cauchy source contains an undeclared producer/principle\n' >&2
+              exit 1
+            fi
+          done
+          python3 -m py_compile \
+            LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
+
+      - name: Audit Q-to-R typed branch origin and accepted-source ownership
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            --json-out /tmp/st2-exp-003-branch-governance.json
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Prove rational closeness, Cauchy quotient, and faithful embedding
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          target=/tmp/BOMAST2Exp003IndependentCauchy.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
+
+      - name: Extract actual selected-Dedekind-free faithful-embedding closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage R \
+            --manifest LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            --target BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective \
+            --json-out /tmp/st2-exp-003-independent-closure.json \
+            > /tmp/st2-exp-003-dependency-audit.log
+          python3 LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py \
+            --independent-closure /tmp/st2-exp-003-independent-closure.json \
+            --governance /tmp/st2-exp-003-branch-governance.json \
+            --json-out /tmp/st2-exp-003-foundation-comparison.json
+
+      - name: Publish exact scope without claiming full Cauchy completeness
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '## ST2-EXP-003 — independent Cauchy quotient foundation\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
+            printf -- '- Proved: asymptotic setoid, quotient carrier, faithful rational embedding.\n'
+            printf -- '- Selected Dedekind declarations in actual closure: zero.\n'
+            printf -- '- Ordered field, completeness, comparison, and C rebuild: NOT YET PROVED.\n'
+            printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve exact-head independent-foundation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-003-cauchy-foundation-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-branch-governance.json
+            /tmp/st2-exp-003-independent-closure.json
+            /tmp/st2-exp-003-foundation-comparison.json
+            /tmp/st2-exp-003-independent-lean.log
+            /tmp/st2-exp-003-dependency-audit.log
+          if-no-files-found: warn
