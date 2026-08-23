@@ -1,0 +1,60 @@
+{
+  "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-LUB-EVIDENCE-001",
+  "experiment": "ST2-EXP-003",
+  "milestone_status": "DEDEKIND_LUB_PASS / EXPERIMENT ACTIVE",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "R-DP-001",
+  "upstream_accepted_unit": "Q-BLOCK-002",
+  "accepted_baseline_unit": "R-BLOCK-001",
+  "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
+  "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
+  "h4_source_completion_commit": "cb31e12e2b4fb7a07488a09c2a9394d4ab61946c",
+  "verified_source_commit": "0f4a706d94c394b8e8a9eec836859caac772a944",
+  "verified_run": 32643579395,
+  "workflow": "BOMA ST2-EXP-003 Independent Cauchy Real Route — V5",
+  "independent_manifest": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt",
+  "dependency_root": "BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate",
+  "actual_internal_declarations": 625,
+  "selected_dedekind_declarations": [],
+  "verified_targets": [
+    "BOMA.R.StageTwo.CauchyLUBBracket003.rational_lub_bracket_exists",
+    "BOMA.R.StageTwo.CauchyLUBBracket003.cauchyLUBBracketCertificate",
+    "BOMA.R.StageTwo.CauchyLUBSequence003.h4Lower_cauchy",
+    "BOMA.R.StageTwo.CauchyLUBSequence003.cauchyLUBSequenceCertificate",
+    "BOMA.R.StageTwo.CauchyLUB003.h4Upper_cauchy",
+    "BOMA.R.StageTwo.CauchyLUB003.h4LowerUpper_equiv",
+    "BOMA.R.StageTwo.CauchyLUB003.rcle_pointwise_to_class",
+    "BOMA.R.StageTwo.CauchyLUB003.rcle_class_to_pointwise",
+    "BOMA.R.StageTwo.CauchyLUB003.rCauchy_lub_exists",
+    "BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate"
+  ],
+  "logical_provenance": {
+    "kernel_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "finite_lub_bracket_search": "localized proposition-level Classical.em over the upper-bound predicate along a finite accepted-natural rational grid",
+    "finite_lub_bracket_search_uses_classical_em": true,
+    "countable_lub_bracket_selection": "explicit Classical.choose/choose_spec selecting one lower rational endpoint from each shrinking bracket indexed by accepted BOMANat",
+    "countable_lub_bracket_selection_uses_classical_choice": true,
+    "classification_note": "The final kernel axiom names do not distinguish finite proposition-level case analysis from countable data selection, so both source-level commitments are recorded separately.",
+    "sorryAx_in_successful_targets": false
+  },
+  "artifact": {
+    "id": 9494260356,
+    "sha256": "487e43f17949555fd0a518052538b993ec7552f09a5b00da4aa0f1b7e1d90437"
+  },
+  "ordered_field_completed": true,
+  "cauchy_completeness_proved": true,
+  "rational_lub_bracketing_proved": true,
+  "shrinking_lub_bracket_sequence_proved": true,
+  "dedekind_lub_bridge_proved": true,
+  "dedekind_comparison_proved": false,
+  "downstream_complex_rebuilt": false,
+  "alternative_accepted": false,
+  "experiment_closed": false,
+  "accepted_dedekind_real_changed": false,
+  "accepted_complex_ca20_changed": false,
+  "residuals": []
+}
