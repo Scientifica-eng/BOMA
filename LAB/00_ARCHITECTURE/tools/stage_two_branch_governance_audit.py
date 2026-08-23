@@ -517,7 +517,7 @@ def check_retained_failures(
 ) -> None:
     lessons = read_text(root, LESSONS)
     ledger_document = read_text(root, LEDGER_MD)
-    for number in range(1, 25):
+    for number in range(1, 26):
         error_id = f"ERR-ST2-{number:03d}"
         if error_id not in lessons:
             add_error(residuals, "retained_error_record_missing", error=error_id)
@@ -699,7 +699,7 @@ def main() -> int:
             ),
             "current_state_documents": len(CURRENT_STATE_FILES),
             "junction_index_documents": len(JUNCTION_REQUIRED_FILES),
-            "retained_error_classes": 24,
+            "retained_error_classes": 25,
             "retained_failed_runs": sum(
                 len(record.get("preserved_failure_runs", []))
                 for record in records.values()

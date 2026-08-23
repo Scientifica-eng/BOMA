@@ -281,3 +281,16 @@ and the resulting product-closeness estimate under one explicit common bound
 and scale equation. Its certificate consumes the verified boundedness
 certificate, preventing an isolated lemma from being reported as an integrated
 milestone. Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
+
+### Preserved product-bound namespace failure — run 32633098730
+
+```text
+source commit  6379633ab68fbbf092208b2102cd6f85c50282c0
+failed gate    signed interval-product assembly
+mechanism      unqualified qNeg_zero had two opened interpretations
+correction     use the fully qualified boundedness theorem at both sites
+error class    ERR-ST2-025 / namespace collision
+```
+
+The run did not verify the product estimate. No mathematical requirement was
+removed, and the corrected source must still pass the same strict closure gate.

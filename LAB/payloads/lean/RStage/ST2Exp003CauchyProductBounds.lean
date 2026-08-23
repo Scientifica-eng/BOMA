@@ -56,11 +56,11 @@ theorem qMul_upper_of_bounds {B C x y : QBOMA}
       exact qle_trans hxy0 hBC
     · have hnx : qLE qZero (qNeg x) := by
         have h := qneg_reverses hx0
-        rw [qNeg_zero] at h
+        rw [BOMA.R.StageTwo.CauchyBounded003.qNeg_zero] at h
         exact h
       have hny : qLE qZero (qNeg y) := by
         have h := qneg_reverses hy0
-        rw [qNeg_zero] at h
+        rw [BOMA.R.StageTwo.CauchyBounded003.qNeg_zero] at h
         exact h
       have hnxB : qLE (qNeg x) B := by
         simpa only [qNeg_neg] using qneg_reverses hx.1
