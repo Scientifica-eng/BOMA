@@ -75,31 +75,32 @@ theorem q_reciprocal_difference
     (hainv : QInvRel a ainv) (hbinv : QInvRel b binv) :
     qAdd ainv (qNeg binv) =
       qMul (qAdd b (qNeg a)) (qMul ainv binv) := by
+  have hfirst : qMul b (qMul ainv binv) = ainv := by
+    calc
+      qMul b (qMul ainv binv) =
+          qMul (qMul b ainv) binv :=
+        (qMul_assoc b ainv binv).symm
+      _ = qMul (qMul ainv b) binv := by
+        rw [qMul_comm b ainv]
+      _ = qMul ainv (qMul b binv) := qMul_assoc ainv b binv
+      _ = qMul ainv qOne := congrArg (fun t => qMul ainv t) hbinv
+      _ = ainv := qMul_one_right ainv
+  have hsecond : qMul (qNeg a) (qMul ainv binv) = qNeg binv := by
+    rw [qMul_neg_left]
+    apply congrArg qNeg
+    calc
+      qMul a (qMul ainv binv) =
+          qMul (qMul a ainv) binv :=
+        (qMul_assoc a ainv binv).symm
+      _ = qMul qOne binv := congrArg (fun t => qMul t binv) hainv
+      _ = binv := qMul_one_left binv
   symm
   calc
     qMul (qAdd b (qNeg a)) (qMul ainv binv) =
         qAdd (qMul b (qMul ainv binv))
           (qMul (qNeg a) (qMul ainv binv)) :=
       qMul_add_left b (qNeg a) (qMul ainv binv)
-    _ = qAdd (qMul ainv (qMul b binv))
-          (qNeg (qMul binv (qMul a ainv))) := by
-      congr
-      · calc
-          qMul b (qMul ainv binv) =
-              qMul (qMul b ainv) binv :=
-            (qMul_assoc b ainv binv).symm
-          _ = qMul (qMul ainv b) binv := by rw [qMul_comm b ainv]
-          _ = qMul ainv (qMul b binv) := qMul_assoc ainv b binv
-      · rw [qMul_neg_left]
-        apply congrArg qNeg
-        calc
-          qMul a (qMul ainv binv) =
-              qMul (qMul a ainv) binv :=
-            (qMul_assoc a ainv binv).symm
-          _ = qMul binv (qMul a ainv) := by rw [qMul_comm]
-    _ = qAdd (qMul ainv qOne) (qNeg (qMul binv qOne)) := by
-      rw [hbinv, hainv]
-    _ = qAdd ainv (qNeg binv) := by rw [qMul_one_right, qMul_one_right]
+    _ = qAdd ainv (qNeg binv) := by rw [hfirst, hsecond]
 
 /-- Reciprocals of two positive rationals sharing one positive lower bound are
     epsilon-close whenever the originals are close at a correspondingly scaled
