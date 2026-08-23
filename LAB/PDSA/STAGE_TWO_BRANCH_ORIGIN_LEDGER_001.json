@@ -33,7 +33,7 @@
       "workflow": "BOMA Architecture Consistency Audit — PDSA-ARCH-002",
       "trigger": "push / main / post-merge",
       "error_id": "ERR-ST2-016",
-      "root_cause": "A whole CStage directory freshness rule treated twelve research-only Lean files as changes to the six unchanged accepted C sources."
+      "root_cause": "A whole CStage directory freshness rule treated twelve research-only sources as changes to the six unchanged accepted C sources."
     }
   ],
   "records": [
@@ -74,9 +74,7 @@
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md",
       "study": "LAB/PDSA/experiments/ST2-EXP-001_NARROW_R_INTERFACE_STUDY.md",
       "verified_run": 32593045224,
-      "preserved_failure_runs": [
-        32592959836
-      ],
+      "preserved_failure_runs": [32592959836],
       "unit_sources": {
         "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
         "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
@@ -128,11 +126,7 @@
       "junction_record": "LAB/PDSA/experiments/ST2-EXP-002_PQ_RECONVERGENCE_JUNCTION_001.md",
       "verified_run": 32597346281,
       "proof_source_verified_run": 32597030998,
-      "preserved_failure_runs": [
-        32596872373,
-        32596968581,
-        32597282848
-      ],
+      "preserved_failure_runs": [32596872373, 32596968581, 32597282848],
       "unit_sources": {
         "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
         "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
@@ -143,7 +137,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / INDEPENDENT CAUCHY ORDERED FIELD PASS / COMPLETION OPEN",
+      "status": "ACTIVE / INDEPENDENT CAUCHY SEQUENTIALLY COMPLETE ORDERED FIELD PASS / DEDEKIND LUB BRIDGE OPEN",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -168,70 +162,36 @@
       ],
       "first_divergence": "rational completion carrier and asymptotic identity selected at R-DP-001",
       "affected_cone": [
-        "R-CL-CARRIER-001",
-        "R-CL-QEMBED-001",
-        "R-CL-ORDER-001",
-        "R-CL-NONTRIV-001",
-        "R-CL-ADD-001",
-        "R-CL-MUL-001",
-        "R-CL-INV-001",
-        "R-CL-FIELD-001",
-        "R-CL-COMP-001",
-        "R-CL-DENSITY-001",
-        "R-CL-ARCH-001",
-        "R-CL-INTEGRATION-001",
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
+        "R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001",
+        "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001",
+        "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001",
+        "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001",
+        "C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001",
+        "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
+        "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
       "affected_real_claims": [
-        "R-CL-CARRIER-001",
-        "R-CL-QEMBED-001",
-        "R-CL-ORDER-001",
-        "R-CL-NONTRIV-001",
-        "R-CL-ADD-001",
-        "R-CL-MUL-001",
-        "R-CL-INV-001",
-        "R-CL-FIELD-001",
-        "R-CL-COMP-001",
-        "R-CL-DENSITY-001",
-        "R-CL-ARCH-001",
-        "R-CL-INTEGRATION-001"
+        "R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001",
+        "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001",
+        "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001",
+        "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001"
       ],
       "affected_complex_claims": [
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
+        "C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001",
+        "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
+        "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
-      "reconvergence_strength": "NOT YET EVALUATED / NO RESEARCH JUNCTION BEFORE INDEPENDENT COMPLETION",
-      "experimental_product_status": "VERIFIED INDEPENDENT CAUCHY TOTALLY ORDERED FIELD / COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
+      "reconvergence_strength": "NOT YET EVALUATED / H4 DEDEKIND LUB BRIDGE OPEN / NO RESEARCH JUNCTION YET",
+      "experimental_product_status": "VERIFIED INDEPENDENT SEQUENTIALLY CAUCHY-COMPLETE TOTALLY ORDERED FIELD / H4 ACTIVE / NOT AN ACCEPTED REAL EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
-      "study": "LAB/PDSA/experiments/ST2-EXP-003_ORDERED_FIELD_MILESTONE_001.md",
+      "study": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_REAL_ROUTE_STUDY_CONTINUATION_H3.md",
       "verified_run": null,
       "preserved_failure_runs": [
-        32630769132,
-        32631916749,
-        32631997598,
-        32632080736,
-        32632711528,
-        32633098730,
-        32633963578,
-        32637335056,
-        32637512588
+        32630769132, 32631916749, 32631997598, 32632080736,
+        32632711528, 32633098730, 32633963578, 32637335056,
+        32637512588, 32638074040, 32640562655, 32640838804
       ],
       "unit_sources": {
         "Q-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/Q-BLOCK-002/UNIT.md",
@@ -267,7 +227,11 @@
       "ordered_ring_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ORDERED_RING_VERIFIED_EVIDENCE_RUN_32634312486.json",
       "verified_ordered_field_run": 32637591596,
       "verified_ordered_field_source_commit": "fc1ac4fc9c8aebb90ff728619c347bea41f060bb",
-      "ordered_field_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ORDERED_FIELD_VERIFIED_EVIDENCE_RUN_32637591596.json"
+      "ordered_field_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ORDERED_FIELD_VERIFIED_EVIDENCE_RUN_32637591596.json",
+      "verified_cauchy_completion_run": 32641010707,
+      "verified_cauchy_completion_source_commit": "26565faa7b609f285615d86bc3a6bc0260a40041",
+      "cauchy_completion_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_COMPLETION_VERIFIED_EVIDENCE_RUN_32641010707.json",
+      "cauchy_completion_milestone": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_COMPLETENESS_MILESTONE_001.md"
     }
   ]
 }
