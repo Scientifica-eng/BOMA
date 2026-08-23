@@ -350,3 +350,13 @@ comparison result.
 Machine-readable evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_RING_VERIFIED_EVIDENCE_RUN_32633443480.json`.
+
+## DO — representative-invariant partial order in verification
+
+The next source defines approximate order using every positive rational
+epsilon, proves replacement of either Cauchy representative, descends the
+relation to the quotient, proves reflexivity/transitivity/antisymmetry, and
+proves exact preservation and reflection of accepted rational order. Totality
+is deliberately excluded from this milestone because its proof requires a
+separate sequence-level separation analysis. Status before exact-head V5:
+`SOURCE ASSEMBLED / VERIFICATION PENDING`.

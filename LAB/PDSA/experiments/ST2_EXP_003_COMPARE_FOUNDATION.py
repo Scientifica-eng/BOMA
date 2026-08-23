@@ -42,6 +42,15 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyMultiplicative003.rCMul_add_right",
     "BOMA.R.StageTwo.CauchyMultiplicative003.rCOfQ_mul",
     "BOMA.R.StageTwo.CauchyMultiplicative003.cauchyCommutativeRingCertificate",
+    "BOMA.R.StageTwo.CauchyOrderCore003.cauchyLE_refl",
+    "BOMA.R.StageTwo.CauchyOrderCore003.cauchyLE_trans",
+    "BOMA.R.StageTwo.CauchyOrderCore003.cauchyLE_respects",
+    "BOMA.R.StageTwo.CauchyOrderCore003.cauchyLE_antisymm",
+    "BOMA.R.StageTwo.CauchyOrderCore003.rcle_refl",
+    "BOMA.R.StageTwo.CauchyOrderCore003.rcle_trans",
+    "BOMA.R.StageTwo.CauchyOrderCore003.rcle_antisymm",
+    "BOMA.R.StageTwo.CauchyOrderCore003.rCOfQ_order",
+    "BOMA.R.StageTwo.CauchyOrderCore003.cauchyPartialOrderCertificate",
 }
 
 
@@ -79,7 +88,7 @@ def main() -> int:
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "Cauchy quotient / faithful Q embedding / commutative ring / bounded product construction",
+        "verified_milestone": "Cauchy quotient / commutative ring / representative-invariant partial order extending Q",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
@@ -89,6 +98,8 @@ def main() -> int:
         "bounded_product_estimate_completed": not residuals,
         "multiplicative_monoid_completed": not residuals,
         "commutative_ring_completed": not residuals,
+        "partial_order_completed": not residuals,
+        "total_order_completed": False,
         "ordered_field_completed": False,
         "cauchy_completeness_proved": False,
         "dedekind_comparison_proved": False,
