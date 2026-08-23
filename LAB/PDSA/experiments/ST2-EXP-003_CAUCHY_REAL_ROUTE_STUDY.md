@@ -327,6 +327,27 @@ milestone only; it does not supply real order, nonzero inverse, or Cauchy
 completeness. Status before exact-head V5:
 `SOURCE ASSEMBLED / VERIFICATION PENDING`.
 
+## Corrected representative-invariant partial order — run 32633758238 PASS
+
+```text
+verified source commit    97015c7a3a6d53453f6101be6b77d62cf5516f25
+exact GitHub V5 run       32633758238
+actual declaration count  461
+selected Dedekind closure  0 declarations
+representative antisymmetry [propext, Quot.sound]
+rational order reflection [propext, Classical.choice, Quot.sound]
+successful sorryAx         absent
+```
+
+The verified relation is reflexive, transitive, antisymmetric after quotient
+descent, and exactly extends accepted rational order. Totality is not inferred
+from rational totality at one index; it requires a separate stability argument
+across all positive epsilons.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PARTIAL_ORDER_VERIFIED_EVIDENCE_RUN_32633758238.json`.
+
 ## Corrected quotient commutative ring — exact run 32633443480 PASS
 
 ```text

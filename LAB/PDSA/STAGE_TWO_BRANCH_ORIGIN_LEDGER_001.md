@@ -169,6 +169,10 @@ Quotient multiplication and its commutative-ring laws then passed exact V5
 `32633443480` at source `7b1b9a343a45ea3d4b9651aefafbbcb39a0f47f4`;
 the integrated closure has 442 declarations and zero selected-Dedekind
 declarations. Order, nonzero inverse, and Cauchy completeness remain open.
+Representative-invariant approximate order then passed exact V5
+`32633758238` at source `97015c7a3a6d53453f6101be6b77d62cf5516f25`;
+its partial-order and rational-order-extension closure has 461 declarations
+and zero selected-Dedekind declarations. Totality remains unclaimed.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.

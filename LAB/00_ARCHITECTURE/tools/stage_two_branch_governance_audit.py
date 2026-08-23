@@ -416,6 +416,29 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                     ):
                         if evidence.get(field) is not False:
                             add_error(residuals, "active_cauchy_ring_scope_inflated", field=field)
+            partial_order_run = record.get("verified_partial_order_run")
+            if partial_order_run is not None:
+                evidence_path = record.get("partial_order_evidence")
+                if not isinstance(partial_order_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_partial_order_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != partial_order_run:
+                        add_error(residuals, "active_cauchy_partial_order_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_partial_order_source_commit"):
+                        add_error(residuals, "active_cauchy_partial_order_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_partial_order_selected_real_dependency")
+                    if evidence.get("partial_order_completed") is not True:
+                        add_error(residuals, "active_cauchy_partial_order_claim_missing")
+                    for field in (
+                        "total_order_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_partial_order_scope_inflated", field=field)
         elif len(cone) != 9:
             add_error(
                 residuals,
