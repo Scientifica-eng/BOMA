@@ -334,6 +334,7 @@ theorem rC_inverse_exists_unique (x : RCBOMA) (hx : x ≠ rCZero) :
     separate gate and is deliberately absent from this structure. -/
 structure CauchyOrderedFieldCertificate where
   orderedRingCertificate : CauchyOrderedRingCertificate
+  nonzeroGapCertificate : CauchyNonzeroGapCertificate
   inverseExistsUnique : ∀ (x : RCBOMA), x ≠ rCZero →
     ∃ y : RCBOMA, RCInvRel x y ∧
       ∀ z : RCBOMA, RCInvRel x z → z = y
@@ -342,6 +343,7 @@ structure CauchyOrderedFieldCertificate where
 
 theorem cauchyOrderedFieldCertificate : CauchyOrderedFieldCertificate where
   orderedRingCertificate := cauchyOrderedRingCertificate
+  nonzeroGapCertificate := cauchyNonzeroGapCertificate
   inverseExistsUnique := rC_inverse_exists_unique
   choiceBoundary := positive_gap_inverse_sequence_exists
 
