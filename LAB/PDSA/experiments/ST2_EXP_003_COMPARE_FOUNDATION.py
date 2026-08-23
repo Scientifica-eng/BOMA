@@ -20,6 +20,13 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans",
     "BOMA.R.StageTwo.CauchyQuotient003.cauchySetoid",
     "BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCAdd_comm",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCAdd_assoc",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCAdd_zero_left",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCAdd_neg_right",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCOfQ_add",
+    "BOMA.R.StageTwo.CauchyAdditive003.rCOfQ_neg",
+    "BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate",
 }
 
 
@@ -57,11 +64,12 @@ def main() -> int:
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "rational epsilon laws / Cauchy equivalence / quotient carrier / faithful Q embedding",
+        "verified_milestone": "rational epsilon laws / Cauchy quotient / faithful Q embedding / additive group and Q-homomorphism",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
         "accepted_real_replacement": False,
+        "additive_group_completed": not residuals,
         "ordered_field_completed": False,
         "cauchy_completeness_proved": False,
         "dedekind_comparison_proved": False,

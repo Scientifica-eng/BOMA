@@ -120,3 +120,13 @@ No ordered field, completeness theorem, route equivalence, research Junction,
 downstream C rebuild, or new accepted export follows from this milestone.
 The experiment remains active until the remaining frozen Plan gates have
 their own exact-head proofs and evidence.
+
+## DO — additive quotient milestone in verification
+
+The next independent source defines pointwise addition and negation, proves
+that both preserve Cauchy convergence and asymptotic identity, descends them
+through the quotient, proves commutativity, associativity, zero, additive
+inverse, and preservation of accepted rational addition/negation, then
+packages an additive-group-strength certificate. This milestone is not marked
+verified until a new exact-head V5 run succeeds and its dependency closure is
+inspected.

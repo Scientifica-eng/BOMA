@@ -101,7 +101,8 @@ jobs:
           forbidden_source='BOMA\.R\.(Dedekind|StageIntegration002)|BOMA\.C\.|Classical\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
           for src in \
             LAB/payloads/lean/RStage/ST2Exp003CauchyCloseness.lean \
-            LAB/payloads/lean/RStage/ST2Exp003CauchyQuotient.lean; do
+            LAB/payloads/lean/RStage/ST2Exp003CauchyQuotient.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyAdditive.lean; do
             if grep -En "$forbidden_source" "$src"; then
               printf 'Independent Cauchy source contains an undeclared producer/principle\n' >&2
               exit 1
@@ -143,6 +144,7 @@ jobs:
           printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate\n' >> "$target"
           lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
 
       - name: Extract actual selected-Dedekind-free faithful-embedding closure
@@ -152,7 +154,7 @@ jobs:
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
-            --target BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective \
+            --target BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate \
             --json-out /tmp/st2-exp-003-independent-closure.json \
             > /tmp/st2-exp-003-dependency-audit.log
           python3 LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py \
@@ -168,7 +170,7 @@ jobs:
             printf '## ST2-EXP-003 — independent Cauchy quotient foundation\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
-            printf -- '- Proved: asymptotic setoid, quotient carrier, faithful rational embedding.\n'
+            printf -- '- Proved: asymptotic setoid, quotient carrier, faithful rational embedding, additive group.\n'
             printf -- '- Selected Dedekind declarations in actual closure: zero.\n'
             printf -- '- Ordered field, completeness, comparison, and C rebuild: NOT YET PROVED.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
