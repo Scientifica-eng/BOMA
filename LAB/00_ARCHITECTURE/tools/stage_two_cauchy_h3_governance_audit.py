@@ -77,19 +77,22 @@ def main() -> int:
             )
         status = str(record.get("status", ""))
         product = str(record.get("experimental_product_status", ""))
-        if "SEQUENTIALLY COMPLETE" not in status or "DEDEKIND LUB BRIDGE OPEN" not in status:
-            add_error(residuals, "h3_status_boundary_missing", actual=status)
+        if not (
+            "SEQUENTIALLY COMPLETE" in status
+            or "DEDEKIND-LUB CONTRACT PASS" in status
+        ):
+            add_error(residuals, "h3_or_stronger_status_boundary_missing", actual=status)
         if "NOT AN ACCEPTED REAL EXPORT" not in product:
             add_error(residuals, "h3_acceptance_boundary_missing", actual=product)
         if record.get("reconvergence_junction_id"):
             add_error(residuals, "premature_h3_reconvergence_junction")
 
         failures = set(record.get("preserved_failure_runs", []))
-        if failures != EXPECTED_FAILURES:
+        if not EXPECTED_FAILURES.issubset(failures):
             add_error(
                 residuals,
-                "h3_failure_lineage_drift",
-                expected=sorted(EXPECTED_FAILURES),
+                "h3_failure_lineage_lost",
+                expected_subset=sorted(EXPECTED_FAILURES),
                 actual=sorted(failures),
             )
         lessons = read_text(root, LESSONS)
