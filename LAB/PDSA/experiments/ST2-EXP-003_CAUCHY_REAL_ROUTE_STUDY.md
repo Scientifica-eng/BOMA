@@ -270,6 +270,14 @@ Machine-readable evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_TOTAL_ORDER_VERIFIED_EVIDENCE_RUN_32634079706.json`.
 
+## DO — ordered-ring compatibility in verification
+
+The next source proves additive translation compatibility directly and proves
+nonnegative multiplication from eventual symmetric bounds plus an epsilon
+scale satisfying `2*K*delta = eps`. It does not use totality as a substitute
+for the product estimate and does not construct inverses. Status before
+exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
+
 ### Preserved first boundedness failure — run 32632711528
 
 ```text

@@ -52,3 +52,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyProductBounds.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyMultiplicative.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyOrderCore.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyOrderTotal.lean
+LAB/payloads/lean/RStage/ST2Exp003CauchyOrderedRing.lean
