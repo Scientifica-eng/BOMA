@@ -1,7 +1,7 @@
 name: BOMA N-Core R-B — Evidence-Producing V5
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   workflow_dispatch:
@@ -124,12 +124,12 @@ jobs:
               > /tmp/Verify_N_J_001.lean
           lake env lean /tmp/Verify_N_J_001.lean
 
-      - name: Record run evidence in repository
-        id: evidence
+      - name: Generate run evidence
         if: always()
         shell: bash
         run: |
           set -u
+          mkdir -p /tmp/boma-evidence
           VERIFIED_SHA="$GITHUB_SHA"
           RUN_ID="$GITHUB_RUN_ID"
           TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
@@ -153,11 +153,7 @@ jobs:
             fi
           done
 
-          git fetch origin main
-          git checkout -B v5-evidence origin/main
-          mkdir -p LAB/20_FORMALIZATION/N_CORE/evidence
-
-          cat > LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md <<EOF
+          cat > /tmp/boma-evidence/V5_CLAIM_LEVEL_LATEST.md <<EOF
           # N-Core Claim-Level V5 — Automated Evidence Record
 
           **Status:** ${RESULT}  
@@ -189,13 +185,14 @@ jobs:
           A PASS here is machine evidence for the mapped claims under the recorded toolchain. It is not NAC-15 acceptance.
           EOF
 
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add LAB/20_FORMALIZATION/N_CORE/evidence/V5_CLAIM_LEVEL_LATEST.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Record claim-level N-Core V5 run ${RUN_ID}"
-            git push origin HEAD:main
-          fi
+      - name: Upload immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ncore-v5-evidence-${{ github.run_id }}
+          path: /tmp/boma-evidence/V5_CLAIM_LEVEL_LATEST.md
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Enforce verification result
         if: always()
