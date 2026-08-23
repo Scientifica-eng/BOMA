@@ -278,6 +278,29 @@ scale satisfying `2*K*delta = eps`. It does not use totality as a substitute
 for the product estimate and does not construct inverses. Status before
 exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
 
+## Corrected ordered commutative ring — exact run 32634312486 PASS
+
+```text
+verified source commit    ad6228336b13d0f39a678d5502898a52d274a780
+exact GitHub V5 run       32634312486
+actual declaration count  479
+selected Dedekind closure  0 declarations
+representative product compatibility [propext, Quot.sound]
+quotient product compatibility [propext, Quot.sound]
+successful sorryAx         absent
+```
+
+The integrated certificate inherits the already declared classical totality
+and rational-reflection commitments, but the new additive and nonnegative
+product compatibility proofs add no choice. The research carrier is now a
+totally ordered commutative ring in the explicit project interface. It is not
+a field until every nonzero quotient class has a multiplicative inverse, and
+it is not a real completion until the Cauchy-completeness gate passes.
+
+Machine-readable evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ORDERED_RING_VERIFIED_EVIDENCE_RUN_32634312486.json`.
+
 ### Preserved first boundedness failure — run 32632711528
 
 ```text

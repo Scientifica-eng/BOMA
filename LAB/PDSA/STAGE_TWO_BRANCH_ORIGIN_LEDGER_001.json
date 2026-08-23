@@ -143,7 +143,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / INDEPENDENT CAUCHY TOTAL ORDER PASS / ORDER-COMPATIBILITY+INVERSE+COMPLETION OPEN",
+      "status": "ACTIVE / INDEPENDENT CAUCHY ORDERED RING PASS / INVERSE+COMPLETION OPEN",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -216,7 +216,7 @@
         "C-CL-INTEGRATION-001"
       ],
       "reconvergence_strength": "NOT YET EVALUATED / NO RESEARCH JUNCTION BEFORE INDEPENDENT COMPLETION",
-      "experimental_product_status": "VERIFIED INDEPENDENT CAUCHY TOTAL ORDERED CARRIER+RING / ORDER-COMPATIBILITY+INVERSE+COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
+      "experimental_product_status": "VERIFIED INDEPENDENT CAUCHY ORDERED COMMUTATIVE RING / INVERSE+COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
@@ -259,7 +259,10 @@
       "partial_order_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PARTIAL_ORDER_VERIFIED_EVIDENCE_RUN_32633758238.json",
       "verified_total_order_run": 32634079706,
       "verified_total_order_source_commit": "04150cf8424e3ecc497e3cb14b55e6373dab6878",
-      "total_order_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_TOTAL_ORDER_VERIFIED_EVIDENCE_RUN_32634079706.json"
+      "total_order_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_TOTAL_ORDER_VERIFIED_EVIDENCE_RUN_32634079706.json",
+      "verified_ordered_ring_run": 32634312486,
+      "verified_ordered_ring_source_commit": "ad6228336b13d0f39a678d5502898a52d274a780",
+      "ordered_ring_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_ORDERED_RING_VERIFIED_EVIDENCE_RUN_32634312486.json"
     }
   ]
 }

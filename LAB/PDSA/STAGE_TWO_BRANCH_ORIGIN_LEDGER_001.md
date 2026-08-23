@@ -178,6 +178,10 @@ Totality then passed exact V5 `32634079706` at source
 contains zero selected-Dedekind declarations. The classical witness extraction
 is localized to the totality source. Ordered-ring compatibility, inverse, and
 completeness remain open.
+Additive and nonnegative-multiplicative order compatibility then passed exact
+V5 `32634312486` at source `ad6228336b13d0f39a678d5502898a52d274a780`;
+the ordered-ring closure contains 479 declarations and zero selected-Dedekind
+declarations. Nonzero inverse and Cauchy completeness remain open.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.
