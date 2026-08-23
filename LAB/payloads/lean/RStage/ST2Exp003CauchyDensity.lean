@@ -70,7 +70,8 @@ theorem rational_approximation_exists (x : RCBOMA) (eps : QBOMA)
     have hbase : qLE (u.seq n) (qAdd (u.seq N) eps) :=
       qClose_to_le_add hclose
     exact qle_trans hbase (qLE_self_add_pos (qAdd (u.seq N) eps) heta)
-  · rw [rCAdd_mk]
+  · change rCLE (rCmk (cauchyOfQ (u.seq N)))
+      (rCmk (cAddSeq u (cauchyOfQ eps)))
     apply (rCLE_mk (cauchyOfQ (u.seq N))
       (cAddSeq u (cauchyOfQ eps))).2
     intro eta heta
