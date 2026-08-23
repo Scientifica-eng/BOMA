@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keep the first independent Cauchy milestone distinct from full completion."""
+"""Audit the current independently assembled Cauchy route without overstating completion."""
 from __future__ import annotations
 
 import argparse
@@ -61,6 +61,17 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyOrderedRing003.cauchyLE_mul_nonneg",
     "BOMA.R.StageTwo.CauchyOrderedRing003.rcle_mul_nonneg",
     "BOMA.R.StageTwo.CauchyOrderedRing003.cauchyOrderedRingCertificate",
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.eventually_positive_gap_of_nonzero",
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.eventually_negative_gap_of_nonzero",
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.nonzero_eventually_sign_separated",
+    "BOMA.R.StageTwo.CauchyNonzeroGap003.cauchyNonzeroGapCertificate",
+    "BOMA.R.StageTwo.CauchyInverse003.q_reciprocal_difference",
+    "BOMA.R.StageTwo.CauchyInverse003.qClose_reciprocals_of_positive_lower",
+    "BOMA.R.StageTwo.CauchyInverse003.positive_gap_inverse_sequence_exists",
+    "BOMA.R.StageTwo.CauchyInverse003.representative_inverse_exists",
+    "BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists",
+    "BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists_unique",
+    "BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate",
 }
 
 
@@ -90,38 +101,43 @@ def main() -> int:
     if forbidden:
         residuals.append({"type": "selected_dedekind_or_downstream_c_in_independent_closure", "declarations": forbidden})
     if missing:
-        residuals.append({"type": "proved_foundation_target_missing", "declarations": missing})
+        residuals.append({"type": "proved_independent_target_missing", "declarations": missing})
 
+    passed = not residuals
     result = {
-        "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-FOUNDATION-001",
-        "status": "FOUNDATION_PASS" if not residuals else "FOUNDATION_FAIL",
+        "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-CURRENT-001",
+        "status": "ORDERED_FIELD_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "Cauchy quotient / totally ordered commutative ring / additive and nonnegative multiplicative compatibility",
+        "verified_milestone": "independent Cauchy totally ordered field at witness-only quotient interface",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
         "accepted_real_replacement": False,
-        "additive_group_completed": not residuals,
-        "eventual_boundedness_completed": not residuals,
-        "bounded_product_estimate_completed": not residuals,
-        "multiplicative_monoid_completed": not residuals,
-        "commutative_ring_completed": not residuals,
-        "partial_order_completed": not residuals,
-        "total_order_completed": not residuals,
-        "ordered_ring_compatibility_completed": not residuals,
-        "ordered_field_completed": False,
+        "additive_group_completed": passed,
+        "eventual_boundedness_completed": passed,
+        "bounded_product_estimate_completed": passed,
+        "multiplicative_monoid_completed": passed,
+        "commutative_ring_completed": passed,
+        "partial_order_completed": passed,
+        "total_order_completed": passed,
+        "ordered_ring_compatibility_completed": passed,
+        "eventual_nonzero_sign_separation_completed": passed,
+        "ordered_field_completed": passed,
+        "reciprocal_sequence_selection_uses_classical_choice": True,
         "cauchy_completeness_proved": False,
+        "dedekind_lub_bridge_proved": False,
         "dedekind_comparison_proved": False,
         "downstream_complex_rebuilt": False,
+        "alternative_accepted": False,
         "experiment_closed": False,
         "residuals": residuals,
     }
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))
-    return 0 if not residuals else 1
+    return 0 if passed else 1
 
 
 if __name__ == "__main__":
