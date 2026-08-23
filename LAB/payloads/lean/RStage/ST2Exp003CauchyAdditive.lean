@@ -5,6 +5,7 @@ namespace BOMA.R.StageTwo.CauchyAdditive003
 open BOMA.NCore.RB001
 open BOMA.NArithmetic.Order001
 open BOMA.Q.Quotient001
+open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.CauchyProbe001
 open BOMA.R.StageTwo.CauchyCloseness003
