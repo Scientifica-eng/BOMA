@@ -57,7 +57,9 @@ Two notably old branches were inspected:
 - `tmp-check-ignore`: `ahead_by = 0` relative to `main`, substantially behind current `main`;
 - `restore-boma-sources`: `ahead_by = 0` relative to `main`, substantially behind current `main`.
 
-Deleting those branch refs would reduce UI clutter but would not remove their reachable historical commits from a public repository because their tips are ancestors of current history. No destructive branch deletion is performed by this audit.
+Additional branch review is required before publication to classify all active research, maintenance, restore, and temporary branches and decide which refs should remain visible as part of the public laboratory history.
+
+Deleting those branch refs would reduce UI clutter but would not remove their reachable historical commits from a public repository when those commits remain ancestors of current history. No destructive branch deletion is performed by this audit.
 
 ## 5. GitHub Actions security posture
 
@@ -82,6 +84,8 @@ Several canonical evidence-producing workflows intentionally request `contents: 
 For Q and R integration, the workflow explicitly commits generated evidence and executes `git push origin HEAD:main`.
 
 This means a strict `main` rule requiring every update to pass through a PR will conflict with current self-recording evidence behavior unless the bot is granted a bypass. A broad GitHub Actions bypass is **not recommended** for a public repository.
+
+The migration target is recorded separately in `LAB/PDSA/PRE_PUBLIC_ACTIONS_WRITE_MIGRATION_001.md`.
 
 ## 6. Preferred `main` protection architecture
 
@@ -118,13 +122,13 @@ Recommended sequence:
 
 1. preserve an external mirror backup of all refs before visibility change;
 2. explicitly accept the historical commit-email exposure described above;
-3. change repository visibility to Public using an administrator account;
-4. immediately create/activate a `main` branch ruleset at minimum blocking force pushes and deletion;
-5. initially avoid a broad Actions bypass;
-6. verify that standard hosted Actions execute again without private-repository minute exhaustion;
-7. establish an always-running PR gate and then require it in the `main` ruleset;
-8. migrate self-recording evidence workflows away from direct `main` pushes;
-9. once migration is complete, enforce PR-only updates to `main` with no routine bot bypass;
+3. merge the pre-public hardening baseline only after final review;
+4. create/activate a `main` ruleset at minimum blocking force pushes and deletion;
+5. avoid a broad Actions bypass;
+6. change repository visibility to Public using an administrator account;
+7. verify that standard hosted Actions execute again without private-repository minute exhaustion;
+8. establish an always-running PR gate and then require it in the `main` ruleset;
+9. migrate self-recording evidence workflows away from direct `main` pushes;
 10. enable/confirm public-repository secret scanning and push protection where available.
 
 ## 9. Actions-minute incident
