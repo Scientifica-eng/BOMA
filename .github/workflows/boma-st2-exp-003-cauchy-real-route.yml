@@ -22,6 +22,7 @@ on:
       - 'LAB/00_ARCHITECTURE/GRAPH.md'
       - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py'
       - 'README.md'
       - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-003-cauchy-real-route.yml'
@@ -139,6 +140,7 @@ jobs:
           grep -Fq 'Explicit Choice boundary' "$approximation"
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
             LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
 
       - name: Audit Q-to-R typed branch origin and accepted-source ownership
@@ -147,6 +149,13 @@ jobs:
           set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
             --json-out /tmp/st2-exp-003-branch-governance.json
+
+      - name: Audit H3 completeness evidence and failure lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h3-governance.json
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -203,6 +212,7 @@ jobs:
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
             printf -- '- Proved: independent Cauchy totally ordered field plus sequential Cauchy completeness.\n'
+            printf -- '- H3 governance: 32 retained error classes and exact completion evidence enforced.\n'
             printf -- '- Reciprocal, vanishing-scale, and rational-approximation selectors expose `Classical.choose` explicitly.\n'
             printf -- '- Selected Dedekind declarations in actual completion closure: zero.\n'
             printf -- '- Dedekind LUB bridge/comparison and downstream C rebuild: NOT YET PROVED.\n'
@@ -216,6 +226,7 @@ jobs:
           name: st2-exp-003-cauchy-current-${{ github.run_id }}
           path: |
             /tmp/st2-exp-003-branch-governance.json
+            /tmp/st2-exp-003-h3-governance.json
             /tmp/st2-exp-003-independent-closure.json
             /tmp/st2-exp-003-current-comparison.json
             /tmp/st2-exp-003-independent-lean.log
