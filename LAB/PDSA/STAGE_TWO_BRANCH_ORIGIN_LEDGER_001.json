@@ -220,7 +220,7 @@
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
-      "study": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_REAL_ROUTE_STUDY.md",
+      "study": "LAB/PDSA/experiments/ST2-EXP-003_ORDERED_FIELD_MILESTONE_001.md",
       "verified_run": null,
       "preserved_failure_runs": [
         32630769132,
