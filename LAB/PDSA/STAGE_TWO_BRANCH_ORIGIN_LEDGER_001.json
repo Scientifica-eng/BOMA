@@ -143,7 +143,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / FROZEN PLAN / INDEPENDENT CAUCHY BUILD IN PROGRESS",
+      "status": "ACTIVE / INDEPENDENT CAUCHY FOUNDATION PASS / FIELD COMPLETION OPEN",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -216,7 +216,7 @@
         "C-CL-INTEGRATION-001"
       ],
       "reconvergence_strength": "NOT YET EVALUATED / NO RESEARCH JUNCTION BEFORE INDEPENDENT COMPLETION",
-      "experimental_product_status": "ACTIVE INDEPENDENT CAUCHY RESEARCH / NOT AN ACCEPTED REAL EXPORT",
+      "experimental_product_status": "VERIFIED CAUCHY QUOTIENT / FIELD COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
@@ -232,7 +232,10 @@
         "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
         "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md",
         "BOMA-C-R-DEP-001": "LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md"
-      }
+      },
+      "verified_foundation_run": 32630874354,
+      "verified_foundation_source_commit": "557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1",
+      "foundation_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_FOUNDATION_VERIFIED_EVIDENCE_RUN_32630874354.json"
     }
   ]
 }

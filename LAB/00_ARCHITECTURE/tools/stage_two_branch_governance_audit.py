@@ -302,6 +302,26 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                 add_error(residuals, "active_cauchy_research_acceptance_boundary_missing")
             if record.get("reconvergence_junction_id"):
                 add_error(residuals, "premature_cauchy_research_junction")
+            foundation_run = record.get("verified_foundation_run")
+            if foundation_run is not None:
+                evidence_path = record.get("foundation_evidence")
+                if not isinstance(foundation_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_foundation_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != foundation_run:
+                        add_error(residuals, "active_cauchy_foundation_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_foundation_source_commit"):
+                        add_error(residuals, "active_cauchy_foundation_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_foundation_selected_real_dependency")
+                    for field in (
+                        "ordered_field_completed", "cauchy_completeness_proved",
+                        "route_comparison_proved", "downstream_complex_rebuilt",
+                        "alternative_accepted", "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_foundation_scope_inflated", field=field)
         elif len(cone) != 9:
             add_error(
                 residuals,

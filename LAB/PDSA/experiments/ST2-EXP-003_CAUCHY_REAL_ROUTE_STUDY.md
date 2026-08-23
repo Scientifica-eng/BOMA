@@ -1,7 +1,7 @@
 # ST2-EXP-003 — Cauchy Real Route Execution / Study Record
 
 **Experiment:** `ST2-EXP-003`  
-**Status:** `ACTIVE / INDEPENDENT FOUNDATION BUILD / COMPLETION NOT CLAIMED`  
+**Status:** `ACTIVE / INDEPENDENT FOUNDATION V5 PASS / FIELD COMPLETION OPEN`  
 **Typed origin:** `DECISION_POINT / R-DP-001`  
 **Common upstream accepted unit:** `Q-BLOCK-002`  
 **Reference accepted producer/export:** `R-BLOCK-001 / Dedekind`  
@@ -77,7 +77,7 @@ identical construction histories.
 ## Verification and claim boundary
 
 ```text
-independent Cauchy quotient/embedding V5  PENDING
+independent Cauchy quotient/embedding V5  PASS / exact run 32630874354
 independent ordered-field producer        NOT BUILT
 Cauchy completeness theorem               NOT BUILT
 Dedekind-LUB equivalence/bridge           NOT BUILT
@@ -89,6 +89,34 @@ accepted CA-20 complex export changed     NO
 merge to main                             NOT AUTHORIZED
 ```
 
-No completion, route equivalence, research Junction, or acceptance-level
-Claim is asserted before the corresponding frozen Plan gate and exact
-source-head evidence are actually satisfied.
+## Corrected independent foundation — exact run 32630874354 PASS
+
+```text
+verified source commit   557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1
+exact GitHub V5 run      32630874354
+formal source assembly   accepted Q + shared rational gateway + Cauchy only
+actual declaration count 365
+Dedekind declarations    0
+downstream C declarations 0
+Cauchy equivalence       reflexive / symmetric / transitive / V5 PASS
+formal carrier           Quotient cauchySetoid / V5 PASS
+rational embedding       constant sequences / faithful / V5 PASS
+transitivity axioms      [propext, Quot.sound]
+embedding axioms         [propext, Classical.choice, Quot.sound]
+transient sorryAx        ABSENT from the corrected successful report
+```
+
+`Classical.choice` is inherited specifically through the existing shared
+`qlt_trichotomy` used to reflect equality of embedded rational constants;
+it is not needed by Cauchy-equivalence transitivity. The first result thus
+distinguishes quotient/formalization cost, actual source-level producer
+independence, and the location of the inherited classical obligation.
+
+Machine-readable source-bound milestone evidence:
+
+`LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_FOUNDATION_VERIFIED_EVIDENCE_RUN_32630874354.json`.
+
+No ordered field, completeness theorem, route equivalence, research Junction,
+downstream C rebuild, or new accepted export follows from this milestone.
+The experiment remains active until the remaining frozen Plan gates have
+their own exact-head proofs and evidence.

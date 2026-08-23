@@ -149,6 +149,10 @@ Claim families form the explicitly recorded affected cone.
 Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.
 Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.
 Current status: `ACTIVE / NO VERIFIED COMPLETION / NO RESEARCH JUNCTION`.
+Independent quotient/faithful rational embedding: exact V5 `32630874354`
+at source `557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1`; 365 internal
+declarations and zero selected-Dedekind declarations. This verifies only a
+foundation milestone, not an ordered real field or a completeness theorem.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.
