@@ -143,7 +143,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / BOUNDED PRODUCT ESTIMATE PASS / QUOTIENT MULTIPLICATION+COMPLETION OPEN",
+      "status": "ACTIVE / INDEPENDENT CAUCHY COMMUTATIVE RING PASS / ORDER+INVERSE+COMPLETION OPEN",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -216,7 +216,7 @@
         "C-CL-INTEGRATION-001"
       ],
       "reconvergence_strength": "NOT YET EVALUATED / NO RESEARCH JUNCTION BEFORE INDEPENDENT COMPLETION",
-      "experimental_product_status": "VERIFIED CAUCHY PRODUCT ESTIMATE / QUOTIENT MULTIPLICATION+COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
+      "experimental_product_status": "VERIFIED INDEPENDENT CAUCHY COMMUTATIVE RING / ORDER+INVERSE+COMPLETION ACTIVE / NOT AN ACCEPTED REAL EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
@@ -249,7 +249,10 @@
       "boundedness_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_BOUNDEDNESS_VERIFIED_EVIDENCE_RUN_32632806907.json",
       "verified_product_bound_run": 32633183941,
       "verified_product_bound_source_commit": "02cfe95d16d87fabebc885d729d589bbf6ca8498",
-      "product_bound_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PRODUCT_BOUND_VERIFIED_EVIDENCE_RUN_32633183941.json"
+      "product_bound_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PRODUCT_BOUND_VERIFIED_EVIDENCE_RUN_32633183941.json",
+      "verified_ring_run": 32633443480,
+      "verified_ring_source_commit": "7b1b9a343a45ea3d4b9651aefafbbcb39a0f47f4",
+      "ring_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_RING_VERIFIED_EVIDENCE_RUN_32633443480.json"
     }
   ]
 }

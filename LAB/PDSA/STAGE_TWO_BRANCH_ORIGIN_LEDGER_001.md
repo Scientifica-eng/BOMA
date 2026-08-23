@@ -165,6 +165,10 @@ passed exact V5 `32633183941` at source
 `02cfe95d16d87fabebc885d729d589bbf6ca8498`; its 418-declaration closure
 also contains zero selected-Dedekind declarations. It is not yet a quotient
 multiplication operation.
+Quotient multiplication and its commutative-ring laws then passed exact V5
+`32633443480` at source `7b1b9a343a45ea3d4b9651aefafbbcb39a0f47f4`;
+the integrated closure has 442 declarations and zero selected-Dedekind
+declarations. Order, nonzero inverse, and Cauchy completeness remain open.
 The old accepted R and C exports, both prior experiments, and selected
 `C-ROUTE-P` are unchanged. No comparison Junction is claimed before
 independent Cauchy completion and exact V5 evidence exist.
