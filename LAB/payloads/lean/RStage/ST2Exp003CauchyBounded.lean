@@ -33,7 +33,9 @@ theorem qNonneg_add_one_positive {B : QBOMA} (hB : qLE qZero B) :
   · intro hzero
     have hstep := qadd_mono_right qzero_le_one B
     rw [qAdd_zero_left, qAdd_comm qOne B, hzero.symm] at hstep
-    exact qone_ne_zero (qle_antisymm hstep qzero_le_one)
+    have hBzero : B = qZero := qle_antisymm hstep hB
+    rw [hBzero, qAdd_zero_left] at hzero
+    exact qone_ne_zero hzero.symm
 
 /-- A positive radius remains positive after adding one. -/
 theorem qAdd_one_positive {B : QBOMA} (hB : qPos B) :
@@ -66,12 +68,8 @@ theorem rational_has_positive_bound (a : QBOMA) :
     rcases nonnegative_has_positive_bound hnega with ⟨B, hB, hlower, hupper⟩
     refine ⟨B, hB, ?_⟩
     constructor
-    · have h := qneg_reverses hupper
-      rw [qNeg_neg] at h
-      exact h
-    · have h := qneg_reverses hlower
-      rw [qNeg_neg] at h
-      exact h
+    · simpa only [qNeg_neg] using qneg_reverses hupper
+    · simpa only [qNeg_neg] using qneg_reverses hlower
 
 /-- Translating a rational difference back by its right endpoint cancels it. -/
 theorem q_difference_cancel_right (x a : QBOMA) :

@@ -228,3 +228,18 @@ additive certificate explicitly so that closure extraction cannot mistake an
 unconnected theorem in the same manifest for milestone ownership.
 
 Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
+
+### Preserved first boundedness failure — run 32632711528
+
+```text
+source commit  c7998c1b9755c9ce50df1d41c13684a522d3577e
+failed gate    positive enlarged bound / negative-case normalization
+mechanism      after B+1=0 the available inequality is B≤0, not 1≤0;
+               `rw [qNeg_neg]` also normalized only the first occurrence
+correction     derive B=0 before contradiction; normalize both endpoints
+error class    ERR-ST2-024 / post-substitution type drift
+```
+
+The failed axiom output contains transient `sorryAx` only because Lean created
+error-recovery declarations after these two type errors. It is not successful
+boundedness evidence and must be absent from the corrected exact-head run.
