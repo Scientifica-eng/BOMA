@@ -51,6 +51,10 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyOrderCore003.rcle_antisymm",
     "BOMA.R.StageTwo.CauchyOrderCore003.rCOfQ_order",
     "BOMA.R.StageTwo.CauchyOrderCore003.cauchyPartialOrderCertificate",
+    "BOMA.R.StageTwo.CauchyOrderTotal003.not_cauchyLE_witness",
+    "BOMA.R.StageTwo.CauchyOrderTotal003.cauchyLE_total",
+    "BOMA.R.StageTwo.CauchyOrderTotal003.rcle_total",
+    "BOMA.R.StageTwo.CauchyOrderTotal003.cauchyTotalOrderCertificate",
 }
 
 
@@ -88,7 +92,7 @@ def main() -> int:
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
-        "verified_milestone": "Cauchy quotient / commutative ring / representative-invariant partial order extending Q",
+        "verified_milestone": "Cauchy quotient / commutative ring / representative-invariant total order extending Q",
         "required_targets": sorted(REQUIRED_TARGETS),
         "actual_declaration_count": len(internal),
         "selected_dedekind_declarations": forbidden,
@@ -99,7 +103,7 @@ def main() -> int:
         "multiplicative_monoid_completed": not residuals,
         "commutative_ring_completed": not residuals,
         "partial_order_completed": not residuals,
-        "total_order_completed": False,
+        "total_order_completed": not residuals,
         "ordered_field_completed": False,
         "cauchy_completeness_proved": False,
         "dedekind_comparison_proved": False,

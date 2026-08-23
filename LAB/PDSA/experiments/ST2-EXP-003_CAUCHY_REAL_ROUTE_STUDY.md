@@ -348,6 +348,15 @@ Machine-readable evidence:
 
 `LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_PARTIAL_ORDER_VERIFIED_EVIDENCE_RUN_32633758238.json`.
 
+## DO — totality with localized classical witness extraction
+
+The next source proves that failure of one approximate-order direction yields
+a fixed positive rational gap witnessed arbitrarily late. Cauchy stability
+then forces the reverse approximate order. The negated-universal witness
+extraction and the top-level case split are marked by local `classical`
+commands; they are not attributed to the constructive partial-order core.
+Status before exact-head V5: `SOURCE ASSEMBLED / VERIFICATION PENDING`.
+
 ## Corrected quotient commutative ring — exact run 32633443480 PASS
 
 ```text
