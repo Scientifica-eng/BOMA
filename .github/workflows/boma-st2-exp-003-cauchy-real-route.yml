@@ -35,7 +35,7 @@ concurrency:
 
 jobs:
   verify:
-    name: prove Cauchy quotient independently without claiming full completion
+    name: prove Cauchy route independently without claiming completeness
     runs-on: ubuntu-latest
 
     steps:
@@ -81,7 +81,7 @@ jobs:
           printf 'Verified head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
             "$actual_sha" "$frozen_plan" "$baseline"
 
-      - name: Validate independent Cauchy assembly and no fake-completion boundary
+      - name: Validate independent Cauchy assembly and explicit Choice boundary
         shell: bash
         run: |
           set -euo pipefail
@@ -108,12 +108,22 @@ jobs:
             LAB/payloads/lean/RStage/ST2Exp003CauchyMultiplicative.lean \
             LAB/payloads/lean/RStage/ST2Exp003CauchyOrderCore.lean \
             LAB/payloads/lean/RStage/ST2Exp003CauchyOrderTotal.lean \
-            LAB/payloads/lean/RStage/ST2Exp003CauchyOrderedRing.lean; do
+            LAB/payloads/lean/RStage/ST2Exp003CauchyOrderedRing.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyNonzeroGap.lean; do
             if grep -En "$forbidden_source" "$src"; then
-              printf 'Independent Cauchy source contains an undeclared producer/principle\n' >&2
+              printf 'Independent pre-inverse Cauchy source contains an undeclared producer/principle\n' >&2
               exit 1
             fi
           done
+          inverse=LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean
+          inverse_forbidden='BOMA\.R\.(Dedekind|StageIntegration002)|BOMA\.C\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$inverse_forbidden" "$inverse"; then
+            printf 'Cauchy inverse source contains a forbidden selected producer or placeholder\n' >&2
+            exit 1
+          fi
+          grep -Fq 'Classical.choose (hpoint n)' "$inverse"
+          grep -Fq 'Classical.choose_spec (hpoint n)' "$inverse"
+          grep -Fq 'Explicit Choice boundary' "$inverse"
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
             LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
@@ -135,7 +145,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Prove rational closeness, Cauchy quotient, and faithful embedding
+      - name: Prove independent Cauchy ordered field and print logical commitments
         shell: bash
         run: |
           set -euo pipefail
@@ -148,66 +158,56 @@ jobs:
             printf '\n' >> "$target"
           done < "$manifest"
           printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyAdditive003.rCAdd_assoc\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyBounded003.cauchy_eventually_bounded\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyBounded003.cauchyBoundedCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyProductBounds003.qClose_mul_of_common_bound\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyProductBounds003.cauchyProductBoundCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyMultiplicative003.seqMul_cauchy\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyMultiplicative003.cMulSeq_respects\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyMultiplicative003.cauchyCommutativeRingCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderCore003.cauchyLE_antisymm\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderCore003.rCOfQ_order\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderCore003.cauchyPartialOrderCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderTotal003.not_cauchyLE_witness\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderTotal003.cauchyLE_total\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderTotal003.cauchyTotalOrderCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderedRing003.cauchyLE_mul_nonneg\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyOrderedRing003.rcle_mul_nonneg\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyOrderedRing003.cauchyOrderedRingCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyNonzeroGap003.nonzero_eventually_sign_separated\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyNonzeroGap003.cauchyNonzeroGapCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyInverse003.qClose_reciprocals_of_positive_lower\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyInverse003.positive_gap_inverse_sequence_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyInverse003.rC_inverse_exists_unique\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate\n' >> "$target"
           lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
 
-      - name: Extract actual selected-Dedekind-free faithful-embedding closure
+      - name: Extract actual selected-Dedekind-free ordered-field closure
         shell: bash
         run: |
           set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
-            --target BOMA.R.StageTwo.CauchyOrderedRing003.cauchyOrderedRingCertificate \
+            --target BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate \
             --json-out /tmp/st2-exp-003-independent-closure.json \
             > /tmp/st2-exp-003-dependency-audit.log
           python3 LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py \
             --independent-closure /tmp/st2-exp-003-independent-closure.json \
             --governance /tmp/st2-exp-003-branch-governance.json \
-            --json-out /tmp/st2-exp-003-foundation-comparison.json
+            --json-out /tmp/st2-exp-003-current-comparison.json
 
-      - name: Publish exact scope without claiming full Cauchy completeness
+      - name: Publish exact scope without claiming Cauchy completeness
         shell: bash
         run: |
           set -euo pipefail
           {
-            printf '## ST2-EXP-003 — independent Cauchy quotient foundation\n'
+            printf '## ST2-EXP-003 — independent Cauchy ordered field\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
-            printf -- '- Proved: independent Cauchy totally ordered commutative ring with operation compatibility.\n'
+            printf -- '- Proved: independent Cauchy totally ordered field with witness-only inverse contract.\n'
+            printf -- '- Reciprocal-sequence assembly exposes `Classical.choose` explicitly.\n'
             printf -- '- Selected Dedekind declarations in actual closure: zero.\n'
-            printf -- '- Ordered field, completeness, comparison, and C rebuild: NOT YET PROVED.\n'
+            printf -- '- Cauchy completeness, Dedekind bridge/comparison, and C rebuild: NOT YET PROVED.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Preserve exact-head independent-foundation evidence
+      - name: Preserve exact-head independent-route evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-003-cauchy-foundation-${{ github.run_id }}
+          name: st2-exp-003-cauchy-current-${{ github.run_id }}
           path: |
             /tmp/st2-exp-003-branch-governance.json
             /tmp/st2-exp-003-independent-closure.json
-            /tmp/st2-exp-003-foundation-comparison.json
+            /tmp/st2-exp-003-current-comparison.json
             /tmp/st2-exp-003-independent-lean.log
             /tmp/st2-exp-003-dependency-audit.log
           if-no-files-found: warn
+          retention-days: 30
