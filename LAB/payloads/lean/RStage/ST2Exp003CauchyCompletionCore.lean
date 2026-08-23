@@ -8,6 +8,7 @@ open BOMA.NCore.RB001
 open BOMA.NArithmetic.Order001
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.R.Gateway001
 open BOMA.R.CauchyProbe001
 open BOMA.R.StageTwo.CauchyCloseness003
 open BOMA.R.StageTwo.CauchyQuotient003
@@ -112,16 +113,24 @@ theorem rCClose_mono {eps delta : QBOMA} {x y : RCBOMA}
     rCClose delta x y := by
   have herr : rCLE (rCOfQ eps) (rCOfQ delta) :=
     (rCOfQ_order eps delta).2 hed
-  constructor
-  · exact rcle_trans h.1 (rcle_add_right herr y)
-  · exact rcle_trans h.2 (rcle_add_right herr x)
+  have hy := rcle_add_right herr y
+  have hx := rcle_add_right herr x
+  have hy' :
+      rCLE (rCAdd y (rCOfQ eps)) (rCAdd y (rCOfQ delta)) := by
+    rw [rCAdd_comm y (rCOfQ eps), rCAdd_comm y (rCOfQ delta)]
+    exact hy
+  have hx' :
+      rCLE (rCAdd x (rCOfQ eps)) (rCAdd x (rCOfQ delta)) := by
+    rw [rCAdd_comm x (rCOfQ eps), rCAdd_comm x (rCOfQ delta)]
+    exact hx
+  exact ⟨rcle_trans h.1 hy', rcle_trans h.2 hx'⟩
 
 /-- A constant quotient sequence converges to its constant value. -/
 theorem constant_converges (x : RCBOMA) :
     RCConverges (fun _ => x) x := by
   intro eps heps
   refine ⟨BOMA.NCore.RB001.BOMANat.z, ?_⟩
-  intro n hn
+  intro n _
   exact rCClose_refl heps x
 
 /-- Machine-checkable statement boundary for the later diagonal proof. -/
