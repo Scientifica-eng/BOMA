@@ -1,7 +1,7 @@
 name: BOMA N-Addition R-B — Evidence V5
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   workflow_dispatch:
@@ -65,19 +65,17 @@ jobs:
           cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean > /tmp/AddLaws.lean
           lake env lean /tmp/AddLaws.lean
 
-      - name: Record evidence
+      - name: Generate run evidence
         if: always()
         shell: bash
         run: |
           set -u
+          mkdir -p /tmp/boma-evidence
           RESULT=PASS
           for x in "${{ steps.setup.outcome }}" "${{ steps.routeR.outcome }}" "${{ steps.routeL.outcome }}" "${{ steps.convergence.outcome }}" "${{ steps.laws.outcome }}"; do
             if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
           done
-          git fetch origin main
-          git checkout -B add-evidence origin/main
-          mkdir -p LAB/20_FORMALIZATION/N_ARITHMETIC/evidence
-          cat > LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ADD_V5_LATEST.md <<EOF
+          cat > /tmp/boma-evidence/N_ADD_V5_LATEST.md <<EOF
           # N-Addition Claim-Level V5 Evidence
 
           **Status:** ${RESULT}  
@@ -95,13 +93,15 @@ jobs:
 
           This is verification evidence only; canonical statuses require PDSA Study/Act.
           EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add LAB/20_FORMALIZATION/N_ARITHMETIC/evidence/N_ADD_V5_LATEST.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Record N-addition V5 run ${GITHUB_RUN_ID}"
-            git push origin HEAD:main
-          fi
+
+      - name: Upload immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n-addition-v5-evidence-${{ github.run_id }}
+          path: /tmp/boma-evidence/N_ADD_V5_LATEST.md
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Enforce
         if: always()
