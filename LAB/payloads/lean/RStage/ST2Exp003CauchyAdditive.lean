@@ -39,10 +39,11 @@ theorem qClose_add {eps delta x y a b : QBOMA}
     qClose (qAdd eps delta) (qAdd x a) (qAdd y b) := by
   constructor
   · have h := qAdd_mono hxy.1 hab.1
-    rw [← qNeg_add, q_difference_sum] at h
+    rw [← qNeg_add] at h
+    rw [q_difference_sum]
     exact h
   · have h := qAdd_mono hxy.2 hab.2
-    rw [q_difference_sum] at h
+    rw [q_difference_sum]
     exact h
 
 /-- Pointwise addition of rational sequences. -/

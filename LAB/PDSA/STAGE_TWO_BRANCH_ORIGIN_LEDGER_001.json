@@ -224,7 +224,8 @@
       "verified_run": null,
       "preserved_failure_runs": [
         32630769132,
-        32631916749
+        32631916749,
+        32631997598
       ],
       "unit_sources": {
         "Q-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/Q-BLOCK-002/UNIT.md",

@@ -145,3 +145,18 @@ The theorem was already present in the unchanged accepted Q assembly. No new
 axiom or stronger rational interface is introduced by the correction. The
 `sorryAx` printed for the unsuccessful additive certificate is an error-
 recovery artifact and must disappear from a later successful exact-head run.
+
+### Preserved additive-normalization failure — run 32631997598
+
+```text
+source commit  037b684e4ee697953e96428ad21b0eee05129258
+failed gate    qClose_add / difference-of-sums transport
+mechanism      q_difference_sum was applied to the helper inequality after
+               qAdd_mono had already normalized that side
+correction     rewrite the remaining unnormalized goal, then use the helper
+error class    ERR-ST2-022 / rewrite-target mismatch
+```
+
+This failure changes no mathematical hypothesis. It records the distinction
+between a proved equality, the expression currently present in a goal, and
+the expression already produced in an auxiliary inequality.
