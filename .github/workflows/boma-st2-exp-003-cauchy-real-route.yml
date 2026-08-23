@@ -36,7 +36,7 @@ concurrency:
 
 jobs:
   verify:
-    name: prove Cauchy route independently through sequential completeness
+    name: prove Cauchy route independently through exact least-upper-bound completeness
     runs-on: ubuntu-latest
 
     steps:
@@ -82,7 +82,7 @@ jobs:
           printf 'Verified head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
             "$actual_sha" "$frozen_plan" "$baseline"
 
-      - name: Validate independent Cauchy assembly and explicit Choice boundaries
+      - name: Validate independent Cauchy assembly and explicit classical boundaries
         shell: bash
         run: |
           set -euo pipefail
@@ -113,7 +113,8 @@ jobs:
             LAB/payloads/lean/RStage/ST2Exp003CauchyNonzeroGap.lean \
             LAB/payloads/lean/RStage/ST2Exp003CauchyCompletionCore.lean \
             LAB/payloads/lean/RStage/ST2Exp003CauchyDensity.lean \
-            LAB/payloads/lean/RStage/ST2Exp003CauchyCompletion.lean; do
+            LAB/payloads/lean/RStage/ST2Exp003CauchyCompletion.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyLUB.lean; do
             if grep -En "$forbidden_source" "$src"; then
               printf 'Independent non-selector Cauchy source contains an undeclared producer/principle\n' >&2
               exit 1
@@ -123,9 +124,11 @@ jobs:
           inverse=LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean
           scale=LAB/payloads/lean/RStage/ST2Exp003CauchyScale.lean
           approximation=LAB/payloads/lean/RStage/ST2Exp003CauchyApproximation.lean
-          for src in "$inverse" "$scale" "$approximation"; do
+          lub_bracket=LAB/payloads/lean/RStage/ST2Exp003CauchyLUBBracket.lean
+          lub_sequence=LAB/payloads/lean/RStage/ST2Exp003CauchyLUBSequence.lean
+          for src in "$inverse" "$scale" "$approximation" "$lub_bracket" "$lub_sequence"; do
             if grep -En "$selector_forbidden" "$src"; then
-              printf 'Cauchy selector source contains a forbidden selected producer or placeholder\n' >&2
+              printf 'Cauchy selector/search source contains a forbidden selected producer or placeholder\n' >&2
               exit 1
             fi
           done
@@ -138,6 +141,11 @@ jobs:
           grep -Fq 'exact Classical.choose' "$approximation"
           grep -Fq 'exact Classical.choose_spec' "$approximation"
           grep -Fq 'Explicit Choice boundary' "$approximation"
+          grep -Fq 'Classical.em (RCUpperBound F' "$lub_bracket"
+          grep -Fq 'Finite classical search' "$lub_bracket"
+          grep -Fq 'exact Classical.choose' "$lub_sequence"
+          grep -Fq 'exact Classical.choose_spec' "$lub_sequence"
+          grep -Fq 'Explicit Choice boundary' "$lub_sequence"
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
             LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
@@ -167,7 +175,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Prove independent Cauchy completeness and print logical commitments
+      - name: Prove independent Cauchy LUB and print logical commitments
         shell: bash
         run: |
           set -euo pipefail
@@ -180,22 +188,21 @@ jobs:
             printf '\n' >> "$target"
           done < "$manifest"
           printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyInverse003.cauchyOrderedFieldCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyScale003.qCauchyScale_tends_zero\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyApproximation003.qApproxSeq_cauchy\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.CauchyCompletion003.rCCauchyComplete\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUBBracket003.rational_lub_bracket_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUBSequence003.h4Lower_cauchy\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUB003.rCauchy_lub_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate\n' >> "$target"
           lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
 
-      - name: Extract actual selected-Dedekind-free completeness closure
+      - name: Extract actual selected-Dedekind-free H4 LUB closure
         shell: bash
         run: |
           set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
-            --target BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate \
+            --target BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate \
             --json-out /tmp/st2-exp-003-independent-closure.json \
             > /tmp/st2-exp-003-dependency-audit.log
           python3 LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py \
@@ -203,19 +210,19 @@ jobs:
             --governance /tmp/st2-exp-003-branch-governance.json \
             --json-out /tmp/st2-exp-003-current-comparison.json
 
-      - name: Publish exact scope after Cauchy completeness
+      - name: Publish exact scope after H4 least-upper-bound proof
         shell: bash
         run: |
           set -euo pipefail
           {
-            printf '## ST2-EXP-003 — independent sequentially complete Cauchy field\n'
+            printf '## ST2-EXP-003 — independent Cauchy real with exact LUB contract\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
-            printf -- '- Proved: independent Cauchy totally ordered field plus sequential Cauchy completeness.\n'
-            printf -- '- H3 governance: 32 retained error classes and exact completion evidence enforced.\n'
-            printf -- '- Reciprocal, vanishing-scale, and rational-approximation selectors expose `Classical.choose` explicitly.\n'
-            printf -- '- Selected Dedekind declarations in actual completion closure: zero.\n'
-            printf -- '- Dedekind LUB bridge/comparison and downstream C rebuild: NOT YET PROVED.\n'
+            printf -- '- Proved: independent totally ordered field, sequential Cauchy completeness, and exact bounded-nonempty-family least-upper-bound completeness.\n'
+            printf -- '- H3 governance remains enforced; H4 finite bracket search uses localized `Classical.em`.\n'
+            printf -- '- H4 shrinking bracket sequence exposes countable `Classical.choose` explicitly.\n'
+            printf -- '- Selected Dedekind declarations in actual H4 closure: zero required.\n'
+            printf -- '- Dedekind/Cauchy carrier comparison and downstream C rebuild: NOT YET PROVED.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
