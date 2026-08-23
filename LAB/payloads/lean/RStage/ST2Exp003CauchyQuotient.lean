@@ -58,7 +58,8 @@ def rCmk (u : CauchySeq) : RCBOMA := Quotient.mk cauchySetoid u
 theorem rCmk_eq_iff {u v : CauchySeq} : rCmk u = rCmk v ↔ CauchyEquiv u v := by
   constructor
   · exact Quotient.exact
-  · exact Quotient.sound
+  · intro huv
+    exact Quotient.sound huv
 
 /-- Rational embedding by the previously verified constant-sequence producer. -/
 def rCOfQ (q : QBOMA) : RCBOMA := rCmk (cauchyOfQ q)

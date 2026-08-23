@@ -46,6 +46,34 @@ accepted. Its present-tense sections now report `C-BLOCK-002 / CA-20` and
 the solely approved active Cauchy experiment; dated historical documents
 are not rewritten.
 
+## First preserved Lean failure — exact run 32630769132
+
+```text
+source commit  aa8bdd8770832bc298339c72fc5992dd6b1b6182
+exact run      32630769132
+failed gate    independent Cauchy quotient / faithful Q embedding
+location       rCmk_eq_iff / reverse quotient-sound direction
+mechanism      bare `exact Quotient.sound` cannot infer the hidden Setoid
+               through the local `rCmk` abbreviation before an argument exists
+correction     introduce `huv : CauchyEquiv u v`; use `Quotient.sound huv`
+error class    ERR-ST2-020 / F2 / quotient identity elaboration
+```
+
+The failed kernel output also disclosed a substantive logical split:
+
+```text
+shared rational `qlt_trichotomy`       [propext, Classical.choice, Quot.sound]
+Cauchy asymptotic transitivity         [propext, Quot.sound]
+constant rational embedding reflection uses qlt_trichotomy; choice inherited
+```
+
+The additional `sorryAx` printed for the unsuccessful embedding declaration
+was Lean's error-recovery placeholder after the failed proof, not an accepted
+axiom or a successful result. The corrected proof must eliminate it in a
+subsequent successful exact-head run. This evidence concerns source-level
+route use; equal or inherited kernel axiom names do not justify claiming
+identical construction histories.
+
 ## Verification and claim boundary
 
 ```text
