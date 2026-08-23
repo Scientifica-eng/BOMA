@@ -15,6 +15,7 @@ on:
       - 'LAB/PDSA/experiments/ST2*EXP*003*'
       - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
       - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_H4_001.md'
       - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
       - 'LAB/PDSA/STATUS.md'
       - 'LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json'
@@ -23,6 +24,7 @@ on:
       - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
       - 'README.md'
       - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-003-cauchy-real-route.yml'
@@ -149,6 +151,7 @@ jobs:
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
             LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
             LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
 
       - name: Audit Q-to-R typed branch origin and accepted-source ownership
@@ -164,6 +167,13 @@ jobs:
           set -euo pipefail
           python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
             --json-out /tmp/st2-exp-003-h3-governance.json
+
+      - name: Audit H4 LUB evidence and H5 readiness
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h4-governance.json
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -219,11 +229,11 @@ jobs:
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
             printf -- '- Proved: independent totally ordered field, sequential Cauchy completeness, and exact bounded-nonempty-family least-upper-bound completeness.\n'
-            printf -- '- H3 governance remains enforced; H4 finite bracket search uses localized `Classical.em`.\n'
-            printf -- '- H4 shrinking bracket sequence exposes countable `Classical.choose` explicitly.\n'
+            printf -- '- H3 and H4 evidence/failure-lineage governance are both enforced.\n'
+            printf -- '- H4 finite bracket search uses localized `Classical.em`; shrinking bracket selection exposes countable `Classical.choose`.\n'
             printf -- '- Selected Dedekind declarations in actual H4 closure: zero required.\n'
-            printf -- '- Dedekind/Cauchy carrier comparison and downstream C rebuild: NOT YET PROVED.\n'
-            printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
+            printf -- '- H5 Dedekind/Cauchy comparison is permitted only after the H4 governance step passes.\n'
+            printf -- '- Downstream C rebuild remains NOT YET PROVED; canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve exact-head independent-route evidence
@@ -234,6 +244,7 @@ jobs:
           path: |
             /tmp/st2-exp-003-branch-governance.json
             /tmp/st2-exp-003-h3-governance.json
+            /tmp/st2-exp-003-h4-governance.json
             /tmp/st2-exp-003-independent-closure.json
             /tmp/st2-exp-003-current-comparison.json
             /tmp/st2-exp-003-independent-lean.log
