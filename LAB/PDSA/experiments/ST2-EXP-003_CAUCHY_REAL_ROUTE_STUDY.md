@@ -160,3 +160,19 @@ error class    ERR-ST2-022 / rewrite-target mismatch
 This failure changes no mathematical hypothesis. It records the distinction
 between a proved equality, the expression currently present in a goal, and
 the expression already produced in an auxiliary inequality.
+
+### Preserved additive-integration closure failure — run 32632080736
+
+```text
+source commit  b43cc942a5707bf8b5d4699f7495e4107c8235ee
+Lean proofs    PASS through additive certificate elaboration
+closure        389 declarations / zero selected Dedekind declarations
+failed gate    rCOfQ_injective absent from certificate target closure
+mechanism      additive certificate did not consume embedding injectivity
+correction     add qEmbeddingInjective to the integration certificate
+error class    ERR-ST2-023 / claimed-invariant ownership gap
+```
+
+The correction strengthens the experimental certificate; it does not relax
+the dependency comparison or infer the missing ownership from mere presence
+of a theorem in the source manifest.

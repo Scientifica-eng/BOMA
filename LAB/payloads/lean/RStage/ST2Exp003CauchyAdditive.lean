@@ -190,6 +190,7 @@ theorem rCOfQ_neg (q : QBOMA) : rCNeg (rCOfQ q) = rCOfQ (qNeg q) := by
 
 /-- Independently assembled additive-group-strength research certificate. -/
 structure CauchyAdditiveCertificate where
+  qEmbeddingInjective : ∀ {q r : QBOMA}, rCOfQ q = rCOfQ r → q = r
   addComm : ∀ x y : RCBOMA, rCAdd x y = rCAdd y x
   addAssoc : ∀ x y z : RCBOMA, rCAdd (rCAdd x y) z = rCAdd x (rCAdd y z)
   addZeroLeft : ∀ x : RCBOMA, rCAdd rCZero x = x
@@ -199,6 +200,7 @@ structure CauchyAdditiveCertificate where
   qEmbeddingNeg : ∀ q : QBOMA, rCNeg (rCOfQ q) = rCOfQ (qNeg q)
 
 theorem cauchyAdditiveCertificate : CauchyAdditiveCertificate where
+  qEmbeddingInjective := @rCOfQ_injective
   addComm := rCAdd_comm
   addAssoc := rCAdd_assoc
   addZeroLeft := rCAdd_zero_left

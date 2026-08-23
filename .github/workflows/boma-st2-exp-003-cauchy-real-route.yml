@@ -144,6 +144,7 @@ jobs:
           printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyAdditive003.rCAdd_assoc\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.CauchyAdditive003.cauchyAdditiveCertificate\n' >> "$target"
           lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
 
