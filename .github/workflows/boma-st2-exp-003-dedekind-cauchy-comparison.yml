@@ -21,12 +21,21 @@ on:
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
       - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
       - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
       - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/00_ARCHITECTURE/R_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'README.md'
+      - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-003-dedekind-cauchy-comparison.yml'
   push:
     branches:
       - 'feature/stage-two-st2-exp-003-*'
+      - 'maintenance/st2-exp-003-lifecycle-closure-*'
 
 concurrency:
   group: boma-st2-exp-003-h5-${{ github.ref }}
@@ -70,14 +79,28 @@ jobs:
           printf 'Junction exact head: %s\nFrozen Plan: %s\nH4 verified ancestor: %s\nField-isomorphism verified ancestor: %s\nStudy/Act ancestor: %s\n' \
             "$actual_sha" "$frozen_plan" "$h4_verified" "$field_verified" "$study_act"
 
-      - name: Require audited H4 before combined reconvergence
+      - name: Require H4 historical evidence or closed-frontier governance
         shell: bash
         run: |
           set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
-            --json-out /tmp/st2-exp-003-h4-governance.json
-          grep -Fq '"status": "H4_GOVERNANCE_PASS"' /tmp/st2-exp-003-h4-governance.json
-          grep -Fq '"h5_comparison_allowed": true' /tmp/st2-exp-003-h4-governance.json
+          state="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          record = next(x for x in ledger['records'] if x['experiment_id'] == 'ST2-EXP-003')
+          print(record['status'])
+          PY
+          )"
+          if [[ "$state" == CLOSED* ]]; then
+            python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+              --json-out /tmp/st2-exp-003-h4-governance.json
+            grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' /tmp/st2-exp-003-h4-governance.json
+          else
+            python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+              --json-out /tmp/st2-exp-003-h4-governance.json
+            grep -Fq '"status": "H4_GOVERNANCE_PASS"' /tmp/st2-exp-003-h4-governance.json
+            grep -Fq '"h5_comparison_allowed": true' /tmp/st2-exp-003-h4-governance.json
+          fi
 
       - name: Validate Study decision and independent combined separation
         shell: bash
@@ -192,15 +215,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          state="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          record = next(x for x in ledger['records'] if x['experiment_id'] == 'ST2-EXP-003')
+          print(record['status'])
+          PY
+          )"
           {
             printf '## ST2-EXP-003 — Research Dedekind/Cauchy R Junction\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
-            printf -- '- Study/Act decision: `RESEARCH R JUNCTION: CREATE`.\n'
-            printf -- '- Junction packages the accepted Dedekind producer, independently completed Cauchy producer, and exact H5 field/order isomorphism.\n'
-            printf -- '- No new real carrier, inverse selector, Choice boundary, accepted producer, or canonical acceptance is created.\n'
+            printf -- '- Junction packages the accepted Dedekind producer, independently completed Cauchy producer, and H5 field/order isomorphism.\n'
+            printf -- '- No new real carrier, inverse selector, Choice boundary, or canonical acceptance is created.\n'
             printf -- '- Independent Cauchy manifest remains selected-Dedekind-free and Junction-free.\n'
-            printf -- '- Downstream C rebuild is authorized only after this exact Junction gate succeeds.\n'
-            printf -- '- Accepted R/C and main remain unchanged.\n'
+            if [[ "$state" == CLOSED* ]]; then
+              printf -- '- Lifecycle governance: `STAGE_TWO_CLOSED_FRONTIER_PASS`; the Junction is retained closed-experiment research evidence.\n'
+              printf -- '- Canonical R/C remain unchanged and there is NO ACTIVE EXPERIMENT.\n'
+            else
+              printf -- '- H5/Junction remains an active-experiment research result; accepted R/C remain unchanged.\n'
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve research R Junction evidence
