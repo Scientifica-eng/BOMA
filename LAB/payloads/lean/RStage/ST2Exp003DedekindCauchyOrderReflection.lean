@@ -12,6 +12,7 @@ namespace BOMA.R.StageTwo.DedekindCauchyComparison003
 
 open BOMA.Q.Quotient001
 open BOMA.Q.Order001
+open BOMA.R.Gateway001
 open BOMA.R.DedekindQuotient001
 open BOMA.R.DedekindOrderConstructive001
 open BOMA.R.DedekindOrderClassical001
