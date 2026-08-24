@@ -27,6 +27,7 @@ on:
       - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py'
       - 'LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py'
       - 'README.md'
       - 'AGENTS.md'
@@ -157,9 +158,10 @@ jobs:
             LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
             LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
             LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py \
             LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
 
-      - name: Audit active or closed Stage-Two lifecycle state
+      - name: Audit active or historical Stage-Two lifecycle state
         shell: bash
         run: |
           set -euo pipefail
@@ -172,9 +174,9 @@ jobs:
           PY
           )"
           if [[ "$state" == CLOSED* ]]; then
-            python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            python3 LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py \
               --json-out /tmp/st2-exp-003-branch-governance.json
-            grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' /tmp/st2-exp-003-branch-governance.json
+            grep -Fq '"status": "ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS"' /tmp/st2-exp-003-branch-governance.json
             cp /tmp/st2-exp-003-branch-governance.json /tmp/st2-exp-003-h3-governance.json
             cp /tmp/st2-exp-003-branch-governance.json /tmp/st2-exp-003-h4-governance.json
           else
@@ -243,6 +245,13 @@ jobs:
           print(record['status'])
           PY
           )"
+          current_active="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          print(ledger.get('active_experiment') or 'NONE')
+          PY
+          )"
           {
             printf '## ST2-EXP-003 — independent Cauchy real exact verification\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
@@ -250,9 +259,9 @@ jobs:
             printf -- '- Independent Cauchy producer remains selected-Dedekind-free in its mathematical closure.\n'
             printf -- '- Proved again: totally ordered field, sequential Cauchy completeness, and bounded-nonempty-family least-upper-bound contract.\n'
             if [[ "$state" == CLOSED* ]]; then
-              printf -- '- Lifecycle governance: `STAGE_TWO_CLOSED_FRONTIER_PASS`; ST2-EXP-003 is CLOSED / PASS.\n'
+              printf -- '- Historical lifecycle governance: `ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS`; ST2-EXP-003 remains CLOSED / PASS.\n'
               printf -- '- H3/H4 historical evidence is retained unchanged; active-only milestone auditors are not reinterpreted after closure.\n'
-              printf -- '- Canonical R remains Dedekind; accepted R/C exports remain unchanged; there is NO ACTIVE EXPERIMENT.\n'
+              printf -- '- Canonical R remains Dedekind and accepted R/C exports remain unchanged. Current active-experiment pointer: `%s`.\n' "$current_active"
             else
               printf -- '- Active lifecycle governance and H3/H4 milestone audits all pass.\n'
               printf -- '- H5 comparison remains gated by the exact H4 milestone.\n'

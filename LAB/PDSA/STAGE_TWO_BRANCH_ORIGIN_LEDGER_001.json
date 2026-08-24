@@ -1,10 +1,11 @@
 {
   "schema": "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001",
-  "status": "CLOSED FRONTIER / THREE CLOSED EXPERIMENTS / NO ACTIVE EXPERIMENT",
+  "status": "FOUR CLOSED EXPERIMENTS / ST2-EXP-011 CLOSED PASS / NO ACTIVE EXPERIMENT / 011 ARCHITECTURE INTEGRATION REQUIRED",
   "date": "2026-08-24",
-  "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, or acceptance promotion.",
+  "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, Junction, or acceptance promotion.",
   "active_experiment": null,
-  "next_experiment_slot": "OPEN / OWNER SELECTION REQUIRED",
+  "next_experiment_slot": "ST2-EXP-004 OWNER-SEQUENCED AFTER ST2-EXP-011 ARCHITECTURE INTEGRATION / NOT ACTIVE / NO FROZEN PLAN",
+  "required_next_act": "ST2-EXP-011 LEARNING-TO-CONSTRUCTION INTEGRATION",
   "allowed_origin_kinds": [
     "BRICK",
     "BLOCK",
@@ -36,6 +37,20 @@
       "trigger": "push / main / post-merge",
       "error_id": "ERR-ST2-016",
       "root_cause": "A whole CStage directory freshness rule treated twelve research-only sources as changes to the six unchanged accepted C sources."
+    },
+    {
+      "id": 32750715634,
+      "commit": "211eab2f9005845c71a2f3869d14464ef97d092a",
+      "workflow": "BOMA Stage-Two Lifecycle Closure 001 — V5",
+      "error_id": "ERR-ST2-011-002",
+      "root_cause": "Historical closed-experiment CI conflated ST2-EXP-001..003 local closure with a permanently empty global Stage-Two frontier after ST2-EXP-011 began its post-Study lifecycle transition."
+    },
+    {
+      "id": 32752921166,
+      "commit": "76b46a97bd65551a35c7c5734de8272b0ba7296d",
+      "workflow": "BOMA ST2-EXP-003 Independent Cauchy Real Route — V5",
+      "error_id": "ERR-ST2-011-002-COMPAT",
+      "root_cause": "The new historical-closure audit and Lean/H4 closure passed, but ST2_EXP_003_COMPARE_FOUNDATION.py did not yet recognize the explicit historical-closure governance schema."
     }
   ],
   "records": [
@@ -280,6 +295,113 @@
       "current_exact_h6_run": 32727267183,
       "current_exact_h6_artifact_id": 9520002118,
       "current_exact_h6_artifact_sha256": "72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa"
+    },
+    {
+      "experiment_id": "ST2-EXP-011",
+      "status": "CLOSED / PASS / MATHEMATICAL PASS / LIFECYCLE CLOSED / ARCHITECTURE INTEGRATION REQUIRED",
+      "origin_kind": "BLOCK",
+      "origin_id": "C-COMPARE-BLOCK-001",
+      "origin_label": "existing quadratic comparison Block; first divergence at scalar carrier/operation hard-wiring inside the comparison presentation/relation",
+      "source_unit_id": "R-BLOCK-001",
+      "target_unit_id": "C-COMPARE-BLOCK-001",
+      "baseline_producer_unit_id": "C-COMPARE-BLOCK-001",
+      "accepted_export_unit_id": "C-BLOCK-002",
+      "selected_baseline_route": "C-ROUTE-P",
+      "dependency_contract": "BOMA-C-R-DEP-001",
+      "changed_factor": "generalize only the C quadratic-comparison scalar abstraction from RBOMA/RStageIntegrationCertificate hard-wiring to a closure-derived scalar-operation plus explicit-coordinate interface",
+      "preserved_controls": [
+        "accepted R-BLOCK-001 Dedekind producer and R-DP-001 SELECTS R-ROUTE-D",
+        "accepted C-DP-001 SELECTS C-ROUTE-P and C-BLOCK-001 producer",
+        "accepted C-J-001 integration and C-BLOCK-002 / CA-20 export",
+        "ST2-EXP-003 RCBOMA/H5/H6 historical provenance and nonacceptance",
+        "relation-level comparison distinct from functional comparison",
+        "functional comparison only from explicit CoordinateExtractor data",
+        "no global coordinate or inverse selector"
+      ],
+      "first_divergence": "scalar carrier/operation boundary inside C-COMPARE-BLOCK-001 QuadraticFieldPresentation/Related machinery",
+      "affected_cone": [
+        "C-CL-COMPARE-001",
+        "C-CL-INTEGRATION-001"
+      ],
+      "direct_affected_claims": ["C-CL-COMPARE-001"],
+      "secondary_audit_claims": ["C-CL-INTEGRATION-001"],
+      "comparison_scalar_operations": ["zero", "one", "neg", "add", "mul"],
+      "comparison_coordinate_requirements": [
+        "coord",
+        "coordinateGeneration",
+        "coordinateUnique",
+        "coordinateZero",
+        "coordinateOne",
+        "coordinateReal",
+        "coordinateImag",
+        "coordinateNeg",
+        "coordinateAdd",
+        "coordinateMul"
+      ],
+      "reconvergence_strength": "SHARED GENERIC INTERFACE COMPATIBILITY / ACCEPTED RELATED SEMANTICS PRESERVED / NATIVE H6 INSTANCE VERIFIED / NO JUNCTION CREATED",
+      "experimental_product_status": "VERIFIED RESEARCH-ONLY GENERIC COMPARISON LAYER + ACCEPTED RBOMA ADAPTER + NATIVE RCBOMA/H6 ADAPTER / NOT AN ACCEPTED REFACTOR OR EXPORT",
+      "junction_status": "NO NEW JUNCTION JUSTIFIED",
+      "frozen_reference_commit": "b49826e58261a71634cd12756e8afda28920088f",
+      "frozen_plan_commit": "5cc05ef1bea8e88787041c3bc30dd0aecf5412d4",
+      "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md",
+      "gate_a_closure": "LAB/PDSA/experiments/ST2-EXP-011_GATE_A_DECLARATION_CLOSURE_001.md",
+      "final_study_act": "LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md",
+      "final_study_act_commit": "862fe83ed1529581e34599bbaf094cbae476af68",
+      "lifecycle_closure_record": "LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md",
+      "mathematical_result": "PASS",
+      "lifecycle_disposition": "CLOSED / OWNER AUTHORIZED 2026-08-24 / RESEARCH EVIDENCE READY FOR PR MERGE / SEPARATE ARCHITECTURE INTEGRATION REQUIRED BEFORE ST2-EXP-004",
+      "closure_authorized_date": "2026-08-24",
+      "verified_head": "ef116405c08475ec8702d9177a5106d7d0bfe525",
+      "verified_run": 32753140129,
+      "verified_artifact_id": 9529812715,
+      "verified_artifact_sha256": "f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1",
+      "verified_run_role": "FINAL GREEN PRE-CLOSURE ST2-EXP-011 EXACT-HEAD WORKFLOW; SAME HEAD PASSED ACCEPTED C AND HISTORICAL STAGE-TWO REGRESSIONS",
+      "accepted_regression_runs": {
+        "c_route_probes": 32753140225,
+        "c_same_carrier_integration": 32753140141,
+        "c_stage_acceptance": 32753140262
+      },
+      "historical_regression_runs": {
+        "stage_two_historical_closure": 32753140144,
+        "st2_exp_002": 32753140135,
+        "st2_exp_003_independent_cauchy": 32753140147,
+        "st2_exp_003_h5_comparison": 32753140218,
+        "st2_exp_003_h6_rebuild": 32753140145
+      },
+      "preserved_failure_runs": [
+        32749650430,
+        32750715634,
+        32750715744,
+        32750715709,
+        32750715582,
+        32750715665,
+        32752921166
+      ],
+      "failure_records": [
+        "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMMENT_FALSE_POSITIVE.md",
+        "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md"
+      ],
+      "logical_cost": {
+        "generic_roots": "NO AXIOMS",
+        "native_h6_roots": "[propext, Quot.sound]",
+        "accepted_adapter_roots": "[propext, Classical.choice, Quot.sound] / INHERITED ACCEPTED PROVENANCE"
+      },
+      "native_h5_dedekind_dependency": false,
+      "relation_function_firewall_preserved": true,
+      "global_selector_added": false,
+      "new_block_created": false,
+      "new_decision_point_created": false,
+      "new_junction_created": false,
+      "durable_architecture_knowledge": true,
+      "canonical_refactor_status": "CANDIDATE ONLY / NOT PERFORMED",
+      "architecture_integration_status": "REQUIRED / SEPARATE POST-CLOSURE ACT / NOT YET INTEGRATED",
+      "unit_sources": {
+        "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
+        "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
+        "C-COMPARE-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md",
+        "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md",
+        "BOMA-C-R-DEP-001": "LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md"
+      }
     }
   ]
 }

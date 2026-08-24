@@ -19,6 +19,7 @@ on:
       - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
       - 'LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md'
       - 'README.md'
@@ -31,7 +32,7 @@ concurrency:
 
 jobs:
   audit:
-    name: verify owner-authorized closed Stage-Two frontier
+    name: preserve owner-authorized ST2-EXP-001..003 closure
     runs-on: ubuntu-latest
 
     steps:
@@ -40,7 +41,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Pin closure branch and protect accepted sources against current main
+      - name: Pin historical closure and protect accepted sources against current main
         shell: bash
         run: |
           set -euo pipefail
@@ -73,25 +74,26 @@ jobs:
             done < "$manifest"
           done
 
-          printf 'Closure exact head: %s\nCurrent main: %s\nMerged ST2-EXP-003 main: %s\nFinal mathematical head: %s\n' \
+          printf 'Historical-closure exact head: %s\nCurrent main: %s\nMerged ST2-EXP-003 main: %s\nFinal mathematical head: %s\n' \
             "$actual" "$current_main" "$merged_experiment" "$final_math_head"
 
-      - name: Compile closure and architecture auditors
+      - name: Compile historical-closure and architecture auditors
         shell: bash
         run: |
           set -euo pipefail
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py \
             LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
             LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
 
-      - name: Audit Stage-Two closed lifecycle frontier
+      - name: Audit preserved ST2-EXP-001..003 historical closure
         shell: bash
         run: |
           set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py \
             --json-out /tmp/stage-two-lifecycle-closure.json
-          grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' \
+          grep -Fq '"status": "ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS"' \
             /tmp/stage-two-lifecycle-closure.json
 
       - name: Run repository-wide architecture consistency audit before main merge
@@ -102,14 +104,29 @@ jobs:
             --json-out /tmp/ARCHITECTURE_CONSISTENCY_CLOSURE.json \
             | tee /tmp/architecture-consistency-closure.log
 
-      - name: Publish lifecycle closure scope
+      - name: Publish historical closure scope
         shell: bash
         run: |
+          set -euo pipefail
+          current_active="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          print(ledger.get('active_experiment') or 'NONE')
+          PY
+          )"
+          next_slot="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          print(ledger.get('next_experiment_slot') or 'UNSPECIFIED')
+          PY
+          )"
           {
-            printf '## Stage-Two lifecycle closure\n'
+            printf '## Stage-Two historical lifecycle closure preservation\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
-            printf -- '- `ST2-EXP-001`, `ST2-EXP-002`, and `ST2-EXP-003`: CLOSED / PASS.\n'
-            printf -- '- Active experiment: NONE. Next slot: OPEN / OWNER SELECTION REQUIRED.\n'
+            printf -- '- `ST2-EXP-001`, `ST2-EXP-002`, and `ST2-EXP-003`: historical CLOSED / PASS evidence preserved.\n'
+            printf -- '- Current active-experiment pointer: `%s`; current next-slot marker: `%s`.\n' "$current_active" "$next_slot"
             printf -- '- Accepted R remains Dedekind `R-BLOCK-001`; accepted C remains `C-ROUTE-P / C-BLOCK-002 / CA-20`.\n'
             printf -- '- Research Cauchy R, `ST2-EXP-003-R-J-001`, and H6 C remain nonaccepted research evidence.\n'
             printf -- '- Frozen Plan and accepted Q/R/C manifests/producers are unchanged relative to current main.\n'

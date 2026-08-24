@@ -29,6 +29,7 @@ on:
       - 'LAB/00_ARCHITECTURE/REGISTRY.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py'
       - 'README.md'
       - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-003-dedekind-cauchy-comparison.yml'
@@ -79,7 +80,7 @@ jobs:
           printf 'Junction exact head: %s\nFrozen Plan: %s\nH4 verified ancestor: %s\nField-isomorphism verified ancestor: %s\nStudy/Act ancestor: %s\n' \
             "$actual_sha" "$frozen_plan" "$h4_verified" "$field_verified" "$study_act"
 
-      - name: Require H4 historical evidence or closed-frontier governance
+      - name: Require H4 historical evidence after ST2-EXP-003 closure
         shell: bash
         run: |
           set -euo pipefail
@@ -92,9 +93,9 @@ jobs:
           PY
           )"
           if [[ "$state" == CLOSED* ]]; then
-            python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            python3 LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py \
               --json-out /tmp/st2-exp-003-h4-governance.json
-            grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' /tmp/st2-exp-003-h4-governance.json
+            grep -Fq '"status": "ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS"' /tmp/st2-exp-003-h4-governance.json
           else
             python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
               --json-out /tmp/st2-exp-003-h4-governance.json
@@ -223,6 +224,13 @@ jobs:
           print(record['status'])
           PY
           )"
+          current_active="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          print(ledger.get('active_experiment') or 'NONE')
+          PY
+          )"
           {
             printf '## ST2-EXP-003 — Research Dedekind/Cauchy R Junction\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
@@ -230,8 +238,8 @@ jobs:
             printf -- '- No new real carrier, inverse selector, Choice boundary, or canonical acceptance is created.\n'
             printf -- '- Independent Cauchy manifest remains selected-Dedekind-free and Junction-free.\n'
             if [[ "$state" == CLOSED* ]]; then
-              printf -- '- Lifecycle governance: `STAGE_TWO_CLOSED_FRONTIER_PASS`; the Junction is retained closed-experiment research evidence.\n'
-              printf -- '- Canonical R/C remain unchanged and there is NO ACTIVE EXPERIMENT.\n'
+              printf -- '- Historical lifecycle governance: `ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS`; the Junction remains closed-experiment research evidence.\n'
+              printf -- '- Canonical R/C remain unchanged. Current active-experiment pointer: `%s`.\n' "$current_active"
             else
               printf -- '- H5/Junction remains an active-experiment research result; accepted R/C remain unchanged.\n'
             fi
