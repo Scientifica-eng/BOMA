@@ -13,6 +13,7 @@ on:
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean'
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean'
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
       - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
@@ -82,10 +83,11 @@ jobs:
           density=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean
           reflection=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean
           inverse=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean
+          additive=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean
           test -s "$accepted"
           test -s "$independent"
           test -s "$combined"
-          for target in "$foundation" "$density" "$reflection" "$inverse"; do
+          for target in "$foundation" "$density" "$reflection" "$inverse" "$additive"; do
             test -f "$target"
             if grep -Fxq "$target" "$independent"; then
               printf 'H5 combined comparison source contaminated the independent Cauchy manifest: %s\n' "$target" >&2
@@ -119,6 +121,8 @@ jobs:
           grep -Fq 'Surjectivity, mutual inverse' "$reflection"
           grep -Fq 'does not create a research Junction' "$inverse"
           grep -Fq 'does not yet claim' "$inverse"
+          grep -Fq 'Multiplication, nonzero inverse preservation' "$additive"
+          grep -Fq 'research Junction remain outside this source' "$additive"
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -130,7 +134,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Prove H5 order isomorphism
+      - name: Prove H5 additive preservation
         shell: bash
         run: |
           set -euo pipefail
@@ -145,13 +149,19 @@ jobs:
             cat "$src" >> "$target"
             printf '\n' >> "$target"
           done < "$manifest"
-          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderReflectionCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_cToD\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_dToC\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderIsomorphismCertificate\n' >> "$target"
-          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-order-isomorphism-lean.log
+          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderIsomorphismCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.rC_rational_strict_below_add_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.r_rational_strict_below_add_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_add\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_add\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_zero\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_zero\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_neg\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_neg\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyAdditivePreservationCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-additive-preservation-lean.log
 
-      - name: Extract combined H5 order-isomorphism closure
+      - name: Extract combined H5 additive-preservation closure
         shell: bash
         run: |
           set -euo pipefail
@@ -163,33 +173,33 @@ jobs:
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest "$manifest" \
-            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderIsomorphismCertificate \
-            --json-out /tmp/st2-exp-003-h5-order-isomorphism-closure.json \
-            > /tmp/st2-exp-003-h5-order-isomorphism-dependency-audit.log
+            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyAdditivePreservationCertificate \
+            --json-out /tmp/st2-exp-003-h5-additive-preservation-closure.json \
+            > /tmp/st2-exp-003-h5-additive-preservation-dependency-audit.log
 
-      - name: Publish H5 order-isomorphism scope
+      - name: Publish H5 additive-preservation scope
         shell: bash
         run: |
           set -euo pipefail
           {
-            printf '## ST2-EXP-003 H5 — Dedekind/Cauchy order-isomorphism milestone\n'
+            printf '## ST2-EXP-003 H5 — Dedekind/Cauchy additive-preservation milestone\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Independent H4 remains separately verified and selected-Dedekind-free.\n'
-            printf -- '- Proved: comparison maps, rational preservation, monotonicity, Cauchy rational density, order reflection, and mutual inverse laws.\n'
-            printf -- '- The two completed real carriers are therefore order-isomorphic through the explicit H5 maps.\n'
-            printf -- '- NOT YET CLAIMED: addition/multiplication/inverse preservation, field isomorphism, or research Junction.\n'
+            printf -- '- The explicit H5 maps are already mutually inverse order isomorphisms.\n'
+            printf -- '- Proved at this gate: preservation of addition, additive zero, and negation in both directions.\n'
+            printf -- '- NOT YET CLAIMED: multiplication preservation, nonzero inverse preservation, field isomorphism, or research Junction.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Preserve H5 order-isomorphism evidence
+      - name: Preserve H5 additive-preservation evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-003-h5-order-isomorphism-${{ github.run_id }}
+          name: st2-exp-003-h5-additive-preservation-${{ github.run_id }}
           path: |
             /tmp/st2-exp-003-h4-governance.json
-            /tmp/st2-exp-003-h5-order-isomorphism-lean.log
-            /tmp/st2-exp-003-h5-order-isomorphism-closure.json
-            /tmp/st2-exp-003-h5-order-isomorphism-dependency-audit.log
+            /tmp/st2-exp-003-h5-additive-preservation-lean.log
+            /tmp/st2-exp-003-h5-additive-preservation-closure.json
+            /tmp/st2-exp-003-h5-additive-preservation-dependency-audit.log
           if-no-files-found: warn
           retention-days: 30
