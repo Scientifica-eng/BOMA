@@ -1,7 +1,7 @@
 {
   "schema": "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001",
   "status": "ACTIVE / TWO CLOSED EXPERIMENTS / ST2-EXP-003 ACTIVE",
-  "date": "2026-08-23",
+  "date": "2026-08-24",
   "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, or acceptance promotion.",
   "allowed_origin_kinds": [
     "BRICK",
@@ -137,7 +137,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / INDEPENDENT CAUCHY DEDEKIND-LUB CONTRACT PASS / H5 COMPARISON READY",
+      "status": "ACTIVE / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -181,13 +181,17 @@
         "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
         "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
-      "reconvergence_strength": "H4 EXACT LUB CONTRACT PASS / H5 RECONVERGENCE NOT YET BUILT / NO RESEARCH JUNCTION YET",
-      "experimental_product_status": "VERIFIED INDEPENDENT DEDEKIND-COMPLETE CAUCHY TOTALLY ORDERED FIELD / H5 COMPARISON READY / NOT AN ACCEPTED REAL EXPORT",
+      "reconvergence_strength": "H5 EXACT R-FIELD ISOMORPHISM / VERIFIED RESEARCH R JUNCTION / H6 CAUCHY-NATIVE C-BLOCK-001 CORE REBUILD EXACT PASS",
+      "experimental_product_status": "VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD + VERIFIED RESEARCH R JUNCTION + VERIFIED H6 CAUCHY-NATIVE COMPLEX CORE / NOT AN ACCEPTED REAL EXPORT / H6 C NOT AN ACCEPTED EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
       "study": "LAB/PDSA/experiments/ST2-EXP-003_CAUCHY_REAL_ROUTE_STUDY_CONTINUATION_H3.md",
       "h4_study": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md",
+      "final_study_act": "LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md",
+      "final_study_act_commit": "9b688c53c03c749e5e9a58e6f179b191bbb1c883",
+      "mathematical_result": "PASS",
+      "lifecycle_disposition": "ACTIVE / OWNER DISPOSITION PENDING / MERGE TO MAIN NOT AUTHORIZED",
       "verified_run": null,
       "preserved_failure_runs": [
         32630769132, 32631916749, 32631997598, 32632080736,
@@ -238,7 +242,33 @@
       "verified_lub_source_commit": "0f4a706d94c394b8e8a9eec836859caac772a944",
       "lub_source_completion_commit": "cb31e12e2b4fb7a07488a09c2a9394d4ab61946c",
       "lub_evidence": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_LUB_VERIFIED_EVIDENCE_RUN_32643579395.json",
-      "lub_milestone": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md"
+      "lub_milestone": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md",
+      "h5_field_isomorphism_verified_source_commit": "2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b",
+      "h5_field_isomorphism_verified_run": 32718253596,
+      "h5_field_isomorphism_artifact_id": 9516753847,
+      "h5_field_isomorphism_artifact_sha256": "e913d04cf98c305f5f9ac55904d0a2d987c00bc2109b1a5b2b3371e4fac005e6",
+      "h5_field_isomorphism_study": "LAB/PDSA/experiments/ST2-EXP-003_H5_FIELD_ISOMORPHISM_AND_JUNCTION_STUDY_001.md",
+      "research_r_junction_verified_source_commit": "7604590e73425b68de5500042d57f0a1c3abcde3",
+      "research_r_junction_verified_run": 32718925270,
+      "research_r_junction_artifact_id": 9516996491,
+      "research_r_junction_artifact_sha256": "0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0",
+      "research_r_junction_record": "LAB/PDSA/experiments/ST2-EXP-003_DEDEKIND_CAUCHY_R_JUNCTION_001.md",
+      "h6_cauchy_quadratic_verified_source_commit": "ea5fdb61fcbafb0ece463910c24ef71183443b19",
+      "h6_cauchy_quadratic_verified_run": 32719705824,
+      "h6_cauchy_quadratic_artifact_id": 9517267487,
+      "h6_cauchy_quadratic_artifact_sha256": "cf296c8daf92c9cfe9e54986b93b6101ea225aad79c1c7388ad6d3ae13ae5a0e",
+      "h6_evidence": "LAB/PDSA/experiments/ST2-EXP-003_H6_CAUCHY_QUADRATIC_EXACT_EVIDENCE_001.md",
+      "h6_scope": "rebuilt the seven selected C-BLOCK-001 core Claim meanings over RCBOMA; accepted C comparison/integration layer unchanged",
+      "current_exact_head": "a26446da4547976d2a4bd67d8d8bc7511d71c1ab",
+      "current_exact_independent_cauchy_run": 32721991515,
+      "current_exact_independent_cauchy_artifact_id": 9518096500,
+      "current_exact_independent_cauchy_artifact_sha256": "deb9329a3e366a7d837538a75a84afc28493494a44738dd5e1475188962dfd2b",
+      "current_exact_h5_junction_run": 32721991470,
+      "current_exact_h5_junction_artifact_id": 9518090428,
+      "current_exact_h5_junction_artifact_sha256": "b862b920884884269eb62bb4d8790ad5046ff8fe2c1c644cf6a1ad66008a33ac",
+      "current_exact_h6_run": 32721991455,
+      "current_exact_h6_artifact_id": 9518082966,
+      "current_exact_h6_artifact_sha256": "51369d656890a3c0353792be31ef3850d8ecd31bdc1ddbb26557308ffe17f408"
     }
   ]
 }
