@@ -1,159 +1,141 @@
 # DECISION LEDGER — Selected Routes and Preserved Alternatives
 
 **Document ID:** `BOMA-DECISION-LEDGER-001`  
-**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED R + OPEN C FRONTIER  
-**Date:** 2026-08-21  
-**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED C + STAGE-TWO LEARNING INTEGRATION  
+**Date:** 2026-08-24  
+**Program lineage:** `PDSA-ARCH-002`; `BOMA-ST2-LEARNING-INTEGRATION-001`.
 
 ## 1. Purpose
 
-Provide one auditable index of all currently canonical Decision Points while preserving the distinction:
+Provide one auditable index of canonical Decision Points while preserving:
 
 ```text
 SELECTED ≠ DERIVED NECESSITY
-OPEN ≠ PARTIALLY SELECTED
+NON-SELECTED ≠ REJECTED
+VERIFIED ALTERNATIVE ≠ ACCEPTED EXPORT
+PERMANENT DAG VISIBILITY ≠ SELECTS
 ```
 
-The authoritative detailed rationale remains each Decision Point's `UNIT.md`. This ledger prevents downstream documents or visualizations from silently forgetting non-selected alternatives or depicting an unresolved C route as though evidence had already selected it.
+Detailed rationale remains each Decision Point's `UNIT.md` and associated PDSA evidence.
 
 ## 2. Decision inventory
 
-| Decision | Question | Selected Stage-One option | Preserved alternatives | Epistemic class |
+| Decision | Question | Selected option | Preserved alternatives | Current interpretation |
 |---|---|---|---|---|
 | `N-DP-001` | formal N realization regime | R-B — fresh BOMA-specific inductive unary carrier | R-A set/Peano-style; R-C categorical NNO; R-D free-monoid-derived | methodological / formalization-dependent |
-| `N-DP-002` | eliminator and universe scope | Sort-polymorphic eliminator + target-Type-polymorphic fold + same-universe pointwise initiality; Stage-One `bomaAlg` at `Type 0` | Type-only eliminator rejected for current acceptance; heterogeneous cross-universe initiality retained as later strengthening | formalization-dependent / methodological |
-| `Z-DP-001` | canonical integer representation after route convergence | signed canonical normal forms | difference pairs + explicit equivalence retained; quotient-of-pairs not required | methodological / formalization choice |
-| `Q-DP-001` | formal rational identity realization | explicit `Quotient fracSetoid` carrier | canonical reduced fractions; raw syntax + external `FracEquiv` | methodological / formalization choice |
-| `R-DP-001` | real completion route | Dedekind lower cuts | Cauchy completion retained as first-class branch | mathematical construction / methodological choice |
-| `R-DP-002` | formal identity for selected Dedekind syntax | `RBOMA := Quotient cutSetoid` | raw LowerCut syntax + external `CutEquiv`; raw structure equality not selected | formalization / methodological choice |
-| `R-DP-003` | logical regime for total order | constructive partial-order core + localized classical `CutComparability` witness | narrow explicit comparability principle; constructive locatedness/strengthened-cut regime | logical / methodological choice |
-| `R-DP-004` | approximation route needed for additive inverse | reusable Q Archimedean approximation gateway + isolated finite cut search | direct one-off Dedekind bracketing route | mathematical route choice |
-| `R-DP-005` | signed real multiplication architecture | positive/negative-part decomposition over nonnegative kernel | direct sign-case multiplication; shift-to-positive multiplication | mathematical / architectural choice |
-| `R-DP-006` | nonzero real inverse architecture | direct positive Dedekind reciprocal + signed extension | completeness/supremum inverse route | methodological choice + verified route |
-| `C-DP-001` | Stage-One complex construction realization route | **C-ROUTE-P — USER-RATIFIED 2026-08-22** | `C-ROUTE-Q` verified polynomial-adjunction/quotient branch; third route only if genuinely independent | mathematical construction / representation / formalization choice |
+| `N-DP-002` | eliminator and universe scope | Sort-polymorphic eliminator + target-Type-polymorphic fold + same-universe pointwise initiality | stronger heterogeneous cross-universe initiality | formalization-dependent |
+| `Z-DP-001` | canonical integer representation | signed canonical normal forms | difference pairs + explicit equivalence | selected after verified representation convergence |
+| `Q-DP-001` | rational formal identity | `Quotient fracSetoid` | reduced fractions; raw syntax + external `FracEquiv` | formalization choice |
+| `R-DP-001` | real completion route | **R-ROUTE-D / Dedekind** | **R-ROUTE-C / Cauchy — PERMANENT VERIFIED ALTERNATIVE** | selection remains methodological; Cauchy independently completed and reconverged through `ST2-EXP-003-R-J-001` |
+| `R-DP-002` | selected Dedekind formal identity | `RBOMA := Quotient cutSetoid` | raw LowerCut + external `CutEquiv` | formalization choice |
+| `R-DP-003` | total-order logical regime | localized classical `CutComparability` witness over constructive partial-order core | constructive locatedness / alternate comparability | logical / methodological choice |
+| `R-DP-004` | Q approximation route | reusable Q Archimedean approximation gateway | direct one-off Dedekind bracketing | mathematical route choice |
+| `R-DP-005` | real multiplication architecture | positive/negative-part decomposition | direct sign-case; shift-to-positive | mathematical / architectural choice |
+| `R-DP-006` | real inverse architecture | direct positive Dedekind reciprocal + signed extension | completeness/supremum inverse | methodological choice |
+| `C-DP-001` | complex construction realization | **C-ROUTE-P / ordered-pair rank-two — USER-RATIFIED** | **C-ROUTE-Q — PERMANENT VERIFIED ALTERNATIVE**; `C-ROUTE-A` only if genuinely independent | Route Q independently completed and reconverged through `ST2-EXP-002-PQ-J-001`; selection remains Route P |
 
-## 3. Decision-specific transparency notes
+## 3. `R-DP-001` after ST2-EXP-003 integration
 
-### `N-DP-001`
+Stage One selected Dedekind because it gave a direct verified route to the required LUB completeness target. The selection never meant that Cauchy was impossible.
 
-The selected R-B route concentrates the global-completion commitment visibly in fresh inductive-type formation. The selection does not claim TCT already contained the completed carrier and does not rank R-A/R-C/R-D as mathematically inferior.
-
-### `N-DP-002`
-
-This Decision Point exists because the first V5 attempt exposed under-specified motive/universe scope. The final scope is therefore an explicit Act result, not an inference silently supplied by Lean.
-
-### `Z-DP-001`
-
-Signed normal forms are selected after `Z-J-001` proves representation convergence. The retained pair route remains an independent witness for natural-difference generation, representation independence, and later group-completion study.
-
-### `Q-DP-001`
-
-This is the first accepted number-stage decision that intentionally introduces a quotient/setoid carrier commitment. The availability of Lean quotient infrastructure does not make quotient identity mathematically necessary.
-
-### `R-DP-001`
-
-Dedekind was selected because the Stage-One completeness target had a direct verified LUB-by-union construction path. Cauchy was not disproved or rejected.
-
-### `R-DP-002`
-
-Quotient identity is selected to make formal equality reflect `CutEquiv` and avoid raw predicate-field equality. External `CutEquiv` remains a valid branch target.
-
-### `R-DP-003`
-
-The classical cost is isolated at total comparability. It is not part of `LowerCut`, `CutEquiv`, `RBOMA`, or the constructive partial-order core.
-
-### `R-DP-004`
-
-The selected route deliberately separates reusable Q arithmetic from the localized classical finite search over arbitrary cut membership.
-
-### `R-DP-005`
-
-The selected multiplication definition avoids a proposition-valued sign selector in the operation itself. Sign classification remains proof-level, making its logical provenance auditable.
-
-### `R-DP-006`
-
-The selected inverse route does not require a global inverse selector. Existence + uniqueness witnesses close the accepted interface; the completeness-level inverse remains unbuilt and therefore has no reconvergence claim.
-
-### `C-DP-001`
-
-This Decision Point was opened **after** `PDSA-C-001` stabilized the ex-ante semantic target and before any C carrier was selected.
-
-The shared target is not “whichever properties the easiest representation happens to have.” Every serious route must aim at:
+`ST2-EXP-003` resolved that uncertainty constructively/formally:
 
 ```text
-faithful accepted-R embedding
-commutative-field-strength behavior
-distinguished I with I²=-1
-existence and uniqueness of z = a+bI
-non-real-collapse consequence
-representation-neutral comparison adequacy
+R-DP-001
+   ├── SELECTS ──► R-ROUTE-D / Dedekind ──► R-BLOCK-001 ACCEPTED
+   └── BRANCHES_TO / ALTERNATIVE_TO ──► R-ROUTE-C / Cauchy
+                                          ↓
+                                 independent complete producer
+                                          ↓
+                                 ST2-EXP-003-R-J-001 PASS
 ```
 
-Initial candidates:
+Current decision semantics:
 
 ```text
-C-ROUTE-P
-  explicit rank-two / ordered-pair coordinate realization
-
-C-ROUTE-Q
-  polynomial adjunction / quotient-style realization
-
-C-ROUTE-A
-  admitted only if a third route has genuine methodological independence;
-  no third canonical branch is fabricated for symmetry
+Dedekind selected       YES
+Cauchy rejected         NO
+Cauchy verified         YES
+Cauchy permanent        YES
+Cauchy accepted export  NO
+Decision reopened       NO
 ```
 
-No option is selected. The candidate labels are route identifiers in the Decision/Learning layer, not canonical Blocks.
+The verified alternative strengthens the conclusion that `SELECTS Dedekind` is a construction/formalization choice rather than a uniqueness theorem.
 
-Resolution requires comparable probes measuring:
+## 4. `C-DP-001` after ST2-EXP-002 integration
+
+`C-DP-001` was resolved after symmetric route probing and explicit owner ratification of Route P.
+
+`ST2-EXP-002` later independently completed Route Q and proved explicit reconvergence:
 
 ```text
-acceptance adequacy
-R dependency surface
-identity regime
-arithmetic and inverse burden
-logical commitments
-representation/formalization commitments
-proof-engineering cost
-coordinate-generation/uniqueness route
-reconvergence value
-replaceability
+C-DP-001
+   ├── SELECTS ──► C-ROUTE-P ──► C-BLOCK-001 ──► accepted path
+   └── BRANCHES_TO / ALTERNATIVE_TO ──► C-ROUTE-Q
+                                          ↓
+                                 independent field producer
+                                          ↓
+                                 ST2-EXP-002-PQ-J-001 PASS
 ```
 
-A first V5 success by one route will not by itself resolve the Decision if the comparison would remain materially asymmetric.
+Current decision semantics:
 
-`PDSA-C-003` has now produced symmetric exact evidence: both Route P and Route Q pass the same frozen noncanonical probe in run `32565335033` at source `3f670372a022d1eb95109d36cde255b3504dda12`. The Study recommends Route P for the Stage-One producer because the same verified probe adequacy is achieved with a smaller representation/formalization/proof surface. Route Q remains a verified retained branch. The user explicitly ratified `C-ROUTE-P` on 2026-08-22. The resulting `SELECTS` edge records a methodological choice, not mathematical necessity; `C-ROUTE-Q` and its verified evidence remain retained.
+```text
+Route P selected        YES
+Route Q rejected        NO
+Route Q verified        YES
+Route Q permanent       YES
+Route Q accepted export NO
+Decision reopened       NO
+```
 
-## 4. Decision integrity rules
+The P/Q Junction certifies representation robustness; it does not replace `C-J-001` or `CA-20`.
 
-For every downstream Claim Record that consumes a selected Decision Point:
+## 5. Dependency learning is not a Decision Point
+
+`ST2-EXP-001` attaches to the dependency edge `BOMA-C-R-DEP-001`, not to a Decision Point.
+
+It proved a smaller sufficient R→C mathematical surface and is integrated by refining that dependency contract to the exact sixteen properties directly consumed by C.
+
+No Decision Point or Junction is fabricated merely because a successful experiment changed the architecture.
+
+## 6. Decision integrity rules
+
+For every downstream Claim or graph view that consumes a selected Decision Point:
 
 1. record the Decision ID;
-2. distinguish the accepted **property** from the selected **producer route**;
-3. do not inherit branch-local assumptions into unrelated claims;
-4. preserve non-selected options unless a documented rejection supersedes them;
-5. reopen the Decision if its declared sensitivity condition is triggered;
-6. do not draw a selected arrow as though it were a derivation theorem.
+2. distinguish accepted property from selected producer route;
+3. do not inherit branch-local assumptions into unrelated Claims;
+4. preserve non-selected options unless explicitly rejected with evidence;
+5. reopen the Decision if its sensitivity condition is triggered;
+6. never draw `SELECTS` as if it were `DERIVES`;
+7. a verified non-selected branch may become permanently visible without becoming selected;
+8. a verified Junction between selected and non-selected routes does not itself change selection;
+9. Learning-to-Construction integration must preserve the PDSA origin and exact evidence.
 
-For an **OPEN** Decision Point additionally:
-
-7. do not assign a selected-option edge in the canonical Construction Graph;
-8. do not promote candidate route names to Blocks unless they satisfy the Brick/Block granularity rules independently;
-9. preserve probe failures/observations in the Learning Graph;
-10. do not let a familiar representation define the acceptance contract retroactively.
-
-## 5. Current C boundary
+## 7. Current selected/alternative boundary
 
 ```text
-BOMA-C-ACCEPT-001  ACTIVE
-PDSA-C-001         CLOSED — semantic discriminant complete
-C-DP-001           RESOLVED / USER-RATIFIED
-SELECTS             C-ROUTE-P
-RETAINED            C-ROUTE-Q — verified alternative
-C carrier           NONE
-C Block             NONE
-C Junction          NONE
-C acceptance        NOT YET ELIGIBLE
+R-DP-001
+  SELECTS      R-ROUTE-D / Dedekind
+  PERMANENT    R-ROUTE-C / Cauchy verified alternative
+  MEETS_AT     ST2-EXP-003-R-J-001
+
+C-DP-001
+  SELECTS      C-ROUTE-P
+  PERMANENT    C-ROUTE-Q verified alternative
+  MEETS_AT     ST2-EXP-002-PQ-J-001
+
+BOMA-C-R-DEP-001
+  REFINED BY   ST2-EXP-001 exact sixteen-property dependency result
 ```
 
-The earlier C hold recorded in historical R/architecture closure documents was lifted by explicit user instruction on 2026-08-21. Those historical documents remain unchanged as records of their own time.
+Accepted exports remain:
+
+```text
+R-BLOCK-001
+C-BLOCK-002 / CA-20
+```
+
+There is no active Stage-Two experiment and no next candidate is selected by this architecture integration.

@@ -27,7 +27,7 @@ meeting ≠ verified Junction by default
 reconvergence preserves branch provenance
 ```
 
-The current Stage-One program gives particular attention to scientifically meaningful:
+The current program gives particular attention to scientifically meaningful:
 
 ```text
 split → independent development → verified reconvergence
@@ -41,7 +41,7 @@ This specialization was adopted through:
 PDSA-ARCH-001 — Construction Topology Adoption
 ```
 
-The current Stage-One objective is:
+The construction objective is:
 
 ```text
 declared pre-numerical constructional starting point
@@ -59,7 +59,7 @@ natural numbers
 integers → rationals → reals → complex numbers
 ```
 
-The diagram is a target architecture, not a claim that downstream units already exist and not a requirement that every local dependency graph be linear.
+The diagram is a target architecture, not a requirement that every local dependency graph be linear.
 
 ## Governing research method
 
@@ -73,10 +73,6 @@ The governing correction and methodology record is:
 
 `LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md`
 
-The current execution plan is:
-
-`LAB/PDSA/BOMA_STAGE_ONE_PDSA_EXECUTION_PLAN.md`
-
 PDSA produces two linked outputs:
 
 ```text
@@ -87,6 +83,46 @@ LEARNING OUTPUT
 errors, successes, corrections, methodological lessons, decision criteria,
 and human–AI research learning
 ```
+
+### Learning-to-Construction integration rule
+
+A verified Learning-Graph result is not required to remain permanently outside
+the Construction DAG. When an experiment closes successfully and the owner
+explicitly authorizes architectural integration, the **knowledge established by
+the experiment** may become permanent Construction-DAG knowledge.
+
+Permitted integration forms include:
+
+```text
+refine an existing dependency contract;
+preserve a verified non-selected route as a permanent alternative branch;
+preserve a verified reconvergence as a permanent Junction;
+expose a representation-independent reusable contribution;
+record a new sensitivity/reopening/genericity condition.
+```
+
+The following implications are forbidden:
+
+```text
+permanent DAG visibility ≠ SELECTS
+permanent DAG visibility ≠ ACCEPTED EXPORT
+verified alternative ≠ canonical producer
+successful experiment ≠ automatic acceptance promotion
+```
+
+Thus the Construction Graph may contain both the selected canonical route and
+verified non-selected alternatives. The Learning Graph continues to preserve
+**how** those facts were discovered, including Frozen Plans, failed attempts,
+exact evidence, Study/Act decisions, and owner authorization.
+
+If integration changes `SELECTS`, replaces an accepted Block/export, or adds a
+new accepted Claim, that requires a separate explicit Decision/acceptance action
+and corresponding verification. Architectural learning integration alone has no
+such authority.
+
+The first owner-authorized application of this rule is:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
 
 ## Canonical unit types
 
@@ -168,7 +204,7 @@ A Decision Point must record:
 - reopening/sensitivity conditions;
 - preservation status of non-selected alternatives.
 
-A selected option does not become mathematically necessary merely because it is the Stage-One canonical route.
+A selected option does not become mathematically necessary merely because it is the canonical route.
 
 ### Configuration
 
@@ -202,7 +238,8 @@ DecisionPoint --SELECTS-----> SelectedOption
 
 `SELECTS` records a project choice. It must never be interpreted as `DERIVES`.
 
-Non-selected options remain traceable and may later become Stage-Two branches.
+Non-selected options remain traceable and may later become verified permanent
+alternative branches without becoming selected.
 
 ### Topology interpretation
 
@@ -215,6 +252,7 @@ parallel convergence
 Decision Point branching
 exploratory branching
 verified reconvergence through Junctions
+permanent verified alternative branches learned through PDSA
 ```
 
 The detailed rules and fork taxonomy are defined by `CONSTRUCTION_TOPOLOGY.md`.
@@ -340,6 +378,10 @@ For reconvergent structures, sensitivity analysis must also identify whether a c
 18. Reconvergence requires explicit evidence and an appropriate Junction/compatibility record.
 19. Reconvergence does not erase branch provenance or imply identical construction histories.
 20. Same reusable certified contribution may have multiple distinct producer paths, provided their convergence/translation is explicitly verified.
+21. A successful experiment may refine the permanent Construction DAG only through an explicit Study/Act classification and owner-authorized integration action.
+22. Integrating verified knowledge does not by itself promote a producer, change `SELECTS`, or change an accepted export.
+23. A verified non-selected route may remain permanently visible in the Construction DAG with its distinct evidence and provenance.
+24. When a successful experiment demonstrates a smaller sufficient dependency interface, the architectural dependency contract should record that minimal mathematical surface even if legacy implementation bundles remain larger.
 
 ## Repository structure
 
@@ -406,3 +448,11 @@ LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 ```
 
 It also established `README.md` and `AGENTS.md` as mandatory repository-level handoff entry points.
+
+## BOMA-ST2-LEARNING-INTEGRATION-001 architectural revision note
+
+Owner-authorized integration of `ST2-EXP-001..003` established that successful
+experiment knowledge may become permanent Construction-DAG knowledge without
+rewriting Decision selection or accepted exports. The authoritative Act is:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.

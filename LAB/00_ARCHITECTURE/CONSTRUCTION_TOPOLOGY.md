@@ -1,8 +1,8 @@
 # CONSTRUCTION TOPOLOGY — Canonical DAG, Branching, and Reconvergence
 
 **Document ID:** `BOMA-ARCH-TOPOLOGY-001`  
-**Version:** `1.0`  
-**Date:** 2026-08-18  
+**Version:** `1.1`  
+**Date:** 2026-08-24  
 **Status:** **ACTIVE — CANONICAL ARCHITECTURAL RULE**  
 **Scope:** Brick / Block / Junction / Decision Point topology across BOMA construction tracks.
 
@@ -12,11 +12,7 @@
 
 BOMA construction must be read as an **auditable directed acyclic construction graph (DAG)**, not as a mandatory linear chain of files or mathematical assertions.
 
-This document makes explicit a project capability investigated in the earlier Brick/Block experiments and now adopted as a canonical architectural rule:
-
-> Bricks and Blocks may be arranged vertically by dependency, horizontally by independence, may converge into a shared downstream contribution, and a single path may branch into multiple paths that later reconverge through an explicit Junction.
-
-The current Stage-One research emphasis is especially on **controlled branching followed by reconvergence**.
+Bricks and Blocks may be arranged vertically by dependency, horizontally by independence, may converge into a shared downstream contribution, and a single path may branch into multiple paths that later reconverge through an explicit Junction.
 
 The graph topology is part of the mathematical architecture. It must not be inferred only from file order.
 
@@ -24,7 +20,7 @@ The graph topology is part of the mathematical architecture. It must not be infe
 
 ## 2. Governing distinction
 
-The architecture distinguishes at least four different graph situations.
+The architecture distinguishes at least four basic graph situations.
 
 ### T1 — Vertical dependency
 
@@ -49,8 +45,6 @@ B3 DEPENDS_ON B2
 
 Vertical position means dependency only when a dependency relation is explicitly recorded.
 
----
-
 ### T2 — Horizontal independence
 
 Two or more Bricks/Blocks may be constructed independently when neither consumes the other's contribution.
@@ -60,12 +54,7 @@ B1        B2        B3
 ```
 
 Absence of dependency does **not** disqualify a unit from being a Brick.
-
-Independent units must preserve separate identities, evidence, statuses, and provenance.
-
-Their horizontal presentation is a graph view; it does not imply equivalence or competition.
-
----
+Independent units preserve separate identities, evidence, statuses, and provenance.
 
 ### T3 — Parallel construction followed by convergence
 
@@ -79,20 +68,9 @@ B2 ──┼──► J / Block / shared contribution
 B3 ──┘
 ```
 
-This is **not automatically branching in the Decision Point sense**.
+This is not automatically branching in the Decision Point sense.
 
-The inputs may simply provide different required contributions.
-
-The convergence record must state:
-
-```text
-what each incoming path contributes
-whether contributions are independent or partially dependent
-what compatibility condition is required
-what new combined contribution emerges
-```
-
----
+The convergence record states what each incoming path contributes, whether the contributions are independent or partially dependent, the compatibility condition, and the combined contribution.
 
 ### T4 — Branching followed by reconvergence
 
@@ -103,18 +81,6 @@ A common path may split into multiple legitimate routes and later reunite.
 Common trunk ─────┤             ├──► Junction ──► shared downstream path
                   └──► Path B ──┘
 ```
-
-or:
-
-```text
-                  ┌──► Path A ──┐
-                  │             │
-Common trunk ─────┼──► Path B ──┼──► Junction
-                  │             │
-                  └──► Path C ──┘
-```
-
-This topology is a primary BOMA research object.
 
 Reconvergence does not erase branch history.
 
@@ -132,9 +98,7 @@ Input ──┤         ├──► downstream Block
         └──► B2 ──┘
 ```
 
-Here B1 and B2 are both needed. They are not mutually alternative choices.
-
-This is parallel decomposition of work/content.
+Both contributors are needed; they are not mutually alternative choices.
 
 ### F2 — Decision Point branch
 
@@ -144,15 +108,51 @@ Decision Point ───┤              ├──► possible reconvergence
                   └──► Route B ──┘
 ```
 
-Here the routes are materially alternative ways to proceed after a non-derived choice.
-
-The Decision Point records the choice and uses `BRANCHES_TO` / `SELECTS` as defined by `ARCHITECTURE.md`.
+The routes are materially alternative ways to proceed after a non-derived choice. The Decision Point records `BRANCHES_TO` / `SELECTS`.
 
 ### F3 — Exploratory branch
 
-A PDSA experiment may open multiple research routes without immediately making any of them canonical.
+A PDSA experiment may open a research route without immediately making it part of the permanent Construction DAG.
 
-Such branches belong to the Learning Graph until/adunless promoted into canonical construction units.
+Such a branch begins in the Learning Graph. It remains there if it fails, is deferred, or has not earned an architectural role.
+
+### F4 — Verified learning branch integrated into the permanent Construction DAG
+
+A successful experiment may establish that a previously exploratory branch is a stable architectural fact worth retaining permanently.
+
+Owner-authorized integration may therefore produce:
+
+```text
+Decision Point
+   ├── SELECTS ──► canonical Route A
+   └── BRANCHES_TO / ALTERNATIVE_TO ──► verified Route B
+                                             │
+                                             └──► verified Junction / shared invariant
+```
+
+Route B may be permanent and V5-verified while remaining **non-selected** and **non-accepted**.
+
+The promotion is from:
+
+```text
+experiment-only visibility
+```
+
+to:
+
+```text
+permanent architectural visibility
+```
+
+not from:
+
+```text
+research → accepted export
+```
+
+unless a separate explicit Decision/acceptance action says so.
+
+`ST2-EXP-002` and `ST2-EXP-003` are the first owner-authorized examples of F4.
 
 ---
 
@@ -195,7 +195,7 @@ The Junction must answer:
 8. What would reopen or invalidate the Junction?
 ```
 
-No branch may be declared reconverged merely because two endpoints receive the same informal name.
+No branch is reconverged merely because two endpoints receive the same informal name.
 
 ---
 
@@ -211,7 +211,7 @@ Route B ──┘
 
 then `C` may be a shared reusable certified contribution while the production histories remain distinct.
 
-The architecture must preserve:
+The architecture preserves:
 
 ```text
 Route A provenance
@@ -230,7 +230,7 @@ and:
 
 > **reconvergence ≠ retroactive identity of branches**
 
-This directly supports the project distinction:
+This supports:
 
 ```text
 Construction Unit ≠ Reusable Certified Contribution
@@ -240,45 +240,52 @@ Different producers may establish the same reusable contribution.
 
 ---
 
-## 6. Current Stage-One research emphasis
+## 6. Learning-to-Construction feedback
 
-At the present project stage, branching experiments should preferentially study routes that **split and later reconverge**.
+BOMA is not a one-way architecture in which experiments are permanently quarantined after completion.
 
-The immediate scientific objective is to learn:
-
-```text
-which commitments can vary while preserving a downstream contribution
-which structures are invariant across alternative routes
-which branch-specific assumptions contaminate downstream structure
-when two routes can safely share the same certified interface
-what evidence is sufficient for a Junction to PASS
-```
-
-This is distinct from the later Stage-Two program of intentionally exploring branches that may remain permanently divergent.
-
-Current emphasis:
+The controlled feedback pattern is:
 
 ```text
-TRUNK
-  ↓
-FORK
- ├── ROUTE A
- └── ROUTE B
-  ↓
-RECONVERGENCE TEST
-  ↓
-SHARED TRUNK IF VERIFIED
+Construction DAG
+      │
+      ├──► Decision / dependency / representation question
+      │
+      ▼
+Learning Graph experiment
+      │
+      ▼
+exact verification + Study/Act
+      │
+      ▼
+owner-authorized architectural integration
+      │
+      └──► refined Construction DAG
 ```
+
+Permitted feedback includes:
+
+```text
+smaller verified dependency interface
+permanent verified alternative route
+permanent verified research/non-acceptance Junction
+representation-independent invariant
+genericity or reopening requirement
+```
+
+The old Construction DAG is not rewritten as though the new knowledge had always been known. The Learning Graph preserves the temporal/provenance history.
+
+The first concrete integration is recorded in:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
 
 ---
 
 ## 7. Application to the natural-number construction
 
-The N-Core architecture must **not** be forced into a single long vertical chain merely because a proof assistant can encode it in one datatype/file.
+The N-Core architecture must not be forced into a single long vertical chain merely because a proof assistant can encode it in one datatype/file.
 
-Likely topology includes parallel and reconvergent components.
-
-Example schematic view:
+Example schematic topology:
 
 ```text
 Formal unary kernel
@@ -291,15 +298,7 @@ Pre-numerical TCT ─► realization ─────┘
                      bridge
 ```
 
-A second useful branch/reconvergence pattern may compare two routes to the same certified result, for example:
-
-```text
-                 ┌──► induction route ─────┐
-generatedness ───┤                         ├──► shared generatedness certificate
-                 └──► initiality route ────┘
-```
-
-Whether such a diagram becomes canonical depends on actual dependencies and verified convergence. It must not be imposed merely for visual symmetry.
+Whether a branch becomes canonical depends on actual dependencies and verified convergence; it is not imposed for visual symmetry.
 
 ---
 
@@ -307,34 +306,15 @@ Whether such a diagram becomes canonical depends on actual dependencies and veri
 
 A Brick is defined by independently reviewable semantic/constructional commitment, **not by graph orientation**.
 
-Therefore a Brick may be:
+A Brick may be root, vertically dependent, horizontal and independent, one contributor among several converging contributors, branch-specific, or shared after a Junction through an exported certified contribution.
 
-```text
-root / dependency-free
-vertically dependent
-horizontal and independent of sibling Bricks
-one contributor among several converging contributors
-branch-specific
-shared after a Junction through an exported certified contribution
-```
+A Block may contain serial internal dependencies, parallel internal Bricks, multiple incoming contributions, branch-local composition, or post-Junction shared composition.
 
-A Block may similarly contain:
-
-```text
-serial internal dependencies
-parallel internal Bricks
-multiple incoming contributions
-branch-local composition
-post-Junction shared composition
-```
-
-Block membership must preserve the identities and provenance of its Bricks.
+Block membership preserves Brick identities and provenance.
 
 ---
 
 ## 9. Junction versus Decision Point
-
-These are different architectural units.
 
 ### Decision Point
 
@@ -342,35 +322,21 @@ Asks:
 
 > Which admissible route will be taken under a non-derived choice?
 
-It may generate branches.
-
 ### Junction
 
 Asks:
 
-> Can incoming routes/contributions be reconciled sufficiently to admit a shared downstream path?
+> Can incoming routes/contributions be reconciled sufficiently to certify a shared result or downstream transition?
 
-It verifies convergence/compatibility.
+A fork can exist without a Decision Point, and a Junction can combine non-alternative parallel inputs. Every graph instance states which case it is.
 
-Canonical reconvergent pattern:
-
-```text
-Decision Point
-    ├──► A
-    └──► B
-          ↓
-       Junction
-          ↓
-    shared contribution
-```
-
-A fork can exist without a Decision Point, and a Junction can combine non-alternative parallel inputs. Every graph instance must state which case it is.
+A research/non-acceptance Junction may be a permanent Construction-DAG object if its convergence result is permanently relevant; this does not make it an acceptance Junction.
 
 ---
 
 ## 10. PDSA and the Learning Graph
 
-The Construction Graph and Learning Graph must record branching differently but cross-reference each other.
+The Construction Graph and Learning Graph record branching differently but cross-reference each other.
 
 ### Construction Graph records
 
@@ -381,6 +347,7 @@ branches
 choices
 Junctions
 certified outputs
+permanent verified alternatives
 ```
 
 ### Learning Graph records
@@ -392,48 +359,38 @@ failures and successes
 human/AI decisions
 what was learned from differences
 why reconvergence passed or failed
-what learning enters the next PDSA cycle
+what learning entered the Construction DAG and when
 ```
 
 A mathematically unsuccessful branch can still be a successful learning output.
-
-No scientifically useful branch should be silently deleted merely because it did not join the canonical trunk.
+No scientifically useful branch is silently deleted merely because it did not join the selected trunk.
 
 ---
 
 ## 11. Handoff rule for humans and AI agents
 
-Any human or AI agent continuing BOMA must apply the following before creating new canonical units:
+Any human or AI agent continuing BOMA must:
 
-1. Do **not** assume the construction is linear.
-2. Identify which prerequisites genuinely depend on which others.
+1. Do not assume the construction is linear.
+2. Identify genuine dependency edges.
 3. Expose independent contributions horizontally when meaningful.
-4. Classify every fork as parallel, Decision Point, or exploratory.
+4. Classify every fork as parallel, Decision Point, exploratory, or permanent verified alternative.
 5. Preserve branch identities and assumptions.
 6. Use an explicit Junction for claimed reconvergence.
 7. Do not erase branch provenance after reconvergence.
-8. Prefer, in the current Stage-One research program, branch experiments that can test **split → independent development → verified reconvergence**.
-9. Do not manufacture branches where the mathematics gives no meaningful alternative.
-10. Do not manufacture convergence merely to simplify the diagram.
+8. Distinguish permanent graph visibility from `SELECTS` and acceptance.
+9. When a closed experiment proves a stable architectural invariant, check whether it should be integrated rather than left only in the Learning Graph.
+10. Do not manufacture branches or convergence for presentation convenience.
 
-Violation of these rules is architectural drift and must be recorded/corrected through PDSA.
+Violation is architectural drift and must be recorded/corrected through PDSA.
 
 ---
 
 ## 12. Historical lineage
 
-This canonical rule consolidates earlier project investigations including:
+This canonical rule consolidates earlier project investigations including Brick/Block dependency/DAG experiments, Decision Point/branch experiments, `Construction Unit ≠ Reusable Certified Contribution`, `PDSA-ARCH-001`, and the successful Stage-Two experiments.
 
-```text
-LAB/BRICK_BLOCK_DEFINITION_001.md
-LAB/BOMA_INITIAL_PLAN.md
-LAB/BOMA_SOURCE_AUDIT_001.md
-historical Brick/Block dependency and DAG experiments
-historical Decision Point / branch experiments
-Construction Unit ≠ Reusable Certified Contribution learning
-```
-
-Historical `PDCA` labels in those records are legacy provenance. The active research method is PDSA.
+Historical `PDCA` labels are legacy provenance. The active research method is PDSA.
 
 ---
 
@@ -443,6 +400,6 @@ This document is a specialization of:
 
 `LAB/00_ARCHITECTURE/ARCHITECTURE.md`
 
-For graph-topology questions involving serial/parallel construction, branching, and reconvergence, this document is the **canonical operational interpretation**.
+For graph-topology questions involving serial/parallel construction, branching, reconvergence, and Learning-to-Construction feedback, this document is the **canonical operational interpretation**.
 
 If a future result requires changing these rules, the change must occur through a traceable PDSA cycle and an explicit versioned architectural revision.

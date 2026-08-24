@@ -6,76 +6,165 @@ pre-numerical constructional layer toward standard number systems.
 Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA`
 identifiers are provenance only.
 
-## Current canonical frontier
+## Current accepted spine
 
 As of 2026-08-24:
 
 ```text
 framework-neutral pre-numerical layer   CALIBRATED
         ↓
-N-Core                                  ACCEPTED
+N-BLOCK-007                             ACCEPTED N-Core
         ↓
-N-Arithmetic                            ACCEPTED
+N-ARITH-BLOCK-001                       ACCEPTED N-Arithmetic
         ↓
-Z                                       ACCEPTED
+Z-BLOCK-002                             ACCEPTED Z
         ↓
-post-Z reverse N                        CLOSED / COMPLETE
+Q-BLOCK-002                             ACCEPTED Q
         ↓
-Q                                       ACCEPTED
+R-DP-001 SELECTS R-ROUTE-D / Dedekind
         ↓
-R                                       ACCEPTED — R-BLOCK-001 / Dedekind
+R-BLOCK-001                             ACCEPTED R
         ↓
-RE-R-001                                CLOSED / COMPLETE
+BOMA-C-R-DEP-001                        exact sixteen-property mathematical boundary
         ↓
-C                                       ACCEPTED — C-ROUTE-P / C-BLOCK-002 / CA-20
+C-DP-001 SELECTS C-ROUTE-P
         ↓
-RE-C-001                                CLOSED / COMPLETE
+C-BLOCK-001 → C-J-001 → C-BLOCK-002
         ↓
-RE-STAGE1-001                           CLOSED / COMPLETE
-        ↓
-STAGE TWO                               ST2-EXP-001..003 CLOSED / PASS
-                                        NO ACTIVE EXPERIMENT
+CA-20                                   ACCEPTED C
 ```
 
-Current Stage-Two frontier:
+The accepted spine is unchanged by the completed Stage-Two experiments.
+
+## Permanent verified alternatives learned through Stage Two
+
+Successful experiment results are no longer shown only as a laboratory appendix.
+The owner-authorized Learning-to-Construction Act integrates their durable
+architectural lessons into the permanent Construction DAG while preserving all
+experimental provenance.
 
 ```text
-ST2-EXP-001  CLOSED / PASS
-ST2-EXP-002  CLOSED / PASS
-ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT PASS
+R-DP-001
+   ├── SELECTS R-ROUTE-D / Dedekind → R-BLOCK-001 ACCEPTED
+   └── R-ROUTE-C / Cauchy → PERMANENT VERIFIED ALTERNATIVE
+                              ↓
+                       ST2-EXP-003-R-J-001
+                       R-FIELD-ISOMORPHISM / NON-ACCEPTANCE
+
+C-DP-001
+   ├── SELECTS C-ROUTE-P → C-BLOCK-001 → C-J-001 → C-BLOCK-002 ACCEPTED
+   └── C-ROUTE-Q → PERMANENT VERIFIED ALTERNATIVE
+                     ↓
+              ST2-EXP-002-PQ-J-001
+              R-FIELD-ISOMORPHISM / NON-ACCEPTANCE
+```
+
+Permanent graph visibility does **not** mean selection or acceptance.
+
+## ST2-EXP-001 is now part of the R→C architecture
+
+`ST2-EXP-001` attached to dependency edge `BOMA-C-R-DEP-001` and proved that C
+needs exactly a narrow sixteen-property real interface rather than the entire
+historical accepted R integration bundle.
+
+The canonical mathematical R→C dependency surface is now:
+
+```text
+orderTrans
+orderAntisymm
+orderTotal
+nontrivial
+addComm
+addAssoc
+addZeroLeft
+addInverseRight
+addTranslateOrderIff
+negOrderReversing
+mulComm
+mulAssoc
+mulOneLeft
+distribRight
+orderMulNonneg
+inverseExists
+```
+
+Formal witness:
+
+```text
+BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate
+BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
+```
+
+The accepted C Lean implementation may still carry a larger bundled R ancestry.
+That excess is formalization/provenance over-bundling, not mathematical
+necessity.
+
+## Learning-to-Construction rule
+
+A successful experiment may, after Study/Act and explicit owner authorization,
+feed verified knowledge into the permanent Construction DAG by:
+
+```text
+refining a dependency contract;
+retaining a verified non-selected route;
+retaining a verified non-acceptance Junction;
+exposing a representation-independent invariant;
+recording a sensitivity/genericity condition.
+```
+
+But:
+
+```text
+permanent DAG visibility ≠ SELECTS
+permanent DAG visibility ≠ ACCEPTED EXPORT
+successful experiment ≠ automatic acceptance promotion
+```
+
+The Learning Graph continues to preserve how every integrated fact was learned.
+
+Integration authority:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
+
+## Current Stage-Two lifecycle
+
+```text
+ST2-EXP-001  CLOSED / PASS / dependency lesson integrated
+ST2-EXP-002  CLOSED / PASS / Route-Q + Junction integrated
+ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT PASS / Cauchy + Junction integrated
 NO ACTIVE EXPERIMENT
 NEXT EXPERIMENT SLOT = OPEN / OWNER SELECTION REQUIRED
 ```
 
-Lifecycle closure does not select the next candidate. Any new experiment
-requires separate owner selection and a new immutable Frozen Plan from the
-then-current accepted `main`.
+Lifecycle closure or architecture integration does not select the next candidate.
+Any new experiment requires explicit owner selection and a new immutable Frozen
+Plan from the then-current accepted `main`.
 
-## Canonical acceptance is unchanged by Stage-Two research
+## Canonical acceptance remains unchanged
 
 ```text
 R-DP-001 selected route       R-ROUTE-D / DEDEKIND
+accepted R integration        R-J-002
 accepted R export             R-BLOCK-001
 C-DP-001 selected route       C-ROUTE-P
 selected C producer           C-BLOCK-001
+accepted C integration        C-J-001
 accepted C export             C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-Retained research alternatives are evidence, not accepted replacements:
+Permanent alternatives remain non-accepted:
 
 ```text
-C-ROUTE-Q
-  VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
-  research Junction: ST2-EXP-002-PQ-J-001
-
 R-ROUTE-C / CAUCHY
-  VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD
-  NOT AN ACCEPTED REAL EXPORT
-  research Junction: ST2-EXP-003-R-J-001
+  PERMANENT VERIFIED ALTERNATIVE / NON-SELECTED / NOT ACCEPTED
+  Junction: ST2-EXP-003-R-J-001
+
+C-ROUTE-Q
+  PERMANENT VERIFIED ALTERNATIVE / NON-SELECTED / NOT ACCEPTED
+  Junction: ST2-EXP-002-PQ-J-001
 
 H6 Cauchy-native C core
-  VERIFIED RESEARCH EVIDENCE
-  NOT AN ACCEPTED EXPORT
+  PERMANENT DOWNSTREAM ROBUSTNESS EVIDENCE / NOT ACCEPTED
 ```
 
 ## Source-of-truth order
@@ -84,15 +173,17 @@ When current-state documents disagree, use this order unless a later explicit
 governance record supersedes it:
 
 1. `LAB/PDSA/STATUS.md`
-2. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
-3. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md`
+2. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`
+3. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
 4. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
-5. `LAB/00_ARCHITECTURE/REGISTRY.md`
-6. `LAB/00_ARCHITECTURE/GRAPH.md`
-7. the relevant DAG / acceptance / closure records
-8. claim-level V5 evidence
-9. onboarding summaries such as this README and `AGENTS.md`
-10. dated historical PDSA/checkpoint/branch artifacts for provenance
+5. `LAB/00_ARCHITECTURE/ARCHITECTURE.md`
+6. `LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md`
+7. `LAB/00_ARCHITECTURE/REGISTRY.md`
+8. `LAB/00_ARCHITECTURE/GRAPH.md`
+9. `LAB/00_ARCHITECTURE/DECISION_LEDGER.md` / `JUNCTION_LEDGER.md`
+10. relevant DAG / acceptance / Claim records and exact V5 evidence
+11. onboarding summaries such as this README and `AGENTS.md`
+12. dated historical PDSA/checkpoint/branch artifacts for provenance
 
 Historical documents remain valid records of their own state at their own date;
 they do not override a later synchronized current-state authority.
@@ -105,37 +196,42 @@ Before canonical or Stage-Two work, read:
 README.md
 AGENTS.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md
 LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
 LAB/PDSA/candidates/README.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
+LAB/00_ARCHITECTURE/GRAPH.md
+LAB/00_ARCHITECTURE/REGISTRY.md
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+LAB/00_ARCHITECTURE/R_DAG.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
-LAB/00_ARCHITECTURE/TRUSTED_BASE.md
 LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
-LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
-LAB/00_ARCHITECTURE/DECISION_LEDGER.md
-LAB/00_ARCHITECTURE/REGISTRY.md
-LAB/00_ARCHITECTURE/GRAPH.md
-LAB/00_ARCHITECTURE/R_DAG.md
-LAB/00_ARCHITECTURE/C_DAG.md
+LAB/00_ARCHITECTURE/TRUSTED_BASE.md
 ```
-
-For accepted R/C provenance also read the Stage-One closure and reverse-audit
-records referenced by `LAB/PDSA/STATUS.md`.
 
 ## Do not linearize BOMA
 
-The canonical construction is a DAG. Valid topology includes vertical
-dependency, horizontal independence, parallel contributors, Decision Point
-branches, and split → independent development → verified reconvergence.
+The construction is a DAG. Valid topology includes vertical dependency,
+horizontal independence, parallel contributors, Decision Point branches,
+permanent verified alternatives, and split → independent development → verified
+reconvergence.
 
-Reconvergence never erases branch provenance. A selected route does not become
-a mathematical necessity merely because it is canonical for a stage.
+Key invariants:
+
+```text
+fork ≠ Decision Point by default
+meeting ≠ verified Junction by default
+SELECTS ≠ DERIVES
+reconvergence preserves provenance
+verified alternative ≠ accepted export
+```
 
 ## Accepted stage summary
 
@@ -148,15 +244,10 @@ NAA-18 = ACCEPT
 N-ARITH-BLOCK-001 = accepted N-Arithmetic
 ```
 
-Retained experiments include independent recursion directions and independent
-order characterizations.
-
 ### Integers
 
 `Z-DP-001` selected signed canonical normal forms while retaining the difference
-pair route. `ZA-21 = ACCEPT`; `Z-BLOCK-002` is the accepted Stage-One integer
-interface. The mandatory reverse experiment is closed and classified as
-**INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE**.
+pair route. `ZA-21 = ACCEPT`; `Z-BLOCK-002` is the accepted integer interface.
 
 ### Rationals
 
@@ -166,103 +257,46 @@ accepted rational export.
 
 ### Reals
 
-`R-DP-001` selected Dedekind lower cuts for accepted Stage One. `R-BLOCK-001`
-exports the faithful/order-exact Q embedding, ordered-field behavior at
-witness-only inverse scope, Dedekind LUB completeness, strict Q-image density,
-and the BOMA-natural Archimedean characterization.
-
-The accepted inverse interface is witness-based; no global Choice-backed inverse
-selector is required by the accepted contract.
-
-`RE-R-001` is closed / complete and separates acceptance-required properties
-from selected Dedekind representation, logical, identity, and proof-engineering
-commitments.
+`R-DP-001` selects Dedekind for the accepted route. `R-BLOCK-001` remains the
+accepted export. The independently completed Cauchy route is now a permanent
+verified alternative, and `ST2-EXP-003-R-J-001` records its explicit
+field/order reconvergence with the selected producer.
 
 ### Complex numbers
 
-The ex-ante accepted core is the unique quadratic real-coordinate field
-presentation: a field extension with distinguished `I`, `I² = -1`, and unique
-`a + bI` coordinates.
-
-`C-DP-001` selected `C-ROUTE-P`; `C-BLOCK-001` is the selected witness-field
-producer and `C-BLOCK-002 / CA-20` is the accepted export. The accepted
-same-carrier integration Junction is `C-J-001`.
-
-Route Q remains a verified independent research field and does not replace
-accepted Route P.
+`C-DP-001` selects `C-ROUTE-P`; `C-BLOCK-001` is the selected producer,
+`C-J-001` is the accepted same-carrier integration Junction, and
+`C-BLOCK-002 / CA-20` is accepted. Independently completed `C-ROUTE-Q` is a
+permanent verified alternative with `ST2-EXP-002-PQ-J-001`.
 
 ## Stage-Two completed experiments
 
 ### ST2-EXP-001 — narrow accepted-R interface
 
-Origin: dependency edge `BOMA-C-R-DEP-001`.  
+Origin: `DEPENDENCY_EDGE / BOMA-C-R-DEP-001`.  
 Result: `CLOSED / PASS`.  
-Exact V5: `32593045224`.
-
-The same nine accepted C Claim meanings survive a narrower sixteen-field real
-interface package. The experiment does not create or promote a new accepted
-export.
+Exact V5: `32593045224`.  
+Integrated result: canonical mathematical R→C dependency surface is the exact
+sixteen-field interface above.
 
 ### ST2-EXP-002 — independent C representation
 
 Origin: `C-DP-001`.  
 Result: `CLOSED / PASS`.  
-Final exact V5: `32597346281`.
-
-The independent formal-expression normalization quotient field reconverges
-with selected Route P through research Junction `ST2-EXP-002-PQ-J-001` while
-preserving the accepted C Claim families. Canonical C remains Route P.
+Final exact V5: `32597346281`.  
+Integrated result: `C-ROUTE-Q` and `ST2-EXP-002-PQ-J-001` are permanent verified
+alternative architecture; Route P remains selected.
 
 ### ST2-EXP-003 — independent Cauchy real completion
 
 Origin: `R-DP-001` above accepted `Q-BLOCK-002`.  
 Result: `CLOSED / PASS / H1-H6 EXACT PASS / MATHEMATICAL PASS`.  
-Lifecycle closed: `2026-08-24` by explicit owner authorization.  
-Research Junction: `ST2-EXP-003-R-J-001`.
+Integrated result: Cauchy R and `ST2-EXP-003-R-J-001` are permanent verified
+alternative architecture; H6 is permanent downstream robustness evidence;
+Dedekind remains selected.
 
-Final exact-verified branch head:
-
-`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
-
-Critical exact-head evidence:
-
-```text
-Independent Cauchy Real Route
-  run      32727267231
-  artifact 9520001887
-  sha256   e7c8e9959445e182eab133a11f7352fbf4a9a6ae270d7b81037b2008b663de8c
-
-Dedekind-Cauchy Comparison / Research R Junction
-  run      32727267177
-  artifact 9520005288
-  sha256   3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34
-
-Cauchy Quadratic Rebuild
-  run      32727267183
-  artifact 9520002118
-  sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
-```
-
-PR #8 merged the exact-verified tree to `main` as
-`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`. The merge tree is identical to
-the final exact-verified branch tree.
-
-Final disposition:
-
-```text
-Cauchy real producer           retained research evidence
-research R Junction            retained research evidence
-H6 Cauchy-native C core        retained research evidence
-canonical R                    Dedekind retained
-accepted R-BLOCK-001           unchanged
-canonical C                    C-ROUTE-P retained
-accepted C-BLOCK-001/002       unchanged
-CA-20                          unchanged
-```
-
-Lifecycle closure record:
-
-`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
+Historical exact evidence and lifecycle records remain unchanged and are indexed
+through the experiment register and Stage-Two origin ledger.
 
 ## Future experiment candidates
 
@@ -270,32 +304,13 @@ The controlled candidate inventory is maintained in:
 
 `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`.
 
-Candidate discoveries must follow:
+Candidate discoveries follow:
 
 `LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md`.
 
-A documented candidate is not an authorized experiment. The refined
-`ST2-EXP-011` generic C comparison scalar/interface candidate is preserved in
-human- and machine-readable dossiers under `LAB/PDSA/candidates/`.
-
-## Claim transparency
-
-For every promoted Claim, keep separate:
-
-```text
-mathematical dependencies
-logical dependencies
-representation dependencies
-formalization dependencies
-supporting lemmas
-Lean declaration / source
-verification evidence
-alternative producer / branch
-necessity classification
-```
-
-Do not conflate equal mathematical Claim surfaces with equal carriers, proof
-history, logical source provenance, or formalization cost.
+A documented candidate is not authorized. `ST2-EXP-011` remains a transferable
+candidate for genericizing the C comparison scalar/interface boundary; this
+architecture integration does not start it.
 
 ## Verification environment
 
@@ -311,14 +326,11 @@ monolithic type-check alone is not an acceptance or experiment-completion gate.
 ## Current operational instruction
 
 ```text
-preserve accepted N → C baseline
-preserve all immutable Frozen Plans and retained failed runs
-preserve research / accepted distinction
-preserve exact-head evidence identity
-capture future experiment candidates as transferable dossiers
+preserve accepted N → C spine
+preserve permanent verified alternatives and their non-selected status
+preserve exact sixteen-property R→C mathematical contract
+preserve all Frozen Plans, failures, Study/Act records, and exact evidence
+preserve accepted / selected / verified-alternative distinctions
 NO ACTIVE EXPERIMENT
 wait for explicit owner selection before freezing or executing the next experiment
 ```
-
-Do not silently promote any retained research producer, and do not start a
-candidate merely because its priority is high.
