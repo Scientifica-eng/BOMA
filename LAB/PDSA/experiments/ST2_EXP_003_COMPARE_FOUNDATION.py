@@ -98,10 +98,11 @@ REQUIRED_TARGETS = {
     "BOMA.R.StageTwo.CauchyLUB003.rCauchy_lub_exists",
     "BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate",
 }
+HISTORICALLY_CLOSED = {"ST2-EXP-001", "ST2-EXP-002", "ST2-EXP-003"}
 
 
 def governance_mode(governance: dict[str, Any]) -> str | None:
-    """Accept only the historical active frontier or the explicit closed frontier."""
+    """Accept active-003, exact closed-frontier, or preserved historical closure governance."""
     status = governance.get("status")
     if status == "GOVERNANCE_PASS":
         if governance.get("counts", {}).get("active_experiments") == 1:
@@ -110,6 +111,12 @@ def governance_mode(governance: dict[str, Any]) -> str | None:
     if status == "STAGE_TWO_CLOSED_FRONTIER_PASS":
         if governance.get("active_experiment") is None:
             return "CLOSED_FRONTIER"
+        return None
+    if status == "ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS":
+        closed = set(governance.get("historically_closed_experiments", []))
+        active = governance.get("current_active_experiment")
+        if closed == HISTORICALLY_CLOSED and active not in HISTORICALLY_CLOSED:
+            return "HISTORICAL_CLOSURE"
         return None
     return None
 
@@ -138,7 +145,7 @@ def main() -> int:
         residuals.append({
             "type": "typed_origin_governance_failed",
             "status": governance.get("status"),
-            "active_experiment": governance.get("active_experiment"),
+            "active_experiment": governance.get("active_experiment", governance.get("current_active_experiment")),
             "active_count": governance.get("counts", {}).get("active_experiments"),
         })
     if forbidden:
@@ -181,7 +188,7 @@ def main() -> int:
         "dedekind_comparison_proved": False,
         "downstream_complex_rebuilt": False,
         "alternative_accepted": False,
-        "experiment_closed": mode == "CLOSED_FRONTIER" and passed,
+        "experiment_closed": mode in {"CLOSED_FRONTIER", "HISTORICAL_CLOSURE"} and passed,
         "residuals": residuals,
     }
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
