@@ -26,3 +26,4 @@ LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean
+LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean
