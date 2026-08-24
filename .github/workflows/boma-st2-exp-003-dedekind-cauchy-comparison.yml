@@ -11,6 +11,7 @@ on:
     paths:
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean'
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
       - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
@@ -78,12 +79,12 @@ jobs:
           combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
           foundation=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean
           density=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean
+          reflection=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean
           test -s "$accepted"
           test -s "$independent"
           test -s "$combined"
-          test -f "$foundation"
-          test -f "$density"
-          for target in "$foundation" "$density"; do
+          for target in "$foundation" "$density" "$reflection"; do
+            test -f "$target"
             if grep -Fxq "$target" "$independent"; then
               printf 'H5 combined comparison source contaminated the independent Cauchy manifest: %s\n' "$target" >&2
               exit 1
@@ -113,6 +114,7 @@ jobs:
           grep -Fq 'Classical.choose (cToD_lub_exists x)' "$foundation"
           grep -Fq 'Classical.choose (dToC_lub_exists x)' "$foundation"
           grep -Fq 'no order reflection, mutual inverse' "$density"
+          grep -Fq 'Surjectivity, mutual inverse' "$reflection"
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -124,7 +126,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Prove H5 foundation and Cauchy rational density
+      - name: Prove H5 foundation, density, and order reflection
         shell: bash
         run: |
           set -euo pipefail
@@ -139,17 +141,19 @@ jobs:
             cat "$src" >> "$target"
             printf '\n' >> "$target"
           done < "$manifest"
-          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekind_rational_strict_lower_exists\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_rational\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_rational\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_mono\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_mono\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonFoundationCertificate\n' >> "$target"
+          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonFoundationCertificate\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.rC_rational_image_dense\n' >> "$target"
           printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonDensityCertificate\n' >> "$target"
-          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-density-lean.log
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_rational_lower_reflect\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_rational_lower_reflect\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_order_reflect\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_order_reflect\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_order_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_order_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderReflectionCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-reflection-lean.log
 
-      - name: Extract combined H5 density closure
+      - name: Extract combined H5 order-reflection closure
         shell: bash
         run: |
           set -euo pipefail
@@ -161,33 +165,33 @@ jobs:
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest "$manifest" \
-            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyComparisonDensityCertificate \
-            --json-out /tmp/st2-exp-003-h5-density-closure.json \
-            > /tmp/st2-exp-003-h5-density-dependency-audit.log
+            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyOrderReflectionCertificate \
+            --json-out /tmp/st2-exp-003-h5-reflection-closure.json \
+            > /tmp/st2-exp-003-h5-reflection-dependency-audit.log
 
-      - name: Publish H5 density scope
+      - name: Publish H5 order-reflection scope
         shell: bash
         run: |
           set -euo pipefail
           {
-            printf '## ST2-EXP-003 H5 — combined Dedekind/Cauchy comparison density milestone\n'
+            printf '## ST2-EXP-003 H5 — Dedekind/Cauchy order-reflection milestone\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Independent H4 remains separately verified and selected-Dedekind-free.\n'
-            printf -- '- Combined H5 assembly reuses the unchanged accepted R manifest plus a research-only Cauchy addendum.\n'
-            printf -- '- Proved at this gate: comparison maps, exact rational preservation, monotonicity, and strict density of the rational image in the Cauchy carrier.\n'
-            printf -- '- NOT YET CLAIMED: order reflection, mutual inverse, order/field isomorphism, or research Junction.\n'
+            printf -- '- Proved at this gate: comparison maps, rational preservation, monotonicity, Cauchy rational density, rational-lower reflection, and full order reflection in both directions.\n'
+            printf -- '- Each map is now an order embedding at theorem level; surjectivity and mutual inverse are NOT YET CLAIMED.\n'
+            printf -- '- NOT YET CLAIMED: order isomorphism, field isomorphism, or research Junction.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Preserve H5 density evidence
+      - name: Preserve H5 order-reflection evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-003-h5-density-${{ github.run_id }}
+          name: st2-exp-003-h5-order-reflection-${{ github.run_id }}
           path: |
             /tmp/st2-exp-003-h4-governance.json
-            /tmp/st2-exp-003-h5-density-lean.log
-            /tmp/st2-exp-003-h5-density-closure.json
-            /tmp/st2-exp-003-h5-density-dependency-audit.log
+            /tmp/st2-exp-003-h5-reflection-lean.log
+            /tmp/st2-exp-003-h5-reflection-closure.json
+            /tmp/st2-exp-003-h5-reflection-dependency-audit.log
           if-no-files-found: warn
           retention-days: 30
