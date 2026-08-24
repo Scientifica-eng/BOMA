@@ -1,10 +1,10 @@
 /- ST2-EXP-011: scalar-generic quadratic comparison core.
 
 This research-only source extracts exactly the coordinate-level declaration
-closure used by CQuadraticComparison001. It deliberately contains no RBOMA,
-RCBOMA, Dedekind, Cauchy, H5 transport, global coordinate selector, or inverse
-selector. Functional maps remain conditional on explicit CoordinateExtractor
-data. -/
+closure used by CQuadraticComparison001. It deliberately refers to no concrete
+real-scalar implementation or transport route, and introduces no global
+coordinate or inverse selector. Functional maps remain conditional on explicit
+CoordinateExtractor data. -/
 namespace BOMA.C.StageTwo.ComparisonInterface011
 
 /-- Operations on the scalar carrier that occur syntactically in quadratic
