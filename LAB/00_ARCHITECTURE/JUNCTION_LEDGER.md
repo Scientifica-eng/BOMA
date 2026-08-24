@@ -48,7 +48,7 @@ Junction `UNIT.md` or research Junction evidence record.
 | `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean Claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration / `RA-22` eligibility |
 | `C-J-001` | selected pair witness field + quadratic comparison + nine-Claim closure | `SAME-CARRIER-INTEGRATION` | `C-CL-INTEGRATION-001` / accepted C integration |
 | `ST2-EXP-002-PQ-J-001` | selected Route P field + independently verified Route Q expression quotient field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | mutually inverse maps preserving embedded R and I; V5 `32597346281`; not canonical acceptance |
-| `ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001` | accepted Dedekind `R-BLOCK-001` + independently completed Cauchy real field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | mutually inverse order/field maps preserving rationals and inverse witness relations; retained research R reconvergence; not canonical acceptance |
+| `ST2-EXP-003-R-J-001` | accepted Dedekind `R-BLOCK-001` + independently completed Cauchy real field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | mutually inverse order/field maps preserving rationals and inverse witness relations; retained research R reconvergence; not canonical acceptance |
 
 ## 3. Accepted versus research Junction identity
 
@@ -62,11 +62,11 @@ reconvergence Junction. Route Q is exactly:
 It does not alter `CA-20`, create a canonical Route Q Block, or replace
 `C-J-001`.
 
-`ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001` is likewise a distinct
-**research-only** real-representation reconvergence Junction. Its incoming
-Cauchy producer was completed independently before comparison. It does not
-replace `R-BLOCK-001`, does not change the `R-DP-001` selected Dedekind route,
-and does not promote H6 C to accepted C.
+`ST2-EXP-003-R-J-001` is likewise a distinct **research-only**
+real-representation reconvergence Junction. Its incoming Cauchy producer was
+completed independently before comparison. It does not replace `R-BLOCK-001`,
+does not change the `R-DP-001` selected Dedekind route, and does not promote H6
+C to accepted C.
 
 Its exact proof root is:
 
@@ -169,7 +169,7 @@ C retained alternative           VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN AC
 C research reconvergence         ST2-EXP-002-PQ-J-001 / RESEARCH R-FIELD-ISOMORPHISM / PASS
 R canonical route                R-ROUTE-D / DEDEKIND / R-BLOCK-001
 R retained Cauchy alternative    VERIFIED INDEPENDENT RESEARCH / NOT ACCEPTED
-R research reconvergence         ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001 / PASS
+R research reconvergence         ST2-EXP-003-R-J-001 / PASS
 ST2-EXP-001                      CLOSED / PASS
 ST2-EXP-002                      CLOSED / PASS
 ST2-EXP-003                      CLOSED / PASS
