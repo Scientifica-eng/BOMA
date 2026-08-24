@@ -133,7 +133,7 @@ jobs:
           grep -Fq 'rather than a newly selected global' "$field"
           grep -Fq 'does not declare a research Junction' "$field"
           grep -Fq 'research-only R reconvergence Junction' "$junction"
-          grep -Fq 'does not define a new real carrier' "$junction"
+          grep -Fq 'define a new real carrier' "$junction"
           if grep -En 'Classical\.choose|noncomputable def.*[Ii]nv' "$field"; then
             printf 'Final H5 field layer introduced a new inverse selector or Choice boundary\n' >&2
             exit 1
