@@ -199,9 +199,9 @@ theorem r_rational_strict_below_add_iff
   intro B
   constructor
   · intro h
-    have hcut : (cutAdd A B).lower q := by
-      apply (rOfQ_strict_mk_iff_lower q (cutAdd A B)).1
-      simpa only [rAdd_mk] using h
+    change rLT (rOfQ q) (rmk (cutAdd A B)) at h
+    have hcut : (cutAdd A B).lower q :=
+      (rOfQ_strict_mk_iff_lower q (cutAdd A B)).1 h
     rcases hcut with ⟨a, b, ha, hb, hq⟩
     exact ⟨a, b,
       (rOfQ_strict_mk_iff_lower a A).2 ha,
@@ -214,7 +214,8 @@ theorem r_rational_strict_below_add_iff
         (rOfQ_strict_mk_iff_lower b B).1 hb,
         hq⟩
     have hm := (rOfQ_strict_mk_iff_lower q (cutAdd A B)).2 hcut
-    simpa only [rAdd_mk] using hm
+    change rLT (rOfQ q) (rmk (cutAdd A B))
+    exact hm
 
 /-- The H5 comparison map preserves and reflects strict rational lower bounds. -/
 theorem cToD_rational_strict_iff {q : QBOMA} {x : RCBOMA} :
