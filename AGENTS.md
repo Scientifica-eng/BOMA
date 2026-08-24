@@ -9,193 +9,111 @@ Read, in order:
 ```text
 README.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md
 LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
 LAB/PDSA/candidates/README.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
-LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
+LAB/00_ARCHITECTURE/GRAPH.md
+LAB/00_ARCHITECTURE/REGISTRY.md
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+LAB/00_ARCHITECTURE/R_DAG.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/00_ARCHITECTURE/C_DAG.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
 LAB/00_ARCHITECTURE/TRUSTED_BASE.md
 LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
-LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
-LAB/00_ARCHITECTURE/DECISION_LEDGER.md
-LAB/00_ARCHITECTURE/REGISTRY.md
-LAB/00_ARCHITECTURE/GRAPH.md
 ```
 
-Then read the DAG, acceptance specification, closure/PDSA record, Claim
-register, and V5 index relevant to the requested stage.
+Then read stage-specific acceptance, Claim, closure, PDSA, and V5 records.
+Historical records preserve provenance; they do not override later synchronized authorities.
 
-Historical records are valid provenance for the state they captured. They do
-not override later synchronized current-state authorities.
-
-## 2. Current canonical state
+## 2. Current structural state
 
 ```text
 Pre-numerical layer   CALIBRATED
-N-Core                ACCEPTED
-N-Arithmetic          ACCEPTED
-Z                     ACCEPTED
-post-Z reverse N      CLOSED / COMPLETE
-Q                     ACCEPTED
-R                     ACCEPTED — R-BLOCK-001 / R-DP-001 selects Dedekind
-RE-R-001              CLOSED / COMPLETE
-C                     ACCEPTED — C-ROUTE-P / C-BLOCK-002 / CA-20
-RE-C-001              CLOSED / COMPLETE
-RE-STAGE1-001         CLOSED / COMPLETE
-ST2-EXP-001           CLOSED / PASS
-ST2-EXP-002           CLOSED / PASS
-ST2-EXP-003           CLOSED / PASS / H1-H6 EXACT PASS
+N-Core                N-BLOCK-007 ACCEPTED
+N-Arithmetic          N-ARITH-BLOCK-001 ACCEPTED
+Z                     Z-BLOCK-002 ACCEPTED
+Q                     Q-BLOCK-002 ACCEPTED
+R                     R-DP-001 SELECTS Dedekind / R-BLOCK-001 ACCEPTED
+R alternative         R-ROUTE-C / Cauchy PERMANENT VERIFIED / NON-SELECTED
+R alt Junction        ST2-EXP-003-R-J-001 / NON-ACCEPTANCE
+R→C dependency        BOMA-C-R-DEP-001 / exact sixteen-property mathematical surface
+C                     C-DP-001 SELECTS C-ROUTE-P / C-BLOCK-002 / CA-20 ACCEPTED
+C alternative         C-ROUTE-Q PERMANENT VERIFIED / NON-SELECTED
+C alt Junction        ST2-EXP-002-PQ-J-001 / NON-ACCEPTANCE
+ST2-EXP-001..003      CLOSED / PASS / VERIFIED LESSONS INTEGRATED
 NO ACTIVE EXPERIMENT
 NEXT EXPERIMENT SLOT  OPEN / OWNER SELECTION REQUIRED
 ```
 
-Canonical acceptance is unchanged by Stage-Two research:
+## 3. Learning-to-Construction rule
+
+A successful experiment may, after Study/Act and explicit owner authorization,
+be integrated into the permanent Construction DAG as **verified knowledge**.
+
+Allowed integration includes:
 
 ```text
-accepted R route       R-ROUTE-D / DEDEKIND
-accepted R export      R-BLOCK-001
-accepted C route       C-ROUTE-P
-selected C producer    C-BLOCK-001
-accepted C export      C-BLOCK-002 / CA-20 ACCEPT
+refine dependency contract
+retain permanent verified alternative branch
+retain permanent verified non-acceptance Junction
+expose representation-independent invariant
+record sensitivity/genericity condition
 ```
-
-Retained research alternatives remain noncanonical:
-
-```text
-C-ROUTE-Q
-  VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
-  research Junction ST2-EXP-002-PQ-J-001
-
-R-ROUTE-C / CAUCHY
-  VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD
-  NOT AN ACCEPTED REAL EXPORT
-  research Junction ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
-
-H6 Cauchy-native C core
-  VERIFIED RESEARCH EVIDENCE / NOT AN ACCEPTED EXPORT
-```
-
-## 3. Stage-Two lifecycle rule
-
-All three owner-approved Stage-Two experiments are closed. There is
-`NO ACTIVE EXPERIMENT`.
-
-Do not start `ST2-EXP-004`, `ST2-EXP-011`, or any other candidate merely
-because it is registered, high priority, or has a transferable dossier.
-
-A new experiment requires, in order:
-
-```text
-explicit owner selection
-→ current-main baseline confirmation
-→ exact typed architectural origin
-→ single changed factor and fixed controls
-→ affected Claim cone
-→ immutable new Frozen PDSA Plan
-→ separate feature/research branch
-→ independent Do / exact V5 evidence
-→ Study / Act
-→ separate lifecycle and merge decisions
-```
-
-Candidate documentation is not authorization.
-
-## 4. ST2-EXP-003 closed-state facts
-
-Architectural origin:
-
-```text
-Q-BLOCK-002
-  → R-DP-001
-      selected canonical route: R-ROUTE-D / DEDEKIND / R-BLOCK-001
-      retained research route:  R-ROUTE-C / CAUCHY
-```
-
-Final exact-verified branch head:
-
-`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
-
-Critical exact-head V5 evidence:
-
-```text
-Independent Cauchy Real Route
-  run      32727267231
-  artifact 9520001887
-  sha256   e7c8e9959445e182eab133a11f7352fbf4a9a6ae270d7b81037b2008b663de8c
-
-Dedekind-Cauchy Comparison / Research R Junction
-  run      32727267177
-  artifact 9520005288
-  sha256   3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34
-
-Cauchy Quadratic Rebuild
-  run      32727267183
-  artifact 9520002118
-  sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
-```
-
-PR #8 merged that exact-verified tree into `main` as
-`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`. The owner then explicitly
-authorized lifecycle closure on 2026-08-24.
-
-Closure authority:
-
-`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
-
-Do not reinterpret closure as promotion of the Cauchy route or H6 C.
-
-## 5. C acceptance-first rule
-
-The accepted Stage-One semantic core is the unique quadratic real-coordinate
-field presentation:
-
-```text
-faithful accepted-R embedding
-commutative-field-strength behavior
-distinguished I
-I² = -1
-every z has an expression a+bI with a,b in accepted R
-that expression is unique
-route-neutral comparison adequacy
-```
-
-Do not silently strengthen this to algebraic closure, FTA, analytic
-completeness, a total order on C, or equivalence with a built-in Complex
-carrier.
 
 Never infer:
 
 ```text
-C = R×R because coordinates are convenient
-C = polynomial quotient because X²+1 presents the extension
-selected route = mathematically necessary route
-Lean identity = mathematical identity
-standard notation a+bi = carrier definition
+permanent DAG visibility = SELECTS
+permanent DAG visibility = accepted export
+verified alternative = canonical producer
+successful experiment = automatic promotion
 ```
 
-`C-DP-001` is resolved by explicit user ratification. `C-ROUTE-P` is the
-selected `C-BLOCK-001` producer and `C-BLOCK-002 / CA-20` is the accepted
-export. Route Q remains research-only.
+The Learning Graph must continue to preserve Frozen Plans, failed/superseded
+attempts, exact evidence, Study/Act decisions, and the date/authority of integration.
 
-## 6. R→C dependency rule
+## 4. Exact R→C mathematical dependency rule
 
-C consumes the **accepted R interface**, not Dedekind internals by default.
-
-Allowed starting boundary:
+`ST2-EXP-001` proved that selected C Claim meaning survives over exactly these
+sixteen R properties:
 
 ```text
-accepted R Claim surface
-+
-downstream lemmas explicitly derived from that surface
-+
-declared C-stage infrastructure
+orderTrans
+orderAntisymm
+orderTotal
+nontrivial
+addComm
+addAssoc
+addZeroLeft
+addInverseRight
+addTranslateOrderIff
+negOrderReversing
+mulComm
+mulAssoc
+mulOneLeft
+distribRight
+orderMulNonneg
+inverseExists
 ```
+
+This is the canonical mathematical surface of `BOMA-C-R-DEP-001`.
+
+Formal witness:
+
+```text
+BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate
+BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
+```
+
+The accepted C Lean source may still inherit a larger `RStageIntegrationCertificate`
+bundle. Do not confuse that formal/provenance over-bundling with mathematical necessity.
 
 Do not silently use as C mathematical premises:
 
@@ -203,144 +121,225 @@ Do not silently use as C mathematical premises:
 LowerCut
 CutEquiv
 cutSetoid identity
-principal-cut representation details
-Dedekind union LUB implementation
-cut membership search/bracketing
-selected signed multiplication internals
-selected reciprocal internals
+Dedekind LUB implementation
+cut search/bracketing
+selected R multiplication internals
+selected Dedekind reciprocal internals
+R density / Archimedean machinery unless a new accepted C Claim explicitly requires them
 ```
 
-If C needs a real theorem absent from the accepted export, open an explicit
-dependency question and classify it as derivable downstream, justified R
-strengthening, representation-specific dependency, or new C-stage support.
+## 5. Decision / alternative discipline
 
-## 7. Status authority
+### R
 
-When status documents conflict, prefer:
+```text
+R-DP-001 SELECTS R-ROUTE-D / Dedekind
+R-BLOCK-001 is accepted
+R-ROUTE-C / Cauchy is permanent verified alternative
+ST2-EXP-003-R-J-001 is permanent verified non-acceptance Junction
+```
+
+Do not reinterpret the Cauchy branch as accepted or delete it from the core DAG because it is non-selected.
+
+### C
+
+```text
+C-DP-001 SELECTS C-ROUTE-P
+C-BLOCK-001 is selected producer
+C-J-001 is accepted integration Junction
+C-BLOCK-002 / CA-20 is accepted export
+C-ROUTE-Q is permanent verified alternative
+ST2-EXP-002-PQ-J-001 is permanent verified non-acceptance Junction
+```
+
+Do not conflate `C-J-001` with the P/Q alternative-construction Junction.
+
+## 6. ST2-EXP-001 deliberately has no Junction
+
+`ST2-EXP-001` changed the understanding of a dependency edge. It did not create
+two carriers that needed reconciliation.
+
+Correct interpretation:
+
+```text
+BOMA-C-R-DEP-001 -- REFINED BY --> exact sixteen-property interface
+```
+
+Incorrect interpretation:
+
+```text
+invent a new Brick/Block/Junction solely because the experiment passed
+```
+
+Use existing architectural types only when their granularity/semantics are actually satisfied.
+
+## 7. Stage-Two lifecycle rule
+
+All three owner-approved Stage-Two experiments are closed and their verified
+lessons are integrated. There is `NO ACTIVE EXPERIMENT`.
+
+Do not start `ST2-EXP-004`, `ST2-EXP-011`, or any other candidate merely because
+it is registered or well documented.
+
+A new experiment requires:
+
+```text
+explicit owner selection
+→ verify current main
+→ exact typed architectural origin
+→ one changed factor / fixed controls
+→ affected Claim cone
+→ immutable Frozen Plan
+→ separate branch
+→ independent Do / exact V5 evidence
+→ Study / Act
+→ separate lifecycle, integration, acceptance, and merge decisions as applicable
+```
+
+Candidate documentation is not authorization.
+
+## 8. ST2-EXP-003 historical facts
+
+The permanent Cauchy branch was learned through `ST2-EXP-003`, which remains
+`CLOSED / PASS / H1-H6 EXACT PASS`.
+
+Final mathematical exact-verified branch head:
+
+`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
+
+Critical final runs:
+
+```text
+Independent Cauchy Real Route              32727267231 PASS
+Dedekind-Cauchy Comparison / R Junction    32727267177 PASS
+Cauchy Quadratic Rebuild                    32727267183 PASS
+```
+
+Do not rewrite those historical records to pretend Cauchy was part of the original Stage-One accepted path.
+
+## 9. C acceptance-first rule
+
+Accepted C remains the unique quadratic real-coordinate field presentation at
+the declared scope:
+
+```text
+faithful selected-R embedding
+commutative-field-strength behavior
+distinguished I
+I² = -1
+unique a+bI coordinates
+non-real-collapse consequence
+comparison adequacy
+same-carrier integration
+```
+
+Do not silently strengthen acceptance to algebraic closure, FTA, analytic
+completeness, total order, or built-in Complex identity.
+
+## 10. Status authority
+
+When current-state documents conflict, prefer:
 
 ```text
 LAB/PDSA/STATUS.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+LAB/00_ARCHITECTURE/ARCHITECTURE.md
+LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/GRAPH.md
-relevant current DAG / acceptance / closure records
+LAB/00_ARCHITECTURE/DECISION_LEDGER.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
+relevant DAG / acceptance / Claim records
 claim-level V5 evidence
 README.md / AGENTS.md
-historical checkpoints and PDSA records
+historical checkpoints
 ```
 
-## 8. Method and topology
+## 11. Method and topology
 
-Use **PDSA — Plan, Do, Study, Act**. `PDCA` names are legacy provenance only.
+Use PDSA. Do not assume a linear chain.
 
-Do not assume a linear chain. Classify forks as parallel dependency, Decision
-Point branch, or exploratory PDSA branch. A Junction requires an explicit
-compatibility/reconvergence question and evidence.
+Classify forks as:
 
-Reconvergence preserves route-specific assumptions and provenance. Never infer:
+```text
+parallel dependency
+Decision Point branch
+exploratory branch
+permanent verified alternative branch
+```
+
+A Junction requires explicit compatibility/reconvergence evidence.
+
+Never infer:
 
 ```text
 same contribution ⇒ same history
 selected route ⇒ universal necessity
-visual meeting ⇒ verified convergence
+visual meeting ⇒ Junction
+permanent verified route ⇒ accepted route
 ```
 
-## 9. Brick / Block / Claim discipline
+## 12. Brick / Block / Junction / Claim discipline
 
 Keep architectural types distinct:
 
 ```text
-Brick          smallest independently reviewable/replaceable/branchable unit
-Block          coherent package of Bricks and/or internal components
+Brick          smallest independently reviewable/replaceable/branchable construction unit
+Block          coherent package of Bricks/internal components
 Junction       verified compatibility/reconvergence result
-Decision Point explicit selection among alternatives
+Decision Point explicit non-derived route selection
+Configuration  constructed object/interface configuration
 Claim          assertion layer independent of Brick/Block granularity
 ```
 
-Do not manufacture Bricks merely for symmetry.
+Do not manufacture units for symmetry or to make a diagram look tidy.
 
-## 10. Accepted-stage discipline
+## 13. Accepted-stage discipline
 
-An accepted Block or stage may be modified only with explicit impact analysis
-against its governing acceptance contract and V5 lineage. Do not silently
-weaken, strengthen, reinterpret, or broaden an accepted Claim.
+An accepted Block/stage may be modified only with explicit impact analysis
+against its acceptance contract and V5 lineage.
 
-For R:
+Architecture integration of experimental learning does **not** silently weaken,
+strengthen, reinterpret, or replace accepted Claims/producers.
 
-```text
-accepted carrier      RBOMA := Quotient cutSetoid
-selected route        Dedekind lower cuts
-accepted completeness Dedekind LUB completeness
-inverse interface     existence + uniqueness witnesses
-final gate            R-J-002 PASS
-acceptance            RA-22 ACCEPT
-```
+## 14. Logical and Claim-transparency discipline
 
-These are accepted realization facts, not universal necessity claims.
+Record localized logical commitments and their actual source provenance.
+Absence of a downstream `Classical` token does not prove independence from an upstream classical producer.
 
-## 11. Logical-commitment discipline
-
-Do not collapse the construction into blanket labels such as “constructive” or
-“classical.” Record localized logical commitments and their actual source
-provenance.
-
-Absence of a downstream `Classical` token does not prove independence from an
-upstream classical producer.
-
-If replacing a logical commitment, treat it as an explicit branch/reconstruction
-problem with downstream acceptance impact.
-
-## 12. Claim-transparency rule
-
-For every promoted Claim maintain:
+For every promoted Claim preserve:
 
 ```text
 Claim ID
-statement / acceptance role
+statement / role
 producer
 mathematical dependencies
 logical dependencies
 representation dependencies
 formalization dependencies
 supporting lemmas
-Lean declaration
-source file
+Lean declaration/source
 verification evidence
-alternative producer / branch
+alternative producer/branch
 necessity classification
-sensitivity / reopening condition
+sensitivity/reopening condition
 ```
 
-Use only the canonical dependency vocabulary:
+## 15. Verification rules
+
+V5 results are theorem/unit specific. A monolithic type-check is not an
+acceptance or architectural-promotion gate.
+
+Before merging architecture changes:
 
 ```text
-MATHEMATICAL_CLAIM
-SUPPORTING_LEMMA
-LOGICAL_COMMITMENT
-REPRESENTATION_COMMITMENT
-FORMALIZATION_COMMITMENT
-VERIFICATION_INFRASTRUCTURE
-TRUSTED_METATHEORY
-```
-
-Do not introduce vague `OTHER`, `IMPLICIT`, or `UNKNOWN` categories into
-certified closure.
-
-## 13. Verification rules
-
-V5 results must be mapped theorem-by-theorem/unit-by-unit. A type-checking
-monolithic payload does not automatically PASS an acceptance Junction or matrix.
-
-Before promoting evidence:
-
-```text
-verify the actual dependency closure
-verify the exact intended commit/source state
-record the exact toolchain and workflow run
-preserve scientifically material failed/superseded attempts
-never attach evidence to a source state that was not actually checked
+verify exact head
+run architecture consistency
+run affected accepted-stage regressions
+preserve immutable Frozen Plans and accepted source/manifests unless change is explicitly in scope
+record exact workflow/artifact identity where material
 ```
 
 Pinned toolchain:
@@ -350,49 +349,8 @@ leanprover/lean4:v4.32.1
 Lake packages: none
 ```
 
-## 14. GitHub continuation rule
+## 16. GitHub continuation rule
 
-Do not begin new research directly on `main`. After explicit owner selection,
-open a separate branch from a verified current `main` head and freeze the new
-Plan there.
+Do not begin new research directly on `main`. Use a separate branch from a verified current main.
 
-Do not merge research into `main` without an explicit user order.
-
-Preserve research commits and historical branches; do not erase Learning Graph
-provenance merely for visual cleanliness.
-
-## 15. Cleanup rule
-
-Distinguish operational debris from research provenance. Do not delete
-historical failed experiments, retained alternatives, superseded evidence, old
-Frozen Plans, or PDSA records merely because a later route succeeded.
-
-## 16. Mandatory Stage-Two origin and prevention controls
-
-Before proposing or executing another Stage-Two experiment, read:
-
-```text
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
-LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_H4_001.md
-LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_POST_H6_001.md
-LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
-```
-
-Identify the exact typed origin, upstream and affected units, frozen accepted
-baseline, changed factor, fixed controls, affected cone, evidence, and actual
-research/acceptance status. Never invent a Brick for an edge, revise a Frozen
-Plan, confuse a research Junction with a canonical Junction, treat identical
-kernel axioms as identical source commitments, or skip exact-head governance
-and Lean verification.
-
-The current operational invariant is:
-
-```text
-ST2-EXP-001 CLOSED / PASS
-ST2-EXP-002 CLOSED / PASS
-ST2-EXP-003 CLOSED / PASS
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT REQUIRES EXPLICIT OWNER SELECTION
-```
+Do not merge changes into `main` without the appropriate explicit user authority and exact-head verification.
