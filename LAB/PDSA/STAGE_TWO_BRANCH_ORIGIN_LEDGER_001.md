@@ -1,7 +1,7 @@
 # STAGE_TWO_BRANCH_ORIGIN_LEDGER_001 — Architectural Branch Attachment
 
 **Document ID:** `BOMA-ST2-ORIGIN-LEDGER-001`  
-**Status:** `CLOSED FRONTIER / THREE CLOSED EXPERIMENTS / NO ACTIVE EXPERIMENT`  
+**Status:** `FOUR CLOSED EXPERIMENTS / ST2-EXP-011 PASS / NO ACTIVE EXPERIMENT / 011 ARCHITECTURE INTEGRATION REQUIRED`  
 **Date:** `2026-08-24`  
 **Machine-readable authority:**
 `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
@@ -47,33 +47,36 @@ C-BLOCK-001
 C-BLOCK-002 / CA-20 ACCEPT
 ```
 
-`C-J-001` is the canonical accepted same-carrier integration Junction. A
-Stage-Two representation-reconvergence Junction is a different **research**
-object and must not replace it.
+`C-COMPARE-BLOCK-001` is the existing representation-neutral comparison Block
+supporting `C-CL-COMPARE-001`. `C-J-001` is the separate canonical accepted
+same-carrier integration Junction. A generic interface shared by multiple
+producers is not automatically a Junction.
 
 ## 3. Closed experiment attachment matrix
 
-| Attribute | ST2-EXP-001 | ST2-EXP-002 | ST2-EXP-003 |
-| --- | --- | --- | --- |
-| Architectural attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` | `DECISION_POINT` |
-| Exact changed origin | `BOMA-C-R-DEP-001` | `C-DP-001` | `R-DP-001` |
-| Upstream accepted unit | `R-BLOCK-001` | `R-BLOCK-001` | `Q-BLOCK-002` |
-| Baseline producer unit | `C-BLOCK-001 / C-ROUTE-P` | `C-BLOCK-001 / C-ROUTE-P` | `R-BLOCK-001 / R-ROUTE-D` |
-| Unchanged accepted export | `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` | `R-BLOCK-001` and downstream `C-BLOCK-002 / CA-20` |
-| First changed object | real-interface package | complex carrier / identity realization | real completion carrier / identity realization |
-| Experimental alternative | explicit sixteen-field real interface | independent expression-normalization quotient field | independent rational Cauchy completion field |
-| Reconvergence | same selected carrier and same nine Claims | explicit inverse R-field isomorphism | explicit Dedekind/Cauchy field isomorphism + research R Junction |
-| Research Junction | no fabricated Junction | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-R-J-001` |
-| Canonical-acceptance change | none | none | none |
-| Frozen Git origin | `b473d236309770762e102517ef8a79c628cb43ed` | `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498` | `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d` |
-| Exact verification evidence | `32593045224` | `32597346281` | final exact-head critical runs `32727267231 / 32727267177 / 32727267183` |
-| Result | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` |
+| Attribute | ST2-EXP-001 | ST2-EXP-002 | ST2-EXP-003 | ST2-EXP-011 |
+| --- | --- | --- | --- | --- |
+| Attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` | `DECISION_POINT` | `BLOCK` |
+| Exact origin | `BOMA-C-R-DEP-001` | `C-DP-001` | `R-DP-001` | `C-COMPARE-BLOCK-001` |
+| Common/upstream accepted unit | `R-BLOCK-001` | `R-BLOCK-001` | `Q-BLOCK-002` | `R-BLOCK-001` plus selected `C-BLOCK-001` comparison baseline |
+| Unchanged accepted export | `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` | `R-BLOCK-001` and downstream `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` |
+| First changed object | R→C interface package | C carrier/identity realization | R completion carrier/identity | comparison scalar carrier/operation hard-wiring |
+| Experimental alternative | explicit 16-field production interface | expression-normalization quotient field | rational Cauchy completion field | generic scalar operations + explicit coordinate laws |
+| Reconvergence / compatibility | same selected carrier/Claims | explicit inverse R-field isomorphism | explicit Dedekind/Cauchy isomorphism + research Junction | same generic comparison interface; **not a Junction** |
+| Research Junction | none | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-R-J-001` | none |
+| Canonical-acceptance change | none | none | none | none |
+| Frozen Git origin | `b473d236...` | `878a52c3...` | `ea920b6b...` | `b49826e5...` |
+| Frozen Plan commit | historical Plan authority | historical Plan authority | `70dd2f30...` | `5cc05ef1...` |
+| Exact final/pre-closure evidence | run `32593045224` | run `32597346281` | runs `32727267231 / 32727267177 / 32727267183` | head `ef116405...`, run `32753140129` |
+| Result | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` |
 
 Current Stage-Two lifecycle frontier:
 
 ```text
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT = OPEN / OWNER SELECTION REQUIRED
+ACTIVE EXPERIMENT = NONE
+NEXT REQUIRED ACT = ST2-EXP-011 LEARNING-TO-CONSTRUCTION INTEGRATION
+NEXT OWNER-SEQUENCED EXPERIMENT AFTER SYNCHRONIZED MAIN = ST2-EXP-004
+ST2-EXP-004 = NOT ACTIVE / NO FROZEN PLAN
 ```
 
 ## 4. ST2-EXP-001 — dependency-edge experiment
@@ -87,13 +90,11 @@ C-BLOCK-001 / selected Route P
    --> C-BLOCK-002 / unchanged accepted export
 ```
 
-The alternative consumes sixteen explicitly supplied accepted-real fields
-instead of the entire twenty-five-field integration package. It retains the
-original selected complex carrier, operations, and nine Claim meanings.
-
-This experiment does not originate at an independently named C Brick, nor
-does it create one. Its origin is the consumer-side packaging of an existing
-accepted dependency **edge**.
+The alternative consumes sixteen explicitly supplied accepted-real properties
+instead of the entire accepted integration package. It retains the selected
+complex carrier, operations, and nine Claim meanings. Its origin is the
+consumer-side packaging of an existing dependency edge; no Brick or Junction
+was fabricated.
 
 ## 5. ST2-EXP-002 — decision-point experiment
 
@@ -109,157 +110,41 @@ C-DP-001
    ST2-EXP-002-PQ-J-001 / verified research R-field isomorphism
 ```
 
-Route Q is an independently verified formal-expression normalization
-quotient field. It is **not** an independently implemented full polynomial
-ring `R[X]`, is **not** the canonical accepted export, and does **not** alter
+Route Q and its Junction are permanent verified non-selected/non-acceptance
+architecture. They do not alter `C-DP-001 SELECTS C-ROUTE-P`, `C-J-001`, or
 `CA-20`.
 
-The research Junction preserves zero, one, negation, addition,
-multiplication, the accepted-real embedding, and the distinguished
-imaginary generator. Its maps are mutually inverse; incoming Route Q was
-proved independently before Route P entered the comparison assembly.
-
-The first synchronized architecture head exposed cross-stage failure
-`32599546288`: an identifier shaped like a canonical Junction was mistaken
-for an actual canonical `UNIT.md`. The repository-wide auditor now resolves
-research Junctions through this origin ledger, requires their real experiment
-record and explicit nonaccepted scope, and keeps them distinct from accepted
-filesystem-grounded units.
-
-The first post-merge `main` architecture run, workflow execution `#26` on
-commit `c5981ef8e6bdd092edd0bb8dd7a6258007636fce`, exposed a separate
-freshness-boundary error: twelve research Lean sources shared the accepted
-`CStage` directory, but none belonged to `C_ACCEPTED_INPUTS.txt`. Accepted C
-freshness now follows all six actual manifest-listed C sources while keeping
-the manifest itself protected; research sources do not silently become
-accepted inputs merely by sharing their directory.
+Two historical governance failures exposed during this experiment remain
+recorded in the machine ledger: research-Junction identifier classification and
+accepted-manifest freshness boundaries. Neither was erased by later integration.
 
 ## 6. ST2-EXP-003 — closed independent real-completion decision experiment
 
 Architectural attachment:
 
 ```text
-Q-BLOCK-002 / accepted rational ordered field
+Q-BLOCK-002
    --> R-DP-001
-       |-- selected accepted Dedekind / R-BLOCK-001
-       '-- retained Cauchy / VERIFIED RESEARCH / NOT ACCEPTED
+       |-- SELECTS Dedekind / R-BLOCK-001 ACCEPTED
+       '-- R-ROUTE-C / Cauchy VERIFIED ALTERNATIVE
                  |
-                 +-- H5 verified Dedekind/Cauchy field isomorphism
-                 +-- ST2-EXP-003-R-J-001
-                 '-- H6 Cauchy-native C-BLOCK-001 core rebuild
-       downstream accepted C-BLOCK-001 / C-BLOCK-002 remain unchanged
+                 +-- H5 Dedekind/Cauchy field isomorphism
+                 +-- ST2-EXP-003-R-J-001 research Junction
+                 '-- H6 Cauchy-native complex-core rebuild
 ```
 
-The typed origin is a real **DECISION_POINT**, not a new Brick or Block.
-`Q-BLOCK-002` is the common independent input. The accepted `R-BLOCK-001`
-Dedekind producer is a comparison baseline, not a mathematical dependency of
-the independently assembled Cauchy producer. All twelve R and nine C Claim
-families remain the recorded impact cone.
+The common independent input is `Q-BLOCK-002`. The accepted Dedekind producer
+is a baseline, not a mathematical dependency of the independent Cauchy
+producer. All twelve R and nine C Claim families remain the recorded impact
+cone.
 
-Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.  
-Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.  
-Final lifecycle status: `CLOSED / PASS / H1-H6 EXACT PASS / MATHEMATICAL PASS`.
+Frozen reference: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.  
+Frozen Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.  
+Final mathematical head: `3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.  
+Merged experiment commit: `5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`.  
+Merge tree: `d515a2812e621af68406c30866ac9ece5460b1f9`.
 
-The owner authorized lifecycle closure on 2026-08-24 after the exact-verified
-experiment tree had been merged to `main`. The machine ledger therefore now
-carries a top-level `verified_run`, final verified head, explicit research
-Junction ID, merge identity, and lifecycle closure record. The single-active
-experiment slot is released; no next experiment is selected by this action.
-
-### 6.1 Independent Cauchy real route
-
-The retained progression reached an independently verified totally ordered
-field and Cauchy/Dedekind-style LUB contract. Key exact milestones include:
-
-```text
-ordered ring       run 32634312486
-ordered field      run 32637591596
-Cauchy completion  run 32641010707
-LUB H4             run 32643579395
-```
-
-H4 exact source head: `0f4a706d94c394b8e8a9eec836859caac772a944`.  
-H4 final axiom surface: `[propext, Classical.choice, Quot.sound]`.
-
-### 6.2 H5 Dedekind/Cauchy comparison and research Junction
-
-The two completed real producers are connected by explicit mutually inverse
-maps preserving order, rationals, addition, multiplication, and inverse
-witness relations.
-
-Field-isomorphism exact evidence:
-
-```text
-source head  2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b
-run          32718253596
-artifact     9516753847
-sha256       e913d04cf98c305f5f9ac55904d0a2d987c00bc2109b1a5b2b3371e4fac005e6
-```
-
-Verified research R Junction exact evidence:
-
-```text
-source head  7604590e73425b68de5500042d57f0a1c3abcde3
-run          32718925270
-artifact     9516996491
-sha256       0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0
-```
-
-The closed-experiment research Junction ID is `ST2-EXP-003-R-J-001`. It is
-research evidence only. It is not `R-BLOCK-001`, does not replace accepted
-`R-ROUTE-D`, and does not alter the accepted export.
-
-### 6.3 H6 downstream Cauchy-native C rebuild
-
-H6 rebuilds directly over `RCBOMA`, using the independent Cauchy mathematical
-assembly rather than transporting through H5/Dedekind sources. It establishes
-the seven selected `C-BLOCK-001` core meanings: carrier, real embedding,
-field/witness-field behavior, distinguished `I`, generation, unique real
-coordinates, and nonreality of `I`.
-
-Exact H6 evidence:
-
-```text
-source head  ea5fdb61fcbafb0ece463910c24ef71183443b19
-run          32719705824
-artifact     9517267487
-sha256       cf296c8daf92c9cfe9e54986b93b6101ea225aad79c1c7388ad6d3ae13ae5a0e
-root         BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate
-axioms       [propext, Classical.choice, Quot.sound]
-```
-
-H6 does **not** claim that the accepted `CQuadraticComparison001` abstraction
-was generalized to an arbitrary real scalar carrier. Accepted
-`C-COMPARE-BLOCK-001`, `C-BLOCK-002`, `C-ROUTE-P`, and `CA-20` remain
-unchanged. That architecture-genericity opportunity is recorded separately as
-future candidate `ST2-EXP-011` and is not authorized for execution.
-
-### 6.4 Final mathematical Study / Act and later owner disposition
-
-`LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md` historically records
-the mathematical conclusion reached before owner merge/lifecycle disposition:
-
-```text
-ST2-EXP-003 MATHEMATICAL RESULT:       PASS
-RESEARCH R JUNCTION:                   KEEP AS VERIFIED RESEARCH EVIDENCE
-CANONICAL R-DP-001 SELECTION:          RETAIN DEDEKIND
-ACCEPTED R-BLOCK-001:                  UNCHANGED
-CANONICAL C-DP-001 / C-ROUTE-P:        RETAIN
-ACCEPTED C-BLOCK-001 / C-BLOCK-002:    UNCHANGED
-CA-20:                                 UNCHANGED
-PROMOTE CAUCHY R TO ACCEPTED EXPORT:   NO
-PROMOTE H6 C TO ACCEPTED EXPORT:       NO
-```
-
-The later owner-authorized lifecycle transition is recorded separately in:
-
-`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
-
-### 6.5 Final exact-head re-verification, merge, and closure
-
-The final synchronized branch head
-`3d4ed58e5d88b2a0bd84b3958cac2c8572385152` passed the three critical V5
-workflows:
+Final exact critical evidence:
 
 ```text
 Independent Cauchy Real Route
@@ -278,20 +163,145 @@ Cauchy Quadratic Rebuild
   sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
 ```
 
-The accepted C regression workflows on that same head also passed. PR #8 then
-merged that exact tree into `main` as
-`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`; the merge tree is identical to
-the verified branch tree.
+Lifecycle authority remains:
 
-Owner-authorized lifecycle closure followed. Final state:
+`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
+
+`R-DP-001` still SELECTS Dedekind; Cauchy/H5/H6 remain nonaccepted verified
+research provenance.
+
+## 7. ST2-EXP-011 — closed comparison-interface Block experiment
+
+Architectural attachment:
 
 ```text
-ST2-EXP-003 = CLOSED / PASS
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT = OPEN / OWNER SELECTION REQUIRED
+accepted R-BLOCK-001 / selected C-BLOCK-001
+        ↓
+C-COMPARE-BLOCK-001
+        |
+        | first divergence inside comparison presentation/relation:
+        | RBOMA-hard-wired scalar boundary
+        v
+generic scalar operations + explicit quadratic-coordinate laws
+        |\
+        | \-- accepted RBOMA adapter / same Related semantics
+        '-- native RCBOMA + H6 adapter / no H5 transport dependency
 ```
 
-## 7. Required fields for future controlled branches
+The typed origin is the existing **Block** `C-COMPARE-BLOCK-001`. The experiment
+does not create a new Block: it changes the scalar abstraction inside the
+comparison machinery. It also creates no Junction because compatibility through
+a common interface is not itself a proved reconvergence object.
+
+Frozen accepted Git origin:
+
+`b49826e58261a71634cd12756e8afda28920088f`.
+
+Immutable Plan commit:
+
+`5cc05ef1bea8e88787041c3bc30dd0aecf5412d4`.
+
+Direct affected Claim: `C-CL-COMPARE-001`.  
+Secondary audit Claim: `C-CL-INTEGRATION-001`.
+
+### 7.1 Closure-derived interface
+
+The comparison proof closure needs scalar:
+
+```text
+zero / one / neg / add / mul
+```
+
+plus explicit coordinate constructor, generation, uniqueness, and preservation
+laws for zero, one, scalars, I, negation, addition, and multiplication.
+
+It does not directly need scalar order, completeness, density, Archimedean
+properties, field-law bundles, or inverse-existence/uniqueness fields.
+Inverse-witness preservation transports a supplied witness rather than selecting
+an inverse.
+
+### 7.2 Accepted and native instances
+
+The accepted RBOMA adapter preserves the old `Related` semantics definitionally
+(`related_iff_accepted` by `rfl`).
+
+The native H6 adapter uses `RCBOMA` and the H6 pair carrier directly. Its
+mathematical assembly excludes H5 `cToD` transport and selected Dedekind/RBOMA
+implementation sources.
+
+Logical cost:
+
+```text
+generic comparison roots    no axioms
+native H6 roots              [propext, Quot.sound]
+accepted adapter roots       [propext, Classical.choice, Quot.sound]
+```
+
+The difference is inherited formal provenance, not generic-interface necessity.
+
+### 7.3 Relation/function boundary
+
+Totality and single-valuedness remain relation-level facts. Functional maps are
+available only from explicit `CoordinateExtractor` data. No global coordinate or
+inverse selector was introduced for convenience.
+
+### 7.4 Final exact verification
+
+Final green pre-closure head after preserving and correcting lifecycle-CI
+compatibility failures:
+
+`ef116405c08475ec8702d9177a5106d7d0bfe525`.
+
+```text
+ST2-EXP-011 workflow
+  run      32753140129
+  artifact 9529812715
+  sha256   f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1
+```
+
+The same head passed the accepted C regressions and historical 002/003
+preservation matrix. Preserved failures are documented in:
+
+```text
+LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMMENT_FALSE_POSITIVE.md
+LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md
+```
+
+Final Study/Act:
+
+`LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md`.
+
+Lifecycle closure:
+
+`LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md`.
+
+Final lifecycle status:
+
+```text
+ST2-EXP-011 = CLOSED / PASS
+experimental generic layer = VERIFIED RESEARCH / NOT ACCEPTED REFACTOR
+durable architecture lesson = YES / INTEGRATION REQUIRED
+accepted R/C and SELECTS = UNCHANGED
+new Block / Decision / Junction = NONE
+```
+
+## 8. Historical closure versus current frontier
+
+ST2-EXP-011 exposed a governance distinction that is now explicit:
+
+```text
+historical experiment closure = monotone evidence
+current active/frontier state  = time-varying program state
+```
+
+The strict 001--003 no-active closed-frontier audit remains reproducible for its
+historical epoch. Later experiments verify preservation through
+`stage_two_historical_closure_audit.py` instead of reinterpreting a closed
+experiment as requiring an empty global frontier forever.
+
+This is governance knowledge, not a mathematical change to 001--003 or 011.
+
+## 9. Required fields for future controlled branches
 
 Before a new cycle leaves Plan, record:
 
@@ -317,7 +327,7 @@ verified evidence after execution
 Do not retroactively modify a previously frozen Plan to fill a missing field.
 Add an explicitly dated supplementary ledger entry instead.
 
-The exact source-unit paths, frozen Plans, affected Claim IDs, retained
-failures, exact H5/H6 evidence, research-status constraints, merge identity,
-and lifecycle closure are in the machine-readable companion JSON. The
-closure-aware governance audit rejects missing or contradictory attachments.
+The single-active slot is currently empty. The next required action is the
+separate ST2-EXP-011 Learning-to-Construction integration. Only after that Act
+is merged and `main` is synchronized/re-read may owner-sequenced `ST2-EXP-004`
+receive its own Frozen Plan and independent branch.
