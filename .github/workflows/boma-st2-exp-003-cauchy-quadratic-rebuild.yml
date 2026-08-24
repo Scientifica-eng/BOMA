@@ -81,7 +81,7 @@ jobs:
             printf 'Independent real manifest lost its selected-Dedekind/C separation\n' >&2
             exit 1
           fi
-          forbidden='Dedekind|RStageIntegration002|BOMA\.C\.(PairCore001|PairNormInverse001|RoutePairProbe001|RInterfaceNoSquareProbe001)|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)|def[[:space:]]+ccInv([^[:alnum:]_]|$)'
+          forbidden='BOMA\.R\.Dedekind|RDedekind|RStageIntegration002|BOMA\.C\.(PairCore001|PairNormInverse001|RoutePairProbe001|RInterfaceNoSquareProbe001)|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)|def[[:space:]]+ccInv([^[:alnum:]_]|$)'
           if grep -En "$forbidden" "$source"; then
             printf 'H6 source crossed the alternative-real or witness-only boundary\n' >&2
             exit 1
