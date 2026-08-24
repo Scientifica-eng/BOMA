@@ -206,7 +206,7 @@ structure DedekindCauchyComparisonFoundationCertificate where
   cToDMonotone : ∀ {x y : RCBOMA}, rCLE x y → rLE (cToDMap x) (cToDMap y)
   dToCMonotone : ∀ {x y : RBOMA}, rLE x y → rCLE (dToCMap x) (dToCMap y)
 
-theorem dedekindCauchyComparisonFoundationCertificate :
+noncomputable def dedekindCauchyComparisonFoundationCertificate :
     DedekindCauchyComparisonFoundationCertificate where
   acceptedRoute := rStageIntegrationCertificate
   cauchyRoute := cauchyLUBCertificate
