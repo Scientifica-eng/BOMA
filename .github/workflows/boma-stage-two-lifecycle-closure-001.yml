@@ -20,6 +20,7 @@ on:
       - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
+      - 'LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md'
       - 'README.md'
       - 'AGENTS.md'
       - '.github/workflows/boma-stage-two-lifecycle-closure-001.yml'
@@ -39,7 +40,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Pin closure branch to merged ST2-EXP-003 main and protect accepted sources
+      - name: Pin closure branch and protect accepted sources against current main
         shell: bash
         run: |
           set -euo pipefail
@@ -47,11 +48,15 @@ jobs:
           actual="$(git rev-parse HEAD)"
           test "$actual" = "$expected"
 
-          closure_base="5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd"
+          merged_experiment="5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd"
           frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
           final_math_head="3d4ed58e5d88b2a0bd84b3958cac2c8572385152"
-          git merge-base --is-ancestor "$closure_base" HEAD
-          git merge-base --is-ancestor "$final_math_head" "$closure_base"
+          git fetch --no-tags origin main
+          current_main="$(git rev-parse origin/main)"
+
+          git merge-base --is-ancestor "$merged_experiment" HEAD
+          git merge-base --is-ancestor "$merged_experiment" "$current_main"
+          git merge-base --is-ancestor "$final_math_head" "$merged_experiment"
           git merge-base --is-ancestor "$frozen_plan" HEAD
 
           git diff --exit-code "$frozen_plan" HEAD -- \
@@ -61,15 +66,15 @@ jobs:
             LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
             LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
             LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
-            git diff --exit-code "$closure_base" HEAD -- "$manifest"
+            git diff --exit-code "$current_main" HEAD -- "$manifest"
             while IFS= read -r src || [ -n "$src" ]; do
               [ -z "$src" ] && continue
-              git diff --exit-code "$closure_base" HEAD -- "$src"
+              git diff --exit-code "$current_main" HEAD -- "$src"
             done < "$manifest"
           done
 
-          printf 'Closure exact head: %s\nClosure base main: %s\nFinal mathematical head: %s\n' \
-            "$actual" "$closure_base" "$final_math_head"
+          printf 'Closure exact head: %s\nCurrent main: %s\nMerged ST2-EXP-003 main: %s\nFinal mathematical head: %s\n' \
+            "$actual" "$current_main" "$merged_experiment" "$final_math_head"
 
       - name: Compile closure and architecture auditors
         shell: bash
@@ -107,7 +112,7 @@ jobs:
             printf -- '- Active experiment: NONE. Next slot: OPEN / OWNER SELECTION REQUIRED.\n'
             printf -- '- Accepted R remains Dedekind `R-BLOCK-001`; accepted C remains `C-ROUTE-P / C-BLOCK-002 / CA-20`.\n'
             printf -- '- Research Cauchy R, `ST2-EXP-003-R-J-001`, and H6 C remain nonaccepted research evidence.\n'
-            printf -- '- Frozen Plan and accepted Q/R/C manifests/producers are unchanged from the merged ST2-EXP-003 main base.\n'
+            printf -- '- Frozen Plan and accepted Q/R/C manifests/producers are unchanged relative to current main.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve closure-governance evidence
