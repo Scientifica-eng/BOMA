@@ -27,7 +27,7 @@ concurrency:
 
 jobs:
   verify:
-    name: verify generic comparison, accepted RBOMA, and native Cauchy H6
+    name: verify generic comparison, accepted RBOMA, native Cauchy H6, and lifecycle closure
     runs-on: ubuntu-latest
 
     steps:
@@ -244,7 +244,7 @@ jobs:
           cat /tmp/st2-exp-011-generic-closure.json
           cat /tmp/st2-exp-011-native-closure.json
 
-      - name: Audit affected Claim family and architecture consistency
+      - name: Audit affected Claim family, lifecycle closure, and architecture consistency
         shell: bash
         run: |
           set -euo pipefail
@@ -257,8 +257,13 @@ jobs:
             printf 'secondary_audit_claim=C-CL-INTEGRATION-001\n'
             printf 'origin_block=C-COMPARE-BLOCK-001\n'
           } | tee /tmp/st2-exp-011-claim-audit.txt
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
+            --json-out /tmp/st2-exp-011-lifecycle-closure.json
+          grep -Fq '"status": "ST2_EXP_011_LIFECYCLE_CLOSED_PASS"' \
+            /tmp/st2-exp-011-lifecycle-closure.json
           python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
             --json-out /tmp/st2-exp-011-architecture-consistency.json
+          cat /tmp/st2-exp-011-lifecycle-closure.json
           cat /tmp/st2-exp-011-architecture-consistency.json
 
       - name: Publish experimental scope
@@ -274,6 +279,9 @@ jobs:
             printf -- '- Native RCBOMA/H6 assembly excludes H5/Dedekind implementation manifests.\n'
             printf -- '- Functional maps remain conditional on explicit CoordinateExtractor data.\n'
             printf -- '- Accepted Q/R/C producers, manifests, selected routes, and exports are controls.\n'
+            if grep -Fq '"status": "ST2_EXP_011_LIFECYCLE_CLOSED_PASS"' /tmp/st2-exp-011-lifecycle-closure.json 2>/dev/null; then
+              printf -- '- Lifecycle: `CLOSED / PASS`; next required act is separate Learning-to-Construction integration; ST2-EXP-004 is not active.\n'
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve exact experimental evidence
@@ -295,6 +303,7 @@ jobs:
             /tmp/st2-exp-011-accepted-dependency-audit.log
             /tmp/st2-exp-011-native-dependency-audit.log
             /tmp/st2-exp-011-claim-audit.txt
+            /tmp/st2-exp-011-lifecycle-closure.json
             /tmp/st2-exp-011-architecture-consistency.json
           if-no-files-found: warn
           retention-days: 30
