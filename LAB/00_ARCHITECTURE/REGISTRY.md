@@ -7,8 +7,8 @@
 **Q:** `Q_DAG.md`  
 **R:** `R_DAG.md`  
 **C:** `C_DAG.md`  
-**Stage-Two lifecycle:** `ST2-EXP-001..003 CLOSED / PASS / NO ACTIVE EXPERIMENT`  
-**Integration authority:** `BOMA-ST2-LEARNING-INTEGRATION-001`.
+**Stage-Two lifecycle:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED / PASS / NO ACTIVE EXPERIMENT`  
+**Integration authorities:** `BOMA-ST2-LEARNING-INTEGRATION-001`, `BOMA-ST2-LEARNING-INTEGRATION-002`.
 
 Operational, verification, research-provenance, selection, and acceptance status remain separate.
 
@@ -129,17 +129,14 @@ Classification: **INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE**.
 | `ST2-EXP-003-R-J-001` | Dedekind/Cauchy reconvergence | PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION / R-FIELD-ISOMORPHISM / NON-ACCEPTANCE |
 | H6 Cauchy-native C core | downstream robustness witness over Cauchy R | RETAINED VERIFIED EVIDENCE / NON-ACCEPTED |
 
-The alternative records have Stage-Two research provenance but are now permanent
-members of the human-readable Construction DAG. Their permanence does not change `R-DP-001 SELECTS`.
-
-## R → C dependency contract — ST2-EXP-001 LESSON INTEGRATED
+## R → C production dependency contract — ST2-EXP-001 INTEGRATED
 
 | Record | Role | Status |
 |---|---|---|
-| `BOMA-C-R-DEP-001` | mathematical dependency boundary from selected R export into C | ACTIVE — EXACT SIXTEEN-PROPERTY SURFACE |
-| `ST2-EXP-001` | experiment that verified the smaller interface against selected C Claim meaning | CLOSED / PASS / V5 32593045224 / LESSON INTEGRATED |
+| `BOMA-C-R-DEP-001` | mathematical production dependency from selected R export into C | ACTIVE — EXACT SIXTEEN-PROPERTY SURFACE |
+| `ST2-EXP-001` | experiment verifying the smaller production interface | CLOSED / PASS / V5 32593045224 / LESSON INTEGRATED |
 
-Canonical mathematical surface:
+Canonical production surface:
 
 ```text
 orderTrans, orderAntisymm, orderTotal, nontrivial,
@@ -149,32 +146,54 @@ mulComm, mulAssoc, mulOneLeft, distribRight,
 orderMulNonneg, inverseExists
 ```
 
-This refines the dependency contract; it does not create a fabricated Block or Junction.
+This refines a dependency edge; it does not create a fabricated Block or Junction.
 
-## Complex stage — ACCEPTED + PERMANENT VERIFIED ALTERNATIVE
+## Complex stage — ACCEPTED + PERMANENT VERIFIED ALTERNATIVE + GENERIC COMPARISON KNOWLEDGE
 
 | Unit / record | Role | Status |
 |---|---|---|
 | `BOMA-C-ACCEPT-001` | representation-neutral C acceptance specification | ACTIVE |
-| `BOMA-C-R-DEP-001` | exact R→C mathematical dependency contract | ACTIVE / ST2-EXP-001 INTEGRATED |
+| `BOMA-C-R-DEP-001` | exact C-production R→C mathematical dependency contract | ACTIVE / ST2-EXP-001 INTEGRATED |
 | `C-DP-001` | Stage-One realization route | RESOLVED — USER-SELECTED C-ROUTE-P |
 | `C-BLOCK-001` | selected Route P witness-field producer | ACTIVE / V5 PASS / ACCEPTED PRODUCER |
-| `C-COMPARE-BLOCK-001` | representation-neutral quadratic comparison on selected scalar realization | ACTIVE / V5 PASS |
+| `C-COMPARE-BLOCK-001` | representation-neutral quadratic comparison | ACTIVE / ACCEPTED CLAIM OWNER / SCALAR BOUNDARY REFINED BY ST2-EXP-011 |
 | `C-J-001` | selected same-carrier integration | PASS / ACCEPTANCE JUNCTION |
 | `C-BLOCK-002` | final Stage-One complex export | ACTIVE — ACCEPTED / CA-20 |
 | `C-ROUTE-Q` | independent expression-normalization quotient field | PERMANENT VERIFIED ALTERNATIVE / NON-SELECTED / NOT ACCEPTED EXPORT |
 | `ST2-EXP-002-PQ-J-001` | Route P / Route Q reconvergence | PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION / R-FIELD-ISOMORPHISM / NON-ACCEPTANCE |
+| `ST2-EXP-011` | scalar/interface experiment at `C-COMPARE-BLOCK-001` | CLOSED / PASS / LESSON INTEGRATED / NO ACCEPTED SOURCE PROMOTION |
 
-`C-J-001` and `ST2-EXP-002-PQ-J-001` have different roles and must not be conflated.
+### Canonical comparison dependency surface
+
+The permanent comparison-specific scalar surface learned by `ST2-EXP-011` is:
+
+```text
+zero / one / neg / add / mul
++ coord
++ coordinateGeneration / coordinateUnique
++ coordinateZero / coordinateOne / coordinateReal / coordinateImag
++ coordinateNeg / coordinateAdd / coordinateMul
+```
+
+This is narrower than—and distinct from—the sixteen-property production surface.
+
+The accepted RBOMA adapter preserves old `Related` semantics definitionally.
+The same interface is verified natively over RCBOMA/H6 without H5/Dedekind
+implementation transport. Functional comparison still requires explicit
+`CoordinateExtractor` data.
+
+No accepted source, selected route, acceptance Junction, or accepted export is
+changed by the learning integration.
 
 ## Closed Stage-Two provenance records
 
 | Record | Architectural origin | Lifecycle / integrated lesson |
 |---|---|---|
-| `STAGE-TWO-LAB` | controlled single-change experiment register | THREE CLOSED / NO ACTIVE EXPERIMENT / NEXT SLOT OPEN |
-| `ST2-EXP-001` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | CLOSED / PASS — minimal R→C dependency lesson integrated |
+| `STAGE-TWO-LAB` | controlled single-change experiment register | FOUR CLOSED / NO ACTIVE EXPERIMENT |
+| `ST2-EXP-001` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | CLOSED / PASS — production dependency lesson integrated |
 | `ST2-EXP-002` | `DECISION_POINT / C-DP-001` | CLOSED / PASS — Route Q + P/Q Junction integrated as permanent alternative architecture |
 | `ST2-EXP-003` | `DECISION_POINT / R-DP-001` | CLOSED / PASS / H1-H6 EXACT — Cauchy + R Junction integrated as permanent alternative architecture |
+| `ST2-EXP-011` | `BLOCK / C-COMPARE-BLOCK-001` | CLOSED / PASS — generic comparison dependency + relation/function firewall integrated |
 
 The experiment records remain Learning-Graph provenance even when their verified
 results become permanent Construction-DAG knowledge.
@@ -192,15 +211,20 @@ R-DP-001                         SELECTS R-ROUTE-D / DEDEKIND
 R accepted                       R-BLOCK-001
 R permanent alternative          R-ROUTE-C / Cauchy
 R alternative Junction           ST2-EXP-003-R-J-001
-R→C mathematical dependency      BOMA-C-R-DEP-001 / exact 16-property surface
+C production dependency          BOMA-C-R-DEP-001 / exact 16-property surface
 C-DP-001                         SELECTS C-ROUTE-P
+C comparison dependency          five scalar ops + coordinate laws
 C accepted                       C-BLOCK-002 / CA-20
 C permanent alternative          C-ROUTE-Q
 C alternative Junction           ST2-EXP-002-PQ-J-001
-ST2-EXP-001..003                 CLOSED / PASS / LESSONS INTEGRATED
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT             OPEN / OWNER SELECTION REQUIRED
+ST2-EXP-001..003 + 011           CLOSED / PASS / LESSONS INTEGRATED
+ACTIVE EXPERIMENT                NONE
+NEXT OWNER-SEQUENCED             ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
 ```
 
-`ST2-EXP-011` remains a candidate only. Architecture integration of past results
-does not authorize it.
+Integration authorities:
+
+```text
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+```
