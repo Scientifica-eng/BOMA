@@ -23,8 +23,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  probe:
-    name: typecheck research Cauchy quadratic rebuild
+  verify:
+    name: verify research Cauchy quadratic field rebuild
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Pin H6 after exact research R Junction
+      - name: Pin H6 after exact Junction and successful source probe
         shell: bash
         run: |
           set -euo pipefail
@@ -44,7 +44,8 @@ jobs:
           h4="0f4a706d94c394b8e8a9eec836859caac772a944"
           field="2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b"
           junction="2358f3179f4e4f177f8d7c09a1d674b7f25c5607"
-          for ancestor in "$baseline" "$frozen" "$h4" "$field" "$junction"; do
+          typecheck="26dfa399c9474ea8595fac11b375296663305c4e"
+          for ancestor in "$baseline" "$frozen" "$h4" "$field" "$junction" "$typecheck"; do
             git merge-base --is-ancestor "$ancestor" HEAD
           done
           git diff --exit-code "$frozen" HEAD -- \
@@ -60,7 +61,8 @@ jobs:
             LAB/payloads/lean/CStage/CPairNormInverse001.lean \
             LAB/payloads/lean/CStage/CQuadraticComparison001.lean \
             LAB/payloads/lean/CStage/CStageIntegration001.lean
-          printf 'H6 probe exact head: %s\nExact Junction ancestor: %s\n' "$actual" "$junction"
+          printf 'H6 exact head: %s\nExact Junction ancestor: %s\nTypechecked source ancestor: %s\n' \
+            "$actual" "$junction" "$typecheck"
 
       - name: Validate downstream manifest separation and source boundary
         shell: bash
@@ -97,11 +99,11 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Typecheck H6 downstream assembly
+      - name: Prove H6 Cauchy quadratic field certificate
         shell: bash
         run: |
           set -euo pipefail
-          target=/tmp/BOMAST2Exp003CauchyQuadraticProbe.lean
+          target=/tmp/BOMAST2Exp003CauchyQuadraticField.lean
           : > "$target"
           for manifest in \
             LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
@@ -114,26 +116,53 @@ jobs:
             done < "$manifest"
           done
           printf '\n#print axioms BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate\n' >> "$target"
-          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h6-probe-lean.log
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.rC_square_nonnegative\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_i_squared\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_coordinate_unique\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cauchyPairRingCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_inverse_exists\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_inverse_unique\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h6-field-lean.log
 
-      - name: Publish H6 probe scope
-        if: success()
+      - name: Extract exact H6 dependency closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_H6_TEMP_INPUTS.txt
+          cat \
+            LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt \
+            > "$manifest"
+          trap 'rm -f "$manifest"' EXIT
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest "$manifest" \
+            --target BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate \
+            --json-out /tmp/st2-exp-003-h6-field-closure.json \
+            > /tmp/st2-exp-003-h6-field-dependency-audit.log
+
+      - name: Publish H6 exact scope
         shell: bash
         run: |
           {
-            printf '## ST2-EXP-003 H6 typecheck probe\n'
-            printf -- '- Exact source head: `%s`\n' "$(git rev-parse HEAD)"
-            printf -- '- Research C source assembled only after the independent Cauchy R manifest.\n'
-            printf -- '- Dedekind/H5 comparison sources are not mathematical inputs to H6.\n'
-            printf -- '- This run is a TYPECHECK PROBE only; it is not the final H6 certificate gate.\n'
-            printf -- '- Accepted C and main remain unchanged.\n'
+            printf '## ST2-EXP-003 H6 — Cauchy-real quadratic C rebuild\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Rebuilt natively over independent `RCBOMA`; Dedekind/H5 sources are not mathematical inputs.\n'
+            printf -- '- Preserved contract: faithful real embedding, distinguished I, I^2=-1, unique real coordinates, commutative ring, norm, and witness-only field inversion.\n'
+            printf -- '- No new inverse selector or Choice call is introduced in the H6 C source.\n'
+            printf -- '- Accepted `C-BLOCK-001/C-BLOCK-002`, accepted R, and main remain unchanged.\n'
+            printf -- '- This is research evidence only, not canonical C acceptance.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Preserve H6 probe evidence
+      - name: Preserve H6 exact evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-003-h6-probe-${{ github.run_id }}
-          path: /tmp/st2-exp-003-h6-probe-lean.log
+          name: st2-exp-003-h6-cauchy-quadratic-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-h6-field-lean.log
+            /tmp/st2-exp-003-h6-field-closure.json
+            /tmp/st2-exp-003-h6-field-dependency-audit.log
           if-no-files-found: warn
           retention-days: 30
