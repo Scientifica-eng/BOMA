@@ -50,7 +50,11 @@ theorem cToD_rational_lower_reflect {q : QBOMA} {x : RCBOMA}
         exact rcle_trans hsx hxr.1
       have hqrQ : qLE q r :=
         (rOfQ_order q r).1 (rLE_trans hq hcToDr)
-      have hrqQ : qLT r q := (rCOfQ_strict r q).1 hrq
+      have hrqQ : qLT r q := by
+        refine ⟨(rCOfQ_order r q).1 hrq.1, ?_⟩
+        intro heq
+        apply hrq.2
+        exact congrArg rCOfQ heq
       exact False.elim (hrqQ.2 (qle_antisymm hrqQ.1 hqrQ))
 
 /-- Symmetrically, a rational below the Cauchy image of an accepted Dedekind
