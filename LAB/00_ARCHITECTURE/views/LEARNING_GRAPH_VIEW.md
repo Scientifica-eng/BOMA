@@ -1,9 +1,9 @@
 # LEARNING GRAPH VIEW — How BOMA Reached and Refined the Current Architecture
 
 **View ID:** `BOMA-VIEW-LEARNING-GRAPH-001`  
-**Status:** GENERATED / DERIVED VIEW / SYNCHRONIZED THROUGH STAGE TWO  
+**Status:** GENERATED / DERIVED VIEW / SYNCHRONIZED THROUGH ST2-EXP-011 INTEGRATION  
 **Date:** 2026-08-24  
-**Program:** `PDSA-ARCH-002` + Stage-Two controlled experiments.
+**Program:** `PDSA-ARCH-002` + Stage-Two controlled experiments + owner-authorized Learning-to-Construction Acts.
 
 ## Why this view exists
 
@@ -17,10 +17,10 @@ The Learning Graph answers:
 
 ```text
 How did BOMA learn which distinctions, dependencies, alternatives,
-convergence strengths, and checks belong in that structure?
+convergence strengths, genericity boundaries, and checks belong in that structure?
 ```
 
-A successful experiment can now feed a verified lesson back into the permanent
+A successful experiment may feed a verified lesson back into the permanent
 Construction DAG without disappearing from the Learning Graph.
 
 Governing principle:
@@ -37,15 +37,15 @@ flowchart LR
   C[Correction / branch decision]
   V[Verification]
   S[Study / Act]
+  CL[Lifecycle closure]
   L[Retained lesson]
-  I[Optional owner-authorized\nConstruction-DAG integration]
-  A --> O --> D --> C --> V --> S --> L
+  I[Owner-authorized\nConstruction-DAG integration]
+  A --> O --> D --> C --> V --> S --> CL --> L --> I
   L -. informs later work .-> A
-  L --> I
 ```
 
-Integration is optional and governed. It does not automatically change `SELECTS`
-or accepted exports.
+Integration is governed. It does not automatically change `SELECTS`, accepted
+exports, or accepted implementation sources.
 
 ## Stage-One learning retained
 
@@ -54,10 +54,10 @@ or accepted exports.
 ```text
 TCT calibration
 → N-DP-001 selects fresh inductive carrier
-→ first formalization exposes eliminator/universe under-specification
+→ formalization exposes eliminator/universe under-specification
 → N-DP-002 makes scope explicit
 → V5 PASS
-→ lesson: global carrier/formal scope is an explicit commitment
+→ lesson: carrier/formal scope is an explicit commitment
 ```
 
 ### N-Arithmetic
@@ -105,7 +105,7 @@ Stage-Two question.
 
 ## Stage-Two Learning-to-Construction feedback
 
-### ST2-EXP-001 — dependency boundary learning
+### ST2-EXP-001 — production dependency-boundary learning
 
 Question:
 
@@ -134,9 +134,9 @@ CLOSED / PASS / V5 32593045224
 Learned fact:
 
 ```text
-C's mathematical R dependency is exactly the sixteen-property surface;
-completeness/density/Archimedean and Dedekind internals in the old closure are
-bundled formal provenance, not C mathematical necessity.
+C's PRODUCTION mathematical R dependency is exactly the sixteen-property
+surface; completeness/density/Archimedean and Dedekind internals in the old
+closure are bundled formal provenance, not C mathematical necessity.
 ```
 
 Construction-DAG feedback:
@@ -152,7 +152,7 @@ No Decision Point and no Junction were fabricated.
 Question:
 
 ```text
-Can the non-selected C-ROUTE-Q be completed independently rather than remaining
+Can non-selected C-ROUTE-Q be completed independently rather than remaining
 only a probe/candidate?
 ```
 
@@ -187,8 +187,8 @@ quadratic field meaning.
 Construction-DAG feedback:
 
 ```text
-C-ROUTE-Q becomes a PERMANENT VERIFIED ALTERNATIVE branch
-ST2-EXP-002-PQ-J-001 becomes a PERMANENT NON-ACCEPTANCE Junction
+C-ROUTE-Q → PERMANENT VERIFIED ALTERNATIVE
+ST2-EXP-002-PQ-J-001 → PERMANENT NON-ACCEPTANCE Junction
 C-DP-001 still SELECTS C-ROUTE-P
 ```
 
@@ -213,7 +213,7 @@ flowchart TD
   H6[H6 native Cauchy-based C core rebuild PASS]
   S[Final Study/Act\nDedekind remains selected]
   CL[Lifecycle closure]
-  I[Architecture integration]
+  I[Architecture integration 001]
   A --> H1 --> H4 --> H5 --> J --> H6 --> S --> CL --> I
 ```
 
@@ -229,11 +229,131 @@ selected Dedekind representation is not necessary for those meanings.
 Construction-DAG feedback:
 
 ```text
-R-ROUTE-C / Cauchy becomes a PERMANENT VERIFIED ALTERNATIVE branch
-ST2-EXP-003-R-J-001 becomes a PERMANENT NON-ACCEPTANCE Junction
-H6 becomes permanent downstream robustness evidence
+R-ROUTE-C / Cauchy → PERMANENT VERIFIED ALTERNATIVE
+ST2-EXP-003-R-J-001 → PERMANENT NON-ACCEPTANCE Junction
+H6 → permanent downstream robustness evidence
 R-DP-001 still SELECTS Dedekind
 ```
+
+### ST2-EXP-011 — comparison dependency/genericity learning
+
+Question:
+
+```text
+Does C-COMPARE-BLOCK-001 mathematically need to be scalar-hard-wired to the
+selected RBOMA/RStageIntegrationCertificate realization, or can the comparison
+meaning be factored through a smaller generic scalar/coordinate interface?
+```
+
+Controlled change:
+
+```text
+only the scalar abstraction of the quadratic comparison machinery
+```
+
+Controls retained:
+
+```text
+accepted R-BLOCK-001 and R-DP-001 selection
+accepted C-DP-001 / C-ROUTE-P / C-BLOCK-001
+accepted C-J-001 / C-BLOCK-002 / CA-20
+accepted comparison meaning
+relation-level comparison != functional comparison
+ST2-EXP-003 RCBOMA/H5/H6 provenance
+```
+
+Gate-A closure learned the direct comparison interface:
+
+```text
+scalar operations
+  zero / one / neg / add / mul
+
+coordinate laws
+  coord
+  coordinateGeneration / coordinateUnique
+  coordinateZero / coordinateOne / coordinateReal / coordinateImag
+  coordinateNeg / coordinateAdd / coordinateMul
+```
+
+This is strictly a **comparison** boundary. It does not replace the sixteen-field
+**production** boundary from ST2-EXP-001.
+
+Verification path:
+
+```mermaid
+flowchart TD
+  A[C-COMPARE-BLOCK-001 scalar hard-wiring question]
+  G[Gate A declaration closure]
+  GEN[Generic comparison core]
+  AR[Accepted RBOMA adapter\nRelated semantics preserved]
+  H6[Native RCBOMA/H6 adapter\nwithout H5 transport]
+  FW[Relation/function firewall audit]
+  V[Exact-head + accepted/historical regressions]
+  S[Final Study/Act PASS]
+  CL[Lifecycle CLOSED]
+  M[PR #13 merged exact verified tree]
+  I[Architecture integration 002]
+  A --> G --> GEN
+  GEN --> AR
+  GEN --> H6
+  AR --> FW
+  H6 --> FW
+  FW --> V --> S --> CL --> M --> I
+```
+
+Final lifecycle-closed verification:
+
+```text
+head      632a7134f26daf9dd781e3546804941f429a4246
+run       32754345656
+artifact  9530261359
+sha256    d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
+result    SUCCESS
+```
+
+Research/lifecycle merge:
+
+```text
+72394878854aa69e865d17567959bec1daa70e6d
+```
+
+Learned facts:
+
+```text
+quadratic comparison direct scalar needs = zero/one/neg/add/mul + coordinate laws;
+accepted RBOMA Related semantics survive definitionally;
+native RCBOMA/H6 can instantiate the same interface without H5/Dedekind transport;
+relation totality/uniqueness does not justify a global functional selector;
+generic comparison root adds no axiom cost.
+```
+
+Construction-DAG feedback:
+
+```text
+REFINE C-COMPARE-BLOCK-001 dependency classification
+KEEP BOMA-C-R-DEP-001 production surface unchanged
+KEEP accepted C comparison source unchanged
+KEEP C-J-001 / CA-20 unchanged
+NO new Block / Decision Point / Junction
+```
+
+This is integration of **knowledge**, not automatic adoption of the experimental
+Lean implementation as the accepted comparison source.
+
+## CI-governance learning during ST2-EXP-011 closure
+
+The post-Study lifecycle transition exposed a distinct governance lesson:
+
+```text
+historical experiment closure = monotone evidence
+current active/frontier state  = time-varying program state
+```
+
+Historical workflows for 001–003 were corrected to verify preservation of their
+closed state without requiring the global Stage-Two frontier to remain empty
+forever. The failures remain preserved as provenance.
+
+This governance correction did not change any closed mathematical result.
 
 ## What was not integrated as accepted structure
 
@@ -244,11 +364,12 @@ Cauchy R to R-BLOCK-001
 Route Q to C-BLOCK-001/C-BLOCK-002
 H6 C to accepted C
 research/alternative Junctions to acceptance Junctions
-ST2-EXP-011 to an active experiment
+ST2-EXP-011 experimental Lean sources to accepted comparison sources
+ST2-EXP-011 shared generic interface to a fabricated Junction
 ```
 
-The owner-authorized integration promoted **verified architectural knowledge**,
-not accepted producer identity.
+The integration promoted verified architectural knowledge, not accepted producer
+identity.
 
 ## Theorem-transparency lessons still retained
 
@@ -259,10 +380,9 @@ actual formal closure must be measured, not inferred from source cleanliness;
 valid theorem ≠ accepted Claim producer;
 accepted Claim roots ≠ only downstream-consumed theorems;
 formal verification syntax must not silently become canonical ontology;
-evidence-write races are operational failures, not mathematical failures.
+evidence-write races are operational failures, not mathematical failures;
+historical lifecycle facts must not be conflated with current frontier state.
 ```
-
-These lessons remain documented in their original PDSA failure/study records.
 
 ## Learning vs current-state classification
 
@@ -274,6 +394,8 @@ These lessons remain documented in their original PDSA failure/study records.
 | verified non-selected route | may be permanent alternative architecture | demonstrates non-necessity / comparison evidence |
 | non-acceptance Junction | may be permanent verified convergence fact | preserves exact reconvergence history |
 | successful dependency experiment | may refine canonical dependency contract | records why the narrower contract is trusted |
+| successful Block-interface experiment | may refine the Block's dependency classification | preserves how genericity was established |
+| research implementation | not accepted unless separately promoted | exact witness for learned architecture fact |
 | reverse-engineering study | classification input | shows which information survives downstream |
 
 ## Current Learning Graph frontier
@@ -282,13 +404,18 @@ These lessons remain documented in their original PDSA failure/study records.
 ST2-EXP-001  CLOSED / PASS / lesson integrated
 ST2-EXP-002  CLOSED / PASS / lesson integrated
 ST2-EXP-003  CLOSED / PASS / lesson integrated
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT OPEN / OWNER SELECTION REQUIRED
+ST2-EXP-011  CLOSED / PASS / lesson integrated
+ACTIVE EXPERIMENT = NONE
+NEXT OWNER-SEQUENCED EXPERIMENT = ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
 ```
 
-The next Learning Graph branch is not created until an experiment candidate is
-explicitly selected and frozen.
+The next experimental Learning Graph branch is not created until the integration
+Act is merged, `main` is synchronized/re-read, and a new ST2-EXP-004 Plan is
+explicitly frozen from that exact `main`.
 
-Architecture integration authority:
+Architecture integration authorities:
 
-`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
+```text
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+```
