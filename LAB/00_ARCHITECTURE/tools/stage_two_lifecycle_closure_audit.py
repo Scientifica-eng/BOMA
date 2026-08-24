@@ -13,11 +13,14 @@ REGISTER = "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md"
 STATUS = "LAB/PDSA/STATUS.md"
 CLOSURE = "LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md"
 FROZEN_PLAN = "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md"
+JUNCTION_RECORD = "LAB/PDSA/experiments/ST2-EXP-003_DEDEKIND_CAUCHY_R_JUNCTION_001.md"
 
 FRONTIER_FILES = (
     "LAB/00_ARCHITECTURE/R_DAG.md",
+    "LAB/00_ARCHITECTURE/C_DAG.md",
     "LAB/00_ARCHITECTURE/GRAPH.md",
     "LAB/00_ARCHITECTURE/REGISTRY.md",
+    "LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md",
     REGISTER,
     STATUS,
     "README.md",
@@ -29,7 +32,7 @@ EXPECTED_FINAL_HEAD = "3d4ed58e5d88b2a0bd84b3958cac2c8572385152"
 EXPECTED_MERGE = "5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd"
 EXPECTED_MERGE_TREE = "d515a2812e621af68406c30866ac9ece5460b1f9"
 EXPECTED_CLOSURE_RUN = 32727267183
-EXPECTED_JUNCTION = "ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001"
+EXPECTED_JUNCTION = "ST2-EXP-003-R-J-001"
 EXPECTED_CRITICAL = {
     "independent": {
         "run": 32727267231,
@@ -130,6 +133,7 @@ def main() -> int:
             "main_merge_tree": EXPECTED_MERGE_TREE,
             "closure_authorized_date": "2026-08-24",
             "reconvergence_junction_id": EXPECTED_JUNCTION,
+            "junction_record": JUNCTION_RECORD,
             "lifecycle_closure_record": CLOSURE,
         }
         for field, expected in exact_scalars.items():
@@ -176,6 +180,7 @@ def main() -> int:
             "CLOSED / PASS / OWNER AUTHORIZED",
             EXPECTED_FINAL_HEAD,
             EXPECTED_MERGE,
+            EXPECTED_JUNCTION,
             str(EXPECTED_CRITICAL["independent"]["run"]),
             str(EXPECTED_CRITICAL["h5"]["run"]),
             str(EXPECTED_CRITICAL["h6"]["run"]),
@@ -186,6 +191,10 @@ def main() -> int:
         ):
             if marker not in closure:
                 error(residuals, "closure_record_marker_missing", marker=marker)
+
+        junction_record = read_text(root, JUNCTION_RECORD)
+        if EXPECTED_JUNCTION not in junction_record or "ST2-EXP-003" not in junction_record:
+            error(residuals, "research_junction_record_identity_missing")
 
         frozen = read_text(root, FROZEN_PLAN)
         for marker in ("# PLAN — FROZEN", "ST2-EXP-003", "R-DP-001", "Q-BLOCK-002", "R-BLOCK-001"):
@@ -222,6 +231,7 @@ def main() -> int:
         "next_experiment_slot": "OPEN / OWNER SELECTION REQUIRED",
         "st2_exp_003_final_head": EXPECTED_FINAL_HEAD,
         "st2_exp_003_merge_commit": EXPECTED_MERGE,
+        "st2_exp_003_research_junction": EXPECTED_JUNCTION,
         "residuals": residuals,
     }
     rendered = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
