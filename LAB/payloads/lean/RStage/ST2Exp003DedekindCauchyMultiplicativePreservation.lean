@@ -15,6 +15,7 @@ open BOMA.Q.Inverse001
 open BOMA.Q.Order001
 open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
+open BOMA.R.QPositiveMultiplicativeApprox001
 open BOMA.R.QInverseOrder001
 open BOMA.R.DedekindProbe001
 open BOMA.R.DedekindQuotient001
@@ -309,7 +310,7 @@ theorem rC_nonneg_product_inner_witness
       _ = rCMul y (rCMul (rCOfQ a) (rCOfQ ainv)) :=
         rCMul_assoc y (rCOfQ a) (rCOfQ ainv)
       _ = rCMul y (rCOfQ (qMul a ainv)) := by rw [rCOfQ_mul]
-      _ = rCMul y rCOne := by rw [hainvEq]
+      _ = rCMul y (rCOfQ qOne) := by rw [hainvEq]
       _ = y := rCMul_one_right y
   rw [hleftInv, hrightInv] at hqb0
   rcases rC_rational_image_dense hqb0 with ⟨b, hqInvb, hby⟩
@@ -362,7 +363,7 @@ theorem rC_rational_strict_below_mul_nonneg_iff
     rcases h with hneg | hprod
     · have h0prod : rCLE rCZero (rCMul x y) :=
         rcle_mul_nonneg h0x h0y
-      refine ⟨rcle_trans (rCOfQ_order q qZero |>.2 hneg.1) h0prod, ?_⟩
+      refine ⟨rcle_trans ((rCOfQ_order q qZero).2 hneg.1) h0prod, ?_⟩
       intro hEq
       have hprodq : rCLE rCZero (rCOfQ q) := by
         rw [hEq]
@@ -481,10 +482,33 @@ theorem cToD_mul_nonneg
     cToD (rCMul x y) = rMulCandidate (cToD x) (cToD y) := by
   apply r_eq_of_rational_strict_lower_iff
   intro q
-  rw [cToD_rational_strict_iff]
-  exact (rC_rational_strict_below_mul_nonneg_iff h0x h0y).trans
-    (r_rational_strict_below_mul_nonneg_iff
-      (cToD_nonneg_h5 h0x) (cToD_nonneg_h5 h0y)).symm
+  constructor
+  · intro h
+    have hC : rCLT (rCOfQ q) (rCMul x y) :=
+      (cToD_rational_strict_iff).1 h
+    rcases (rC_rational_strict_below_mul_nonneg_iff h0x h0y).1 hC with
+      hneg | hprod
+    · exact (r_rational_strict_below_mul_nonneg_iff
+        (cToD_nonneg_h5 h0x) (cToD_nonneg_h5 h0y)).2 (Or.inl hneg)
+    · rcases hprod with ⟨a, b, h0a, h0b, hax, hby, hqab⟩
+      apply (r_rational_strict_below_mul_nonneg_iff
+        (cToD_nonneg_h5 h0x) (cToD_nonneg_h5 h0y)).2
+      exact Or.inr ⟨a, b, h0a, h0b,
+        (cToD_rational_strict_iff).2 hax,
+        (cToD_rational_strict_iff).2 hby,
+        hqab⟩
+  · intro h
+    have hD := (r_rational_strict_below_mul_nonneg_iff
+      (cToD_nonneg_h5 h0x) (cToD_nonneg_h5 h0y)).1 h
+    apply (cToD_rational_strict_iff).2
+    apply (rC_rational_strict_below_mul_nonneg_iff h0x h0y).2
+    rcases hD with hneg | hprod
+    · exact Or.inl hneg
+    · rcases hprod with ⟨a, b, h0a, h0b, hax, hby, hqab⟩
+      exact Or.inr ⟨a, b, h0a, h0b,
+        (cToD_rational_strict_iff).1 hax,
+        (cToD_rational_strict_iff).1 hby,
+        hqab⟩
 
 /-- The forward H5 map preserves signed multiplication in all four sign
     quadrants. -/
