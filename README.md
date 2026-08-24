@@ -71,7 +71,7 @@ C-ROUTE-Q
 R-ROUTE-C / CAUCHY
   VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD
   NOT AN ACCEPTED REAL EXPORT
-  research Junction: ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
+  research Junction: ST2-EXP-003-R-J-001
 
 H6 Cauchy-native C core
   VERIFIED RESEARCH EVIDENCE
@@ -217,7 +217,8 @@ preserving the accepted C Claim families. Canonical C remains Route P.
 
 Origin: `R-DP-001` above accepted `Q-BLOCK-002`.  
 Result: `CLOSED / PASS / H1-H6 EXACT PASS / MATHEMATICAL PASS`.  
-Lifecycle closed: `2026-08-24` by explicit owner authorization.
+Lifecycle closed: `2026-08-24` by explicit owner authorization.  
+Research Junction: `ST2-EXP-003-R-J-001`.
 
 Final exact-verified branch head:
 
