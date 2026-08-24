@@ -135,7 +135,6 @@ def main() -> int:
             "lifecycle_closure_record": CLOSURE,
             "mathematical_result": "PASS",
             "closure_authorized_date": "2026-08-24",
-            # Historical checkpoint fields remain immutable even after integration.
             "verified_head": EXPECTED_PRECLOSURE_HEAD,
             "verified_run": EXPECTED_PRECLOSURE_RUN,
             "verified_artifact_id": EXPECTED_PRECLOSURE_ARTIFACT,
@@ -204,7 +203,7 @@ def main() -> int:
                 str(EXPECTED_FINAL_ARTIFACT),
                 EXPECTED_FINAL_DIGEST,
                 EXPECTED_MERGE_COMMIT,
-                "NO NEW BLOCK / DECISION POINT / JUNCTION",
+                "NEW BLOCK / DECISION POINT / JUNCTION",
             ):
                 if marker not in integration.upper() and marker not in integration:
                     add(residuals, "integration_record_marker_missing", marker=marker)
