@@ -16,6 +16,7 @@ open BOMA.Q.Order001
 open BOMA.Q.OrderedField001
 open BOMA.R.Gateway001
 open BOMA.R.CauchyProbe001
+open BOMA.R.StageTwo.CauchyCloseness003
 open BOMA.R.StageTwo.CauchyQuotient003
 open BOMA.R.StageTwo.CauchyAdditive003
 open BOMA.R.StageTwo.CauchyOrderCore003
