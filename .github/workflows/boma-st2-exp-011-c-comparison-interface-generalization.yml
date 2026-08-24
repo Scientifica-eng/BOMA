@@ -1,0 +1,310 @@
+name: BOMA ST2-EXP-011 C Comparison Interface Generalization — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-011_*'
+      - 'LAB/payloads/lean/CStage/ST2Exp011*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/**'
+      - '.github/workflows/boma-st2-exp-011-c-comparison-interface-generalization.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-011-*'
+
+concurrency:
+  group: boma-st2-exp-011-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify generic comparison, accepted RBOMA, and native Cauchy H6
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout exact experimental head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact head, frozen ancestry, and immutable Plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          baseline="b49826e58261a71634cd12756e8afda28920088f"
+          frozen="5cc05ef1bea8e88787041c3bc30dd0aecf5412d4"
+          plan=LAB/PDSA/PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md
+          test "$actual" = "$expected"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen" HEAD
+          git diff --exit-code "$frozen" HEAD -- "$plan"
+          {
+            printf 'expected_head=%s\n' "$expected"
+            printf 'verified_head=%s\n' "$actual"
+            printf 'baseline=%s\n' "$baseline"
+            printf 'frozen_plan_commit=%s\n' "$frozen"
+          } | tee /tmp/st2-exp-011-provenance.txt
+
+      - name: Prove accepted Q/R/C manifests and sources are unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline="b49826e58261a71634cd12756e8afda28920088f"
+          manifests=(
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          )
+          : > /tmp/st2-exp-011-accepted-immutability.txt
+          for manifest in "${manifests[@]}"; do
+            test -s "$manifest"
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            printf 'manifest unchanged: %s\n' "$manifest" >> /tmp/st2-exp-011-accepted-immutability.txt
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              git diff --exit-code "$baseline" HEAD -- "$src"
+              printf 'source unchanged: %s\n' "$src" >> /tmp/st2-exp-011-accepted-immutability.txt
+            done < "$manifest"
+          done
+          cat /tmp/st2-exp-011-accepted-immutability.txt
+
+      - name: Validate research manifest separation and logical firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          generic=LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean
+          accepted=LAB/payloads/lean/CStage/ST2Exp011AcceptedRBOMAComparison.lean
+          native=LAB/payloads/lean/CStage/ST2Exp011CauchyH6Comparison.lean
+          accepted_manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_ACCEPTED_RBOMA_COMPARISON_INPUTS.txt
+          native_manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_CAUCHY_H6_COMPARISON_INPUTS.txt
+          h6_manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          for f in "$generic" "$accepted" "$native" "$accepted_manifest" "$native_manifest" "$h6_manifest" "$independent"; do
+            test -s "$f"
+          done
+          test "$(sed -n '1p' "$accepted_manifest")" = "$generic"
+          test "$(sed -n '2p' "$accepted_manifest")" = "$accepted"
+          test "$(sed -n '1p' "$native_manifest")" = "$generic"
+          test "$(sed -n '2p' "$native_manifest")" = "$native"
+
+          forbidden_common='Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden_common" "$generic" "$accepted" "$native"; then
+            printf 'Experimental comparison source contains forbidden choice/axiom placeholder\n' >&2
+            exit 1
+          fi
+          if grep -En 'BOMA\.R\.|RBOMA|RCBOMA|CCBOMA|Dedekind|Cauchy' "$generic"; then
+            printf 'Generic comparison core is not scalar-name independent\n' >&2
+            exit 1
+          fi
+          if grep -En 'BOMA\.R\.StageTwo|RCBOMA|CCBOMA|ST2Exp003DedekindCauchyFieldIsomorphism|cToD' "$accepted"; then
+            printf 'Accepted adapter crossed into alternative-real/H5 implementation\n' >&2
+            exit 1
+          fi
+          if grep -En 'BOMA\.R\.Dedekind|RStageIntegration002|ST2Exp003DedekindCauchyFieldIsomorphism|cToD[[:space:](]|AcceptedRBOMA' "$native"; then
+            printf 'Native Cauchy adapter crossed into selected-Dedekind/H5 implementation\n' >&2
+            exit 1
+          fi
+          if grep -En 'RDedekind|RStageIntegration002|/CStage/' "$independent"; then
+            printf 'Independent Cauchy real manifest lost its route separation\n' >&2
+            exit 1
+          fi
+          {
+            printf 'generic=%s\naccepted=%s\nnative=%s\n' "$generic" "$accepted" "$native"
+            printf 'native_real_manifest=%s\nh6_manifest=%s\n' "$independent" "$h6_manifest"
+            printf 'H5 source is absent from the native assembly manifests.\n'
+          } | tee /tmp/st2-exp-011-source-boundary.txt
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Verify accepted RBOMA generic instance and old relation semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMAST2Exp011AcceptedRBOMA.lean
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_ACCEPTED_RBOMA_COMPARISON_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          cat >> "$target" <<'EOF'
+          #print axioms BOMA.C.QuadraticComparison001.quadraticComparison
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.constructiveQuadraticIsomorphism
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.AcceptedRBOMA.related_iff_accepted
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.AcceptedRBOMA.acceptedSelectedSelfComparison
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.AcceptedRBOMA.acceptedSelectedSelfIsomorphism
+          EOF
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-011-accepted-lean.log
+
+      - name: Verify native RCBOMA H6 generic instance without H5
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMAST2Exp011NativeCauchy.lean
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_CAUCHY_H6_COMPARISON_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          cat >> "$target" <<'EOF'
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.constructiveQuadraticIsomorphism
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.NativeCauchy.h6Presentation
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.NativeCauchy.h6NativeSelfComparison
+          #print axioms BOMA.C.StageTwo.ComparisonInterface011.NativeCauchy.h6NativeSelfIsomorphism
+          EOF
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-011-native-cauchy-lean.log
+
+      - name: Extract generic, accepted, and native declaration closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          generic_manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_GENERIC_TEMP_INPUTS.txt
+          accepted_all=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_ACCEPTED_TEMP_INPUTS.txt
+          native_all=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_NATIVE_TEMP_INPUTS.txt
+          trap 'rm -f "$generic_manifest" "$accepted_all" "$native_all"' EXIT
+          printf '%s\n' LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean > "$generic_manifest"
+          cat \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ROUTE_PAIR_PROBE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_CORE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_PAIR_NORM_INVERSE_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_QUADRATIC_COMPARISON_001_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_ACCEPTED_RBOMA_COMPARISON_INPUTS.txt \
+            > "$accepted_all"
+          cat \
+            LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_011_CAUCHY_H6_COMPARISON_INPUTS.txt \
+            > "$native_all"
+
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C --manifest "$generic_manifest" \
+            --target BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison \
+            --json-out /tmp/st2-exp-011-generic-closure.json \
+            > /tmp/st2-exp-011-generic-dependency-audit.log
+
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C --manifest "$accepted_all" \
+            --target BOMA.C.StageTwo.ComparisonInterface011.AcceptedRBOMA.acceptedSelectedSelfComparison \
+            --json-out /tmp/st2-exp-011-accepted-closure.json \
+            > /tmp/st2-exp-011-accepted-dependency-audit.log
+
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C --manifest "$native_all" \
+            --target BOMA.C.StageTwo.ComparisonInterface011.NativeCauchy.h6NativeSelfComparison \
+            --json-out /tmp/st2-exp-011-native-closure.json \
+            > /tmp/st2-exp-011-native-dependency-audit.log
+
+          if grep -En 'ST2Exp003DedekindCauchyFieldIsomorphism|RStageIntegration002|BOMA\.R\.Dedekind|cToD' \
+              /tmp/st2-exp-011-native-closure.json; then
+            printf 'Native declaration closure contains forbidden H5/Dedekind implementation dependency\n' >&2
+            exit 1
+          fi
+          cat /tmp/st2-exp-011-generic-closure.json
+          cat /tmp/st2-exp-011-native-closure.json
+
+      - name: Audit affected Claim family and architecture consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'C-CL-COMPARE-001' LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+          grep -Fq 'C-CL-INTEGRATION-001' LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+          grep -Fq 'C-COMPARE-BLOCK-001' LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
+          grep -Fq 'C-CL-COMPARE-001' LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
+          {
+            printf 'direct_claim=C-CL-COMPARE-001\n'
+            printf 'secondary_audit_claim=C-CL-INTEGRATION-001\n'
+            printf 'origin_block=C-COMPARE-BLOCK-001\n'
+          } | tee /tmp/st2-exp-011-claim-audit.txt
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            --json-out /tmp/st2-exp-011-architecture-consistency.json
+          cat /tmp/st2-exp-011-architecture-consistency.json
+
+      - name: Publish experimental scope
+        if: always()
+        shell: bash
+        run: |
+          {
+            printf '## ST2-EXP-011 — C comparison scalar-interface generalization\n'
+            printf -- '- Exact head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Frozen Plan ancestor: `5cc05ef1bea8e88787041c3bc30dd0aecf5412d4`\n'
+            printf -- '- Changed factor: comparison scalar abstraction only.\n'
+            printf -- '- Accepted RBOMA relation semantics are checked by an explicit iff theorem.\n'
+            printf -- '- Native RCBOMA/H6 assembly excludes H5/Dedekind implementation manifests.\n'
+            printf -- '- Functional maps remain conditional on explicit CoordinateExtractor data.\n'
+            printf -- '- Accepted Q/R/C producers, manifests, selected routes, and exports are controls.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve exact experimental evidence
+        if: always()
+        id: evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-011-comparison-interface-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-011-provenance.txt
+            /tmp/st2-exp-011-accepted-immutability.txt
+            /tmp/st2-exp-011-source-boundary.txt
+            /tmp/st2-exp-011-accepted-lean.log
+            /tmp/st2-exp-011-native-cauchy-lean.log
+            /tmp/st2-exp-011-generic-closure.json
+            /tmp/st2-exp-011-accepted-closure.json
+            /tmp/st2-exp-011-native-closure.json
+            /tmp/st2-exp-011-generic-dependency-audit.log
+            /tmp/st2-exp-011-accepted-dependency-audit.log
+            /tmp/st2-exp-011-native-dependency-audit.log
+            /tmp/st2-exp-011-claim-audit.txt
+            /tmp/st2-exp-011-architecture-consistency.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Record artifact identity and digest
+        if: always()
+        shell: bash
+        run: |
+          {
+            printf -- '- Run ID: `%s`\n' "$GITHUB_RUN_ID"
+            printf -- '- Artifact ID: `%s`\n' '${{ steps.evidence.outputs.artifact-id }}'
+            printf -- '- Artifact digest: `%s`\n' '${{ steps.evidence.outputs.artifact-digest }}'
+          } >> "$GITHUB_STEP_SUMMARY"
