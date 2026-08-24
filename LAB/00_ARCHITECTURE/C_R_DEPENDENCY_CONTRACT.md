@@ -1,39 +1,50 @@
-# C ← R DEPENDENCY CONTRACT — Minimal Mathematical Interface, Preserved Formal Provenance
+# C ← R DEPENDENCY CONTRACT — Production Surface and Comparison-Boundary Distinction
 
 **Document ID:** `BOMA-C-R-DEP-001`  
-**Status:** **ACTIVE — CANONICAL R→C MATHEMATICAL DEPENDENCY SURFACE / ST2-EXP-001 INTEGRATED**  
+**Status:** **ACTIVE — CANONICAL C PRODUCTION R→C MATHEMATICAL SURFACE / ST2-EXP-001 + ST2-EXP-011 DISTINCTION INTEGRATED**  
 **Date:** 2026-08-24  
 **C specification:** `BOMA-C-ACCEPT-001`  
 **Upstream selected export:** `R-BLOCK-001`  
-**Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
-**Initial boundary evidence:** `PDSA-C-002 / V5 32564789630 PASS`  
-**Narrow-interface experiment:** `ST2-EXP-001 / CLOSED / PASS / V5 32593045224`  
+**Narrow production-interface experiment:** `ST2-EXP-001 / CLOSED / PASS / V5 32593045224`  
+**Comparison-interface experiment:** `ST2-EXP-011 / CLOSED / PASS / LESSON INTEGRATED`  
 **Accepted C:** `C-BLOCK-001` selected producer; `C-BLOCK-002 / CA-20 ACCEPT`  
-**Architecture integration authority:** `BOMA-ST2-LEARNING-INTEGRATION-001`.
+**Architecture integration authorities:** `BOMA-ST2-LEARNING-INTEGRATION-001` and `BOMA-ST2-LEARNING-INTEGRATION-002`.
 
 ## 1. Purpose
 
-Define the **mathematical interface** that C is allowed and required to consume
-from R, separately from the larger historical formal package currently carried
-by accepted implementation assemblies.
+Define the **mathematical production interface** that C is allowed and required
+to consume from R, separately from:
 
-The governing distinction is:
+1. the larger historical formal package carried by accepted implementation
+   assemblies; and
+2. the still narrower scalar interface consumed only by the quadratic comparison
+   Block.
 
-```text
-C consumes a minimal accepted R mathematical interface
-≠
-C mathematically depends on every theorem/proof/representation bundled in R-BLOCK-001
-```
-
-and:
+The governing distinctions are:
 
 ```text
-selected upstream producer = R-BLOCK-001 / Dedekind
-≠
+selected R producer = R-BLOCK-001 / Dedekind
+!=
 Dedekind representation internals are premises of C
 ```
 
-## 2. Current canonical mathematical dependency surface
+```text
+C production mathematical dependency
+!=
+whole accepted R integration bundle
+```
+
+and, after `ST2-EXP-011`:
+
+```text
+C production dependency
+!=
+C quadratic-comparison dependency
+```
+
+These are different consumer boundaries and must not be collapsed.
+
+## 2. Canonical C production mathematical dependency surface — ST2-EXP-001
 
 `ST2-EXP-001` established that the selected C Claim meaning survives when the
 whole accepted `RStageIntegrationCertificate` is replaced by exactly these
@@ -58,10 +69,10 @@ orderMulNonneg
 inverseExists
 ```
 
-This sixteen-field surface is now the canonical **mathematical dependency
-contract** of `BOMA-C-R-DEP-001`.
+This sixteen-field surface remains the canonical **production mathematical
+dependency contract** of `BOMA-C-R-DEP-001`.
 
-Formal witness produced by `ST2-EXP-001`:
+Formal witness:
 
 ```text
 BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate
@@ -75,9 +86,105 @@ Source:
 The certificate is assembled directly from accepted R producers rather than by
 projecting the oversized accepted-R integration certificate.
 
-## 3. Claim-family interpretation
+## 3. Quadratic comparison uses a different, narrower surface — ST2-EXP-011
 
-The sixteen properties sit inside these accepted R Claim families:
+`ST2-EXP-011` did not reopen or shrink the sixteen-property **production**
+contract. It studied the scalar hard-wiring inside the existing
+`C-COMPARE-BLOCK-001` only.
+
+Exact declaration closure established that the direct comparison proof consumes
+scalar operations:
+
+```text
+zero
+one
+neg
+add
+mul
+```
+
+plus the quadratic presentation's explicit coordinate interface:
+
+```text
+coord
+coordinateGeneration
+coordinateUnique
+coordinateZero
+coordinateOne
+coordinateReal
+coordinateImag
+coordinateNeg
+coordinateAdd
+coordinateMul
+```
+
+This second surface is authoritative inside:
+
+```text
+C-COMPARE-BLOCK-001 / C-CL-COMPARE-001
+```
+
+and is **not** a replacement definition of `BOMA-C-R-DEP-001`.
+
+Canonical classification:
+
+```text
+PRODUCTION C mathematical dependency
+  authority = BOMA-C-R-DEP-001
+  surface   = exact sixteen properties
+
+QUADRATIC COMPARISON dependency
+  authority = C-COMPARE-BLOCK-001
+  surface   = zero/one/neg/add/mul + explicit coordinate laws
+```
+
+The comparison proof does not directly require scalar order, completeness,
+density, Archimedean properties, a general field-law bundle, or scalar
+inverse-existence/uniqueness fields. Its inverse-witness theorem transports a
+supplied witness rather than selecting one.
+
+## 4. Why the distinction matters
+
+The comparison layer answers a narrower question than production of the whole C
+structure. Therefore its smaller closure cannot be extrapolated into the claim:
+
+```text
+"C as a whole needs only zero/one/neg/add/mul"
+```
+
+which would be false relative to the verified production evidence.
+
+Conversely, the larger sixteen-property production surface cannot be projected
+onto `C-COMPARE-BLOCK-001` as mathematical necessity merely because the accepted
+formal implementation has those declarations available upstream.
+
+Dependency architecture follows the actual consumer proof closure at each
+boundary.
+
+## 5. Accepted semantics and formal provenance
+
+The existing accepted comparison implementation is still built in the selected
+`RBOMA / RStageIntegrationCertificate` environment. `ST2-EXP-011` verified a
+forgetful/generic factoring and proved its accepted relation semantics are
+definitionally preserved (`related_iff_accepted` by `rfl`).
+
+Therefore:
+
+```text
+accepted C Claim meaning              unchanged
+accepted CQuadraticComparison001      unchanged
+accepted C manifests                  unchanged
+canonical production R→C contract     unchanged
+comparison dependency classification  refined
+```
+
+The generic experimental Lean sources remain research-only. A later accepted
+source refactor may make the implementation closure match the new architectural
+comparison boundary more literally, but that is a separate controlled change.
+
+## 6. Claim-family interpretation of the production surface
+
+The sixteen production properties sit inside these accepted R Claim families:
 
 ```text
 R-CL-NONTRIV-001
@@ -89,11 +196,8 @@ R-CL-ORDER-001
 R-CL-INTEGRATION-001
 ```
 
-They are sufficient for the selected C core and its nine accepted Claim
-meanings under the verified ST2-EXP-001 assembly.
-
-The following accepted R properties are **not mathematical dependencies of the
-C core contract**:
+The following accepted R properties are not mathematical dependencies of the
+selected C **production** core contract:
 
 ```text
 R-CL-COMP-001      Dedekind LUB completeness
@@ -102,10 +206,19 @@ R-CL-ARCH-001      Archimedean characterization
 R-CL-QEMBED-001    explicit Q embedding, as a direct C requirement
 ```
 
-They remain valid accepted R properties and may remain in formal ancestry, but
-they are not promoted into mathematical necessity for C.
+They remain valid accepted R properties and may remain in formal ancestry.
 
-## 4. Explicitly prohibited implicit representation dependencies
+The direct comparison Claim is classified separately:
+
+```text
+C-CL-COMPARE-001
+  → scalar operations + explicit quadratic coordinate laws
+```
+
+`C-CL-INTEGRATION-001` remains a secondary downstream audit Claim; ST2-EXP-011
+did not replace `C-J-001`.
+
+## 7. Explicitly prohibited implicit representation dependencies
 
 No C construction may silently treat the following as mathematical premises
 merely because the selected R producer uses them:
@@ -114,7 +227,6 @@ merely because the selected R producer uses them:
 LowerCut
 CutEquiv
 cutSetoid
-RBOMA := Quotient cutSetoid as a representation fact
 principal-cut internals
 Dedekind union LUB witness
 cut membership search / bracketing
@@ -124,123 +236,92 @@ route-local proof machinery used only to establish accepted R Claims
 ```
 
 `RBOMA` remains the selected accepted formal carrier. The prohibition concerns
-consuming its hidden representation history rather than its exported
-mathematical interface.
+consuming hidden representation history rather than exported mathematical
+interfaces.
 
-## 5. Route-neutral consequences at the boundary
+## 8. Route-neutral and alternative-producer evidence
 
-The original `PDSA-C-002` probe established interface-level consequences before
-C route selection, including:
+`PDSA-C-002` established interface-level consequences before C route selection,
+including square nonnegativity and non-squareness of `-1` at the accepted-real
+boundary.
 
-```text
-C-RL-001   square nonnegativity
-C-RL-002   -1 is not a real square
-```
+`ST2-EXP-003` later established an independent Cauchy real producer and explicit
+field/order isomorphism with selected Dedekind R. H6 rebuilt seven selected C
+core meanings natively over Cauchy R.
 
-Historical source:
+`ST2-EXP-011` then strengthened the comparison-specific interpretation by
+showing that the H6/RCBOMA research producer can instantiate the generic
+quadratic comparison interface **without H5 `cToD` or selected Dedekind
+implementation transport**.
 
-`LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean`.
+This is evidence that the comparison boundary is genuinely interface-level, not
+a disguised dependence on Dedekind representation internals. It does not make
+Cauchy R selected or accepted.
 
-`ST2-EXP-001` then strengthened the architecture result by rebuilding the
-selected C path against the narrower sixteen-field package rather than the
-whole accepted R integration certificate.
+## 9. Mathematical dependency versus current formal closure
 
-This later experiment is the reason the sixteen-property surface is now a
-canonical architecture fact rather than merely a future refactor candidate.
-
-## 6. Mathematical dependency versus current formal closure
-
-A critical distinction remains:
+The current classification is:
 
 ```text
-CANONICAL MATHEMATICAL DEPENDENCY SURFACE
-  = the sixteen properties above
+CANONICAL C PRODUCTION MATHEMATICAL SURFACE
+  = sixteen properties from ST2-EXP-001
+
+CANONICAL C COMPARISON MATHEMATICAL SURFACE
+  = zero/one/neg/add/mul + coordinate laws from ST2-EXP-011
 
 CURRENT ACCEPTED C FORMALIZATION
-  = historical accepted source/manifests that may still pass a larger R bundle
+  = accepted historical sources/manifests whose actual ancestry may be larger
 ```
 
-`RE-C-001` measured the historical accepted C source closure and found exactly
-sixteen accepted-real certificate projections directly consumed by C, while the
-whole `rStageIntegrationCertificate` caused unrelated LUB/density/Archimedean
-and representation history to appear in actual formal ancestry.
+Extra bundled ancestry is formalization/provenance over-bundling, not a license
+to enlarge mathematical necessity.
 
-Before `ST2-EXP-001`, that was classified as a candidate for narrowing.
-After exact ST2-EXP-001 PASS, the architectural interpretation is now:
+Likewise, architectural recognition of a smaller sufficient interface does not
+pretend an accepted implementation refactor has already happened.
 
-```text
-extra bundled ancestry = FORMALIZATION / PROVENANCE OVER-BUNDLING
-not mathematical necessity
-```
+## 10. Logical-commitment boundary
 
-This Act does **not** rewrite the accepted C source files or claim that their
-existing Lean dependency closure has already become minimal. The narrow
-research assembly is the exact witness that the smaller mathematical contract
-is sufficient.
+Logical cost follows declarations actually consumed by the relevant boundary.
 
-A later implementation cleanup may make the accepted formal assembly match this
-contract more literally, but such cleanup is not required to recognize the
-mathematical dependency boundary established by the experiment.
+For the production surface, `orderTotal` remains one of the sixteen properties;
+the selected accepted producer of totality has localized classical provenance
+under `R-DP-003`.
 
-## 7. Logical-commitment boundary
+For the generic comparison root, exact ST2-EXP-011 evidence reports no axioms.
+The native H6 adapter roots use `[propext, Quot.sound]`, while accepted-RBOMA
+adapter roots inherit `[propext, Classical.choice, Quot.sound]` from accepted
+formal ancestry.
 
-Logical cost follows declarations actually consumed, not the whole historical
-ancestry of `R-BLOCK-001`.
+That inherited Choice cost is not promoted into generic comparison necessity.
 
-The sixteen-field interface still includes `orderTotal`; the selected accepted
-producer of totality has localized classical provenance under `R-DP-003`.
-Therefore C does not become constructively independent of that selected
-producer merely because unrelated R classical paths are removed from the
-minimal contract.
+## 11. Reopening rule
 
-Conversely, unrelated classical sites carried only by completeness/density or
-other unused bundled components are not mathematical C requirements.
-
-## 8. Relation to the accepted and alternative R producers
-
-Current accepted dependency:
-
-```text
-R-DP-001
-   └── SELECTS R-ROUTE-D / Dedekind
-            ↓
-       R-BLOCK-001
-            ↓
-       BOMA-C-R-DEP-001
-       [sixteen-property mathematical surface]
-            ↓
-       selected C construction
-```
-
-`ST2-EXP-003` later established an independent Cauchy real producer and a field
-isomorphism to the selected Dedekind producer. H6 additionally rebuilt seven
-selected C core meanings natively over the Cauchy producer.
-
-Those results strengthen the interpretation that this boundary should be read
-as an interface contract rather than a Dedekind-internal dependency. They do
-not yet prove that every accepted C comparison/integration component is generic
-over an arbitrary scalar carrier; that unresolved genericity question is the
-separate `ST2-EXP-011` candidate.
-
-## 9. Reopening rule
-
-Reopen `BOMA-C-R-DEP-001` if:
+Reopen the **production** `BOMA-C-R-DEP-001` contract if:
 
 ```text
 BOMA-C-ACCEPT-001 changes materially;
-a newly accepted C Claim requires an R property outside the sixteen fields;
+a newly accepted C production Claim requires an R property outside the sixteen fields;
 a selected C implementation consumes a representation-specific R fact as a mathematical premise;
 an accepted R Claim used by the sixteen-field surface changes;
-a new logical commitment appears in the actual minimal dependency surface;
-a future generic scalar interface proves that some of the sixteen fields are unnecessary;
-a future accepted C route requires a genuinely stronger shared scalar contract.
+a new logical commitment appears in the actual minimal production surface;
+a future controlled experiment proves some production fields unnecessary;
+a future accepted C route requires a stronger shared production scalar contract.
 ```
 
-A change in formal bundling alone does not automatically change the mathematical contract.
+Reopen the **comparison** boundary in `C-COMPARE-BLOCK-001` if:
 
-## 10. Provenance and evidence
+```text
+C-CL-COMPARE-001 changes meaning;
+a comparison theorem consumes a scalar property beyond the integrated surface;
+a global selector is proposed or introduced;
+a future accepted source refactor fails to preserve accepted Related semantics;
+a new comparison target cannot instantiate the coordinate interface.
+```
 
-Historical records remain authoritative for how this contract was learned:
+Formal bundling changes alone do not automatically change either mathematical
+contract.
+
+## 12. Provenance and evidence
 
 ```text
 PDSA-C-002
@@ -249,27 +330,42 @@ PDSA-C-002
 
 RE-C-001 / PDSA-C-009
   measured accepted C → R dependency closure
-  identified exactly sixteen direct certificate projections plus bundled ancestry
 
 ST2-EXP-001
-  independently rebuilt the selected C adequacy over the exact sixteen-field package
+  production dependency experiment
+  CLOSED / PASS / V5 32593045224
+  integrated by BOMA-ST2-LEARNING-INTEGRATION-001
+
+ST2-EXP-011
+  C-COMPARE-BLOCK-001 scalar/interface experiment
   CLOSED / PASS
-  V5 32593045224
+  final lifecycle-closed head 632a7134f26daf9dd781e3546804941f429a4246
+  exact run 32754345656
+  artifact 9530261359
+  merged by 72394878854aa69e865d17567959bec1daa70e6d
+  integrated by BOMA-ST2-LEARNING-INTEGRATION-002
 ```
 
-Architecture integration authority:
-
-`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
-
-## 11. Current boundary summary
+Architecture integration records:
 
 ```text
-upstream selected R export        R-BLOCK-001 / Dedekind
-mathematical R→C dependency       exact sixteen-property interface
-selected C route                  C-ROUTE-P
-selected C producer               C-BLOCK-001
-accepted C integration            C-J-001
-accepted C export                 C-BLOCK-002 / CA-20
-ST2-EXP-001                       CLOSED / PASS / lesson integrated
-ST2-EXP-011                       candidate only / not authorized
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+```
+
+## 13. Current boundary summary
+
+```text
+upstream selected R export          R-BLOCK-001 / Dedekind
+C production R→C dependency         exact sixteen-property interface
+comparison scalar dependency        zero/one/neg/add/mul + coordinate laws
+comparison Claim owner              C-COMPARE-BLOCK-001
+selected C route                    C-ROUTE-P
+selected C producer                 C-BLOCK-001
+accepted C integration              C-J-001
+accepted C export                   C-BLOCK-002 / CA-20
+ST2-EXP-001                         CLOSED / PASS / production lesson integrated
+ST2-EXP-011                         CLOSED / PASS / comparison lesson integrated
+active experiment                   NONE
+next owner-sequenced experiment     ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
 ```
