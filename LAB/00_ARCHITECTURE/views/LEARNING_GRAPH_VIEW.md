@@ -1,302 +1,294 @@
-# LEARNING GRAPH VIEW — How BOMA Reached the Current Accepted Architecture
+# LEARNING GRAPH VIEW — How BOMA Reached and Refined the Current Architecture
 
 **View ID:** `BOMA-VIEW-LEARNING-GRAPH-001`  
-**Status:** GENERATED / DERIVED VIEW  
-**Date:** 2026-08-21  
-**Program:** `PDSA-ARCH-002`
+**Status:** GENERATED / DERIVED VIEW / SYNCHRONIZED THROUGH STAGE TWO  
+**Date:** 2026-08-24  
+**Program:** `PDSA-ARCH-002` + Stage-Two controlled experiments.
 
 ## Why this view exists
 
-The current Construction DAG answers:
+The Construction DAG answers:
 
 ```text
-What is accepted now?
+What is structurally true and retained now?
 ```
 
-The Learning Graph answers a different question:
+The Learning Graph answers:
 
 ```text
-How did BOMA learn which current distinctions, commitments, routes, and checks were necessary?
+How did BOMA learn which distinctions, dependencies, alternatives,
+convergence strengths, and checks belong in that structure?
 ```
 
-A failed experiment or superseded route can therefore remain valuable even when it is not part of the current canonical export.
+A successful experiment can now feed a verified lesson back into the permanent
+Construction DAG without disappearing from the Learning Graph.
 
 Governing principle:
 
-> نصحح الحالة الحالية دون محو تاريخ التعلم الذي أدى إليها.
-
-This view is derived from PDSA studies, failed/superseded evidence, Decision Points, reverse-engineering records, and the theorem-transparency calibration. It does **not** replace those records.
+> نصحح ونطوّر البنية الحالية دون محو تاريخ التعلم الذي أدى إليها.
 
 ## Generic BOMA learning cycle
 
 ```mermaid
 flowchart LR
-  A[Attempt / selected hypothesis]
+  A[Attempt / hypothesis]
   O[Observed result or failure]
   D[Diagnosis]
   C[Correction / branch decision]
   V[Verification]
+  S[Study / Act]
   L[Retained lesson]
-  A --> O --> D --> C --> V --> L
+  I[Optional owner-authorized\nConstruction-DAG integration]
+  A --> O --> D --> C --> V --> S --> L
   L -. informs later work .-> A
+  L --> I
 ```
 
-The loop is intentionally not represented as a one-way march toward an inevitable final architecture.
+Integration is optional and governed. It does not automatically change `SELECTS`
+or accepted exports.
 
-## Major learning paths retained in the current project
+## Stage-One learning retained
+
+### N-Core
+
+```text
+TCT calibration
+→ N-DP-001 selects fresh inductive carrier
+→ first formalization exposes eliminator/universe under-specification
+→ N-DP-002 makes scope explicit
+→ V5 PASS
+→ lesson: global carrier/formal scope is an explicit commitment
+```
+
+### N-Arithmetic
+
+```text
+independent addR/addL → N-ADD-J-001 equality
+independent mulR/mulL → N-MUL-J-001 equality
+LEAdd/LEInd           → N-ORD-J-001 equivalence
+→ lesson: canonical spelling after reconvergence does not erase producers
+```
+
+### Z
+
+```text
+signed normal forms + difference-pair route
+→ Z-J-001 representation convergence/classification
+→ Z-DP-001 selects signed export
+→ reverse-N study
+→ Z-RE-J-001 INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
+```
+
+### Q
+
+```text
+raw fractions + FracEquiv
+→ operation-respect proofs
+→ Q-DP-001 selects Quotient fracSetoid
+→ QA-23 ACCEPT
+→ alternative identity regimes retained
+```
+
+### R Stage One
+
+```text
+representation-neutral R target
+→ R-DP-001 considers Dedekind/Cauchy
+→ Dedekind selected for Stage One
+→ logical/identity/multiplication/inverse choices exposed
+→ RA-22 ACCEPT
+→ RE-R-001 classifies selected commitments versus necessary interface
+```
+
+The Stage-One selection did not prove Cauchy impossible; that became a later
+Stage-Two question.
+
+## Stage-Two Learning-to-Construction feedback
+
+### ST2-EXP-001 — dependency boundary learning
+
+Question:
+
+```text
+Does C really need the whole accepted R integration package?
+```
+
+Experiment:
+
+```text
+BOMA-C-R-DEP-001
+whole accepted R bundle
+        ↓ controlled replacement
+NarrowROrderedFieldCertificate
+exact sixteen properties
+        ↓
+rebuild selected C adequacy
+```
+
+Result:
+
+```text
+CLOSED / PASS / V5 32593045224
+```
+
+Learned fact:
+
+```text
+C's mathematical R dependency is exactly the sixteen-property surface;
+completeness/density/Archimedean and Dedekind internals in the old closure are
+bundled formal provenance, not C mathematical necessity.
+```
+
+Construction-DAG feedback:
+
+```text
+REFINE BOMA-C-R-DEP-001
+```
+
+No Decision Point and no Junction were fabricated.
+
+### ST2-EXP-002 — C representation robustness
+
+Question:
+
+```text
+Can the non-selected C-ROUTE-Q be completed independently rather than remaining
+only a probe/candidate?
+```
+
+Experiment:
+
+```text
+C-DP-001
+   ├── frozen selected baseline C-ROUTE-P
+   └── independently complete C-ROUTE-Q
+             ↓
+      compare only after independent field completion
+             ↓
+      ST2-EXP-002-PQ-J-001
+```
+
+Result:
+
+```text
+CLOSED / PASS
+independent Route-Q field PASS
+P/Q R-field isomorphism PASS
+same accepted C Claim meanings preserved
+```
+
+Learned fact:
+
+```text
+C-ROUTE-P is selected but not mathematically unique as a realization of the
+quadratic field meaning.
+```
+
+Construction-DAG feedback:
+
+```text
+C-ROUTE-Q becomes a PERMANENT VERIFIED ALTERNATIVE branch
+ST2-EXP-002-PQ-J-001 becomes a PERMANENT NON-ACCEPTANCE Junction
+C-DP-001 still SELECTS C-ROUTE-P
+```
+
+### ST2-EXP-003 — R representation robustness
+
+Question:
+
+```text
+Can Cauchy completion be built independently to full real strength, compared
+with Dedekind only after completion, and support downstream C mathematics?
+```
+
+Experiment learning path:
 
 ```mermaid
 flowchart TD
-  subgraph N[N-Core formalization learning]
-    N0[Pre-numerical TCT calibration]
-    N1[Select R-B fresh inductive carrier\nN-DP-001]
-    N2[Initial V5 attempt]
-    N3[Failure exposes eliminator / universe under-specification]
-    N4[N-DP-002 corrected explicit scope]
-    N5[Verification assembly corrected]
-    N6[V5 PASS 32163771789]
-    N7[Retain lesson:\nglobal carrier is a formalization commitment,\nnot silently derived from TCT]
-    N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-  end
-
-  subgraph NAR[N-Arithmetic route learning]
-    A1[Independent addR / addL routes]
-    A2[N-ADD-J-001 equality]
-    M1[Independent mulR / mulL routes]
-    M2[N-MUL-J-001 equality]
-    O1[LEAdd route + independent LEInd route]
-    O2[N-ORD-J-001 equivalence]
-    A3[Retain lesson:\ncanonical spelling after reconvergence\ndoes not erase alternate producer]
-    A1 --> A2 --> M1 --> M2 --> O1 --> O2 --> A3
-  end
-
-  subgraph Z[Z representation / reverse learning]
-    Z1[Signed normal forms route]
-    Z2[Difference-pair + equivalence route]
-    Z3[Z-J-001 convergence / classification]
-    Z4[Z-DP-001 selects signed export\npair route retained]
-    Z5[Post-Z reverse N study]
-    Z6[INTERFACE RECONVERGENCE /\nPROVENANCE DIVERGENCE]
-    Z7[Retain lesson:\nfinal extensional interface does not recover\nbottom-up construction history]
-    Z1 --> Z3
-    Z2 --> Z3
-    Z3 --> Z4 --> Z5 --> Z6 --> Z7
-  end
-
-  subgraph Q[Q formal identity learning]
-    Q1[Raw positive-denominator fractions + FracEquiv]
-    Q2[Respect proofs before carrier quotient]
-    Q3[Q-DP-001 selects Quotient fracSetoid]
-    Q4[QA-23 accepted]
-    Q5[Retain alternatives:\nreduced fractions / external setoid]
-    Q1 --> Q2 --> Q3 --> Q4 --> Q5
-  end
-
-  subgraph R[R completion / logic learning]
-    R1[Representation-neutral R acceptance contract]
-    R2[Dedekind and Cauchy considered]
-    R3[R-DP-001 Dedekind selected\nCauchy retained]
-    R4[Constructive cut/order core]
-    R5[Need total comparability exposed]
-    R6[R-DP-003 localizes classical witness]
-    R7[Q approximation, multiplication, reciprocal decisions]
-    R8[RA-22 accepted]
-    R9[RE-R-001 reverse classification]
-    R10[Retain lesson:\nDedekind / quotient / classical comparability /\nselected multiplication and reciprocal routes\nare transparent realizations, not necessity theorems]
-    R1 --> R2 --> R3 --> R4 --> R5 --> R6 --> R7 --> R8 --> R9 --> R10
-  end
-
-  N7 --> NAR
-  A3 --> Z
-  Z7 --> Q
-  Q5 --> R
+  A[R-DP-001 retained Cauchy alternative]
+  H1[H1-H3 independent Cauchy field/completeness work]
+  H4[H4 exact LUB contract PASS]
+  H5[H5 Dedekind/Cauchy field isomorphism PASS]
+  J[ST2-EXP-003-R-J-001 PASS]
+  H6[H6 native Cauchy-based C core rebuild PASS]
+  S[Final Study/Act\nDedekind remains selected]
+  CL[Lifecycle closure]
+  I[Architecture integration]
+  A --> H1 --> H4 --> H5 --> J --> H6 --> S --> CL --> I
 ```
 
-## Theorem-transparency learning program
-
-### R calibration: hidden dependency discovery
-
-```mermaid
-flowchart LR
-  R0[Declared R Claim closure complete]
-  R1[Prototype execution defect:\naudit workspace outside package root]
-  R2[Fix execution architecture]
-  R3[5 semantic residuals]
-  R4[Classify generated / metatheory provenance]
-  R5[2 residuals]
-  R6[Expose implicit proposition decision\nas localized Classical.em]
-  R7[1 residual]
-  R8[Remove proposition-extensionality proof artifact]
-  R9[0 boundary residuals]
-  R10[Add Claim↔producer ancestry comparator]
-  R11[CLAIM_PRODUCER_PASS]
-
-  R0 --> R1 --> R2 --> R3 --> R4 --> R5 --> R6 --> R7 --> R8 --> R9 --> R10 --> R11
-```
-
-Retained lesson:
+Learned facts:
 
 ```text
-A source scan can look clean while theorem elaboration still consumes hidden logical/metatheoretic dependencies.
-Actual formal closure must be measured, not inferred from stylistic inspection.
+Cauchy gives an independent complete ordered real field;
+Dedekind and Cauchy reconverge through explicit field/order isomorphism;
+seven selected C core meanings rebuild natively over Cauchy R;
+selected Dedekind representation is not necessary for those meanings.
 ```
 
-Historical records:
+Construction-DAG feedback:
 
 ```text
-LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-PROTOTYPE-FAILURE-001.md
-LAB/PDSA/experiments/PDSA-ARCH-002-R-FORMAL-CLOSURE-STUDY-001.md
+R-ROUTE-C / Cauchy becomes a PERMANENT VERIFIED ALTERNATIVE branch
+ST2-EXP-003-R-J-001 becomes a PERMANENT NON-ACCEPTANCE Junction
+H6 becomes permanent downstream robustness evidence
+R-DP-001 still SELECTS Dedekind
 ```
 
-### Q calibration: valid theorem ≠ acceptance producer
+## What was not integrated as accepted structure
 
-```mermaid
-flowchart LR
-  Q0[Boundary PASS on first theorem-level run]
-  Q1[Claim/producer residual:\nzmul_ne_zero]
-  Q2[Inspect actual closure]
-  Q3[Consumed gateway is\nzmul_right_cancel_nonzero]
-  Q4[Keep zmul_ne_zero theorem\nbut remove false acceptance ownership]
-  Q5[0 residuals / PASS]
-
-  Q0 --> Q1 --> Q2 --> Q3 --> Q4 --> Q5
-```
-
-Retained lesson:
+Successful experiments did **not** automatically promote:
 
 ```text
-A theorem may be correct, useful, and historically retained without being a producer of the accepted Claim closure.
-Do not inflate acceptance ownership to make an audit pass.
+Cauchy R to R-BLOCK-001
+Route Q to C-BLOCK-001/C-BLOCK-002
+H6 C to accepted C
+research/alternative Junctions to acceptance Junctions
+ST2-EXP-011 to an active experiment
 ```
 
-Historical record:
+The owner-authorized integration promoted **verified architectural knowledge**,
+not accepted producer identity.
+
+## Theorem-transparency lessons still retained
+
+Past transparency calibration remains part of the Learning Graph:
 
 ```text
-LAB/PDSA/experiments/PDSA-ARCH-002-Q-FORMAL-CLOSURE-STUDY-001.md
+actual formal closure must be measured, not inferred from source cleanliness;
+valid theorem ≠ accepted Claim producer;
+accepted Claim roots ≠ only downstream-consumed theorems;
+formal verification syntax must not silently become canonical ontology;
+evidence-write races are operational failures, not mathematical failures.
 ```
 
-### Z calibration: explicit Claim ≠ necessarily downstream-consumed theorem
-
-```mermaid
-flowchart LR
-  Z0[Boundary PASS]
-  Z1[3 Claim/producer residuals]
-  Z2[signed_roundtrip\nembedN_zero\nembedN_one]
-  Z3[Diagnose root undercoverage]
-  Z4[These properties are explicitly accepted Claims]
-  Z5[Add them to audit roots\nwithout deleting ownership]
-  Z6[0 residuals / PASS]
-
-  Z0 --> Z1 --> Z2 --> Z3 --> Z4 --> Z5 --> Z6
-```
-
-Retained lesson:
-
-```text
-The acceptance root surface is not identical to the set of theorems later consumers happen to reference.
-An explicitly accepted property remains in the stage surface even when it is definitionally simple or downstream-unused.
-```
-
-Historical record:
-
-```text
-LAB/PDSA/experiments/PDSA-ARCH-002-Z-FORMAL-CLOSURE-STUDY-001.md
-```
-
-### N-Arithmetic: earlier lessons improve first-pass design
-
-```mermaid
-flowchart LR
-  A0[Human Claim audit names route equations]
-  A1[Root both recursion-route computation equations]
-  A2[Root convergence + canonical laws]
-  A3[Root both order routes + equivalence]
-  A4[First theorem-level comparison]
-  A5[0 residuals / PASS]
-  A0 --> A1 --> A2 --> A3 --> A4 --> A5
-```
-
-Retained lesson:
-
-```text
-A first-pass success can itself depend on accumulated learning from earlier failures.
-Do not interpret it as evidence that route-sensitive transparency was trivial.
-```
-
-### N-Core: definitions, backend witnesses, and canonical ontology
-
-```mermaid
-flowchart LR
-  N0[Existing V5 theorem-ownership map]
-  N1[Separate canonical TCT from backend TCTNF]
-  N2[Use definitions as roots for definitional accepted interfaces]
-  N3[Use named backend witnesses only where historical ownership already declares them]
-  N4[Do not promote anonymous examples / #check to Claim identities]
-  N5[Include independent Route-B named witnesses]
-  N6[First theorem-level comparison]
-  N7[0 residuals / PASS]
-
-  N0 --> N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
-```
-
-Retained lesson:
-
-```text
-Formal verification syntax must not silently become canonical ontology.
-A backend witness can certify a Claim without becoming the mathematical object the Claim is about.
-```
-
-## Operational learning: evidence-write race
-
-```mermaid
-flowchart LR
-  E0[One Registry change triggers Q and R]
-  E1[Both verify same branch SHA]
-  E2[Stage A writes evidence commit]
-  E3[Stage B exact-HEAD guard sees branch moved]
-  E4[Otherwise-valid evidence rejected]
-  E5[Diagnosis: evidence-promotion race, not math defect]
-  E6[Shared concurrency group]
-  E7[Guard verification-input drift only]
-  E8[Q/R regression PASS]
-
-  E0 --> E1 --> E2 --> E3 --> E4 --> E5 --> E6 --> E7 --> E8
-```
-
-Retained lesson:
-
-```text
-Evidence provenance must bind to the source actually verified while distinguishing verification-input drift from evidence-only branch movement.
-```
-
-This operational lesson now governs N-Core, N-Arithmetic, Z, Q, and R transparency workflows.
+These lessons remain documented in their original PDSA failure/study records.
 
 ## Learning vs current-state classification
 
-| Artifact/result | Current-state role | Learning role |
+| Artifact/result | Construction-DAG role | Learning role |
 |---|---|---|
-| accepted Block / Claim certification | authoritative current accepted interface | endpoint of one or more learning paths |
-| failed V5 run | not current proof evidence | diagnosis of missing scope, assumption, or assembly condition |
-| retained alternative route | not selected canonical export | demonstrates non-necessity / provides comparison or future branch |
-| superseded proof implementation | not current source of truth | documents proof-engineering or logical-cost learning |
-| reverse-engineering study | not forward construction member | classifies which information survives or is lost downstream |
-| transparency residual | not acceptable final closure | exposes hidden dependency, over-ownership, or root undercoverage |
+| accepted Block / Claim certification | authoritative accepted interface | endpoint of learning paths |
+| failed V5 run | no current proof authority | diagnosis / prevention evidence |
+| unverified candidate | none until authorized/verified | future question |
+| verified non-selected route | may be permanent alternative architecture | demonstrates non-necessity / comparison evidence |
+| non-acceptance Junction | may be permanent verified convergence fact | preserves exact reconvergence history |
+| successful dependency experiment | may refine canonical dependency contract | records why the narrower contract is trusted |
+| reverse-engineering study | classification input | shows which information survives downstream |
 
 ## Current Learning Graph frontier
 
-The current learned state is:
-
 ```text
-N-Core → R
-mathematical acceptance preserved
-+
-independent machine transparency PASS for every accepted export
-+
-historical route/failure provenance retained
+ST2-EXP-001  CLOSED / PASS / lesson integrated
+ST2-EXP-002  CLOSED / PASS / lesson integrated
+ST2-EXP-003  CLOSED / PASS / lesson integrated
+NO ACTIVE EXPERIMENT
+NEXT EXPERIMENT SLOT OPEN / OWNER SELECTION REQUIRED
 ```
 
-The Learning Graph does **not** continue into C because that stage has not been authorized.
+The next Learning Graph branch is not created until an experiment candidate is
+explicitly selected and frozen.
 
-```text
-C NOT STARTED — USER HOLD
-```
+Architecture integration authority:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
