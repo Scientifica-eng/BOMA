@@ -1,39 +1,38 @@
 # JUNCTION LEDGER — Convergence Strength and Shared Outputs
 
 **Document ID:** `BOMA-JUNCTION-LEDGER-001`  
-**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED C + CLOSED STAGE-TWO RESEARCH JUNCTIONS  
+**Status:** ACTIVE / SYNCHRONIZED THROUGH ACCEPTED C + PERMANENT VERIFIED ALTERNATIVE JUNCTIONS  
 **Date:** 2026-08-24  
-**Program lineage:** `PDSA-ARCH-002`; C extension under `PDSA-C-001`
+**Program lineage:** `PDSA-ARCH-002`; Learning-to-Construction integration under `BOMA-ST2-LEARNING-INTEGRATION-001`.
 
 ## 1. Purpose
 
-Index canonical and explicitly typed research Junctions by the **actual strength
-of convergence** they certify. A Junction is not inferred from a drawing, and a
-shared informal name is not convergence evidence.
+Index canonical acceptance Junctions and permanent verified alternative-construction Junctions by the **actual strength of convergence** they certify.
+
+A Junction is not inferred from a drawing, and a shared informal name is not convergence evidence.
 
 Strength vocabulary:
 
 ```text
-EQUALITY                    pointwise/formal equality of compared outputs
-EQUIVALENCE                 iff/extensional equivalence of relations/interfaces
-CLASSIFICATION              one representation relation classified by another identity regime
-SAME-DOWNSTREAM-ADEQUACY    distinct producers establish the same downstream contribution
-SAME-CARRIER-INTEGRATION    required Claims coexist on one selected carrier/operation package
-R-FIELD-ISOMORPHISM         mutually inverse field maps preserving required scalar structure
-CANONICALITY GATE           recovery invariant under the declared identity regime
+EQUALITY
+EQUIVALENCE
+CLASSIFICATION
+SAME-DOWNSTREAM-ADEQUACY
+SAME-CARRIER-INTEGRATION
+R-FIELD-ISOMORPHISM
+CANONICALITY GATE
 INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE
-                            extensional interface reconstructs while constructional provenance does not
 ```
 
-Detailed theorem statements and evidence remain authoritative in each canonical
-Junction `UNIT.md` or research Junction evidence record.
+Acceptance role and convergence strength are independent dimensions. A Junction
+may be permanent and fully verified without being an acceptance Junction.
 
 ## 2. Junction inventory
 
-| Junction | Incoming routes/contributions | Convergence strength | Shared output / role |
+| Junction | Incoming routes/contributions | Convergence strength | Architectural role |
 |---|---|---|---|
 | `TCT-J-001` | selected terminal recovery + `TCT-BR-010` structural identity + derived terminal preservation | `CANONICALITY GATE` | predecessor/terminal recovery well-defined up to `≈` |
-| `N-J-001` | internal inductive no-confusion Route A + TCT-constructional Route B | `SAME-DOWNSTREAM-ADEQUACY` | accepted no-confusion contribution without erasing producer histories |
+| `N-J-001` | internal no-confusion Route A + TCT-constructional Route B | `SAME-DOWNSTREAM-ADEQUACY` | accepted no-confusion contribution without erasing producer histories |
 | `N-J-002` | N kernel, no-confusion, induction/generatedness, recursion/initiality, TCT bridge, standardness | `SAME-CARRIER-INTEGRATION` | N-Core acceptance integration |
 | `N-ADD-J-001` | right-recursive `addR` + independently left-recursive `addL` | `EQUALITY` | canonical addition eligibility |
 | `N-MUL-J-001` | right-recursive `mulR` + independently left-recursive `mulL` | `EQUALITY` | canonical multiplication eligibility |
@@ -43,32 +42,70 @@ Junction `UNIT.md` or research Junction evidence record.
 | `Z-ARITH-J-001` | direct signed arithmetic + pair-mediated arithmetic | `EQUALITY` | pointwise equality before canonical spelling |
 | `Z-ORD-J-001` | direct signed order + pair cross-sum order | `EQUIVALENCE` | same accepted integer order |
 | `Z-J-002` | carrier/identity, ring, embeddings/generation, order/compatibility | `SAME-CARRIER-INTEGRATION` | `ZA-21` integration |
-| `Z-RE-J-001` | Z-only reconstructed N candidates + frozen bottom-up N/N-Arithmetic | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | interface reconstruction without original TCT/PDSA provenance |
+| `Z-RE-J-001` | Z-only reconstructed N candidates + frozen bottom-up N/N-Arithmetic | `INTERFACE-RECONVERGENCE / PROVENANCE-DIVERGENCE` | reverse-learning Junction; interface reconstruction without original provenance |
 | `Q-J-002` | quotient carrier/identity, algebra, inverse witnesses, embeddings, generation, order | `SAME-CARRIER-INTEGRATION` | `QA-23` rational integration |
-| `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean Claims | `SAME-CARRIER-INTEGRATION` | `RA-21` integration / `RA-22` eligibility |
-| `C-J-001` | selected pair witness field + quadratic comparison + nine-Claim closure | `SAME-CARRIER-INTEGRATION` | `C-CL-INTEGRATION-001` / accepted C integration |
-| `ST2-EXP-002-PQ-J-001` | selected Route P field + independently verified Route Q expression quotient field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | mutually inverse maps preserving embedded R and I; V5 `32597346281`; not canonical acceptance |
-| `ST2-EXP-003-R-J-001` | accepted Dedekind `R-BLOCK-001` + independently completed Cauchy real field | `R-FIELD-ISOMORPHISM / RESEARCH ONLY` | mutually inverse order/field maps preserving rationals and inverse witness relations; retained research R reconvergence; not canonical acceptance |
+| `R-J-002` | identity/Q embedding/order, algebra/inverse, completeness, density, Archimedean Claims | `SAME-CARRIER-INTEGRATION` | accepted R integration / `RA-22` eligibility |
+| `C-J-001` | selected pair witness field + quadratic comparison + nine-Claim closure | `SAME-CARRIER-INTEGRATION` | accepted C integration / `C-CL-INTEGRATION-001` |
+| `ST2-EXP-002-PQ-J-001` | selected Route P field + independently completed Route Q field | `R-FIELD-ISOMORPHISM` | **PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION / NON-ACCEPTANCE**; preserves embedded R and I |
+| `ST2-EXP-003-R-J-001` | selected Dedekind R producer + independently completed Cauchy R producer | `R-FIELD-ISOMORPHISM` | **PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION / NON-ACCEPTANCE**; preserves rationals/order/field structure |
 
-## 3. Accepted versus research Junction identity
+## 3. Acceptance Junctions versus permanent alternative Junctions
 
-`C-J-001` remains the accepted selected-carrier C integration Junction.
+Acceptance Junctions certify the selected forward acceptance path:
 
-`ST2-EXP-002-PQ-J-001` is a distinct **research-only** representation
-reconvergence Junction. Route Q is exactly:
+```text
+R-J-002  accepted selected-R integration
+C-J-001  accepted selected-C integration
+```
 
-`VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT`.
+The Stage-Two-derived Junctions certify a different architectural fact:
 
-It does not alter `CA-20`, create a canonical Route Q Block, or replace
-`C-J-001`.
+```text
+ST2-EXP-002-PQ-J-001
+  selected C Route P ↔ independently completed Route Q
 
-`ST2-EXP-003-R-J-001` is likewise a distinct **research-only**
-real-representation reconvergence Junction. Its incoming Cauchy producer was
-completed independently before comparison. It does not replace `R-BLOCK-001`,
-does not change the `R-DP-001` selected Dedekind route, and does not promote H6
-C to accepted C.
+ST2-EXP-003-R-J-001
+  selected Dedekind R ↔ independently completed Cauchy R
+```
 
-Its exact proof root is:
+They are now permanent objects in the Construction DAG because the convergence
+they establish is a durable fact about representation robustness.
+
+They remain **non-acceptance Junctions**:
+
+```text
+permanent ≠ selected
+verified ≠ accepted export
+isomorphic producers ≠ identical production history
+```
+
+## 4. `ST2-EXP-002-PQ-J-001`
+
+Current classification:
+
+```text
+Convergence strength    R-FIELD-ISOMORPHISM
+Graph status            PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION
+Acceptance role         NONE
+Selected route          C-ROUTE-P remains selected
+Alternative             C-ROUTE-Q remains non-selected
+```
+
+The Junction does not replace `C-J-001` and does not alter `CA-20`.
+
+## 5. `ST2-EXP-003-R-J-001`
+
+Current classification:
+
+```text
+Convergence strength    R-FIELD-ISOMORPHISM
+Graph status            PERMANENT VERIFIED ALTERNATIVE-CONSTRUCTION JUNCTION
+Acceptance role         NONE
+Selected route          R-ROUTE-D / Dedekind remains selected
+Alternative             R-ROUTE-C / Cauchy remains non-selected
+```
+
+Exact proof root:
 
 `BOMA.R.StageTwo.DedekindCauchyJunction003.dedekindCauchyResearchJunctionCertificate`.
 
@@ -81,7 +118,7 @@ artifact    9516996491
 sha256      0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0
 ```
 
-Final synchronized exact-head re-verification before merge:
+Final synchronized exact-head re-verification before experiment merge:
 
 ```text
 head        3d4ed58e5d88b2a0bd84b3958cac2c8572385152
@@ -90,15 +127,25 @@ artifact    9520005288
 sha256      3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34
 ```
 
-Authoritative research evidence record:
+The permanent graph classification does not change that evidence or its research provenance.
 
-`LAB/PDSA/experiments/ST2-EXP-003_DEDEKIND_CAUCHY_R_JUNCTION_001.md`.
+## 6. ST2-EXP-001 deliberately has no Junction
 
-Lifecycle closure authority:
+`ST2-EXP-001` tested `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` by replacing an
+over-bundled R package with the exact sixteen-field interface consumed by C.
 
-`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
+It did not create two mathematical carriers or producers requiring a convergence
+Junction. Its integrated result is a **refined dependency contract**, not a
+fabricated Junction.
 
-## 4. Provenance rule
+This distinction is required by:
+
+```text
+meeting ≠ Junction
+successful experiment ≠ Junction by default
+```
+
+## 7. Provenance rule
 
 For every Junction:
 
@@ -106,18 +153,15 @@ For every Junction:
 reconvergence ≠ retroactive identity of production history
 ```
 
-The repository must retain incoming route identities, route-local assumptions,
-route-local evidence, translation/equality/equivalence proof, and reopening
-conditions.
+The repository retains incoming route identities, route-local assumptions,
+route-local evidence, translation/equality/equivalence proof, and reopening conditions.
 
-`Z-RE-J-001` makes this explicit for reverse reconstruction. The two Stage-Two
-research Junctions make it explicit for alternate number-system realizations:
-interface/field isomorphism does not erase distinct carrier identity,
-formalization cost, logical-source placement, or experimental history.
+Permanent integration of a Junction into the Construction DAG adds current-state
+visibility; it does not erase its PDSA origin.
 
-## 5. Claim and Learning-Graph linkage
+## 8. Claim and Learning-Graph linkage
 
-Principal forward Claim links include:
+Principal accepted Claim links remain:
 
 ```text
 N-J-001       → N-CL-NOCONF-CONV-001
@@ -135,49 +179,39 @@ R-J-002       → R-CL-INTEGRATION-001
 C-J-001       → C-CL-INTEGRATION-001
 ```
 
-Research Junctions are not fabricated into forward accepted Claim ownership.
-They remain branch/learning evidence linked through their experiment origin
-records.
+The permanent alternative-construction Junctions are **not fabricated into
+accepted Claim ownership**. Their exact experimental evidence remains linked
+through Stage-Two origin and Study/Act records.
 
-## 6. Reopening rule
+## 9. Reopening rule
 
-Retest a Junction if a change affects:
+Retest a Junction if a change affects an incoming producer, the compared output,
+the identity/equivalence regime, a route-local assumption used by the proof, the
+certificate implementing convergence, or the exact verification assembly.
 
-```text
-an incoming producer;
-the compared output statement;
-the identity/equivalence regime;
-a route-local assumption used by the convergence proof;
-the theorem/certificate implementing convergence;
-the source assembly used for exact verification.
-```
+Changing which route is selected does not erase the existing Junction; it may,
+however, change its acceptance relevance and requires Decision review.
 
-For reverse/learning Junctions, changes to the frozen reference interface or
-reverse candidate construction also trigger retest.
-
-A change confined to a branch artifact not consumed by the Junction does not
-automatically invalidate its certified shared output.
-
-## 7. Current boundary
+## 10. Current boundary
 
 ```text
-C-DP-001                         RESOLVED / C-ROUTE-P SELECTED
-C selected producer              C-BLOCK-001 / ACCEPTED PRODUCER
-C accepted export                C-BLOCK-002 / CA-20 ACCEPT
-C accepted integration           C-J-001 / SAME-CARRIER-INTEGRATION / PASS
-C retained alternative           VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
-C research reconvergence         ST2-EXP-002-PQ-J-001 / RESEARCH R-FIELD-ISOMORPHISM / PASS
-R canonical route                R-ROUTE-D / DEDEKIND / R-BLOCK-001
-R retained Cauchy alternative    VERIFIED INDEPENDENT RESEARCH / NOT ACCEPTED
-R research reconvergence         ST2-EXP-003-R-J-001 / PASS
-ST2-EXP-001                      CLOSED / PASS
-ST2-EXP-002                      CLOSED / PASS
-ST2-EXP-003                      CLOSED / PASS
+R selected route                    R-ROUTE-D / DEDEKIND
+R accepted integration              R-J-002
+R accepted export                   R-BLOCK-001
+R permanent alternative             R-ROUTE-C / Cauchy
+R alternative Junction              ST2-EXP-003-R-J-001
+C selected route                    C-ROUTE-P
+C selected producer                 C-BLOCK-001
+C accepted integration              C-J-001
+C accepted export                   C-BLOCK-002 / CA-20
+C permanent alternative             C-ROUTE-Q
+C alternative Junction              ST2-EXP-002-PQ-J-001
+ST2-EXP-001                         CLOSED / PASS / dependency lesson integrated
+ST2-EXP-002                         CLOSED / PASS / branch+Junction integrated
+ST2-EXP-003                         CLOSED / PASS / branch+Junction integrated
 NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT             OPEN / OWNER SELECTION REQUIRED
 ```
 
-Typed research Junction attachment and acceptance boundaries are indexed in
-`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`. A research Junction ID does
-not imply a canonical filesystem `UNIT.md` and must not be treated as one by
-architecture coverage audits.
+Architecture integration authority:
+
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
