@@ -22,3 +22,4 @@ LAB/payloads/lean/RStage/ST2Exp003CauchyLUBBracket.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyLUBSequence.lean
 LAB/payloads/lean/RStage/ST2Exp003CauchyLUB.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean
+LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean
