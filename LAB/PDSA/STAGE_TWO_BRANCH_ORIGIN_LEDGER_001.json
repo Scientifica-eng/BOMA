@@ -137,7 +137,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING",
+      "status": "ACTIVE / DEDEKIND-LUB CONTRACT PASS / H5 COMPARISON READY / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -181,7 +181,7 @@
         "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
         "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
-      "reconvergence_strength": "H5 EXACT R-FIELD ISOMORPHISM / VERIFIED RESEARCH R JUNCTION / H6 CAUCHY-NATIVE C-BLOCK-001 CORE REBUILD EXACT PASS",
+      "reconvergence_strength": "H4 EXACT LUB CONTRACT PASS / H5 COMPARISON READY / H5 EXACT R-FIELD ISOMORPHISM / VERIFIED RESEARCH R JUNCTION / H6 CAUCHY-NATIVE C-BLOCK-001 CORE REBUILD EXACT PASS",
       "experimental_product_status": "VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD + VERIFIED RESEARCH R JUNCTION + VERIFIED H6 CAUCHY-NATIVE COMPLEX CORE / NOT AN ACCEPTED REAL EXPORT / H6 C NOT AN ACCEPTED EXPORT",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
