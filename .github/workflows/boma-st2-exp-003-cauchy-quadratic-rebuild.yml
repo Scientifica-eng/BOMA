@@ -13,10 +13,21 @@ on:
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
       - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/00_ARCHITECTURE/R_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'README.md'
+      - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-003-cauchy-quadratic-rebuild.yml'
   push:
     branches:
       - 'feature/stage-two-st2-exp-003-*'
+      - 'maintenance/st2-exp-003-lifecycle-closure-*'
 
 concurrency:
   group: boma-st2-exp-003-h6-${{ github.ref }}
@@ -63,6 +74,26 @@ jobs:
             LAB/payloads/lean/CStage/CStageIntegration001.lean
           printf 'H6 exact head: %s\nExact Junction ancestor: %s\nTypechecked source ancestor: %s\n' \
             "$actual" "$junction" "$typecheck"
+
+      - name: Audit closed lifecycle when applicable
+        shell: bash
+        run: |
+          set -euo pipefail
+          state="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          record = next(x for x in ledger['records'] if x['experiment_id'] == 'ST2-EXP-003')
+          print(record['status'])
+          PY
+          )"
+          if [[ "$state" == CLOSED* ]]; then
+            python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+              --json-out /tmp/st2-exp-003-h6-lifecycle-governance.json
+            grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' /tmp/st2-exp-003-h6-lifecycle-governance.json
+          else
+            printf '{"status":"ACTIVE_FRONTIER_H6_COMPATIBILITY"}\n' > /tmp/st2-exp-003-h6-lifecycle-governance.json
+          fi
 
       - name: Validate downstream manifest separation and source boundary
         shell: bash
@@ -145,14 +176,28 @@ jobs:
       - name: Publish H6 exact scope
         shell: bash
         run: |
+          set -euo pipefail
+          state="$(python3 - <<'PY'
+          import json
+          with open('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json', encoding='utf-8') as f:
+              ledger = json.load(f)
+          record = next(x for x in ledger['records'] if x['experiment_id'] == 'ST2-EXP-003')
+          print(record['status'])
+          PY
+          )"
           {
             printf '## ST2-EXP-003 H6 — Cauchy-real quadratic C rebuild\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Rebuilt natively over independent `RCBOMA`; Dedekind/H5 sources are not mathematical inputs.\n'
-            printf -- '- Preserved contract: faithful real embedding, distinguished I, I^2=-1, unique real coordinates, commutative ring, norm, and witness-only field inversion.\n'
+            printf -- '- Preserved: faithful real embedding, distinguished I, I^2=-1, unique real coordinates, commutative ring, norm, and witness-only field inversion.\n'
             printf -- '- No new inverse selector or Choice call is introduced in the H6 C source.\n'
-            printf -- '- Accepted `C-BLOCK-001/C-BLOCK-002`, accepted R, and main remain unchanged.\n'
-            printf -- '- This is research evidence only, not canonical C acceptance.\n'
+            printf -- '- Accepted `C-BLOCK-001/C-BLOCK-002` and accepted R remain unchanged.\n'
+            if [[ "$state" == CLOSED* ]]; then
+              printf -- '- Lifecycle governance: `STAGE_TWO_CLOSED_FRONTIER_PASS`; H6 is retained closed-experiment research evidence.\n'
+              printf -- '- There is NO ACTIVE EXPERIMENT.\n'
+            else
+              printf -- '- This is active-experiment research evidence only, not canonical C acceptance.\n'
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve H6 exact evidence
@@ -161,6 +206,7 @@ jobs:
         with:
           name: st2-exp-003-h6-cauchy-quadratic-${{ github.run_id }}
           path: |
+            /tmp/st2-exp-003-h6-lifecycle-governance.json
             /tmp/st2-exp-003-h6-field-lean.log
             /tmp/st2-exp-003-h6-field-closure.json
             /tmp/st2-exp-003-h6-field-dependency-audit.log
