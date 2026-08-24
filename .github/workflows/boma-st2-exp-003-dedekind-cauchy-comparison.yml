@@ -15,6 +15,7 @@ on:
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean'
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean'
       - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
       - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
       - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
@@ -86,10 +87,11 @@ jobs:
           inverse=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean
           additive=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean
           multiplicative=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean
+          field=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean
           test -s "$accepted"
           test -s "$independent"
           test -s "$combined"
-          for target in "$foundation" "$density" "$reflection" "$inverse" "$additive" "$multiplicative"; do
+          for target in "$foundation" "$density" "$reflection" "$inverse" "$additive" "$multiplicative" "$field"; do
             test -f "$target"
             if grep -Fxq "$target" "$independent"; then
               printf 'H5 combined comparison source contaminated the independent Cauchy manifest: %s\n' "$target" >&2
@@ -127,6 +129,12 @@ jobs:
           grep -Fq 'research Junction remain outside this source' "$additive"
           grep -Fq 'Nonzero inverse-relation preservation' "$multiplicative"
           grep -Fq 'research Junction remain outside this source' "$multiplicative"
+          grep -Fq 'rather than a newly selected global' "$field"
+          grep -Fq 'does not declare a research Junction' "$field"
+          if grep -En 'Classical\.choose|noncomputable def.*[Ii]nv' "$field"; then
+            printf 'Final H5 field layer introduced a new inverse selector or Choice boundary\n' >&2
+            exit 1
+          fi
 
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
@@ -138,7 +146,7 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: false
 
-      - name: Prove H5 multiplicative preservation
+      - name: Prove H5 field-isomorphism certificate
         shell: bash
         run: |
           set -euo pipefail
@@ -153,20 +161,19 @@ jobs:
             cat "$src" >> "$target"
             printf '\n' >> "$target"
           done < "$manifest"
-          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyAdditivePreservationCertificate\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.rC_inverse_positive_h5\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.rC_nonneg_product_inner_witness\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.rC_rational_strict_below_mul_nonneg_iff\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.r_rational_strict_below_mul_nonneg_iff\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_mul_nonneg\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_mul\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_mul\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_one\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_one\n' >> "$target"
-          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyMultiplicativePreservationCertificate\n' >> "$target"
-          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-multiplicative-preservation-lean.log
+          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyMultiplicativePreservationCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_ne_zero_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_ne_zero_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_inverse_relation_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_inverse_relation_iff\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_inverse_witness\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_inverse_witness\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.cToD_inverse_exists_of_nonzero\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dToC_inverse_exists_of_nonzero\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyFieldIsomorphismCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-field-isomorphism-lean.log
 
-      - name: Extract combined H5 multiplicative-preservation closure
+      - name: Extract combined H5 field-isomorphism closure
         shell: bash
         run: |
           set -euo pipefail
@@ -178,33 +185,34 @@ jobs:
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage R \
             --manifest "$manifest" \
-            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyMultiplicativePreservationCertificate \
-            --json-out /tmp/st2-exp-003-h5-multiplicative-preservation-closure.json \
-            > /tmp/st2-exp-003-h5-multiplicative-preservation-dependency-audit.log
+            --target BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyFieldIsomorphismCertificate \
+            --json-out /tmp/st2-exp-003-h5-field-isomorphism-closure.json \
+            > /tmp/st2-exp-003-h5-field-isomorphism-dependency-audit.log
 
-      - name: Publish H5 multiplicative-preservation scope
+      - name: Publish H5 field-isomorphism scope
         shell: bash
         run: |
           set -euo pipefail
           {
-            printf '## ST2-EXP-003 H5 — Dedekind/Cauchy multiplicative-preservation milestone\n'
+            printf '## ST2-EXP-003 H5 — Dedekind/Cauchy field-isomorphism certificate\n'
             printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Independent H4 remains separately verified and selected-Dedekind-free.\n'
-            printf -- '- The explicit H5 maps already preserve order, addition, zero, and negation and are mutually inverse.\n'
-            printf -- '- Proved at this gate: preservation of signed multiplication and multiplicative one in both directions.\n'
-            printf -- '- NOT YET CLAIMED: nonzero inverse-relation preservation, final field-isomorphism certificate, or research Junction.\n'
+            printf -- '- The explicit H5 maps are mutually inverse and preserve order, rationals, addition, zero, negation, multiplication, and one.\n'
+            printf -- '- Proved at this gate: nonzero preservation/reflection and inverse-witness-relation transport in both directions.\n'
+            printf -- '- No new inverse selector or Choice boundary is introduced by the final H5 field layer.\n'
+            printf -- '- NOT YET CLAIMED: research Junction, canonical R replacement, or downstream C rebuild.\n'
             printf -- '- Canonical R/C acceptance and main remain unchanged.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Preserve H5 multiplicative-preservation evidence
+      - name: Preserve H5 field-isomorphism evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-003-h5-multiplicative-preservation-${{ github.run_id }}
+          name: st2-exp-003-h5-field-isomorphism-${{ github.run_id }}
           path: |
             /tmp/st2-exp-003-h4-governance.json
-            /tmp/st2-exp-003-h5-multiplicative-preservation-lean.log
-            /tmp/st2-exp-003-h5-multiplicative-preservation-closure.json
-            /tmp/st2-exp-003-h5-multiplicative-preservation-dependency-audit.log
+            /tmp/st2-exp-003-h5-field-isomorphism-lean.log
+            /tmp/st2-exp-003-h5-field-isomorphism-closure.json
+            /tmp/st2-exp-003-h5-field-isomorphism-dependency-audit.log
           if-no-files-found: warn
           retention-days: 30
