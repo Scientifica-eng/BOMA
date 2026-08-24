@@ -34,7 +34,7 @@ def fromAccepted {R : RStageIntegrationCertificate}
   imag := A.imag
   coord := A.coord
   coordinateGeneration := A.coordinateGeneration
-  coordinateUnique := @A.coordinateUnique
+  coordinateUnique := A.coordinateUnique
   coordinateZero := A.coordinateZero
   coordinateOne := A.coordinateOne
   coordinateReal := A.coordinateReal
