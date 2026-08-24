@@ -1,414 +1,275 @@
-# C ← R DEPENDENCY CONTRACT — Accepted Interface Consumption Before Representation
+# C ← R DEPENDENCY CONTRACT — Minimal Mathematical Interface, Preserved Formal Provenance
 
 **Document ID:** `BOMA-C-R-DEP-001`  
-**Status:** **ACTIVE — FIRST FORMAL BOUNDARY QUESTION CLOSED / V5 32564789630 PASS**  
-**Date:** 2026-08-21  
+**Status:** **ACTIVE — CANONICAL R→C MATHEMATICAL DEPENDENCY SURFACE / ST2-EXP-001 INTEGRATED**  
+**Date:** 2026-08-24  
 **C specification:** `BOMA-C-ACCEPT-001`  
-**Upstream accepted export:** `R-BLOCK-001`  
+**Upstream selected export:** `R-BLOCK-001`  
 **Upstream reverse audit:** `RE-R-001 CLOSED / COMPLETE`  
-**Verified boundary experiment:** `PDSA-C-002 — CLOSED / run 32564789630 PASS`  
-**Route comparison:** `PDSA-C-003 — CLOSED / both probes V5 32565335033 PASS`  
-**Selected route core:** `PDSA-C-004 — CLOSED / ring-core V5 32574270735 PASS`
-**Selected witness field:** `PDSA-C-005 — CLOSED / V5 32574920935 PASS / no additional axiom over R`
-**Current experiment:** `PDSA-C-006 — ACTIVE / representation-neutral comparison`
+**Initial boundary evidence:** `PDSA-C-002 / V5 32564789630 PASS`  
+**Narrow-interface experiment:** `ST2-EXP-001 / CLOSED / PASS / V5 32593045224`  
+**Accepted C:** `C-BLOCK-001` selected producer; `C-BLOCK-002 / CA-20 ACCEPT`  
+**Architecture integration authority:** `BOMA-ST2-LEARNING-INTEGRATION-001`.
 
 ## 1. Purpose
 
-Define exactly what C is initially allowed to ask from accepted R before any complex representation is selected.
+Define the **mathematical interface** that C is allowed and required to consume
+from R, separately from the larger historical formal package currently carried
+by accepted implementation assemblies.
 
-The governing rule is:
+The governing distinction is:
 
 ```text
-C consumes the accepted R interface
+C consumes a minimal accepted R mathematical interface
 ≠
-C inherits the selected Dedekind implementation of R
+C mathematically depends on every theorem/proof/representation bundled in R-BLOCK-001
 ```
 
-The current R producer history may remain relevant as provenance, but a C theorem may cite an R representation detail only when a new explicit dependency record justifies that choice.
-
----
-
-# 2. Accepted R Claim surface relevant to C
-
-The initial C semantic core requires only the algebraic/order strength needed to form and distinguish a quadratic extension.
-
-## 2.1 Initially required mathematical Claim families
-
-| R Claim | Initial C role | Classification at C boundary |
-|---|---|---|
-| `R-CL-NONTRIV-001` | establish `0_R ≠ 1_R`; support nondegeneracy | `MATHEMATICAL_CLAIM` — required |
-| `R-CL-ADD-001` | coefficients, additive laws, negation | `MATHEMATICAL_CLAIM` — required |
-| `R-CL-MUL-001` | coefficient multiplication and ordered-ring interaction | `MATHEMATICAL_CLAIM` — required |
-| `R-CL-INV-001` | coefficient division / inverse witnesses when proving C inverse | `MATHEMATICAL_CLAIM` — actually used by selected Route P field closure through `inverseExists`; not used by the first nonsquare boundary proof |
-| `R-CL-FIELD-001` | accepted field-strength integration of R algebra/order | `MATHEMATICAL_CLAIM` — required package-level input |
-| `R-CL-ORDER-001` | positivity of squares / impossibility of a real square equal to `-1` | `MATHEMATICAL_CLAIM` — required by `C-RL-001/002` |
-| `R-CL-INTEGRATION-001` | certifies the preceding accepted R Claims coexist on the accepted R carrier | `MATHEMATICAL_CLAIM` / accepted export gateway |
-
-The table declares the intended acceptance-level dependency surface. The later theorem-level formal closure must measure which specific R declarations are actually consumed.
-
-## 2.2 Not initially required by the Stage-One C semantic core
-
-The following accepted R properties are **not** currently dependencies of `BOMA-C-ACCEPT-001` core algebra:
-
-| R Claim / feature | Current C classification |
-|---|---|
-| `R-CL-COMP-001` — Dedekind LUB completeness | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
-| `R-CL-DENSITY-001` — Q density in R | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
-| `R-CL-ARCH-001` — Archimedean characterization | **NOT REQUIRED BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof** |
-| `R-CL-QEMBED-001` — explicit Q embedding into R | **NOT REQUIRED DIRECTLY BY CORE C CONTRACT; not used by abstract `C-RL-001/002` proof**; remains upstream provenance of R |
-
-If a candidate C route later consumes one of these, that use must be classified as one of:
+and:
 
 ```text
-mathematically required by a newly promoted C Claim;
-route-specific convenience;
-supporting lemma choice;
-formalization/proof-engineering choice.
+selected upstream producer = R-BLOCK-001 / Dedekind
+≠
+Dedekind representation internals are premises of C
 ```
 
-It may not be retroactively described as having been necessary to the ex-ante C contract.
+## 2. Current canonical mathematical dependency surface
 
----
+`ST2-EXP-001` established that the selected C Claim meaning survives when the
+whole accepted `RStageIntegrationCertificate` is replaced by exactly these
+sixteen properties:
 
-# 3. Explicitly prohibited implicit dependencies
+```text
+orderTrans
+orderAntisymm
+orderTotal
+nontrivial
+addComm
+addAssoc
+addZeroLeft
+addInverseRight
+addTranslateOrderIff
+negOrderReversing
+mulComm
+mulAssoc
+mulOneLeft
+distribRight
+orderMulNonneg
+inverseExists
+```
 
-No C construction may silently depend on the following R realization details merely because they are present in the accepted R source tree:
+This sixteen-field surface is now the canonical **mathematical dependency
+contract** of `BOMA-C-R-DEP-001`.
+
+Formal witness produced by `ST2-EXP-001`:
+
+```text
+BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate
+BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
+```
+
+Source:
+
+`LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean`.
+
+The certificate is assembled directly from accepted R producers rather than by
+projecting the oversized accepted-R integration certificate.
+
+## 3. Claim-family interpretation
+
+The sixteen properties sit inside these accepted R Claim families:
+
+```text
+R-CL-NONTRIV-001
+R-CL-ADD-001
+R-CL-MUL-001
+R-CL-INV-001
+R-CL-FIELD-001
+R-CL-ORDER-001
+R-CL-INTEGRATION-001
+```
+
+They are sufficient for the selected C core and its nine accepted Claim
+meanings under the verified ST2-EXP-001 assembly.
+
+The following accepted R properties are **not mathematical dependencies of the
+C core contract**:
+
+```text
+R-CL-COMP-001      Dedekind LUB completeness
+R-CL-DENSITY-001   Q density in R
+R-CL-ARCH-001      Archimedean characterization
+R-CL-QEMBED-001    explicit Q embedding, as a direct C requirement
+```
+
+They remain valid accepted R properties and may remain in formal ancestry, but
+they are not promoted into mathematical necessity for C.
+
+## 4. Explicitly prohibited implicit representation dependencies
+
+No C construction may silently treat the following as mathematical premises
+merely because the selected R producer uses them:
 
 ```text
 LowerCut
 CutEquiv
 cutSetoid
 RBOMA := Quotient cutSetoid as a representation fact
-principal-cut implementation details
+principal-cut internals
 Dedekind union LUB witness
-cut membership search
-cut bracketing
+cut membership search / bracketing
 positive/negative-part multiplication implementation
-Dedekind reciprocal construction
-localized proof sites used only to establish those route-specific results
+Dedekind reciprocal implementation
+route-local proof machinery used only to establish accepted R Claims
 ```
 
-The type name `RBOMA` is, of course, the accepted formal carrier exported by R. The prohibition concerns treating its **internal Dedekind representation/quotient provenance** as a mathematical premise of C.
+`RBOMA` remains the selected accepted formal carrier. The prohibition concerns
+consuming its hidden representation history rather than its exported
+mathematical interface.
 
-`PDSA-C-002` strengthens this boundary by proving the first C-support theorems against an explicit abstract `RStageIntegrationCertificate` parameter before instantiating the accepted certificate.
+## 5. Route-neutral consequences at the boundary
 
----
-
-# 4. Route-neutral downstream lemmas expected from R
-
-The C stage may prove ordinary algebraic/order consequences from the accepted R interface without reopening R, provided the proof depends only on accepted Claims.
-
-## C-RL-001 — square nonnegativity
-
-Target interface theorem:
+The original `PDSA-C-002` probe established interface-level consequences before
+C route selection, including:
 
 ```text
-∀ x : R_BOMA, 0_R ≤ x * x.
+C-RL-001   square nonnegativity
+C-RL-002   -1 is not a real square
 ```
 
-Current implementation:
+Historical source:
+
+`LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean`.
+
+`ST2-EXP-001` then strengthened the architecture result by rebuilding the
+selected C path against the narrower sixteen-field package rather than the
+whole accepted R integration certificate.
+
+This later experiment is the reason the sixteen-property surface is now a
+canonical architecture fact rather than merely a future refactor candidate.
+
+## 6. Mathematical dependency versus current formal closure
+
+A critical distinction remains:
 
 ```text
-square_nonnegative_of_interface
-  (C : RStageIntegrationCertificate)
+CANONICAL MATHEMATICAL DEPENDENCY SURFACE
+  = the sixteen properties above
 
-square_nonnegative_from_accepted_R
+CURRENT ACCEPTED C FORMALIZATION
+  = historical accepted source/manifests that may still pass a larger R bundle
 ```
 
-Source:
+`RE-C-001` measured the historical accepted C source closure and found exactly
+sixteen accepted-real certificate projections directly consumed by C, while the
+whole `rStageIntegrationCertificate` caused unrelated LUB/density/Archimedean
+and representation history to appear in actual formal ancestry.
+
+Before `ST2-EXP-001`, that was classified as a candidate for narrowing.
+After exact ST2-EXP-001 PASS, the architectural interpretation is now:
 
 ```text
-LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean
+extra bundled ancestry = FORMALIZATION / PROVENANCE OVER-BUNDLING
+not mathematical necessity
 ```
 
-Current classification:
+This Act does **not** rewrite the accepted C source files or claim that their
+existing Lean dependency closure has already become minimal. The narrow
+research assembly is the exact witness that the smaller mathematical contract
+is sufficient.
+
+A later implementation cleanup may make the accepted formal assembly match this
+contract more literally, but such cleanup is not required to recognize the
+mathematical dependency boundary established by the experiment.
+
+## 7. Logical-commitment boundary
+
+Logical cost follows declarations actually consumed, not the whole historical
+ancestry of `R-BLOCK-001`.
+
+The sixteen-field interface still includes `orderTotal`; the selected accepted
+producer of totality has localized classical provenance under `R-DP-003`.
+Therefore C does not become constructively independent of that selected
+producer merely because unrelated R classical paths are removed from the
+minimal contract.
+
+Conversely, unrelated classical sites carried only by completeness/density or
+other unused bundled components are not mathematical C requirements.
+
+## 8. Relation to the accepted and alternative R producers
+
+Current accepted dependency:
 
 ```text
-SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
-V5 CERTIFICATION PASS — RUN 32564789630 / SOURCE a6c894e62c48919712341cea1c0ea588590f9e5f
+R-DP-001
+   └── SELECTS R-ROUTE-D / Dedekind
+            ↓
+       R-BLOCK-001
+            ↓
+       BOMA-C-R-DEP-001
+       [sixteen-property mathematical surface]
+            ↓
+       selected C construction
 ```
 
-No Dedekind-specific representation theorem occurs in the abstract proof body.
-
-## C-RL-002 — minus one is not a real square
-
-Target interface theorem:
-
-```text
-¬ ∃ x : R_BOMA, x * x = -1_R.
-```
-
-Current implementation:
-
-```text
-minus_one_not_square_of_interface
-  (C : RStageIntegrationCertificate)
-
-minus_one_not_square_from_accepted_R
-```
-
-The abstract proof uses only the ordered-ring/nontriviality interface required to derive square nonnegativity, `0 ≤ 1`, negation reversal, and antisymmetry.
-
-Current classification:
-
-```text
-SOURCE-LEVEL DERIVATION WRITTEN FROM ACCEPTED R INTERFACE
-V5 CERTIFICATION PASS — RUN 32564789630 / SOURCE a6c894e62c48919712341cea1c0ea588590f9e5f
-```
-
-This result is expected to support:
-
-```text
-I not collapsing to the real image
-coordinate independence
-nonzero denominator a²+b² for coordinate inverse formulas
-```
-
-but those downstream uses remain unconstructed.
-
-## C-RL-003 — sum of two squares vanishes only trivially
-
-Potential target:
-
-```text
-a*a + b*b = 0_R → a = 0_R ∧ b = 0_R.
-```
-
-Expected status:
-
-```text
-DERIVABLE DOWNSTREAM FROM ACCEPTED R ORDER/FIELD CLAIMS
-```
-
-This is likely useful to the ordered-pair/rank-two inverse route, but it is not yet classified as required for every C representation. If only one route consumes it, it remains a route-specific supporting lemma rather than a universal C Claim.
-
----
-
-# 5. Dependency questions and closure state
-
-## C-RQ-001 — Formal sufficiency of accepted R interface
-
-**Question:** Can `C-RL-001` and `C-RL-002` be proved in Lean using only declarations belonging to the accepted R Claim surface plus Trusted Base, without importing Dedekind representation-specific proof interfaces as mathematical premises?
-
-**Current status:**
-
-```text
-CLOSED / PASS — ACCEPTED-R INTERFACE SUFFICIENT FOR C-RL-001/002
-FORMAL PAYLOAD VERIFIED AT a6c894e62c48919712341cea1c0ea588590f9e5f
-V5 RUN 32564789630 COMPLETED / SUCCESS
-```
-
-Current experiment:
-
-```text
-PDSA-C-002
-LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean
-LAB/20_FORMALIZATION/C_STAGE/C_R_INTERFACE_PROBE_001_INPUTS.txt
-.github/workflows/boma-c-r-interface-probe-001.yml
-```
-
-The abstract proof is parameterized by `RStageIntegrationCertificate`; the accepted-R corollary is a separate instantiation. Source inspection shows use of:
-
-```text
-orderTotal
-orderAntisymm
-nontrivial
-addComm
-addAssoc
-addZeroLeft
-addInverseRight
-negOrderReversing
-mulComm
-mulOneLeft
-distribRight
-orderMulNonneg
-```
-
-and no use in the abstract proof of:
-
-```text
-qEmbeddingInjective
-qOrderExact
-strictIrrefl
-addTranslateOrderIff
-inverseExists
-inverseUnique
-positiveInverse
-dedekindLUB
-rationalDensity
-archimedeanUpper
-```
-
-The final formal PASS criterion remains:
-
-```text
-PASS if the verified theorem elaborates at the declared accepted R interface
-and no required mathematical dependency reaches representation-specific R machinery.
-```
-
-Until an exact retrievable workflow run is available:
-
-```text
-PASS is not claimed
-FAIL is not claimed
-```
-
-A later failure is not automatically a mathematical obstruction. Study must distinguish:
-
-```text
-missing exported lemma
-from
-actual need to strengthen R
-from
-proof-engineering visibility
-from
-route-specific overreach
-from
-syntax/elaboration failure in the staged probe.
-```
-
-## C-RQ-002 — Polynomial infrastructure belongs to C, not R
-
-If the polynomial-quotient candidate is probed, polynomial syntax/ring/evaluation/ideal or congruence infrastructure is **new C-route infrastructure** unless already exported independently elsewhere.
-
-It must not be described as an R acceptance dependency merely because its coefficients are real.
-
-**Status:** `OPEN / ROUTE-CONDITIONAL`.
-
-## C-RQ-003 — Global inverse selection
-
-Accepted R exports unique inverse witnesses rather than forcing a global Choice-backed inverse selector.
-
-A C route that wants a function-valued real inverse for convenience must choose among:
-
-```text
-consume explicit witnesses locally;
-derive a selector using an explicitly declared logical/formalization commitment;
-construct the needed C inverse by a route that avoids a global R selector.
-```
-
-It may not silently strengthen the R interface.
-
-**Status:** `RESOLVED FOR SELECTED ROUTE — witness-only inverse; no global selector`; retained as a future branch question for other routes.
-
----
-
-# 6. Logical-commitment boundary
-
-`RE-R-001` showed that the accepted R producer path contains localized classical commitments. C must not inherit those commitments merely by ancestry.
-
-For every C proof:
-
-```text
-logical cost follows the declarations actually consumed
-not the full historical ancestry of R-BLOCK-001.
-```
-
-`PDSA-C-002` illustrates the required distinction precisely:
-
-```text
-C probe source introduces no new explicit Classical/Choice call
-≠
-proof is therefore independent of all upstream logical choices
-```
-
-The abstract proof consumes `orderTotal`, and the currently accepted producer of R total comparability carries localized classical provenance under `R-DP-003`. Thus the downstream Claim must retain that dependency at the accepted R Claim/producer boundary unless a future alternative total-order producer reconverges with a different logical profile.
-
-Conversely, C must not inherit unrelated classical sites merely because they occur elsewhere in the R construction history.
-
----
-
-# 7. Representation-commitment boundary
-
-The following distinction is mandatory for every candidate route:
-
-```text
-R_BOMA as the accepted upstream carrier
-  = legitimate accepted input
-
-Dedekind lower-cut realization of R_BOMA
-  = upstream producer history, not automatically a C premise
-```
-
-A C carrier may be constructed from values of `R_BOMA` without thereby becoming Dedekind-specific. Representation dependence exists only if the C construction/proof opens or consumes the upstream representation internals rather than the accepted interface.
-
-The current abstract nonsquare proof is deliberately written against `RStageIntegrationCertificate` and does not inspect `LowerCut`, `CutEquiv`, quotient representatives, cut membership, or reciprocal/multiplication internals.
-
----
-
-# 8. Historical pre-route minimal dependency hypothesis
-
-Before route probes, the C core retains the following high-level dependency shape:
-
-```text
-R-CL-NONTRIV-001
-R-CL-ADD-001
-R-CL-MUL-001
-R-CL-INV-001   [now directly used by selected C field closure; not C-RL-001/002]
-R-CL-FIELD-001
-R-CL-ORDER-001
-R-CL-INTEGRATION-001
-        ↓
-route-neutral R consequences
-  square ≥ 0       [V5 32564789630 PASS]
-  -1 not a square  [V5 32564789630 PASS]
-        ↓
-C quadratic-extension construction routes
-```
-
-Not currently in that core:
-
-```text
-R-CL-COMP-001
-R-CL-DENSITY-001
-R-CL-ARCH-001
-Dedekind representation internals
-```
-
-`PDSA-C-002` verifies this separation at source/interface level through exact V5 run `32564789630` on commit `a6c894e62c48919712341cea1c0ea588590f9e5f`. The result remains supporting-theorem evidence; it is not an accepted C Claim or an extracted theorem-level dependency-closure certificate.
-
----
-
-# 9. Reopening rule
-
-Reopen this contract if any of the following occurs:
+`ST2-EXP-003` later established an independent Cauchy real producer and a field
+isomorphism to the selected Dedekind producer. H6 additionally rebuilt seven
+selected C core meanings natively over the Cauchy producer.
+
+Those results strengthen the interpretation that this boundary should be read
+as an interface contract rather than a Dedekind-internal dependency. They do
+not yet prove that every accepted C comparison/integration component is generic
+over an arbitrary scalar carrier; that unresolved genericity question is the
+separate `ST2-EXP-011` candidate.
+
+## 9. Reopening rule
+
+Reopen `BOMA-C-R-DEP-001` if:
 
 ```text
 BOMA-C-ACCEPT-001 changes materially;
-C-DP-001 selects a route with additional R requirements;
-the formal boundary probe finds a necessary undeclared R dependency;
-an accepted R Claim used by C is revised;
-a route begins consuming Dedekind-specific internals;
-a new logical commitment appears in actual formal closure;
-V5 elaboration of the staged abstract probe exposes a dependency or packaging assumption not visible in source inspection.
+a newly accepted C Claim requires an R property outside the sixteen fields;
+a selected C implementation consumes a representation-specific R fact as a mathematical premise;
+an accepted R Claim used by the sixteen-field surface changes;
+a new logical commitment appears in the actual minimal dependency surface;
+a future generic scalar interface proves that some of the sixteen fields are unnecessary;
+a future accepted C route requires a genuinely stronger shared scalar contract.
 ```
 
-The corrective action must update the current classification without erasing the PDSA record of the earlier hypothesis and what falsified or refined it.
-# 10. RE-C-001 actual post-acceptance dependency classification
+A change in formal bundling alone does not automatically change the mathematical contract.
 
-`CA-20 = ACCEPT / C-BLOCK-002`; `RE-C-001` extracted 441 direct C-source →
-R-source edges over 25 distinct R declarations. Exactly 16 accepted-real
-certificate projections are used:
+## 10. Provenance and evidence
+
+Historical records remain authoritative for how this contract was learned:
 
 ```text
-addAssoc, addComm, addInverseRight, addTranslateOrderIff, addZeroLeft,
-distribRight, inverseExists, mulAssoc, mulComm, mulOneLeft,
-negOrderReversing, nontrivial, orderAntisymm, orderMulNonneg,
-orderTotal, orderTrans
+PDSA-C-002
+  initial accepted-R interface sufficiency probe
+  V5 32564789630 PASS
+
+RE-C-001 / PDSA-C-009
+  measured accepted C → R dependency closure
+  identified exactly sixteen direct certificate projections plus bundled ancestry
+
+ST2-EXP-001
+  independently rebuilt the selected C adequacy over the exact sixteen-field package
+  CLOSED / PASS
+  V5 32593045224
 ```
 
-There is no direct C projection of completeness, rational density,
-Archimedean bounds, or Q embedding. Nevertheless the concrete final C producer
-passes the whole `rStageIntegrationCertificate`, so its **actual formal
-closure** also contains the accepted real LUB, density, Archimedean, Dedekind,
-quotient, and classical producer histories. These edges are explicitly
-classified as `INHERITED BUNDLED-INTERFACE DEPENDENCY` or selected upstream
-formalization provenance; they are not erased and are not mathematical
-necessity claims about C.
+Architecture integration authority:
 
-In particular, one `Classical.byContradiction` path enters through unused
-bundled rational density, while `Classical.em` also enters through actually
-projected real totality. A future narrower R interface is a separately
-controlled branch candidate, never an already-performed refactor.
+`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
 
-Full evidence: `LAB/PDSA/experiments/PDSA-C-009-RE-C-001-DEPENDENCY-CLASSIFICATION.md`.
+## 11. Current boundary summary
+
+```text
+upstream selected R export        R-BLOCK-001 / Dedekind
+mathematical R→C dependency       exact sixteen-property interface
+selected C route                  C-ROUTE-P
+selected C producer               C-BLOCK-001
+accepted C integration            C-J-001
+accepted C export                 C-BLOCK-002 / CA-20
+ST2-EXP-001                       CLOSED / PASS / lesson integrated
+ST2-EXP-011                       candidate only / not authorized
+```
