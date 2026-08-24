@@ -1,8 +1,10 @@
 {
   "schema": "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001",
-  "status": "ACTIVE / TWO CLOSED EXPERIMENTS / ST2-EXP-003 ACTIVE",
+  "status": "CLOSED FRONTIER / THREE CLOSED EXPERIMENTS / NO ACTIVE EXPERIMENT",
   "date": "2026-08-24",
   "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, or acceptance promotion.",
+  "active_experiment": null,
+  "next_experiment_slot": "OPEN / OWNER SELECTION REQUIRED",
   "allowed_origin_kinds": [
     "BRICK",
     "BLOCK",
@@ -137,7 +139,7 @@
     },
     {
       "experiment_id": "ST2-EXP-003",
-      "status": "ACTIVE / DEDEKIND-LUB CONTRACT PASS / H5 COMPARISON READY / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING",
+      "status": "CLOSED / PASS / DEDEKIND-LUB CONTRACT PASS / H5 COMPARISON READY / H1-H6 EXACT PASS / MATHEMATICAL PASS",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-001",
       "origin_label": "accepted Dedekind rational completion versus retained rational Cauchy completion",
@@ -181,8 +183,10 @@
         "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001",
         "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"
       ],
+      "reconvergence_junction_id": "ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001",
       "reconvergence_strength": "H4 EXACT LUB CONTRACT PASS / H5 COMPARISON READY / H5 EXACT R-FIELD ISOMORPHISM / VERIFIED RESEARCH R JUNCTION / H6 CAUCHY-NATIVE C-BLOCK-001 CORE REBUILD EXACT PASS",
       "experimental_product_status": "VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD + VERIFIED RESEARCH R JUNCTION + VERIFIED H6 CAUCHY-NATIVE COMPLEX CORE / NOT AN ACCEPTED REAL EXPORT / H6 C NOT AN ACCEPTED EXPORT",
+      "junction_status": "VERIFIED RESEARCH JUNCTION / NOT A CANONICAL ACCEPTANCE JUNCTION",
       "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
       "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
@@ -190,9 +194,15 @@
       "h4_study": "LAB/PDSA/experiments/ST2-EXP-003_LUB_MILESTONE_001.md",
       "final_study_act": "LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md",
       "final_study_act_commit": "9b688c53c03c749e5e9a58e6f179b191bbb1c883",
+      "lifecycle_closure_record": "LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md",
       "mathematical_result": "PASS",
-      "lifecycle_disposition": "ACTIVE / OWNER DISPOSITION PENDING / MERGE TO MAIN NOT AUTHORIZED",
-      "verified_run": null,
+      "lifecycle_disposition": "CLOSED / OWNER AUTHORIZED 2026-08-24 / MERGED TO MAIN / NEXT EXPERIMENT SLOT OPEN",
+      "closure_authorized_date": "2026-08-24",
+      "main_merge_commit": "5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd",
+      "main_merge_tree": "d515a2812e621af68406c30866ac9ece5460b1f9",
+      "verified_run": 32727267183,
+      "verified_head": "3d4ed58e5d88b2a0bd84b3958cac2c8572385152",
+      "verified_run_role": "FINAL EXACT-HEAD H6 CLOSURE REPRESENTATIVE; INDEPENDENT CAUCHY AND H5/JUNCTION RUNS RECORDED SEPARATELY",
       "preserved_failure_runs": [
         32630769132, 32631916749, 32631997598, 32632080736,
         32632711528, 32633098730, 32633963578, 32637335056,
@@ -259,16 +269,16 @@
       "h6_cauchy_quadratic_artifact_sha256": "cf296c8daf92c9cfe9e54986b93b6101ea225aad79c1c7388ad6d3ae13ae5a0e",
       "h6_evidence": "LAB/PDSA/experiments/ST2-EXP-003_H6_CAUCHY_QUADRATIC_EXACT_EVIDENCE_001.md",
       "h6_scope": "rebuilt the seven selected C-BLOCK-001 core Claim meanings over RCBOMA; accepted C comparison/integration layer unchanged",
-      "current_exact_head": "a26446da4547976d2a4bd67d8d8bc7511d71c1ab",
-      "current_exact_independent_cauchy_run": 32721991515,
-      "current_exact_independent_cauchy_artifact_id": 9518096500,
-      "current_exact_independent_cauchy_artifact_sha256": "deb9329a3e366a7d837538a75a84afc28493494a44738dd5e1475188962dfd2b",
-      "current_exact_h5_junction_run": 32721991470,
-      "current_exact_h5_junction_artifact_id": 9518090428,
-      "current_exact_h5_junction_artifact_sha256": "b862b920884884269eb62bb4d8790ad5046ff8fe2c1c644cf6a1ad66008a33ac",
-      "current_exact_h6_run": 32721991455,
-      "current_exact_h6_artifact_id": 9518082966,
-      "current_exact_h6_artifact_sha256": "51369d656890a3c0353792be31ef3850d8ecd31bdc1ddbb26557308ffe17f408"
+      "current_exact_head": "3d4ed58e5d88b2a0bd84b3958cac2c8572385152",
+      "current_exact_independent_cauchy_run": 32727267231,
+      "current_exact_independent_cauchy_artifact_id": 9520001887,
+      "current_exact_independent_cauchy_artifact_sha256": "e7c8e9959445e182eab133a11f7352fbf4a9a6ae270d7b81037b2008b663de8c",
+      "current_exact_h5_junction_run": 32727267177,
+      "current_exact_h5_junction_artifact_id": 9520005288,
+      "current_exact_h5_junction_artifact_sha256": "3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34",
+      "current_exact_h6_run": 32727267183,
+      "current_exact_h6_artifact_id": 9520002118,
+      "current_exact_h6_artifact_sha256": "72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa"
     }
   ]
 }
