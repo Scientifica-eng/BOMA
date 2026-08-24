@@ -1,8 +1,8 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..003 CLOSED PASS / ST2-EXP-011 CLOSED PASS / NO ACTIVE EXPERIMENT / 011 ARCHITECTURE INTEGRATION REQUIRED`  
+**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / NO ACTIVE EXPERIMENT`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
-**Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
+**Frozen reference discipline:** every experiment freezes the then-current accepted `N-Core → N-Arithmetic → Z → Q → R → C` state independently  
 **Owner sovereignty:** foundational/logical changes, experiment selection, Frozen Plans, acceptance promotion, and Learning-to-Construction integration require explicit owner authorization.
 
 ## Experiment admission rule
@@ -23,9 +23,19 @@ the permanent Construction DAG through a separate owner-authorized architecture
 Act. That integration does not retroactively change the Frozen Plan, experiment
 history, selected route, or accepted export.
 
-Architecture integration authority for the first three completed experiments:
+Architecture integration authorities:
 
-`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
+```text
+BOMA-ST2-LEARNING-INTEGRATION-001
+  ST2-EXP-001..003
+  LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+
+BOMA-ST2-LEARNING-INTEGRATION-002
+  ST2-EXP-011
+  LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+```
+
+## Closed experiment summary
 
 `ST2-EXP-001` was explicitly approved and completed with exact V5 run
 `32593045224`; its immutable Plan remains
@@ -38,15 +48,17 @@ Study/Act remain historical evidence.
 
 `ST2-EXP-003` was authorized on 2026-08-23; its immutable Plan is
 `LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md`. H1–H6 completed
-with exact V5 evidence; PR #8 merged its research evidence; lifecycle closure
-was separately owner-authorized on 2026-08-24.
+with exact V5 evidence; its research evidence was merged; lifecycle closure and
+Learning-to-Construction integration were separately authorized.
 
-`ST2-EXP-011` was explicitly selected by the owner on 2026-08-24 from accepted
-`main` `b49826e58261a71634cd12756e8afda28920088f`. Its immutable Plan was frozen
+`ST2-EXP-011` was explicitly selected on 2026-08-24 from accepted `main`
+`b49826e58261a71634cd12756e8afda28920088f`. Its immutable Plan was frozen
 before Do at commit `5cc05ef1bea8e88787041c3bc30dd0aecf5412d4`. Study/Act and lifecycle
-closure are complete with PASS; its research code is not an accepted refactor.
+closed PASS. The final lifecycle-closed exact head `632a7134...` passed all nine
+relevant PR workflows; PR #13 merged the exact verified tree to `main`; the
+verified architectural lesson is now integrated by `BOMA-ST2-LEARNING-INTEGRATION-002`.
 
-**Current Stage-Two frontier:** `NO ACTIVE EXPERIMENT / REQUIRED NEXT ACT = ST2-EXP-011 LEARNING-TO-CONSTRUCTION INTEGRATION / ST2-EXP-004 OWNER-SEQUENCED NEXT AFTER SYNCHRONIZED MAIN BUT NOT ACTIVE`.
+**Current Stage-Two frontier:** `NO ACTIVE EXPERIMENT / ST2-EXP-004 OWNER-SEQUENCED NEXT / NOT ACTIVE / NO FROZEN PLAN / MUST RE-READ SYNCHRONIZED MAIN BEFORE PLAN`.
 
 Remaining candidates are unstarted unless separately authorized and frozen.
 
@@ -56,7 +68,7 @@ Remaining candidates are unstarted unless separately authorized and frozen.
 ST2-EXP-001
   origin       DEPENDENCY_EDGE / BOMA-C-R-DEP-001
   lifecycle    CLOSED / PASS
-  integrated   exact sixteen-property mathematical R→C production dependency surface
+  integrated   exact sixteen-property mathematical C-production R→C surface
   not created  no fabricated Block / no fabricated Junction
 
 ST2-EXP-002
@@ -81,15 +93,36 @@ ST2-EXP-011
                accepted RBOMA instance with definitionally preserved Related semantics
                native RCBOMA/H6 instance without H5/Dedekind implementation dependency
                relation/function firewall with explicit CoordinateExtractor only
-  durable      comparison scalar surface = zero/one/neg/add/mul + explicit coordinate laws
-  integration  REQUIRED AS SEPARATE LEARNING-TO-CONSTRUCTION ACT / NOT YET CANONICAL
-  unchanged    accepted R/C, SELECTS, C-J-001, CA-20, and H6 provenance
+  integrated   comparison scalar surface = zero/one/neg/add/mul + explicit coordinate laws
+               authority remains existing C-COMPARE-BLOCK-001 / C-CL-COMPARE-001
+  unchanged    BOMA-C-R-DEP-001 16-property production contract
+               accepted R/C, SELECTS, C-J-001, CA-20, and H6 provenance
   not created  no fabricated Block / Decision Point / Junction
+  source code  experimental generic/adapters remain research-only / no accepted refactor
 ```
 
-The term **permanent** means permanent visibility as a verified architectural
-fact, not accepted producer status. `ST2-EXP-011` becomes permanent architecture
-knowledge only through the separate post-closure integration Act.
+The term **permanent** means permanent visibility as verified architectural
+knowledge, not accepted producer status.
+
+## Production versus comparison boundary
+
+The two successful interface experiments answer different questions:
+
+```text
+ST2-EXP-001
+  question: what minimal R mathematics is needed to produce selected C meaning?
+  answer:   exact sixteen-property ordered-field/witness surface
+  authority: BOMA-C-R-DEP-001
+
+ST2-EXP-011
+  question: what scalar/coordinate data does quadratic comparison itself need?
+  answer:   zero/one/neg/add/mul + explicit coordinate laws
+  authority: C-COMPARE-BLOCK-001 / C-CL-COMPARE-001
+```
+
+The smaller comparison closure must not be extrapolated into a whole-C
+production claim; the larger production surface must not be projected onto the
+comparison Block as direct necessity.
 
 ## Architectural attachment and prevention authorities
 
@@ -114,12 +147,15 @@ LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/R_DAG.md
 LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
+LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
+LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 ```
 
 The origin ledger remains provenance authority; architecture integration does
 not rewrite where an experiment began.
 
-The lifecycle-CI lesson from ST2-EXP-011 is also now explicit:
+The lifecycle-CI lesson from ST2-EXP-011 is also explicit:
 
 ```text
 historical experiment closure = monotone evidence
@@ -135,62 +171,42 @@ the global active pointer to remain permanently empty.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | CLOSED / PASS — V5 32593045224 / LESSON INTEGRATED |
 | `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained expression-normalization quotient Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; explicit comparison Junction | CLOSED / PASS — PERMANENT ALTERNATIVE + JUNCTION INTEGRATED |
-| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve real-field meaning, compare completed producers, rebuild selected downstream C core | 12 R + 9 C impact Claims | independent R assembly; H5 field isomorphism/Junction; H6 native C rebuild; exact-head audits | CLOSED / PASS — H1-H6 EXACT / PERMANENT ALTERNATIVE + JUNCTION INTEGRATED |
-| `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, downstream C order-dependent Claims | exact baseline/alternative; formal closure diff; logical commitments; classify any acceptance-contract change | OWNER-SEQUENCED NEXT AFTER 011 INTEGRATION / NOT ACTIVE / NO FROZEN PLAN |
+| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve real-field meaning, compare completed producers, rebuild selected downstream C core | 12 R + 9 C impact Claims | independent R assembly; H5 isomorphism/Junction; H6 native C rebuild; exact-head audits | CLOSED / PASS — H1-H6 EXACT / LESSON INTEGRATED |
+| `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, downstream C order-dependent Claims | exact baseline/alternative; formal closure diff; logical commitments; classify any acceptance-contract change | OWNER-SEQUENCED NEXT / NOT ACTIVE / NO FROZEN PLAN |
 | `ST2-EXP-005` | Q-DP-001 | fraction quotient carrier | canonical reduced rational representatives | same rational field/order and integer embedding | Q → R → C identity/transport | independent Q laws + explicit equivalence + downstream interface test | MEDIUM / OPEN |
 | `ST2-EXP-006` | N-DP-001 | fresh unary BOMA-specific inductive carrier | categorical NNO or explicitly specified free algebra | preserve induction, recursion, successor, scoped standardness | N-Core → all accepted stages | state metatheory/initiality prerequisites; independent acceptance matrix | MEDIUM / OPEN |
 | `ST2-EXP-007` | N-DP-002 | current eliminator / universe scope | cross-universe or deliberately weaker eliminator | measure exact recursion/initiality consequences | N-Core proofs and downstream definability | single-scope change; theorem/claim impact audit | MEDIUM / OPEN |
 | `ST2-EXP-008` | Z-DP-001 | signed canonical integer carrier | canonical difference-pair realization | same ring/order/embeddings with distinct identity regime | Z → Q → R → C | reuse verified reconvergence; compare downstream transport | MEDIUM / OPEN |
 | `ST2-EXP-009` | R-DP-002 | Dedekind quotient identity | raw cut carrier with explicit external CutEquiv | preserve accepted R interface where feasible | R equality, quotient commitment, C inherited closure | formal equality/transport audit; no assumed carrier identity | MEDIUM / OPEN |
 | `ST2-EXP-010` | R-DP-006 / C witness use | existential and unique inverse witnesses | explicit selector under declared extra principle | separate operation convenience from added Choice/logical cost | R inversion and C field implementation | paired closure comparison; explicitly preserve or revise constructivity scope | MEDIUM / OPEN |
-| `ST2-EXP-011` | `C-COMPARE-BLOCK-001` scalar/interface boundary | accepted comparison scalar-hard-wired to `RBOMA / RStageIntegrationCertificate` | generic closure-derived scalar + coordinate interface | preserve accepted semantics; native RCBOMA/H6 without H5; no silent selector | direct `C-CL-COMPARE-001`; secondary `C-CL-INTEGRATION-001` | exact closure; accepted/native instances; axioms; H5 exclusion; regressions; lifecycle audits | CLOSED / PASS — DURABLE LESSON / ARCHITECTURE INTEGRATION REQUIRED |
+| `ST2-EXP-011` | `C-COMPARE-BLOCK-001` scalar/interface boundary | accepted comparison scalar-hard-wired to `RBOMA / RStageIntegrationCertificate` | generic closure-derived scalar + coordinate interface | preserve accepted semantics; native RCBOMA/H6 without H5; no silent selector | direct `C-CL-COMPARE-001`; secondary `C-CL-INTEGRATION-001` | exact closure; accepted/native instances; axioms; H5 exclusion; regressions; lifecycle audits | CLOSED / PASS — LESSON INTEGRATED / ACCEPTED SOURCE UNCHANGED |
 | `ST2-EXP-012` | calibrated pre-numerical choices | current declared ε / U / ⊙ foundational path | change exactly one declared founding commitment per cycle | measure object/meta firewall and downstream reconstructibility | entire number chain and explicit metatheory contract | freeze one-change PDSA; preserve baseline; classify first divergence | RESEARCH / OPEN |
 | `ST2-EXP-013` | complex scope strengthening | accepted quadratic field only | independent algebraic closure / FTA research layer | do not retroactively alter CA-20 reference | R completeness, polynomial roots, logical commitments | new acceptance contract; separately classified imported analysis | DEFERRED / OPEN |
 
-`ST2-EXP-011` provenance is preserved in:
+## ST2-EXP-011 provenance
 
 ```text
-LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.md
-LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.json
-LAB/PDSA/PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md
-LAB/PDSA/experiments/ST2-EXP-011_GATE_A_DECLARATION_CLOSURE_001.md
-LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md
-LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md
+candidate dossier
+  LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.md
+  LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.json
+
+Frozen Plan
+  LAB/PDSA/PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md
+
+Gate A
+  LAB/PDSA/experiments/ST2-EXP-011_GATE_A_DECLARATION_CLOSURE_001.md
+
+Final Study/Act
+  LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md
+
+Lifecycle closure
+  LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md
+
+Architecture integration
+  LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 ```
 
-Its relationship to ST2-EXP-001 is now experimentally resolved:
-
-```text
-ST2-EXP-001 answered:
-  what minimal mathematical R properties does selected C production meaning need?
-  answer = sixteen-property production surface
-
-ST2-EXP-011 answered:
-  can quadratic comparison itself become scalar-generic across RBOMA and RCBOMA/H6?
-  answer = yes; zero/one/neg/add/mul + explicit quadratic-coordinate laws
-```
-
-These surfaces answer different dependency questions and must not be collapsed.
-
-## ST2-EXP-011 final mathematical and lifecycle evidence summary
-
-Frozen accepted reference:
-
-`b49826e58261a71634cd12756e8afda28920088f`.
-
-Frozen Plan commit:
-
-`5cc05ef1bea8e88787041c3bc30dd0aecf5412d4`.
-
-Final mathematical Study/Act:
-
-`LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md`.
-
-Lifecycle closure:
-
-`LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md`.
-
-First retained custom failure:
+### Preserved first custom failure
 
 ```text
 head      1dd9beb0b792e634029ffdf12e09c1f50e4cccf8
@@ -200,7 +216,7 @@ sha256    1c9d3b5e3af2b1e7d5727a321f18fbdf5ab7f1faee3b6a7e30c448829378953e
 error     ERR-ST2-011-001
 ```
 
-Final green pre-closure exact head after lifecycle-CI compatibility correction:
+### Earlier green pre-closure compatibility checkpoint
 
 ```text
 head      ef116405c08475ec8702d9177a5106d7d0bfe525
@@ -210,9 +226,31 @@ sha256    f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1
 result    SUCCESS
 ```
 
-All related accepted and historical regression workflows passed on that same
-head. The lifecycle-CI scoping failure and its secondary schema compatibility
-failure are retained in `ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md`.
+This earlier green checkpoint remains valid historical evidence; it is not the
+final lifecycle-closed head.
+
+### Final lifecycle-closed exact verification
+
+```text
+head      632a7134f26daf9dd781e3546804941f429a4246
+run       32754345656
+artifact  9530261359
+sha256    d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
+result    SUCCESS / nine relevant workflows green
+```
+
+### Research/lifecycle merge
+
+```text
+commit    72394878854aa69e865d17567959bec1daa70e6d
+parent 1  b49826e58261a71634cd12756e8afda28920088f
+parent 2  632a7134f26daf9dd781e3546804941f429a4246
+tree      168fc1267313810e622c2206fa8a91f24decb4b7
+content drift from verified head: NONE
+```
+
+Lifecycle-CI scoping and secondary compatibility failures remain preserved in
+`ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md`.
 
 ## ST2-EXP-003 historical evidence summary
 
@@ -246,7 +284,7 @@ Cauchy Quadratic Rebuild
 ```
 
 The mathematical result remains `PASS`; selected/canonical disposition remains
-unchanged. Later Learning-to-Construction integration changes only the current
+unchanged. Later Learning-to-Construction integration changed only current
 architectural visibility/classification of verified alternatives, not the
 historical experiment result.
 
@@ -257,7 +295,8 @@ must not rewrite previous choices into necessities, remove historical failed
 runs, suppress logical dependencies, silently weaken accepted Claims, or treat a
 global selector as computationally free.
 
-`ST2-EXP-011` is now `CLOSED / PASS`. The active slot is empty, but the next
-required program action is its separately authorized Learning-to-Construction
-integration. `ST2-EXP-004` is owner-sequenced after that integration and a
-synchronized re-read of `main`; it is not active and has no Frozen Plan yet.
+All four completed Stage-Two experiments above are `CLOSED / PASS`; their
+verified lessons are integrated. The active slot is empty. `ST2-EXP-004` is
+owner-sequenced next but cannot receive a Frozen Plan until the current
+architecture integration is merged, `main` is synchronized/verified, and the
+current repository is re-read.

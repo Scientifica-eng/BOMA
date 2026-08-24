@@ -7,7 +7,7 @@
 **Q:** `Q_DAG.md`  
 **R:** `R_DAG.md`  
 **C:** `C_DAG.md`  
-**Learning integration:** `ST2-EXP-001..003 CLOSED / PASS / VERIFIED LESSONS INTEGRATED`  
+**Learning integration:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED / PASS / VERIFIED LESSONS INTEGRATED`  
 **Active experiment:** `NONE`.
 
 This file is a current topology view, not a replacement for typed unit, Claim,
@@ -159,14 +159,14 @@ completed Cauchy R producer ────────┘
 `R-DP-001` still selects Dedekind. The Cauchy branch is permanent, verified,
 non-selected, and not an accepted export.
 
-## R → C dependency boundary — ST2-EXP-001 lesson integrated
+## R → C production boundary — ST2-EXP-001 integrated
 
 ```text
 R-BLOCK-001
    ↓
 BOMA-C-R-DEP-001
    ↓
-EXACT MATHEMATICAL SURFACE USED BY C
+EXACT PRODUCTION MATHEMATICAL SURFACE USED BY C
   orderTrans / orderAntisymm / orderTotal / nontrivial
   addComm / addAssoc / addZeroLeft / addInverseRight
   addTranslateOrderIff / negOrderReversing
@@ -177,13 +177,12 @@ C construction
 ```
 
 `ST2-EXP-001` proved the selected C Claim meaning survives over this exact
-sixteen-property interface. No new Block or Junction is fabricated; the result
-refines the existing dependency contract.
+sixteen-property production interface.
 
-## Complex stage — selected spine plus permanent verified alternative
+## Complex stage — selected spine, generic comparison boundary, and permanent alternative
 
 ```text
-BOMA-C-R-DEP-001 — exact sixteen-property mathematical boundary
+BOMA-C-R-DEP-001 — exact sixteen-property PRODUCTION boundary
    ↓
 BOMA-C-ACCEPT-001
    ↓
@@ -193,6 +192,10 @@ C-DP-001 — RESOLVED / USER-RATIFIED
    │             C-BLOCK-001 selected witness-field producer
    │                 ↓
    │             C-COMPARE-BLOCK-001
+   │             canonical COMPARISON scalar boundary:
+   │               zero / one / neg / add / mul
+   │               + explicit quadratic coordinate laws
+   │             [ST2-EXP-011 integrated]
    │                 ↓
    │             C-J-001 PASS / SAME-CARRIER-INTEGRATION
    │                 ↓
@@ -205,7 +208,7 @@ C-DP-001 — RESOLVED / USER-RATIFIED
                       VERIFIED ALTERNATIVE C PRODUCER
 ```
 
-Permanent verified reconvergence:
+Permanent verified C-route reconvergence:
 
 ```text
 C-ROUTE-P completed field ───────────┐
@@ -219,6 +222,27 @@ C-ROUTE-Q completed field ───────────┘
 
 `ST2-EXP-002-PQ-J-001` does not replace accepted `C-J-001`.
 
+## ST2-EXP-011 comparison genericity — permanent architectural fact
+
+The comparison-specific dependency question is now resolved:
+
+```text
+C PRODUCTION surface
+  = sixteen-property BOMA-C-R-DEP-001
+
+C COMPARISON surface
+  = zero/one/neg/add/mul + explicit coordinate laws
+  = C-COMPARE-BLOCK-001 / C-CL-COMPARE-001
+```
+
+The accepted RBOMA adapter preserves the old `Related` semantics definitionally.
+The generic comparison interface also instantiates directly over the verified
+RCBOMA/H6 research producer without H5 `cToD` or selected Dedekind implementation
+transport.
+
+This does not replace accepted comparison sources and does not create a new
+Block, Decision Point, or Junction.
+
 ## Cross-stage robustness evidence from Cauchy R
 
 ```text
@@ -227,29 +251,48 @@ R-ROUTE-C / completed Cauchy R
 H6 Cauchy-native C rebuild
    ↓
 seven selected C-BLOCK-001 core Claim meanings rebuilt
+   ↓
+ST2-EXP-011 generic comparison interface instantiable directly
 ```
 
 H6 is permanent robustness evidence but is not an accepted C producer.
-The remaining scalar-generic comparison question is `ST2-EXP-011`, candidate
-only and not authorized.
+
+## Relation/function firewall
+
+Permanent comparison architecture records:
+
+```text
+relation-level totality + uniqueness
+!=
+chosen functional comparison
+```
+
+Actual comparison functions require explicit `CoordinateExtractor` data. No
+global coordinate or inverse selector is implied by the generic relation.
 
 ## Learning Graph provenance
 
 The permanent graph facts above were learned through controlled Stage-Two cycles:
 
 ```text
-ST2-EXP-001  dependency-edge experiment
-             → exact sixteen-property R→C surface
+ST2-EXP-001  DEPENDENCY_EDGE / BOMA-C-R-DEP-001
+             → exact sixteen-property production R→C surface
 
-ST2-EXP-002  C-DP-001 alternative-route experiment
+ST2-EXP-002  DECISION_POINT / C-DP-001
              → complete Route Q + ST2-EXP-002-PQ-J-001
 
-ST2-EXP-003  R-DP-001 alternative-route experiment
+ST2-EXP-003  DECISION_POINT / R-DP-001
              → complete Cauchy R + ST2-EXP-003-R-J-001 + H6 evidence
+
+ST2-EXP-011  BLOCK / C-COMPARE-BLOCK-001
+             → scalar-generic comparison boundary
+             → accepted semantics preserved
+             → native H6 comparison without H5 transport
+             → relation/function firewall preserved
 ```
 
-Their Frozen Plans, failures, exact V5 evidence, Study/Act records, and lifecycle
-records remain historical provenance. Integration does not rewrite the past.
+Their Frozen Plans, failures, exact V5 evidence, Study/Act, lifecycle, and merge
+records remain historical provenance.
 
 ## Current frontier
 
@@ -264,16 +307,20 @@ R-DP-001                     SELECTS DEDEKIND
 BOMA R                       R-BLOCK-001 ACCEPTED
 R permanent alternative      CAUCHY VERIFIED / NON-SELECTED
 R alternative Junction       ST2-EXP-003-R-J-001
-BOMA-C-R-DEP-001             EXACT SIXTEEN-PROPERTY MATHEMATICAL SURFACE
+BOMA-C-R-DEP-001             EXACT 16-PROPERTY PRODUCTION SURFACE
 C-DP-001                     SELECTS C-ROUTE-P
+C comparison surface         5 scalar ops + coordinate laws / INTEGRATED
 BOMA C                       C-BLOCK-002 / CA-20 ACCEPTED
 C permanent alternative      C-ROUTE-Q VERIFIED / NON-SELECTED
 C alternative Junction       ST2-EXP-002-PQ-J-001
-ST2-EXP-001..003             CLOSED / PASS / LESSONS INTEGRATED
-NO ACTIVE EXPERIMENT
-NEXT EXPERIMENT SLOT         OPEN / OWNER SELECTION REQUIRED
+ST2-EXP-001..003 + 011       CLOSED / PASS / LESSONS INTEGRATED
+ACTIVE EXPERIMENT            NONE
+NEXT OWNER-SEQUENCED         ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
 ```
 
-Integration authority:
+Integration authorities:
 
-`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
+```text
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+```
