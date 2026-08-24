@@ -28,3 +28,4 @@ LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean
 LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean
+LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyJunction.lean
