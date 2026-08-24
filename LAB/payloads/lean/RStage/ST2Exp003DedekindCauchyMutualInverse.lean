@@ -36,8 +36,8 @@ theorem dToC_cToD (x : RCBOMA) :
       · have hne : dToC (cToD x) ≠ x := by
           intro hEq
           apply hforward
-          rw [← hEq]
-          exact rcle_refl (dToC (cToD x))
+          rw [hEq]
+          exact rcle_refl x
         have hstrict : rCLT (dToC (cToD x)) x := ⟨hback, hne⟩
         rcases rC_rational_image_dense hstrict with
           ⟨q, hcompq, hqx⟩
@@ -65,8 +65,8 @@ theorem cToD_dToC (x : RBOMA) :
       · have hne : cToD (dToC x) ≠ x := by
           intro hEq
           apply hforward
-          rw [← hEq]
-          exact rLE_refl (cToD (dToC x))
+          rw [hEq]
+          exact rLE_refl x
         have hstrict : rLT (cToD (dToC x)) x := ⟨hback, hne⟩
         rcases r_rational_image_dense hstrict with
           ⟨q, hcompq, hqx⟩
