@@ -1,9 +1,9 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ACTIVE LAB / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE — MATHEMATICAL PASS / OWNER DISPOSITION PENDING`  
+**Status:** `CLOSED FRONTIER / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / ST2-EXP-003 CLOSED PASS / NO ACTIVE EXPERIMENT`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen reference:** accepted `N-Core → N-Arithmetic → Z → Q → R → C`  
-**Owner sovereignty:** foundational/logical changes, experiment lifecycle closure, and merge to `main` require the existing explicit owner authorization.
+**Owner sovereignty:** foundational/logical changes, experiment selection, Frozen Plans, and acceptance promotion require explicit owner authorization.
 
 ## Experiment admission rule
 
@@ -28,10 +28,14 @@ failures and Study/Act are in
 
 The owner explicitly authorized `ST2-EXP-003` on 2026-08-23; its immutable
 Plan is `LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md`. H1–H6
-are now mathematically complete with exact V5 evidence, but the experiment
-remains the single active experiment until explicit owner lifecycle
-disposition. Ten other candidates remain unselected; priority or dossier
-quality is not execution authorization.
+completed with exact V5 evidence, PR #8 was merged to `main`, and the owner
+explicitly authorized lifecycle closure on 2026-08-24. The experiment is now
+`CLOSED / PASS`; the single-active-experiment slot is released.
+
+**Current Stage-Two frontier:** `NO ACTIVE EXPERIMENT / NEXT EXPERIMENT SLOT OPEN / OWNER SELECTION REQUIRED`.
+
+Ten other candidates remain unselected; priority or dossier quality is not
+execution authorization.
 
 Future candidates discovered during execution are captured under
 `LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md`. A candidate dossier
@@ -57,8 +61,12 @@ LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md
 `ST2-EXP-003` attaches to `R-DP-001` above accepted `Q-BLOCK-002`; its
 reference producer is accepted `R-BLOCK-001`, and its affected cone reaches
 accepted `C-BLOCK-001 / C-BLOCK-002` without changing their acceptance. Its
-verified Dedekind/Cauchy R Junction and H6 Cauchy-native complex core are
-research evidence only.
+verified Dedekind/Cauchy R Junction and H6 Cauchy-native complex core remain
+research evidence only after lifecycle closure.
+
+Lifecycle closure authority:
+
+`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
 
 ## Evidence-derived candidate inventory
 
@@ -66,7 +74,7 @@ research evidence only.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `ST2-EXP-001` | C ← R packaging boundary | whole accepted `RStageIntegrationCertificate` | narrow field/order witness interface | same nine C claims; closure no longer bundles completeness/density/Archimedean producer proofs | C formal closure, real logical provenance | V5 + exact closure/producer comparison | CLOSED / PASS — V5 32593045224 |
 | `ST2-EXP-002` | C-DP-001 | accepted pair-record Route P | independently complete retained expression-normalization quotient Route Q | same R-field extension; preserve I and unique coordinates | C carrier, quotient/identity, logical commitments | independent field proof; explicit comparison Junction | CLOSED / PASS — V5 32597030998 |
-| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve real-field meaning, compare completed producers, rebuild selected downstream C core | 12 R + 9 C impact Claims | independent R assembly; H5 field isomorphism/Junction; H6 native C rebuild; exact-head audits | ACTIVE / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING |
+| `ST2-EXP-003` | R-DP-001 | accepted Dedekind real producer | independently complete retained Cauchy route | preserve real-field meaning, compare completed producers, rebuild selected downstream C core | 12 R + 9 C impact Claims | independent R assembly; H5 field isomorphism/Junction; H6 native C rebuild; exact-head audits | CLOSED / PASS — H1-H6 EXACT PASS / merged to main / lifecycle closed 2026-08-24 |
 | `ST2-EXP-004` | R-DP-003 | localized classical real total-order producer | constructive locatedness or alternate comparability hypothesis | isolate which accepted R/C results survive | R order, C square positivity, norm, inverse | formal closure diff; classify any lost/changed acceptance claim | HIGH / OPEN |
 | `ST2-EXP-005` | Q-DP-001 | fraction quotient carrier | canonical reduced rational representatives | same rational field/order and integer embedding | Q → R → C identity/transport | independent Q laws + explicit equivalence + downstream interface test | MEDIUM / OPEN |
 | `ST2-EXP-006` | N-DP-001 | fresh unary BOMA-specific inductive carrier | categorical NNO or explicitly specified free algebra | preserve induction, recursion, successor, scoped standardness | N-Core → all accepted stages | state metatheory/initiality prerequisites; independent acceptance matrix | MEDIUM / OPEN |
@@ -85,12 +93,14 @@ LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.
 LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.json
 ```
 
-## ST2-EXP-003 final mathematical evidence summary
+## ST2-EXP-003 final mathematical and lifecycle evidence summary
 
-The final Study / Act is
+The final mathematical Study / Act is
 `LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md`.
+The owner-authorized lifecycle closure is
+`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
 
-Key exact evidence:
+Key exact milestone evidence:
 
 ```text
 H4 independent LUB
@@ -110,16 +120,34 @@ H6 Cauchy-native quadratic core rebuild
   run    32719705824
 ```
 
-The mathematical result is `PASS`; the final selected/canonical disposition
-is deliberately unchanged: Dedekind remains canonical R, `C-ROUTE-P` remains
-canonical C, accepted `R-BLOCK-001 / C-BLOCK-001 / C-BLOCK-002 / CA-20`
-remain unchanged, and neither Cauchy R nor H6 C is promoted.
+Final synchronized exact-head evidence before merge/lifecycle closure:
 
-The later documentation/candidate-capture head
-`a26446da4547976d2a4bd67d8d8bc7511d71c1ab` also passed exact-head V5 for
-the independent Cauchy route, H5 research Junction, H6 rebuild, and accepted C
-regression workflows. The machine origin ledger records the corresponding run,
-artifact, and digest identities.
+```text
+head 3d4ed58e5d88b2a0bd84b3958cac2c8572385152
+
+Independent Cauchy Real Route
+  run      32727267231
+  artifact 9520001887
+  sha256   e7c8e9959445e182eab133a11f7352fbf4a9a6ae270d7b81037b2008b663de8c
+
+Dedekind-Cauchy Comparison / Research R Junction
+  run      32727267177
+  artifact 9520005288
+  sha256   3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34
+
+Cauchy Quadratic Rebuild
+  run      32727267183
+  artifact 9520002118
+  sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
+```
+
+PR #8 merged the exact-verified tree to `main` as
+`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`.
+
+The mathematical result is `PASS`; the selected/canonical disposition remains
+unchanged: Dedekind remains canonical R, `C-ROUTE-P` remains canonical C,
+accepted `R-BLOCK-001 / C-BLOCK-001 / C-BLOCK-002 / CA-20` remain unchanged,
+and neither Cauchy R nor H6 C is promoted.
 
 ## Baseline protection
 
@@ -128,9 +156,6 @@ does not rewrite previous choices into necessities, remove historical failed
 runs, suppress an inherited logical dependency, silently weaken an accepted
 interface, or treat a global selector as computationally free.
 
-`ST2-EXP-001 / PDSA-ST2-EXP-001` is CLOSED / PASS. `ST2-EXP-002` is CLOSED /
-PASS and retains its research-only P/Q Junction. `ST2-EXP-003` is the sole
-active experiment, based on
-`main@ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`; its H1–H6 mathematical
-obligations are complete, but nothing here authorizes lifecycle closure,
-promotion of research producers, a new experiment, or a merge into `main`.
+`ST2-EXP-001`, `ST2-EXP-002`, and `ST2-EXP-003` are all `CLOSED / PASS`.
+There is `NO ACTIVE EXPERIMENT`. The next Stage-Two experiment slot is open,
+but no candidate is selected or authorized by lifecycle closure itself.

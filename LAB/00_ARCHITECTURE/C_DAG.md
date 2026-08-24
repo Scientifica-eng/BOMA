@@ -1,367 +1,189 @@
-# C DAG — Accepted Stage-One Complex Construction and Preserved Branch Frontier
+# C DAG — Accepted Stage-One Complex Construction and Preserved Research Branches
 
 **Status:** **ACCEPTED — CA-20 / RE-C-001 COMPLETE / C-ROUTE-P SELECTED**  
-**Date:** 2026-08-21  
+**Date:** 2026-08-24  
 **Input:** `R-BLOCK-001 — Accepted Stage-One Real Interface`  
 **Governing specification:** `BOMA-C-ACCEPT-001`  
 **Dependency contract:** `BOMA-C-R-DEP-001`  
-**Current Decision Point:** `C-DP-001 RESOLVED / USER-RATIFIED C-ROUTE-P`  
-**Accepted export:** **`C-BLOCK-002 / CA-20 ACCEPT`**
+**Decision Point:** `C-DP-001 RESOLVED / USER-RATIFIED C-ROUTE-P`  
+**Accepted export:** **`C-BLOCK-002 / CA-20 ACCEPT`**  
+**Stage-Two lifecycle:** `ST2-EXP-001..003 CLOSED / PASS / NO ACTIVE EXPERIMENT`
 
-## 1. Purpose
-
-Expose the current accepted C construction topology, including the
-user-selected, verified complete Route P witness field, `C-J-001` integration,
-`C-BLOCK-002 / CA-20` export, both completed reverse audits, and the distinct
-Stage-Two research layer. Retained Route Q is a `VERIFIED INDEPENDENT RESEARCH
-FIELD / NOT AN ACCEPTED EXPORT`; its explicit P/Q reconvergence is a research
-Junction, not a replacement canonical Block or acceptance decision.
-
-The present graph is intentionally short at the canonical-construction level because C has begun at the acceptance/decision layer rather than by manufacturing representation-specific Blocks.
-
----
-
-# 2. Current canonical frontier
+## 1. Current canonical frontier
 
 ```text
-R-BLOCK-001 — ACCEPTED R
+R-BLOCK-001 — ACCEPTED R / DEDEKIND
    ↓
 RE-R-001 — CLOSED / COMPLETE
    ↓
-explicit user authorization to start C — 2026-08-21
+BOMA-C-ACCEPT-001 — representation-neutral acceptance semantics
    ↓
-BOMA-C-ACCEPT-001
-representation-neutral acceptance semantics
+BOMA-C-R-DEP-001 — accepted-R dependency boundary
    ↓
-BOMA-C-R-DEP-001
-accepted-R dependency boundary
+PDSA-C-001 — ex-ante acceptance discriminant CLOSED
    ↓
-PDSA-C-001
-ex-ante acceptance discriminant — CLOSED
-   ├──► PDSA-C-002 — CLOSED accepted-R interface probe / V5 32564789630 PASS
-   │      C-RL-001 / C-RL-002 verified supporting theorems
-   │      C-RQ-001 CLOSED / PASS
-   └──► PDSA-C-003 — CLOSED / both route probes V5 PASS
-          C-DP-001 — RESOLVED / USER-RATIFIED
-          ├──SELECTS──► C-ROUTE-P — ordered-pair / rank-two producer
-          ├──────────► C-ROUTE-Q — VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
-          └──► C-ROUTE-A — conditional genuinely independent alternative
-
-SELECTED ROUTE = C-ROUTE-P / C-ROUTE-Q RETAINED
-CBOMA / C-BLOCK-001 VERIFIED PAIR RING CORE — V5 32574270735 PASS
-VERIFIED WITNESS FIELD + INHERITED AXIOM AUDIT — V5 32574920935 PASS
-PDSA-C-006 CLOSED — QUADRATIC COMPARISON V5 32575465002 PASS
-PDSA-C-007 CLOSED — FINAL INTEGRATION V5 32585583815 PASS
-C-J-001 PASS — ACTUAL NINE-CLAIM FORMAL CLOSURE
-PDSA-C-008 CLOSED — CA-20 ACCEPT / SIX-STAGE V5 32586145793
-C-BLOCK-002 ACCEPTED — STAGE-ONE COMPLEX EXPORT
-PDSA-C-009 CLOSED — RE-C-001 COMPLETE / EXACT DEPENDENCY MATRIX
-PDSA-STAGE1-001 CLOSED — GLOBAL ACCEPTED-CHAIN REVERSE COMPLETE
-ST2-EXP-001 CLOSED / DEPENDENCY-EDGE EXPERIMENT / V5 32593045224 PASS
-ST2-EXP-002 CLOSED / DECISION-POINT EXPERIMENT / V5 32597346281 PASS
-ST2-EXP-002-PQ-J-001 PASS / R-FIELD-ISOMORPHISM / RESEARCH ONLY
-STAGE-TWO LAB ACTIVE / TWO CLOSED / NO ACTIVE EXPERIMENT
-C-J-001 PASS / CA-19 / V5 32585583815
-C-BLOCK-002 ACCEPTED / CA-20
+C-DP-001 — RESOLVED / USER-RATIFIED
+   ├── SELECTS ──► C-ROUTE-P — ordered pair / rank-two producer
+   ├─────────────► C-ROUTE-Q — VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
+   └─────────────► C-ROUTE-A — only if genuinely independent
+   ↓ selected path
+C-BLOCK-001 — selected witness-field producer
+   ↓
+C-COMPARE-BLOCK-001 — representation-neutral quadratic comparison
+   ↓
+C-J-001 — SAME-CARRIER-INTEGRATION PASS
+   ↓
+C-BLOCK-002 / CA-20 ACCEPT
+   ↓
+RE-C-001 CLOSED / COMPLETE
+   ↓
+RE-STAGE1-001 CLOSED / COMPLETE
 ```
 
-Route P is user-selected and supplies the accepted witness-field producer
-`C-BLOCK-001` and export `C-BLOCK-002`. Route Q is an independently verified
-formal-expression quotient research field, reconverged through
-`ST2-EXP-002-PQ-J-001`; it is **not** a selected or accepted canonical Block.
-Architectural origins distinguish the first experiment's dependency edge
-`BOMA-C-R-DEP-001` from the second experiment's Decision `C-DP-001`.
-
----
-
-# 3. Acceptance Claim target topology
-
-The representation-neutral Claim plan is:
+Accepted C semantics remain:
 
 ```text
-accepted R field/order interface
-        ↓
-C-CL-CARRIER-001
-        ↓
-C-CL-REMBED-001
-        ↓
-C-CL-FIELD-001
-        ↓
-C-CL-I-001
-        ↓
-C-CL-GEN-001
-        ↓
-C-CL-COORDUNIQ-001
-        ├──► C-CL-NONREAL-001
-        └──► C-CL-COMPARE-001
-                    ↓
-          C-CL-INTEGRATION-001
-                    ↓
-           CA-20 = ACCEPT
-                    ↓
-           C-BLOCK-002 ACCEPTED
-                    ↓
-      RE-C-001 COMPLETE / RE-STAGE1-001 COMPLETE
-```
-
-This is an acceptance-level Claim topology, not the full theorem dependency
-graph. The independently extracted actual final closure contains 783 internal
-declarations and 9,629 edges; complete machine evidence is stored in the
-C-stage evidence directory.
-
----
-
-# 4. Fork classification
-
-The split at `C-DP-001` is:
-
-```text
-F2 — Decision Point branch
-```
-
-because the routes are alternative ways to realize the same accepted semantic target and Stage One will eventually need a non-derived construction choice if more than one remains admissible.
-
-The current route names do **not** imply that all routes will be fully built. Initial probes belong partly to the Learning Graph until promoted as canonical construction units.
-
-A later split inside one candidate may instead be:
-
-```text
-F1 — parallel dependency fork
-```
-
-if several independent components are all needed, or:
-
-```text
-F3 — exploratory branch
-```
-
-if PDSA opens an unselected proof experiment.
-
-Every later fork must be classified rather than copied mechanically from this diagram.
-
----
-
-# 5. Expected route-independent downstream interface
-
-Whatever route is selected must export claims sufficient to forget its internal representation for ordinary downstream use:
-
-```text
-explicit C carrier/equality
-faithful R embedding
-field operations/laws
+faithful accepted-R embedding
+commutative-field-strength behavior
 distinguished I
-I²=-1
-unique decomposition z = a + bI
-non-real-collapse consequence
-comparison adequacy
+I² = -1
+every element has an a+bI expression over accepted R
+that expression is unique
+route-neutral comparison adequacy
 ```
 
-This is the intended reconvergence surface for alternative producers.
+No algebraic closure, FTA, analytic completeness, total order on C, or built-in
+Complex identity is silently imported by acceptance.
 
-Downstream users should not need to know whether the selected producer used pairs, polynomial classes, normalization, or another construction unless a later theorem is explicitly representation-sensitive.
-
----
-
-# 6. Candidate route dependency hypotheses
-
-These hypotheses are **not decisions**.
-
-## Route P hypothesis
+## 2. Stage-One C evidence
 
 ```text
-accepted R field/order
-   ↓
-rank-two coordinate carrier
-   ↓
-coordinate arithmetic
-   ↓
-sum-of-squares / nonsquare support
-   ↓
-field closure + unique coordinates
+PDSA-C-002 accepted-R interface       32564789630 PASS
+PDSA-C-003 route probes               32565335033 PASS
+PDSA-C-004 selected pair ring core    32574270735 PASS
+PDSA-C-005 witness field              32574920935 PASS
+PDSA-C-006 quadratic comparison       32575465002 PASS
+PDSA-C-007 final integration           32585583815 PASS
+PDSA-C-008 CA-20 acceptance            32586145793 PASS
+PDSA-C-009 RE-C-001                    CLOSED / COMPLETE
+PDSA-STAGE1-001 RE-STAGE1-001          CLOSED / COMPLETE
 ```
 
-Likely new commitments:
+The nine accepted C Claim families remain authoritative in:
+
+`LAB/20_FORMALIZATION/C_STAGE/C_CLAIM_REGISTER_001.md`.
+
+## 3. Retained Route Q branch
 
 ```text
-product/record representation
-coordinate equality
+C-DP-001
+   ├── C-ROUTE-P / selected accepted producer
+   └── C-ROUTE-Q / independent research field
+          ↓
+   ST2-EXP-002-PQ-J-001
+   VERIFIED RESEARCH R-FIELD-ISOMORPHISM
 ```
 
-No quotient is predicted as necessary.
+`ST2-EXP-002-PQ-J-001` preserves the embedded accepted R and distinguished I.
+It is a research Junction, not a replacement for accepted `C-J-001`.
 
-## Route Q hypothesis
+Final ST2-EXP-002 lifecycle status:
+
+`CLOSED / PASS`.
+
+## 4. ST2-EXP-001 — accepted-R packaging branch
+
+Architectural origin:
+
+`DEPENDENCY_EDGE / BOMA-C-R-DEP-001`.
+
+It verified that the selected C mathematical adequacy can be supplied through a
+narrow accepted-real interface package. It did not change the selected C
+carrier or accepted export.
+
+Final status:
+
+`CLOSED / PASS / V5 32593045224`.
+
+## 5. ST2-EXP-003 downstream C impact — closed research evidence
+
+ST2-EXP-003 originates at `R-DP-001`, not at C. Its independent Cauchy real
+producer was completed before H5 comparison and then reconverged with accepted
+Dedekind R through research Junction:
+
+`ST2-EXP-003-R-J-001`.
+
+After that exact research Junction, H6 rebuilt natively over `RCBOMA` the seven
+selected `C-BLOCK-001` core meanings:
 
 ```text
-accepted R field
-   ↓
-polynomial infrastructure
-   ↓
-relation X²+1
-   ↓
-congruence / quotient or explicit normal-form identity
-   ↓
-reduction to degree < 2
-   ↓
-field closure + unique coordinates
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-FIELD-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
 ```
 
-Likely new commitments:
+H6 did **not** replace or generalize the accepted C comparison/integration
+producer. `C-COMPARE-BLOCK-001`, `C-J-001`, `C-BLOCK-002`, `C-ROUTE-P`, and
+`CA-20` remain unchanged.
+
+Final exact-verified pre-merge head:
+
+`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
+
+Critical exact runs:
 
 ```text
-polynomial construction
-identity/congruence machinery
-possibly Quotient
+Independent Cauchy Real Route              32727267231 PASS
+Dedekind-Cauchy Comparison / Research R J  32727267177 PASS
+Cauchy Quadratic Rebuild                    32727267183 PASS
 ```
 
-These must be measured rather than assumed.
+PR #8 merged the exact-verified tree to `main` as
+`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`.
 
-## Route A hypothesis
+Owner-authorized lifecycle closure followed on 2026-08-24.
 
-No dependency graph is admitted until a genuinely independent candidate is specified. An empty third branch is not architecture.
-
----
-
-# 7. Accepted and research Junction discipline
-
-`C-J-001` is the accepted selected-carrier integration Junction.
-`ST2-EXP-002-PQ-J-001` separately verifies actual Route P / Route Q
-representation reconvergence at `R-FIELD-ISOMORPHISM` strength after Q was
-proved independently. It is a research Junction only; it does not alter
-`C-J-001`, `C-BLOCK-002`, or `CA-20`.
-
-Potential future Junction roles include:
+Final ST2-EXP-003 status:
 
 ```text
-route comparison / representation isomorphism
-same-carrier integration of selected arithmetic Claims
-final acceptance integration
+CLOSED / PASS / H1-H6 EXACT PASS
+Cauchy R retained research evidence / NOT ACCEPTED
+ST2-EXP-003-R-J-001 retained research Junction / NOT CANONICAL
+H6 C core retained research evidence / NOT ACCEPTED
+canonical C remains C-ROUTE-P
+accepted C remains C-BLOCK-002 / CA-20
 ```
 
-They must not be conflated.
-
-A representation comparison Junction, if built, must record whether the strength is:
+## 6. Current Stage-Two boundary
 
 ```text
-EQUALITY
-EQUIVALENCE
-ISOMORPHISM
-SAME-DOWNSTREAM-ADEQUACY
+ST2-EXP-001                CLOSED / PASS
+ST2-EXP-002                CLOSED / PASS
+ST2-EXP-002-PQ-J-001       VERIFIED RESEARCH JUNCTION
+ST2-EXP-003                CLOSED / PASS
+ST2-EXP-003-R-J-001        VERIFIED RESEARCH JUNCTION
+NO ACTIVE EXPERIMENT
+NEXT EXPERIMENT SLOT       OPEN / OWNER SELECTION REQUIRED
 ```
 
-A final acceptance Junction will instead likely be `SAME-CARRIER-INTEGRATION` over the selected realization.
+Lifecycle closure does not select the next candidate. `ST2-EXP-011`, including
+its scalar/interface generalization dossier, remains unstarted unless separately
+owner-selected and frozen.
 
-The exact units are created only when actual incoming producers exist.
-
----
-
-# 8. Necessity boundary
-
-Current graph arrows distinguish:
+## 7. Current authority
 
 ```text
-R accepted interface → C acceptance semantics
+LAB/PDSA/STATUS.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md
+LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 ```
 
-from:
-
-```text
-C acceptance semantics → selected representation
-```
-
-The first is a forward stage dependency. The second is an unresolved Decision Point, not a theorem.
-
-Consequently, none of the following may appear in the canonical graph as a necessity edge at this stage:
-
-```text
-R → R×R
-R → polynomial quotient
-C → Quotient
-C → coordinate pair
-```
-
-Such edges become route-local only after an explicit option is constructed/selected.
-
----
-
-# 9. Learning Graph linkage
-
-The first C Learning Graph sequence is:
-
-```text
-old C hold
-  ↓ explicit user authorization
-acceptance semantics considered before representation
-  ↓
-field-only contract rejected as underdetermined
-  ↓
-field + I²=-1 contract rejected as still underdetermined
-  ↓
-unique R+R·I decomposition identified as adequate Stage-One discriminator
-  ↓
-algebraic closure classified as later strengthening, not carrier-defining necessity
-  ↓
-R dependency surface narrowed to accepted field/order Claims
-  ↓
-C-DP-001 opened without selection
-  ↓
-first direct-certificate proof draft examined
-  ↓
-abstract accepted-R interface and concrete accepted producer separated
-  ↓
-C-RL-001 / C-RL-002 supporting source staged
-  ↓
-formal certification deliberately held pending exact retrievable evidence
-  ↓
-read-only PR workflow run 32564789630 PASS on exact source a6c894e62c48919712341cea1c0ea588590f9e5f
-  ↓
-C-RQ-001 CLOSED / PASS; one comparable-route PLAN frozen
-```
-
-Authoritative PDSA records:
-
-`LAB/PDSA/PDSA-C-001_EX_ANTE_ACCEPTANCE_DISCRIMINANT.md`.
-
-`LAB/PDSA/PDSA-C-002_R_INTERFACE_SUFFICIENCY_PROBE.md`.
-
-`LAB/PDSA/PDSA-C-003_COMPARABLE_QUADRATIC_ROUTE_PROBES.md`.
-
-`LAB/PDSA/PDSA-C-004_SELECTED_PAIR_CARRIER_AND_RING_CORE.md`.
-
-`LAB/PDSA/PDSA-C-005_CONJUGATE_NORM_AND_WITNESS_FIELD_CLOSURE.md`.
-
-`LAB/PDSA/PDSA-C-006_REPRESENTATION_NEUTRAL_QUADRATIC_COMPARISON.md`.
-
-`LAB/PDSA/PDSA-C-007_FINAL_INTEGRATION_AND_CLAIM_TRANSPARENCY.md`.
-
-This sequence must remain visible even after a later route is selected.
-
----
-
-# 10. Current state
-
-```text
-C authorization       YES — explicit user order 2026-08-21
-C acceptance spec     ACTIVE
-C Claim register      ACCEPTED / NINE VERIFIED C CLAIMS / CA-20
-C R dependency        C-RQ-001 CLOSED / PASS — run 32564789630
-C-DP-001              RESOLVED / USER-RATIFIED
-selected route        C-ROUTE-P / C-ROUTE-Q RETAINED
-constructed C Block   C-BLOCK-001 witness producer + C-BLOCK-002 ACCEPTED
-C Junction            C-J-001 PASS / V5 32585583815
-C Lean payload        VERIFIED boundary + route probes + field + comparison + integration
-C V5                  boundary 32564789630; routes 32565335033; ring 32574270735
-                      field 32574920935; comparison 32575465002; integration 32585583815
-C reverse audit       RE-C-001 CLOSED / COMPLETE
-Program frontier      STAGE-TWO LAB ACTIVE / TWO CLOSED / NO ACTIVE EXPERIMENT
-research Q field      VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT
-research Junction     ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / PASS
-C acceptance          CA-20 ACCEPT / C-BLOCK-002
-```
-
-The user ratified Route P after comparable observations. It reaches the same verified probe surface as Route Q with fewer representation/formalization commitments. Route Q remains retained. `PDSA-C-004` verified the selected pair ring core; `PDSA-C-005` verified constructive witness-based field closure and its inherited axiom baseline; `PDSA-C-006` verified representation-neutral comparison; `PDSA-C-007` closed after exact V5 `32585583815` and zero-residual Claim-level
-transparency; `PDSA-C-008` separately accepted `C-BLOCK-002`; `PDSA-C-009` completed the mandatory local complex reverse audit;
-`PDSA-STAGE1-001` completed the global accepted-chain audit; the controlled
-Stage-Two laboratory has closed `ST2-EXP-001` and `ST2-EXP-002`; eleven
-candidates remain unselected and no experiment is active. Their exact
-architectural attachments are recorded separately in
-`LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`.
+The essential invariant is unchanged accepted C plus preserved research
+alternatives, with `NO ACTIVE EXPERIMENT`.

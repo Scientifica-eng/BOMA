@@ -1,0 +1,128 @@
+name: BOMA Stage-Two Lifecycle Closure 001 — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-003_DEDEKIND_CAUCHY_R_JUNCTION_001.md'
+      - 'LAB/00_ARCHITECTURE/R_DAG.md'
+      - 'LAB/00_ARCHITECTURE/C_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py'
+      - 'LAB/20_FORMALIZATION/R_STAGE/evidence/R_INTEGRATION_002_V5_LATEST.md'
+      - 'README.md'
+      - 'AGENTS.md'
+      - '.github/workflows/boma-stage-two-lifecycle-closure-001.yml'
+
+concurrency:
+  group: boma-stage-two-lifecycle-closure-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: verify owner-authorized closed Stage-Two frontier
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin closure branch and protect accepted sources against current main
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+
+          merged_experiment="5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd"
+          frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          final_math_head="3d4ed58e5d88b2a0bd84b3958cac2c8572385152"
+          git fetch --no-tags origin main
+          current_main="$(git rev-parse origin/main)"
+
+          git merge-base --is-ancestor "$merged_experiment" HEAD
+          git merge-base --is-ancestor "$merged_experiment" "$current_main"
+          git merge-base --is-ancestor "$final_math_head" "$merged_experiment"
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+
+          for manifest in \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
+            git diff --exit-code "$current_main" HEAD -- "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              git diff --exit-code "$current_main" HEAD -- "$src"
+            done < "$manifest"
+          done
+
+          printf 'Closure exact head: %s\nCurrent main: %s\nMerged ST2-EXP-003 main: %s\nFinal mathematical head: %s\n' \
+            "$actual" "$current_main" "$merged_experiment" "$final_math_head"
+
+      - name: Compile closure and architecture auditors
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
+
+      - name: Audit Stage-Two closed lifecycle frontier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_lifecycle_closure_audit.py \
+            --json-out /tmp/stage-two-lifecycle-closure.json
+          grep -Fq '"status": "STAGE_TWO_CLOSED_FRONTIER_PASS"' \
+            /tmp/stage-two-lifecycle-closure.json
+
+      - name: Run repository-wide architecture consistency audit before main merge
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            --json-out /tmp/ARCHITECTURE_CONSISTENCY_CLOSURE.json \
+            | tee /tmp/architecture-consistency-closure.log
+
+      - name: Publish lifecycle closure scope
+        shell: bash
+        run: |
+          {
+            printf '## Stage-Two lifecycle closure\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- `ST2-EXP-001`, `ST2-EXP-002`, and `ST2-EXP-003`: CLOSED / PASS.\n'
+            printf -- '- Active experiment: NONE. Next slot: OPEN / OWNER SELECTION REQUIRED.\n'
+            printf -- '- Accepted R remains Dedekind `R-BLOCK-001`; accepted C remains `C-ROUTE-P / C-BLOCK-002 / CA-20`.\n'
+            printf -- '- Research Cauchy R, `ST2-EXP-003-R-J-001`, and H6 C remain nonaccepted research evidence.\n'
+            printf -- '- Frozen Plan and accepted Q/R/C manifests/producers are unchanged relative to current main.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve closure-governance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage-two-lifecycle-closure-${{ github.run_id }}
+          path: |
+            /tmp/stage-two-lifecycle-closure.json
+            /tmp/ARCHITECTURE_CONSISTENCY_CLOSURE.json
+            /tmp/architecture-consistency-closure.log
+          if-no-files-found: warn
+          retention-days: 30

@@ -6,7 +6,11 @@
 **N-Arithmetic:** `N_ARITHMETIC_DAG.md`  
 **Q:** `Q_DAG.md`  
 **R:** `R_DAG.md`  
-**C:** `C_DAG.md`
+**C:** `C_DAG.md`  
+**Stage-Two lifecycle:** `ST2-EXP-001..003 CLOSED / PASS / NO ACTIVE EXPERIMENT`
+
+This file is a current topology view, not a replacement for the typed unit,
+Claim, Decision, Junction, or origin ledgers.
 
 ## Pre-numerical trunk
 
@@ -31,11 +35,7 @@ NAC-15 ACCEPT
    ↓
 N-BLOCK-007 Accepted N-Core
    ↓
-addition split/reconvergence
-   ↓
-multiplication split/reconvergence
-   ↓
-order split/reconvergence
+addition / multiplication / order split and reconvergence
    ↓
 N-ARITH-J-001 PASS
    ↓
@@ -59,23 +59,14 @@ N-ARITH-BLOCK-001
                                          pair route retained
                                                           ▼
                                                    Z-BLOCK-001
-                                                          │
-                direct arithmetic ───────┐                │
-                pair arithmetic   ───────┴─► Z-ARITH-J-001 PASS
-                                                          ▼
-                                                 commutative ring
-                                                          │
-                direct order      ───────┐                │
-                pair order        ───────┴─► Z-ORD-J-001 PASS
-                                                          ▼
-                                                  ordered ring
-                                                          ▼
+                                                          ↓
+                                            arithmetic/order reconvergence
+                                                          ↓
                                                    Z-J-002 PASS
-                                                          ▼
+                                                          ↓
                                                    ZA-21 ACCEPT
-                                                          ▼
+                                                          ↓
                                                    Z-BLOCK-002
-                                             Accepted Stage-One Z
 ```
 
 ## Mandatory post-Z reverse engineering
@@ -85,16 +76,10 @@ Z-BLOCK-002
    ├──► Z-RE-BLOCK-001 nonnegative cone
    └──► Z-RE-BLOCK-002 successor reachability
                  ↓
-         reverse candidates V5 PASS
-                 ↓
-         compare with bottom-up N
-                 ↓
            Z-RE-J-001 PASS
                  ↓
 INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE
 ```
-
-The extensional Z interface recovers substantial N-like structure but does not recover pre-numerical/TCT/PDSA provenance.
 
 ## Accepted rational path
 
@@ -109,7 +94,6 @@ Q-F-BLOCK-002 operation respect
    ↓
 Q-DP-001
 quotient/setoid identity selected
-reduced/external-setoid alternatives retained
    ↓
 Q-BLOCK-001
    ├── field algebra
@@ -117,18 +101,14 @@ Q-BLOCK-001
    ├── faithful Z + coherent N embeddings
    ├── integer-fraction generation
    └── qLE total order
-            │
-            ├── additive/negation order compatibility
-            └── nonnegative multiplication + positive inverse behavior
-                         ↓
-              QIntegrationCertificate PASS
-                         ↓
-                    Q-J-002 PASS
-                         ↓
-                    QA-23 ACCEPT
-                         ↓
-                    Q-BLOCK-002
-              Accepted Stage-One Q
+            ↓
+QIntegrationCertificate PASS
+            ↓
+Q-J-002 PASS
+            ↓
+QA-23 ACCEPT
+            ↓
+Q-BLOCK-002 Accepted Stage-One Q
 ```
 
 ## Accepted real path
@@ -136,214 +116,156 @@ Q-BLOCK-001
 ```text
 Q-BLOCK-002 — accepted Q
    ↓
-shared Q order / density / approximation contributions
-   ↓
 R-DP-001
-   ├── Dedekind lower cuts SELECTED
-   └── Cauchy route RETAINED
-   ↓
+   ├── R-ROUTE-D / Dedekind lower cuts SELECTED
+   └── R-ROUTE-C / Cauchy RETAINED / VERIFIED RESEARCH
+   ↓ selected canonical path
 LowerCut / CutEquiv
    ↓
-R-DP-002
-quotient identity selected
-external CutEquiv identity retained
+R-DP-002 quotient identity selected
    ↓
 RBOMA := Quotient cutSetoid
    ↓
 rOfQ + constructive rLE core
    ↓
-R-DP-003
-localized classical CutComparability selected
+R-DP-003 localized classical CutComparability selected
    ↓
-R-COMP-BLOCK-001
-Dedekind LUB completeness
-   ↓
-R-ADD-BLOCK-001 + R-NEG-CANDIDATE-BLOCK-001
-   ↓
-R-DP-004 / R-QARCH-BLOCK-001
+R-COMP-BLOCK-001 Dedekind LUB completeness
    ↓
 R-ADD-GROUP-BLOCK-001
    ↓
-R-DP-005
-positive/negative-part multiplication selected
+R-DP-004 Q approximation architecture
+   ↓
+R-DP-005 positive/negative multiplication architecture
    ↓
 R-MUL-BLOCK-001 ordered commutative ring
    ↓
-R-DP-006
-direct positive Dedekind reciprocal selected
-completeness-level inverse retained
+R-DP-006 direct Dedekind reciprocal selected
    ↓
-R-FIELD-BLOCK-001
-unique nonzero inverse witnesses
+R-FIELD-BLOCK-001 unique nonzero inverse witnesses
    ↓
 R-DENSITY-BLOCK-001 + R-ARCH-BLOCK-001
-   ↓
-explicit ordered-field closure
    ↓
 R-J-002 PASS
    ↓
 RA-22 ACCEPT
    ↓
+R-BLOCK-001 Accepted Stage-One R
+   ↓
+PDSA-R-015 / RE-R-001 CLOSED / COMPLETE
+```
+
+Reverse engineering preserves the distinction between acceptance-required R
+properties, selected Dedekind realization, formal identity, localized logical
+commitments, reusable Q infrastructure, and retained branch alternatives.
+
+## Accepted complex path
+
+```text
+R-BLOCK-001 ACCEPTED
+   ↓
+BOMA-C-ACCEPT-001 representation-neutral contract
+   ↓
+BOMA-C-R-DEP-001 accepted-R dependency boundary
+   ↓
+C-DP-001 RESOLVED / USER-RATIFIED
+   ├──SELECTS──► C-ROUTE-P / C-BLOCK-001
+   └───────────► C-ROUTE-Q / retained research field
+                       │
+                       └── ST2-EXP-002-PQ-J-001
+                           VERIFIED RESEARCH R-FIELD-ISOMORPHISM
+   ↓ selected path
+C-BLOCK-001 witness-field producer
+   ↓
+C-COMPARE-BLOCK-001 representation-neutral comparison
+   ↓
+C-J-001 PASS / SAME-CARRIER-INTEGRATION
+   ↓
+C-BLOCK-002 / CA-20 ACCEPT
+   ↓
+RE-C-001 CLOSED / COMPLETE
+   ↓
+RE-STAGE1-001 CLOSED / COMPLETE
+```
+
+Route Q status remains exactly:
+
+`VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT`.
+
+`ST2-EXP-002-PQ-J-001` is not a canonical acceptance Junction and does not
+replace `C-J-001`.
+
+## Stage-Two controlled research graph — all approved experiments closed
+
+### ST2-EXP-001
+
+```text
 R-BLOCK-001
-Accepted Stage-One R
+   -- BOMA-C-R-DEP-001 --> C-BLOCK-001
+             │
+             └── branch: narrow real-interface packaging
+                   ↓
+             same downstream C adequacy
+                   ↓
+             ST2-EXP-001 CLOSED / PASS
 ```
 
-## Post-R reverse engineering — COMPLETED
+No accepted export changed.
+
+### ST2-EXP-002
 
 ```text
-R-BLOCK-001 ACCEPTED
+R-BLOCK-001
    ↓
-PDSA-R-015 / RE-R-001
-   ↓
-backward classification
-   ├── interface-required properties
-   ├── Dedekind-specific realizations
-   ├── quotient formalization choice
-   ├── localized logical commitments
-   ├── reusable Q-level contributions
-   ├── proof/CI infrastructure
-   └── retained alternative branches
-   ↓
-RE-R-001 CLOSED / COMPLETE
+C-DP-001
+   ├── selected C-ROUTE-P / C-BLOCK-001
+   └── independent C-ROUTE-Q research field
+                 │
+                 ▼
+       ST2-EXP-002-PQ-J-001
+       research R-field isomorphism PASS
+                 │
+                 ▼
+       ST2-EXP-002 CLOSED / PASS
 ```
 
-Primary reverse classifications:
+Accepted `C-BLOCK-002 / CA-20` remains unchanged.
+
+### ST2-EXP-003
 
 ```text
-R-DP-001 Dedekind             ROUTE-SPECIFIC / branch candidate
-R-DP-002 quotient identity    FORMALIZATION CHOICE / branch candidate
-R-DP-003 CutComparability     LOGICAL COMMITMENT / branch candidate
-R-COMP LUB property           acceptance-required
-R-COMP union realization      Dedekind-specific
-R-DP-004 Q arithmetic         reusable; cut search route-specific
-R-DP-005 multiplication       selected architecture / branch candidate
-R-DP-006 reciprocal           Dedekind-specific / branch candidate
-RA-12 / RA-13 properties      acceptance-required with route-specific proofs
-```
-
-Canonical reverse matrix:
-
-```text
-LAB/PDSA/experiments/PDSA-R-015-RE-R-001-DEPENDENCY-CLASSIFICATION.md
-```
-
-No accepted R theorem was changed by the reverse audit.
-
-## Complex stage — ACCEPTED / C-ROUTE-P SELECTED / RESEARCH Q RECONVERGENCE
-
-The prior C hold was explicitly lifted by the user on 2026-08-21. Current C work begins at the acceptance layer:
-
-```text
-R-BLOCK-001 ACCEPTED
+Q-BLOCK-002
    ↓
-RE-R-001 CLOSED / COMPLETE
-   ↓
-BOMA-C-ACCEPT-001
-ex-ante representation-neutral contract
-   ↓
-BOMA-C-R-DEP-001
-accepted-R dependency boundary
-   ↓
-PDSA-C-001
-acceptance discriminant CLOSED
-   ├──► PDSA-C-002 CLOSED — accepted-R interface V5 32564789630 PASS
-   │      C-RL-001 / C-RL-002 verified supporting theorems
-   │      C-RQ-001 CLOSED / PASS
-   └──► PDSA-C-003 CLOSED — V5 32565335033 PASS
-          C-DP-001 RESOLVED — USER-RATIFIED
-          ├──SELECTS──► C-ROUTE-P V5 PASS / SELECTED
-          ├──────────► C-ROUTE-Q INDEPENDENT RESEARCH FIELD / RETAINED / NOT ACCEPTED
-          └──► C-ROUTE-A only if genuinely independent
-
-run = 32565335033 at 3f670372a022d1eb95109d36cde255b3504dda12
-C-DP-001 = RESOLVED / user ratification 2026-08-22
-SELECTS = C-ROUTE-P
-PDSA-C-004 = CLOSED / selected ring-core V5 32574270735 PASS
-C-BLOCK-001 = ACTIVE / accepted selected witness-field producer
-PDSA-C-005 = CLOSED / witness field V5 32574920935 PASS
-PDSA-C-006 = CLOSED / quadratic comparison V5 32575465002 PASS
-C-COMPARE-BLOCK-001 = ACTIVE / universal graph + constructive map / V5 PASS
-PDSA-C-007 = CLOSED / final integration V5 32585583815 PASS
-C-J-001 = PASS / 783 declarations / nine claims / zero residuals
-PDSA-C-008 = CLOSED / CA-20 ACCEPT / six-stage V5 32586145793 PASS
-C-BLOCK-002 = ACTIVE / ACCEPTED Stage-One complex export
-PDSA-C-009 = CLOSED / RE-C-001 exact dependency classification COMPLETE
-PDSA-STAGE1-001 = CLOSED / RE-STAGE1-001 global reverse audit COMPLETE
-ST2-EXP-001 = CLOSED / DEPENDENCY_EDGE BOMA-C-R-DEP-001 / V5 32593045224
-ST2-EXP-002 = CLOSED / DECISION_POINT C-DP-001 / V5 32597346281
-ST2-EXP-002-PQ-J-001 = PASS / RESEARCH R-FIELD-ISOMORPHISM
-ST2-EXP-003 = ACTIVE / DECISION_POINT R-DP-001 / Q-BLOCK-002
-STAGE-TWO-LAB = ACTIVE / TWO CLOSED / ST2-EXP-003 ACTIVE / 10 UNSELECTED
+R-DP-001
+   ├── accepted R-ROUTE-D / Dedekind / R-BLOCK-001
+   └── independent R-ROUTE-C / Cauchy
+          ↓
+      ordered field + Cauchy/LUB completeness
+          ↓
+      H5 Dedekind/Cauchy field isomorphism
+          ↓
+      ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
+          ↓
+      H6 Cauchy-native seven-Claim C core rebuild
+          ↓
+      ST2-EXP-003 CLOSED / PASS / H1-H6 EXACT PASS
 ```
 
-The accepted semantic target is:
+The Cauchy producer, research R Junction, and H6 C core remain research-only.
+Canonical R remains Dedekind; canonical C remains `C-ROUTE-P`; accepted
+`R-BLOCK-001 / C-BLOCK-001 / C-BLOCK-002 / CA-20` remain unchanged.
 
-```text
-faithful R field embedding
-+
-distinguished I with I²=-1
-+
-every C element has a unique a+bI decomposition over R
-```
+Final exact-verified pre-merge head:
 
-`C-BLOCK-001` remains the selected canonical **witness-field-strength Block**
-and `C-BLOCK-002` remains the accepted `CA-20` export. `ST2-EXP-002` completed
-an independent Route Q formal-expression quotient field and the research-only
-`ST2-EXP-002-PQ-J-001` R-field isomorphism. `RE-C-001` and `RE-STAGE1-001` are
-complete. The following remain unproduced or unapproved:
+`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
 
-```text
-C-ROUTE-Q as an accepted canonical Block or accepted export
-an independently implemented full polynomial ring R[X]
-algebraic closure / FTA as an accepted complex-stage layer
-any Stage-Two experiment beyond the owner-approved active ST2-EXP-003
-```
+PR #8 merge to `main`:
 
-Algebraic closure is explicitly deferred from the Stage-One acceptance contract rather than silently imported as a carrier-defining obligation.
+`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`.
 
-## Verification evidence
+Lifecycle closure authority:
 
-```text
-N-Core                         32163771789
-N addition                     32164861155
-N multiplication               32165318266
-N order                        32165691581
-Z representation               32168105466
-Z arithmetic convergence       32169328837
-Z ring laws                    32169564747
-Z order convergence            32169832933
-Z ordered-ring laws            32170144944
-Z→N reverse core               32170817620
-Z→N bottom-up comparison       32171528363
-Q cancellation                 32172230166
-Q fraction equivalence         32172543345
-Q raw arithmetic               32173010564
-Q quotient carrier             32174050137
-Q additive laws                32174565823
-Q multiplicative laws          32176289914
-Q distributivity               32176439510
-Q inverse witness              32176692789
-Q embeddings                   32177123730
-Q generation                   32177245619
-Q order core                   32177345921
-Q order additive compatibility 32177896509
-Q order multiplicative compat  32178098823
-Q full integration             32178326013
-R identity / Q embedding       32180783725
-R order logic split            32181726522
-R Dedekind completeness        32182056311
-R additive inverse             32186543211
-R signed multiplication        32189753112
-R ordered ring                 32192653931
-R nonzero inverse              32356513408
-R rational density             32359834460
-R Archimedean                  32359869558
-R final integration            32374868448
-Lean                           4.32.1
-C boundary supporting V5       32564789630 PASS
-```
-
-No C proof result is inferred from the historical N→R evidence.
+`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
 
 ## Current frontier
 
@@ -352,30 +274,28 @@ Pre-numerical layer     CALIBRATED
 BOMA N-Core             ACCEPTED
 BOMA N-Arithmetic       ACCEPTED
 BOMA Z                  ACCEPTED
-post-Z reverse N        CLOSED
+post-Z reverse N        CLOSED / COMPLETE
 BOMA Q                  ACCEPTED
-BOMA R                  ACCEPTED
+BOMA R                  ACCEPTED — R-BLOCK-001 / DEDEKIND
 RE-R-001                CLOSED / COMPLETE
-BOMA C                  ACCEPTED — CA-20 / C-BLOCK-002
+BOMA C                  ACCEPTED — C-BLOCK-002 / CA-20
 C-DP-001                RESOLVED — C-ROUTE-P SELECTED / C-ROUTE-Q RETAINED
-C accepted export       C-BLOCK-002 / CA-20 ACCEPT
+RE-C-001                CLOSED / COMPLETE
+RE-STAGE1-001           CLOSED / COMPLETE
+ST2-EXP-001             CLOSED / PASS
+ST2-EXP-002             CLOSED / PASS
+ST2-EXP-003             CLOSED / PASS
+NO ACTIVE EXPERIMENT
+NEXT EXPERIMENT SLOT    OPEN / OWNER SELECTION REQUIRED
 ```
 
-The current graph now includes the user-ratified `SELECTS → C-ROUTE-P` edge after symmetric V5 comparison evidence. The selected carrier/witness-field Block and final `C-J-001` integration are V5
-verified; separate `CA-20` accepts `C-BLOCK-002`, with mandatory reverse audits
-still explicitly required. The edge expresses a methodological choice, not mathematical necessity.
+Typed experiment origin and lifecycle authority is maintained in:
 
-## Stage-Two architectural attachment authority
+```text
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+```
 
-`ST2-EXP-001` branches from dependency edge `R-BLOCK-001 --
-BOMA-C-R-DEP-001 --> C-BLOCK-001`. `ST2-EXP-002` branches from Decision
-`C-DP-001` and compares selected `C-BLOCK-001 / C-ROUTE-P` against the
-independently verified research-only Q field. `ST2-EXP-003` branches
-from `R-DP-001` above `Q-BLOCK-002`, comparing accepted Dedekind
-`R-BLOCK-001` against a retained, not-yet-complete Cauchy route; its
-affected cone includes both accepted R and downstream C Claim families.
-The accepted reference remains
-`C-BLOCK-002 / CA-20 ACCEPT`. Exact typed records and the research Junction are
-maintained in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` and
-`LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md`.
-
+Future candidates are proposals only until explicitly owner-selected and
+frozen in a new PDSA Plan.

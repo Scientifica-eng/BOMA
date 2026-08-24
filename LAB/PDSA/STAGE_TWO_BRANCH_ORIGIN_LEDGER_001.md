@@ -1,7 +1,7 @@
 # STAGE_TWO_BRANCH_ORIGIN_LEDGER_001 — Architectural Branch Attachment
 
 **Document ID:** `BOMA-ST2-ORIGIN-LEDGER-001`  
-**Status:** `ACTIVE / TWO CLOSED EXPERIMENTS / ST2-EXP-003 ACTIVE`  
+**Status:** `CLOSED FRONTIER / THREE CLOSED EXPERIMENTS / NO ACTIVE EXPERIMENT`  
 **Date:** `2026-08-24`  
 **Machine-readable authority:**
 `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
@@ -53,21 +53,28 @@ object and must not replace it.
 
 ## 3. Closed experiment attachment matrix
 
-| Attribute | ST2-EXP-001 | ST2-EXP-002 |
-| --- | --- | --- |
-| Architectural attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` |
-| Exact changed origin | `BOMA-C-R-DEP-001` | `C-DP-001` |
-| Upstream accepted unit | `R-BLOCK-001` | `R-BLOCK-001` |
-| Baseline producer unit | `C-BLOCK-001 / C-ROUTE-P` | `C-BLOCK-001 / C-ROUTE-P` |
-| Unchanged accepted export | `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` |
-| First changed object | real-interface package | complex carrier / identity realization |
-| Experimental alternative | explicit sixteen-field real interface | independent expression-normalization quotient field |
-| Reconvergence | same selected carrier and same nine Claims | explicit inverse R-field isomorphism |
-| Research Junction | no fabricated Junction | `ST2-EXP-002-PQ-J-001` |
-| Canonical-acceptance change | none | none |
-| Frozen Git origin | `b473d236309770762e102517ef8a79c628cb43ed` | `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498` |
-| Exact verification evidence | `32593045224` | `32597346281` |
-| Result | `CLOSED / PASS` | `CLOSED / PASS` |
+| Attribute | ST2-EXP-001 | ST2-EXP-002 | ST2-EXP-003 |
+| --- | --- | --- | --- |
+| Architectural attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` | `DECISION_POINT` |
+| Exact changed origin | `BOMA-C-R-DEP-001` | `C-DP-001` | `R-DP-001` |
+| Upstream accepted unit | `R-BLOCK-001` | `R-BLOCK-001` | `Q-BLOCK-002` |
+| Baseline producer unit | `C-BLOCK-001 / C-ROUTE-P` | `C-BLOCK-001 / C-ROUTE-P` | `R-BLOCK-001 / R-ROUTE-D` |
+| Unchanged accepted export | `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` | `R-BLOCK-001` and downstream `C-BLOCK-002 / CA-20` |
+| First changed object | real-interface package | complex carrier / identity realization | real completion carrier / identity realization |
+| Experimental alternative | explicit sixteen-field real interface | independent expression-normalization quotient field | independent rational Cauchy completion field |
+| Reconvergence | same selected carrier and same nine Claims | explicit inverse R-field isomorphism | explicit Dedekind/Cauchy field isomorphism + research R Junction |
+| Research Junction | no fabricated Junction | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-R-J-001` |
+| Canonical-acceptance change | none | none | none |
+| Frozen Git origin | `b473d236309770762e102517ef8a79c628cb43ed` | `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498` | `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d` |
+| Exact verification evidence | `32593045224` | `32597346281` | final exact-head critical runs `32727267231 / 32727267177 / 32727267183` |
+| Result | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` |
+
+Current Stage-Two lifecycle frontier:
+
+```text
+NO ACTIVE EXPERIMENT
+NEXT EXPERIMENT SLOT = OPEN / OWNER SELECTION REQUIRED
+```
 
 ## 4. ST2-EXP-001 — dependency-edge experiment
 
@@ -127,7 +134,7 @@ freshness now follows all six actual manifest-listed C sources while keeping
 the manifest itself protected; research sources do not silently become
 accepted inputs merely by sharing their directory.
 
-## 6. ST2-EXP-003 — independent real completion decision
+## 6. ST2-EXP-003 — closed independent real-completion decision experiment
 
 Architectural attachment:
 
@@ -135,10 +142,10 @@ Architectural attachment:
 Q-BLOCK-002 / accepted rational ordered field
    --> R-DP-001
        |-- selected accepted Dedekind / R-BLOCK-001
-       '-- retained Cauchy / ACTIVE RESEARCH / NOT ACCEPTED
+       '-- retained Cauchy / VERIFIED RESEARCH / NOT ACCEPTED
                  |
                  +-- H5 verified Dedekind/Cauchy field isomorphism
-                 +-- verified research R Junction
+                 +-- ST2-EXP-003-R-J-001
                  '-- H6 Cauchy-native C-BLOCK-001 core rebuild
        downstream accepted C-BLOCK-001 / C-BLOCK-002 remain unchanged
 ```
@@ -151,15 +158,13 @@ families remain the recorded impact cone.
 
 Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.  
 Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.  
-Current lifecycle status: `ACTIVE / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING`.
+Final lifecycle status: `CLOSED / PASS / H1-H6 EXACT PASS / MATHEMATICAL PASS`.
 
-This lifecycle status is deliberate. The mathematical obligations of the
-Frozen Plan have been completed, but the experiment remains the single active
-Stage-Two experiment until the owner explicitly authorizes lifecycle closure
-or the next frontier. Accordingly the machine ledger keeps `verified_run:
-null` and does not use the legacy active-record field
-`reconvergence_junction_id`; those fields are currently interpreted by the
-governance auditor as closed-experiment/lifecycle signals.
+The owner authorized lifecycle closure on 2026-08-24 after the exact-verified
+experiment tree had been merged to `main`. The machine ledger therefore now
+carries a top-level `verified_run`, final verified head, explicit research
+Junction ID, merge identity, and lifecycle closure record. The single-active
+experiment slot is released; no next experiment is selected by this action.
 
 ### 6.1 Independent Cauchy real route
 
@@ -200,8 +205,9 @@ artifact     9516996491
 sha256       0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0
 ```
 
-The Junction is research evidence only. It is not `R-BLOCK-001`, does not
-replace accepted `R-ROUTE-D`, and does not alter the accepted export.
+The closed-experiment research Junction ID is `ST2-EXP-003-R-J-001`. It is
+research evidence only. It is not `R-BLOCK-001`, does not replace accepted
+`R-ROUTE-D`, and does not alter the accepted export.
 
 ### 6.3 H6 downstream Cauchy-native C rebuild
 
@@ -228,9 +234,10 @@ was generalized to an arbitrary real scalar carrier. Accepted
 unchanged. That architecture-genericity opportunity is recorded separately as
 future candidate `ST2-EXP-011` and is not authorized for execution.
 
-### 6.4 Final Study / Act
+### 6.4 Final mathematical Study / Act and later owner disposition
 
-`LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md` records:
+`LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md` historically records
+the mathematical conclusion reached before owner merge/lifecycle disposition:
 
 ```text
 ST2-EXP-003 MATHEMATICAL RESULT:       PASS
@@ -242,35 +249,47 @@ ACCEPTED C-BLOCK-001 / C-BLOCK-002:    UNCHANGED
 CA-20:                                 UNCHANGED
 PROMOTE CAUCHY R TO ACCEPTED EXPORT:   NO
 PROMOTE H6 C TO ACCEPTED EXPORT:       NO
-MERGE TO MAIN:                         NOT AUTHORIZED
 ```
 
-### 6.5 Current-head exact re-verification
+The later owner-authorized lifecycle transition is recorded separately in:
 
-The documentation/candidate-capture head
-`a26446da4547976d2a4bd67d8d8bc7511d71c1ab` was re-verified by the three
-critical V5 workflows:
+`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
+
+### 6.5 Final exact-head re-verification, merge, and closure
+
+The final synchronized branch head
+`3d4ed58e5d88b2a0bd84b3958cac2c8572385152` passed the three critical V5
+workflows:
 
 ```text
 Independent Cauchy Real Route
-  run      32721991515
-  artifact 9518096500
-  sha256   deb9329a3e366a7d837538a75a84afc28493494a44738dd5e1475188962dfd2b
+  run      32727267231
+  artifact 9520001887
+  sha256   e7c8e9959445e182eab133a11f7352fbf4a9a6ae270d7b81037b2008b663de8c
 
 Dedekind-Cauchy Comparison / Research R Junction
-  run      32721991470
-  artifact 9518090428
-  sha256   b862b920884884269eb62bb4d8790ad5046ff8fe2c1c644cf6a1ad66008a33ac
+  run      32727267177
+  artifact 9520005288
+  sha256   3ecf85142656442bad312ace22e62266a15de534fd228c106075247367cdbf34
 
 Cauchy Quadratic Rebuild
-  run      32721991455
-  artifact 9518082966
-  sha256   51369d656890a3c0353792be31ef3850d8ecd31bdc1ddbb26557308ffe17f408
+  run      32727267183
+  artifact 9520002118
+  sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
 ```
 
-The accepted C regression workflows on that same head also passed. This
-re-verifies the research mathematical state while preserving accepted R/C
-controls.
+The accepted C regression workflows on that same head also passed. PR #8 then
+merged that exact tree into `main` as
+`5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd`; the merge tree is identical to
+the verified branch tree.
+
+Owner-authorized lifecycle closure followed. Final state:
+
+```text
+ST2-EXP-003 = CLOSED / PASS
+NO ACTIVE EXPERIMENT
+NEXT EXPERIMENT SLOT = OPEN / OWNER SELECTION REQUIRED
+```
 
 ## 7. Required fields for future controlled branches
 
@@ -299,6 +318,6 @@ Do not retroactively modify a previously frozen Plan to fill a missing field.
 Add an explicitly dated supplementary ledger entry instead.
 
 The exact source-unit paths, frozen Plans, affected Claim IDs, retained
-failures, exact H5/H6 evidence, and research-status constraints are in the
-machine-readable companion JSON. The governance audit rejects missing or
-contradictory attachments.
+failures, exact H5/H6 evidence, research-status constraints, merge identity,
+and lifecycle closure are in the machine-readable companion JSON. The
+closure-aware governance audit rejects missing or contradictory attachments.

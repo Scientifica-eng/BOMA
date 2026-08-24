@@ -100,6 +100,20 @@ REQUIRED_TARGETS = {
 }
 
 
+def governance_mode(governance: dict[str, Any]) -> str | None:
+    """Accept only the historical active frontier or the explicit closed frontier."""
+    status = governance.get("status")
+    if status == "GOVERNANCE_PASS":
+        if governance.get("counts", {}).get("active_experiments") == 1:
+            return "ACTIVE_FRONTIER"
+        return None
+    if status == "STAGE_TWO_CLOSED_FRONTIER_PASS":
+        if governance.get("active_experiment") is None:
+            return "CLOSED_FRONTIER"
+        return None
+    return None
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--independent-closure", type=Path, required=True)
@@ -109,6 +123,7 @@ def main() -> int:
 
     closure: dict[str, Any] = json.loads(args.independent_closure.read_text(encoding="utf-8"))
     governance: dict[str, Any] = json.loads(args.governance.read_text(encoding="utf-8"))
+    mode = governance_mode(governance)
     internal = {
         item["name"]
         for item in closure.get("internal", [])
@@ -119,10 +134,13 @@ def main() -> int:
     residuals = []
     if closure.get("status") != "PROTOTYPE_PASS":
         residuals.append({"type": "independent_dependency_extraction_failed", "status": closure.get("status")})
-    if governance.get("status") != "GOVERNANCE_PASS":
-        residuals.append({"type": "typed_origin_governance_failed", "status": governance.get("status")})
-    if governance.get("counts", {}).get("active_experiments") != 1:
-        residuals.append({"type": "single_active_frontier_missing"})
+    if mode is None:
+        residuals.append({
+            "type": "typed_origin_governance_failed",
+            "status": governance.get("status"),
+            "active_experiment": governance.get("active_experiment"),
+            "active_count": governance.get("counts", {}).get("active_experiments"),
+        })
     if forbidden:
         residuals.append({"type": "selected_dedekind_or_downstream_c_in_independent_closure", "declarations": forbidden})
     if missing:
@@ -132,6 +150,7 @@ def main() -> int:
     result = {
         "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-CURRENT-001",
         "status": "DEDEKIND_LUB_PASS" if passed else "INDEPENDENT_ROUTE_FAIL",
+        "governance_mode": mode,
         "origin": "DECISION_POINT / R-DP-001",
         "common_upstream": "Q-BLOCK-002",
         "changed_factor": "Dedekind completion syntax/identity -> rational Cauchy quotient identity",
@@ -162,7 +181,7 @@ def main() -> int:
         "dedekind_comparison_proved": False,
         "downstream_complex_rebuilt": False,
         "alternative_accepted": False,
-        "experiment_closed": False,
+        "experiment_closed": mode == "CLOSED_FRONTIER" and passed,
         "residuals": residuals,
     }
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
