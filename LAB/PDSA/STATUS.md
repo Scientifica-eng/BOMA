@@ -137,7 +137,7 @@ origin       R-DP-001 above Q-BLOCK-002
 result       CLOSED / PASS / H1-H6 EXACT PASS / MATHEMATICAL PASS
 lifecycle    CLOSED — owner authorized 2026-08-24
 merge        main@5431ac81e7327f5bf4b06b3ab7fdb2bcb5b69efd
-research J   ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
+research J   ST2-EXP-003-R-J-001
 acceptance   Dedekind R and selected C-ROUTE-P unchanged
 ```
 
