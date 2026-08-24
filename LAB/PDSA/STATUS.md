@@ -1,11 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
 **Status:** ACTIVE / SYNCHRONIZED  
-**Current status date:** 2026-08-22  
+**Current status date:** 2026-08-24  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
-**Latest operational checkpoint:** `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`  
-**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / NO ACTIVE EXPERIMENT`
+**Latest operational checkpoint:** `LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md`  
+**Current program frontier:** `STAGE TWO ACTIVE / ST2-EXP-001 CLOSED PASS / ST2-EXP-002 CLOSED PASS / ST2-EXP-003 ACTIVE — H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING`
 
 ## Current canonical frontier
 
@@ -47,22 +47,31 @@ PDSA-C-007          CLOSED — C-J-001 + nine-Claim transparency V5 32585583815 
 PDSA-C-008          CLOSED — CA-20 ACCEPT / six-stage V5 32586145793 PASS
 PDSA-C-009          CLOSED — RE-C-001 COMPLETE / accepted C dependencies classified
 PDSA-STAGE1-001     CLOSED — RE-STAGE1-001 COMPLETE / 73 accepted Claims
-STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / no active experiment
+STAGE-TWO-LAB       ACTIVE — ST2-EXP-001 and ST2-EXP-002 CLOSED PASS / ST2-EXP-003 H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING
 C-RQ-001            CLOSED / PASS — exact accepted-R boundary evidence
 C-DP-001            RESOLVED / USER-RATIFIED — C-ROUTE-P selected; C-ROUTE-Q retained
 C Blocks            C-BLOCK-001 field + C-COMPARE-BLOCK-001 + accepted C-BLOCK-002
-C Junctions         C-J-001 ACCEPTED-INTEGRATION PASS / ST2-EXP-002-PQ-J-001 RESEARCH PASS
+C Junctions         C-J-001 ACCEPTED-INTEGRATION PASS / ST2-EXP-002-PQ-J-001 RESEARCH PASS / ST2-EXP-003 Dedekind-Cauchy R Junction RESEARCH PASS
 C Lean payloads     VERIFIED boundary + routes + pair ring + witness field + quadratic comparison
-C V5 evidence       boundary/routes/ring/field PASS; 32575465002 quadratic comparison PASS
+C V5 evidence       accepted boundary/routes/ring/field PASS; ST2-EXP-003 H6 Cauchy-native C core EXACT PASS
 accepted C export   C-BLOCK-002 / CA-20 ACCEPT
 ```
 
 The user explicitly ratified `C-ROUTE-P` on 2026-08-22; `C-BLOCK-002 / CA-20`
 is accepted. `C-ROUTE-Q` is a verified independent research field, not an
 accepted export. The current research feature branch is
-`feature/stage-two-st2-exp-002-quotient-route-comparison`, based on frozen
-`main@878a52c3d833b9db9ea66f1ff4fcd207ca6ab498`; the earlier
+`feature/stage-two-st2-exp-003-cauchy-real-route-comparison`, based on frozen
+`main@ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`; the earlier
 `feature/c-stage-acceptance-001` belongs to historical acceptance provenance.
+
+`ST2-EXP-003` has completed its Frozen-Plan H1-H6 mathematical obligations
+with exact V5 evidence. Its independently completed Cauchy real producer,
+Dedekind/Cauchy field isomorphism, research R Junction, and Cauchy-native H6
+quadratic C core remain research-only. Canonical R remains Dedekind; canonical
+C remains selected `C-ROUTE-P`; accepted R/C exports and `CA-20` are unchanged.
+Operationally the experiment remains the sole active Stage-Two experiment
+until explicit owner lifecycle disposition. No new candidate is thereby
+authorized and no merge to `main` is authorized.
 
 ---
 
@@ -297,7 +306,7 @@ PDSA-R-015  CLOSED — RE-R-001 reverse engineering
 ## Completion / identity / logical decisions
 
 ```text
-R-DP-001  RESOLVED — Dedekind lower cuts selected; Cauchy retained
+R-DP-001  RESOLVED — Dedekind lower cuts selected; Cauchy retained and independently completed in ST2-EXP-003 research
 R-DP-002  RESOLVED — quotient CutEquiv identity selected
 R-DP-003  RESOLVED — localized classical CutComparability selected
 R-DP-004  RESOLVED — reusable Q Archimedean approximation route selected
@@ -448,10 +457,15 @@ But current `RA-09` totality and sign-dependent full field closure would require
 
 ### Highest-value later branch candidates
 
-Registered, but **not started**:
+The former `R-DP-001 Dedekind ↔ full Cauchy completion` candidate was selected as
+owner-approved `ST2-EXP-003` and has now completed its H1-H6 mathematical
+program with exact V5 evidence. It is therefore no longer an unstarted
+candidate. It remains an active research experiment only for lifecycle/owner
+disposition, and its Cauchy producer is not an accepted replacement.
+
+Still registered, but **not started**:
 
 ```text
-R-DP-001  Dedekind ↔ full Cauchy completion
 R-DP-003  classical CutComparability ↔ constructive locatedness/order regime
 R-DP-002  quotient identity ↔ external CutEquiv identity
 R-DP-006  direct reciprocal ↔ completeness/supremum inverse
@@ -459,6 +473,12 @@ R-DP-005  alternative multiplication sign architectures
 R-DP-004  reusable Q approximation ↔ direct cut-bracketing architecture
 strict order rLE+≠ ↔ explicit strict-inclusion witness
 ```
+
+Additional transferable Stage-Two candidates, including the refined
+`ST2-EXP-011` C comparison scalar-interface generalization, are indexed under
+`LAB/PDSA/candidates/` and governed by
+`LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md`. Their documentation is
+not execution authorization.
 
 Final RE-R-001 status:
 
@@ -472,7 +492,11 @@ No accepted R theorem was weakened or revoked by the reverse audit.
 
 # Operational takeover / stabilization — RECORDED
 
-The current executive-takeover checkpoint is:
+The current completed-experiment Study/Act checkpoint is:
+
+`LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md`
+
+The previous executive-takeover checkpoint remains preserved in:
 
 `LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md`
 
@@ -480,7 +504,9 @@ The earlier operational takeover remains preserved in:
 
 `LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md`
 
-That checkpoint remains historical/current for the state it captured on 2026-08-20, including the then-active C hold. It is **not rewritten** to pretend C had already been authorized.
+Those checkpoints remain historical/current for the states they captured on
+their dates. They are **not rewritten** to pretend later Stage-Two evidence had
+already existed.
 
 The stabilization scope was operational only:
 
@@ -496,9 +522,9 @@ No accepted Lean payload or mathematical unit was modified by that maintenance r
 
 ---
 
-# Complex stage — STARTED / C-ROUTE-P SELECTED / VERIFIED WITNESS FIELD
+# Complex stage — ACCEPTED / C-ROUTE-P SELECTED / CA-20
 
-The explicit new user order on 2026-08-21 authorizes C and supersedes the earlier hold **for current-state governance only**.
+The explicit new user order on 2026-08-21 authorized C and superseded the earlier hold **for current-state governance only**.
 
 First C cycle result:
 
@@ -599,13 +625,21 @@ accepted-chain reverse audit. First Stage-Two experiment ST2-EXP-001 closed PASS
 exact V5 run 32597030998: the formal-expression quotient is a completed
 P-independent field, its actual closure contains zero P declarations, and its
 explicit P/Q inverse Junction preserves all nine accepted C Claim families.
-Accepted Route P and CA-20 remain unchanged; no branch experiment is active.
+Accepted Route P and CA-20 remain unchanged.
+
+Owner-approved `ST2-EXP-003`, attached to `R-DP-001 / Q-BLOCK-002`, completed
+its H1-H6 mathematical program: independent Cauchy real field/completeness,
+exact Dedekind/Cauchy field comparison, a verified research R Junction, and a
+Cauchy-native H6 rebuild of the seven selected `C-BLOCK-001` core meanings.
+The experiment remains operationally ACTIVE pending explicit owner lifecycle
+disposition; accepted Route P and CA-20 remain unchanged, and H6 does not
+replace or generalize the accepted C comparison/integration producer.
 
 The representation Decision is resolved by the user's explicit selection after comparable V5 evidence; Route Q remains a retained verified alternative.
 
 `RE-STAGE1-001` and `RE-C-001` are both CLOSED / COMPLETE after the accepted
 `C-BLOCK-002 / CA-20` export. No additional reverse audit or Stage-Two
-experiment is currently authorized.
+experiment beyond explicitly owner-approved `ST2-EXP-003` is authorized.
 
 ---
 
@@ -619,6 +653,15 @@ LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/BOMA_PDSA_GOVERNANCE_AND_PDCA_LEGACY_CORRECTION_2026-08-18.md
 LAB/PDSA/CHECKPOINT_2026-08-20_PROJECT_TAKEOVER.md
 LAB/PDSA/CHECKPOINT_2026-08-22_C_STAGE_EXECUTIVE_TAKEOVER.md
+LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
+LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md
+LAB/PDSA/experiments/ST2-EXP-003_H6_CAUCHY_QUADRATIC_EXACT_EVIDENCE_001.md
+LAB/PDSA/experiments/ST2-EXP-003_DEDEKIND_CAUCHY_R_JUNCTION_001.md
+LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_POST_H6_001.md
+LAB/PDSA/candidates/README.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
 LAB/00_ARCHITECTURE/TRUSTED_BASE.md
@@ -658,5 +701,7 @@ Typed dependency-edge versus decision-point experiment origins are maintained
 in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.md` and its machine-readable
 JSON companion. Observed stale-state, proof-elaboration, exact-ID guard,
 quotient-scope, inherited-axiom, and evidence-head errors are preserved in
-`LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md`; the automated
-governance audit runs before Lean verification.
+`LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md`; H4-specific retained
+failures and post-H6 status-gate failures are preserved in their supplementary
+records, including `LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_POST_H6_001.md`.
+The automated governance audit runs before Lean verification.

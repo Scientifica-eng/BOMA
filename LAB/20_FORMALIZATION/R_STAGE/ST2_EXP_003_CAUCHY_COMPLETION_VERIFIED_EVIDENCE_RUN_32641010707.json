@@ -1,0 +1,49 @@
+{
+  "schema": "BOMA-ST2-EXP-003-CAUCHY-COMPLETION-EVIDENCE-001",
+  "experiment": "ST2-EXP-003",
+  "status": "CAUCHY_COMPLETE_PASS",
+  "origin": "DECISION_POINT / R-DP-001",
+  "common_upstream": "Q-BLOCK-002",
+  "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
+  "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
+  "verified_run": 32641010707,
+  "verified_source_commit": "26565faa7b609f285615d86bc3a6bc0260a40041",
+  "target": "BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate",
+  "actual_declaration_count": 574,
+  "selected_dedekind_declarations": [],
+  "kernel_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "choice_provenance": {
+    "reciprocal_sequence_selector": {
+      "source": "LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean",
+      "uses_classical_choice": true
+    },
+    "vanishing_rational_scale_selector": {
+      "source": "LAB/payloads/lean/RStage/ST2Exp003CauchyScale.lean",
+      "uses_classical_choice": true
+    },
+    "countable_rational_approximation_selector": {
+      "source": "LAB/payloads/lean/RStage/ST2Exp003CauchyApproximation.lean",
+      "uses_classical_choice": true
+    }
+  },
+  "ordered_field_completed": true,
+  "rational_density_completed": true,
+  "vanishing_rational_scale_completed": true,
+  "cauchy_completeness_proved": true,
+  "dedekind_lub_bridge_proved": false,
+  "dedekind_comparison_proved": false,
+  "downstream_complex_rebuilt": false,
+  "accepted_real_replacement": false,
+  "alternative_accepted": false,
+  "experiment_closed": false,
+  "artifact": {
+    "id": 9493600201,
+    "sha256": "06057754d0042e5c5e166758fedb1ac6b881924c2b7736abd7134c55d9588741",
+    "size_bytes": 102723
+  },
+  "residuals": []
+}

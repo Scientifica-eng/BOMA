@@ -1,0 +1,253 @@
+name: BOMA ST2-EXP-003 Independent Cauchy Real Route — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/RStage/ST2Exp003*.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_*'
+      - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_001.md'
+      - 'LAB/PDSA/STAGE_TWO_WORK_ERRORS_AND_PREVENTION_H4_001.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/ARCHITECTURE_CONSISTENCY_POLICY.json'
+      - 'LAB/00_ARCHITECTURE/R_DAG.md'
+      - 'LAB/00_ARCHITECTURE/GRAPH.md'
+      - 'LAB/00_ARCHITECTURE/REGISTRY.md'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
+      - 'README.md'
+      - 'AGENTS.md'
+      - '.github/workflows/boma-st2-exp-003-cauchy-real-route.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-003-*'
+
+concurrency:
+  group: boma-st2-exp-003-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: prove Cauchy route independently through exact least-upper-bound completeness
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin exact head, immutable Plan, and accepted Q/R/C producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          baseline="ea920b6b1e56444eddaf38ca91e6f7a968f10e0d"
+          frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean \
+            LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md \
+            LAB/PDSA/PDSA-ST2-EXP-002_INDEPENDENT_QUOTIENT_ROUTE.md
+          changed=/tmp/st2-exp-003-changed-paths.txt
+          git diff --name-only "$baseline" HEAD > "$changed"
+          for accepted in \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              if grep -Fxq "$src" "$changed"; then
+                printf 'Accepted Q/R/C producer changed: %s\n' "$src" >&2
+                exit 1
+              fi
+            done < "$accepted"
+          done
+          printf 'Verified head: %s\nFrozen Plan: %s\nAccepted baseline: %s\n' \
+            "$actual_sha" "$frozen_plan" "$baseline"
+
+      - name: Validate independent Cauchy assembly and explicit classical boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          accepted_q=LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+          test -s "$independent"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$independent"
+          head -n "$(wc -l < "$accepted_q")" "$independent" | cmp - "$accepted_q"
+          forbidden_path='RDedekind|RStageIntegration002|/CStage/|ST2Exp001|ST2Exp002'
+          if grep -En "$forbidden_path" "$independent"; then
+            printf 'Independent Cauchy manifest imports a selected real or downstream producer\n' >&2
+            exit 1
+          fi
+          forbidden_source='BOMA\.R\.(Dedekind|StageIntegration002)|BOMA\.C\.|Classical\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          for src in \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyCloseness.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyQuotient.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyAdditive.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyBounded.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyProductBounds.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyMultiplicative.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyOrderCore.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyOrderTotal.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyOrderedRing.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyNonzeroGap.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyCompletionCore.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyDensity.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyCompletion.lean \
+            LAB/payloads/lean/RStage/ST2Exp003CauchyLUB.lean; do
+            if grep -En "$forbidden_source" "$src"; then
+              printf 'Independent non-selector Cauchy source contains an undeclared producer/principle\n' >&2
+              exit 1
+            fi
+          done
+          selector_forbidden='BOMA\.R\.(Dedekind|StageIntegration002)|BOMA\.C\.|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          inverse=LAB/payloads/lean/RStage/ST2Exp003CauchyInverse.lean
+          scale=LAB/payloads/lean/RStage/ST2Exp003CauchyScale.lean
+          approximation=LAB/payloads/lean/RStage/ST2Exp003CauchyApproximation.lean
+          lub_bracket=LAB/payloads/lean/RStage/ST2Exp003CauchyLUBBracket.lean
+          lub_sequence=LAB/payloads/lean/RStage/ST2Exp003CauchyLUBSequence.lean
+          for src in "$inverse" "$scale" "$approximation" "$lub_bracket" "$lub_sequence"; do
+            if grep -En "$selector_forbidden" "$src"; then
+              printf 'Cauchy selector/search source contains a forbidden selected producer or placeholder\n' >&2
+              exit 1
+            fi
+          done
+          grep -Fq 'Classical.choose (hpoint n)' "$inverse"
+          grep -Fq 'Classical.choose_spec (hpoint n)' "$inverse"
+          grep -Fq 'Explicit Choice boundary' "$inverse"
+          grep -Fq 'Classical.choose (q_inverse_exists' "$scale"
+          grep -Fq 'Classical.choose_spec' "$scale"
+          grep -Fq 'countable data-selection boundary' "$scale"
+          grep -Fq 'exact Classical.choose' "$approximation"
+          grep -Fq 'exact Classical.choose_spec' "$approximation"
+          grep -Fq 'Explicit Choice boundary' "$approximation"
+          grep -Fq 'Classical.em (RCUpperBound F' "$lub_bracket"
+          grep -Fq 'Finite classical search' "$lub_bracket"
+          grep -Fq 'exact Classical.choose' "$lub_sequence"
+          grep -Fq 'exact Classical.choose_spec' "$lub_sequence"
+          grep -Fq 'Explicit Choice boundary' "$lub_sequence"
+          python3 -m py_compile \
+            LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
+            LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+            LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py
+
+      - name: Audit Q-to-R typed branch origin and accepted-source ownership
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_branch_governance_audit.py \
+            --json-out /tmp/st2-exp-003-branch-governance.json
+
+      - name: Audit H3 completeness evidence and failure lineage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h3_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h3-governance.json
+
+      - name: Audit H4 LUB evidence and H5 readiness
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h4-governance.json
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Prove independent Cauchy LUB and print logical commitments
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          target=/tmp/BOMAST2Exp003IndependentCauchy.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.Gateway001.qlt_trichotomy\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyCompletion003.cauchyCompletionCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUBBracket003.rational_lub_bracket_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUBSequence003.h4Lower_cauchy\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUB003.rCauchy_lub_exists\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-independent-lean.log
+
+      - name: Extract actual selected-Dedekind-free H4 LUB closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage R \
+            --manifest LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            --target BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate \
+            --json-out /tmp/st2-exp-003-independent-closure.json \
+            > /tmp/st2-exp-003-dependency-audit.log
+          python3 LAB/PDSA/experiments/ST2_EXP_003_COMPARE_FOUNDATION.py \
+            --independent-closure /tmp/st2-exp-003-independent-closure.json \
+            --governance /tmp/st2-exp-003-branch-governance.json \
+            --json-out /tmp/st2-exp-003-current-comparison.json
+
+      - name: Publish exact scope after H4 least-upper-bound proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '## ST2-EXP-003 — independent Cauchy real with exact LUB contract\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Origin: `R-DP-001` above `Q-BLOCK-002`.\n'
+            printf -- '- Proved: independent totally ordered field, sequential Cauchy completeness, and exact bounded-nonempty-family least-upper-bound completeness.\n'
+            printf -- '- H3 and H4 evidence/failure-lineage governance are both enforced.\n'
+            printf -- '- H4 finite bracket search uses localized `Classical.em`; shrinking bracket selection exposes countable `Classical.choose`.\n'
+            printf -- '- Selected Dedekind declarations in actual H4 closure: zero required.\n'
+            printf -- '- H5 Dedekind/Cauchy comparison is permitted only after the H4 governance step passes.\n'
+            printf -- '- Downstream C rebuild remains NOT YET PROVED; canonical R/C acceptance and main remain unchanged.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve exact-head independent-route evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-003-cauchy-current-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-branch-governance.json
+            /tmp/st2-exp-003-h3-governance.json
+            /tmp/st2-exp-003-h4-governance.json
+            /tmp/st2-exp-003-independent-closure.json
+            /tmp/st2-exp-003-current-comparison.json
+            /tmp/st2-exp-003-independent-lean.log
+            /tmp/st2-exp-003-dependency-audit.log
+          if-no-files-found: warn
+          retention-days: 30

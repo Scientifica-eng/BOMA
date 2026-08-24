@@ -1,0 +1,217 @@
+name: BOMA ST2-EXP-003 Dedekind-Cauchy Comparison — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean'
+      - 'LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyJunction.lean'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
+      - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/experiments/ST2*EXP*003*'
+      - 'LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py'
+      - '.github/workflows/boma-st2-exp-003-dedekind-cauchy-comparison.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-003-*'
+
+concurrency:
+  group: boma-st2-exp-003-h5-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    name: verify research Dedekind-Cauchy R reconvergence junction
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin Junction after immutable H4, exact H5 field isomorphism, and Study Act
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected_sha="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual_sha="$(git rev-parse HEAD)"
+          test "$actual_sha" = "$expected_sha"
+          baseline="ea920b6b1e56444eddaf38ca91e6f7a968f10e0d"
+          frozen_plan="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          h4_verified="0f4a706d94c394b8e8a9eec836859caac772a944"
+          field_verified="2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b"
+          study_act="f070035c1f64cf8b191ed4605fb168178c281fde"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen_plan" HEAD
+          git merge-base --is-ancestor "$h4_verified" HEAD
+          git merge-base --is-ancestor "$field_verified" HEAD
+          git merge-base --is-ancestor "$study_act" HEAD
+          git diff --exit-code "$frozen_plan" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean
+          printf 'Junction exact head: %s\nFrozen Plan: %s\nH4 verified ancestor: %s\nField-isomorphism verified ancestor: %s\nStudy/Act ancestor: %s\n' \
+            "$actual_sha" "$frozen_plan" "$h4_verified" "$field_verified" "$study_act"
+
+      - name: Require audited H4 before combined reconvergence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_cauchy_h4_governance_audit.py \
+            --json-out /tmp/st2-exp-003-h4-governance.json
+          grep -Fq '"status": "H4_GOVERNANCE_PASS"' /tmp/st2-exp-003-h4-governance.json
+          grep -Fq '"h5_comparison_allowed": true' /tmp/st2-exp-003-h4-governance.json
+
+      - name: Validate Study decision and independent combined separation
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          study=LAB/PDSA/experiments/ST2-EXP-003_H5_FIELD_ISOMORPHISM_AND_JUNCTION_STUDY_001.md
+          foundation=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyComparison.lean
+          density=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyDensity.lean
+          reflection=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyOrderReflection.lean
+          inverse=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMutualInverse.lean
+          additive=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyAdditivePreservation.lean
+          multiplicative=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyMultiplicativePreservation.lean
+          field=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean
+          junction=LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyJunction.lean
+          test -s "$accepted"
+          test -s "$independent"
+          test -s "$combined"
+          test -s "$study"
+          grep -Fq '**Act decision:** `RESEARCH R JUNCTION: CREATE`' "$study"
+          grep -Fq 'CANONICAL R REPLACEMENT: NO' "$study"
+          for target in "$foundation" "$density" "$reflection" "$inverse" "$additive" "$multiplicative" "$field" "$junction"; do
+            test -f "$target"
+            if grep -Fxq "$target" "$independent"; then
+              printf 'H5/Junction source contaminated the independent Cauchy manifest: %s\n' "$target" >&2
+              exit 1
+            fi
+            grep -Fxq "$target" "$combined"
+            if grep -En '(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)' "$target"; then
+              printf 'H5/Junction source contains a placeholder or new axiom: %s\n' "$target" >&2
+              exit 1
+            fi
+          done
+          if grep -En 'RDedekind|RStageIntegration002|/CStage/' "$independent"; then
+            printf 'Independent Cauchy manifest lost its selected-Dedekind-free boundary\n' >&2
+            exit 1
+          fi
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$accepted"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+          done < "$combined"
+          dup=/tmp/st2-exp-003-h5-duplicate-inputs.txt
+          comm -12 <(sort "$accepted") <(sort "$combined") > "$dup"
+          test ! -s "$dup"
+          grep -Fq 'Classical.choose (cToD_lub_exists x)' "$foundation"
+          grep -Fq 'Classical.choose (dToC_lub_exists x)' "$foundation"
+          grep -Fq 'rather than a newly selected global' "$field"
+          grep -Fq 'does not declare a research Junction' "$field"
+          grep -Fq 'research-only R reconvergence Junction' "$junction"
+          grep -Fq 'define a new real carrier' "$junction"
+          if grep -En 'Classical\.choose|noncomputable def.*[Ii]nv' "$field"; then
+            printf 'Final H5 field layer introduced a new inverse selector or Choice boundary\n' >&2
+            exit 1
+          fi
+          if grep -En 'Classical\.choose|noncomputable def.*[Ii]nv' "$junction"; then
+            printf 'Research Junction introduced a new selector or Choice boundary\n' >&2
+            exit 1
+          fi
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Prove research R Junction certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          manifest=/tmp/st2-exp-003-h5-combined-manifest.txt
+          target=/tmp/BOMAST2Exp003DedekindCauchyJunction.lean
+          cat "$accepted" "$combined" > "$manifest"
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          printf '\n#print axioms BOMA.R.StageTwo.DedekindCauchyComparison003.dedekindCauchyFieldIsomorphismCertificate\n' >> "$target"
+          printf '#print axioms BOMA.R.StageTwo.DedekindCauchyJunction003.dedekindCauchyResearchJunctionCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h5-research-junction-lean.log
+
+      - name: Extract combined research R Junction closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          accepted=LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          manifest=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_H5_TEMP_COMBINED_INPUTS.txt
+          cat "$accepted" "$combined" > "$manifest"
+          trap 'rm -f "$manifest"' EXIT
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage R \
+            --manifest "$manifest" \
+            --target BOMA.R.StageTwo.DedekindCauchyJunction003.dedekindCauchyResearchJunctionCertificate \
+            --json-out /tmp/st2-exp-003-h5-research-junction-closure.json \
+            > /tmp/st2-exp-003-h5-research-junction-dependency-audit.log
+
+      - name: Publish research R Junction scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '## ST2-EXP-003 — Research Dedekind/Cauchy R Junction\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Study/Act decision: `RESEARCH R JUNCTION: CREATE`.\n'
+            printf -- '- Junction packages the accepted Dedekind producer, independently completed Cauchy producer, and exact H5 field/order isomorphism.\n'
+            printf -- '- No new real carrier, inverse selector, Choice boundary, accepted producer, or canonical acceptance is created.\n'
+            printf -- '- Independent Cauchy manifest remains selected-Dedekind-free and Junction-free.\n'
+            printf -- '- Downstream C rebuild is authorized only after this exact Junction gate succeeds.\n'
+            printf -- '- Accepted R/C and main remain unchanged.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve research R Junction evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-003-h5-research-r-junction-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-h4-governance.json
+            /tmp/st2-exp-003-h5-research-junction-lean.log
+            /tmp/st2-exp-003-h5-research-junction-closure.json
+            /tmp/st2-exp-003-h5-research-junction-dependency-audit.log
+          if-no-files-found: warn
+          retention-days: 30

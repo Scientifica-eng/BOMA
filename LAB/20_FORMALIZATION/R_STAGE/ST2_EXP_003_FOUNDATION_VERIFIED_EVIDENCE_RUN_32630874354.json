@@ -1,0 +1,53 @@
+{
+  "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-FOUNDATION-EVIDENCE-001",
+  "experiment": "ST2-EXP-003",
+  "milestone_status": "FOUNDATION_PASS / EXPERIMENT ACTIVE",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "R-DP-001",
+  "upstream_accepted_unit": "Q-BLOCK-002",
+  "accepted_baseline_unit": "R-BLOCK-001",
+  "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
+  "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
+  "verified_source_commit": "557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1",
+  "verified_run": 32630874354,
+  "workflow": "BOMA ST2-EXP-003 Independent Cauchy Real Route — V5",
+  "independent_manifest": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt",
+  "actual_internal_declarations": 365,
+  "selected_dedekind_declarations": [],
+  "downstream_complex_declarations": [],
+  "verified_targets": [
+    "BOMA.R.StageTwo.CauchyCloseness003.qClose_triangle",
+    "BOMA.R.StageTwo.CauchyCloseness003.positive_half_exists",
+    "BOMA.R.StageTwo.CauchyCloseness003.qClose_all_positive_reflects",
+    "BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_refl",
+    "BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_symm",
+    "BOMA.R.StageTwo.CauchyQuotient003.cauchyEquiv_trans",
+    "BOMA.R.StageTwo.CauchyQuotient003.cauchySetoid",
+    "BOMA.R.StageTwo.CauchyQuotient003.rCmk_eq_iff",
+    "BOMA.R.StageTwo.CauchyQuotient003.rCOfQ_injective"
+  ],
+  "logical_provenance": {
+    "shared_rational_trichotomy": ["propext", "Classical.choice", "Quot.sound"],
+    "cauchy_equivalence_transitivity": ["propext", "Quot.sound"],
+    "rational_embedding_injectivity": ["propext", "Classical.choice", "Quot.sound"],
+    "classical_choice_source": "existing BOMA.R.Gateway001.qlt_trichotomy",
+    "sorryAx_in_successful_targets": false
+  },
+  "preserved_failed_runs": [
+    {
+      "id": 32630769132,
+      "source_commit": "aa8bdd8770832bc298339c72fc5992dd6b1b6182",
+      "gate": "rCmk_eq_iff / Quotient.sound",
+      "error_id": "ERR-ST2-020"
+    }
+  ],
+  "ordered_field_completed": false,
+  "cauchy_completeness_proved": false,
+  "dedekind_completeness_bridge_proved": false,
+  "route_comparison_proved": false,
+  "downstream_complex_rebuilt": false,
+  "alternative_accepted": false,
+  "experiment_closed": false,
+  "accepted_dedekind_real_changed": false,
+  "accepted_complex_ca20_changed": false
+}

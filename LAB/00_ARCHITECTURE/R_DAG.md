@@ -5,7 +5,8 @@
 **Governing specification:** `BOMA-R-ACCEPT-001`  
 **Accepted export:** `R-BLOCK-001`  
 **Reverse gate:** `RE-R-001 COMPLETE / PDSA-R-015`  
-**Next family:** **C NOT STARTED — USER HOLD**
+**Downstream accepted family:** `C-BLOCK-002 / CA-20 ACCEPT`  
+**Stage-Two real frontier:** `ST2-EXP-003 ACTIVE / R-DP-001 / CAUCHY RESEARCH`
 
 ## Canonical forward spine
 
@@ -16,7 +17,7 @@ shared Q order / density / approximation gateways
    ↓
 R-DP-001
    ├── Dedekind lower cuts SELECTED for Stage I
-   └── Cauchy completion RETAINED for later branch study
+   └── Cauchy completion ST2-EXP-003 ACTIVE / RESEARCH ONLY
    ↓
 LowerCut / CutEquiv
    ↓
@@ -385,14 +386,19 @@ R-DP-004 alternative approximation architecture
 strict-order witness architecture
 ```
 
-None is started by RE-R-001.
+`RE-R-001` itself started none. The later explicit owner order on
+`2026-08-23` activated only `ST2-EXP-003` at `R-DP-001`.
 
-## Current frontier / prohibition
+## Current accepted frontier and explicitly approved research
 
 ```text
-R Stage One   ACCEPTED
+R Stage One   ACCEPTED / R-BLOCK-001 / DEDEKIND
 RE-R-001      CLOSED / COMPLETE
-C             NOT STARTED — USER HOLD
+C             ACCEPTED / C-BLOCK-002 / CA-20 / C-ROUTE-P
+ST2-EXP-003   ACTIVE / R-DP-001 / CAUCHY RESEARCH ONLY
 ```
 
-Governance prerequisites for C are satisfied, but **eligibility is not authorization**. By explicit user instruction, no canonical C acceptance specification, Decision Point, Brick, Block, payload, workflow, or PDSA construction cycle may be opened until a new explicit user order is given.
+The earlier C hold was explicitly lifted on 2026-08-21 and C was later
+accepted. The 2026-08-23 owner order authorizes only the independent
+`R-DP-001` Cauchy experiment. It does not alter canonical R/C acceptance,
+authorize another experiment, or permit merging into `main`.

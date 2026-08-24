@@ -1,0 +1,51 @@
+{
+  "schema": "BOMA-ST2-EXP-003-INDEPENDENT-CAUCHY-PRODUCT-BOUND-EVIDENCE-001",
+  "experiment": "ST2-EXP-003",
+  "milestone_status": "BOUNDED_PRODUCT_ESTIMATE_PASS / EXPERIMENT ACTIVE",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "R-DP-001",
+  "upstream_accepted_unit": "Q-BLOCK-002",
+  "accepted_baseline_unit": "R-BLOCK-001",
+  "frozen_reference_commit": "ea920b6b1e56444eddaf38ca91e6f7a968f10e0d",
+  "frozen_plan_commit": "70dd2f307eba69d7309a90cc36ae6f49741abddd",
+  "verified_source_commit": "02cfe95d16d87fabebc885d729d589bbf6ca8498",
+  "verified_run": 32633183941,
+  "workflow": "BOMA ST2-EXP-003 Independent Cauchy Real Route — V5",
+  "independent_manifest": "LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt",
+  "actual_internal_declarations": 418,
+  "selected_dedekind_declarations": [],
+  "downstream_complex_declarations": [],
+  "verified_targets": [
+    "BOMA.R.StageTwo.CauchyProductBounds003.qAbsBound_mul",
+    "BOMA.R.StageTwo.CauchyProductBounds003.q_product_difference",
+    "BOMA.R.StageTwo.CauchyProductBounds003.qClose_mul_of_common_bound",
+    "BOMA.R.StageTwo.CauchyProductBounds003.cauchyProductBoundCertificate"
+  ],
+  "logical_provenance": {
+    "bounded_product_closeness": ["propext", "Quot.sound"],
+    "integrated_product_bound_certificate": ["propext", "Classical.choice", "Quot.sound"],
+    "classical_choice_source": "retained boundedCertificate -> additiveCertificate -> qEmbeddingInjective",
+    "sorryAx_in_successful_targets": false
+  },
+  "preserved_failed_runs": [
+    {
+      "id": 32633098730,
+      "source_commit": "6379633ab68fbbf092208b2102cd6f85c50282c0",
+      "error_id": "ERR-ST2-025"
+    }
+  ],
+  "cauchy_foundation_completed": true,
+  "additive_group_completed": true,
+  "eventual_boundedness_completed": true,
+  "bounded_product_estimate_completed": true,
+  "multiplicative_monoid_completed": false,
+  "ordered_field_completed": false,
+  "cauchy_completeness_proved": false,
+  "dedekind_completeness_bridge_proved": false,
+  "route_comparison_proved": false,
+  "downstream_complex_rebuilt": false,
+  "alternative_accepted": false,
+  "experiment_closed": false,
+  "accepted_dedekind_real_changed": false,
+  "accepted_complex_ca20_changed": false
+}

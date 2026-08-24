@@ -1,0 +1,101 @@
+{
+  "schema": "BOMA-FUTURE-EXPERIMENT-CANDIDATE-001",
+  "candidate_id": "ST2-EXP-011",
+  "status": "CANDIDATE / NOT AUTHORIZED / NOT A FROZEN PLAN",
+  "recorded_date": "2026-08-24",
+  "discovery": {
+    "branch": "feature/stage-two-st2-exp-003-cauchy-real-route-comparison",
+    "h6_exact_run": 32719705824,
+    "h6_exact_source_head": "ea5fdb61fcbafb0ece463910c24ef71183443b19",
+    "observed_limitation": "CQuadraticComparison001 is abstract over the complex carrier but hard-wired to RBOMA/RStageIntegrationCertificate as its scalar coordinate interface.",
+    "accepted_source": "LAB/payloads/lean/CStage/CQuadraticComparison001.lean",
+    "independent_cauchy_source": "LAB/payloads/lean/CStage/ST2Exp003CauchyQuadraticRebuild.lean"
+  },
+  "research_question": "Can C quadratic comparison be generalized over a minimal generic witness-based scalar field interface so both accepted RBOMA and independent RCBOMA instantiate it directly, while relation-level comparison remains separate from extractor-dependent functional maps?",
+  "controlled_dimensions": [
+    {
+      "id": "A",
+      "name": "scalar-interface genericity",
+      "baseline": "RBOMA through RStageIntegrationCertificate",
+      "alternative": "minimal generic scalar witness-field interface"
+    },
+    {
+      "id": "B",
+      "name": "functional comparison strength",
+      "baseline": "universal relation plus explicit CoordinateExtractor for functions",
+      "alternative": "retain the same relation/function separation; do not infer selectors"
+    }
+  ],
+  "preferred_experimental_decomposition": "Change dimension A first while holding dimension B fixed unless a future Frozen Plan explicitly authorizes a combined change.",
+  "primary_claim_impact": [
+    "C-CL-COMPARE-001",
+    "C-CL-INTEGRATION-001"
+  ],
+  "baseline_controls": [
+    "accepted R-BLOCK-001 unchanged",
+    "accepted C-ROUTE-P unchanged",
+    "accepted C-BLOCK-001 unchanged",
+    "accepted C-COMPARE-BLOCK-001 unchanged during research",
+    "accepted C-BLOCK-002 / CA-20 unchanged",
+    "historical Frozen Plans unchanged"
+  ],
+  "independence_constraints": [
+    "Native RCBOMA instantiation must not establish adequacy merely by composing through cToD/H5.",
+    "Do not use accepted CPairCore001 or CPairNormInverse001 as the implementation of the Cauchy-native candidate.",
+    "Do not add a global coordinate selector or inverse selector for API convenience."
+  ],
+  "prerequisites": [
+    "verify then-current GitHub state",
+    "confirm Stage-Two active-frontier governance",
+    "explicit owner authorization",
+    "new separately frozen PDSA Plan",
+    "closure extraction of accepted CQuadraticComparison001 before selecting interface fields"
+  ],
+  "suggested_gates": [
+    "A: accepted comparison dependency closure extraction",
+    "B: minimal generic scalar interface",
+    "C: generic quadratic relation comparison",
+    "D: accepted RBOMA instance",
+    "E: native RCBOMA/H6 instance without selected Dedekind/H5 mathematical inputs",
+    "F: explicit CoordinateExtractor functional layer",
+    "G: producer/axiom/source-cost Study and Act"
+  ],
+  "required_verification": [
+    "exact-head pin",
+    "Frozen Plan ancestor",
+    "accepted manifests/producers unchanged",
+    "no sorry or new axiom",
+    "no unauthorized global selector",
+    "Lean typecheck",
+    "#print axioms of final relation and functional certificates",
+    "formal dependency closure",
+    "native Cauchy closure excludes selected Dedekind/H5 mathematical sources",
+    "artifact preservation with exact source SHA, run ID, artifact ID and digest"
+  ],
+  "success_criteria": [
+    "one generic scalar interface instantiates from both RBOMA and RCBOMA",
+    "one generic quadratic comparison theorem works for accepted Route P and H6 Cauchy-native quadratic field",
+    "relation-level comparison adds no stronger logical commitment than its scalar instance",
+    "functional comparison remains explicitly extractor-dependent",
+    "native RCBOMA comparison does not need Dedekind/H5 as mathematical dependencies"
+  ],
+  "non_goals": [
+    "modify main",
+    "modify historical Frozen Plans",
+    "replace accepted R-BLOCK-001",
+    "replace accepted C-ROUTE-P or C-BLOCK-002",
+    "promote H6 CCBOMA to accepted C",
+    "claim ST2-EXP-003 proved all accepted C comparison/integration layers"
+  ],
+  "handoff_read_order": [
+    "LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md",
+    "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md",
+    "LAB/PDSA/candidates/ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION_CANDIDATE.md",
+    "LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md",
+    "LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md",
+    "LAB/payloads/lean/CStage/CQuadraticComparison001.lean",
+    "LAB/payloads/lean/CStage/ST2Exp003CauchyQuadraticRebuild.lean",
+    "LAB/payloads/lean/RStage/ST2Exp003DedekindCauchyFieldIsomorphism.lean"
+  ],
+  "authority_note": "This dossier preserves discovery context only. At execution time GitHub current state is authoritative and every recorded SHA/run must be reverified."
+}

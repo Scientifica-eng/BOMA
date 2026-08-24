@@ -174,7 +174,10 @@
         "lean-toolchain",
         "lakefile.toml",
         ".github/workflows/boma-stage-transparency-matrix-001.yml"
-      ]
+      ],
+      "manifest_scoped_freshness_inputs": {
+        "LAB/payloads/lean/RStage": "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt"
+      }
     },
     "C": {
       "claim_pattern": "C-CL-[A-Z0-9-]+",
@@ -207,7 +210,8 @@
         ".github/workflows/boma-stage-transparency-matrix-001.yml"
       ],
       "manifest_scoped_freshness_inputs": {
-        "LAB/payloads/lean/CStage": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt"
+        "LAB/payloads/lean/CStage": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt",
+        "LAB/payloads/lean/RStage": "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt"
       }
     }
   },

@@ -269,9 +269,10 @@ The reverse audit does not revoke or weaken `RA-22`.
 | `PDSA-C-008` | separate Stage-One complex acceptance decision | CLOSED — CA-20 ACCEPT / run 32586145793 PASS |
 | `PDSA-C-009` | mandatory accepted-complex reverse dependency audit | CLOSED — RE-C-001 COMPLETE |
 | `PDSA-STAGE1-001` | global accepted number-chain reverse dependency audit | CLOSED — RE-STAGE1-001 COMPLETE |
-| `STAGE-TWO-LAB` | controlled single-change branch experiment register and typed architectural origins | ACTIVE — TWO CLOSED / 11 UNSELECTED / NO ACTIVE EXPERIMENT |
+| `STAGE-TWO-LAB` | controlled single-change branch experiment register and typed architectural origins | ACTIVE — TWO CLOSED / ST2-EXP-003 ACTIVE / 10 UNSELECTED |
 | `ST2-EXP-001` | dependency-edge experiment on `BOMA-C-R-DEP-001` | CLOSED / V5 32593045224 PASS |
 | `ST2-EXP-002` | `C-DP-001` Route P / independent quotient Route Q experiment | CLOSED / V5 32597346281 PASS |
+| `ST2-EXP-003` | `R-DP-001` accepted Dedekind / independent retained Cauchy real route | ACTIVE / ORDERED-RING V5 32634312486 PASS / INVERSE+COMPLETION OPEN / RESEARCH ONLY |
 | `ST2-EXP-002-PQ-J-001` | explicit P/Q R-field isomorphism preserving R and I | VERIFIED RESEARCH JUNCTION / NOT CANONICAL ACCEPTANCE |
 | `C-J-001` | selected same-carrier integration and nine-Claim formal closure | PASS — V5 32585583815 |
 | `C-COMPARE-BLOCK-001` | universal quadratic graph / constructive functional comparison | ACTIVE / V5 32575465002 PASS |
@@ -292,7 +293,8 @@ normalization quotient field, then verified the explicit research-only
 `ST2-EXP-002-PQ-J-001` field isomorphism. Route Q remains unselected and is not
 an accepted export or canonical Block. `PDSA-STAGE1-001 / RE-STAGE1-001` and
 mandatory `RE-C-001` are both closed. `ST2-EXP-001` and `ST2-EXP-002` are
-closed; eleven alternatives remain unselected and no experiment is active.
+closed; owner-approved `ST2-EXP-003` is active at `R-DP-001 / Q-BLOCK-002`,
+and ten alternatives remain unselected.
 Typed origins are recorded in `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`.
 
 The nine accepted C Claim records are maintained in:
@@ -315,7 +317,7 @@ RE-R-001            CLOSED / COMPLETE
 C                   ACCEPTED — CA-20 / C-BLOCK-002
 RE-C-001            CLOSED / COMPLETE
 RE-STAGE1-001       CLOSED / COMPLETE
-STAGE-TWO-LAB       ACTIVE / TWO CLOSED / 11 UNSELECTED / NO ACTIVE EXPERIMENT
+STAGE-TWO-LAB       ACTIVE / TWO CLOSED / ST2-EXP-003 ACTIVE / 10 UNSELECTED
 C representation    C-ROUTE-P USER-SELECTED / C-ROUTE-Q VERIFIED RESEARCH FIELD
 C research Junction ST2-EXP-002-PQ-J-001 / R-FIELD-ISOMORPHISM / NOT ACCEPTANCE
 C accepted export   C-BLOCK-002 / CA-20 ACCEPT

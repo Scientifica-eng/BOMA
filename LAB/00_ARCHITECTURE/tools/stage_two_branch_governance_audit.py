@@ -22,6 +22,7 @@ Q_STATUS = "VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT"
 EXPECTED_ORIGINS = {
     "ST2-EXP-001": ("DEPENDENCY_EDGE", "BOMA-C-R-DEP-001", 32593045224),
     "ST2-EXP-002": ("DECISION_POINT", "C-DP-001", 32597346281),
+    "ST2-EXP-003": ("DECISION_POINT", "R-DP-001", None),
 }
 REQUIRED_RECORD_FIELDS = (
     "experiment_id",
@@ -40,11 +41,28 @@ REQUIRED_RECORD_FIELDS = (
     "frozen_plan",
     "experimental_product_status",
     "reconvergence_strength",
-    "verified_run",
     "unit_sources",
 )
 
+ACTIVE_EXPERIMENT = "ST2-EXP-003"
+R_CLAIM_CONE = {
+    "R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001",
+    "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001",
+    "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001",
+    "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001",
+}
+ACTIVE_FRONTIER_FILES = {
+    "LAB/00_ARCHITECTURE/R_DAG.md",
+    "LAB/00_ARCHITECTURE/GRAPH.md",
+    "LAB/00_ARCHITECTURE/REGISTRY.md",
+    "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md",
+    "LAB/PDSA/STATUS.md",
+    "README.md",
+    "AGENTS.md",
+}
+
 CURRENT_STATE_FILES = {
+    "LAB/00_ARCHITECTURE/R_DAG.md",
     "LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md",
     "LAB/00_ARCHITECTURE/C_DAG.md",
     "LAB/00_ARCHITECTURE/GRAPH.md",
@@ -111,6 +129,10 @@ STALE_CURRENT_ASSERTIONS = {
     "pending_accepted_c_decision": re.compile(
         r"\*\*Pending decision:\*\*", re.IGNORECASE
     ),
+    "accepted_c_not_started_hold": re.compile(
+        r"(?:Next family:\*\*\s*\*\*|^C\s+)NOT STARTED\s*[—-]\s*USER HOLD",
+        re.IGNORECASE | re.MULTILINE,
+    ),
 }
 
 
@@ -160,6 +182,19 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
             "origin_experiment_set_drift",
             expected=sorted(EXPECTED_ORIGINS),
             actual=sorted(record_map),
+        )
+
+    active = sorted(
+        experiment
+        for experiment, record in record_map.items()
+        if str(record.get("status", "")).startswith("ACTIVE")
+    )
+    if active != [ACTIVE_EXPERIMENT]:
+        add_error(
+            residuals,
+            "single_active_experiment_frontier_drift",
+            expected=[ACTIVE_EXPERIMENT],
+            actual=active,
         )
 
     accepted = ledger.get("accepted_reference", {})
@@ -215,7 +250,7 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                         "origin": record.get("origin_id"),
                     },
                 )
-            if record.get("verified_run") != run:
+            if run is not None and record.get("verified_run") != run:
                 add_error(
                     residuals,
                     "verified_origin_evidence_drift",
@@ -224,13 +259,21 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                     actual=record.get("verified_run"),
                 )
 
-        for key, expected in {
-            "source_unit_id": "R-BLOCK-001",
-            "target_unit_id": "C-BLOCK-001",
-            "baseline_producer_unit_id": "C-BLOCK-001",
-            "accepted_export_unit_id": "C-BLOCK-002",
+        is_active_real = experiment == ACTIVE_EXPERIMENT
+        endpoints = {
+            "source_unit_id": "Q-BLOCK-002" if is_active_real else "R-BLOCK-001",
+            "target_unit_id": "R-BLOCK-001" if is_active_real else "C-BLOCK-001",
+            "baseline_producer_unit_id": "R-BLOCK-001" if is_active_real else "C-BLOCK-001",
+            "accepted_export_unit_id": "R-BLOCK-001" if is_active_real else "C-BLOCK-002",
             "selected_baseline_route": "C-ROUTE-P",
-        }.items():
+        }
+        if is_active_real:
+            endpoints.update({
+                "downstream_producer_unit_id": "C-BLOCK-001",
+                "downstream_accepted_export_unit_id": "C-BLOCK-002",
+                "alternative_route": "R-ROUTE-C / CAUCHY",
+            })
+        for key, expected in endpoints.items():
             if record.get(key) != expected:
                 add_error(
                     residuals,
@@ -241,13 +284,215 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                     actual=record.get(key),
                 )
 
-        if len(record.get("affected_cone", [])) != 9:
+        cone = record.get("affected_cone", [])
+        if is_active_real:
+            expected_c = set(record_map.get("ST2-EXP-001", {}).get("affected_cone", []))
+            if len(cone) != 21 or set(cone) != R_CLAIM_CONE | expected_c:
+                add_error(
+                    residuals,
+                    "accepted_real_and_complex_claim_cone_drift",
+                    experiment=experiment,
+                    actual=cone,
+                )
+            if record.get("verified_run") is not None:
+                add_error(residuals, "active_experiment_claims_unearned_verification", experiment=experiment)
+            if "ACTIVE" not in str(record.get("status", "")):
+                add_error(residuals, "active_experiment_lifecycle_drift", experiment=experiment)
+            if "NOT AN ACCEPTED REAL EXPORT" not in str(record.get("experimental_product_status", "")):
+                add_error(residuals, "active_cauchy_research_acceptance_boundary_missing")
+            if record.get("reconvergence_junction_id"):
+                add_error(residuals, "premature_cauchy_research_junction")
+            foundation_run = record.get("verified_foundation_run")
+            if foundation_run is not None:
+                evidence_path = record.get("foundation_evidence")
+                if not isinstance(foundation_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_foundation_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != foundation_run:
+                        add_error(residuals, "active_cauchy_foundation_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_foundation_source_commit"):
+                        add_error(residuals, "active_cauchy_foundation_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_foundation_selected_real_dependency")
+                    for field in (
+                        "ordered_field_completed", "cauchy_completeness_proved",
+                        "route_comparison_proved", "downstream_complex_rebuilt",
+                        "alternative_accepted", "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_foundation_scope_inflated", field=field)
+            additive_run = record.get("verified_additive_run")
+            if additive_run is not None:
+                evidence_path = record.get("additive_evidence")
+                if not isinstance(additive_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_additive_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != additive_run:
+                        add_error(residuals, "active_cauchy_additive_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_additive_source_commit"):
+                        add_error(residuals, "active_cauchy_additive_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_additive_selected_real_dependency")
+                    if evidence.get("additive_group_completed") is not True:
+                        add_error(residuals, "active_cauchy_additive_claim_missing")
+                    for field in (
+                        "multiplicative_monoid_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_additive_scope_inflated", field=field)
+            boundedness_run = record.get("verified_boundedness_run")
+            if boundedness_run is not None:
+                evidence_path = record.get("boundedness_evidence")
+                if not isinstance(boundedness_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_boundedness_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != boundedness_run:
+                        add_error(residuals, "active_cauchy_boundedness_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_boundedness_source_commit"):
+                        add_error(residuals, "active_cauchy_boundedness_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_boundedness_selected_real_dependency")
+                    if evidence.get("eventual_boundedness_completed") is not True:
+                        add_error(residuals, "active_cauchy_boundedness_claim_missing")
+                    for field in (
+                        "multiplicative_monoid_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_boundedness_scope_inflated", field=field)
+            product_bound_run = record.get("verified_product_bound_run")
+            if product_bound_run is not None:
+                evidence_path = record.get("product_bound_evidence")
+                if not isinstance(product_bound_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_product_bound_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != product_bound_run:
+                        add_error(residuals, "active_cauchy_product_bound_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_product_bound_source_commit"):
+                        add_error(residuals, "active_cauchy_product_bound_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_product_bound_selected_real_dependency")
+                    if evidence.get("bounded_product_estimate_completed") is not True:
+                        add_error(residuals, "active_cauchy_product_bound_claim_missing")
+                    for field in (
+                        "multiplicative_monoid_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_product_bound_scope_inflated", field=field)
+            ring_run = record.get("verified_ring_run")
+            if ring_run is not None:
+                evidence_path = record.get("ring_evidence")
+                if not isinstance(ring_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_ring_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != ring_run:
+                        add_error(residuals, "active_cauchy_ring_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_ring_source_commit"):
+                        add_error(residuals, "active_cauchy_ring_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_ring_selected_real_dependency")
+                    for field in (
+                        "multiplicative_monoid_completed", "commutative_ring_completed",
+                    ):
+                        if evidence.get(field) is not True:
+                            add_error(residuals, "active_cauchy_ring_claim_missing", field=field)
+                    for field in (
+                        "ordered_field_completed", "cauchy_completeness_proved",
+                        "route_comparison_proved", "downstream_complex_rebuilt",
+                        "alternative_accepted", "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_ring_scope_inflated", field=field)
+            partial_order_run = record.get("verified_partial_order_run")
+            if partial_order_run is not None:
+                evidence_path = record.get("partial_order_evidence")
+                if not isinstance(partial_order_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_partial_order_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != partial_order_run:
+                        add_error(residuals, "active_cauchy_partial_order_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_partial_order_source_commit"):
+                        add_error(residuals, "active_cauchy_partial_order_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_partial_order_selected_real_dependency")
+                    if evidence.get("partial_order_completed") is not True:
+                        add_error(residuals, "active_cauchy_partial_order_claim_missing")
+                    for field in (
+                        "total_order_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_partial_order_scope_inflated", field=field)
+            total_order_run = record.get("verified_total_order_run")
+            if total_order_run is not None:
+                evidence_path = record.get("total_order_evidence")
+                if not isinstance(total_order_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_total_order_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != total_order_run:
+                        add_error(residuals, "active_cauchy_total_order_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_total_order_source_commit"):
+                        add_error(residuals, "active_cauchy_total_order_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_total_order_selected_real_dependency")
+                    if evidence.get("total_order_completed") is not True:
+                        add_error(residuals, "active_cauchy_total_order_claim_missing")
+                    for field in (
+                        "ordered_ring_compatibility_completed", "ordered_field_completed",
+                        "cauchy_completeness_proved", "route_comparison_proved",
+                        "downstream_complex_rebuilt", "alternative_accepted",
+                        "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_total_order_scope_inflated", field=field)
+            ordered_ring_run = record.get("verified_ordered_ring_run")
+            if ordered_ring_run is not None:
+                evidence_path = record.get("ordered_ring_evidence")
+                if not isinstance(ordered_ring_run, int) or not isinstance(evidence_path, str):
+                    add_error(residuals, "active_cauchy_ordered_ring_evidence_identity_invalid")
+                else:
+                    evidence = json.loads(read_text(root, evidence_path))
+                    if evidence.get("verified_run") != ordered_ring_run:
+                        add_error(residuals, "active_cauchy_ordered_ring_run_drift")
+                    if evidence.get("verified_source_commit") != record.get("verified_ordered_ring_source_commit"):
+                        add_error(residuals, "active_cauchy_ordered_ring_source_drift")
+                    if evidence.get("selected_dedekind_declarations") != []:
+                        add_error(residuals, "active_cauchy_ordered_ring_selected_real_dependency")
+                    if evidence.get("ordered_ring_compatibility_completed") is not True:
+                        add_error(residuals, "active_cauchy_ordered_ring_claim_missing")
+                    for field in (
+                        "ordered_field_completed", "cauchy_completeness_proved",
+                        "route_comparison_proved", "downstream_complex_rebuilt",
+                        "alternative_accepted", "experiment_closed",
+                    ):
+                        if evidence.get(field) is not False:
+                            add_error(residuals, "active_cauchy_ordered_ring_scope_inflated", field=field)
+        elif len(cone) != 9:
             add_error(
                 residuals,
                 "accepted_nine_claim_cone_drift",
                 experiment=experiment,
-                actual=record.get("affected_cone"),
+                actual=cone,
             )
+        elif not isinstance(record.get("verified_run"), int):
+            add_error(residuals, "closed_experiment_verification_missing", experiment=experiment)
 
         if not re.fullmatch(r"[0-9a-f]{40}", str(record.get("frozen_reference_commit", ""))):
             add_error(residuals, "invalid_frozen_git_origin", experiment=experiment)
@@ -262,6 +507,12 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
                     experiment=experiment,
                     plan=frozen,
                 )
+            if is_active_real:
+                for marker in ("R-DP-001", "Q-BLOCK-002", "R-BLOCK-001", "# PLAN — FROZEN"):
+                    if marker not in plan:
+                        add_error(residuals, "active_real_frozen_plan_origin_missing", marker=marker)
+                if not re.fullmatch(r"[0-9a-f]{40}", str(record.get("frozen_plan_commit", ""))):
+                    add_error(residuals, "active_real_frozen_plan_commit_invalid")
 
         unit_sources = record.get("unit_sources", {})
         if not isinstance(unit_sources, dict):
@@ -276,6 +527,8 @@ def check_ledger(root: Path, residuals: list[dict[str, Any]]) -> dict[str, Any]:
         }
         if experiment == "ST2-EXP-002":
             expected_ids.add("C-DP-001")
+        if is_active_real:
+            expected_ids.update({"Q-BLOCK-002", "R-DP-001"})
         if not expected_ids.issubset(unit_sources):
             add_error(
                 residuals,
@@ -330,6 +583,13 @@ def check_current_state(root: Path, residuals: list[dict[str, Any]]) -> None:
                     assertion=name,
                 )
 
+    for relative in sorted(ACTIVE_FRONTIER_FILES):
+        content = read_text(root, relative)
+        if ACTIVE_EXPERIMENT not in content or "R-DP-001" not in content:
+            add_error(residuals, "active_real_frontier_missing_current_state", document=relative)
+        if re.search(r"(?:NO ACTIVE EXPERIMENT|no experiment is active|no active experiment)", content):
+            add_error(residuals, "active_real_frontier_contradicted", document=relative)
+
     for relative in sorted(JUNCTION_REQUIRED_FILES):
         content = read_text(root, relative)
         if JUNCTION not in content:
@@ -373,7 +633,7 @@ def check_retained_failures(
 ) -> None:
     lessons = read_text(root, LESSONS)
     ledger_document = read_text(root, LEDGER_MD)
-    for number in range(1, 17):
+    for number in range(1, 28):
         error_id = f"ERR-ST2-{number:03d}"
         if error_id not in lessons:
             add_error(residuals, "retained_error_record_missing", error=error_id)
@@ -451,6 +711,13 @@ def check_retained_failures(
     )
     if scope.get("LAB/payloads/lean/CStage") != "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt":
         add_error(residuals, "accepted_c_manifest_freshness_scope_missing")
+    if scope.get("LAB/payloads/lean/RStage") != "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt":
+        add_error(residuals, "accepted_c_inherited_real_manifest_freshness_scope_missing")
+    r_scope = architecture_policy.get("stages", {}).get("R", {}).get(
+        "manifest_scoped_freshness_inputs", {}
+    )
+    if r_scope.get("LAB/payloads/lean/RStage") != "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt":
+        add_error(residuals, "accepted_real_manifest_freshness_scope_missing")
 
     architecture_audit = read_text(root, ARCHITECTURE_AUDIT)
     for control in (
@@ -540,10 +807,15 @@ def main() -> int:
         "accepted_junction": ACCEPTED_JUNCTION,
         "research_junction": JUNCTION,
         "counts": {
-            "closed_experiments": len(records),
+            "closed_experiments": sum(
+                1 for record in records.values() if str(record.get("status", "")).startswith("CLOSED")
+            ),
+            "active_experiments": sum(
+                1 for record in records.values() if str(record.get("status", "")).startswith("ACTIVE")
+            ),
             "current_state_documents": len(CURRENT_STATE_FILES),
             "junction_index_documents": len(JUNCTION_REQUIRED_FILES),
-            "retained_error_classes": 16,
+            "retained_error_classes": 27,
             "retained_failed_runs": sum(
                 len(record.get("preserved_failure_runs", []))
                 for record in records.values()

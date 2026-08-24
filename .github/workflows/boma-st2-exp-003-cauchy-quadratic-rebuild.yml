@@ -1,0 +1,168 @@
+name: BOMA ST2-EXP-003 Cauchy Quadratic Rebuild — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp003CauchyQuadraticRebuild.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt'
+      - 'LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md'
+      - '.github/workflows/boma-st2-exp-003-cauchy-quadratic-rebuild.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-003-*'
+
+concurrency:
+  group: boma-st2-exp-003-h6-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify research Cauchy quadratic field rebuild
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Pin H6 after exact Junction and successful source probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$expected"
+          baseline="ea920b6b1e56444eddaf38ca91e6f7a968f10e0d"
+          frozen="70dd2f307eba69d7309a90cc36ae6f49741abddd"
+          h4="0f4a706d94c394b8e8a9eec836859caac772a944"
+          field="2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b"
+          junction="2358f3179f4e4f177f8d7c09a1d674b7f25c5607"
+          typecheck="26dfa399c9474ea8595fac11b375296663305c4e"
+          for ancestor in "$baseline" "$frozen" "$h4" "$field" "$junction" "$typecheck"; do
+            git merge-base --is-ancestor "$ancestor" HEAD
+          done
+          git diff --exit-code "$frozen" HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md
+          git diff --exit-code "$baseline" HEAD -- \
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt \
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt \
+            LAB/payloads/lean/RStage/RStageIntegration002.lean \
+            LAB/payloads/lean/CStage/CRInterfaceNoSquareProbe001.lean \
+            LAB/payloads/lean/CStage/CRoutePairProbe001.lean \
+            LAB/payloads/lean/CStage/CPairCore001.lean \
+            LAB/payloads/lean/CStage/CPairNormInverse001.lean \
+            LAB/payloads/lean/CStage/CQuadraticComparison001.lean \
+            LAB/payloads/lean/CStage/CStageIntegration001.lean
+          printf 'H6 exact head: %s\nExact Junction ancestor: %s\nTypechecked source ancestor: %s\n' \
+            "$actual" "$junction" "$typecheck"
+
+      - name: Validate downstream manifest separation and source boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          independent=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          combined=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_DEDEKIND_CAUCHY_COMPARISON_INPUTS.txt
+          downstream=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt
+          source=LAB/payloads/lean/CStage/ST2Exp003CauchyQuadraticRebuild.lean
+          test -s "$independent"
+          test -s "$combined"
+          test -s "$downstream"
+          test "$(cat "$downstream")" = "$source"
+          test -f "$source"
+          ! grep -Fxq "$source" "$independent"
+          ! grep -Fxq "$source" "$combined"
+          if grep -En 'RDedekind|RStageIntegration002|/CStage/' "$independent"; then
+            printf 'Independent real manifest lost its selected-Dedekind/C separation\n' >&2
+            exit 1
+          fi
+          forbidden='BOMA\.R\.Dedekind|RDedekind|RStageIntegration002|BOMA\.C\.(PairCore001|PairNormInverse001|RoutePairProbe001|RInterfaceNoSquareProbe001)|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)|def[[:space:]]+ccInv([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "$source"; then
+            printf 'H6 source crossed the alternative-real or witness-only boundary\n' >&2
+            exit 1
+          fi
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Prove H6 Cauchy quadratic field certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          target=/tmp/BOMAST2Exp003CauchyQuadraticField.lean
+          : > "$target"
+          for manifest in \
+            LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt; do
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              cat "$src" >> "$target"
+              printf '\n' >> "$target"
+            done < "$manifest"
+          done
+          printf '\n#print axioms BOMA.R.StageTwo.CauchyLUB003.cauchyLUBCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.rC_square_nonnegative\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_i_squared\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_coordinate_unique\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cauchyPairRingCertificate\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_inverse_exists\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cc_inverse_unique\n' >> "$target"
+          printf '#print axioms BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate\n' >> "$target"
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-003-h6-field-lean.log
+
+      - name: Extract exact H6 dependency closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_H6_TEMP_INPUTS.txt
+          cat \
+            LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt \
+            LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_003_CAUCHY_QUADRATIC_REBUILD_INPUTS.txt \
+            > "$manifest"
+          trap 'rm -f "$manifest"' EXIT
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C \
+            --manifest "$manifest" \
+            --target BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate \
+            --json-out /tmp/st2-exp-003-h6-field-closure.json \
+            > /tmp/st2-exp-003-h6-field-dependency-audit.log
+
+      - name: Publish H6 exact scope
+        shell: bash
+        run: |
+          {
+            printf '## ST2-EXP-003 H6 — Cauchy-real quadratic C rebuild\n'
+            printf -- '- Exact verified head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Rebuilt natively over independent `RCBOMA`; Dedekind/H5 sources are not mathematical inputs.\n'
+            printf -- '- Preserved contract: faithful real embedding, distinguished I, I^2=-1, unique real coordinates, commutative ring, norm, and witness-only field inversion.\n'
+            printf -- '- No new inverse selector or Choice call is introduced in the H6 C source.\n'
+            printf -- '- Accepted `C-BLOCK-001/C-BLOCK-002`, accepted R, and main remain unchanged.\n'
+            printf -- '- This is research evidence only, not canonical C acceptance.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve H6 exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-003-h6-cauchy-quadratic-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-003-h6-field-lean.log
+            /tmp/st2-exp-003-h6-field-closure.json
+            /tmp/st2-exp-003-h6-field-dependency-audit.log
+          if-no-files-found: warn
+          retention-days: 30
