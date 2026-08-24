@@ -16,6 +16,8 @@ open BOMA.R.DedekindAddition001
 open BOMA.R.DedekindSignedMulCandidate001
 open BOMA.R.DedekindNonzeroInverse004
 open BOMA.R.StageTwo.CauchyQuotient003
+open BOMA.R.StageTwo.CauchyAdditive003
+open BOMA.R.StageTwo.CauchyMultiplicative003
 open BOMA.R.StageTwo.CauchyInverse003
 
 /-- Forward comparison preserves and reflects zero, hence nonzeroness. -/
@@ -129,7 +131,7 @@ structure DedekindCauchyFieldIsomorphismCertificate where
   rationalPreservation : ∀ q : BOMA.Q.Quotient001.QBOMA,
     forwardMap (rCOfQ q) = rOfQ q
   orderIff : ∀ {x y : RCBOMA},
-    BOMA.R.DedekindOrderConstructive001.rLE (forwardMap x) (forwardMap y) ↔
+    BOMA.R.DedekindQuotient001.rLE (forwardMap x) (forwardMap y) ↔
       BOMA.R.StageTwo.CauchyOrderCore003.rCLE x y
   addPreservation : ∀ x y : RCBOMA,
     forwardMap (BOMA.R.StageTwo.CauchyAdditive003.rCAdd x y) =
