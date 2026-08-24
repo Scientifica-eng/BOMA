@@ -85,11 +85,15 @@ NEXT EXPERIMENT SLOT:                   OPEN / OWNER SELECTION REQUIRED
 ## 5. Research Junction identity
 
 The verified Dedekind/Cauchy reconvergence is indexed for the closed experiment
-as research Junction:
+as the research Junction:
 
 ```text
-ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
+ST2-EXP-003-R-J-001
 ```
+
+This spelling follows the repository's canonical Junction identifier grammar
+while the ledger classification keeps it explicitly **research-only**. It does
+not imply a canonical `UNIT.md`.
 
 Its evidence record remains:
 
