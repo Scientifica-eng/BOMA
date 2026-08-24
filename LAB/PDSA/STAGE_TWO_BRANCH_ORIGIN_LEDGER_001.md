@@ -63,7 +63,7 @@ object and must not replace it.
 | First changed object | real-interface package | complex carrier / identity realization | real completion carrier / identity realization |
 | Experimental alternative | explicit sixteen-field real interface | independent expression-normalization quotient field | independent rational Cauchy completion field |
 | Reconvergence | same selected carrier and same nine Claims | explicit inverse R-field isomorphism | explicit Dedekind/Cauchy field isomorphism + research R Junction |
-| Research Junction | no fabricated Junction | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001` |
+| Research Junction | no fabricated Junction | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-R-J-001` |
 | Canonical-acceptance change | none | none | none |
 | Frozen Git origin | `b473d236309770762e102517ef8a79c628cb43ed` | `878a52c3d833b9db9ea66f1ff4fcd207ca6ab498` | `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d` |
 | Exact verification evidence | `32593045224` | `32597346281` | final exact-head critical runs `32727267231 / 32727267177 / 32727267183` |
@@ -145,7 +145,7 @@ Q-BLOCK-002 / accepted rational ordered field
        '-- retained Cauchy / VERIFIED RESEARCH / NOT ACCEPTED
                  |
                  +-- H5 verified Dedekind/Cauchy field isomorphism
-                 +-- ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001
+                 +-- ST2-EXP-003-R-J-001
                  '-- H6 Cauchy-native C-BLOCK-001 core rebuild
        downstream accepted C-BLOCK-001 / C-BLOCK-002 remain unchanged
 ```
@@ -205,10 +205,9 @@ artifact     9516996491
 sha256       0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0
 ```
 
-The closed-experiment research Junction ID is
-`ST2-EXP-003-DEDEKIND-CAUCHY-R-JUNCTION-001`. It is research evidence only.
-It is not `R-BLOCK-001`, does not replace accepted `R-ROUTE-D`, and does not
-alter the accepted export.
+The closed-experiment research Junction ID is `ST2-EXP-003-R-J-001`. It is
+research evidence only. It is not `R-BLOCK-001`, does not replace accepted
+`R-ROUTE-D`, and does not alter the accepted export.
 
 ### 6.3 H6 downstream Cauchy-native C rebuild
 
