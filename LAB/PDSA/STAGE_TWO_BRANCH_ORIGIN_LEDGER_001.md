@@ -2,7 +2,7 @@
 
 **Document ID:** `BOMA-ST2-ORIGIN-LEDGER-001`  
 **Status:** `ACTIVE / TWO CLOSED EXPERIMENTS / ST2-EXP-003 ACTIVE`  
-**Date:** `2026-08-23`  
+**Date:** `2026-08-24`  
 **Machine-readable authority:**
 `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
 
@@ -137,54 +137,140 @@ Q-BLOCK-002 / accepted rational ordered field
        |-- selected accepted Dedekind / R-BLOCK-001
        '-- retained Cauchy / ACTIVE RESEARCH / NOT ACCEPTED
                  |
-       downstream affected C-BLOCK-001 / accepted C-BLOCK-002
+                 +-- H5 verified Dedekind/Cauchy field isomorphism
+                 +-- verified research R Junction
+                 '-- H6 Cauchy-native C-BLOCK-001 core rebuild
+       downstream accepted C-BLOCK-001 / C-BLOCK-002 remain unchanged
 ```
 
 The typed origin is a real **DECISION_POINT**, not a new Brick or Block.
-`Q-BLOCK-002` is the common independent input; `R-BLOCK-001` is the
-accepted reference to compare against later, never an upstream dependency
-for an allegedly independent Cauchy producer. All twelve R and nine C
-Claim families form the explicitly recorded affected cone.
+`Q-BLOCK-002` is the common independent input. The accepted `R-BLOCK-001`
+Dedekind producer is a comparison baseline, not a mathematical dependency of
+the independently assembled Cauchy producer. All twelve R and nine C Claim
+families remain the recorded impact cone.
 
-Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.
-Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.
-Current status: `ACTIVE / NO VERIFIED COMPLETION / NO RESEARCH JUNCTION`.
-Independent quotient/faithful rational embedding: exact V5 `32630874354`
-at source `557fe02ea0c531aa9c1d7a8b8d83712e10d7eaa1`; 365 internal
-declarations and zero selected-Dedekind declarations. This verifies only a
-foundation milestone, not an ordered real field or a completeness theorem.
-Independent additive quotient: exact V5 `32632176869` at source
-`8cfb44c13ba5354baba416bc787eac30fb306577`; 394 declarations, zero
-selected-Dedekind declarations, and an explicit faithful-Q field in the
-additive certificate. Eventual symmetric boundedness then passed exact V5
-`32632806907` at source `34769d190df49dc95bf9050e86bd85f5c6c050bb`;
-the extracted closure contains 407 declarations and zero selected-Dedekind
-declarations. Multiplication, field, and completeness remain open.
-The signed interval-product estimate and exact product-difference identity
-passed exact V5 `32633183941` at source
-`02cfe95d16d87fabebc885d729d589bbf6ca8498`; its 418-declaration closure
-also contains zero selected-Dedekind declarations. It is not yet a quotient
-multiplication operation.
-Quotient multiplication and its commutative-ring laws then passed exact V5
-`32633443480` at source `7b1b9a343a45ea3d4b9651aefafbbcb39a0f47f4`;
-the integrated closure has 442 declarations and zero selected-Dedekind
-declarations. Order, nonzero inverse, and Cauchy completeness remain open.
-Representative-invariant approximate order then passed exact V5
-`32633758238` at source `97015c7a3a6d53453f6101be6b77d62cf5516f25`;
-its partial-order and rational-order-extension closure has 461 declarations
-and zero selected-Dedekind declarations. Totality remains unclaimed.
-Totality then passed exact V5 `32634079706` at source
-`04150cf8424e3ecc497e3cb14b55e6373dab6878`; its 467-declaration closure
-contains zero selected-Dedekind declarations. The classical witness extraction
-is localized to the totality source. Ordered-ring compatibility, inverse, and
-completeness remain open.
-Additive and nonnegative-multiplicative order compatibility then passed exact
-V5 `32634312486` at source `ad6228336b13d0f39a678d5502898a52d274a780`;
-the ordered-ring closure contains 479 declarations and zero selected-Dedekind
-declarations. Nonzero inverse and Cauchy completeness remain open.
-The old accepted R and C exports, both prior experiments, and selected
-`C-ROUTE-P` are unchanged. No comparison Junction is claimed before
-independent Cauchy completion and exact V5 evidence exist.
+Frozen accepted Git origin: `ea920b6b1e56444eddaf38ca91e6f7a968f10e0d`.  
+Immutable Plan commit: `70dd2f307eba69d7309a90cc36ae6f49741abddd`.  
+Current lifecycle status: `ACTIVE / H1-H6 EXACT PASS / MATHEMATICAL PASS / OWNER DISPOSITION PENDING`.
+
+This lifecycle status is deliberate. The mathematical obligations of the
+Frozen Plan have been completed, but the experiment remains the single active
+Stage-Two experiment until the owner explicitly authorizes lifecycle closure
+or the next frontier. Accordingly the machine ledger keeps `verified_run:
+null` and does not use the legacy active-record field
+`reconvergence_junction_id`; those fields are currently interpreted by the
+governance auditor as closed-experiment/lifecycle signals.
+
+### 6.1 Independent Cauchy real route
+
+The retained progression reached an independently verified totally ordered
+field and Cauchy/Dedekind-style LUB contract. Key exact milestones include:
+
+```text
+ordered ring       run 32634312486
+ordered field      run 32637591596
+Cauchy completion  run 32641010707
+LUB H4             run 32643579395
+```
+
+H4 exact source head: `0f4a706d94c394b8e8a9eec836859caac772a944`.  
+H4 final axiom surface: `[propext, Classical.choice, Quot.sound]`.
+
+### 6.2 H5 Dedekind/Cauchy comparison and research Junction
+
+The two completed real producers are connected by explicit mutually inverse
+maps preserving order, rationals, addition, multiplication, and inverse
+witness relations.
+
+Field-isomorphism exact evidence:
+
+```text
+source head  2a875cdb93ed5b62fe1cc54a189b4c7d2d46eb0b
+run          32718253596
+artifact     9516753847
+sha256       e913d04cf98c305f5f9ac55904d0a2d987c00bc2109b1a5b2b3371e4fac005e6
+```
+
+Verified research R Junction exact evidence:
+
+```text
+source head  7604590e73425b68de5500042d57f0a1c3abcde3
+run          32718925270
+artifact     9516996491
+sha256       0bec7afedf24e52cf8fd4ea04360b42f42c689e28d2fdfb54c52217f0f5f43e0
+```
+
+The Junction is research evidence only. It is not `R-BLOCK-001`, does not
+replace accepted `R-ROUTE-D`, and does not alter the accepted export.
+
+### 6.3 H6 downstream Cauchy-native C rebuild
+
+H6 rebuilds directly over `RCBOMA`, using the independent Cauchy mathematical
+assembly rather than transporting through H5/Dedekind sources. It establishes
+the seven selected `C-BLOCK-001` core meanings: carrier, real embedding,
+field/witness-field behavior, distinguished `I`, generation, unique real
+coordinates, and nonreality of `I`.
+
+Exact H6 evidence:
+
+```text
+source head  ea5fdb61fcbafb0ece463910c24ef71183443b19
+run          32719705824
+artifact     9517267487
+sha256       cf296c8daf92c9cfe9e54986b93b6101ea225aad79c1c7388ad6d3ae13ae5a0e
+root         BOMA.C.StageTwo.CauchyQuadratic003.cauchyQuadraticFieldCertificate
+axioms       [propext, Classical.choice, Quot.sound]
+```
+
+H6 does **not** claim that the accepted `CQuadraticComparison001` abstraction
+was generalized to an arbitrary real scalar carrier. Accepted
+`C-COMPARE-BLOCK-001`, `C-BLOCK-002`, `C-ROUTE-P`, and `CA-20` remain
+unchanged. That architecture-genericity opportunity is recorded separately as
+future candidate `ST2-EXP-011` and is not authorized for execution.
+
+### 6.4 Final Study / Act
+
+`LAB/PDSA/experiments/ST2-EXP-003_FINAL_STUDY_ACT_001.md` records:
+
+```text
+ST2-EXP-003 MATHEMATICAL RESULT:       PASS
+RESEARCH R JUNCTION:                   KEEP AS VERIFIED RESEARCH EVIDENCE
+CANONICAL R-DP-001 SELECTION:          RETAIN DEDEKIND
+ACCEPTED R-BLOCK-001:                  UNCHANGED
+CANONICAL C-DP-001 / C-ROUTE-P:        RETAIN
+ACCEPTED C-BLOCK-001 / C-BLOCK-002:    UNCHANGED
+CA-20:                                 UNCHANGED
+PROMOTE CAUCHY R TO ACCEPTED EXPORT:   NO
+PROMOTE H6 C TO ACCEPTED EXPORT:       NO
+MERGE TO MAIN:                         NOT AUTHORIZED
+```
+
+### 6.5 Current-head exact re-verification
+
+The documentation/candidate-capture head
+`a26446da4547976d2a4bd67d8d8bc7511d71c1ab` was re-verified by the three
+critical V5 workflows:
+
+```text
+Independent Cauchy Real Route
+  run      32721991515
+  artifact 9518096500
+  sha256   deb9329a3e366a7d837538a75a84afc28493494a44738dd5e1475188962dfd2b
+
+Dedekind-Cauchy Comparison / Research R Junction
+  run      32721991470
+  artifact 9518090428
+  sha256   b862b920884884269eb62bb4d8790ad5046ff8fe2c1c644cf6a1ad66008a33ac
+
+Cauchy Quadratic Rebuild
+  run      32721991455
+  artifact 9518082966
+  sha256   51369d656890a3c0353792be31ef3850d8ecd31bdc1ddbb26557308ffe17f408
+```
+
+The accepted C regression workflows on that same head also passed. This
+re-verifies the research mathematical state while preserving accepted R/C
+controls.
 
 ## 7. Required fields for future controlled branches
 
@@ -213,6 +299,6 @@ Do not retroactively modify a previously frozen Plan to fill a missing field.
 Add an explicitly dated supplementary ledger entry instead.
 
 The exact source-unit paths, frozen Plans, affected Claim IDs, retained
-failures, and research-status constraints are in the machine-readable
-companion JSON. The governance audit rejects missing or contradictory
-attachments.
+failures, exact H5/H6 evidence, and research-status constraints are in the
+machine-readable companion JSON. The governance audit rejects missing or
+contradictory attachments.
