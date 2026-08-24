@@ -1,11 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..003 CLOSED PASS / ST2-EXP-011 STUDY-ACT PASS / LIFECYCLE CLOSURE IN PROGRESS / NO OTHER ACTIVE EXPERIMENT`  
+**Status:** `ST2-EXP-001..003 CLOSED PASS / ST2-EXP-011 CLOSED PASS / NO ACTIVE EXPERIMENT / 011 ARCHITECTURE INTEGRATION REQUIRED`  
 **Current status date:** `2026-08-24`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest completed architecture Act:** `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`  
-**Current program frontier:** `ST2-EXP-011 PASS / CLOSE LIFECYCLE THEN SEPARATE LEARNING-TO-CONSTRUCTION INTEGRATION / ST2-EXP-004 NEXT BY OWNER SEQUENCE BUT NOT ACTIVE`.
+**Current program frontier:** `ST2-EXP-011 CLOSED / SEPARATE LEARNING-TO-CONSTRUCTION INTEGRATION NEXT / ST2-EXP-004 OWNER-SEQUENCED AFTER SYNCHRONIZED MAIN BUT NOT ACTIVE`.
 
 This is the compact current-state handoff index. Historical run lineages remain
 in stage-specific PDSA/evidence/failure records and are not erased by current-state integration.
@@ -87,7 +87,7 @@ The accepted C Lean implementation may still carry a larger bundled R package in
 formal ancestry. That excess is formalization/provenance over-bundling, not
 mathematical necessity.
 
-## 4. ST2-EXP-011 mathematical result
+## 4. ST2-EXP-011 closed mathematical result
 
 `ST2-EXP-011` was explicitly selected by the owner on 2026-08-24 and frozen from
 accepted `main` commit:
@@ -112,25 +112,33 @@ Final mathematical Study/Act:
 
 `LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md`.
 
-The exact successful Do head recorded by Study/Act is:
+Lifecycle closure:
 
-`3a7510fb2fd71cfa7b75434a2ea265e654897ffe`.
+`LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md`.
 
-Exact custom evidence:
+The exact green pre-closure verification head is:
+
+`ef116405c08475ec8702d9177a5106d7d0bfe525`.
+
+Exact custom evidence on that head:
 
 ```text
-run       32749848852
-job       97503958518
-artifact  9528564348
-sha256    b7c89c1444cde0491dd3ad737247895c3de1bdd3af44d11e9607b09d052b096f
+run       32753140129
+artifact  9529812715
+sha256    f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1
 result    SUCCESS
 ```
 
-The result is:
+All eight related historical/accepted regression workflows also passed on the
+same SHA. The lifecycle-CI compatibility defect exposed after Study/Act is
+preserved separately and was corrected without weakening mathematical gates.
+
+The closed result is:
 
 ```text
 ST2-EXP-011 MATHEMATICAL RESULT       PASS
-generic comparison interface          VERIFIED
+ST2-EXP-011 LIFECYCLE                 CLOSED
+generic comparison interface          VERIFIED RESEARCH EVIDENCE
 accepted RBOMA instance               VERIFIED / old Related semantics definitionally preserved
 native RCBOMA/H6 instance             VERIFIED
 H5/Dedekind native dependency         NOT REQUIRED
@@ -147,9 +155,11 @@ separates generic mathematical/interface necessity from accepted formal provenan
 The experiment establishes a **comparison scalar surface** narrower than both
 the whole accepted R certificate and the sixteen-property production R→C
 surface: comparison requires scalar `zero/one/neg/add/mul` plus explicit
-quadratic coordinate existence/uniqueness/preservation laws. This is not yet a
-Construction-DAG current-state fact until the separate architecture integration
-Act is completed.
+quadratic coordinate existence/uniqueness/preservation laws.
+
+This durable lesson is still Learning-Graph evidence at this closure point. It
+must become a Construction-DAG current-state fact only through the separate
+Learning-to-Construction integration Act required next.
 
 ## 5. Stage-Two experiment status
 
@@ -157,20 +167,20 @@ Act is completed.
 ST2-EXP-001  CLOSED / PASS / LESSON INTEGRATED
 ST2-EXP-002  CLOSED / PASS / PERMANENT VERIFIED ALTERNATIVE + JUNCTION INTEGRATED
 ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT / PERMANENT VERIFIED ALTERNATIVE + JUNCTION INTEGRATED
-ST2-EXP-011  STUDY-ACT COMPLETE / PASS / LIFECYCLE CLOSURE IN PROGRESS
+ST2-EXP-011  CLOSED / PASS / DURABLE LESSON AWAITS SEPARATE ARCHITECTURE INTEGRATION
 ```
 
-`ST2-EXP-011` experimental Lean sources remain research-only. PASS is not an
-automatic accepted refactor or producer promotion.
+`ST2-EXP-011` experimental Lean sources remain research-only. PASS and closure
+are not an automatic accepted refactor or producer promotion.
 
 ## 6. Current sequence frontier
 
 The owner explicitly fixed the sequence:
 
 ```text
-finish ST2-EXP-011 lifecycle
+ST2-EXP-011 lifecycle CLOSED
   ↓
-perform any required separate Learning-to-Construction integration
+perform required separate Learning-to-Construction integration
   ↓
 synchronize and verify main
   ↓
@@ -182,15 +192,38 @@ ST2-EXP-004 with a new independent Frozen Plan and branch
 Therefore:
 
 ```text
-NO SECOND STAGE-TWO EXPERIMENT MAY BE ACTIVE WITH 011
-NEXT SELECTED EXPERIMENT AFTER FULL 011 CLOSURE/INTEGRATION = ST2-EXP-004
+ACTIVE STAGE-TWO EXPERIMENT = NONE
+NEXT REQUIRED ACT = ST2-EXP-011 LEARNING-TO-CONSTRUCTION INTEGRATION
+NEXT OWNER-SEQUENCED EXPERIMENT AFTER THAT = ST2-EXP-004
 ST2-EXP-004 IS NOT ACTIVE AND HAS NO FROZEN PLAN YET
 ```
 
 Its single changed factor will be the logical regime at `R-DP-003`, not the C
 comparison abstraction changed by 011.
 
-## 7. Current architectural authorities
+## 7. Historical lifecycle CI rule learned during closure
+
+The post-Study transition exposed a CI scoping defect: historical workflows for
+closed 001--003 conflated experiment-local closure with a permanently empty
+global Stage-Two frontier.
+
+The retained failure record is:
+
+`LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md`.
+
+The repository now distinguishes:
+
+```text
+historical experiment closure = monotone evidence
+current active/frontier state  = time-varying program state
+```
+
+The strict historical closed-frontier audit remains reproducible, while later
+cycles use explicit historical-closure preservation checks. This changes CI
+governance semantics only; it does not change the mathematical result of any
+closed experiment.
+
+## 8. Current architectural authorities
 
 Read current state in this order:
 
@@ -215,4 +248,5 @@ LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 
 Until the separate post-closure architecture Act for 011 is merged, the
 Construction DAG continues to show the previously integrated 001–003 facts.
-The 011 Study/Act is Learning-Graph evidence, not an implicit canonical rewrite.
+The closed 011 Study/Act and lifecycle record are Learning-Graph provenance,
+not an implicit canonical rewrite.
