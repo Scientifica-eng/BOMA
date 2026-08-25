@@ -1,8 +1,10 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / VERIFIED LESSONS 001-004+011 INTEGRATED / ACTIVE STAGE-TWO EXPERIMENT = NONE / AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM / STOP BEFORE NEW EXPERIMENT`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / VERIFIED LESSONS 001-004+011 INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / PROGRAM_READY / ACTIVE EXPERIMENT = NONE / NEXT = ST2-EXP-014 AUTHORIZED QUEUED NO FROZEN PLAN`  
 **Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
+**Current program baseline:** `1fac73b24b9b2e0db9dafc95e1944267aa9040da`  
+**Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
 **Accepted-main reference at ST2-EXP-004 freeze:** `50f3031b8d2657cbe0710e73e5935d997d40e49b`  
 **ST2-EXP-004 research merge:** `61adb8589c803e95e1b96ef38902320c8aa5df19`  
 **ST2-EXP-004 learning integration:** `BOMA-ST2-LEARNING-INTEGRATION-003`.
@@ -12,16 +14,43 @@
 ## Current program frontier
 
 ```text
+AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED / PROGRAM_READY
+PROGRAM TITLE: Compositionality and Minimality of the R→C Boundary
+AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
+QUEUE CURSOR: 0 / ST2-EXP-014
 ACTIVE STAGE-TWO EXPERIMENT: NONE
-ST2-EXP-004: CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LESSON INTEGRATED
-ST2-EXP-004 FULL SAME-CARRIER CONSTRUCTIVE TOTALITY: NOT RECOVERED
-ST2-EXP-004 ACCEPTANCE PROMOTION: NONE
-NEXT EXPERIMENT: NOT AUTHORIZED / NOT ACTIVE / NO FROZEN PLAN
-AUTONOMOUS RESEARCH PROGRAM: NO_ACTIVE_PROGRAM
-REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
+NEXT EXPERIMENT: ST2-EXP-014 / OWNER_AUTHORIZED / QUEUED / NOT ACTIVE / NO FROZEN PLAN
+ROUTINE MERGE AUTHORITY: TRUE WITHIN PROGRAM-SCOPE GATES
+REQUIRED NEXT ACT: merge/verify this authorization state, re-read synchronized main, then prepare an independent immutable ST2-EXP-014 Frozen Plan
 ```
 
-The owner-authorized `ST2-EXP-004` sequence is complete in both research and architecture-integration terms. Its research lifecycle closed, the exact-head research PR merged, the separate Learning-to-Construction maintenance integration passed exact-head CI, and that integration merged to `main` at `387434cbbbf074e3474d992316f73d132258d908`. No later experiment is selected, branched, activated, planned, or frozen by that completed sequence.
+`ST2-RP-001` is execution authority for the bounded four-experiment sequence as
+written in its owner-authorization record. It does not pre-judge any experiment
+result and does not authorize changes to selected routes, accepted exports,
+acceptance contracts, or canonical producers.
+
+The previous `NO_ACTIVE_PROGRAM` state was the correct post-`ST2-EXP-004`
+frontier before the owner's 2026-08-25 authorization of `ST2-RP-001`. Preserve
+that state as historical provenance, not as the current execution state.
+
+Transition remains fail-closed. A sequence-critical new prerequisite, queue
+reordering, Frozen-Plan factor change, out-of-scope mathematical/logical
+commitment, canonical/acceptance decision, or ambiguous authority sets
+`OWNER_REQUIRED` and stops the program before the unauthorized change.
+
+---
+
+## ST2-RP-001 authorized queue
+
+| Order | Experiment | Core question | Current disposition |
+| ---: | --- | --- | --- |
+| 1 | `ST2-EXP-014` | rebuild all nine accepted C Claim meanings natively over the verified Cauchy real producer with selected C Route P fixed | `AUTHORIZED / QUEUED / NEXT / NO FROZEN PLAN` |
+| 2 | `ST2-EXP-015` | hold Cauchy R fixed and change only C Route P → Route Q to test the Dedekind/Cauchy × P/Q composition square | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 3 | `ST2-EXP-016` | replace production `orderTotal` by one exact frozen algebraic nondegeneracy condition and test full C field closure | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 4 | `ST2-EXP-017` | abstract the scalar from concrete real R to generic field K satisfying the exact interface verified by 016 | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
+
+Historical proposals `ST2-EXP-005..013` remain historical candidates and are not
+implicitly authorized, renumbered, or redefined by this program.
 
 ---
 
@@ -146,18 +175,10 @@ They classify final-stop/historical-sentinel compatibility defects separately fr
 
 ---
 
-## Completed act and stop condition
+## Historical ST2-EXP-004 final stop and supersession
 
-The authorized sequence is constrained to:
-
-1. lifecycle-closed exact-head verification of `ST2-EXP-004`;
-2. exact-head research/lifecycle merge as `61adb8589c803e95e1b96ef38902320c8aa5df19` with zero file drift from the verified research head;
-3. separate maintenance Learning-to-Construction integration;
-4. exact-head maintenance CI and merge;
-5. accepted route/export/source/manifests unchanged;
-6. no new Block, Decision Point, or Junction created.
-
-Required final state after maintenance merge:
+The completed 004 sequence had correctly required the following final state
+before any later owner decision:
 
 ```text
 ACTIVE STAGE-TWO EXPERIMENT: NONE
@@ -165,4 +186,8 @@ AUTONOMOUS RESEARCH PROGRAM: NO_ACTIVE_PROGRAM
 REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
 ```
 
-No new experiment begins as part of this sequence.
+That stop condition was satisfied. It was subsequently superseded only by the
+owner's explicit authorization of `ST2-RP-001` on 2026-08-25. No experiment is
+started merely by this STATUS update; 014 may begin only after the program
+authorization is merged, exact `main` is synchronized/re-read, and its own
+immutable Frozen Plan is created on a separate research branch.

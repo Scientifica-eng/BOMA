@@ -1,25 +1,47 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / LESSONS INTEGRATED / ACTIVE EXPERIMENT = NONE / STOP`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / PROGRAM_READY / NEXT ST2-EXP-014`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
-**Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.
+**Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
+**Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
 
 ---
 
 ## Current execution state
 
 ```text
+AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED / PROGRAM_READY
+AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 ACTIVE EXPERIMENT: NONE
-ST2-EXP-004: CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LESSON INTEGRATED
-NEXT EXPERIMENT: NOT AUTHORIZED / DO NOT START
-REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
+NEXT EXPERIMENT: ST2-EXP-014 / AUTHORIZED / QUEUED / NOT ACTIVE / NO FROZEN PLAN
+ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
+REQUIRED NEXT ACT: merge and verify program authorization, synchronize/re-read main, then freeze independent ST2-EXP-014 Plan
 ```
 
-The owner-authorized ST2-EXP-004 sequence has completed its scientific lifecycle and architecture-content act. The maintenance integration remains subject to exact-head CI and merge before becoming `main` authority. No later experiment may be opened, activated, branched, or frozen in this sequence.
+The completed `ST2-EXP-004` sequence reached its required STOP state before this
+new program was authorized. That historical stop is preserved, but it is no
+longer the current frontier after the owner's explicit authorization of
+`ST2-RP-001` on 2026-08-25.
+
+No experiment is activated by this register update alone. Every queued
+experiment still requires an independent immutable Frozen Plan and separate
+branch from synchronized current `main`.
+
+### Immutable historical ST2-EXP-004 final sentinel
+
+The following literals describe the closed 004 lifecycle's own final frontier.
+Historical read-only 004 audits may match them; they do **not** override the
+later owner-authorized current program above:
+
+```text
+NEXT EXPERIMENT: NOT AUTHORIZED
+STOP BEFORE NEW EXPERIMENT
+AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
+```
 
 ---
 
-## Experiment register
+## Experiment register — completed experiments
 
 | ID | Architectural origin | Frozen Plan | Final state | Acceptance effect |
 | --- | --- | --- | --- | --- |
@@ -31,7 +53,27 @@ The owner-authorized ST2-EXP-004 sequence has completed its scientific lifecycle
 
 ---
 
-## ST2-EXP-004 authority
+## ST2-RP-001 — owner-authorized queued experiments
+
+The identifiers `ST2-EXP-005..013` belong to the historical candidate inventory
+opened with Stage Two at commit `b473d236309770762e102517ef8a79c628cb43ed`.
+They were suggestions, not approved experiments. Their historical meanings are
+preserved and their IDs are not reused.
+
+| Order | ID | Architectural origin | Intended single change | State |
+| ---: | --- | --- | --- | --- |
+| 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `OWNER_AUTHORIZED / QUEUED / NEXT / NO FROZEN PLAN` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
+
+The exact objectives, controls, transition dependencies, merge authority, stop
+conditions, and completion rule are governed by the immutable program
+authorization record once merged.
+
+---
+
+## ST2-EXP-004 authority — immutable historical record
 
 ```text
 origin                         R-DP-003
@@ -48,7 +90,11 @@ same-carrier totality          NOT RECOVERED WITH CURRENT CUT INTERFACE
 accepted promotion             NONE
 ```
 
-Changed factor was exactly the selected F-04 provider `cutComparability_classical / rLE_total_classical`. The accepted `LowerCut/CutEquiv/RBOMA/CutLE/rLE` representation, operations, other localized logical providers F-05/F-06/F-07, accepted manifests, and accepted exports were controls.
+Changed factor was exactly the selected F-04 provider
+`cutComparability_classical / rLE_total_classical`. The accepted
+`LowerCut/CutEquiv/RBOMA/CutLE/rLE` representation, operations, other localized
+logical providers F-05/F-06/F-07, accepted manifests, and accepted exports were
+controls.
 
 ### Gate closure
 
@@ -70,7 +116,8 @@ F04_FREE 22
 OTHER_CLASSICAL_ONLY 18
 ```
 
-Gate B retained `77 / 88` accepted-manifest R files in the research-only whole-source no-F04 survivor assembly.
+Gate B retained `77 / 88` accepted-manifest R files in the research-only
+whole-source no-F04 survivor assembly.
 
 Gate D established on the unchanged representation:
 
@@ -78,9 +125,13 @@ Gate D established on the unchanged representation:
 RTotality ↔ CutComparability
 ```
 
-No unconditional constructive `CutComparability` was recovered from the frozen cut interface.
+No unconditional constructive `CutComparability` was recovered from the frozen
+cut interface.
 
-Gate E confirms seven of nine accepted C Claim families survive the measured fifteen-property interface; current `C-CL-FIELD-001` and `C-CL-INTEGRATION-001` proof closures do not. `C-CL-COMPARE-001` survives and remains governed by the narrow ST2-EXP-011 comparison interface.
+Gate E confirms seven of nine accepted C Claim families survive the measured
+fifteen-property interface; current `C-CL-FIELD-001` and
+`C-CL-INTEGRATION-001` proof closures do not. `C-CL-COMPARE-001` survives and
+remains governed by the narrow ST2-EXP-011 comparison interface.
 
 ### Integrated interpretation
 
@@ -92,7 +143,7 @@ formal declaration ancestry ≠ mathematical necessity
 whole-source elaboration dependency ≠ theorem dependency
 ```
 
-A located-cut redesign would change the representation and is only a possible separately authorized future candidate.
+A located-cut redesign changes representation and remains outside `ST2-RP-001`.
 
 ### Immutable experiment records
 
@@ -108,7 +159,10 @@ LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
 LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
 ```
 
-Failure records `ST2-EXP-004_FAILURE_001` through `015` remain preserved as execution/governance evidence. Failures `014` and `015` record post-integration final-stop schema/literal compatibility defects and do not alter the mathematical PASS result.
+Failure records `ST2-EXP-004_FAILURE_001` through `015` remain preserved as
+execution/governance evidence. Failures `014` and `015` record post-integration
+final-stop schema/literal compatibility defects and do not alter the
+mathematical PASS result.
 
 Learning-to-Construction authority:
 
@@ -120,7 +174,9 @@ LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
 
 ## Acceptance firewall
 
-The experiment and its integration do not promote the research branch. The following remain unchanged:
+The completed experiments, current program authorization, and any program-scope
+research must not by themselves promote a research producer or alter the
+accepted reference:
 
 ```text
 R-DP-001 SELECTS R-ROUTE-D
@@ -132,21 +188,26 @@ C-J-001
 C-BLOCK-002 / CA-20
 ```
 
-`SELECTS ≠ DERIVES`; verified alternative ≠ accepted export; successful experiment ≠ promotion.
-
-No new Block, Decision Point, or Junction was created by the ST2-EXP-004 integration.
+`SELECTS ≠ DERIVES`; verified alternative ≠ accepted export; successful
+experiment ≠ promotion. Conditional routine merge authority under `ST2-RP-001`
+is limited to exact program-scope research/lifecycle and verified-knowledge
+integration that passes the program's declared firewall.
 
 ---
 
-## Stop condition
+## Transition / stop condition
 
-The only authorized continuation after the integration merge is to stop:
+Current transition authority is no longer the historical post-004 stop; it is
+the exact `ST2-RP-001` queue and its fail-closed gates:
 
 ```text
-ACTIVE EXPERIMENT = NONE
-AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
-NEXT EXPERIMENT = NOT AUTHORIZED
-REQUIRED NEXT ACT = STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
+AUTO_CONTINUE only when prior lifecycle closes, exact evidence passes,
+current main is synchronized/re-read, and the next queued experiment remains
+scientifically valid with no required insertion/reordering.
+
+Any sequence-critical prerequisite, queue/order change, Frozen-Plan factor
+change, out-of-scope assumption, canonical/acceptance decision, or ambiguous
+authority => OWNER_REQUIRED / STOP.
 ```
 
-No later experiment may be opened, activated, or frozen in this sequence.
+No experiment outside `ST2-EXP-014..017` is authorized by this program.
