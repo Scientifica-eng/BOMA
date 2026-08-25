@@ -1,0 +1,158 @@
+name: BOMA ST2-EXP-015 Gate D Semantic Target — V5 Extension
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-015-*'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp015CauchyQSemanticTarget.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_SEMANTIC_INPUTS.txt'
+      - 'LAB/PDSA/experiments/ST2-EXP-015_GATE_D_CAUCHY_Q_SEMANTIC_TARGET_001.md'
+      - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
+      - '.github/workflows/boma-st2-exp-015-gate-d-v5.yml'
+
+jobs:
+  verify-gate-d:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact Gate-D head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact head, baseline, and immutable Frozen Plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          git merge-base --is-ancestor 2a6c38af70e596c840ef2db4733421bde38f3ee5 HEAD
+          git merge-base --is-ancestor 1accee613630ae876b6ca9dcf820737ab89a168c HEAD
+          plan=LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
+          git diff --exit-code 1accee613630ae876b6ca9dcf820737ab89a168c HEAD -- "$plan"
+          printf 'expected_head=%s\nverified_head=%s\n' "$expected" "$(git rev-parse HEAD)" | tee /tmp/st2-exp-015-gate-d-provenance.txt
+
+      - name: Verify accepted-source firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline=2a6c38af70e596c840ef2db4733421bde38f3ee5
+          for manifest in LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              git diff --exit-code "$baseline" HEAD -- "$src"
+            done < "$manifest"
+          done
+
+      - name: Validate Gate-D manifest and semantic firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          field=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
+          semantic=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_SEMANTIC_INPUTS.txt
+          generic=LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean
+          source=LAB/payloads/lean/CStage/ST2Exp015CauchyQSemanticTarget.lean
+          evidence=LAB/PDSA/experiments/ST2-EXP-015_GATE_D_CAUCHY_Q_SEMANTIC_TARGET_001.md
+          for f in "$field" "$semantic" "$generic" "$source" "$evidence"; do test -s "$f"; done
+          n="$(wc -l < "$field" | tr -d ' ')"
+          head -n "$n" "$semantic" > /tmp/st2-exp-015-gate-d-prefix.txt
+          cmp -s "$field" /tmp/st2-exp-015-gate-d-prefix.txt
+          test "$(sed -n "$((n+1))p" "$semantic")" = "$generic"
+          test "$(sed -n "$((n+2))p" "$semantic")" = "$source"
+          test "$(wc -l < "$semantic" | tr -d ' ')" = "$((n+2))"
+          forbidden='ST2Exp002|ST2Exp003CauchyQuadraticRebuild|ST2Exp011CauchyH6Comparison|ST2Exp014|CCBOMA|h6Presentation|NativeCauchy|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden" "$source"; then
+            echo 'Gate-D source crossed a forbidden semantic/selector boundary' >&2
+            exit 1
+          fi
+          grep -Fq 'def cauchyRouteQPresentation' "$source"
+          grep -Fq 'def cauchyRouteQExtractor' "$source"
+          grep -Fq 'structure CauchyQFullCCertificate' "$source"
+          grep -Fq 'def cauchyQFullCCertificate' "$source"
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Elaborate complete Cauchy Route-Q semantic target
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_SEMANTIC_INPUTS.txt
+          target=/tmp/BOMAST2Exp015GateD.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          cat >> "$target" <<'EOF'
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.cauchyRouteQPresentation
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.cauchyRouteQExtractor
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.cauchyRouteQComparison
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.cauchyQFullCCertificate
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.claim_rembed_injective
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.claim_i_squared
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.claim_generated
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.claim_coordinate_unique
+          #print axioms BOMA.C.StageTwo.CauchyQSemantic015.claim_imaginary_not_real
+          EOF
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-015-gate-d-lean.log
+
+      - name: Audit Gate-D declaration closure and selector boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_SEMANTIC_INPUTS.txt
+          closure=/tmp/st2-exp-015-gate-d-closure.json
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py --stage C --manifest "$manifest" --target BOMA.C.StageTwo.CauchyQSemantic015.cauchyQFullCCertificate --json-out "$closure" > /tmp/st2-exp-015-gate-d-dependency-audit.log
+          python3 - <<'PY'
+          import json
+          c=json.load(open('/tmp/st2-exp-015-gate-d-closure.json'))
+          bad=[]
+          for e in c.get('edges',[]):
+              if e.get('dependency') in {'Classical.choose','Classical.choose_spec'} and str(e.get('consumer','')).startswith(('BOMA.C.StageTwo.CauchyQRoute015.','BOMA.C.StageTwo.CauchyQField015.','BOMA.C.StageTwo.CauchyQSemantic015.')):
+                  bad.append(e)
+          if bad:
+              print('NEW_ST2_EXP_015_CHOICE_EDGE')
+              for e in bad: print(e)
+              raise SystemExit(1)
+          print('new_st2_exp_015_classical_choose_edges=0')
+          PY
+          cat "$closure"
+
+      - name: Run governance and architecture regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/PDSA/tools/autonomous_research_program_audit.py | tee /tmp/st2-exp-015-gate-d-autonomy-audit.txt
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py | tee /tmp/st2-exp-015-gate-d-architecture-audit.txt
+
+      - name: Preserve Gate-D exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-015-gate-d-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-015-gate-d-provenance.txt
+            /tmp/st2-exp-015-gate-d-lean.log
+            /tmp/st2-exp-015-gate-d-dependency-audit.log
+            /tmp/st2-exp-015-gate-d-closure.json
+            /tmp/st2-exp-015-gate-d-autonomy-audit.txt
+            /tmp/st2-exp-015-gate-d-architecture-audit.txt
+          if-no-files-found: ignore
