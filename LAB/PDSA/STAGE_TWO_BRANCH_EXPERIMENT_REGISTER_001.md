@@ -27,6 +27,18 @@ No experiment is activated by this register update alone. Every queued
 experiment still requires an independent immutable Frozen Plan and separate
 branch from synchronized current `main`.
 
+### Immutable historical ST2-EXP-004 final sentinel
+
+The following literals describe the closed 004 lifecycle's own final frontier.
+Historical read-only 004 audits may match them; they do **not** override the
+later owner-authorized current program above:
+
+```text
+NEXT EXPERIMENT: NOT AUTHORIZED
+STOP BEFORE NEW EXPERIMENT
+AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
+```
+
 ---
 
 ## Experiment register — completed experiments
