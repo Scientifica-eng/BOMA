@@ -76,11 +76,12 @@ jobs:
           for rel in (
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_007_CLOSED_STATE_011_AUDIT_BASELINE_UNIT_EXPECTATION.md',
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_008_CLOSED_STATE_LEDGER_HISTORICAL_PROVENANCE_REGRESSION.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_009_REPAIR_JOB_PYCACHE_FALSE_POSITIVE.md',
           ):
               if rel not in failures:
                   failures.append(rel)
           rec004['failure_records'] = failures
-          rec004['post_study_failure_runs'] = [32837301674, 32837451796, 32837451803]
+          rec004['post_study_failure_runs'] = [32837301674, 32837451796, 32837451803, 32841161796]
           repaired['records'] = [copy.deepcopy(hist[e]) for e in protected] + [rec004]
 
           check = {r['experiment_id']: r for r in repaired['records']}
@@ -100,7 +101,7 @@ jobs:
           p004 = Path('LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py')
           s004 = p004.read_text(encoding='utf-8')
           replacements = {
-              'for i in range(1, 7)': 'for i in range(1, 9)',
+              'for i in range(1, 7)': 'for i in range(1, 10)',
               '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT")': '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized")',
               '''        for rel in (STATUS, REGISTER):\n            text = read(root, rel)\n            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''': '''        state_markers = {\n            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),\n            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),\n        }\n        for rel, markers in state_markers.items():\n            text = read(root, rel)\n            for marker in markers:\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''',
           }
@@ -114,14 +115,14 @@ jobs:
           assert '`ST2-EXP-004` preserves six execution failure records under' in text
           status.write_text(text.replace(
               '`ST2-EXP-004` preserves six execution failure records under',
-              '`ST2-EXP-004` preserves eight execution failure records under', 1), encoding='utf-8')
+              '`ST2-EXP-004` preserves nine execution failure records under', 1), encoding='utf-8')
 
           register = Path('LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md')
           text = register.read_text(encoding='utf-8')
           assert 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as' in text
           register.write_text(text.replace(
               'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as',
-              'Failure records `ST2-EXP-004_FAILURE_001` through `008` remain preserved as', 1), encoding='utf-8')
+              'Failure records `ST2-EXP-004_FAILURE_001` through `009` remain preserved as', 1), encoding='utf-8')
 
           gate = Path('.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml')
           text = gate.read_text(encoding='utf-8')
@@ -145,6 +146,7 @@ jobs:
           grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/011.json
           grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/004.json
           grep -Fq 'ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS' /tmp/historical.json
+          rm -rf LAB/00_ARCHITECTURE/tools/__pycache__
 
           allowed='^(LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json|LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py|LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py|LAB/PDSA/STATUS.md|LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md|\.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml|\.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml)$'
           bad="$(git status --short | sed -E 's/^.. //' | grep -Ev "$allowed" || true)"
