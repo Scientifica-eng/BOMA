@@ -1,0 +1,207 @@
+name: BOMA ST2-EXP-004 R Total-Order Logical Regime — Gate A
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
+      - 'LAB/PDSA/candidates/ST2-EXP-004_*'
+      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
+      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_004_*'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_004_*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - '.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-004-*'
+
+concurrency:
+  group: boma-st2-exp-004-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  gate-a:
+    name: verify frozen controls and measure F-04 declaration closures
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout exact experiment head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact head and immutable Frozen Plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
+          frozen="89c9dc9154e7ca469e5c94c177be223205ee9dbd"
+          plan=LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+          test "$actual" = "$expected"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen" HEAD
+          git diff --exit-code "$frozen" HEAD -- "$plan"
+          {
+            printf 'expected_head=%s\n' "$expected"
+            printf 'verified_head=%s\n' "$actual"
+            printf 'frozen_accepted_reference=%s\n' "$baseline"
+            printf 'frozen_plan_commit=%s\n' "$frozen"
+          } | tee /tmp/st2-exp-004-provenance.txt
+
+      - name: Prove accepted Q/R/C controls are unchanged from frozen reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
+          manifests=(
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          )
+          : > /tmp/st2-exp-004-control-immutability.txt
+          for manifest in "${manifests[@]}"; do
+            test -s "$manifest"
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            printf 'manifest unchanged: %s\n' "$manifest" >> /tmp/st2-exp-004-control-immutability.txt
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              git diff --exit-code "$baseline" HEAD -- "$src"
+              printf 'source unchanged: %s\n' "$src" >> /tmp/st2-exp-004-control-immutability.txt
+            done < "$manifest"
+          done
+          protected=(
+            LAB/payloads/lean/RStage/RDedekindOrderConstructive.lean
+            LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean
+            LAB/payloads/lean/RStage/RStageIntegration002.lean
+            LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean
+            LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean
+            LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+            LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
+          )
+          for f in "${protected[@]}"; do
+            test -s "$f"
+            git diff --exit-code "$baseline" HEAD -- "$f"
+            printf 'protected unchanged: %s\n' "$f" >> /tmp/st2-exp-004-control-immutability.txt
+          done
+          cat /tmp/st2-exp-004-control-immutability.txt
+
+      - name: Verify Gate-0 lifecycle and single active experiment
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
+            --json-out /tmp/st2-exp-004-011-lifecycle.json
+          python3 LAB/PDSA/tools/autonomous_research_program_audit.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json")
+          d = json.loads(p.read_text())
+          assert d["active_experiment"] == "ST2-EXP-004", d["active_experiment"]
+          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]
+          assert len(records) == 1
+          r = records[0]
+          assert r["origin_kind"] == "DECISION_POINT"
+          assert r["origin_id"] == "R-DP-003"
+          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"
+          print("ST2_EXP_004_GATE0_ACTIVE_PASS")
+          PY
+
+      - name: Validate Gate-A target manifest against claim policies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv, json
+          from pathlib import Path
+          target_path = Path("LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_004_GATE_A_TARGETS.tsv")
+          rows = list(csv.DictReader(target_path.open(), delimiter="\t"))
+          assert rows
+          r = json.loads(Path("LAB/00_ARCHITECTURE/R_FORMAL_CLAIM_PRODUCER_POLICY.json").read_text())
+          c = json.loads(Path("LAB/00_ARCHITECTURE/C_FORMAL_CLAIM_PRODUCER_POLICY.json").read_text())
+          expected_r = {(cid, t) for cid, rec in r["claims"].items() for t in rec["producers"]}
+          expected_c = {(cid, t) for cid, rec in c["claims"].items() for t in rec["producers"]}
+          actual_r = {(x["claim_id"], x["target"]) for x in rows if x["group"] == "R_ACCEPTED" and x["role"] == "accepted_claim_producer"}
+          actual_c = {(x["claim_id"], x["target"]) for x in rows if x["group"] == "C_ACCEPTED" and x["role"] in {"accepted_claim_producer","accepted_real_input"}}
+          assert expected_r <= actual_r, sorted(expected_r - actual_r)
+          assert expected_c <= actual_c, sorted(expected_c - actual_c)
+          assert any(x["target"].endswith(".rPosNeg_decomposition") for x in rows)
+          assert any(x["target"].endswith(".narrowRFromAcceptedProducers") for x in rows)
+          assert any(x["target"].endswith(".quadraticComparison") and x["group"] == "ST2_EXP_011_GENERIC_COMPARISON" for x in rows)
+          print(f"ST2_EXP_004_GATE_A_TARGET_MANIFEST_PASS rows={len(rows)}")
+          PY
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Measure per-target F-04 declaration closures
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_a_dependency_matrix.py \
+            --json-out /tmp/st2-exp-004-gate-a-matrix.json \
+            | tee /tmp/st2-exp-004-gate-a.log
+          grep -Fq '"status": "GATE_A_PASS"' /tmp/st2-exp-004-gate-a-matrix.json
+          python3 - <<'PY'
+          import json
+          d = json.load(open("/tmp/st2-exp-004-gate-a-matrix.json"))
+          assert d["counts"]["unresolved_rows"] == 0
+          assert d["counts"]["internal_axiom_rows"] == 0
+          assert all(d["required_sanity"].values())
+          print("classification_counts=", d["classification_counts"])
+          for row in d["rows"]:
+              if row["classification"].startswith("F04_") and row["classification"] != "F04_FREE":
+                  print(row["classification"], row["claim_id"], row["target"], " -> ".join(row["f04_path"]))
+          PY
+
+      - name: Publish Gate-A scope
+        if: always()
+        shell: bash
+        run: |
+          {
+            printf '## ST2-EXP-004 — Gate A\n'
+            printf -- '- Exact head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Frozen accepted reference: `50f3031b8d2657cbe0710e73e5935d997d40e49b`\n'
+            printf -- '- Frozen Plan: `89c9dc9154e7ca469e5c94c177be223205ee9dbd`\n'
+            printf -- '- Changed factor remains F-04 only; this job measures dependencies and does not modify accepted mathematics.\n'
+            if test -f /tmp/st2-exp-004-gate-a-matrix.json; then
+              python3 - <<'PY'
+          import json, os
+          d=json.load(open("/tmp/st2-exp-004-gate-a-matrix.json"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write(f"- Gate-A status: `{d['status']}`\n")
+              f.write(f"- Rows / unique targets: `{d['counts']['rows']}` / `{d['counts']['unique_targets']}`\n")
+              f.write(f"- Classifications: `{d['classification_counts']}`\n")
+          PY
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Gate-A evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-004-gate-a-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-004-provenance.txt
+            /tmp/st2-exp-004-control-immutability.txt
+            /tmp/st2-exp-004-011-lifecycle.json
+            /tmp/st2-exp-004-gate-a-matrix.json
+            /tmp/st2-exp-004-gate-a.log
+          if-no-files-found: warn
