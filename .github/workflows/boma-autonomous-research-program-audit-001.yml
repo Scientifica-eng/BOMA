@@ -10,6 +10,7 @@ on:
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
       - 'LAB/PDSA/RESEARCH_PROGRAM_AUTHORIZATION_TEMPLATE_001.md'
+      - 'LAB/PDSA/RESEARCH_PROGRAM_*.md'
       - 'LAB/PDSA/tools/autonomous_research_program_audit.py'
       - '.github/workflows/boma-autonomous-research-program-audit-001.yml'
   push:
@@ -22,6 +23,7 @@ on:
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
       - 'LAB/PDSA/RESEARCH_PROGRAM_AUTHORIZATION_TEMPLATE_001.md'
+      - 'LAB/PDSA/RESEARCH_PROGRAM_*.md'
       - 'LAB/PDSA/tools/autonomous_research_program_audit.py'
       - '.github/workflows/boma-autonomous-research-program-audit-001.yml'
 
@@ -54,7 +56,8 @@ jobs:
           cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
           ## Autonomous Research Program Governance Audit
 
-          This read-only guard verifies the machine-readable policy/state and
-          required handoff markers. It does not authorize a research program,
+          This read-only guard verifies the machine-readable policy/state,
+          active owner-authorization record when present, queue frontier, and
+          required handoff markers. It does not create authority by itself,
           start an experiment, change accepted mathematics, or merge research.
           EOF
