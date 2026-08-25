@@ -1,11 +1,11 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / NO ACTIVE EXPERIMENT`  
-**Current status date:** `2026-08-24`  
+**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN`  
+**Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest architecture Act:** `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`  
-**Current program frontier:** `MERGE/VERIFY ST2-EXP-011 ARCHITECTURE ACT → RE-READ SYNCHRONIZED MAIN → FREEZE INDEPENDENT ST2-EXP-004 PLAN; ST2-EXP-004 NOT ACTIVE`.
+**Current program frontier:** `ST2-EXP-004 ACTIVE / GATE A — EXACT F-04 DEPENDENCY MAP`.
 
 This is the compact current-state handoff index. Historical run lineages remain
 in stage-specific PDSA/evidence/failure records and are not erased by current-state integration.
@@ -41,7 +41,8 @@ CA-20                                   ACCEPTED C
 ```
 
 Accepted exports, selected routes, accepted Lean inputs, and accepted Claim
-meanings are unchanged by `ST2-EXP-011` and by its architecture integration.
+meanings remain unchanged. `ST2-EXP-004` is research-only and changes no
+accepted producer or acceptance contract merely by becoming active.
 
 ## 2. Permanent verified alternative architecture
 
@@ -222,11 +223,24 @@ ST2-EXP-001  CLOSED / PASS / PRODUCTION DEPENDENCY LESSON INTEGRATED
 ST2-EXP-002  CLOSED / PASS / ROUTE-Q + NON-ACCEPTANCE JUNCTION INTEGRATED
 ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT / CAUCHY + R JUNCTION INTEGRATED
 ST2-EXP-011  CLOSED / PASS / COMPARISON-INTERFACE LESSON INTEGRATED
-ACTIVE STAGE-TWO EXPERIMENT = NONE
+ST2-EXP-004  ACTIVE / PLAN FROZEN / GATE A NEXT
 ```
 
-Experimental Lean sources remain research-only unless separately promoted by a
-controlled accepted-source change.
+`ST2-EXP-004` exact frozen authority:
+
+```text
+accepted reference  50f3031b8d2657cbe0710e73e5935d997d40e49b
+accepted tree       e4842acdf2b08c8db54b45d0798c36ee7565f351
+candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
+Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
+origin              DECISION_POINT / R-DP-003
+single factor       F-04 total-comparability provider
+current gate        GATE A — exact F-04 dependency map
+```
+
+The Frozen Plan file is immutable. Gate 0 changes only lifecycle/governance
+compatibility and current-state pointers; it does not modify accepted
+mathematics.
 
 ## 7. Lifecycle-CI governance lesson
 
@@ -238,34 +252,48 @@ historical experiment closure = monotone evidence
 current active/frontier state  = time-varying program state
 ```
 
-Historical 001–003 workflows can therefore remain reproducible during later
-cycles without forcing the global active-experiment pointer to remain empty
-forever. The preserved failures remain research/governance provenance.
+The 011 lifecycle auditor now verifies all frozen/closed/integrated 011 evidence
+while permitting one later independently frozen active experiment. It also
+requires the active 004 record to point to `R-DP-003`, accepted reference
+`50f3031b...`, and Frozen Plan commit `89c9dc9154...`.
 
-## 8. Sequence frontier — ST2-EXP-004 is next but not active
+## 8. ST2-EXP-004 scientific boundary
 
-The owner-sequenced next experiment is `ST2-EXP-004`, whose intended single
-changed factor is the logical regime at `R-DP-003`.
-
-It **must not start from this integration branch** and has **no Frozen Plan yet**.
-The required sequence is:
+The experiment changes only the F-04 logical provider:
 
 ```text
-complete and merge BOMA-ST2-LEARNING-INTEGRATION-002
-  ↓
-synchronize and verify current main
-  ↓
-re-read current main and current R-DP-003 authorities
-  ↓
-prepare a new independent ST2-EXP-004 Frozen Plan from that exact main
-  ↓
-open a separate ST2-EXP-004 branch
-  ↓
-begin Do only after the Plan is frozen
+baseline:
+  cutComparability_classical
+  → rLE_total_classical
+
+alternative:
+  same LowerCut / CutEquiv / RBOMA / CutLE / rLE
+  same accepted operation definitions
+  same constructive rLE reflexive/transitive/antisymmetric core
+  no selected F-04 provider in the alternative assembly
 ```
 
-No ST2-EXP-011 Plan, branch state, or experimental implementation becomes the
-Plan of ST2-EXP-004.
+Other localized classical commitments remain controls:
+
+```text
+F-05 finite cut-membership search / bracketing
+F-06 positive representative extraction
+F-07 strict rational-density witness extraction
+```
+
+Therefore removing F-04 must never be described as making all accepted R
+constructive.
+
+Known direct sensitivity before Gate A measurement:
+
+```text
+RStageIntegrationCertificate.orderTotal = rLE_total_classical
+rPosNeg_decomposition uses rLE_total_classical rZero x
+ST2-EXP-001 C-production interface contains orderTotal
+```
+
+No further Claim-level dependency conclusion is promoted until Gate A computes
+actual declaration closures.
 
 ## 9. Current architectural authorities
 
@@ -273,6 +301,8 @@ Read current state in this order:
 
 ```text
 LAB/PDSA/STATUS.md
+LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
@@ -286,6 +316,7 @@ LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/R_DAG.md
 LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
 LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
 LAB/00_ARCHITECTURE/views/DECISION_BRANCH_JUNCTION_VIEW.md
