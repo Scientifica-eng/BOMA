@@ -177,6 +177,45 @@ jobs:
             printf 'forbidden implementation producers absent\n'
           } | tee /tmp/st2-exp-015-source-boundary.txt
 
+      - name: Gate C — validate independent field manifest and firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          gateb=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_INDEPENDENT_INPUTS.txt
+          field=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
+          source=LAB/payloads/lean/CStage/ST2Exp015CauchyQField.lean
+          evidence=LAB/PDSA/experiments/ST2-EXP-015_GATE_C_NATIVE_CAUCHY_Q_FIELD_001.md
+          for f in "$gateb" "$field" "$source" "$evidence"; do
+            test -s "$f"
+          done
+          n="$(wc -l < "$gateb" | tr -d ' ')"
+          head -n "$n" "$field" > /tmp/st2-exp-015-gate-c-prefix.txt
+          cmp -s "$gateb" /tmp/st2-exp-015-gate-c-prefix.txt
+          test "$(sed -n "$((n+1))p" "$field")" = "$source"
+          test "$(wc -l < "$field" | tr -d ' ')" = "$((n+1))"
+
+          forbidden_manifest='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|ST2Exp003CauchyQuadraticRebuild|ST2Exp011|ST2Exp014'
+          if grep -En "$forbidden_manifest" "$field"; then
+            printf '015 Gate-C field manifest crossed a forbidden implementation boundary\n' >&2
+            exit 1
+          fi
+          forbidden_source='RBOMA|RStageIntegration002|ST2Exp002|BOMA\.R\.Dedekind|ST2Exp003DedekindCauchyFieldIsomorphism|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden_source" "$source"; then
+            printf '015 Gate-C source crossed a forbidden implementation/selector boundary\n' >&2
+            exit 1
+          fi
+          grep -Fq 'structure CauchyQRingCertificate' "$source"
+          grep -Fq 'theorem q_inverse_exists' "$source"
+          grep -Fq 'structure CauchyQFieldCertificate' "$source"
+          grep -Fq 'theorem cauchyQFieldCertificate' "$source"
+          {
+            printf 'gate_b_manifest=%s\n' "$gateb"
+            printf 'gate_c_field_manifest=%s\n' "$field"
+            printf 'gate_c_source=%s\n' "$source"
+            printf 'field manifest is Gate-B prefix plus one native field source\n'
+            printf 'forbidden field-transport and selector producers absent\n'
+          } | tee /tmp/st2-exp-015-gate-c-boundary.txt
+
       - name: Setup pinned Lean
         uses: leanprover/lean-action@v1
         with:
@@ -228,6 +267,48 @@ jobs:
           fi
           cat /tmp/st2-exp-015-gate-b-closure.json
 
+      - name: Gate C — elaborate native Cauchy Route-Q ring and field
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
+          target=/tmp/BOMAST2Exp015CauchyQGateC.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          cat >> "$target" <<'EOF'
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_mul_assoc
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_mul_add_right
+          #print axioms BOMA.C.StageTwo.CauchyQField015.cauchyQRingCertificate
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_mul_conj
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_norm_nonzero
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_inverse_exists
+          #print axioms BOMA.C.StageTwo.CauchyQField015.q_inverse_unique
+          #print axioms BOMA.C.StageTwo.CauchyQField015.cauchyQFieldCertificate
+          EOF
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-015-gate-c-lean.log
+
+      - name: Gate C — extract independent field declaration closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C --manifest "$manifest" \
+            --target BOMA.C.StageTwo.CauchyQField015.cauchyQFieldCertificate \
+            --json-out /tmp/st2-exp-015-gate-c-closure.json \
+            > /tmp/st2-exp-015-gate-c-dependency-audit.log
+          forbidden='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|ST2Exp003CauchyQuadraticRebuild|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose'
+          if grep -En "$forbidden" /tmp/st2-exp-015-gate-c-closure.json; then
+            printf 'Gate-C declaration closure contains forbidden field-transport or selector provenance\n' >&2
+            exit 1
+          fi
+          cat /tmp/st2-exp-015-gate-c-closure.json
+
       - name: Run autonomous-program and architecture regressions
         shell: bash
         run: |
@@ -246,9 +327,9 @@ jobs:
             printf -- '- Exact head: `%s`\n' "$(git rev-parse HEAD)"
             printf -- '- Frozen Plan: `1accee613630ae876b6ca9dcf820737ab89a168c`.\n'
             printf -- '- Single factor: with RCBOMA fixed, C realization Route P -> Route Q.\n'
-            printf -- '- Current verified scope in this workflow revision: Gate A + Gate B native quotient/extractor.\n'
-            printf -- '- Independent Q manifest excludes Dedekind/002/H5/Route-P implementation producers.\n'
-            printf -- '- No SELECTS, accepted export, or acceptance contract is changed.\n'
+            printf -- '- Current workflow scope: Gate A + Gate B + Gate C independent native Route-Q field closure.\n'
+            printf -- '- Gate-C field manifest extends the Gate-B manifest only with the native field source.\n'
+            printf -- '- No pair-field transport, SELECTS change, accepted export, or acceptance contract change is permitted.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve ST2-EXP-015 exact evidence
@@ -265,6 +346,10 @@ jobs:
             /tmp/st2-exp-015-gate-b-lean.log
             /tmp/st2-exp-015-gate-b-dependency-audit.log
             /tmp/st2-exp-015-gate-b-closure.json
+            /tmp/st2-exp-015-gate-c-boundary.txt
+            /tmp/st2-exp-015-gate-c-lean.log
+            /tmp/st2-exp-015-gate-c-dependency-audit.log
+            /tmp/st2-exp-015-gate-c-closure.json
             /tmp/st2-exp-015-autonomy-audit.txt
             /tmp/st2-exp-015-architecture-audit.txt
           if-no-files-found: ignore

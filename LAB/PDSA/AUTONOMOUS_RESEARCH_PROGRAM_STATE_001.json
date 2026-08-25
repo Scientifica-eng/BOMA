@@ -19,14 +19,14 @@
   "active_frozen_plan_sha": "1accee613630ae876b6ca9dcf820737ab89a168c",
   "active_experiment_frozen_reference_sha": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
   "active_experiment_origin_record": "LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json",
-  "active_work_head_before_ci_state_commit": "5282e9fcb9f5996d24e315ca71821bd812331622",
-  "last_verified_head": "5282e9fcb9f5996d24e315ca71821bd812331622",
-  "waiting_on": null,
+  "active_work_head_before_ci_state_commit": "d2e86e39abaa011d42be63464855bbcbd2466743",
+  "last_verified_head": "d2e86e39abaa011d42be63464855bbcbd2466743",
+  "waiting_on": "BOMA ST2-EXP-015 Cauchy Route Composition Square — V5 / Gate C exact-head verification",
   "owner_required_reason": null,
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": "ST2-EXP-015",
-    "active_experiment_status": "GATE_B_EXACT_PASS / TECHNICAL_GOVERNANCE_SYNC_RECOVERY_REQUIRED_BEFORE_GATE_C",
+    "active_experiment_status": "GATE_C_IMPLEMENTED / EXACT_HEAD_CI_PENDING / GATE_D_NOT_AUTHORIZED_YET",
     "latest_completed_experiment": "ST2-EXP-014",
     "latest_completed_status": "CLOSED_PASS_RESEARCH_ONLY_MERGED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-004",
@@ -42,8 +42,26 @@
     "artifact_sha256": "b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02",
     "result": "PASS"
   },
+  "governance_sync_exact_verification": {
+    "head": "d2e86e39abaa011d42be63464855bbcbd2466743",
+    "run": 32887191366,
+    "job": 97930290379,
+    "artifact": 9578032413,
+    "artifact_sha256": "acf1ae5a13d8ad98c840df3b7f88d6357453ae9e1e9f90d0d4c3041c8dd43374",
+    "result": "PASS"
+  },
+  "gate_c_pending": {
+    "source": "LAB/payloads/lean/CStage/ST2Exp015CauchyQField.lean",
+    "manifest": "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt",
+    "evidence_record": "LAB/PDSA/experiments/ST2-EXP-015_GATE_C_NATIVE_CAUCHY_Q_FIELD_001.md",
+    "scientific_factor_changed": false,
+    "route_p_transport_used": false,
+    "global_selector_added": false,
+    "result": "EXACT_CI_PENDING"
+  },
   "technical_recovery": {
-    "classification": "CURRENT_STATE_REGISTER_ORIGIN_LEDGER_SYNCHRONIZATION",
+    "classification": "CURRENT_STATE_REGISTER_ORIGIN_LEDGER_SYNCHRONIZATION_COMPLETED_AND_EXACT_VERIFIED",
+    "verified_head": "d2e86e39abaa011d42be63464855bbcbd2466743",
     "scientific_factor_changed": false,
     "frozen_plan_changed": false,
     "claim_cone_changed": false,
@@ -57,7 +75,7 @@
     "sequence_critical_discovery_means": "OWNER_REQUIRED",
     "program_completion_requires_program_level_synthesis": true
   },
-  "next_legal_action": "SYNCHRONIZE_ST2_EXP_015_EXPERIMENT_REGISTER_AND_PERMANENT_ORIGIN_LEDGER_WITH_FROZEN_PLAN_AND_GATE_B_EXACT_PASS_THEN_RERUN_GOVERNANCE_EXACT_HEAD_BEFORE_GATE_C",
+  "next_legal_action": "WAIT_FOR_EXACT_ST2_EXP_015_GATE_C_V5_THEN_CLASSIFY_RESULT; NO_GATE_D_WRITE_UNTIL_GATE_C_EXACT_PASS",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
