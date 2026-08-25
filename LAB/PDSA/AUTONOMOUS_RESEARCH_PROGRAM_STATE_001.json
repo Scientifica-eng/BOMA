@@ -4,6 +4,7 @@
   "state": "PROGRAM_READY",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
+  "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
   "program_baseline_main_sha": "1fac73b24b9b2e0db9dafc95e1944267aa9040da",
   "authorized_experiment_queue": [
     "ST2-EXP-014",
