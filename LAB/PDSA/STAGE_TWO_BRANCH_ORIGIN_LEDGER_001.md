@@ -1,8 +1,8 @@
 # STAGE_TWO_BRANCH_ORIGIN_LEDGER_001 — Architectural Branch Attachment
 
 **Document ID:** `BOMA-ST2-ORIGIN-LEDGER-001`  
-**Status:** `FOUR CLOSED EXPERIMENTS / ST2-EXP-011 PASS / VERIFIED LESSONS INTEGRATED / NO ACTIVE EXPERIMENT`  
-**Date:** `2026-08-24`  
+**Status:** `FOUR CLOSED EXPERIMENTS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN`  
+**Date:** `2026-08-25`  
 **Machine-readable authority:** `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
 
 ## 1. Git ancestry is not mathematical attachment
@@ -52,30 +52,30 @@ C-BLOCK-001
 Junction. A generic interface shared by multiple producers is not automatically
 a Junction.
 
-## 3. Closed experiment attachment matrix
+`ST2-EXP-004` does not alter this accepted baseline by becoming active.
 
-| Attribute | ST2-EXP-001 | ST2-EXP-002 | ST2-EXP-003 | ST2-EXP-011 |
-| --- | --- | --- | --- | --- |
-| Attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` | `DECISION_POINT` | `BLOCK` |
-| Exact origin | `BOMA-C-R-DEP-001` | `C-DP-001` | `R-DP-001` | `C-COMPARE-BLOCK-001` |
-| Common/upstream accepted unit | `R-BLOCK-001` | `R-BLOCK-001` | `Q-BLOCK-002` | `R-BLOCK-001` + selected `C-BLOCK-001` baseline |
-| Unchanged accepted export | `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` | `R-BLOCK-001` + downstream `C-BLOCK-002 / CA-20` | `C-BLOCK-002 / CA-20` |
-| First changed object | R→C interface package | C carrier/identity realization | R completion carrier/identity | comparison scalar carrier/operation hard-wiring |
-| Experimental alternative | explicit 16-field production interface | expression-normalization quotient field | rational Cauchy completion field | generic scalar ops + coordinate laws |
-| Reconvergence / compatibility | same selected carrier/Claims | explicit inverse R-field isomorphism | Dedekind/Cauchy isomorphism + research Junction | common generic comparison interface; **not a Junction** |
-| Research Junction | none | `ST2-EXP-002-PQ-J-001` | `ST2-EXP-003-R-J-001` | none |
-| Canonical-acceptance change | none | none | none | none |
-| Result | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` |
-| Learning integration | `INTEGRATED-001` | `INTEGRATED-001` | `INTEGRATED-001` | `INTEGRATED-002` |
+## 3. Experiment attachment matrix
+
+| Attribute | ST2-EXP-001 | ST2-EXP-002 | ST2-EXP-003 | ST2-EXP-011 | ST2-EXP-004 |
+| --- | --- | --- | --- | --- | --- |
+| Attachment kind | `DEPENDENCY_EDGE` | `DECISION_POINT` | `DECISION_POINT` | `BLOCK` | `DECISION_POINT` |
+| Exact origin | `BOMA-C-R-DEP-001` | `C-DP-001` | `R-DP-001` | `C-COMPARE-BLOCK-001` | `R-DP-003` |
+| Frozen accepted reference | historical | historical | `ea920b6b...` | `b49826e5...` | `50f3031b...` |
+| Frozen Plan commit | historical | historical | `70dd2f30...` | `5cc05ef1...` | `89c9dc91...` |
+| First changed object | R→C interface package | C carrier/identity realization | R completion carrier/identity | comparison scalar hard-wiring | F-04 total-comparability logical provider |
+| Accepted carrier/operations changed? | no | research alternative carrier only | research alternative carrier only | no | **no** |
+| Canonical-acceptance change | none | none | none | none | none while active |
+| Result | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` | `CLOSED / PASS` | `ACTIVE / NO RESULT YET` |
+| Learning integration | `INTEGRATED-001` | `INTEGRATED-001` | `INTEGRATED-001` | `INTEGRATED-002` | not applicable yet |
 
 Current Stage-Two lifecycle frontier:
 
 ```text
-ACTIVE EXPERIMENT = NONE
+ACTIVE EXPERIMENT = ST2-EXP-004
 ST2-EXP-001..003 + ST2-EXP-011 = CLOSED / PASS / LESSONS INTEGRATED
-NEXT OWNER-SEQUENCED EXPERIMENT = ST2-EXP-004
-ST2-EXP-004 = NOT ACTIVE / NO FROZEN PLAN
-REQUIRED BEFORE 004 PLAN = merge integration 002 → sync/verify main → re-read main
+ST2-EXP-004 Frozen Plan = 89c9dc9154e7ca469e5c94c177be223205ee9dbd
+ST2-EXP-004 origin = DECISION_POINT / R-DP-003
+CURRENT GATE = GATE A — EXACT F-04 DEPENDENCY MAP
 ```
 
 ## 4. ST2-EXP-001 — dependency-edge experiment
@@ -110,9 +110,6 @@ C-DP-001
 Route Q and its Junction are permanent verified non-selected/non-acceptance
 architecture. They do not alter `C-DP-001 SELECTS C-ROUTE-P`, `C-J-001`, or
 `CA-20`.
-
-Historical governance failures exposed during this experiment remain recorded
-in the machine ledger; later integration did not erase them.
 
 ## 6. ST2-EXP-003 — closed independent real-completion decision experiment
 
@@ -154,12 +151,6 @@ Cauchy Quadratic Rebuild
   sha256   72475d7c6bc489bf532480f5075699f91304c4128b52e446275855e6a31555fa
 ```
 
-Lifecycle authority:
-`LAB/PDSA/experiments/ST2-EXP-003_LIFECYCLE_CLOSURE_001.md`.
-
-Integration authority:
-`LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`.
-
 `R-DP-001` still SELECTS Dedekind; Cauchy/H5/H6 remain nonaccepted verified
 research provenance.
 
@@ -182,8 +173,7 @@ generic scalar operations + explicit quadratic-coordinate laws
 ```
 
 The typed origin is the existing **Block** `C-COMPARE-BLOCK-001`. The experiment
-does not create a new Block and creates no Junction: compatibility through a
-common interface is not itself a reconvergence object.
+does not create a new Block and creates no Junction.
 
 Frozen accepted Git origin:
 `b49826e58261a71634cd12756e8afda28920088f`.
@@ -203,57 +193,12 @@ zero / one / neg / add / mul
 ```
 
 plus explicit coordinate constructor, generation, uniqueness, and preservation
-laws:
+laws. This comparison surface is distinct from the sixteen-property
+**production** surface of `BOMA-C-R-DEP-001`.
 
-```text
-coord
-coordinateGeneration
-coordinateUnique
-coordinateZero
-coordinateOne
-coordinateReal
-coordinateImag
-coordinateNeg
-coordinateAdd
-coordinateMul
-```
+### 7.2 Final lifecycle evidence and merge
 
-It does not directly need scalar order, completeness, density, Archimedean
-properties, a general field-law bundle, or inverse-existence/uniqueness fields.
-Inverse-witness preservation transports a supplied witness rather than selecting
-an inverse.
-
-This comparison surface is distinct from the sixteen-property **production**
-surface of `BOMA-C-R-DEP-001`.
-
-### 7.2 Accepted and native instances
-
-The accepted RBOMA adapter preserves old `Related` semantics definitionally
-(`related_iff_accepted` by `rfl`).
-
-The native H6 adapter uses `RCBOMA` and the H6 pair carrier directly. Its
-mathematical assembly excludes H5 `cToD` transport and selected Dedekind/RBOMA
-implementation sources.
-
-Logical cost:
-
-```text
-generic comparison roots    no axioms
-native H6 roots              [propext, Quot.sound]
-accepted adapter roots       [propext, Classical.choice, Quot.sound]
-```
-
-The difference is inherited formal provenance, not generic-interface necessity.
-
-### 7.3 Relation/function boundary
-
-Totality and single-valuedness remain relation-level facts. Functional maps are
-available only from explicit `CoordinateExtractor` data. No global coordinate or
-inverse selector was introduced.
-
-### 7.4 Preserved pre-closure evidence
-
-Earlier green checkpoint after lifecycle compatibility correction:
+Preserved pre-closure checkpoint:
 
 ```text
 head      ef116405c08475ec8702d9177a5106d7d0bfe525
@@ -262,84 +207,117 @@ artifact  9529812715
 sha256    f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1
 ```
 
-This remains historical evidence and is not relabeled as the final closed head.
-
-### 7.5 Final lifecycle-closed exact verification
+Final lifecycle-closed evidence:
 
 ```text
 head      632a7134f26daf9dd781e3546804941f429a4246
 run       32754345656
 artifact  9530261359
 sha256    d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
-result    SUCCESS / nine relevant workflows green
 ```
 
-Preserved failures remain documented in:
-
-```text
-LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMMENT_FALSE_POSITIVE.md
-LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md
-```
-
-Final Study/Act:
-`LAB/PDSA/experiments/ST2-EXP-011_FINAL_STUDY_ACT_001.md`.
-
-Lifecycle closure:
-`LAB/PDSA/experiments/ST2-EXP-011_LIFECYCLE_CLOSURE_001.md`.
-
-### 7.6 Research/lifecycle merge identity
-
-PR #13 merged the exact verified tree into `main` as:
+Research/lifecycle merge:
 
 ```text
 merge commit 72394878854aa69e865d17567959bec1daa70e6d
 parent 1     b49826e58261a71634cd12756e8afda28920088f
 parent 2     632a7134f26daf9dd781e3546804941f429a4246
 merge tree   168fc1267313810e622c2206fa8a91f24decb4b7
+content drift from verified head = NONE
 ```
 
-Comparison of the final verified head with the merge commit reports zero changed
-files. The merge added ancestry only; no post-verification content drift exists.
-
-### 7.7 Learning-to-Construction integration
-
-The durable lesson is integrated by:
-
+Learning-to-Construction authority:
 `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`.
 
-Permanent current-state classification:
+Permanent classification:
 
 ```text
 ST2-EXP-011 = CLOSED / PASS / LESSON INTEGRATED
-C-COMPARE-BLOCK-001 comparison surface = five scalar ops + coordinate laws
 accepted Related semantics = unchanged
-native RCBOMA/H6 generic instance = verified / nonaccepted
 experimental generic Lean layer = research-only
 accepted CQuadraticComparison001 = unchanged
-BOMA-C-R-DEP-001 production surface = unchanged 16 properties
 accepted R/C and SELECTS = unchanged
 new Block / Decision / Junction = none
 ```
 
-## 8. Historical closure versus current frontier
+## 8. ST2-EXP-004 — active R-DP-003 logical-regime experiment
 
-ST2-EXP-011 exposed a governance distinction that is now explicit:
+Exact attachment:
+
+```text
+R-DP-002 / accepted quotient identity
+        ↓
+constructive rLE core
+        ↓
+R-DP-003
+   baseline: localized F-04 classical CutComparability provider
+   experiment: remove only that provider from the alternative assembly
+        ↓
+measure exact R/C dependency cone
+```
+
+Frozen authority:
+
+```text
+accepted reference  50f3031b8d2657cbe0710e73e5935d997d40e49b
+accepted tree       e4842acdf2b08c8db54b45d0798c36ee7565f351
+candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
+Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
+Frozen Plan path    LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+```
+
+Single changed factor:
+
+```text
+remove only:
+  BOMA.R.DedekindOrderClassical001.cutComparability_classical
+  BOMA.R.DedekindOrderClassical001.rLE_total_classical
+
+preserve:
+  LowerCut / CutEquiv / cutSetoid / RBOMA
+  CutLE / rLE
+  constructive rLE_refl / rLE_trans / rLE_antisymm
+  accepted operation definitions
+  all accepted Q/R/C source manifests
+  F-05 / F-06 / F-07 localized classical providers as controls
+```
+
+Known direct consumers before Gate A:
+
+```text
+RStageIntegrationCertificate.orderTotal
+rPosNeg_decomposition
+ST2-EXP-001 NarrowROrderedFieldCertificate.orderTotal
+```
+
+These are hypotheses/known direct references, not a substitute for the required
+Gate-A declaration-closure matrix.
+
+Current state:
+
+```text
+ST2-EXP-004 = ACTIVE / PLAN FROZEN
+mathematical result = NONE YET
+current gate = GATE A — EXACT F-04 DEPENDENCY MAP
+accepted R/C = UNCHANGED
+```
+
+## 9. Historical closure versus current frontier
+
+The repository explicitly distinguishes:
 
 ```text
 historical experiment closure = monotone evidence
 current active/frontier state  = time-varying program state
 ```
 
-The strict historical 001–003 no-active closed-frontier audit remains
-reproducible for its historical epoch. Later cycles verify preservation through
-`stage_two_historical_closure_audit.py` instead of interpreting a closed
-experiment as requiring an empty global frontier forever.
+The 011 lifecycle audit now preserves every frozen, final-closed, merge, and
+integration fact while permitting one later independently frozen active cycle.
+A later active experiment must never mutate the historical closure records.
 
-This is governance knowledge, not a mathematical change to 001–003 or 011.
+## 10. Required fields for controlled branches
 
-## 9. Required fields for future controlled branches
-
-Before a new cycle leaves Plan, record:
+Before a cycle leaves Plan, record:
 
 ```text
 experiment_id
@@ -363,10 +341,14 @@ verified evidence after execution
 Do not retroactively modify a previously frozen Plan to fill a missing field.
 Add an explicitly dated supplementary ledger entry instead.
 
-## 10. Current sequence boundary
+## 11. Current sequence boundary
 
-The single-active slot is empty. `ST2-EXP-004` is owner-sequenced next but is
-not active and has no Frozen Plan. It may receive a Plan only after
-`BOMA-ST2-LEARNING-INTEGRATION-002` is merged, the resulting `main` is
-synchronized/verified, and the current architecture—especially `R-DP-003`—is
-re-read from that exact `main`.
+The single-active slot is occupied by `ST2-EXP-004`. No other Stage-Two
+experiment may become active until 004 leaves the active state through an
+explicit lifecycle disposition.
+
+The next required action is exactly:
+
+```text
+ST2-EXP-004 GATE A — EXACT F-04 DEPENDENCY MAP
+```
