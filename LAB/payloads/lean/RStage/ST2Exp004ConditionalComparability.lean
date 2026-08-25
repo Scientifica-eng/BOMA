@@ -119,7 +119,7 @@ theorem rNeg_nonpos_of_nonneg004 {x : RBOMA}
 theorem rNeg_nonneg_of_nonpos004 {x : RBOMA}
     (hx0 : rLE x rZero) :
     rLE rZero (rNeg x) := by
-  refine Quotient.inductionOn x ?_ h0x
+  refine Quotient.inductionOn x ?_ hx0
   intro A hA0
   change rLE (rmk (principalCut qZero)) (rmk (cutNeg A))
   apply (rLE_mk_iff (principalCut qZero) (cutNeg A)).2
