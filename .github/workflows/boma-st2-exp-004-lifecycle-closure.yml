@@ -12,7 +12,9 @@ on:
       - 'LAB/PDSA/experiments/ST2-EXP-004_*'
       - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
       - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md'
       - 'LAB/PDSA/STATUS.md'
+      - 'LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md'
       - 'LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py'
       - 'LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py'
@@ -50,7 +52,7 @@ jobs:
           git diff --exit-code "$frozen" HEAD -- "$plan"
           printf 'verified_head=%s\nfrozen_reference=%s\nfrozen_plan=%s\n' "$expected" "$baseline" "$frozen" | tee /tmp/st2-exp-004-closure-provenance.txt
 
-      - name: Prove accepted Q/R/C controls remain unchanged
+      - name: Prove accepted Q/R/C mathematical controls remain unchanged
         shell: bash
         run: |
           set -euo pipefail
@@ -69,10 +71,15 @@ jobs:
               git diff --exit-code "$baseline" HEAD -- "$src"
             done < "$manifest"
           done
-          git diff --exit-code "$baseline" HEAD -- LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
-          echo ST2_EXP_004_ACCEPTED_CONTROLS_UNCHANGED_PASS
 
-      - name: Verify closed lifecycle and historical monotonicity
+          decision='LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md'
+          grep -Fq 'RESOLVED — LOCALIZED CLASSICAL COMPARABILITY SELECTED FOR STAGE I' "$decision"
+          grep -Fq 'localized classical witness of CutComparability' "$decision"
+          grep -Fq 'RTotality ↔ CutComparability' "$decision"
+          grep -Fq 'BOMA-ST2-LEARNING-INTEGRATION-003' "$decision"
+          echo ST2_EXP_004_ACCEPTED_CONTROLS_AND_RDP003_SELECTION_UNCHANGED_PASS
+
+      - name: Verify closed lifecycle, integrated lesson, and historical monotonicity
         shell: bash
         run: |
           set -euo pipefail
@@ -86,11 +93,12 @@ jobs:
           python3 LAB/PDSA/tools/autonomous_research_program_audit.py
           grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/011.json
           grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/004.json
+          grep -Fq 'BOMA-ST2-LEARNING-INTEGRATION-003' /tmp/004.json
           grep -Fq 'ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS' /tmp/historical.json
           rm -rf LAB/00_ARCHITECTURE/tools/__pycache__ LAB/PDSA/tools/__pycache__
           git diff --exit-code
           git status --porcelain=v1 | test ! -s /dev/stdin
-          echo ST2_EXP_004_READ_ONLY_CLOSED_STATE_PASS
+          echo ST2_EXP_004_READ_ONLY_INTEGRATED_CLOSED_STATE_PASS
 
       - name: Upload closed-state evidence
         if: always()
