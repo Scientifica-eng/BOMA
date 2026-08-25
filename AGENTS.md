@@ -12,6 +12,8 @@ LAB/PDSA/STATUS.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
+LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md
+LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
@@ -29,6 +31,10 @@ LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
 LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
 LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 ```
+
+If a later program supersedes `ST2-RP-001`, follow the exact active-program
+paths named by `AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json` rather than assuming
+these two current paths remain active forever.
 
 Historical records preserve provenance; they do not override later synchronized current-state authorities.
 
@@ -52,10 +58,15 @@ C alternative         C-ROUTE-Q PERMANENT VERIFIED / NON-SELECTED
 C alt Junction        ST2-EXP-002-PQ-J-001 / NON-ACCEPTANCE
 ST2-EXP-001..004+011  CLOSED / PASS / VERIFIED LESSONS INTEGRATED
 ACTIVE EXPERIMENT     NONE
-AUTONOMOUS PROGRAM    NONE / NO_ACTIVE_PROGRAM
-NEXT EXPERIMENT       NOT AUTHORIZED
-REQUIRED NEXT ACT     STOP / OWNER AUTHORIZATION REQUIRED
+AUTONOMOUS PROGRAM    ST2-RP-001 / OWNER_AUTHORIZED / PROGRAM_READY
+AUTHORIZED QUEUE      ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
+NEXT EXPERIMENT       ST2-EXP-014 / AUTHORIZED / NO FROZEN PLAN
+ROUTINE MERGE         TRUE / EXACT PROGRAM-SCOPE GATES ONLY
+REQUIRED NEXT ACT     merge+verify program authority → re-read main → freeze independent 014 Plan
 ```
+
+Historical proposed IDs `ST2-EXP-005..013` remain candidate history and are not
+implicitly authorized or repurposed.
 
 ## 3. Authority distinction and fail-closed posture
 
@@ -69,10 +80,19 @@ B. exact scope of an OWNER_AUTHORIZED autonomous research program
 The current autonomous-program machine state is:
 
 ```text
-state = NO_ACTIVE_PROGRAM
-active_program_id = null
-authorized_experiment_queue = []
-routine_merge_authorized = false
+state = PROGRAM_READY
+active_program_id = ST2-RP-001
+authorized_experiment_queue = [ST2-EXP-014, ST2-EXP-015, ST2-EXP-016, ST2-EXP-017]
+queue_cursor = 0
+active_experiment = null
+routine_merge_authorized = true
+```
+
+Program authority is bounded by:
+
+```text
+LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md
+LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json
 ```
 
 The autonomous program policy remains fail-closed:
@@ -81,7 +101,9 @@ The autonomous program policy remains fail-closed:
 AMBIGUOUS AUTHORITY => OWNER_REQUIRED
 ```
 
-No new experiment, candidate activation, research branch, or Frozen Plan is authorized by the completed ST2-EXP-004 sequence.
+Queue reordering, a sequence-critical new prerequisite, Frozen-Plan factor
+change, out-of-scope assumption, SELECTS/acceptance/canonical change, or an
+unresolved authority conflict requires `OWNER_REQUIRED` before the change.
 
 ## 4. Learning-to-Construction rule
 
@@ -109,6 +131,11 @@ integrated dependency knowledge = accepted implementation refactor
 shared generic interface = Junction
 formal proof ancestry = mathematical necessity
 ```
+
+`ST2-RP-001` grants conditional routine merge authority only for program-scope
+research/lifecycle records and verified-knowledge integration satisfying its
+exact gates. It does not authorize accepted-source replacement, SELECTS change,
+acceptance promotion, or acceptance-contract revision.
 
 ## 5. Exact C-production R→C mathematical dependency rule
 
@@ -141,6 +168,11 @@ BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
 ```
 
 Do not confuse accepted-source formal ancestry with mathematical necessity.
+
+`ST2-EXP-016` is authorized to test replacement of exactly `orderTotal` by one
+exact algebraic nondegeneracy condition selected before Do and frozen in that
+experiment's independent Plan. Until 016 supplies evidence, the sixteen-field
+surface remains the current production authority.
 
 ## 6. Exact C comparison dependency rule — ST2-EXP-011
 
@@ -245,7 +277,8 @@ formal declaration ancestry ≠ mathematical necessity
 whole-source elaboration dependency ≠ theorem dependency
 ```
 
-A located-cut redesign changes the representation and is only a possible separately authorized future candidate.
+A located-cut redesign changes the representation and is outside `ST2-RP-001`.
+Record it only as a future candidate unless separately owner-authorized.
 
 ## 9. ST2-EXP-004 downstream C sensitivity rule
 
@@ -292,6 +325,9 @@ C-ROUTE-Q is permanent verified alternative
 ST2-EXP-002-PQ-J-001 is permanent verified non-acceptance Junction
 ```
 
+Program experiments 014–017 test robustness/minimality/generalization while
+these selected/accepted facts remain controls.
+
 ## 11. Stage-Two lifecycle rule
 
 Closed and integrated:
@@ -304,17 +340,21 @@ ST2-EXP-011
 ST2-EXP-004
 ```
 
-Current active cycle:
+Current program:
 
 ```text
-NONE
+ST2-RP-001 OWNER_AUTHORIZED / PROGRAM_READY
+queue: 014 → 015 → 016 → 017
+active experiment: NONE
+next: ST2-EXP-014 / NO FROZEN PLAN until authorization merge + synchronized main re-read
 ```
 
 Historical closure is monotone evidence. Never mutate closed Frozen Plan, Study/Act, failure, run, artifact, merge, or lifecycle records.
 
-## 12. Accepted-source firewall
+Each new queued experiment gets a separately frozen Plan from then-current
+synchronized main. Do not freeze 015–017 in advance.
 
-The ST2-EXP-004 Learning-to-Construction Act changes architecture knowledge only.
+## 12. Accepted-source firewall
 
 Do not change without a separate explicit accepted architectural decision:
 
@@ -323,13 +363,14 @@ accepted Q/R/C manifests or their manifest-listed mathematical sources
 R-DP-001 selection
 R-DP-003 Stage-I logical-regime selection
 R-BLOCK-001 accepted export
-BOMA-C-R-DEP-001 sixteen-property production surface
+current BOMA-C-R-DEP-001 production authority except as research-only test under 016
 C-DP-001 selection
 C-J-001
 C-BLOCK-002 / CA-20
 ```
 
-No new Block, Decision Point, or Junction is justified by ST2-EXP-004.
+Program-scope research may construct independent research producers/interfaces
+and compare them against these controls. A PASS is not automatic promotion.
 
 ## 13. Status authority
 
@@ -340,8 +381,10 @@ LAB/PDSA/STATUS.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json for autonomous-program state only
-LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+active owner-authorized program record named by state
+active program machine manifest named by state
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
@@ -351,22 +394,36 @@ README.md / AGENTS.md
 historical checkpoints
 ```
 
-The autonomous state file may govern autonomous-program execution; it may not rewrite mathematical or architectural facts.
+The autonomous state/program files govern execution scope; they may not rewrite mathematical or architectural facts.
+
+The old top-level stop markers in `STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` were
+correct at the completed 004 frontier. When they conflict with the later
+explicit `ST2-RP-001` authorization, treat them as historical current-frontier
+metadata; do not mutate closed experiment origin records. New experiment typed
+origins are carried by the active program manifest and must enter permanent
+origin records as each experiment is independently frozen.
 
 ## 14. Verification rules
 
-For the completed ST2-EXP-004 sequence:
+Historical ST2-EXP-004 evidence remains immutable and must continue to verify as
+historical closure. Do not reinterpret its final `NO_ACTIVE_PROGRAM` sentinel as
+a prohibition after the later explicit owner authorization of `ST2-RP-001`.
+
+For the current program authorization transition verify:
 
 ```text
-verify Frozen Plan blob immutability from 89c9dc9154...
-verify exact current maintenance head before merge
-prove accepted Q/R/C manifests/sources unchanged from 50f3031b...
-verify R-DP-003 still selects localized classical comparability
-verify historical Gate A-F records and final-run identities without scientific re-execution
-verify active_experiment = null and NO_ACTIVE_PROGRAM
-verify no new Block / Decision Point / Junction
-merge only with exact expected head
-then STOP
+program authorization baseline == exact main 1fac73b24b9b2e0db9dafc95e1944267aa9040da
+state == PROGRAM_READY
+active_program_id == ST2-RP-001
+queue == [014,015,016,017] exactly and without duplicates
+program manifest queue == state queue
+all four manifest entries have typed origin + one intended changed factor
+routine merge authority == true in authorization + state + manifest
+accepted selections/exports unchanged
+no research experiment activated by the authorization merge itself
+all governance/architecture checks pass on exact PR head
+merge exact verified authorization head with no content drift
+re-read synchronized main before freezing 014
 ```
 
 Pinned Lean toolchain for historical experiment evidence:
@@ -380,6 +437,31 @@ Lake packages: none
 
 Do not conduct experiment work on `main`.
 
-The only authorized branch in the completed ST2-EXP-004 sequence is the bounded maintenance Learning-to-Construction integration branch based on research merge `61adb8589c803e95e1b96ef38902320c8aa5df19`. After exact-head verification and integration merge, stop.
+Current legal sequence:
 
-Do not create, activate, freeze, or merge a new experiment without new explicit owner authority. No autonomous routine merge authority is active.
+```text
+merge exact verified ST2-RP-001 authorization/governance PR
+→ synchronize/re-read exact main
+→ create independent ST2-EXP-014 branch
+→ freeze immutable 014 Plan before Do
+→ execute/verify/Study/Act/close 014
+→ evaluate exact 014→015 transition gate
+→ AUTO_CONTINUE only if gate remains valid
+```
+
+The same pattern applies at every program transition. Routine merge authority is
+active only within exact `ST2-RP-001` scope and gates.
+
+Do not:
+
+```text
+work directly on main
+start 015 before 014 lifecycle closure + transition gate
+start 016 before 015 lifecycle closure + transition gate
+start 017 without the exact sufficient algebraic interface required from 016
+insert/reorder a sequence-critical experiment
+change a Frozen Plan after Do
+promote selected/accepted/canonical mathematics under routine merge authority
+```
+
+Any such need sets `OWNER_REQUIRED`.
