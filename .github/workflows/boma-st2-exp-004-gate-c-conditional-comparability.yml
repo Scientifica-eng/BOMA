@@ -114,7 +114,7 @@ jobs:
             --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rPosNeg_decomposition_conditional \
             --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.conditionalComparabilityCertificate \
             --json-out /tmp/st2-exp-004-gate-c-deps.json \
-            | tee /tmp/st2-exp-004-gate-c-deps.log
+            2>&1 | tee /tmp/st2-exp-004-gate-c-deps.log
           python3 - <<'PY'
           import json
           d=json.load(open('/tmp/st2-exp-004-gate-c-deps.json'))
@@ -161,7 +161,7 @@ jobs:
           ''')
           out.write_text('\n'.join(chunks)+'\n')
           PY
-          lake env lean /tmp/ST2Exp004GateCCheck.lean | tee /tmp/st2-exp-004-gate-c-axioms.txt
+          lake env lean /tmp/ST2Exp004GateCCheck.lean 2>&1 | tee /tmp/st2-exp-004-gate-c-axioms.txt
 
       - name: Upload Gate-C evidence
         if: always()
