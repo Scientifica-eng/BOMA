@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 PREPARING_EXPERIMENT / NO FROZEN PLAN / NO DO`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE B EXACT PASS / RECOVERY_ALLOWED / NO GATE C YET`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
 **Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
@@ -13,26 +13,32 @@
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 ACTIVE EXPERIMENT: ST2-EXP-015
-ACTIVE STATE: PREPARING_EXPERIMENT
+ACTIVE STATE: RECOVERY_ALLOWED
 QUEUE CURSOR: 1 / ST2-EXP-015
 SYNCHRONIZED MAIN BASELINE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
-FROZEN PLAN: NONE YET
+FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
+FROZEN PLAN COMMIT: 1accee613630ae876b6ca9dcf820737ab89a168c
 RESEARCH BRANCH: feature/stage-two-st2-exp-015-cauchy-route-composition-square
 ORIGIN: DECISION_POINT / C-DP-001
+GATE A: RECORDED
+GATE B: EXACT PASS
+LAST VERIFIED HEAD: 5282e9fcb9f5996d24e315ca71821bd812331622
+GATE C: NOT STARTED
 PREVIOUS TRANSITION: 014 → 015 / AUTO_CONTINUE PASS
 NEXT EXPERIMENT: ST2-EXP-016 / AUTHORIZED / QUEUED / WAITING 015 TRANSITION GATE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: prepare and commit ST2-EXP-015 immutable Frozen Plan alone before Do
+REQUIRED NEXT ACT: rerun exact-head governance/architecture verification after register + permanent origin-ledger synchronization; Gate C only if clean
 ```
 
-`ST2-EXP-014` is now closed `PASS`, exact-verified, merged, and integrated as
-bounded producer-substitutability knowledge. No accepted or selected architecture
-changed.
+`ST2-EXP-014` is closed `PASS`, exact-verified, merged, and integrated as bounded
+producer-substitutability knowledge. No accepted or selected architecture changed.
 
-`ST2-EXP-015` is preparation-only. It must hold Cauchy `RCBOMA` fixed and change
-only C realization Route P → Route Q. Accepted C Route P remains the control.
-No Frozen Plan exists yet and no Do is authorized until one is independently
-prepared and committed.
+`ST2-EXP-015` has an immutable Frozen Plan and Do has begun. Gate A is recorded;
+Gate B is exact-verified `PASS` on head
+`5282e9fcb9f5996d24e315ca71821bd812331622`. The only current block is technical
+current-state synchronization: this register and the permanent origin ledger must
+agree with higher-priority STATUS/state before Gate C may begin. The single
+scientific factor remains fixed Cauchy `RCBOMA` with C realization Route P → Q.
 
 ### Immutable historical ST2-EXP-004 final sentinel
 
@@ -71,7 +77,7 @@ preserved and their IDs are not reused.
 | Order | ID | Architectural origin | Intended single change | State |
 | ---: | --- | --- | --- | --- |
 | 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `CLOSED / PASS / MERGED / INTEGRATED` |
-| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / PREPARING_EXPERIMENT / NO FROZEN PLAN / NO DO` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / GATE B EXACT PASS / RECOVERY_ALLOWED / NO GATE C YET` |
 | 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING 015 TRANSITION` |
 | 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
@@ -81,7 +87,7 @@ authorization record.
 
 ---
 
-## ST2-EXP-015 authority — current preparation
+## ST2-EXP-015 authority — active recovery after Gate-B exact PASS
 
 ```text
 origin                         DECISION_POINT / C-DP-001
@@ -92,8 +98,17 @@ research branch                feature/stage-two-st2-exp-015-cauchy-route-compos
 changed factor                 C realization over fixed Cauchy RCBOMA: Route P → Route Q
 fixed scalar producer          RCBOMA / Cauchy
 accepted control               C-DP-001 selected Route P / accepted C unchanged
-Frozen Plan                    NONE YET
-Do                             NOT STARTED
+Frozen Plan                    LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
+Frozen Plan commit             1accee613630ae876b6ca9dcf820737ab89a168c
+Do                             STARTED
+Gate A                         RECORDED
+Gate B                         EXACT PASS
+Gate-B verified head           5282e9fcb9f5996d24e315ca71821bd812331622
+Gate-B V5 run                  32877801503
+Gate-B V5 job                  97899880320
+Gate-B artifact                9574581421
+Gate-B artifact sha256         b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02
+Gate C                         NOT STARTED
 accepted promotion             NONE / NOT AUTHORIZED
 ```
 
@@ -102,13 +117,14 @@ Target square:
 ```text
                     C-ROUTE-P          C-ROUTE-Q
 R-ROUTE-D/Dedekind     verified           verified
-R-ROUTE-C/Cauchy       verified by 014    015 target
+R-ROUTE-C/Cauchy       verified by 014    Gate B verified carrier/extractor; Gate C field closure pending
 ```
 
-Preparation may reuse mathematical learning from `ST2-EXP-002`, but may not copy
-its Frozen Plan or silently import Dedekind-specific implementation producers.
-The new Frozen Plan must independently freeze exact controls, success/failure
-criteria, source boundaries, and the affected cone before Do.
+Gate B verifies the independent Cauchy Route-Q carrier/normalization/extractor
+surface and its declaration closure without importing Dedekind/H5/002/Route-P
+implementation producers. It does not by itself close the full nine-Claim target
+or the experiment. Gate C remains blocked until the current governance-sync head
+passes exact-head governance and architecture checks.
 
 ---
 
