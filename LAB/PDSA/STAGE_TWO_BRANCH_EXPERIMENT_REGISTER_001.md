@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE B EXACT PASS / RECOVERY_ALLOWED / NO GATE C YET`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE C EXACT PASS / WAITING_CI FOR DURABLE SYNC / GATE D NOT STARTED`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
 **Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
@@ -13,7 +13,7 @@
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 ACTIVE EXPERIMENT: ST2-EXP-015
-ACTIVE STATE: RECOVERY_ALLOWED
+ACTIVE STATE: WAITING_CI
 QUEUE CURSOR: 1 / ST2-EXP-015
 SYNCHRONIZED MAIN BASELINE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
 FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
@@ -22,23 +22,28 @@ RESEARCH BRANCH: feature/stage-two-st2-exp-015-cauchy-route-composition-square
 ORIGIN: DECISION_POINT / C-DP-001
 GATE A: RECORDED
 GATE B: EXACT PASS
-LAST VERIFIED HEAD: 5282e9fcb9f5996d24e315ca71821bd812331622
-GATE C: NOT STARTED
+GATE C: EXACT PASS
+GATE-C VERIFIED HEAD: 8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd
+STATE-SYNC VERIFIED HEAD: 19da18d02a5b5a8620671bdd39de1be8d149ec15
+DURABLE REGISTER/LEDGER SYNC: PRESENT IN CURRENT COMMIT / EXACT CI PENDING
+GATE D: NOT STARTED
 PREVIOUS TRANSITION: 014 → 015 / AUTO_CONTINUE PASS
 NEXT EXPERIMENT: ST2-EXP-016 / AUTHORIZED / QUEUED / WAITING 015 TRANSITION GATE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: rerun exact-head governance/architecture verification after register + permanent origin-ledger synchronization; Gate C only if clean
+REQUIRED NEXT ACT: exact-verify this Gate-C durable synchronization head; begin Gate D only if clean
 ```
 
 `ST2-EXP-014` is closed `PASS`, exact-verified, merged, and integrated as bounded
 producer-substitutability knowledge. No accepted or selected architecture changed.
 
-`ST2-EXP-015` has an immutable Frozen Plan and Do has begun. Gate A is recorded;
-Gate B is exact-verified `PASS` on head
-`5282e9fcb9f5996d24e315ca71821bd812331622`. The only current block is technical
-current-state synchronization: this register and the permanent origin ledger must
-agree with higher-priority STATUS/state before Gate C may begin. The single
-scientific factor remains fixed Cauchy `RCBOMA` with C realization Route P → Q.
+`ST2-EXP-015` has an immutable Frozen Plan and Do is active. Gate A is recorded;
+Gate B and Gate C are exact-verified `PASS`. Gate C established the independent
+Cauchy Route-Q field closure on exact head
+`8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd`. The current action is governance
+synchronization only: this register and the permanent origin ledger now record
+that exact result, but Gate D remains blocked until the synchronization head
+itself passes exact-head V5. The single scientific factor remains fixed Cauchy
+`RCBOMA` with C realization Route P → Q.
 
 ### Immutable historical ST2-EXP-004 final sentinel
 
@@ -77,7 +82,7 @@ preserved and their IDs are not reused.
 | Order | ID | Architectural origin | Intended single change | State |
 | ---: | --- | --- | --- | --- |
 | 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `CLOSED / PASS / MERGED / INTEGRATED` |
-| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / GATE B EXACT PASS / RECOVERY_ALLOWED / NO GATE C YET` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / GATE C EXACT PASS / DURABLE SYNC CI PENDING / GATE D NOT STARTED` |
 | 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING 015 TRANSITION` |
 | 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
@@ -87,7 +92,7 @@ authorization record.
 
 ---
 
-## ST2-EXP-015 authority — active recovery after Gate-B exact PASS
+## ST2-EXP-015 authority — Gate-C exact PASS, durable synchronization pending exact CI
 
 ```text
 origin                         DECISION_POINT / C-DP-001
@@ -108,7 +113,18 @@ Gate-B V5 run                  32877801503
 Gate-B V5 job                  97899880320
 Gate-B artifact                9574581421
 Gate-B artifact sha256         b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02
-Gate C                         NOT STARTED
+Gate C                         EXACT PASS
+Gate-C verified head           8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd
+Gate-C V5 run                  32890748451
+Gate-C V5 job                  97941857655
+Gate-C artifact                9579342082
+Gate-C artifact sha256         f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e
+Gate-C state-sync head         19da18d02a5b5a8620671bdd39de1be8d149ec15
+Gate-C state-sync V5 run       32894420292
+Gate-C state-sync V5 job       97953582697
+Gate-C state-sync artifact     9580672508
+Gate-C state-sync sha256       1e236121ed9ffc0e35b4300ba0649f82ab00a8bdb28f63290d57016b62852950
+Gate D                         NOT STARTED / BLOCKED PENDING DURABLE-SYNC EXACT CI
 accepted promotion             NONE / NOT AUTHORIZED
 ```
 
@@ -117,14 +133,28 @@ Target square:
 ```text
                     C-ROUTE-P          C-ROUTE-Q
 R-ROUTE-D/Dedekind     verified           verified
-R-ROUTE-C/Cauchy       verified by 014    Gate B verified carrier/extractor; Gate C field closure pending
+R-ROUTE-C/Cauchy       verified by 014    native carrier/extractor + independent field exact PASS; nine-Claim Gate-D package pending
 ```
 
-Gate B verifies the independent Cauchy Route-Q carrier/normalization/extractor
+Gate B verified the independent Cauchy Route-Q carrier/normalization/extractor
 surface and its declaration closure without importing Dedekind/H5/002/Route-P
-implementation producers. It does not by itself close the full nine-Claim target
-or the experiment. Gate C remains blocked until the current governance-sync head
-passes exact-head governance and architecture checks.
+implementation producers. Gate C then verified the native Route-Q ring/field
+closure on the same frozen Cauchy scalar producer, with no Route-P transport and
+no new ST2-EXP-015 global choice selector. The remaining Gate-D work is the
+research-only nine-Claim semantic package prescribed by the Frozen Plan; it may
+begin only after the present register/origin-ledger synchronization itself is
+exact-verified.
+
+Technical Gate-C failure provenance is preserved in:
+
+```text
+LAB/PDSA/experiments/ST2-EXP-015_FAILURE_001_GATE_C_DUPLICATE_REWRITE.md
+LAB/PDSA/experiments/ST2-EXP-015_FAILURE_002_GATE_C_INHERITED_CHOICE_AUDIT_FALSE_POSITIVE.md
+LAB/PDSA/experiments/ST2-EXP-015_FAILURE_003_GATE_C_STATE_SYNC_STATUS_DRIFT.md
+```
+
+None of those failures changed the Frozen Plan, scientific factor, Claim cone,
+route selection, accepted export/contract, logical regime, or queue order.
 
 ---
 

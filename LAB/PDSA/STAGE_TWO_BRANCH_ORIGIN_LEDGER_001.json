@@ -1,11 +1,11 @@
 {
   "schema": "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001",
-  "status": "ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-014 CLOSED PASS MERGED INTEGRATED / ST2-EXP-015 ACTIVE GATE B EXACT PASS / RECOVERY_ALLOWED / NO GATE C YET",
+  "status": "ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-014 CLOSED PASS MERGED INTEGRATED / ST2-EXP-015 ACTIVE GATE C EXACT PASS / DURABLE SYNC CI PENDING / GATE D NOT STARTED",
   "date": "2026-08-25",
   "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, Junction, or acceptance promotion.",
   "active_experiment": "ST2-EXP-015",
   "next_experiment_slot": "ST2-EXP-016 / OWNER_AUTHORIZED / QUEUED / WAITING ST2-EXP-015 TRANSITION GATE",
-  "required_next_act": "RERUN EXACT-HEAD GOVERNANCE AND ARCHITECTURE VERIFICATION AFTER ST2-EXP-015 REGISTER/ORIGIN-LEDGER SYNCHRONIZATION; GATE C ONLY IF CLEAN",
+  "required_next_act": "EXACT-VERIFY THIS GATE-C REGISTER/ORIGIN-LEDGER SYNCHRONIZATION HEAD; BEGIN GATE D ONLY IF CLEAN",
   "allowed_origin_kinds": ["BRICK", "BLOCK", "DECISION_POINT", "DEPENDENCY_EDGE", "CLAIM", "SUPPORTING_LEMMA"],
   "accepted_reference": {
     "selected_route": "C-ROUTE-P",
@@ -390,7 +390,7 @@
     {
       "experiment_id": "ST2-EXP-015",
       "program_id": "ST2-RP-001",
-      "status": "ACTIVE / GATE B EXACT PASS / RECOVERY_ALLOWED / GATE C NOT STARTED",
+      "status": "ACTIVE / GATE C EXACT PASS / DURABLE SYNC CI PENDING / GATE D NOT STARTED",
       "origin_kind": "DECISION_POINT",
       "origin_id": "C-DP-001",
       "origin_label": "selected C Route-P realization versus retained Route-Q normalization quotient over the fixed Cauchy RCBOMA scalar producer",
@@ -417,11 +417,30 @@
       "gate_b_verified_job": 97899880320,
       "gate_b_verified_artifact_id": 9574581421,
       "gate_b_verified_artifact_sha256": "b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02",
-      "experimental_product_status": "GATE B VERIFIED RESEARCH-ONLY ROUTE-Q CARRIER/NORMALIZATION/EXTRACTOR / FIELD CLOSURE PENDING",
+      "gate_c_evidence": "LAB/PDSA/experiments/ST2-EXP-015_GATE_C_NATIVE_CAUCHY_Q_FIELD_001.md",
+      "gate_c_source": "LAB/payloads/lean/CStage/ST2Exp015CauchyQField.lean",
+      "gate_c_manifest": "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt",
+      "gate_c_verified_head": "8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd",
+      "gate_c_verified_run": 32890748451,
+      "gate_c_verified_job": 97941857655,
+      "gate_c_verified_artifact_id": 9579342082,
+      "gate_c_verified_artifact_sha256": "f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e",
+      "gate_c_state_sync_verified_head": "19da18d02a5b5a8620671bdd39de1be8d149ec15",
+      "gate_c_state_sync_verified_run": 32894420292,
+      "gate_c_state_sync_verified_job": 97953582697,
+      "gate_c_state_sync_verified_artifact_id": 9580672508,
+      "gate_c_state_sync_verified_artifact_sha256": "1e236121ed9ffc0e35b4300ba0649f82ab00a8bdb28f63290d57016b62852950",
+      "failure_records": ["LAB/PDSA/experiments/ST2-EXP-015_FAILURE_001_GATE_C_DUPLICATE_REWRITE.md", "LAB/PDSA/experiments/ST2-EXP-015_FAILURE_002_GATE_C_INHERITED_CHOICE_AUDIT_FALSE_POSITIVE.md", "LAB/PDSA/experiments/ST2-EXP-015_FAILURE_003_GATE_C_STATE_SYNC_STATUS_DRIFT.md"],
+      "preserved_failure_runs": [32888095445, 32890319684, 32891023026],
+      "experimental_product_status": "GATE C VERIFIED RESEARCH-ONLY NATIVE CAUCHY ROUTE-Q FIELD / GATE D NINE-CLAIM PACKAGING PENDING",
       "accepted_promotion": "NONE / NOT AUTHORIZED",
       "relation_function_firewall_preserved": true,
       "global_selector_added": false,
-      "gate_c_started": false
+      "new_st2_exp_015_classical_choose_edges": 0,
+      "inherited_rcboma_choice_provenance_classified": true,
+      "gate_c_started": true,
+      "gate_c_exact_pass": true,
+      "gate_d_started": false
     }
   ]
 }
