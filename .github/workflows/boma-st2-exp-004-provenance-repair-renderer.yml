@@ -153,3 +153,5 @@ jobs:
           name: st2-exp-004-provenance-repair-${{ github.run_id }}
           path: /tmp/st2-exp-004-repair
           if-no-files-found: error
+
+# trigger-after-registration
