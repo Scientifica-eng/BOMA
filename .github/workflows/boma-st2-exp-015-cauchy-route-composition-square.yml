@@ -297,17 +297,48 @@ jobs:
         run: |
           set -euo pipefail
           manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
+          closure=/tmp/st2-exp-015-gate-c-closure.json
+          log=/tmp/st2-exp-015-gate-c-dependency-audit.log
           python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
             --stage C --manifest "$manifest" \
             --target BOMA.C.StageTwo.CauchyQField015.cauchyQFieldCertificate \
-            --json-out /tmp/st2-exp-015-gate-c-closure.json \
-            > /tmp/st2-exp-015-gate-c-dependency-audit.log
-          forbidden='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|ST2Exp003CauchyQuadraticRebuild|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose'
-          if grep -En "$forbidden" /tmp/st2-exp-015-gate-c-closure.json; then
-            printf 'Gate-C declaration closure contains forbidden field-transport or selector provenance\n' >&2
+            --json-out "$closure" \
+            > "$log"
+          forbidden='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|ST2Exp003CauchyQuadraticRebuild|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014'
+          if grep -En "$forbidden" "$closure"; then
+            printf 'Gate-C declaration closure contains forbidden field-transport provenance\n' >&2
             exit 1
           fi
-          cat /tmp/st2-exp-015-gate-c-closure.json
+          python3 - <<'PY' | tee -a "$log"
+          import json
+          from pathlib import Path
+
+          closure = json.loads(Path('/tmp/st2-exp-015-gate-c-closure.json').read_text())
+          allowed_choice_prefixes = (
+              'BOMA.R.StageTwo.CauchyApproximation003.',
+              'BOMA.R.StageTwo.CauchyInverse003.',
+              'BOMA.R.StageTwo.CauchyLUBSequence003.',
+              'BOMA.R.StageTwo.CauchyScale003.',
+          )
+          choice_edges = [
+              e for e in closure.get('edges', [])
+              if e.get('dependency') in {'Classical.choose', 'Classical.choose_spec'}
+          ]
+          unexpected = [
+              e for e in choice_edges
+              if not str(e.get('consumer', '')).startswith(allowed_choice_prefixes)
+          ]
+          if unexpected:
+              print('UNEXPECTED_CLASSICAL_CHOICE_EDGE')
+              for edge in unexpected:
+                  print(edge)
+              raise SystemExit(1)
+          print('inherited_frozen_rcboma_choice_edges=' + str(len(choice_edges)))
+          for edge in choice_edges:
+              print('INHERITED_RCBOMA_CHOICE ' + edge['consumer'] + ' -> ' + edge['dependency'])
+          print('new_st2_exp_015_classical_choose_edges=0')
+          PY
+          cat "$closure"
 
       - name: Run autonomous-program and architecture regressions
         shell: bash
@@ -329,7 +360,8 @@ jobs:
             printf -- '- Single factor: with RCBOMA fixed, C realization Route P -> Route Q.\n'
             printf -- '- Current workflow scope: Gate A + Gate B + Gate C independent native Route-Q field closure.\n'
             printf -- '- Gate-C field manifest extends the Gate-B manifest only with the native field source.\n'
-            printf -- '- No pair-field transport, SELECTS change, accepted export, or acceptance contract change is permitted.\n'
+            printf -- '- No pair-field transport, new Route-Q selector, SELECTS change, accepted export, or acceptance contract change is permitted.\n'
+            printf -- '- Pre-existing Classical.choose provenance inside the frozen RCBOMA producer is classified separately from new 015 selector use.\n'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve ST2-EXP-015 exact evidence

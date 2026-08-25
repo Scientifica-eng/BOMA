@@ -7,7 +7,7 @@
 **Frozen main reference:** `2a6c38af70e596c840ef2db4733421bde38f3ee5`  
 **Prior exact verified governance-sync head:** `d2e86e39abaa011d42be63464855bbcbd2466743`  
 **Prior exact V5:** run `32887191366`, job `97930290379`, artifact `9578032413`, SHA-256 `acf1ae5a13d8ad98c840df3b7f88d6357453ae9e1e9f90d0d4c3041c8dd43374`  
-**Gate-C status in this record:** `IMPLEMENTED / EXACT-HEAD CI PENDING — NOT YET PASS`.
+**Gate-C status in this record:** `IMPLEMENTED / TECHNICAL AUDIT RECOVERY / EXACT-HEAD CI PENDING — NOT YET PASS`.
 
 ---
 
@@ -69,8 +69,8 @@ No global inverse function or selector is defined.
 
 ## Independence firewall
 
-The field source and declaration closure must exclude as implementation
-producers:
+The new Gate-B/Gate-C Route-Q sources and their direct 015 declaration edges
+must exclude as implementation producers:
 
 ```text
 RStageIntegration002
@@ -80,13 +80,27 @@ ST2Exp003DedekindCauchyFieldIsomorphism / H5 transport
 CauchyQuadratic003 / CCBOMA field transport
 ST2-EXP-011 comparison adapters
 ST2-EXP-014 integration producers
-Classical.choose
+new Classical.choose / Classical.choose_spec use from an ST2-EXP-015 declaration
 sorry / new axiom
 ```
 
-The source may use only the Gate-B native Q declarations, the independently
-verified Cauchy-real source chain in the frozen manifest, and trusted quotient
-infrastructure already present in Gate B.
+The Frozen Plan explicitly fixes the already verified Cauchy `RCBOMA` producer
+and permits consumption of its verified scalar field/order/inverse facts. Those
+frozen upstream sources contain pre-existing `Classical.choose` provenance in
+Cauchy approximation, inverse-sequence, scaling, and LUB-sequence machinery.
+That inherited scalar provenance is not a new Route-Q representative, coordinate,
+or inverse selector and must be recorded rather than falsely classified as a new
+015 selector.
+
+Accordingly, exact closure auditing distinguishes:
+
+```text
+new/direct 015 Classical.choose edge      FORBIDDEN
+pre-existing frozen RCBOMA choice edge    ALLOWED AS INHERITED PROVENANCE
+```
+
+The source-level firewall continues to reject any literal `Classical.choose` in
+the new 015 Route-Q sources.
 
 ---
 
@@ -100,9 +114,10 @@ showing, on the same head:
 3. Gate A and Gate B regressions still PASS;
 4. Gate-C source firewall PASS;
 5. pinned Lean elaboration of `CauchyQFieldCertificate` PASS;
-6. declaration-closure audit with no forbidden producer PASS;
-7. `#print axioms` evidence for ring/field/inverse roots;
-8. autonomous-program and architecture audits PASS;
-9. exact run/job/artifact/digest preserved.
+6. declaration-closure audit with no forbidden implementation producer and no new/direct 015 Classical.choose edge PASS;
+7. inherited frozen RCBOMA choice provenance classified explicitly rather than hidden;
+8. `#print axioms` evidence for ring/field/inverse roots;
+9. autonomous-program and architecture audits PASS;
+10. exact run/job/artifact/digest preserved.
 
 Until that exact evidence exists, Gate D remains unauthorized.
