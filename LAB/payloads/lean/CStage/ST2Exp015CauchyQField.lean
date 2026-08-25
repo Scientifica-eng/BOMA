@@ -212,7 +212,7 @@ theorem q_mul_one_right (z : CauchyQBOMA) : qMul z qOne = z := by
 
 theorem q_mul_zero_left (z : CauchyQBOMA) : qMul qZero z = qZero := by
   apply q_ext
-  rw [q_normal_mul, q_normal_zero, q_normal_zero]
+  rw [q_normal_mul, q_normal_zero]
   apply normal_ext
   · change
       rCAdd (rCMul rCZero (qNormal z).re)
