@@ -1,0 +1,34 @@
+{
+  "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
+  "status_date": "2026-08-25",
+  "state": "NO_ACTIVE_PROGRAM",
+  "active_program_id": null,
+  "owner_authorization_record": null,
+  "program_baseline_main_sha": null,
+  "authorized_experiment_queue": [],
+  "queue_cursor": null,
+  "active_experiment": null,
+  "active_experiment_branch": null,
+  "active_frozen_plan": null,
+  "active_frozen_plan_sha": null,
+  "last_verified_head": null,
+  "waiting_on": null,
+  "owner_required_reason": null,
+  "routine_merge_authorized": false,
+  "current_stage_two_frontier": {
+    "active_experiment": "ST2-EXP-004",
+    "active_experiment_authority": "DIRECT_OWNER_AUTHORITY_OUTSIDE_AUTONOMOUS_PROGRAM",
+    "active_experiment_branch": "feature/stage-two-st2-exp-004-r-total-order-logical-regime",
+    "active_frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md",
+    "active_frozen_plan_sha": "89c9dc9154e7ca469e5c94c177be223205ee9dbd",
+    "active_frozen_reference": "50f3031b8d2657cbe0710e73e5935d997d40e49b",
+    "current_gate": "GATE_A_EXACT_F04_DEPENDENCY_MAP",
+    "activation_authorized_by_this_state": false
+  },
+  "next_legal_action": "NO_AUTONOMOUS_PROGRAM_ACTION; ST2-EXP-004 MAY CONTINUE ONLY UNDER ITS SEPARATE DIRECT OWNER AUTHORITY AND FROZEN PLAN",
+  "safety": {
+    "fail_closed": true,
+    "ambiguous_authority_means": "OWNER_REQUIRED",
+    "main_research_writes_allowed": false
+  }
+}
