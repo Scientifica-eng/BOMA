@@ -5,28 +5,31 @@
 **Frozen Plan:** `LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md`  
 **Frozen Plan commit:** `1accee613630ae876b6ca9dcf820737ab89a168c`  
 **Frozen main reference:** `2a6c38af70e596c840ef2db4733421bde38f3ee5`  
-**Prior exact verified governance-sync head:** `d2e86e39abaa011d42be63464855bbcbd2466743`  
-**Prior exact V5:** run `32887191366`, job `97930290379`, artifact `9578032413`, SHA-256 `acf1ae5a13d8ad98c840df3b7f88d6357453ae9e1e9f90d0d4c3041c8dd43374`  
-**Gate-C status in this record:** `IMPLEMENTED / TECHNICAL AUDIT RECOVERY / EXACT-HEAD CI PENDING — NOT YET PASS`.
+**Gate-C exact result:** `PASS`  
+**Exact verified head:** `8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd`  
+**V5 run:** `32890748451`  
+**V5 job:** `97941857655`  
+**Artifact:** `9579342082`  
+**Artifact SHA-256:** `f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e`.
 
 ---
 
 ## Frozen scientific factor
 
-Gate C continues the one already-frozen 015 factor only:
+Gate C continued the one frozen 015 factor only:
 
 ```text
-fixed scalar producer   RCBOMA / Cauchy
-control C realization   C-ROUTE-P
-experimental C realization C-ROUTE-Q
+fixed scalar producer      RCBOMA / Cauchy
+control C realization      C-ROUTE-P
+experimental realization   C-ROUTE-Q
 ```
 
 No scalar, quotient identity, target Claim meaning, route selection, accepted
-export, acceptance contract, logical regime, or queue position changes here.
+export, acceptance contract, logical regime, or queue position changed.
 
 ---
 
-## Independent field assembly
+## Independent native field result
 
 Gate-C source:
 
@@ -40,11 +43,13 @@ Independent field manifest:
 LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt
 ```
 
-The field manifest is exactly the already verified Gate-B independent manifest
-followed by the Gate-C field source. The Gate-B manifest itself remains unchanged,
-so the carrier/normalization/extractor checkpoint stays independently auditable.
+The field manifest is exactly the verified Gate-B independent manifest followed
+by the Gate-C field source. The exact-head V5 verified that it excludes
+Dedekind, ST2-EXP-002, H5, H6/CCBOMA, ST2-EXP-011, and ST2-EXP-014
+implementation producers.
 
-The Gate-C source derives over the Gate-B `CauchyQBOMA` quotient:
+Pinned Lean verified the native Route-Q package over the Gate-B
+`CauchyQBOMA` quotient, including:
 
 ```text
 commutative additive laws
@@ -53,71 +58,81 @@ associativity and distributivity
 zero/one and additive inverse laws
 faithful scalar embedding and preservation of zero/one/neg/add/mul
 I² = -1
-generation / coordinate uniqueness / I not real
+generation
+coordinate uniqueness
+I not real
 canonical conjugation and real norm
-norm nonnegativity and nonzero consequence
+norm nonnegativity
+nonzero norm from a nonzero Q value
 witness-only nonzero inverse existence
 inverse-witness uniqueness
 CauchyQRingCertificate
 CauchyQFieldCertificate
 ```
 
-Inverse existence is obtained from `rC_inverse_exists` for the canonical norm.
-No global inverse function or selector is defined.
+Inverse existence is derived from the fixed Cauchy scalar's
+`rC_inverse_exists` applied to the canonical norm. No Route-P↔Q transport was
+used to manufacture field closure and no global inverse selector was defined.
 
 ---
 
-## Independence firewall
+## Selector / logical provenance classification
 
-The new Gate-B/Gate-C Route-Q sources and their direct 015 declaration edges
-must exclude as implementation producers:
+The new ST2-EXP-015 Route-Q sources contain no literal `Classical.choose` and no
+direct 015 declaration edge to `Classical.choose` or `Classical.choose_spec`.
 
-```text
-RStageIntegration002
-selected Dedekind implementation
-ST2-EXP-002 Route-Q producers
-ST2Exp003DedekindCauchyFieldIsomorphism / H5 transport
-CauchyQuadratic003 / CCBOMA field transport
-ST2-EXP-011 comparison adapters
-ST2-EXP-014 integration producers
-new Classical.choose / Classical.choose_spec use from an ST2-EXP-015 declaration
-sorry / new axiom
-```
-
-The Frozen Plan explicitly fixes the already verified Cauchy `RCBOMA` producer
-and permits consumption of its verified scalar field/order/inverse facts. Those
-frozen upstream sources contain pre-existing `Classical.choose` provenance in
-Cauchy approximation, inverse-sequence, scaling, and LUB-sequence machinery.
-That inherited scalar provenance is not a new Route-Q representative, coordinate,
-or inverse selector and must be recorded rather than falsely classified as a new
-015 selector.
-
-Accordingly, exact closure auditing distinguishes:
+The full transitive closure necessarily exposes historical choice provenance
+inside the fixed, independently verified RCBOMA producer. Exact audit classified
+those inherited edges inside the already frozen Cauchy modules:
 
 ```text
-new/direct 015 Classical.choose edge      FORBIDDEN
-pre-existing frozen RCBOMA choice edge    ALLOWED AS INHERITED PROVENANCE
+BOMA.R.StageTwo.CauchyApproximation003
+BOMA.R.StageTwo.CauchyInverse003
+BOMA.R.StageTwo.CauchyLUBSequence003
+BOMA.R.StageTwo.CauchyScale003
 ```
 
-The source-level firewall continues to reject any literal `Classical.choose` in
-the new 015 Route-Q sources.
+This is inherited scalar implementation provenance, not a new 015 quotient
+representative, coordinate, or inverse selector. The recovery and distinction
+are preserved in:
+
+```text
+ST2-EXP-015_FAILURE_002_GATE_C_INHERITED_CHOICE_AUDIT_FALSE_POSITIVE.md
+```
+
+The earlier proof-script failure is separately preserved in:
+
+```text
+ST2-EXP-015_FAILURE_001_GATE_C_DUPLICATE_REWRITE.md
+```
 
 ---
 
-## Exact-head criterion for Gate C
+## Exact-head V5 result
 
-This record does **not** claim Gate C PASS. PASS requires a new exact-head V5
-showing, on the same head:
+On head `8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd` all workflow stages passed:
 
-1. frozen Plan ancestry and byte identity;
-2. accepted Q/R/C manifests and manifest-listed sources unchanged;
-3. Gate A and Gate B regressions still PASS;
-4. Gate-C source firewall PASS;
-5. pinned Lean elaboration of `CauchyQFieldCertificate` PASS;
-6. declaration-closure audit with no forbidden implementation producer and no new/direct 015 Classical.choose edge PASS;
-7. inherited frozen RCBOMA choice provenance classified explicitly rather than hidden;
-8. `#print axioms` evidence for ring/field/inverse roots;
-9. autonomous-program and architecture audits PASS;
-10. exact run/job/artifact/digest preserved.
+```text
+exact head / baseline / Frozen Plan identity             PASS
+owner-program authority and active 015 state             PASS
+accepted Q/R/C manifest/source immutability              PASS
+Gate A inventory                                         PASS
+Gate B source/manifest firewall                          PASS
+Gate B Lean + declaration closure                        PASS
+Gate C source/manifest firewall                          PASS
+Gate C native ring/field Lean elaboration                PASS
+Gate C independent declaration closure                   PASS
+new/direct 015 Classical.choose edge                     NONE
+inherited frozen RCBOMA choice provenance                CLASSIFIED
+program-governance regression                            PASS
+architecture-consistency regression                      PASS
+```
 
-Until that exact evidence exists, Gate D remains unauthorized.
+Therefore Gate C is `EXACT PASS` at its frozen scope.
+
+This result proves independent native Route-Q field-strength closure over the
+fixed Cauchy RCBOMA scalar producer. It does **not** establish the complete
+nine-Claim Gate-D package, the Cauchy P↔Q Gate-E reconvergence, or the final
+four-corner square classification; those remain later frozen gates.
+
+No acceptance promotion follows from this result.

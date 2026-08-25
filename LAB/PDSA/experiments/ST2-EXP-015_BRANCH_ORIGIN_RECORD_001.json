@@ -2,7 +2,7 @@
   "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
   "experiment_id": "ST2-EXP-015",
   "program_id": "ST2-RP-001",
-  "status": "WAITING_CI",
+  "status": "GATE_C_EXACT_PASS / STATE_SYNC_CI_PENDING",
   "date": "2026-08-25",
   "origin_kind": "DECISION_POINT",
   "origin_id": "C-DP-001",
@@ -36,7 +36,7 @@
     "C-CL-INTEGRATION-001"
   ],
   "baseline_route": "C_ROUTE_P_OVER_RCBOMA_VERIFIED_BY_ST2_EXP_014",
-  "experimental_route": "C_ROUTE_Q_OVER_RCBOMA_GATE_B_IMPLEMENTED_EXACT_CI_PENDING",
+  "experimental_route": "C_ROUTE_Q_OVER_RCBOMA_GATE_C_NATIVE_FIELD_EXACT_PASS",
   "dedekind_route_q_control": "ST2_EXP_002_RESEARCH_EVIDENCE_ONLY",
   "accepted_promotion": "NONE_NOT_AUTHORIZED",
   "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md",
@@ -45,5 +45,20 @@
   "gate_b_evidence": "LAB/PDSA/experiments/ST2-EXP-015_GATE_B_NATIVE_CAUCHY_Q_ROUTE_001.md",
   "gate_b_source": "LAB/payloads/lean/CStage/ST2Exp015CauchyQRoute.lean",
   "gate_b_independent_manifest": "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_INDEPENDENT_INPUTS.txt",
+  "gate_c_evidence": "LAB/PDSA/experiments/ST2-EXP-015_GATE_C_NATIVE_CAUCHY_Q_FIELD_001.md",
+  "gate_c_source": "LAB/payloads/lean/CStage/ST2Exp015CauchyQField.lean",
+  "gate_c_independent_field_manifest": "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_FIELD_INPUTS.txt",
+  "gate_c_exact_verification": {
+    "head": "8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd",
+    "run": 32890748451,
+    "job": 97941857655,
+    "artifact": 9579342082,
+    "artifact_sha256": "f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e",
+    "result": "PASS"
+  },
+  "preserved_failure_records": [
+    "LAB/PDSA/experiments/ST2-EXP-015_FAILURE_001_GATE_C_DUPLICATE_REWRITE.md",
+    "LAB/PDSA/experiments/ST2-EXP-015_FAILURE_002_GATE_C_INHERITED_CHOICE_AUDIT_FALSE_POSITIVE.md"
+  ],
   "do_started": true
 }
