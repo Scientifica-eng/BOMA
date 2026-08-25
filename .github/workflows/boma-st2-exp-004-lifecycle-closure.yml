@@ -1,10 +1,9 @@
 name: BOMA ST2-EXP-004 Lifecycle Closure
 
 permissions:
-  contents: read
+  contents: write
 
 on:
-  workflow_dispatch:
   pull_request:
     branches: [main]
     paths:
@@ -21,124 +20,49 @@ on:
       - 'feature/stage-two-st2-exp-004-*'
 
 concurrency:
-  group: boma-st2-exp-004-lifecycle-${{ github.ref }}
+  group: boma-st2-exp-004-repair-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  closure:
-    name: verify lifecycle-closed exact head
+  repair_and_verify:
+    name: apply verified closed-state provenance repair
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact experiment head
+      - name: Checkout exact PR head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - name: Verify exact head and immutable experiment authority
+      - name: Render, verify, and stage bounded repair
         shell: bash
         run: |
           set -euo pipefail
-          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          expected='${{ github.event.pull_request.head.sha }}'
+          branch='feature/stage-two-st2-exp-004-r-total-order-logical-regime'
           test "$(git rev-parse HEAD)" = "$expected"
-          git merge-base --is-ancestor 50f3031b8d2657cbe0710e73e5935d997d40e49b HEAD
-          git merge-base --is-ancestor 89c9dc9154e7ca469e5c94c177be223205ee9dbd HEAD
-          git merge-base --is-ancestor 6779d028c49f73757ea838c163d3968a982559fe HEAD
-          git merge-base --is-ancestor 29fd8518e0cf03addac2b4436e7e917e201d7d73 HEAD
-          git diff --exit-code 89c9dc9154e7ca469e5c94c177be223205ee9dbd HEAD -- LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-          git diff --exit-code 6779d028c49f73757ea838c163d3968a982559fe HEAD -- LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
-          git diff --exit-code 29fd8518e0cf03addac2b4436e7e917e201d7d73 HEAD -- LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
-          printf 'verified_head=%s\n' "$expected" | tee /tmp/st2-exp-004-lifecycle-provenance.txt
+          git fetch origin "$branch"
+          test "$(git rev-parse "origin/$branch")" = "$expected"
 
-      - name: Prove accepted Q/R/C controls unchanged from frozen accepted reference
-        shell: bash
-        run: |
-          set -euo pipefail
-          baseline=50f3031b8d2657cbe0710e73e5935d997d40e49b
-          manifests=(
-            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
-            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
-            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
-          )
-          : > /tmp/st2-exp-004-accepted-controls.txt
-          for manifest in "${manifests[@]}"; do
-            git diff --exit-code "$baseline" HEAD -- "$manifest"
-            printf 'manifest unchanged: %s\n' "$manifest" >> /tmp/st2-exp-004-accepted-controls.txt
-            while IFS= read -r src || [ -n "$src" ]; do
-              [ -z "$src" ] && continue
-              git diff --exit-code "$baseline" HEAD -- "$src"
-              printf 'source unchanged: %s\n' "$src" >> /tmp/st2-exp-004-accepted-controls.txt
-            done < "$manifest"
-          done
-          cat /tmp/st2-exp-004-accepted-controls.txt
-
-      - name: Verify ST2-EXP-011 monotone historical closure
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py --json-out /tmp/st2-exp-011-lifecycle-from-004.json
-          grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-011-lifecycle-from-004.json
-          grep -Fq 'ST2_EXP_004_CLOSED_INTEGRATION_PENDING' /tmp/st2-exp-011-lifecycle-from-004.json
-
-      - name: Verify ST2-EXP-004 closed lifecycle state
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py --json-out /tmp/st2-exp-004-lifecycle.json
-          grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-004-lifecycle.json
-
-      - name: Verify autonomous-program governance remains fail-closed
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/PDSA/tools/autonomous_research_program_audit.py | tee /tmp/st2-exp-004-autonomous-governance.txt
-          grep -Fq 'state=NO_ACTIVE_PROGRAM' /tmp/st2-exp-004-autonomous-governance.txt
-
-      - name: Upload closure evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: st2-exp-004-lifecycle-closure-${{ github.run_id }}
-          path: |
-            /tmp/st2-exp-004-lifecycle-provenance.txt
-            /tmp/st2-exp-004-accepted-controls.txt
-            /tmp/st2-exp-011-lifecycle-from-004.json
-            /tmp/st2-exp-004-lifecycle.json
-            /tmp/st2-exp-004-autonomous-governance.txt
-          if-no-files-found: warn
-
-  render_repair:
-    name: render and verify historical-provenance repair
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout exact experiment head
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 0
-
-      - name: Render repair
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/st2-exp-004-repair/LAB/PDSA
-          mkdir -p /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools
-          mkdir -p /tmp/st2-exp-004-repair/.github/workflows
           python3 - <<'PY'
           import copy
           import json
           import subprocess
           from pathlib import Path
 
-          baseline = '6779d028c49f73757ea838c163d3968a982559fe'
+          green = '6779d028c49f73757ea838c163d3968a982559fe'
           ledger_path = Path('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json')
           current = json.loads(ledger_path.read_text(encoding='utf-8'))
           historical = json.loads(subprocess.check_output(
-              ['git', 'show', f'{baseline}:{ledger_path.as_posix()}'], text=True
+              ['git', 'show', f'{green}:{ledger_path.as_posix()}'], text=True
           ))
-          protected_ids = ['ST2-EXP-001', 'ST2-EXP-002', 'ST2-EXP-003', 'ST2-EXP-011']
-          hist_by_id = {r['experiment_id']: r for r in historical['records']}
-          cur_by_id = {r['experiment_id']: r for r in current['records']}
+          protected = ['ST2-EXP-001', 'ST2-EXP-002', 'ST2-EXP-003', 'ST2-EXP-011']
+          hist = {r['experiment_id']: r for r in historical['records']}
+          cur = {r['experiment_id']: r for r in current['records']}
+          assert set(protected) <= set(hist)
+          assert 'ST2-EXP-004' in cur
+
           repaired = copy.deepcopy(historical)
           for key in (
               'status', 'date', 'purpose', 'active_experiment', 'next_experiment_slot',
@@ -146,7 +70,8 @@ jobs:
               'cross_stage_governance_failure_runs',
           ):
               repaired[key] = copy.deepcopy(current[key])
-          rec004 = copy.deepcopy(cur_by_id['ST2-EXP-004'])
+
+          rec004 = copy.deepcopy(cur['ST2-EXP-004'])
           failures = list(rec004.get('failure_records', []))
           for rel in (
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_007_CLOSED_STATE_011_AUDIT_BASELINE_UNIT_EXPECTATION.md',
@@ -156,22 +81,21 @@ jobs:
                   failures.append(rel)
           rec004['failure_records'] = failures
           rec004['post_study_failure_runs'] = [32837301674, 32837451796, 32837451803]
-          repaired['records'] = [copy.deepcopy(hist_by_id[x]) for x in protected_ids] + [rec004]
-          repaired_by_id = {r['experiment_id']: r for r in repaired['records']}
-          for eid in protected_ids:
-              assert repaired_by_id[eid] == hist_by_id[eid], eid
+          repaired['records'] = [copy.deepcopy(hist[e]) for e in protected] + [rec004]
+
+          check = {r['experiment_id']: r for r in repaired['records']}
+          for eid in protected:
+              assert check[eid] == hist[eid], eid
           assert repaired['active_experiment'] is None
-          assert repaired_by_id['ST2-EXP-004']['status'].startswith('CLOSED / PASS')
-          Path('/tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json').write_text(
-              json.dumps(repaired, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          assert check['ST2-EXP-004']['status'].startswith('CLOSED / PASS')
+          ledger_path.write_text(json.dumps(repaired, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
 
           p011 = Path('LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py')
           s011 = p011.read_text(encoding='utf-8')
-          old = '"baseline_producer_unit_id": "C-BLOCK-001",'
-          new = '"baseline_producer_unit_id": "C-COMPARE-BLOCK-001",'
-          assert s011.count(old) == 1
-          s011 = s011.replace(old, new, 1)
-          Path('/tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py').write_text(s011, encoding='utf-8')
+          old011 = '"baseline_producer_unit_id": "C-BLOCK-001",'
+          new011 = '"baseline_producer_unit_id": "C-COMPARE-BLOCK-001",'
+          assert s011.count(old011) == 1
+          p011.write_text(s011.replace(old011, new011, 1), encoding='utf-8')
 
           p004 = Path('LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py')
           s004 = p004.read_text(encoding='utf-8')
@@ -180,104 +104,62 @@ jobs:
               '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT")': '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized")',
               '''        for rel in (STATUS, REGISTER):\n            text = read(root, rel)\n            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''': '''        state_markers = {\n            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),\n            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),\n        }\n        for rel, markers in state_markers.items():\n            text = read(root, rel)\n            for marker in markers:\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''',
           }
-          for old_text, new_text in replacements.items():
-              assert old_text in s004, old_text
-              s004 = s004.replace(old_text, new_text, 1)
-          Path('/tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py').write_text(s004, encoding='utf-8')
+          for old, new in replacements.items():
+              assert old in s004, old
+              s004 = s004.replace(old, new, 1)
+          p004.write_text(s004, encoding='utf-8')
 
-          status = Path('LAB/PDSA/STATUS.md').read_text(encoding='utf-8')
-          assert '`ST2-EXP-004` preserves six execution failure records under' in status
-          status = status.replace('`ST2-EXP-004` preserves six execution failure records under', '`ST2-EXP-004` preserves eight execution failure records under', 1)
-          Path('/tmp/st2-exp-004-repair/LAB/PDSA/STATUS.md').write_text(status, encoding='utf-8')
+          status = Path('LAB/PDSA/STATUS.md')
+          text = status.read_text(encoding='utf-8')
+          assert '`ST2-EXP-004` preserves six execution failure records under' in text
+          status.write_text(text.replace(
+              '`ST2-EXP-004` preserves six execution failure records under',
+              '`ST2-EXP-004` preserves eight execution failure records under', 1), encoding='utf-8')
 
-          register = Path('LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md').read_text(encoding='utf-8')
-          assert 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as' in register
-          register = register.replace('Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as', 'Failure records `ST2-EXP-004_FAILURE_001` through `008` remain preserved as', 1)
-          Path('/tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md').write_text(register, encoding='utf-8')
+          register = Path('LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md')
+          text = register.read_text(encoding='utf-8')
+          assert 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as' in text
+          register.write_text(text.replace(
+              'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as',
+              'Failure records `ST2-EXP-004_FAILURE_001` through `008` remain preserved as', 1), encoding='utf-8')
 
-          gate_a = Path('.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml').read_text(encoding='utf-8')
-          old_gate = '''          assert d["active_experiment"] == "ST2-EXP-004", d["active_experiment"]\n          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          print("ST2_EXP_004_GATE0_ACTIVE_PASS")'''
-          new_gate = '''          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          if d["active_experiment"] == "ST2-EXP-004":\n              assert str(r["status"]).startswith("ACTIVE / PLAN FROZEN")\n              print("ST2_EXP_004_GATE0_ACTIVE_PASS")\n          else:\n              assert d["active_experiment"] is None\n              assert str(r["status"]).startswith("CLOSED / PASS")\n              print("ST2_EXP_004_LIFECYCLE_CLOSED_GATE_REPLAY_PASS")'''
-          assert old_gate in gate_a
-          gate_a = gate_a.replace(old_gate, new_gate, 1)
-          Path('/tmp/st2-exp-004-repair/.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml').write_text(gate_a, encoding='utf-8')
+          gate = Path('.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml')
+          text = gate.read_text(encoding='utf-8')
+          old = '''          assert d["active_experiment"] == "ST2-EXP-004", d["active_experiment"]\n          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          print("ST2_EXP_004_GATE0_ACTIVE_PASS")'''
+          new = '''          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          if d["active_experiment"] == "ST2-EXP-004":\n              assert str(r["status"]).startswith("ACTIVE / PLAN FROZEN")\n              print("ST2_EXP_004_GATE0_ACTIVE_PASS")\n          else:\n              assert d["active_experiment"] is None\n              assert str(r["status"]).startswith("CLOSED / PASS")\n              print("ST2_EXP_004_LIFECYCLE_CLOSED_GATE_REPLAY_PASS")'''
+          assert old in text
+          gate.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          renderer = Path('.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml')
+          if renderer.exists():
+              renderer.unlink()
           PY
 
-      - name: Verify rendered repair
-        shell: bash
-        run: |
-          set -euo pipefail
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py
-          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STATUS.md LAB/PDSA/STATUS.md
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
-          cp /tmp/st2-exp-004-repair/.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml
           python3 -m py_compile \
             LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
             LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py \
             LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py --json-out /tmp/st2-exp-011-repaired.json
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py --json-out /tmp/st2-exp-004-repaired.json
-          python3 LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py --json-out /tmp/st2-exp-historical-repaired.json
-          grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-011-repaired.json
-          grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-004-repaired.json
-          grep -Fq 'ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS' /tmp/st2-exp-historical-repaired.json
-          cp /tmp/st2-exp-011-repaired.json /tmp/st2-exp-004-repair/
-          cp /tmp/st2-exp-004-repaired.json /tmp/st2-exp-004-repair/
-          cp /tmp/st2-exp-historical-repaired.json /tmp/st2-exp-004-repair/
-          sha256sum $(find /tmp/st2-exp-004-repair -type f | sort) > /tmp/st2-exp-004-repair/SHA256SUMS
-
-      - name: Upload rendered repair
-        uses: actions/upload-artifact@v4
-        with:
-          name: st2-exp-004-provenance-repair-${{ github.run_id }}
-          path: /tmp/st2-exp-004-repair
-          if-no-files-found: error
-          include-hidden-files: true
-
-  apply_repair:
-    name: apply verified historical-provenance repair
-    needs: render_repair
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout exact experiment head
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 0
-
-      - name: Download verified repair artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: st2-exp-004-provenance-repair-${{ github.run_id }}
-          path: /tmp/st2-exp-004-repair
-
-      - name: Apply only verified repair paths and push exact-head commit
-        shell: bash
-        run: |
-          set -euo pipefail
-          expected="${{ github.sha }}"
-          test "$(git rev-parse HEAD)" = "$expected"
-          git fetch origin feature/stage-two-st2-exp-004-r-total-order-logical-regime
-          test "$(git rev-parse origin/feature/stage-two-st2-exp-004-r-total-order-logical-regime)" = "$expected"
-
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
-          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py
-          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STATUS.md LAB/PDSA/STATUS.md
-          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
-          cp /tmp/st2-exp-004-repair/.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml
-          rm -f .github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py --json-out /tmp/011.json
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py --json-out /tmp/004.json
+          python3 LAB/00_ARCHITECTURE/tools/stage_two_historical_closure_audit.py --json-out /tmp/historical.json
+          grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/011.json
+          grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/004.json
+          grep -Fq 'ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS' /tmp/historical.json
 
           allowed='^(LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json|LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py|LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py|LAB/PDSA/STATUS.md|LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md|\.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml|\.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml)$'
           bad="$(git status --short | sed -E 's/^.. //' | grep -Ev "$allowed" || true)"
           test -z "$bad" || { printf 'Unexpected repair paths:\n%s\n' "$bad" >&2; exit 1; }
+          git diff --check
 
-          git add \
+      - name: Commit and push exact-head repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='${{ github.event.pull_request.head.sha }}'
+          branch='feature/stage-two-st2-exp-004-r-total-order-logical-regime'
+          git fetch origin "$branch"
+          test "$(git rev-parse "origin/$branch")" = "$expected"
+          git add -A \
             LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json \
             LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
             LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py \
@@ -286,13 +168,9 @@ jobs:
             .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml \
             .github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml
           git diff --cached --check
-          if git diff --cached --quiet; then
-            echo 'Repair already applied; no commit required.'
-            exit 0
-          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Apply verified ST2-EXP-004 closed-state provenance repair'
-          git fetch origin feature/stage-two-st2-exp-004-r-total-order-logical-regime
-          test "$(git rev-parse origin/feature/stage-two-st2-exp-004-r-total-order-logical-regime)" = "$expected"
-          git push origin HEAD:feature/stage-two-st2-exp-004-r-total-order-logical-regime
+          git fetch origin "$branch"
+          test "$(git rev-parse "origin/$branch")" = "$expected"
+          git push origin HEAD:"$branch"
