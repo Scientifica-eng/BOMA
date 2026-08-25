@@ -8,7 +8,7 @@ identifiers are provenance only.
 
 ## Current accepted spine
 
-As of 2026-08-24:
+As of 2026-08-25:
 
 ```text
 framework-neutral pre-numerical layer   CALIBRATED
@@ -38,7 +38,8 @@ C-J-001 → C-BLOCK-002
 CA-20                                   ACCEPTED C
 ```
 
-The accepted spine is unchanged by the completed Stage-Two experiments.
+The accepted spine is unchanged. `ST2-EXP-004` is an active research cycle and
+has not changed any accepted producer, route, Claim, or export.
 
 ## Permanent verified alternatives learned through Stage Two
 
@@ -176,14 +177,58 @@ ST2-EXP-001  CLOSED / PASS / production dependency lesson integrated
 ST2-EXP-002  CLOSED / PASS / Route-Q + Junction integrated
 ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT / Cauchy + Junction integrated
 ST2-EXP-011  CLOSED / PASS / comparison-interface lesson integrated
-ACTIVE EXPERIMENT = NONE
-NEXT OWNER-SEQUENCED EXPERIMENT = ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
+ST2-EXP-004  ACTIVE / PLAN FROZEN / GATE A NEXT
 ```
 
-`ST2-EXP-004` may begin only after the current architecture Act is merged,
-`main` is synchronized and verified, and the current repository is re-read. It
-then requires a new immutable Frozen Plan from that exact `main` and an
-independent branch.
+`ST2-EXP-004` exact authority:
+
+```text
+accepted reference  50f3031b8d2657cbe0710e73e5935d997d40e49b
+accepted tree       e4842acdf2b08c8db54b45d0798c36ee7565f351
+candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
+Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
+origin              DECISION_POINT / R-DP-003
+current gate        GATE A — EXACT F-04 DEPENDENCY MAP
+```
+
+The Frozen Plan is immutable. The only changed factor is the F-04 provider of
+Dedekind cut comparability/real-order disjunctive totality. Accepted carrier,
+identity, `rLE`, operations, Q/R/C manifests, and F-05/F-06/F-07 remain controls.
+
+## ST2-EXP-004 scientific boundary
+
+Baseline F-04 provider:
+
+```text
+BOMA.R.DedekindOrderClassical001.cutComparability_classical
+BOMA.R.DedekindOrderClassical001.rLE_total_classical
+```
+
+The alternative must preserve:
+
+```text
+LowerCut / CutEquiv / cutSetoid / RBOMA
+CutLE / rLE
+rLE_refl / rLE_trans / rLE_antisymm
+accepted scalar/field operation definitions
+all accepted Q/R/C source manifests
+F-05 / F-06 / F-07 as explicit controls
+```
+
+Known direct references before Gate A include:
+
+```text
+RStageIntegrationCertificate.orderTotal
+rPosNeg_decomposition
+ST2-EXP-001 NarrowROrderedFieldCertificate.orderTotal
+```
+
+These are not yet a complete Claim-impact result. Gate A must compute exact
+formal declaration closures before alternative mathematics is written.
+
+Removing F-04 must not be described as making all accepted R constructive;
+other localized classical commitments are explicitly outside this experiment's
+changed factor.
 
 ## Canonical acceptance remains unchanged
 
@@ -239,7 +284,8 @@ research/lifecycle merge
 ```
 
 The merge commit has the exact verified head as its second parent and differs
-from it by zero files.
+from it by zero files. A later active 004 cycle does not alter this historical
+closure.
 
 ## Source-of-truth order
 
@@ -247,36 +293,39 @@ When current-state documents disagree, use this order unless a later explicit
 governance record supersedes it:
 
 1. `LAB/PDSA/STATUS.md`
-2. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`
-3. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`
+2. `LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md`
+3. `LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md`
 4. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
 5. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
-6. `LAB/00_ARCHITECTURE/ARCHITECTURE.md`
-7. `LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md`
-8. `LAB/00_ARCHITECTURE/REGISTRY.md`
-9. `LAB/00_ARCHITECTURE/GRAPH.md`
-10. `LAB/00_ARCHITECTURE/DECISION_LEDGER.md` / `JUNCTION_LEDGER.md`
-11. relevant DAG / Block / acceptance / Claim records and exact V5 evidence
-12. onboarding summaries such as this README and `AGENTS.md`
-13. dated historical PDSA/checkpoint/branch artifacts for provenance
+6. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`
+7. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`
+8. `LAB/00_ARCHITECTURE/ARCHITECTURE.md`
+9. `LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md`
+10. `LAB/00_ARCHITECTURE/REGISTRY.md`
+11. `LAB/00_ARCHITECTURE/GRAPH.md`
+12. `LAB/00_ARCHITECTURE/DECISION_LEDGER.md` / `JUNCTION_LEDGER.md`
+13. relevant DAG / Block / acceptance / Claim records and exact V5 evidence
+14. onboarding summaries such as this README and `AGENTS.md`
+15. dated historical PDSA/checkpoint/branch artifacts for provenance
 
 Historical documents remain valid records of their own state at their own date;
 they do not override a later synchronized current-state authority.
 
 ## Mandatory reading order
 
-Before canonical or Stage-Two work, read:
+Before canonical or active Stage-Two work, read:
 
 ```text
 README.md
 AGENTS.md
 LAB/PDSA/STATUS.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
-LAB/PDSA/candidates/README.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/GRAPH.md
@@ -286,6 +335,7 @@ LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/R_DAG.md
 LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
@@ -338,7 +388,8 @@ accepted rational export.
 `R-DP-001` selects Dedekind for the accepted route. `R-BLOCK-001` remains the
 accepted export. The independently completed Cauchy route is a permanent
 verified alternative, and `ST2-EXP-003-R-J-001` records explicit field/order
-reconvergence with the selected producer.
+reconvergence with the selected producer. `ST2-EXP-004` studies only the
+logical-regime choice at `R-DP-003`; it does not change the selected R route.
 
 ### Complex numbers
 
@@ -383,8 +434,17 @@ Integrated result: the direct comparison dependency is scalar
 transport; relation/function separation remains explicit. No accepted source or
 selected route was promoted.
 
-Historical exact evidence and lifecycle records remain indexed through the
-experiment register and Stage-Two origin ledger.
+## Active Stage-Two experiment
+
+### ST2-EXP-004 — R total-order logical regime
+
+Origin: `DECISION_POINT / R-DP-003`.  
+Status: `ACTIVE / PLAN FROZEN`.  
+Frozen reference: `50f3031b8d2657cbe0710e73e5935d997d40e49b`.  
+Frozen Plan commit: `89c9dc9154e7ca469e5c94c177be223205ee9dbd`.  
+Current gate: `GATE A — EXACT F-04 DEPENDENCY MAP`.
+
+No mathematical result is claimed yet.
 
 ## Future experiment candidates
 
@@ -396,9 +456,8 @@ Candidate discoveries follow:
 
 `LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md`.
 
-`ST2-EXP-004` is owner-sequenced next but remains **not active** and has **no
-Frozen Plan** until this integration is merged and current `main` is re-read.
-Other documented candidates remain unstarted absent separate authorization.
+The single-active slot is occupied by `ST2-EXP-004`. Other documented
+candidates remain inactive absent separate authorization and lifecycle release.
 
 ## Verification environment
 
@@ -418,9 +477,9 @@ preserve accepted N → C spine
 preserve permanent verified alternatives and their non-selected status
 preserve exact 16-property C-production R→C contract
 preserve scalar-generic C comparison contract and relation/function firewall
-preserve accepted C comparison source until a separate accepted-source refactor is authorized
-preserve all Frozen Plans, failures, Study/Act, lifecycle, merge, and exact evidence
-ACTIVE EXPERIMENT = NONE
-finish/verify the current architecture integration
-then re-read synchronized main before freezing ST2-EXP-004
+preserve all completed Frozen Plans, failures, Study/Act, lifecycle, merge, and exact evidence
+ST2-EXP-004 = ACTIVE / PLAN FROZEN
+DO NOT EDIT PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+execute GATE A before writing alternative mathematics
+measure F-04 descendants; do not infer full constructivity from F-04 removal
 ```
