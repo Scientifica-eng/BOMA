@@ -1,11 +1,12 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / NO ACTIVE EXPERIMENT`  
-**Current status date:** `2026-08-24`  
+**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / NO ACTIVE EXPERIMENT / AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM`  
+**Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest architecture Act:** `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`  
-**Current program frontier:** `MERGE/VERIFY ST2-EXP-011 ARCHITECTURE ACT → RE-READ SYNCHRONIZED MAIN → FREEZE INDEPENDENT ST2-EXP-004 PLAN; ST2-EXP-004 NOT ACTIVE`.
+**Autonomous-governance proposal:** `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`  
+**Current program frontier:** `ST2-EXP-011 ARCHITECTURE ACT MERGED / CURRENT MAIN MUST BE RE-READ BEFORE ANY ST2-EXP-004 FROZEN PLAN / ST2-EXP-004 NOT ACTIVE / NO OWNER-AUTHORIZED AUTONOMOUS PROGRAM`.
 
 This is the compact current-state handoff index. Historical run lineages remain
 in stage-specific PDSA/evidence/failure records and are not erased by current-state integration.
@@ -41,7 +42,8 @@ CA-20                                   ACCEPTED C
 ```
 
 Accepted exports, selected routes, accepted Lean inputs, and accepted Claim
-meanings are unchanged by `ST2-EXP-011` and by its architecture integration.
+meanings are unchanged by `ST2-EXP-011`, its architecture integration, and this
+autonomous-governance proposal.
 
 ## 2. Permanent verified alternative architecture
 
@@ -242,20 +244,63 @@ Historical 001–003 workflows can therefore remain reproducible during later
 cycles without forcing the global active-experiment pointer to remain empty
 forever. The preserved failures remain research/governance provenance.
 
-## 8. Sequence frontier — ST2-EXP-004 is next but not active
+## 8. AUTONOMOUS RESEARCH PROGRAM status
 
-The owner-sequenced next experiment is `ST2-EXP-004`, whose intended single
-changed factor is the logical regime at `R-DP-003`.
+The governance branch introduces program-level owner authorization for
+sequential autonomous experiments, but it creates **no active research
+program**.
 
-It **must not start from this integration branch** and has **no Frozen Plan yet**.
-The required sequence is:
+Machine state:
 
 ```text
-complete and merge BOMA-ST2-LEARNING-INTEGRATION-002
-  ↓
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
+state = NO_ACTIVE_PROGRAM
+active_program_id = null
+authorized_experiment_queue = []
+routine_merge_authorized = false
+```
+
+The policy is fail-closed:
+
+```text
+AMBIGUOUS AUTHORITY => OWNER_REQUIRED
+```
+
+A future owner-authorized program may permit routine autonomous execution,
+technical recovery, experiment closure, transition to the next queued
+experiment, and opt-in conditional routine merge. Any sequence-critical new
+experiment, required queue reordering, Frozen Plan change, changed experimental
+factor, out-of-scope foundational/logical commitment, or material
+canonical/acceptance decision causes `OWNER_REQUIRED`.
+
+This capability does not activate `ST2-EXP-004`.
+
+## 9. Sequence frontier — ST2-EXP-004 is next but not active
+
+The owner-sequenced next experiment remains `ST2-EXP-004`, whose intended single
+changed factor is the logical regime at `R-DP-003`.
+
+`ST2-EXP-011` architecture integration has been merged. The repository must now
+re-read and verify the **current** synchronized `main` before any ST2-EXP-004
+Frozen Plan is created.
+
+On 2026-08-25, an accidental temporary file create/delete produced two content-
+neutral commits after the prior integrated main head. Comparison from
+`50f3031b8d2657cbe0710e73e5935d997d40e49b` to
+`b837ac774b057d5811e3fe6b35ae43e2f4283e2b` reports two commits and zero changed
+files. The operational error is preserved in
+`AUTONOMOUS_RESEARCH_PROGRAM_ROLLOUT_001.md`.
+
+Therefore no earlier SHA may be silently reused as the next experiment baseline.
+
+Required sequence remains:
+
+```text
 synchronize and verify current main
   ↓
 re-read current main and current R-DP-003 authorities
+  ↓
+obtain either explicit experiment authorization or an OWNER_AUTHORIZED program queue containing ST2-EXP-004
   ↓
 prepare a new independent ST2-EXP-004 Frozen Plan from that exact main
   ↓
@@ -264,15 +309,19 @@ open a separate ST2-EXP-004 branch
 begin Do only after the Plan is frozen
 ```
 
-No ST2-EXP-011 Plan, branch state, or experimental implementation becomes the
-Plan of ST2-EXP-004.
+No ST2-EXP-011 Plan, branch state, experimental implementation, or autonomous
+governance branch becomes the Plan of ST2-EXP-004.
 
-## 9. Current architectural authorities
+## 10. Current architectural authorities
 
 Read current state in this order:
 
 ```text
 LAB/PDSA/STATUS.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
+active owner-authorized research-program record, if any
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
@@ -293,4 +342,6 @@ LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 ```
 
 Historical documents remain authoritative for their own dated state but do not
-override later synchronized current-state authorities.
+override later synchronized current-state authorities. The autonomous program
+state controls execution authority only; it does not override mathematical or
+architectural facts.
