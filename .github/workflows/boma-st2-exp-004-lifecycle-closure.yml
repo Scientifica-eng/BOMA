@@ -26,20 +26,20 @@ concurrency:
 jobs:
   repair_and_verify:
     name: apply verified non-workflow provenance repair
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact PR head
+      - name: Checkout exact push head
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       - name: Render and verify bounded non-workflow repair
         shell: bash
         run: |
           set -euo pipefail
-          expected='${{ github.event.pull_request.head.sha }}'
+          expected='${{ github.sha }}'
           branch='feature/stage-two-st2-exp-004-r-total-order-logical-regime'
           test "$(git rev-parse HEAD)" = "$expected"
           git fetch origin "$branch"
@@ -149,7 +149,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          expected='${{ github.event.pull_request.head.sha }}'
+          expected='${{ github.sha }}'
           branch='feature/stage-two-st2-exp-004-r-total-order-logical-regime'
           git fetch origin "$branch"
           test "$(git rev-parse "origin/$branch")" = "$expected"
