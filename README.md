@@ -1,10 +1,8 @@
 # BOMA — Project Handoff / START HERE
 
-BOMA builds a transparent, traceable mathematical architecture from a declared
-pre-numerical constructional layer toward standard number systems.
+BOMA builds a transparent, traceable mathematical architecture from a declared pre-numerical constructional layer toward standard number systems.
 
-Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA`
-identifiers are provenance only.
+Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA` identifiers are provenance only.
 
 ## Current accepted spine
 
@@ -23,6 +21,8 @@ Q-BLOCK-002                             ACCEPTED Q
         ↓
 R-DP-001 SELECTS R-ROUTE-D / Dedekind
         ↓
+R-DP-003 SELECTS localized classical CutComparability for Stage I
+        ↓
 R-BLOCK-001                             ACCEPTED R
         ↓
 BOMA-C-R-DEP-001                        exact 16-property C-production boundary
@@ -38,14 +38,11 @@ C-J-001 → C-BLOCK-002
 CA-20                                   ACCEPTED C
 ```
 
-The accepted spine is unchanged. `ST2-EXP-004` is an active research cycle and
-has not changed any accepted producer, route, Claim, or export.
+The accepted spine is unchanged by Stage-Two research and by the Learning-to-Construction Acts described below.
 
 ## Permanent verified alternatives learned through Stage Two
 
-Owner-authorized Learning-to-Construction Acts integrate durable architectural
-knowledge into the permanent Construction DAG while preserving all experimental
-provenance.
+Owner-authorized Learning-to-Construction Acts integrate durable architectural knowledge into the permanent Construction DAG while preserving all experimental provenance.
 
 ```text
 R-DP-001
@@ -66,13 +63,9 @@ C-DP-001
 
 Permanent graph visibility does **not** mean selection or acceptance.
 
-## Two different C←R dependency surfaces
+## C←R production boundary — ST2-EXP-001
 
-### Production surface — ST2-EXP-001
-
-`ST2-EXP-001` proved that production of the selected C meaning needs exactly a
-narrow sixteen-property real interface rather than the entire historical
-accepted R integration bundle:
+`ST2-EXP-001` established the exact mathematical production surface used to rebuild the selected C meaning:
 
 ```text
 orderTrans
@@ -102,14 +95,11 @@ BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate
 BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
 ```
 
-The accepted C Lean implementation may still carry a larger bundled R ancestry.
-That excess is formalization/provenance over-bundling, not mathematical
-necessity.
+The accepted C Lean implementation may still carry a larger bundled R ancestry. That excess is formalization/provenance over-bundling, not mathematical necessity.
 
-### Comparison surface — ST2-EXP-011
+## C comparison boundary — ST2-EXP-011
 
-`ST2-EXP-011` studied only the scalar boundary of `C-COMPARE-BLOCK-001` and
-proved a smaller direct comparison interface:
+`ST2-EXP-011` established a smaller direct comparison interface at `C-COMPARE-BLOCK-001`:
 
 ```text
 scalar operations:
@@ -122,118 +112,105 @@ quadratic coordinate laws:
   coordinateNeg / coordinateAdd / coordinateMul
 ```
 
-Authority: `C-COMPARE-BLOCK-001 / C-CL-COMPARE-001`.
+This comparison surface is **not** a replacement for the sixteen-property production surface. They answer different questions.
 
-This comparison surface is **not** a replacement for the sixteen-property
-production surface. They answer different questions.
+The accepted RBOMA adapter preserves the existing `Related` meaning definitionally. A native RCBOMA/H6 adapter is verified without H5 `cToD` or selected Dedekind implementation transport. Functional comparison still requires explicit `CoordinateExtractor` data; no global coordinate or inverse selector is introduced.
 
-The accepted RBOMA adapter preserves the existing `Related` meaning
-definitionally. A native RCBOMA/H6 adapter is verified without H5 `cToD` or
-selected Dedekind implementation transport. Functional comparison still
-requires explicit `CoordinateExtractor` data; no global coordinate or inverse
-selector is introduced.
+The experimental `ST2Exp011*.lean` sources remain research-only. The generic factoring is not an implicit replacement of accepted `CQuadraticComparison001`.
 
-The experimental `ST2Exp011*.lean` sources remain research-only. The generic
-factoring is a future accepted-source refactor candidate, not an implicit
-replacement of accepted `CQuadraticComparison001`.
+## R-DP-003 logical-regime boundary — ST2-EXP-004
 
-## Learning-to-Construction rule
+`ST2-EXP-004` is closed, passed, merged, and its durable lesson is integrated through `BOMA-ST2-LEARNING-INTEGRATION-003`.
 
-A successful experiment may, after Study/Act, lifecycle closure, and explicit
-owner authorization, feed verified knowledge into the permanent Construction
-DAG by:
-
-```text
-refining a dependency contract;
-refining an existing Block's dependency classification;
-retaining a verified non-selected route;
-retaining a verified non-acceptance Junction;
-exposing a representation-independent invariant;
-recording a sensitivity/genericity condition.
-```
-
-But:
-
-```text
-permanent DAG visibility ≠ SELECTS
-permanent DAG visibility ≠ ACCEPTED EXPORT
-successful experiment ≠ automatic acceptance promotion
-integrated dependency knowledge ≠ accepted implementation refactor
-```
-
-The Learning Graph continues to preserve how every integrated fact was learned.
-
-Integration authorities:
-
-```text
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
-```
-
-## Current Stage-Two lifecycle
-
-```text
-ST2-EXP-001  CLOSED / PASS / production dependency lesson integrated
-ST2-EXP-002  CLOSED / PASS / Route-Q + Junction integrated
-ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT / Cauchy + Junction integrated
-ST2-EXP-011  CLOSED / PASS / comparison-interface lesson integrated
-ST2-EXP-004  ACTIVE / PLAN FROZEN / GATE A NEXT
-```
-
-`ST2-EXP-004` exact authority:
+Exact frozen authority:
 
 ```text
 accepted reference  50f3031b8d2657cbe0710e73e5935d997d40e49b
 accepted tree       e4842acdf2b08c8db54b45d0798c36ee7565f351
 candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
 Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
+Final Study/Act      6779d028c49f73757ea838c163d3968a982559fe
+exact closed head   1fe760de811ad2b176ead6f420b80ca1aab5ce46
+research merge      61adb8589c803e95e1b96ef38902320c8aa5df19
 origin              DECISION_POINT / R-DP-003
-current gate        GATE A — EXACT F-04 DEPENDENCY MAP
 ```
 
-The Frozen Plan is immutable. The only changed factor is the F-04 provider of
-Dedekind cut comparability/real-order disjunctive totality. Accepted carrier,
-identity, `rLE`, operations, Q/R/C manifests, and F-05/F-06/F-07 remain controls.
-
-## ST2-EXP-004 scientific boundary
-
-Baseline F-04 provider:
+The single changed factor was only the selected F-04 provider:
 
 ```text
 BOMA.R.DedekindOrderClassical001.cutComparability_classical
 BOMA.R.DedekindOrderClassical001.rLE_total_classical
 ```
 
-The alternative must preserve:
+The experiment preserved the accepted `LowerCut / CutEquiv / cutSetoid / RBOMA / CutLE / rLE` representation, accepted operation definitions, accepted Q/R/C manifests and sources, and independent logical commitments F-05/F-06/F-07.
+
+### Integrated same-carrier fact
+
+On the unchanged representation:
 
 ```text
-LowerCut / CutEquiv / cutSetoid / RBOMA
-CutLE / rLE
-rLE_refl / rLE_trans / rLE_antisymm
-accepted scalar/field operation definitions
-all accepted Q/R/C source manifests
-F-05 / F-06 / F-07 as explicit controls
+RTotality ↔ CutComparability
 ```
 
-Known direct references before Gate A include:
+where:
 
 ```text
-RStageIntegrationCertificate.orderTotal
-rPosNeg_decomposition
-ST2-EXP-001 NarrowROrderedFieldCertificate.orderTotal
+RTotality := ∀ x y : RBOMA, rLE x y ∨ rLE y x
+CutComparability := ∀ A B : LowerCut, CutLE A B ∨ CutLE B A
 ```
 
-These are not yet a complete Claim-impact result. Gate A must compute exact
-formal declaration closures before alternative mathematics is written.
+No unconditional constructive `CutComparability` inhabitant was recovered from the frozen `LowerCut` fields.
 
-Removing F-04 must not be described as making all accepted R constructive;
-other localized classical commitments are explicitly outside this experiment's
-changed factor.
+Therefore:
+
+```text
+conditional CutComparability ≠ constructive recovery
+NO F-04 dependency           ≠ fully constructive R
+formal dependency            ≠ mathematical necessity
+```
+
+F-05 finite membership/bracketing, F-06 positive representative extraction, and F-07 rational density remain separate localized commitments.
+
+### Exact current proof/package impact
+
+Gate A classified the measured declaration roots:
+
+```text
+F04_DIRECT             8
+F04_TRANSITIVE         7
+F04_FREE              22
+OTHER_CLASSICAL_ONLY  18
+unresolved             0
+internal axioms        0
+```
+
+Gate B retained `77 / 88` accepted-manifest R source files in the research-only whole-source no-F04 survivor assembly. This is a source-packaging measurement, not an impossibility theorem.
+
+### Downstream C sensitivity
+
+Gate E removed exactly `orderTotal` from the sixteen-property production interface. Seven C Claim families survived:
+
+```text
+C-CL-CARRIER-001
+C-CL-REMBED-001
+C-CL-I-001
+C-CL-GEN-001
+C-CL-COORDUNIQ-001
+C-CL-NONREAL-001
+C-CL-COMPARE-001
+```
+
+The current proof closures for `C-CL-FIELD-001` and `C-CL-INTEGRATION-001` did not survive; their measured dependency is transitive through the current square/nonnegative → norm → field path. This is current proof-architecture sensitivity, not a theorem that every construction of those meanings mathematically requires total order.
+
+`C-CL-COMPARE-001` survives consistently with the smaller ST2-EXP-011 comparison interface.
+
+A located-cut redesign would change the representation and is only a possible separately authorized future candidate.
 
 ## Canonical acceptance remains unchanged
 
 ```text
 R-DP-001 selected route       R-ROUTE-D / DEDEKIND
+R-DP-003 logical regime       localized classical comparability / retained
 accepted R integration        R-J-002
 accepted R export             R-BLOCK-001
 C-DP-001 selected route       C-ROUTE-P
@@ -258,97 +235,93 @@ H6 Cauchy-native C core
   PERMANENT DOWNSTREAM ROBUSTNESS EVIDENCE / NOT ACCEPTED
 ```
 
-## ST2-EXP-011 exact closure and merge provenance
+No new Block, Decision Point, or Junction was created by the ST2-EXP-004 learning integration.
+
+## Learning-to-Construction rule
+
+A successful experiment may, after Study/Act, lifecycle closure, and explicit owner authorization, feed verified knowledge into the permanent Construction DAG by refining a dependency contract or existing unit's dependency/logical classification, retaining verified alternatives or non-acceptance Junctions, exposing invariants, or recording sensitivity/genericity conditions.
+
+But:
 
 ```text
-Frozen accepted main
-  b49826e58261a71634cd12756e8afda28920088f
-
-Frozen Plan
-  5cc05ef1bea8e88787041c3bc30dd0aecf5412d4
-
-final lifecycle-closed exact head
-  632a7134f26daf9dd781e3546804941f429a4246
-
-ST2-EXP-011 final run
-  32754345656
-
-artifact
-  9530261359
-
-sha256
-  d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
-
-research/lifecycle merge
-  72394878854aa69e865d17567959bec1daa70e6d
+permanent DAG visibility ≠ SELECTS
+permanent DAG visibility ≠ ACCEPTED EXPORT
+successful experiment ≠ automatic acceptance promotion
+integrated dependency knowledge ≠ accepted implementation refactor
 ```
 
-The merge commit has the exact verified head as its second parent and differs
-from it by zero files. A later active 004 cycle does not alter this historical
-closure.
+The Learning Graph continues to preserve how every integrated fact was learned.
+
+Integration authorities:
+
+```text
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
+```
+
+## Current Stage-Two lifecycle
+
+```text
+ST2-EXP-001  CLOSED / PASS / lesson integrated
+ST2-EXP-002  CLOSED / PASS / lesson integrated
+ST2-EXP-003  CLOSED / PASS / lesson integrated
+ST2-EXP-011  CLOSED / PASS / lesson integrated
+ST2-EXP-004  CLOSED / PASS / lesson integrated
+ACTIVE EXPERIMENT = NONE
+AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
+NEXT EXPERIMENT = NOT AUTHORIZED
+REQUIRED NEXT ACT = STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
+```
+
+The ST2-EXP-004 Frozen Plan remains immutable historical authority. Its thirteen failure records remain preserved.
 
 ## Source-of-truth order
 
-When current-state documents disagree, use this order unless a later explicit
-governance record supersedes it:
+When current-state documents disagree, use this order unless a later explicit governance record supersedes it:
 
 1. `LAB/PDSA/STATUS.md`
-2. `LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md`
-3. `LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md`
-4. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
-5. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
-6. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`
-7. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md`
-8. `LAB/00_ARCHITECTURE/ARCHITECTURE.md`
-9. `LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md`
-10. `LAB/00_ARCHITECTURE/REGISTRY.md`
-11. `LAB/00_ARCHITECTURE/GRAPH.md`
-12. `LAB/00_ARCHITECTURE/DECISION_LEDGER.md` / `JUNCTION_LEDGER.md`
-13. relevant DAG / Block / acceptance / Claim records and exact V5 evidence
-14. onboarding summaries such as this README and `AGENTS.md`
-15. dated historical PDSA/checkpoint/branch artifacts for provenance
+2. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
+3. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
+4. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md`
+5. immutable ST2-EXP-004 Frozen Plan / Study/Act / lifecycle / failures for experiment history
+6. earlier integration authorities 002 and 001
+7. `LAB/00_ARCHITECTURE/ARCHITECTURE.md` / `CONSTRUCTION_TOPOLOGY.md`
+8. `LAB/00_ARCHITECTURE/REGISTRY.md` / `GRAPH.md`
+9. relevant DAG / Decision / Block / acceptance / Claim records and exact evidence
+10. onboarding summaries such as this README and `AGENTS.md`
 
-Historical documents remain valid records of their own state at their own date;
-they do not override a later synchronized current-state authority.
+Historical documents remain valid records of their own state at their own date; they do not override a later synchronized current-state authority.
 
 ## Mandatory reading order
 
-Before canonical or active Stage-Two work, read:
+Before canonical work or before proposing any later research cycle, read:
 
 ```text
 README.md
 AGENTS.md
 LAB/PDSA/STATUS.md
-LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
-LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
-LAB/00_ARCHITECTURE/ARCHITECTURE.md
-LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/REGISTRY.md
-LAB/00_ARCHITECTURE/DECISION_LEDGER.md
-LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/R_DAG.md
-LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
-LAB/00_ARCHITECTURE/C_DAG.md
 LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
+LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
-LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
-LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
-LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
-LAB/00_ARCHITECTURE/TRUSTED_BASE.md
+LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
+LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 ```
 
 ## Do not linearize BOMA
 
-The construction is a DAG. Valid topology includes vertical dependency,
-horizontal independence, parallel contributors, Decision Point branches,
-permanent verified alternatives, and split → independent development → verified
-reconvergence.
+The construction is a DAG. Valid topology includes vertical dependency, horizontal independence, parallel contributors, Decision Point branches, permanent verified alternatives, and split → independent development → verified reconvergence.
 
 Key invariants:
 
@@ -358,128 +331,6 @@ meeting ≠ verified Junction by default
 SELECTS ≠ DERIVES
 reconvergence preserves provenance
 verified alternative ≠ accepted export
-shared generic interface ≠ Junction by default
-```
-
-## Accepted stage summary
-
-### Natural numbers and arithmetic
-
-```text
-NAC-15 = ACCEPT
-N-BLOCK-007 = accepted N-Core
-NAA-18 = ACCEPT
-N-ARITH-BLOCK-001 = accepted N-Arithmetic
-```
-
-### Integers
-
-`Z-DP-001` selected signed canonical normal forms while retaining the difference
-pair route. `ZA-21 = ACCEPT`; `Z-BLOCK-002` is the accepted integer interface.
-
-### Rationals
-
-`Q-DP-001` selected `QBOMA := Quotient fracSetoid` as a formalization choice,
-not a universal mathematical necessity. `QA-23 = ACCEPT`; `Q-BLOCK-002` is the
-accepted rational export.
-
-### Reals
-
-`R-DP-001` selects Dedekind for the accepted route. `R-BLOCK-001` remains the
-accepted export. The independently completed Cauchy route is a permanent
-verified alternative, and `ST2-EXP-003-R-J-001` records explicit field/order
-reconvergence with the selected producer. `ST2-EXP-004` studies only the
-logical-regime choice at `R-DP-003`; it does not change the selected R route.
-
-### Complex numbers
-
-`C-DP-001` selects `C-ROUTE-P`; `C-BLOCK-001` is the selected producer,
-`C-COMPARE-BLOCK-001` owns the accepted comparison Claim, `C-J-001` is the
-accepted same-carrier integration Junction, and `C-BLOCK-002 / CA-20` is
-accepted. Independently completed `C-ROUTE-Q` is a permanent verified
-alternative with `ST2-EXP-002-PQ-J-001`.
-
-## Stage-Two completed experiments
-
-### ST2-EXP-001 — narrow accepted-R production interface
-
-Origin: `DEPENDENCY_EDGE / BOMA-C-R-DEP-001`.  
-Result: `CLOSED / PASS`.  
-Exact V5: `32593045224`.  
-Integrated result: canonical C-production R→C dependency is the exact sixteen-field interface.
-
-### ST2-EXP-002 — independent C representation
-
-Origin: `C-DP-001`.  
-Result: `CLOSED / PASS`.  
-Final exact V5: `32597346281`.  
-Integrated result: `C-ROUTE-Q` and `ST2-EXP-002-PQ-J-001` are permanent verified
-alternative architecture; Route P remains selected.
-
-### ST2-EXP-003 — independent Cauchy real completion
-
-Origin: `R-DP-001` above accepted `Q-BLOCK-002`.  
-Result: `CLOSED / PASS / H1-H6 EXACT / MATHEMATICAL PASS`.  
-Integrated result: Cauchy R and `ST2-EXP-003-R-J-001` are permanent verified
-alternative architecture; H6 is permanent downstream robustness evidence;
-Dedekind remains selected.
-
-### ST2-EXP-011 — C comparison scalar/interface generalization
-
-Origin: `BLOCK / C-COMPARE-BLOCK-001`.  
-Result: `CLOSED / PASS`.  
-Integrated result: the direct comparison dependency is scalar
-`zero/one/neg/add/mul` plus explicit quadratic coordinate laws; accepted
-`Related` semantics are preserved; a native RCBOMA/H6 instance works without H5
-transport; relation/function separation remains explicit. No accepted source or
-selected route was promoted.
-
-## Active Stage-Two experiment
-
-### ST2-EXP-004 — R total-order logical regime
-
-Origin: `DECISION_POINT / R-DP-003`.  
-Status: `ACTIVE / PLAN FROZEN`.  
-Frozen reference: `50f3031b8d2657cbe0710e73e5935d997d40e49b`.  
-Frozen Plan commit: `89c9dc9154e7ca469e5c94c177be223205ee9dbd`.  
-Current gate: `GATE A — EXACT F-04 DEPENDENCY MAP`.
-
-No mathematical result is claimed yet.
-
-## Future experiment candidates
-
-The controlled candidate inventory is maintained in:
-
-`LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`.
-
-Candidate discoveries follow:
-
-`LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md`.
-
-The single-active slot is occupied by `ST2-EXP-004`. Other documented
-candidates remain inactive absent separate authorization and lifecycle release.
-
-## Verification environment
-
-```text
-Lean toolchain       leanprover/lean4:v4.32.1
-Lake packages        none
-fixed toolchain      true
-```
-
-V5 workflows verify explicit dependency assemblies and exact-head evidence. A
-monolithic type-check alone is not an acceptance or experiment-completion gate.
-
-## Current operational instruction
-
-```text
-preserve accepted N → C spine
-preserve permanent verified alternatives and their non-selected status
-preserve exact 16-property C-production R→C contract
-preserve scalar-generic C comparison contract and relation/function firewall
-preserve all completed Frozen Plans, failures, Study/Act, lifecycle, merge, and exact evidence
-ST2-EXP-004 = ACTIVE / PLAN FROZEN
-DO NOT EDIT PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-execute GATE A before writing alternative mathematics
-measure F-04 descendants; do not infer full constructivity from F-04 removal
+successful experiment ≠ promotion
+formal provenance ≠ mathematical necessity
 ```
