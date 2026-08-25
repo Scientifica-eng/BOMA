@@ -1,12 +1,12 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN / AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM`  
+**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN / GATE A PASS / GATE B NEXT / AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM`  
 **Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest architecture Act:** `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`  
 **Autonomous-program governance:** `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`  
-**Current program frontier:** `ST2-EXP-004 ACTIVE UNDER DIRECT OWNER AUTHORITY / PLAN FROZEN / GATE A NEXT / AUTONOMOUS PROGRAM REMAINS NO_ACTIVE_PROGRAM`.
+**Current program frontier:** `ST2-EXP-004 ACTIVE UNDER DIRECT OWNER AUTHORITY / PLAN FROZEN / GATE A PASS / GATE B NO-F04 SURVIVOR ASSEMBLY NEXT / AUTONOMOUS PROGRAM REMAINS NO_ACTIVE_PROGRAM`.
 
 This is the compact current-state handoff index. Historical run lineages remain
 in stage-specific PDSA/evidence/failure records and are not erased by current-state integration.
@@ -179,7 +179,7 @@ ST2-EXP-001  CLOSED / PASS / PRODUCTION DEPENDENCY LESSON INTEGRATED
 ST2-EXP-002  CLOSED / PASS / ROUTE-Q + NON-ACCEPTANCE JUNCTION INTEGRATED
 ST2-EXP-003  CLOSED / PASS / H1-H6 EXACT / CAUCHY + R JUNCTION INTEGRATED
 ST2-EXP-011  CLOSED / PASS / COMPARISON-INTERFACE LESSON INTEGRATED
-ST2-EXP-004  ACTIVE / PLAN FROZEN / GATE A NEXT
+ST2-EXP-004  ACTIVE / PLAN FROZEN / GATE A PASS / GATE B NEXT
 ```
 
 `ST2-EXP-004` exact frozen authority:
@@ -191,17 +191,51 @@ candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
 Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
 origin              DECISION_POINT / R-DP-003
 single factor       F-04 total-comparability provider
-current gate        GATE A — exact F-04 dependency map
 ```
 
 The Frozen Plan file is immutable.
 
+Gate A exact evidence:
+
+```text
+head      0cc785c6a5b1b00c3c004796a23f82d6c1af1f0d
+run       32828815533
+job       97742703857
+artifact  9555962479
+sha256    7a04de96adbd1ee2aa2b1dd846850d7a372a7447aab508b516931057178b0bbe
+result    GATE_A_PASS
+```
+
+Gate A measured `55` rows / `50` unique declaration roots with `0` unresolved
+rows and `0` internal-axiom rows:
+
+```text
+F04_DIRECT            8
+F04_TRANSITIVE        7
+F04_FREE             22
+OTHER_CLASSICAL_ONLY 18
+```
+
+Authority: `LAB/PDSA/experiments/ST2-EXP-004_GATE_A_DEPENDENCY_MAP_001.md`.
+
+The verified F-04 cone reaches accepted totality, positive decomposition,
+substantial multiplication/inverse/field packaging, R integration, C field
+packaging, the sixteen-property production interface's `orderTotal`, and C
+integration. It does not reach the whole R/C graph: the partial-order core,
+completeness, Archimedean result, C carrier, most real-embedding primitives,
+and ST2-EXP-011 generic comparison are examples outside the measured F-04
+cone. `OTHER_CLASSICAL_ONLY` means F-04-free but not necessarily constructive.
+
+Current gate:
+
+`GATE B — source-level no-F04 survivor assembly`.
+
 ## 6. AUTONOMOUS RESEARCH PROGRAM status
 
-The repository now contains fail-closed governance for an optional
-owner-authorized autonomous **program** of sequential experiments. That is a
-separate execution-authority mechanism from the direct owner authorization of
-this already selected `ST2-EXP-004` cycle.
+The repository contains fail-closed governance for an optional owner-authorized
+autonomous **program** of sequential experiments. That is a separate
+execution-authority mechanism from the direct owner authorization of this
+already selected `ST2-EXP-004` cycle.
 
 Current autonomous-program machine state remains:
 
@@ -272,16 +306,11 @@ F-07 strict rational-density witness extraction
 Therefore removing F-04 must never be described as making all accepted R
 constructive.
 
-Known direct sensitivity before Gate A measurement:
-
-```text
-RStageIntegrationCertificate.orderTotal = rLE_total_classical
-rPosNeg_decomposition uses rLE_total_classical rZero x
-ST2-EXP-001 C-production interface contains orderTotal
-```
-
-No further Claim-level dependency conclusion is promoted until Gate A computes
-actual declaration closures.
+Gate B must now distinguish declaration-closure independence from actual
+source-level assembly independence. A target marked `F04_FREE` or
+`OTHER_CLASSICAL_ONLY` at Gate A is only a survivor candidate until it compiles
+inside a research manifest that physically excludes the selected F-04 witness
+source.
 
 ## 9. Current authority order
 
@@ -293,6 +322,7 @@ LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
 LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+LAB/PDSA/experiments/ST2-EXP-004_GATE_A_DEPENDENCY_MAP_001.md
 LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
