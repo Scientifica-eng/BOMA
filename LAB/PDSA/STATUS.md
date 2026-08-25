@@ -1,10 +1,13 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / VERIFIED LESSONS 001-004+011 INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / PROGRAM_READY / ACTIVE EXPERIMENT = NONE / NEXT = ST2-EXP-014 AUTHORIZED QUEUED NO FROZEN PLAN`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / VERIFIED LESSONS 001-004+011 INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-014 STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING / FROZEN PLAN 788ae14649f3245fd8d6ccd43f90038ffba7762b`  
 **Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Current program baseline:** `1fac73b24b9b2e0db9dafc95e1944267aa9040da`  
 **Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
+**ST2-EXP-014 frozen accepted reference:** `fff2400b65b2c9a260fb28defd907ce24387cb80`  
+**ST2-EXP-014 Frozen Plan commit:** `788ae14649f3245fd8d6ccd43f90038ffba7762b`  
+**ST2-EXP-014 verified Study/Act head:** `1e08cb127fc6aa5483706a913d24932f4d6a1f31`  
 **Accepted-main reference at ST2-EXP-004 freeze:** `50f3031b8d2657cbe0710e73e5935d997d40e49b`  
 **ST2-EXP-004 research merge:** `61adb8589c803e95e1b96ef38902320c8aa5df19`  
 **ST2-EXP-004 learning integration:** `BOMA-ST2-LEARNING-INTEGRATION-003`.
@@ -14,24 +17,45 @@
 ## Current program frontier
 
 ```text
-AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED / PROGRAM_READY
+AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 PROGRAM TITLE: Compositionality and Minimality of the R→C Boundary
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 QUEUE CURSOR: 0 / ST2-EXP-014
-ACTIVE STAGE-TWO EXPERIMENT: NONE
-NEXT EXPERIMENT: ST2-EXP-014 / OWNER_AUTHORIZED / QUEUED / NOT ACTIVE / NO FROZEN PLAN
+ACTIVE STAGE-TWO EXPERIMENT: ST2-EXP-014
+ACTIVE STATE: CLOSING
+FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md
+FROZEN PLAN COMMIT: 788ae14649f3245fd8d6ccd43f90038ffba7762b
+RESEARCH BRANCH: feature/stage-two-st2-exp-014-cauchy-native-full-c
+FINAL STUDY/ACT: LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md / PASS
+LIFECYCLE CLOSURE RECORD: LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md / EFFECTIVE ONLY AFTER EXACT CLOSURE-HEAD PASS
+NEXT QUEUED EXPERIMENT: ST2-EXP-015 / WAITING 014 EXACT CLOSURE + TRANSITION GATE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: merge/verify this authorization state, re-read synchronized main, then prepare an independent immutable ST2-EXP-014 Frozen Plan
+REQUIRED NEXT ACT: exact lifecycle-closure-head ST2-EXP-014 CI → routine merge exact verified head if all gates pass → re-read synchronized main → evaluate 014→015 transition
 ```
 
-`ST2-RP-001` is execution authority for the bounded four-experiment sequence as
-written in its owner-authorization record. It does not pre-judge any experiment
-result and does not authorize changes to selected routes, accepted exports,
-acceptance contracts, or canonical producers.
+`ST2-EXP-014` remains the only active Stage-Two experiment until the exact
+closure head is verified and routine-merged. Its single changed scientific
+factor is the C Route-P scalar producer:
 
-The previous `NO_ACTIVE_PROGRAM` state was the correct post-`ST2-EXP-004`
-frontier before the owner's 2026-08-25 authorization of `ST2-RP-001`. Preserve
-that state as historical provenance, not as the current execution state.
+```text
+accepted Dedekind RBOMA
+        ↓
+verified Cauchy RCBOMA
+```
+
+while C Route-P meaning, the nine accepted C Claim meanings, accepted sources,
+selected routes, witness-only inverse semantics, and the relation/function
+firewall remain controls.
+
+The verified Study/Act result is `PASS`: the seven C Claim families already
+verified by `ST2-EXP-003/H6`, the native Cauchy comparison layer already verified
+by `ST2-EXP-011`, and one 014 integration package jointly reproduce the complete
+nine-Claim target surface without H5/Dedekind implementation transport.
+
+The lifecycle closure record is committed under `CLOSING`; it becomes an
+effective `CLOSED / PASS` record only if the exact commit containing it passes
+V5 and all required PR regressions. Exact evidence from an ancestor is not
+transferred to the closure head.
 
 Transition remains fail-closed. A sequence-critical new prerequisite, queue
 reordering, Frozen-Plan factor change, out-of-scope mathematical/logical
@@ -44,8 +68,8 @@ commitment, canonical/acceptance decision, or ambiguous authority sets
 
 | Order | Experiment | Core question | Current disposition |
 | ---: | --- | --- | --- |
-| 1 | `ST2-EXP-014` | rebuild all nine accepted C Claim meanings natively over the verified Cauchy real producer with selected C Route P fixed | `AUTHORIZED / QUEUED / NEXT / NO FROZEN PLAN` |
-| 2 | `ST2-EXP-015` | hold Cauchy R fixed and change only C Route P → Route Q to test the Dedekind/Cauchy × P/Q composition square | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 1 | `ST2-EXP-014` | rebuild all nine accepted C Claim meanings natively over the verified Cauchy real producer with selected C Route P fixed | `STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING` |
+| 2 | `ST2-EXP-015` | hold Cauchy R fixed and change only C Route P → Route Q to test the Dedekind/Cauchy × P/Q composition square | `AUTHORIZED / QUEUED / WAITING 014 EXACT CLOSURE + TRANSITION` |
 | 3 | `ST2-EXP-016` | replace production `orderTotal` by one exact frozen algebraic nondegeneracy condition and test full C field closure | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
 | 4 | `ST2-EXP-017` | abstract the scalar from concrete real R to generic field K satisfying the exact interface verified by 016 | `AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
@@ -86,6 +110,47 @@ pre-numerical
 | `ST2-EXP-003` | `DECISION_POINT / R-DP-001` | `CLOSED / PASS` | Dedekind route retained; Cauchy route research-only | independent Cauchy R and downstream H6 evidence retained |
 | `ST2-EXP-011` | `BLOCK / C-COMPARE-BLOCK-001` | `CLOSED / PASS / INTEGRATED` | no accepted refactor | narrow scalar/coordinate comparison interface integrated |
 | `ST2-EXP-004` | `DECISION_POINT / R-DP-003` | `CLOSED / PASS / INTEGRATED` | no promotion; selected F-04 provider retained | logical-regime impact/sensitivity lesson integrated by `BOMA-ST2-LEARNING-INTEGRATION-003` |
+
+`ST2-EXP-014` is intentionally not moved into this closed table until the exact
+closure head passes and is routine-merged.
+
+---
+
+## ST2-EXP-014 — current immutable authority and closing evidence
+
+**Frozen Plan:** `LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md`  
+**Frozen Plan commit:** `788ae14649f3245fd8d6ccd43f90038ffba7762b`  
+**Frozen accepted reference:** `fff2400b65b2c9a260fb28defd907ce24387cb80`  
+**Typed origin record:** `LAB/PDSA/experiments/ST2-EXP-014_BRANCH_ORIGIN_RECORD_001.json`  
+**Gate-A source inventory:** `LAB/PDSA/experiments/ST2-EXP-014_GATE_A_CLAIM_GAP_001.md`  
+**Native source:** `LAB/payloads/lean/CStage/ST2Exp014CauchyNativeFullC.lean`  
+**Native manifest:** `LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_014_CAUCHY_NATIVE_FULL_C_INPUTS.txt`  
+**Final Study/Act:** `LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md`  
+**Verified Study/Act head:** `1e08cb127fc6aa5483706a913d24932f4d6a1f31`  
+**Lifecycle closure:** `LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md`  
+**Exact workflow:** `.github/workflows/boma-st2-exp-014-cauchy-native-full-c.yml`.
+
+Verified Claim decomposition:
+
+```text
+7 Claim families  H6_ALREADY_VERIFIED
+1 Claim family    011_ALREADY_VERIFIED
+1 Claim family    014_INTEGRATION_ONLY
+```
+
+The Study/Act head passed exact V5 as:
+
+```text
+run       32873847016
+job       97886976028
+artifact  9573108354
+sha256    31259ff1547842f165be99ee8c913453df002b64eb49c34ae99561ad3fb92e73
+```
+
+The final closure commit must independently prove native elaboration, dependency
+separation, nine-Claim coverage, accepted-source immutability, Frozen-Plan
+immutability, governance/architecture regressions, and exact artifact
+provenance before the lifecycle record becomes effective.
 
 ---
 
@@ -173,6 +238,10 @@ ST2-EXP-004_FAILURE_015_POSTINTEGRATION_STOP_MARKER_LITERAL_MISMATCH.md
 
 They classify final-stop/historical-sentinel compatibility defects separately from the mathematical result. Earlier failure records `001..013` remain immutable.
 
+`ST2-EXP-014` additionally preserves its Gate-A verification-harness recovery as
+`ST2-EXP-014_FAILURE_001_GATE_A_CLAIM_REGISTRY_AUDIT.md`; that technical failure
+does not alter the 014 mathematical PASS result.
+
 ---
 
 ## Historical ST2-EXP-004 final stop and supersession
@@ -186,8 +255,8 @@ AUTONOMOUS RESEARCH PROGRAM: NO_ACTIVE_PROGRAM
 REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
 ```
 
-That stop condition was satisfied. It was subsequently superseded only by the
-owner's explicit authorization of `ST2-RP-001` on 2026-08-25. No experiment is
-started merely by this STATUS update; 014 may begin only after the program
-authorization is merged, exact `main` is synchronized/re-read, and its own
-immutable Frozen Plan is created on a separate research branch.
+That stop condition was satisfied and later superseded only by the owner's
+explicit authorization of `ST2-RP-001` on 2026-08-25. The authorization was
+merged and verified on `main` at `fff2400b65b2c9a260fb28defd907ce24387cb80`;
+014 was then independently branched and its Plan frozen before Do. The historical
+004 sentinel remains evidence and does not override the current 014 state.
