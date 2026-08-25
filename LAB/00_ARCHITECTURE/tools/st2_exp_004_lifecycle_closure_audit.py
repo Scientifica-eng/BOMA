@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed audit for the lifecycle-closed ST2-EXP-004 research state."""
+"""Fail-closed audit for the lifecycle-closed and architecture-integrated ST2-EXP-004 state."""
 from __future__ import annotations
 
 import argparse
@@ -13,6 +13,8 @@ REGISTER = "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md"
 PLAN = "LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md"
 STUDY = "LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md"
 CLOSURE = "LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md"
+INTEGRATION = "LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md"
+RDP003 = "LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md"
 EXPECTED_IDS = {"ST2-EXP-001", "ST2-EXP-002", "ST2-EXP-003", "ST2-EXP-011", "ST2-EXP-004"}
 EXPECTED_PLAN_COMMIT = "89c9dc9154e7ca469e5c94c177be223205ee9dbd"
 EXPECTED_BASELINE = "50f3031b8d2657cbe0710e73e5935d997d40e49b"
@@ -20,11 +22,13 @@ EXPECTED_STUDY_COMMIT = "6779d028c49f73757ea838c163d3968a982559fe"
 EXPECTED_PRECLOSURE_RUN = 32835963092
 EXPECTED_PRECLOSURE_ARTIFACT = 9558667579
 EXPECTED_PRECLOSURE_DIGEST = "e0920004e18db1e516b952ed49b7466f7939e72b0ccf0e682757d4b23856e245"
-EXPECTED_NEXT = "ST2-EXP-004 LEARNING-TO-CONSTRUCTION INTEGRATION THEN STOP / NO NEW EXPERIMENT"
-EXPECTED_ARCH = "REQUIRED / SEPARATE POST-CLOSURE ACT / NOT YET INTEGRATED"
-FAILURES = [
-    f"LAB/PDSA/experiments/ST2-EXP-004_FAILURE_{i:03d}_" for i in range(1, 14)
-]
+EXPECTED_RESEARCH_MERGE = "61adb8589c803e95e1b96ef38902320c8aa5df19"
+EXPECTED_RESEARCH_TREE = "256b4dce1bdbb93858b28d28ece7a9e177a1685c"
+EXPECTED_RESEARCH_PARENT_1 = "c26854e551c7e6245ef9c13c01a2424def6bfab5"
+EXPECTED_RESEARCH_PARENT_2 = "1fe760de811ad2b176ead6f420b80ca1aab5ce46"
+EXPECTED_NEXT = "STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED"
+EXPECTED_ARCH = "INTEGRATED / BOMA-ST2-LEARNING-INTEGRATION-003 / ACCEPTED SOURCES UNCHANGED"
+FAILURES = [f"LAB/PDSA/experiments/ST2-EXP-004_FAILURE_{i:03d}_" for i in range(1, 14)]
 
 
 def read(root: Path, rel: str) -> str:
@@ -59,7 +63,7 @@ def main() -> int:
         if ledger.get("required_next_act") != EXPECTED_NEXT:
             add(residuals, "required_next_act_drift", expected=EXPECTED_NEXT, actual=ledger.get("required_next_act"))
         next_slot = str(ledger.get("next_experiment_slot", ""))
-        for marker in ("NO ACTIVE EXPERIMENT", "ST2-EXP-004 CLOSED", "ARCHITECTURE INTEGRATION NEXT", "STOP BEFORE NEW EXPERIMENT"):
+        for marker in ("NO ACTIVE EXPERIMENT", "ST2-EXP-004 CLOSED", "ARCHITECTURE INTEGRATED", "STOP BEFORE NEW EXPERIMENT"):
             if marker not in next_slot:
                 add(residuals, "next_slot_marker_missing", marker=marker, actual=next_slot)
 
@@ -83,6 +87,12 @@ def main() -> int:
             "verified_run": EXPECTED_PRECLOSURE_RUN,
             "verified_artifact_id": EXPECTED_PRECLOSURE_ARTIFACT,
             "verified_artifact_sha256": EXPECTED_PRECLOSURE_DIGEST,
+            "main_merge_commit": EXPECTED_RESEARCH_MERGE,
+            "main_merge_tree": EXPECTED_RESEARCH_TREE,
+            "main_merge_parent_1": EXPECTED_RESEARCH_PARENT_1,
+            "main_merge_parent_2": EXPECTED_RESEARCH_PARENT_2,
+            "merge_content_drift": False,
+            "architecture_integration_record": INTEGRATION,
             "architecture_integration_status": EXPECTED_ARCH,
             "accepted_reference_changed": False,
             "canonical_acceptance_change": False,
@@ -95,8 +105,9 @@ def main() -> int:
                 add(residuals, "st2_exp_004_field_drift", field=field, expected=value, actual=r.get(field))
         if not str(r.get("status", "")).startswith("CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED"):
             add(residuals, "st2_exp_004_status_drift", actual=r.get("status"))
-        if "NO NEXT EXPERIMENT AUTHORIZED" not in str(r.get("lifecycle_disposition", "")):
-            add(residuals, "closure_authority_marker_missing", actual=r.get("lifecycle_disposition"))
+        for marker in ("ARCHITECTURE LESSON INTEGRATED", "NO NEXT EXPERIMENT AUTHORIZED"):
+            if marker not in str(r.get("lifecycle_disposition", "")):
+                add(residuals, "lifecycle_disposition_marker_missing", marker=marker, actual=r.get("lifecycle_disposition"))
 
         accepted = ledger.get("accepted_reference", {})
         expected_accepted = {
@@ -123,22 +134,47 @@ def main() -> int:
             if marker not in closure:
                 add(residuals, "closure_marker_missing", marker=marker)
 
+        integration = read(root, INTEGRATION)
+        for marker in (
+            "BOMA-ST2-LEARNING-INTEGRATION-003",
+            "DECISION_POINT / R-DP-003",
+            "RTotality ↔ CutComparability",
+            "F-05",
+            "F-06",
+            "F-07",
+            EXPECTED_RESEARCH_MERGE,
+            "NO F-04 dependency ≠ fully constructive R",
+            "NO NEW EXPERIMENT",
+        ):
+            if marker not in integration:
+                add(residuals, "integration_marker_missing", marker=marker)
+
+        decision = read(root, RDP003)
+        for marker in (
+            "RESOLVED — LOCALIZED CLASSICAL COMPARABILITY SELECTED FOR STAGE I",
+            "localized classical witness of CutComparability",
+            "RTotality ↔ CutComparability",
+            "BOMA-ST2-LEARNING-INTEGRATION-003",
+        ):
+            if marker not in decision:
+                add(residuals, "rdp003_selection_or_integration_marker_missing", marker=marker)
+
         for prefix in FAILURES:
             matches = list(root.glob(prefix + "*.md"))
             if len(matches) != 1:
                 add(residuals, "failure_record_missing_or_ambiguous", prefix=prefix, count=len(matches))
 
         state_markers = {
-            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),
-            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),
+            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "INTEGRATED", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "STOP BEFORE NEW EXPERIMENT"),
+            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "INTEGRATED", "ACTIVE", "NONE", "NEXT EXPERIMENT: NOT AUTHORIZED", "STOP BEFORE NEW EXPERIMENT"),
         }
         for rel, markers in state_markers.items():
             text = read(root, rel)
             for marker in markers:
                 if marker not in text:
                     add(residuals, "current_state_marker_missing", document=rel, marker=marker)
-            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:
-                add(residuals, "stale_active_004_marker", document=rel)
+            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text or "ARCHITECTURE INTEGRATION PENDING" in text:
+                add(residuals, "stale_active_or_pending_004_marker", document=rel)
 
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         add(residuals, "closure_audit_execution_error", error=str(exc))
@@ -150,9 +186,11 @@ def main() -> int:
         "frozen_reference": EXPECTED_BASELINE,
         "frozen_plan_commit": EXPECTED_PLAN_COMMIT,
         "final_study_act_commit": EXPECTED_STUDY_COMMIT,
+        "research_merge_commit": EXPECTED_RESEARCH_MERGE,
         "preclosure_verified_run": EXPECTED_PRECLOSURE_RUN,
         "preclosure_verified_artifact": EXPECTED_PRECLOSURE_ARTIFACT,
         "architecture_integration_status": EXPECTED_ARCH,
+        "architecture_integration_record": INTEGRATION,
         "next_act": EXPECTED_NEXT,
         "residuals": residuals,
     }
