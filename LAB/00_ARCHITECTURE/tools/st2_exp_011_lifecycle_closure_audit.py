@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit closed ST2-EXP-011 lifecycle before or after architecture integration."""
+"""Audit closed ST2-EXP-011 lifecycle across later Stage-Two cycles."""
 from __future__ import annotations
 
 import argparse
@@ -17,15 +17,11 @@ FAILURE_001 = "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMM
 FAILURE_002 = "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md"
 INTEGRATION = "LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md"
 
-# Historical green checkpoint retained exactly as recorded when lifecycle closure
-# was first written. Integration must not rewrite this evidence.
 EXPECTED_PRECLOSURE_HEAD = "ef116405c08475ec8702d9177a5106d7d0bfe525"
 EXPECTED_PRECLOSURE_RUN = 32753140129
 EXPECTED_PRECLOSURE_ARTIFACT = 9529812715
 EXPECTED_PRECLOSURE_DIGEST = "f7ec7a6d1fb88a8c59dbcc8ce04bd8d6c389a3b3d77bb6ed3c1f22dc629dd9b1"
 
-# Final lifecycle-closed exact head after closure records/audits themselves were
-# present. This evidence is additive to the pre-closure checkpoint above.
 EXPECTED_FINAL_HEAD = "632a7134f26daf9dd781e3546804941f429a4246"
 EXPECTED_FINAL_RUN = 32754345656
 EXPECTED_FINAL_ARTIFACT = 9530261359
@@ -53,9 +49,15 @@ PRECLOSURE_NEXT_ACT = "ST2-EXP-011 LEARNING-TO-CONSTRUCTION INTEGRATION"
 POSTINTEGRATION_NEXT_ACT = (
     "POST-INTEGRATION MAIN SYNCHRONIZATION / RE-READ BEFORE ST2-EXP-004 FROZEN PLAN"
 )
+ST2_EXP_004_NEXT_ACT = "ST2-EXP-004 GATE A — EXACT F-04 DEPENDENCY MAP"
 INTEGRATED_STATUS = (
     "INTEGRATED / BOMA-ST2-LEARNING-INTEGRATION-002 / ACCEPTED SOURCES UNCHANGED"
 )
+
+ST2_EXP_004 = "ST2-EXP-004"
+ST2_EXP_004_PLAN = "LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md"
+ST2_EXP_004_PLAN_COMMIT = "89c9dc9154e7ca469e5c94c177be223205ee9dbd"
+ST2_EXP_004_BASELINE = "50f3031b8d2657cbe0710e73e5935d997d40e49b"
 
 
 def read(root: Path, rel: str) -> str:
@@ -77,6 +79,7 @@ def main() -> int:
     root = args.root.resolve()
     residuals: list[dict[str, Any]] = []
     mode = "UNKNOWN"
+    declared_active: str | None = None
 
     try:
         ledger = json.loads(read(root, LEDGER))
@@ -95,13 +98,43 @@ def main() -> int:
             if not str(old_record.get("status", "")).startswith("CLOSED"):
                 add(residuals, "historical_experiment_not_closed", experiment=old)
 
-        if ledger.get("active_experiment") is not None:
-            add(residuals, "active_experiment_not_released", actual=ledger.get("active_experiment"))
+        declared_active = ledger.get("active_experiment")
+        nonclosed = sorted(
+            key
+            for key, item in records.items()
+            if not str(item.get("status", "")).startswith("CLOSED")
+        )
+        if len(nonclosed) > 1:
+            add(residuals, "multiple_nonclosed_experiments", experiments=nonclosed)
+        if declared_active is not None and declared_active not in records:
+            add(
+                residuals,
+                "declared_active_experiment_record_missing",
+                experiment=declared_active,
+            )
+        if nonclosed and declared_active != nonclosed[0]:
+            add(
+                residuals,
+                "active_pointer_drift",
+                expected=nonclosed[0],
+                actual=declared_active,
+            )
+        if declared_active is not None and declared_active != ST2_EXP_004:
+            add(
+                residuals,
+                "unexpected_later_active_experiment",
+                expected=[None, ST2_EXP_004],
+                actual=declared_active,
+            )
 
         integration_status = str(record.get("architecture_integration_status", ""))
         if integration_status == INTEGRATED_STATUS:
-            mode = "POST_INTEGRATION"
-            expected_next_act = POSTINTEGRATION_NEXT_ACT
+            if declared_active == ST2_EXP_004:
+                mode = "LATER_ACTIVE_ST2_EXP_004"
+                expected_next_act = ST2_EXP_004_NEXT_ACT
+            else:
+                mode = "POST_INTEGRATION"
+                expected_next_act = POSTINTEGRATION_NEXT_ACT
         else:
             mode = "PRECLOSURE_INTEGRATION_PENDING"
             expected_next_act = PRECLOSURE_NEXT_ACT
@@ -116,9 +149,14 @@ def main() -> int:
             )
 
         next_slot = str(ledger.get("next_experiment_slot", ""))
-        for marker in ("ST2-EXP-004", "NOT ACTIVE", "NO FROZEN PLAN"):
-            if marker not in next_slot:
-                add(residuals, "next_sequence_marker_missing", marker=marker, actual=next_slot)
+        if declared_active == ST2_EXP_004:
+            for marker in ("ST2-EXP-004", "ACTIVE", "FROZEN PLAN", "GATE A"):
+                if marker not in next_slot:
+                    add(residuals, "active_004_marker_missing", marker=marker, actual=next_slot)
+        else:
+            for marker in ("ST2-EXP-004", "NOT ACTIVE", "NO FROZEN PLAN"):
+                if marker not in next_slot:
+                    add(residuals, "next_sequence_marker_missing", marker=marker, actual=next_slot)
 
         expected_scalars = {
             "origin_kind": "BLOCK",
@@ -175,7 +213,7 @@ def main() -> int:
         if record.get("failure_records") != [FAILURE_001, FAILURE_002]:
             add(residuals, "failure_record_set_drift", actual=record.get("failure_records"))
 
-        if mode == "POST_INTEGRATION":
+        if integration_status == INTEGRATED_STATUS:
             expected_integrated = {
                 "final_closed_verified_head": EXPECTED_FINAL_HEAD,
                 "final_closed_verified_run": EXPECTED_FINAL_RUN,
@@ -217,6 +255,41 @@ def main() -> int:
                     actual=integration_status,
                 )
 
+        if declared_active == ST2_EXP_004:
+            fourth = records.get(ST2_EXP_004, {})
+            expected_fourth = {
+                "origin_kind": "DECISION_POINT",
+                "origin_id": "R-DP-003",
+                "frozen_reference_commit": ST2_EXP_004_BASELINE,
+                "frozen_plan_commit": ST2_EXP_004_PLAN_COMMIT,
+                "frozen_plan": ST2_EXP_004_PLAN,
+            }
+            for field, expected in expected_fourth.items():
+                if fourth.get(field) != expected:
+                    add(
+                        residuals,
+                        "st2_exp_004_activation_field_drift",
+                        field=field,
+                        expected=expected,
+                        actual=fourth.get(field),
+                    )
+            if not str(fourth.get("status", "")).startswith("ACTIVE / PLAN FROZEN"):
+                add(
+                    residuals,
+                    "st2_exp_004_not_active_frozen",
+                    actual=fourth.get("status"),
+                )
+            frozen_004 = read(root, ST2_EXP_004_PLAN)
+            for marker in (
+                "# PLAN — FROZEN",
+                ST2_EXP_004,
+                "R-DP-003",
+                ST2_EXP_004_BASELINE,
+                "DO NOT EDIT THIS FILE",
+            ):
+                if marker not in frozen_004:
+                    add(residuals, "st2_exp_004_frozen_plan_marker_missing", marker=marker)
+
         accepted = ledger.get("accepted_reference", {})
         expected_accepted = {
             "selected_route": "C-ROUTE-P",
@@ -253,12 +326,20 @@ def main() -> int:
         ):
             if marker not in closure:
                 add(residuals, "closure_record_marker_missing", marker=marker)
+
         for rel, text in ((STATUS, status), (REGISTER, register)):
-            for marker in ("ST2-EXP-011", "CLOSED", "PASS", "ST2-EXP-004", "NOT ACTIVE"):
+            for marker in ("ST2-EXP-011", "CLOSED", "PASS", "INTEGRATED"):
                 if marker not in text:
                     add(residuals, "current_state_marker_missing", document=rel, marker=marker)
-            if mode == "POST_INTEGRATION" and "INTEGRATED" not in text:
-                add(residuals, "integrated_state_marker_missing", document=rel)
+            if declared_active == ST2_EXP_004:
+                for marker in ("ST2-EXP-004", "ACTIVE", "PLAN FROZEN"):
+                    if marker not in text:
+                        add(
+                            residuals,
+                            "active_004_current_state_marker_missing",
+                            document=rel,
+                            marker=marker,
+                        )
 
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         add(residuals, "closure_audit_execution_error", error=str(exc))
@@ -269,14 +350,18 @@ def main() -> int:
         "mode": mode,
         "verified_preclosure_head": EXPECTED_PRECLOSURE_HEAD,
         "verified_preclosure_run": EXPECTED_PRECLOSURE_RUN,
-        "final_closed_head": EXPECTED_FINAL_HEAD if mode == "POST_INTEGRATION" else None,
-        "final_closed_run": EXPECTED_FINAL_RUN if mode == "POST_INTEGRATION" else None,
-        "main_merge_commit": EXPECTED_MERGE_COMMIT if mode == "POST_INTEGRATION" else None,
-        "active_experiment": None,
+        "final_closed_head": EXPECTED_FINAL_HEAD if mode != "PRECLOSURE_INTEGRATION_PENDING" else None,
+        "final_closed_run": EXPECTED_FINAL_RUN if mode != "PRECLOSURE_INTEGRATION_PENDING" else None,
+        "main_merge_commit": EXPECTED_MERGE_COMMIT if mode != "PRECLOSURE_INTEGRATION_PENDING" else None,
+        "active_experiment": declared_active,
         "required_next_act": (
-            POSTINTEGRATION_NEXT_ACT if mode == "POST_INTEGRATION" else PRECLOSURE_NEXT_ACT
+            ST2_EXP_004_NEXT_ACT
+            if declared_active == ST2_EXP_004
+            else POSTINTEGRATION_NEXT_ACT
+            if mode == "POST_INTEGRATION"
+            else PRECLOSURE_NEXT_ACT
         ),
-        "next_experiment": "ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN",
+        "st2_exp_011_historical_closure_is_monotone": True,
         "residuals": residuals,
     }
     rendered = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
