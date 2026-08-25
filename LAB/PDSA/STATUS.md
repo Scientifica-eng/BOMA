@@ -1,11 +1,12 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN`  
+**Status:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED PASS / VERIFIED LESSONS INTEGRATED / ST2-EXP-004 ACTIVE / PLAN FROZEN / AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM`  
 **Current status date:** `2026-08-25`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Historical `PDCA` names:** provenance only  
 **Latest architecture Act:** `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`  
-**Current program frontier:** `ST2-EXP-004 ACTIVE / GATE A — EXACT F-04 DEPENDENCY MAP`.
+**Autonomous-program governance:** `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`  
+**Current program frontier:** `ST2-EXP-004 ACTIVE UNDER DIRECT OWNER AUTHORITY / PLAN FROZEN / GATE A NEXT / AUTONOMOUS PROGRAM REMAINS NO_ACTIVE_PROGRAM`.
 
 This is the compact current-state handoff index. Historical run lineages remain
 in stage-specific PDSA/evidence/failure records and are not erased by current-state integration.
@@ -157,8 +158,6 @@ sha256    d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
 result    SUCCESS
 ```
 
-All nine relevant PR workflows passed on that exact head.
-
 Research/lifecycle merge:
 
 ```text
@@ -168,55 +167,12 @@ parent 2  632a7134f26daf9dd781e3546804941f429a4246
 tree      168fc1267313810e622c2206fa8a91f24decb4b7
 ```
 
-The merge differs from the verified head by zero files: ancestry was added with
-no post-verification content drift.
-
-Final mathematical/architectural classification:
-
-```text
-ST2-EXP-011 MATHEMATICAL RESULT       PASS
-ST2-EXP-011 LIFECYCLE                 CLOSED
-generic comparison interface          VERIFIED
-accepted RBOMA instance               VERIFIED / Related semantics definitionally preserved
-native RCBOMA/H6 instance             VERIFIED
-H5/Dedekind native dependency         NOT REQUIRED
-relation/function firewall            PRESERVED
-global selector                       NOT INTRODUCED
-accepted R/C                          UNCHANGED
-new Block / Decision / Junction       NONE
-permanent comparison knowledge        INTEGRATED
-accepted-source refactor              NOT PERFORMED / FUTURE CANDIDATE
-```
+The merge differs from the verified head by zero files.
 
 Integration authority:
-
 `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md`.
 
-## 5. Relation/function firewall
-
-The permanent comparison boundary preserves:
-
-```text
-relation-level totality + uniqueness
-!=
-chosen functional comparison
-```
-
-Functional maps require explicit `CoordinateExtractor` data. The generic
-comparison layer introduces no global coordinate or inverse selector.
-
-Logical evidence remains:
-
-```text
-generic comparison roots   NO AXIOMS
-native H6 roots             [propext, Quot.sound]
-accepted RBOMA adapter      [propext, Classical.choice, Quot.sound]
-```
-
-The accepted-adapter Choice cost is inherited formal provenance, not generic
-comparison necessity.
-
-## 6. Stage-Two experiment status
+## 5. Stage-Two experiment status
 
 ```text
 ST2-EXP-001  CLOSED / PASS / PRODUCTION DEPENDENCY LESSON INTEGRATED
@@ -238,21 +194,53 @@ single factor       F-04 total-comparability provider
 current gate        GATE A — exact F-04 dependency map
 ```
 
-The Frozen Plan file is immutable. Gate 0 changes only lifecycle/governance
-compatibility and current-state pointers; it does not modify accepted
-mathematics.
+The Frozen Plan file is immutable.
+
+## 6. AUTONOMOUS RESEARCH PROGRAM status
+
+The repository now contains fail-closed governance for an optional
+owner-authorized autonomous **program** of sequential experiments. That is a
+separate execution-authority mechanism from the direct owner authorization of
+this already selected `ST2-EXP-004` cycle.
+
+Current autonomous-program machine state remains:
+
+```text
+state = NO_ACTIVE_PROGRAM
+active_program_id = null
+owner_authorization_record = null
+authorized_experiment_queue = []
+routine_merge_authorized = false
+```
+
+Therefore:
+
+```text
+ST2-EXP-004 ACTIVE under direct owner authority
+!=
+AUTONOMOUS RESEARCH PROGRAM active
+```
+
+No autonomous queue exists and no routine merge authority is inferred. The new
+program governance does not retroactively invalidate the experiment-specific
+Frozen Plan because the current `main` advance from `50f3031b...` changes only
+governance/handoff files; comparison found no accepted Q/R/C source or manifest
+and no `R-DP-003` change.
+
+For autonomous-program execution, `AMBIGUOUS AUTHORITY` means `OWNER_REQUIRED`.
+For this current cycle, execution remains bounded by the explicit 004 Frozen
+Plan and the direct owner continuation instruction.
 
 ## 7. Lifecycle-CI governance lesson
 
-ST2-EXP-011 closure exposed and corrected a CI scoping defect. The repository
-now distinguishes:
+The repository distinguishes:
 
 ```text
 historical experiment closure = monotone evidence
 current active/frontier state  = time-varying program state
 ```
 
-The 011 lifecycle auditor now verifies all frozen/closed/integrated 011 evidence
+The 011 lifecycle auditor verifies all frozen/closed/integrated 011 evidence
 while permitting one later independently frozen active experiment. It also
 requires the active 004 record to point to `R-DP-003`, accepted reference
 `50f3031b...`, and Frozen Plan commit `89c9dc9154...`.
@@ -295,18 +283,21 @@ ST2-EXP-001 C-production interface contains orderTotal
 No further Claim-level dependency conclusion is promoted until Gate A computes
 actual declaration closures.
 
-## 9. Current architectural authorities
+## 9. Current authority order
 
 Read current state in this order:
 
 ```text
 LAB/PDSA/STATUS.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
 LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
 LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/GRAPH.md
@@ -318,10 +309,8 @@ LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/C_DAG.md
 LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
-LAB/00_ARCHITECTURE/views/CONSTRUCTION_DAG_VIEW.md
-LAB/00_ARCHITECTURE/views/DECISION_BRANCH_JUNCTION_VIEW.md
-LAB/00_ARCHITECTURE/views/LEARNING_GRAPH_VIEW.md
 ```
 
-Historical documents remain authoritative for their own dated state but do not
-override later synchronized current-state authorities.
+The autonomous-program state controls only autonomous-program authority. It does
+not override mathematical facts or an already explicit experiment-specific
+owner authorization.
