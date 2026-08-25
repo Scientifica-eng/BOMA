@@ -1,0 +1,85 @@
+name: BOMA ST2-EXP-004 Lifecycle State Renderer
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-004-*'
+    paths:
+      - '.github/workflows/boma-st2-exp-004-lifecycle-state-render.yml'
+      - 'LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md'
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Render closed machine ledger without mutating repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/st2-exp-004-closure-render
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          src=Path('LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json')
+          d=json.loads(src.read_text())
+          d['status']='FIVE CLOSED EXPERIMENTS / VERIFIED LESSONS 001-003+011 INTEGRATED / ST2-EXP-004 CLOSED PASS / ARCHITECTURE INTEGRATION NEXT / NO ACTIVE EXPERIMENT'
+          d['active_experiment']=None
+          d['next_experiment_slot']='NO ACTIVE EXPERIMENT / ST2-EXP-004 CLOSED / ARCHITECTURE INTEGRATION NEXT / STOP BEFORE NEW EXPERIMENT'
+          d['required_next_act']='ST2-EXP-004 LEARNING-TO-CONSTRUCTION INTEGRATION THEN STOP / NO NEW EXPERIMENT'
+          rec=[x for x in d['records'] if x.get('experiment_id')=='ST2-EXP-004']
+          assert len(rec)==1
+          r=rec[0]
+          r.update({
+            'status':'CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LIFECYCLE CLOSED / ARCHITECTURE INTEGRATION PENDING',
+            'current_gate':'GATES A-F COMPLETE / FINAL STUDY-ACT COMPLETE / LIFECYCLE CLOSED',
+            'experimental_product_status':'VERIFIED RESEARCH-ONLY F-04 DEPENDENCY/ROBUSTNESS RESULT / NOT AN ACCEPTED EXPORT',
+            'mathematical_result':'PASS',
+            'same_carrier_totality_recovery':'NOT_RECOVERED_WITH_CURRENT_CUT_INTERFACE',
+            'lifecycle_disposition':'CLOSED / OWNER AUTHORIZED 2026-08-25 / ARCHITECTURE INTEGRATION PENDING / NO NEXT EXPERIMENT AUTHORIZED',
+            'closure_authorized_date':'2026-08-25',
+            'final_study_act':'LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md',
+            'final_study_act_commit':'6779d028c49f73757ea838c163d3968a982559fe',
+            'lifecycle_closure_record':'LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md',
+            'verified_head':'6779d028c49f73757ea838c163d3968a982559fe',
+            'verified_run':32835963092,
+            'verified_artifact_id':9558667579,
+            'verified_artifact_sha256':'e0920004e18db1e516b952ed49b7466f7939e72b0ccf0e682757d4b23856e245',
+            'verified_run_role':'GREEN FINAL-STUDY-ACT PRECLOSURE CHECKPOINT; CLOSED-STATE HEAD VERIFIED SEPARATELY',
+            'architecture_integration_status':'REQUIRED / SEPARATE POST-CLOSURE ACT / NOT YET INTEGRATED',
+            'durable_architecture_knowledge':True,
+            'canonical_acceptance_change':False,
+            'accepted_reference_changed':False,
+            'new_block_created':False,
+            'new_decision_point_created':False,
+            'new_junction_created':False,
+            'gate_e_c_survivors':['C-CL-CARRIER-001','C-CL-REMBED-001','C-CL-I-001','C-CL-GEN-001','C-CL-COORDUNIQ-001','C-CL-NONREAL-001','C-CL-COMPARE-001'],
+            'gate_e_c_current_nonsurvivors':['C-CL-FIELD-001','C-CL-INTEGRATION-001'],
+            'failure_records':[
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_001_GATE_B_PROVENANCE_MARKER_CASE.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_002_GATE_B_STDERR_NOT_CAPTURED.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_003_GATE_B_INTERNALDECL_FIELD_MISMATCH.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_004_GATE_B_DECLARATION_TO_SOURCE_CLOSURE_GAP.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_005_GATE_C_DEPENDENCY_AUDIT_STDERR_NOT_CAPTURED.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_006_GATE_C_LOCAL_NAME_TYPO.md'
+            ],
+            'final_gate_runs':{
+              'gate_a':32835962936,'gate_b':32835962804,'gate_c':32835963151,
+              'gate_d':32835962907,'gate_e':32835962908,'gate_f':32835963092
+            }
+          })
+          out=Path('/tmp/st2-exp-004-closure-render/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json')
+          out.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n')
+          print(out)
+          PY
+      - name: Upload rendered state
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-004-lifecycle-state-render-${{ github.run_id }}
+          path: /tmp/st2-exp-004-closure-render/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
