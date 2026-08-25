@@ -9,12 +9,13 @@ Read, in order:
 ```text
 README.md
 LAB/PDSA/STATUS.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/FUTURE_EXPERIMENT_CANDIDATE_PROTOCOL_001.md
-LAB/PDSA/candidates/README.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/GRAPH.md
@@ -24,6 +25,7 @@ LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/00_ARCHITECTURE/R_DAG.md
 LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
 LAB/00_ARCHITECTURE/C_DAG.md
+LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
 LAB/00_ARCHITECTURE/CLAIM_ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
@@ -51,8 +53,10 @@ C comparison          C-COMPARE-BLOCK-001 / five scalar ops + coordinate laws
 C alternative         C-ROUTE-Q PERMANENT VERIFIED / NON-SELECTED
 C alt Junction        ST2-EXP-002-PQ-J-001 / NON-ACCEPTANCE
 ST2-EXP-001..003+011  CLOSED / PASS / VERIFIED LESSONS INTEGRATED
-ACTIVE EXPERIMENT     NONE
-NEXT OWNER-SEQUENCED  ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
+ACTIVE EXPERIMENT     ST2-EXP-004
+004 PLAN              FROZEN / 89c9dc9154e7ca469e5c94c177be223205ee9dbd
+004 ORIGIN            DECISION_POINT / R-DP-003
+004 CURRENT GATE      GATE A — EXACT F-04 DEPENDENCY MAP
 ```
 
 ## 3. Learning-to-Construction rule
@@ -123,19 +127,6 @@ BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
 The accepted C Lean source may still inherit a larger
 `RStageIntegrationCertificate` bundle. Do not confuse that formal/provenance
 over-bundling with mathematical necessity.
-
-Do not silently use as C mathematical premises:
-
-```text
-LowerCut
-CutEquiv
-cutSetoid identity
-Dedekind LUB implementation
-cut search/bracketing
-selected R multiplication internals
-selected Dedekind reciprocal internals
-R density / Archimedean machinery unless a new accepted C Claim explicitly requires them
-```
 
 ## 5. Exact C comparison dependency rule — ST2-EXP-011
 
@@ -217,9 +208,11 @@ R-DP-001 SELECTS R-ROUTE-D / Dedekind
 R-BLOCK-001 is accepted
 R-ROUTE-C / Cauchy is permanent verified alternative
 ST2-EXP-003-R-J-001 is permanent verified non-acceptance Junction
+R-DP-003 remains the accepted localized-classical total-order decision
 ```
 
-Do not reinterpret the Cauchy branch as accepted or delete it from the core DAG because it is non-selected.
+`ST2-EXP-004` investigates `R-DP-003`; activation does not change the accepted
+Decision Point.
 
 ### C
 
@@ -234,34 +227,92 @@ ST2-EXP-002-PQ-J-001 is permanent verified non-acceptance Junction
 ```
 
 Do not conflate `C-J-001` with the P/Q alternative-construction Junction, and do
-not manufacture a Junction merely because RBOMA and RCBOMA/H6 instantiate the
-same comparison interface.
+not manufacture a Junction merely because multiple producers instantiate a
+shared interface.
 
-## 8. Experiments that deliberately created no Junction
+## 8. ST2-EXP-004 immutable experimental boundary
 
-`ST2-EXP-001` refined a dependency edge. `ST2-EXP-011` refined the dependency
-classification inside an existing Block. Neither result by itself is a
-reconvergence Junction.
-
-Correct interpretations:
+Exact frozen authority:
 
 ```text
-BOMA-C-R-DEP-001 -- REFINED BY --> exact sixteen-property production interface
-C-COMPARE-BLOCK-001 -- REFINED BY --> scalar/coordinate comparison interface
+accepted reference  50f3031b8d2657cbe0710e73e5935d997d40e49b
+accepted tree       e4842acdf2b08c8db54b45d0798c36ee7565f351
+candidate dossier   fd51041857d07cbf8e489c8683a907ea29866b17
+Frozen Plan commit  89c9dc9154e7ca469e5c94c177be223205ee9dbd
+Frozen Plan         LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
 ```
 
-Incorrect interpretation:
+**Never edit the Frozen Plan file after its freeze commit.** Later corrections,
+failures, Gate results, or Study/Act belong in separate files.
+
+Single changed factor:
 
 ```text
-invent a new Brick/Block/Junction solely because an experiment passed
+remove only the selected F-04 provider:
+  BOMA.R.DedekindOrderClassical001.cutComparability_classical
+  BOMA.R.DedekindOrderClassical001.rLE_total_classical
 ```
 
-Use existing architectural types only when their granularity/semantics are actually satisfied.
+Controls that must remain unchanged:
 
-## 9. Stage-Two lifecycle and sequence rule
+```text
+R-DP-001 / R-DP-002
+LowerCut / CutEquiv / cutSetoid / RBOMA
+CutLE / rLE definitions
+rLE_refl / rLE_trans / rLE_antisymm
+rOfQ and accepted R operation definitions
+R-DP-004 / R-DP-005 / R-DP-006 architecture
+accepted Q/R/C manifests and sources
+F-05 finite membership/bracketing classical provider
+F-06 positive representative classical provider
+F-07 rational-density classical provider
+C-DP-001 / C-J-001 / CA-20
+```
 
-These four Stage-Two experiments are closed and their verified lessons are
-integrated:
+Therefore:
+
+```text
+NO F-04 dependency ≠ fully constructive R
+conditional theorem from hComp : CutComparability ≠ constructive recovery
+failure to recover totality ≠ impossibility theorem
+```
+
+## 9. ST2-EXP-004 Gate discipline
+
+The current gate is **Gate A**. Before any alternative mathematics is written,
+measure exact declaration descendants of:
+
+```text
+BOMA.R.DedekindOrderClassical001.cutComparability_classical
+BOMA.R.DedekindOrderClassical001.rLE_total_classical
+```
+
+Required classification vocabulary:
+
+```text
+F04_DIRECT
+F04_TRANSITIVE
+F04_FREE
+OTHER_CLASSICAL_ONLY
+```
+
+Gate A must cover the accepted R Claim families, all nine accepted C Claim
+families, `narrowRFromAcceptedProducers`, and the ST2-EXP-011 generic comparison
+root as a planned F-04-negative control.
+
+Known direct references before measurement include:
+
+```text
+RStageIntegrationCertificate.orderTotal
+rPosNeg_decomposition
+NarrowROrderedFieldCertificate.orderTotal
+```
+
+Do not extrapolate from those direct references to unmeasured Claim closures.
+
+## 10. Stage-Two lifecycle rule
+
+Closed and integrated:
 
 ```text
 ST2-EXP-001
@@ -270,100 +321,46 @@ ST2-EXP-003
 ST2-EXP-011
 ```
 
-There is `NO ACTIVE EXPERIMENT`.
-
-`ST2-EXP-004` is owner-sequenced next, but **not active** and has **no Frozen
-Plan**. Do not start it directly from the 011 branch or this integration branch.
-
-Required sequence:
+Current active cycle:
 
 ```text
-merge/verify BOMA-ST2-LEARNING-INTEGRATION-002
-→ synchronize current main
-→ re-read current main and R-DP-003 authorities
-→ create a new independent ST2-EXP-004 Frozen Plan from exact main
-→ create a separate ST2-EXP-004 branch
-→ begin Do only after the Plan is frozen
+ST2-EXP-004 = ACTIVE / PLAN FROZEN / GATE A
 ```
 
-Its intended single changed factor is the logical regime at `R-DP-003`.
+The single-active slot is occupied. Do not activate another experiment until an
+explicit lifecycle disposition releases 004.
 
-A new experiment always requires:
+Historical closure is monotone evidence. A later active experiment must not
+rewrite closed Plan/Study/Act/run/merge/integration records.
 
-```text
-explicit owner selection
-→ verify current main
-→ exact typed architectural origin
-→ one changed factor / fixed controls
-→ affected Claim cone
-→ immutable Frozen Plan
-→ separate branch
-→ independent Do / exact V5 evidence
-→ Study / Act
-→ separate lifecycle, integration, acceptance, and merge decisions as applicable
-```
-
-Candidate documentation is not execution authority.
-
-## 10. ST2-EXP-003 historical facts
+## 11. ST2-EXP-003 historical facts
 
 The permanent Cauchy branch was learned through `ST2-EXP-003`, which remains
 `CLOSED / PASS / H1-H6 EXACT PASS`.
 
-Final mathematical exact-verified branch head:
-
-`3d4ed58e5d88b2a0bd84b3958cac2c8572385152`.
-
-Critical final runs:
-
 ```text
-Independent Cauchy Real Route              32727267231 PASS
-Dedekind-Cauchy Comparison / R Junction    32727267177 PASS
-Cauchy Quadratic Rebuild                    32727267183 PASS
+final head                                   3d4ed58e5d88b2a0bd84b3958cac2c8572385152
+Independent Cauchy Real Route                32727267231 PASS
+Dedekind-Cauchy Comparison / R Junction      32727267177 PASS
+Cauchy Quadratic Rebuild                      32727267183 PASS
 ```
 
-Do not rewrite those historical records to pretend Cauchy was part of the original Stage-One accepted path.
+Do not rewrite those records to pretend Cauchy was part of the original accepted path.
 
-## 11. ST2-EXP-011 historical facts
-
-```text
-Frozen accepted main
-  b49826e58261a71634cd12756e8afda28920088f
-
-Frozen Plan
-  5cc05ef1bea8e88787041c3bc30dd0aecf5412d4
-
-final lifecycle-closed exact head
-  632a7134f26daf9dd781e3546804941f429a4246
-
-exact run
-  32754345656 PASS
-
-artifact
-  9530261359
-
-artifact sha256
-  d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
-
-research/lifecycle merge
-  72394878854aa69e865d17567959bec1daa70e6d
-```
-
-The merge commit added ancestry with zero file drift relative to the verified
-head. Do not rewrite historical pre-closure runs; retain them as earlier evidence.
-
-## 12. Historical lifecycle versus current frontier
-
-The repository explicitly distinguishes:
+## 12. ST2-EXP-011 historical facts
 
 ```text
-historical experiment closure = monotone evidence
-current active/frontier state  = time-varying program state
+Frozen accepted main   b49826e58261a71634cd12756e8afda28920088f
+Frozen Plan            5cc05ef1bea8e88787041c3bc30dd0aecf5412d4
+final closed head      632a7134f26daf9dd781e3546804941f429a4246
+exact run              32754345656 PASS
+artifact               9530261359
+artifact sha256        d93c6f1ec34858f6cbc1556e92b86a241f6399e6a3cf894204608a51d63de2e5
+research merge         72394878854aa69e865d17567959bec1daa70e6d
 ```
 
-Do not write audits that require a historically closed experiment to keep the
-global Stage-Two frontier empty forever. Historical closure must remain
-reproducible while later cycles change the current active pointer.
+The merge added ancestry with zero file drift. The 011 lifecycle auditor must
+continue to prove these identities while 004 is active.
 
 ## 13. C acceptance-first rule
 
@@ -390,10 +387,12 @@ When current-state documents conflict, prefer:
 
 ```text
 LAB/PDSA/STATUS.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
-LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
+LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/00_ARCHITECTURE/ARCHITECTURE.md
 LAB/00_ARCHITECTURE/CONSTRUCTION_TOPOLOGY.md
 LAB/00_ARCHITECTURE/REGISTRY.md
@@ -451,15 +450,15 @@ Do not manufacture units for symmetry or to make a diagram look tidy.
 An accepted Block/stage may be modified only with explicit impact analysis
 against its acceptance contract and V5 lineage.
 
-Architecture integration of experimental learning does **not** silently weaken,
-strengthen, reinterpret, or replace accepted Claims/producers.
+An active research experiment does **not** silently weaken, strengthen,
+reinterpret, or replace accepted Claims/producers.
 
 ## 18. Logical and Claim-transparency discipline
 
 Record localized logical commitments and their actual source provenance.
 Absence of a downstream `Classical` token does not prove independence from an upstream classical producer.
 
-For every promoted Claim preserve:
+For every measured/promoted Claim preserve:
 
 ```text
 Claim ID
@@ -480,16 +479,17 @@ sensitivity/reopening condition
 ## 19. Verification rules
 
 V5 results are theorem/unit specific. A monolithic type-check is not an
-acceptance or architectural-promotion gate.
+acceptance or experiment-completion gate.
 
-Before merging architecture changes:
+For active `ST2-EXP-004`:
 
 ```text
-verify exact head
-run architecture consistency
-run affected accepted-stage regressions
-preserve immutable Frozen Plans and accepted source/manifests unless change is explicitly in scope
-record exact workflow/artifact identity where material
+verify Frozen Plan byte immutability from 89c9dc9154...
+verify exact current head
+prove accepted manifests/sources unchanged from 50f3031b...
+measure Gate-A declaration closures before Gate-B mathematics
+preserve F-05/F-06/F-07 as controls
+record exact workflow/artifact identity for each promoted Gate result
 ```
 
 Pinned toolchain:
@@ -501,6 +501,8 @@ Lake packages: none
 
 ## 20. GitHub continuation rule
 
-Do not begin new research directly on `main`. Use a separate branch from a verified current main.
+Do not conduct active experiment work on `main`. `ST2-EXP-004` remains on its
+separate branch from frozen accepted `main=50f3031b...`.
 
-Do not merge changes into `main` without the appropriate explicit user authority and exact-head verification.
+Do not merge experiment or architecture changes into `main` without the
+appropriate explicit owner authority and exact-head verification.
