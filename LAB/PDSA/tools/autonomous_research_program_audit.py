@@ -48,20 +48,45 @@ require(state.get("safety", {}).get("ambiguous_authority_means") == "OWNER_REQUI
 require(state.get("safety", {}).get("main_research_writes_allowed") is False, "autonomous research writes to main must remain false")
 require(isinstance(state.get("routine_merge_authorized"), bool), "routine_merge_authorized must be boolean")
 
+queue = state.get("authorized_experiment_queue")
+
 if current_state == "NO_ACTIVE_PROGRAM":
     require(state.get("active_program_id") is None, "NO_ACTIVE_PROGRAM cannot have active_program_id")
     require(state.get("owner_authorization_record") is None, "NO_ACTIVE_PROGRAM cannot have owner authorization")
     require(state.get("program_baseline_main_sha") is None, "NO_ACTIVE_PROGRAM cannot have baseline sha")
-    require(state.get("authorized_experiment_queue") == [], "NO_ACTIVE_PROGRAM queue must be empty")
+    require(queue == [], "NO_ACTIVE_PROGRAM queue must be empty")
     require(state.get("active_experiment") is None, "NO_ACTIVE_PROGRAM cannot have active experiment")
     require(state.get("routine_merge_authorized") is False, "NO_ACTIVE_PROGRAM cannot authorize routine merge")
 else:
-    require(bool(state.get("active_program_id")), "active state requires active_program_id")
-    require(bool(state.get("owner_authorization_record")), "active state requires owner authorization record")
+    program_id = state.get("active_program_id")
+    auth_rel = state.get("owner_authorization_record")
+    require(bool(program_id), "active state requires active_program_id")
+    require(bool(auth_rel), "active state requires owner authorization record")
     baseline = state.get("program_baseline_main_sha")
     require(isinstance(baseline, str) and re.fullmatch(r"[0-9a-f]{40}", baseline) is not None, "active state requires exact 40-hex baseline main sha")
-    queue = state.get("authorized_experiment_queue")
     require(isinstance(queue, list) and len(queue) > 0, "active state requires non-empty authorized experiment queue")
+    if isinstance(queue, list):
+        require(len(queue) == len(set(queue)), "authorized experiment queue contains duplicate IDs")
+    cursor = state.get("queue_cursor")
+    require(isinstance(cursor, int) and isinstance(queue, list) and 0 <= cursor < len(queue), "active state requires a valid queue_cursor")
+
+    if isinstance(auth_rel, str):
+        auth_path = ROOT / auth_rel
+        require(auth_path.exists(), f"owner authorization record does not exist: {auth_rel}")
+        if auth_path.exists():
+            auth = auth_path.read_text(encoding="utf-8")
+            require("OWNER_AUTHORIZED" in auth, "authorization record must state OWNER_AUTHORIZED")
+            require(str(program_id) in auth, "authorization record must name active_program_id")
+            for experiment_id in queue if isinstance(queue, list) else []:
+                require(experiment_id in auth, f"authorization record missing queued experiment {experiment_id}")
+            if state.get("routine_merge_authorized") is True:
+                require("routine_merge_authorized: true" in auth, "routine merge requires explicit true in authorization record")
+                require("no SELECTS change" in auth, "routine merge authorization must preserve SELECTS firewall")
+
+    require(str(program_id) in status, "STATUS.md must name the active research program")
+    require(str(current_state) in status, "STATUS.md must name the current autonomous state")
+    if isinstance(queue, list) and queue:
+        require(queue[0] in status or queue[state.get("queue_cursor", 0)] in status, "STATUS.md must expose the authorized queue frontier")
 
 if current_state == "OWNER_REQUIRED":
     require(bool(state.get("owner_required_reason")), "OWNER_REQUIRED must record a reason")
@@ -78,7 +103,6 @@ for marker in required_agent_markers:
 
 required_status_markers = [
     "AUTONOMOUS RESEARCH PROGRAM",
-    "NO_ACTIVE_PROGRAM",
     "ST2-EXP-004",
 ]
 for marker in required_status_markers:
@@ -94,4 +118,5 @@ print("BOMA autonomous research-program audit: PASS")
 print(f"state={current_state}")
 print(f"active_program_id={state.get('active_program_id')}")
 print(f"queue_size={len(state.get('authorized_experiment_queue', []))}")
+print(f"queue_cursor={state.get('queue_cursor')}")
 print(f"routine_merge_authorized={state.get('routine_merge_authorized')}")
