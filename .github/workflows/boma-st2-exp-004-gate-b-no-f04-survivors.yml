@@ -49,7 +49,7 @@ jobs:
           git merge-base --is-ancestor "$gate_a_head" HEAD
           git diff --exit-code "$frozen" HEAD -- "$plan"
           test -s "$gate_a"
-          grep -Fq 'GATE A final disposition:** `PASS / DEPENDENCY MAP VERIFIED / GATE B NEXT`' "$gate_a"
+          grep -Fq 'Gate A final disposition:** `PASS / DEPENDENCY MAP VERIFIED / GATE B NEXT`' "$gate_a"
           {
             printf 'verified_head=%s\n' "$expected"
             printf 'frozen_reference=%s\n' "$baseline"
