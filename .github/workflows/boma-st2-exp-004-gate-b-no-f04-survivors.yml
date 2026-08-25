@@ -94,7 +94,7 @@ jobs:
           python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py \
             --manifest-out /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt \
             --json-out /tmp/st2-exp-004-gate-b.json \
-            | tee /tmp/st2-exp-004-gate-b.log
+            2>&1 | tee /tmp/st2-exp-004-gate-b.log
           grep -Fq '"status": "GATE_B_PASS"' /tmp/st2-exp-004-gate-b.json
           ! grep -Fq 'RDedekindOrderClassicalWitness.lean' /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
           ! grep -Fq 'cutComparability_classical' /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
