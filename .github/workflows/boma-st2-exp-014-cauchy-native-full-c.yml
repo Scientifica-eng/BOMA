@@ -113,10 +113,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          baseline=fff2400b65b2c9a260fb28defd907ce24387cb80
           spec=LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md
+          registry=LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
           gap=LAB/PDSA/experiments/ST2-EXP-014_GATE_A_CLAIM_GAP_001.md
           test -s "$spec"
+          test -s "$registry"
           test -s "$gap"
+          git diff --exit-code "$baseline" HEAD -- "$spec" "$registry"
           claims=(
             C-CL-CARRIER-001
             C-CL-REMBED-001
@@ -130,7 +134,7 @@ jobs:
           )
           : > /tmp/st2-exp-014-gate-a-claims.txt
           for claim in "${claims[@]}"; do
-            grep -Fq "$claim" "$spec"
+            grep -Fq "$claim" "$registry"
             grep -Fq "$claim" "$gap"
             printf '%s PRESENT\n' "$claim" >> /tmp/st2-exp-014-gate-a-claims.txt
           done
