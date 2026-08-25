@@ -229,9 +229,70 @@ jobs:
           sha256sum $(find /tmp/st2-exp-004-repair -type f | sort) > /tmp/st2-exp-004-repair/SHA256SUMS
 
       - name: Upload rendered repair
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: st2-exp-004-provenance-repair-${{ github.run_id }}
           path: /tmp/st2-exp-004-repair
-          if-no-files-found: warn
+          if-no-files-found: error
+          include-hidden-files: true
+
+  apply_repair:
+    name: apply verified historical-provenance repair
+    needs: render_repair
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout exact experiment head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Download verified repair artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: st2-exp-004-provenance-repair-${{ github.run_id }}
+          path: /tmp/st2-exp-004-repair
+
+      - name: Apply only verified repair paths and push exact-head commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          git fetch origin feature/stage-two-st2-exp-004-r-total-order-logical-regime
+          test "$(git rev-parse origin/feature/stage-two-st2-exp-004-r-total-order-logical-regime)" = "$expected"
+
+          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
+          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py
+          cp /tmp/st2-exp-004-repair/LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py
+          cp /tmp/st2-exp-004-repair/LAB/PDSA/STATUS.md LAB/PDSA/STATUS.md
+          cp /tmp/st2-exp-004-repair/LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
+          cp /tmp/st2-exp-004-repair/.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml
+          rm -f .github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml
+
+          allowed='^(LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json|LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py|LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py|LAB/PDSA/STATUS.md|LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md|\.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml|\.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml)$'
+          bad="$(git status --short | sed -E 's/^.. //' | grep -Ev "$allowed" || true)"
+          test -z "$bad" || { printf 'Unexpected repair paths:\n%s\n' "$bad" >&2; exit 1; }
+
+          git add \
+            LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json \
+            LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
+            LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py \
+            LAB/PDSA/STATUS.md \
+            LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md \
+            .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml \
+            .github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'Repair already applied; no commit required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Apply verified ST2-EXP-004 closed-state provenance repair'
+          git fetch origin feature/stage-two-st2-exp-004-r-total-order-logical-regime
+          test "$(git rev-parse origin/feature/stage-two-st2-exp-004-r-total-order-logical-regime)" = "$expected"
+          git push origin HEAD:feature/stage-two-st2-exp-004-r-total-order-logical-regime
