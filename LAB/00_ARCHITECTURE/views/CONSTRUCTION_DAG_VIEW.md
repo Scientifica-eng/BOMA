@@ -1,14 +1,13 @@
-# CONSTRUCTION DAG VIEW — Accepted Spine + Permanent Verified Alternatives + Generic Comparison Boundary
+# CONSTRUCTION DAG VIEW — Accepted Spine + Permanent Verified Alternatives + Integrated Dependency and Logical-Regime Boundaries
 
 **View ID:** `BOMA-VIEW-CONSTRUCTION-DAG-001`  
 **Status:** GENERATED / DERIVED VIEW / SYNCHRONIZED  
-**Date:** 2026-08-24  
-**Program:** `PDSA-ARCH-002` + `BOMA-ST2-LEARNING-INTEGRATION-001` + `BOMA-ST2-LEARNING-INTEGRATION-002`.
+**Date:** 2026-08-25  
+**Program:** `PDSA-ARCH-002` + `BOMA-ST2-LEARNING-INTEGRATION-001` + `BOMA-ST2-LEARNING-INTEGRATION-002` + `BOMA-ST2-LEARNING-INTEGRATION-003`.
 
 ## Authority boundary
 
-This is a derived view. It does not replace canonical `UNIT.md` records,
-Decision Points, Junction records, Claim ownership, or exact evidence.
+This is a derived view. It does not replace canonical `UNIT.md` records, Decision Points, Junction records, Claim ownership, or exact evidence.
 
 ```text
 view arrow ≠ necessity theorem
@@ -16,6 +15,7 @@ SELECTS ≠ DERIVES
 permanent alternative ≠ accepted export
 reconvergence ≠ erased route history
 integrated dependency knowledge ≠ accepted source refactor
+formal dependency ≠ mathematical necessity
 ```
 
 Primary sources:
@@ -25,11 +25,13 @@ LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/R_DAG.md
 LAB/00_ARCHITECTURE/C_DAG.md
 LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md
+LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
 LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md
 LAB/00_ARCHITECTURE/DECISION_LEDGER.md
 LAB/00_ARCHITECTURE/JUNCTION_LEDGER.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
 ```
 
 ## Current construction DAG
@@ -39,17 +41,12 @@ flowchart TD
   TCT[TCT calibrated pre-numerical layer]
   NC[N-BLOCK-007\nAccepted N-Core]
   NA[N-ARITH-BLOCK-001\nAccepted N-Arithmetic]
-  ZDP{Z-DP-001}
-  ZS[Signed forms\nSELECTED]
-  ZALT[Difference pairs\nretained]
-  ZJ[Z-J-001\nrepresentation convergence]
   ZB[Z-BLOCK-002\nAccepted Z]
-  QDP{Q-DP-001}
-  QQ[Quotient fracSetoid\nSELECTED]
   QB[Q-BLOCK-002\nAccepted Q]
 
   RDP{R-DP-001\ncompletion route}
   RD[R-ROUTE-D / Dedekind\nSELECTED]
+  RLOG[R-DP-003\nlocalized classical CutComparability SELECTED\nRTotality ↔ CutComparability integrated]
   RC[R-ROUTE-C / Cauchy\nPERMANENT VERIFIED ALTERNATIVE]
   RB[R-BLOCK-001\nAccepted R]
   RCERT[Completed Cauchy R producer]
@@ -67,13 +64,9 @@ flowchart TD
   CJALT[ST2-EXP-002-PQ-J-001\nR-FIELD-ISOMORPHISM\nNON-ACCEPTANCE]
   H6[H6 Cauchy-native C core\nverified downstream evidence\nNON-ACCEPTED]
 
-  TCT --> NC --> NA --> ZDP
-  ZDP --> ZS --> ZJ --> ZB
-  ZDP --> ZALT --> ZJ
-  ZB --> QDP --> QQ --> QB
-
+  TCT --> NC --> NA --> ZB --> QB
   QB --> RDP
-  RDP -->|SELECTS| RD --> RB
+  RDP -->|SELECTS| RD --> RLOG --> RB
   RDP -->|ALTERNATIVE_TO| RC --> RCERT
   RB --> RJALT
   RCERT --> RJALT
@@ -88,8 +81,9 @@ flowchart TD
   H6 -. verified native instance .-> CCOMP
 ```
 
-The dashed H6→comparison edge is verified robustness/instantiability evidence,
-not an accepted production edge and not a Junction.
+`RLOG` is the existing `R-DP-003` Decision Point, not a new unit created by the integration. Its selected provider remains localized classical comparability.
+
+The dashed H6→comparison edge is verified robustness/instantiability evidence, not an accepted production edge and not a Junction.
 
 ## Interpretation of the R fork
 
@@ -102,19 +96,37 @@ R-BLOCK-001 remains the accepted export
 
 The alternative Junction is not the accepted R integration Junction `R-J-002`.
 
+## Interpretation of the R-DP-003 logical-regime boundary
+
+`ST2-EXP-004` integrated a sensitivity/invariant result around the **existing** Decision Point:
+
+```text
+selected Stage-I regime
+  constructive rLE partial-order core
+  + localized classical F-04 CutComparability witness
+  + constructive totality bridge
+
+same-carrier learned invariant
+  RTotality ↔ CutComparability
+```
+
+No unconditional constructive `CutComparability` was recovered from the frozen `LowerCut` fields. F-05/F-06/F-07 remain independent localized logical commitments.
+
+The current declaration impact of F-04 is measured as `8 DIRECT / 7 TRANSITIVE / 22 FREE / 18 OTHER_CLASSICAL_ONLY`; Gate B's `77/88` survivor count is a whole-source packaging measurement. Neither number is a mathematical-necessity theorem.
+
+A located-cut redesign changes the representation and is only a possible separately authorized future candidate.
+
 ## Interpretation of the production R → C edge
 
-`ST2-EXP-001` established that the mathematical **production** dependency of C
-on R is the exact sixteen-property surface recorded in `BOMA-C-R-DEP-001`.
+`ST2-EXP-001` established that the mathematical **production** dependency of C on R is the exact sixteen-property surface recorded in `BOMA-C-R-DEP-001`.
 
-The current accepted Lean implementation may still carry a larger bundled R
-package in formal ancestry. That over-bundling is formalization/provenance, not
-part of the canonical mathematical dependency contract.
+`ST2-EXP-004` removed exactly `orderTotal` for a controlled sensitivity test. Seven C Claim families survived; the current field/integration proof closures did not. The non-survival is current proof-architecture evidence, not universal necessity.
+
+The current accepted Lean implementation may still carry a larger bundled R package in formal ancestry. That over-bundling is formalization/provenance, not part of the canonical mathematical dependency contract.
 
 ## Interpretation of the comparison boundary
 
-`ST2-EXP-011` established a distinct and narrower boundary inside
-`C-COMPARE-BLOCK-001`:
+`ST2-EXP-011` established a distinct and narrower boundary inside `C-COMPARE-BLOCK-001`:
 
 ```text
 scalar operations
@@ -127,15 +139,11 @@ quadratic coordinate laws
   coordinateNeg / coordinateAdd / coordinateMul
 ```
 
-This is the direct mathematical closure of `C-CL-COMPARE-001` under the verified
-generic factoring. It must not be substituted for the sixteen-property
-production contract.
+Accepted RBOMA `Related` semantics are preserved definitionally. A native RCBOMA/H6 instance is verified without H5/Dedekind implementation transport.
 
-Accepted RBOMA `Related` semantics are preserved definitionally. A native
-RCBOMA/H6 instance is verified without H5/Dedekind implementation transport.
+`C-CL-COMPARE-001` also survives the ST2-EXP-004 Gate-E alternative without production `orderTotal`, consistent with this separate comparison boundary.
 
-The experimental generic source remains research-only; the accepted comparison
-implementation has not been silently replaced.
+The experimental generic source remains research-only; the accepted comparison implementation has not been silently replaced.
 
 ## Relation/function firewall
 
@@ -148,8 +156,7 @@ relation-level comparison
 selected comparison function
 ```
 
-Actual functions require explicit `CoordinateExtractor` data. No global
-coordinate or inverse selector is part of the integrated comparison contract.
+Actual functions require explicit `CoordinateExtractor` data. No global coordinate or inverse selector is part of the integrated comparison contract.
 
 ## Interpretation of the C fork
 
@@ -161,15 +168,6 @@ C-J-001 remains the accepted integration Junction
 C-BLOCK-002 / CA-20 remains the accepted export
 ```
 
-## H6 downstream evidence
-
-The Cauchy R producer supports an independent H6 rebuild of seven selected
-`C-BLOCK-001` core meanings. `ST2-EXP-011` additionally verifies that the H6
-research producer can instantiate the generic comparison interface directly.
-
-H6 is shown because it is permanent downstream robustness evidence, not because
-it is an accepted C producer.
-
 ## Learning/provenance overlay
 
 ```text
@@ -177,34 +175,37 @@ ST2-EXP-001  CLOSED / PASS
   learned → exact 16-property production R→C dependency surface
 
 ST2-EXP-002  CLOSED / PASS
-  learned → C-ROUTE-Q complete verified alternative
-            + ST2-EXP-002-PQ-J-001
+  learned → C-ROUTE-Q complete verified alternative + ST2-EXP-002-PQ-J-001
 
 ST2-EXP-003  CLOSED / PASS
-  learned → R-ROUTE-C complete verified alternative
-            + ST2-EXP-003-R-J-001
-            + H6 downstream robustness
+  learned → R-ROUTE-C complete verified alternative + ST2-EXP-003-R-J-001 + H6
 
 ST2-EXP-011  CLOSED / PASS
-  learned → scalar-generic quadratic comparison boundary
-            + accepted semantics preservation
-            + native H6 instantiability without H5 transport
-            + relation/function firewall
+  learned → scalar-generic quadratic comparison boundary + relation/function firewall
+
+ST2-EXP-004  CLOSED / PASS
+  learned → exact F-04 current proof/package impact
+            + same-carrier RTotality ↔ CutComparability
+            + no unconditional constructive totality recovery
+            + orderTotal downstream C sensitivity
+            + F-05/F-06/F-07 remain independent controls
 ```
 
-The Learning Graph retains chronology, Frozen Plans, failed runs, exact
-artifacts, Study/Act, lifecycle, merge, and integration decisions.
+The Learning Graph retains chronology, Frozen Plans, failed runs, exact artifacts, Study/Act, lifecycle, research merges, and integration decisions.
 
 ## Current boundary
 
 ```text
 accepted spine             TCT → N-Core → N-Arithmetic → Z → Q → R-BLOCK-001 → C-BLOCK-002
 R selected route           Dedekind
+R logical regime           localized classical comparability / retained
+R totality boundary        RTotality ↔ CutComparability / integrated
 R permanent alternative    Cauchy
 C production R→C contract  exact sixteen-property interface
 C selected route           C-ROUTE-P
 C comparison contract      zero/one/neg/add/mul + coordinate laws
 C permanent alternative    C-ROUTE-Q
 active experiment          NONE
-next owner-sequenced       ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
+next experiment            NOT AUTHORIZED
+required next act          STOP / OWNER AUTHORIZATION REQUIRED
 ```

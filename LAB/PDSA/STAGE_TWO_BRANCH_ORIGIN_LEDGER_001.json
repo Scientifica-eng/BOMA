@@ -1,19 +1,12 @@
 {
   "schema": "BOMA-STAGE-TWO-BRANCH-ORIGIN-LEDGER-001",
-  "status": "FIVE CLOSED EXPERIMENTS / VERIFIED LESSONS 001-003+011 INTEGRATED / ST2-EXP-004 CLOSED PASS / ARCHITECTURE INTEGRATION NEXT / NO ACTIVE EXPERIMENT",
+  "status": "FIVE CLOSED EXPERIMENTS / VERIFIED LESSONS 001-004+011 INTEGRATED / NO ACTIVE EXPERIMENT / STOP BEFORE NEW EXPERIMENT",
   "date": "2026-08-25",
   "purpose": "Separate Git ancestry from explicit architectural origin without manufacturing a Brick, Block, Decision, Junction, or acceptance promotion.",
   "active_experiment": null,
-  "next_experiment_slot": "NO ACTIVE EXPERIMENT / ST2-EXP-004 CLOSED / ARCHITECTURE INTEGRATION NEXT / STOP BEFORE NEW EXPERIMENT",
-  "required_next_act": "ST2-EXP-004 LEARNING-TO-CONSTRUCTION INTEGRATION THEN STOP / NO NEW EXPERIMENT",
-  "allowed_origin_kinds": [
-    "BRICK",
-    "BLOCK",
-    "DECISION_POINT",
-    "DEPENDENCY_EDGE",
-    "CLAIM",
-    "SUPPORTING_LEMMA"
-  ],
+  "next_experiment_slot": "NO ACTIVE EXPERIMENT / ST2-EXP-004 CLOSED / ARCHITECTURE INTEGRATED / STOP BEFORE NEW EXPERIMENT",
+  "required_next_act": "STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED",
+  "allowed_origin_kinds": ["BRICK", "BLOCK", "DECISION_POINT", "DEPENDENCY_EDGE", "CLAIM", "SUPPORTING_LEMMA"],
   "accepted_reference": {
     "selected_route": "C-ROUTE-P",
     "selected_producer_unit": "C-BLOCK-001",
@@ -66,34 +59,16 @@
       "accepted_export_unit_id": "C-BLOCK-002",
       "selected_baseline_route": "C-ROUTE-P",
       "changed_factor": "replace the whole accepted R certificate package with a narrow sixteen-field ordered-field/witness interface",
-      "preserved_controls": [
-        "accepted RBOMA carrier and scalar operations",
-        "accepted selected CBOMA pair carrier and complex operations",
-        "selected Route P",
-        "nine accepted C Claim meanings",
-        "accepted CA-20 export"
-      ],
+      "preserved_controls": ["accepted RBOMA carrier and scalar operations", "accepted selected CBOMA pair carrier and complex operations", "selected Route P", "nine accepted C Claim meanings", "accepted CA-20 export"],
       "first_divergence": "consumer-side packaging of BOMA-C-R-DEP-001; not a newly invented Brick",
-      "affected_cone": [
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
+      "affected_cone": ["C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
       "reconvergence_strength": "SAME-DOWNSTREAM-ADEQUACY / SAME ORIGINAL CARRIER / ACTUAL CLOSURE DIVERGENCE",
       "experimental_product_status": "VERIFIED BRANCH-ONLY INTERFACE / NOT AN ACCEPTED EXPORT",
       "frozen_reference_commit": "b473d236309770762e102517ef8a79c628cb43ed",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-001_NARROW_R_INTERFACE.md",
       "study": "LAB/PDSA/experiments/ST2-EXP-001_NARROW_R_INTERFACE_STUDY.md",
       "verified_run": 32593045224,
-      "preserved_failure_runs": [
-        32592959836
-      ],
+      "preserved_failure_runs": [32592959836],
       "unit_sources": {
         "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
         "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
@@ -115,26 +90,9 @@
       "alternative_route": "C-ROUTE-Q",
       "dependency_contract": "BOMA-C-R-DEP-001",
       "changed_factor": "change only C-DP-001 realization from selected pair carrier to independent expression quotient",
-      "preserved_controls": [
-        "whole accepted RStageIntegrationCertificate",
-        "accepted RBOMA carrier and scalar operations",
-        "witness-only inversion",
-        "quadratic acceptance contract",
-        "nine accepted C Claim meanings",
-        "accepted CA-20 export"
-      ],
+      "preserved_controls": ["whole accepted RStageIntegrationCertificate", "accepted RBOMA carrier and scalar operations", "witness-only inversion", "quadratic acceptance contract", "nine accepted C Claim meanings", "accepted CA-20 export"],
       "first_divergence": "carrier/identity realization selected at C-DP-001",
-      "affected_cone": [
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
+      "affected_cone": ["C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
       "reconvergence_junction_id": "ST2-EXP-002-PQ-J-001",
       "reconvergence_strength": "R-FIELD-ISOMORPHISM / PRESERVES REAL EMBEDDING AND IMAGINARY GENERATOR",
       "experimental_product_status": "VERIFIED INDEPENDENT RESEARCH FIELD / NOT AN ACCEPTED EXPORT",
@@ -145,11 +103,7 @@
       "junction_record": "LAB/PDSA/experiments/ST2-EXP-002_PQ_RECONVERGENCE_JUNCTION_001.md",
       "verified_run": 32597346281,
       "proof_source_verified_run": 32597030998,
-      "preserved_failure_runs": [
-        32596872373,
-        32596968581,
-        32597282848
-      ],
+      "preserved_failure_runs": [32596872373, 32596968581, 32597282848],
       "unit_sources": {
         "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
         "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
@@ -175,63 +129,11 @@
       "alternative_route": "R-ROUTE-C / CAUCHY",
       "dependency_contract": "BOMA-C-R-DEP-001",
       "changed_factor": "change only R-DP-001 completion realization from accepted Dedekind cuts to independent rational Cauchy sequences modulo asymptotic closeness",
-      "preserved_controls": [
-        "accepted Q-BLOCK-002 rational ordered field and accepted BOMANat indices",
-        "accepted N, N-Arithmetic, Z, Q mathematical producers and identities",
-        "accepted R-BLOCK-001 Dedekind export remains unchanged",
-        "witness-only nonzero inversion and explicitly declared completeness contract",
-        "selected C-ROUTE-P quadratic extension meaning and nine accepted C Claims",
-        "accepted C-BLOCK-002 / CA-20 export and both closed experiment Plans/evidence"
-      ],
+      "preserved_controls": ["accepted Q-BLOCK-002 rational ordered field and accepted BOMANat indices", "accepted N, N-Arithmetic, Z, Q mathematical producers and identities", "accepted R-BLOCK-001 Dedekind export remains unchanged", "witness-only nonzero inversion and explicitly declared completeness contract", "selected C-ROUTE-P quadratic extension meaning and nine accepted C Claims", "accepted C-BLOCK-002 / CA-20 export and both closed experiment Plans/evidence"],
       "first_divergence": "rational completion carrier and asymptotic identity selected at R-DP-001",
-      "affected_cone": [
-        "R-CL-CARRIER-001",
-        "R-CL-QEMBED-001",
-        "R-CL-ORDER-001",
-        "R-CL-NONTRIV-001",
-        "R-CL-ADD-001",
-        "R-CL-MUL-001",
-        "R-CL-INV-001",
-        "R-CL-FIELD-001",
-        "R-CL-COMP-001",
-        "R-CL-DENSITY-001",
-        "R-CL-ARCH-001",
-        "R-CL-INTEGRATION-001",
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
-      "affected_real_claims": [
-        "R-CL-CARRIER-001",
-        "R-CL-QEMBED-001",
-        "R-CL-ORDER-001",
-        "R-CL-NONTRIV-001",
-        "R-CL-ADD-001",
-        "R-CL-MUL-001",
-        "R-CL-INV-001",
-        "R-CL-FIELD-001",
-        "R-CL-COMP-001",
-        "R-CL-DENSITY-001",
-        "R-CL-ARCH-001",
-        "R-CL-INTEGRATION-001"
-      ],
-      "affected_complex_claims": [
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
+      "affected_cone": ["R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001", "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001", "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001", "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001", "C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
+      "affected_real_claims": ["R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001", "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001", "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001", "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001"],
+      "affected_complex_claims": ["C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
       "reconvergence_junction_id": "ST2-EXP-003-R-J-001",
       "reconvergence_strength": "H4 EXACT LUB CONTRACT PASS / H5 COMPARISON READY / H5 EXACT R-FIELD ISOMORPHISM / VERIFIED RESEARCH R JUNCTION / H6 CAUCHY-NATIVE C-BLOCK-001 CORE REBUILD EXACT PASS",
       "experimental_product_status": "VERIFIED INDEPENDENT COMPLETE CAUCHY REAL FIELD + VERIFIED RESEARCH R JUNCTION + VERIFIED H6 CAUCHY-NATIVE COMPLEX CORE / NOT AN ACCEPTED REAL EXPORT / H6 C NOT AN ACCEPTED EXPORT",
@@ -253,25 +155,8 @@
       "verified_run": 32727267183,
       "verified_head": "3d4ed58e5d88b2a0bd84b3958cac2c8572385152",
       "verified_run_role": "FINAL EXACT-HEAD H6 CLOSURE REPRESENTATIVE; INDEPENDENT CAUCHY AND H5/JUNCTION RUNS RECORDED SEPARATELY",
-      "preserved_failure_runs": [
-        32630769132,
-        32631916749,
-        32631997598,
-        32632080736,
-        32632711528,
-        32633098730,
-        32633963578,
-        32637335056,
-        32637512588,
-        32638074040,
-        32640562655,
-        32640838804
-      ],
-      "h4_preserved_failure_runs": [
-        32641626366,
-        32643073959,
-        32643253314
-      ],
+      "preserved_failure_runs": [32630769132, 32631916749, 32631997598, 32632080736, 32632711528, 32633098730, 32633963578, 32637335056, 32637512588, 32638074040, 32640562655, 32640838804],
+      "h4_preserved_failure_runs": [32641626366, 32643073959, 32643253314],
       "unit_sources": {
         "Q-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/Q-BLOCK-002/UNIT.md",
         "R-DP-001": "LAB/10_CONSTRUCTION/decisions/R-DP-001/UNIT.md",
@@ -356,45 +241,13 @@
       "selected_baseline_route": "C-ROUTE-P",
       "dependency_contract": "BOMA-C-R-DEP-001",
       "changed_factor": "generalize only the C quadratic-comparison scalar abstraction from RBOMA/RStageIntegrationCertificate hard-wiring to a closure-derived scalar-operation plus explicit-coordinate interface",
-      "preserved_controls": [
-        "accepted R-BLOCK-001 Dedekind producer and R-DP-001 SELECTS R-ROUTE-D",
-        "accepted C-DP-001 SELECTS C-ROUTE-P and C-BLOCK-001 producer",
-        "accepted C-J-001 integration and C-BLOCK-002 / CA-20 export",
-        "ST2-EXP-003 RCBOMA/H5/H6 historical provenance and nonacceptance",
-        "relation-level comparison distinct from functional comparison",
-        "functional comparison only from explicit CoordinateExtractor data",
-        "no global coordinate or inverse selector"
-      ],
+      "preserved_controls": ["accepted R-BLOCK-001 Dedekind producer and R-DP-001 SELECTS R-ROUTE-D", "accepted C-DP-001 SELECTS C-ROUTE-P and C-BLOCK-001 producer", "accepted C-J-001 integration and C-BLOCK-002 / CA-20 export", "ST2-EXP-003 RCBOMA/H5/H6 historical provenance and nonacceptance", "relation-level comparison distinct from functional comparison", "functional comparison only from explicit CoordinateExtractor data", "no global coordinate or inverse selector"],
       "first_divergence": "scalar carrier/operation boundary inside C-COMPARE-BLOCK-001 QuadraticFieldPresentation/Related machinery",
-      "affected_cone": [
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
-      "direct_affected_claims": [
-        "C-CL-COMPARE-001"
-      ],
-      "secondary_audit_claims": [
-        "C-CL-INTEGRATION-001"
-      ],
-      "comparison_scalar_operations": [
-        "zero",
-        "one",
-        "neg",
-        "add",
-        "mul"
-      ],
-      "comparison_coordinate_requirements": [
-        "coord",
-        "coordinateGeneration",
-        "coordinateUnique",
-        "coordinateZero",
-        "coordinateOne",
-        "coordinateReal",
-        "coordinateImag",
-        "coordinateNeg",
-        "coordinateAdd",
-        "coordinateMul"
-      ],
+      "affected_cone": ["C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
+      "direct_affected_claims": ["C-CL-COMPARE-001"],
+      "secondary_audit_claims": ["C-CL-INTEGRATION-001"],
+      "comparison_scalar_operations": ["zero", "one", "neg", "add", "mul"],
+      "comparison_coordinate_requirements": ["coord", "coordinateGeneration", "coordinateUnique", "coordinateZero", "coordinateOne", "coordinateReal", "coordinateImag", "coordinateNeg", "coordinateAdd", "coordinateMul"],
       "reconvergence_strength": "SHARED GENERIC INTERFACE COMPATIBILITY / ACCEPTED RELATED SEMANTICS PRESERVED / NATIVE H6 INSTANCE VERIFIED / NO JUNCTION CREATED",
       "experimental_product_status": "VERIFIED RESEARCH-ONLY GENERIC COMPARISON LAYER + ACCEPTED RBOMA ADAPTER + NATIVE RCBOMA/H6 ADAPTER / NOT AN ACCEPTED REFACTOR OR EXPORT",
       "junction_status": "NO NEW JUNCTION JUSTIFIED",
@@ -422,47 +275,12 @@
       "main_merge_parent_1": "b49826e58261a71634cd12756e8afda28920088f",
       "main_merge_parent_2": "632a7134f26daf9dd781e3546804941f429a4246",
       "merge_content_drift": false,
-      "accepted_regression_runs": {
-        "c_route_probes": 32753140225,
-        "c_same_carrier_integration": 32753140141,
-        "c_stage_acceptance": 32753140262
-      },
-      "historical_regression_runs": {
-        "stage_two_historical_closure": 32753140144,
-        "st2_exp_002": 32753140135,
-        "st2_exp_003_independent_cauchy": 32753140147,
-        "st2_exp_003_h5_comparison": 32753140218,
-        "st2_exp_003_h6_rebuild": 32753140145
-      },
-      "final_closed_regression_matrix": {
-        "stage_two_historical_closure": 32754345621,
-        "st2_exp_002": 32754345717,
-        "st2_exp_003_independent_cauchy": 32754345767,
-        "st2_exp_003_h5_comparison": 32754345639,
-        "st2_exp_003_h6_rebuild": 32754345863,
-        "c_route_probes": 32754345687,
-        "c_same_carrier_integration": 32754345723,
-        "c_stage_acceptance": 32754345652,
-        "st2_exp_011": 32754345656
-      },
-      "preserved_failure_runs": [
-        32749650430,
-        32750715634,
-        32750715744,
-        32750715709,
-        32750715582,
-        32750715665,
-        32752921166
-      ],
-      "failure_records": [
-        "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMMENT_FALSE_POSITIVE.md",
-        "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md"
-      ],
-      "logical_cost": {
-        "generic_roots": "NO AXIOMS",
-        "native_h6_roots": "[propext, Quot.sound]",
-        "accepted_adapter_roots": "[propext, Classical.choice, Quot.sound] / INHERITED ACCEPTED PROVENANCE"
-      },
+      "accepted_regression_runs": {"c_route_probes": 32753140225, "c_same_carrier_integration": 32753140141, "c_stage_acceptance": 32753140262},
+      "historical_regression_runs": {"stage_two_historical_closure": 32753140144, "st2_exp_002": 32753140135, "st2_exp_003_independent_cauchy": 32753140147, "st2_exp_003_h5_comparison": 32753140218, "st2_exp_003_h6_rebuild": 32753140145},
+      "final_closed_regression_matrix": {"stage_two_historical_closure": 32754345621, "st2_exp_002": 32754345717, "st2_exp_003_independent_cauchy": 32754345767, "st2_exp_003_h5_comparison": 32754345639, "st2_exp_003_h6_rebuild": 32754345863, "c_route_probes": 32754345687, "c_same_carrier_integration": 32754345723, "c_stage_acceptance": 32754345652, "st2_exp_011": 32754345656},
+      "preserved_failure_runs": [32749650430, 32750715634, 32750715744, 32750715709, 32750715582, 32750715665, 32752921166],
+      "failure_records": ["LAB/PDSA/experiments/ST2-EXP-011_FAILURE_001_SOURCE_BOUNDARY_COMMENT_FALSE_POSITIVE.md", "LAB/PDSA/experiments/ST2-EXP-011_FAILURE_002_HISTORICAL_LIFECYCLE_CI_SCOPE.md"],
+      "logical_cost": {"generic_roots": "NO AXIOMS", "native_h6_roots": "[propext, Quot.sound]", "accepted_adapter_roots": "[propext, Classical.choice, Quot.sound] / INHERITED ACCEPTED PROVENANCE"},
       "native_h5_dedekind_dependency": false,
       "relation_function_firewall_preserved": true,
       "global_selector_added": false,
@@ -473,17 +291,11 @@
       "canonical_refactor_status": "CANDIDATE ONLY / NOT PERFORMED",
       "architecture_integration_record": "LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md",
       "architecture_integration_status": "INTEGRATED / BOMA-ST2-LEARNING-INTEGRATION-002 / ACCEPTED SOURCES UNCHANGED",
-      "unit_sources": {
-        "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
-        "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md",
-        "C-COMPARE-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md",
-        "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md",
-        "BOMA-C-R-DEP-001": "LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md"
-      }
+      "unit_sources": {"R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md", "C-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-001/UNIT.md", "C-COMPARE-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/C-COMPARE-BLOCK-001/UNIT.md", "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md", "BOMA-C-R-DEP-001": "LAB/00_ARCHITECTURE/C_R_DEPENDENCY_CONTRACT.md"}
     },
     {
       "experiment_id": "ST2-EXP-004",
-      "status": "CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LIFECYCLE CLOSED / ARCHITECTURE INTEGRATION PENDING",
+      "status": "CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LIFECYCLE CLOSED / ARCHITECTURE LESSON INTEGRATED",
       "origin_kind": "DECISION_POINT",
       "origin_id": "R-DP-003",
       "origin_label": "selected Dedekind total-order logical regime: constructive partial-order core plus localized F-04 classical CutComparability provider",
@@ -495,75 +307,28 @@
       "selected_real_baseline_route": "R-ROUTE-D / DEDEKIND",
       "selected_complex_baseline_route": "C-ROUTE-P",
       "changed_factor": "remove only F-04 cutComparability_classical / rLE_total_classical from the alternative assembly while preserving the accepted Dedekind carrier, identity, order relation, operations, and all other localized logical providers",
-      "preserved_controls": [
-        "R-DP-001 Dedekind selection",
-        "R-DP-002 quotient identity",
-        "LowerCut / CutEquiv / cutSetoid / RBOMA",
-        "CutLE / rLE definitions and constructive rLE reflexive/transitive/antisymmetric core",
-        "accepted Q upstream and rOfQ embedding",
-        "accepted R operations rZero/rOne/rAdd/rNeg/rMulCandidate",
-        "R-DP-004/R-DP-005/R-DP-006 architecture",
-        "F-05 finite-membership search classical provider",
-        "F-06 positive-representative classical provider",
-        "F-07 rational-density classical provider",
-        "accepted Q/R/C manifests and accepted sources",
-        "C-DP-001 SELECTS C-ROUTE-P / C-J-001 / C-BLOCK-002 / CA-20",
-        "ST2-EXP-001 sixteen-property C-production contract",
-        "ST2-EXP-011 comparison-interface lesson"
-      ],
+      "preserved_controls": ["R-DP-001 Dedekind selection", "R-DP-002 quotient identity", "LowerCut / CutEquiv / cutSetoid / RBOMA", "CutLE / rLE definitions and constructive rLE reflexive/transitive/antisymmetric core", "accepted Q upstream and rOfQ embedding", "accepted R operations rZero/rOne/rAdd/rNeg/rMulCandidate", "R-DP-004/R-DP-005/R-DP-006 architecture", "F-05 finite-membership search classical provider", "F-06 positive-representative classical provider", "F-07 rational-density classical provider", "accepted Q/R/C manifests and accepted sources", "C-DP-001 SELECTS C-ROUTE-P / C-J-001 / C-BLOCK-002 / CA-20", "ST2-EXP-001 sixteen-property C-production contract", "ST2-EXP-011 comparison-interface lesson"],
       "first_divergence": "logical provider for disjunctive totality at R-DP-003; not the carrier, order relation, or operation definitions",
-      "affected_cone": [
-        "R-CL-CARRIER-001",
-        "R-CL-QEMBED-001",
-        "R-CL-ORDER-001",
-        "R-CL-NONTRIV-001",
-        "R-CL-ADD-001",
-        "R-CL-MUL-001",
-        "R-CL-INV-001",
-        "R-CL-FIELD-001",
-        "R-CL-COMP-001",
-        "R-CL-DENSITY-001",
-        "R-CL-ARCH-001",
-        "R-CL-INTEGRATION-001",
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-FIELD-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001",
-        "C-CL-INTEGRATION-001"
-      ],
-      "direct_risk_claims": [
-        "R-CL-ORDER-001",
-        "R-CL-INTEGRATION-001"
-      ],
+      "affected_cone": ["R-CL-CARRIER-001", "R-CL-QEMBED-001", "R-CL-ORDER-001", "R-CL-NONTRIV-001", "R-CL-ADD-001", "R-CL-MUL-001", "R-CL-INV-001", "R-CL-FIELD-001", "R-CL-COMP-001", "R-CL-DENSITY-001", "R-CL-ARCH-001", "R-CL-INTEGRATION-001", "C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-FIELD-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001", "C-CL-INTEGRATION-001"],
+      "direct_risk_claims": ["R-CL-ORDER-001", "R-CL-INTEGRATION-001"],
       "known_direct_totality_consumer": "BOMA.R.DedekindPositiveDecomposition001.rPosNeg_decomposition",
-      "f04_roots": [
-        "BOMA.R.DedekindOrderClassical001.cutComparability_classical",
-        "BOMA.R.DedekindOrderClassical001.rLE_total_classical"
-      ],
+      "f04_roots": ["BOMA.R.DedekindOrderClassical001.cutComparability_classical", "BOMA.R.DedekindOrderClassical001.rLE_total_classical"],
       "frozen_reference_commit": "50f3031b8d2657cbe0710e73e5935d997d40e49b",
       "frozen_reference_tree": "e4842acdf2b08c8db54b45d0798c36ee7565f351",
       "candidate_dossier": "LAB/PDSA/candidates/ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME_CANDIDATE.md",
       "candidate_dossier_commit": "fd51041857d07cbf8e489c8683a907ea29866b17",
       "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md",
       "frozen_plan_commit": "89c9dc9154e7ca469e5c94c177be223205ee9dbd",
-      "current_gate": "GATES A-F COMPLETE / FINAL STUDY-ACT COMPLETE / LIFECYCLE CLOSED",
+      "current_gate": "GATES A-F COMPLETE / FINAL STUDY-ACT COMPLETE / LIFECYCLE CLOSED / LESSON INTEGRATED",
       "experimental_product_status": "VERIFIED RESEARCH-ONLY F-04 DEPENDENCY/ROBUSTNESS RESULT / NOT AN ACCEPTED EXPORT",
       "mathematical_result": "PASS",
-      "lifecycle_disposition": "CLOSED / OWNER AUTHORIZED 2026-08-25 / ARCHITECTURE INTEGRATION PENDING / NO NEXT EXPERIMENT AUTHORIZED",
+      "lifecycle_disposition": "CLOSED / OWNER AUTHORIZED 2026-08-25 / RESEARCH MERGED / ARCHITECTURE LESSON INTEGRATED / NO NEXT EXPERIMENT AUTHORIZED",
       "new_block_created": false,
       "new_decision_point_created": false,
       "new_junction_created": false,
       "accepted_reference_changed": false,
       "single_active_slot": true,
-      "unit_sources": {
-        "R-DP-003": "LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md",
-        "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
-        "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md"
-      },
+      "unit_sources": {"R-DP-003": "LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md", "R-BLOCK-001": "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md", "C-BLOCK-002": "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md"},
       "same_carrier_totality_recovery": "NOT_RECOVERED_WITH_CURRENT_CUT_INTERFACE",
       "closure_authorized_date": "2026-08-25",
       "final_study_act": "LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md",
@@ -574,55 +339,20 @@
       "verified_artifact_id": 9558667579,
       "verified_artifact_sha256": "e0920004e18db1e516b952ed49b7466f7939e72b0ccf0e682757d4b23856e245",
       "verified_run_role": "GREEN FINAL-STUDY-ACT PRECLOSURE CHECKPOINT; CLOSED-STATE HEAD VERIFIED SEPARATELY",
-      "architecture_integration_status": "REQUIRED / SEPARATE POST-CLOSURE ACT / NOT YET INTEGRATED",
+      "main_merge_commit": "61adb8589c803e95e1b96ef38902320c8aa5df19",
+      "main_merge_tree": "256b4dce1bdbb93858b28d28ece7a9e177a1685c",
+      "main_merge_parent_1": "c26854e551c7e6245ef9c13c01a2424def6bfab5",
+      "main_merge_parent_2": "1fe760de811ad2b176ead6f420b80ca1aab5ce46",
+      "merge_content_drift": false,
+      "architecture_integration_record": "LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md",
+      "architecture_integration_status": "INTEGRATED / BOMA-ST2-LEARNING-INTEGRATION-003 / ACCEPTED SOURCES UNCHANGED",
       "durable_architecture_knowledge": true,
       "canonical_acceptance_change": false,
-      "gate_e_c_survivors": [
-        "C-CL-CARRIER-001",
-        "C-CL-REMBED-001",
-        "C-CL-I-001",
-        "C-CL-GEN-001",
-        "C-CL-COORDUNIQ-001",
-        "C-CL-NONREAL-001",
-        "C-CL-COMPARE-001"
-      ],
-      "gate_e_c_current_nonsurvivors": [
-        "C-CL-FIELD-001",
-        "C-CL-INTEGRATION-001"
-      ],
-      "failure_records": [
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_001_GATE_B_PROVENANCE_MARKER_CASE.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_002_GATE_B_STDERR_NOT_CAPTURED.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_003_GATE_B_INTERNALDECL_FIELD_MISMATCH.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_004_GATE_B_DECLARATION_TO_SOURCE_CLOSURE_GAP.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_005_GATE_C_DEPENDENCY_AUDIT_STDERR_NOT_CAPTURED.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_006_GATE_C_LOCAL_NAME_TYPO.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_007_CLOSED_STATE_011_AUDIT_BASELINE_UNIT_EXPECTATION.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_008_CLOSED_STATE_LEDGER_HISTORICAL_PROVENANCE_REGRESSION.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_009_REPAIR_JOB_PYCACHE_FALSE_POSITIVE.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_010_GITHUB_APP_WORKFLOW_PUSH_PERMISSION.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_011_NONWORKFLOW_REPAIR_STALE_011_ASSERTION.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_012_NONWORKFLOW_REPAIR_STALE_004_FAILURE_RANGE_ASSERTION.md",
-        "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_013_POSTCLOSURE_GATE_A_ACTIVE_STATE_ASSERTION.md"
-      ],
-      "final_gate_runs": {
-        "gate_a": 32835962936,
-        "gate_b": 32835962804,
-        "gate_c": 32835963151,
-        "gate_d": 32835962907,
-        "gate_e": 32835962908,
-        "gate_f": 32835963092
-      },
-      "post_study_failure_runs": [
-        32837301674,
-        32837451796,
-        32837451803,
-        32841161796,
-        32841397381,
-        32841640578,
-        32841874338,
-        32842063699
-      ]
+      "gate_e_c_survivors": ["C-CL-CARRIER-001", "C-CL-REMBED-001", "C-CL-I-001", "C-CL-GEN-001", "C-CL-COORDUNIQ-001", "C-CL-NONREAL-001", "C-CL-COMPARE-001"],
+      "gate_e_c_current_nonsurvivors": ["C-CL-FIELD-001", "C-CL-INTEGRATION-001"],
+      "failure_records": ["LAB/PDSA/experiments/ST2-EXP-004_FAILURE_001_GATE_B_PROVENANCE_MARKER_CASE.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_002_GATE_B_STDERR_NOT_CAPTURED.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_003_GATE_B_INTERNALDECL_FIELD_MISMATCH.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_004_GATE_B_DECLARATION_TO_SOURCE_CLOSURE_GAP.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_005_GATE_C_DEPENDENCY_AUDIT_STDERR_NOT_CAPTURED.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_006_GATE_C_LOCAL_NAME_TYPO.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_007_CLOSED_STATE_011_AUDIT_BASELINE_UNIT_EXPECTATION.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_008_CLOSED_STATE_LEDGER_HISTORICAL_PROVENANCE_REGRESSION.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_009_REPAIR_JOB_PYCACHE_FALSE_POSITIVE.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_010_GITHUB_APP_WORKFLOW_PUSH_PERMISSION.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_011_NONWORKFLOW_REPAIR_STALE_011_ASSERTION.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_012_NONWORKFLOW_REPAIR_STALE_004_FAILURE_RANGE_ASSERTION.md", "LAB/PDSA/experiments/ST2-EXP-004_FAILURE_013_POSTCLOSURE_GATE_A_ACTIVE_STATE_ASSERTION.md"],
+      "final_gate_runs": {"gate_a": 32835962936, "gate_b": 32835962804, "gate_c": 32835963151, "gate_d": 32835962907, "gate_e": 32835962908, "gate_f": 32835963092},
+      "post_study_failure_runs": [32837301674, 32837451796, 32837451803, 32841161796, 32841397381, 32841640578, 32841874338, 32842063699]
     }
   ]
 }

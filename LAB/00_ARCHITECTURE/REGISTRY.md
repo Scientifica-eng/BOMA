@@ -7,8 +7,8 @@
 **Q:** `Q_DAG.md`  
 **R:** `R_DAG.md`  
 **C:** `C_DAG.md`  
-**Stage-Two lifecycle:** `ST2-EXP-001..003 + ST2-EXP-011 CLOSED / PASS / NO ACTIVE EXPERIMENT`  
-**Integration authorities:** `BOMA-ST2-LEARNING-INTEGRATION-001`, `BOMA-ST2-LEARNING-INTEGRATION-002`.
+**Stage-Two lifecycle:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / NO ACTIVE EXPERIMENT`  
+**Integration authorities:** `BOMA-ST2-LEARNING-INTEGRATION-001`, `BOMA-ST2-LEARNING-INTEGRATION-002`, `BOMA-ST2-LEARNING-INTEGRATION-003`.
 
 Operational, verification, research-provenance, selection, and acceptance status remain separate.
 
@@ -104,7 +104,7 @@ Classification: **INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE**.
 |---|---|---|
 | `R-DP-001` | completion route | RESOLVED — Dedekind selected; Cauchy permanent verified alternative |
 | `R-DP-002` | formal real identity | RESOLVED — quotient `cutSetoid` selected |
-| `R-DP-003` | total-order logical regime | RESOLVED — localized classical comparability selected |
+| `R-DP-003` | total-order logical regime | RESOLVED — localized classical comparability selected / ST2-EXP-004 BOUNDARY INTEGRATED |
 | `R-DP-004` | Q approximation route | RESOLVED |
 | `R-DP-005` | multiplication architecture | RESOLVED |
 | `R-DP-006` | inverse architecture | RESOLVED |
@@ -120,6 +120,34 @@ Classification: **INTERFACE RECONVERGENCE / PROVENANCE DIVERGENCE**.
 | `R-J-002` | selected Stage-One R integration | PASS / RESOLVED / ACCEPTANCE JUNCTION |
 | `R-BLOCK-001` | accepted Stage-One real export | ACTIVE — ACCEPTED |
 | `RE-R-001` | backward dependency/commitment classification | CLOSED / COMPLETE |
+
+### ST2-EXP-004 integrated R-DP-003 knowledge
+
+| Record | Role | Status |
+|---|---|---|
+| `ST2-EXP-004` | single-factor F-04 logical-regime experiment | CLOSED / PASS / EXACT F-04 IMPACT CLASSIFIED / LESSON INTEGRATED |
+| `BOMA-ST2-LEARNING-INTEGRATION-003` | Learning-to-Construction Act | INTEGRATED / NO ACCEPTANCE PROMOTION |
+
+Permanent facts:
+
+```text
+same accepted carrier/order: RTotality ↔ CutComparability
+unconditional constructive CutComparability: NOT RECOVERED
+F04 declaration impact: 8 direct / 7 transitive / 22 free / 18 other-classical-only
+Gate-B source survivor assembly: 77 / 88 accepted-manifest R files
+F-05 / F-06 / F-07: independent controls retained
+```
+
+Interpretation firewall:
+
+```text
+formal dependency ≠ mathematical necessity
+conditional CutComparability ≠ constructive recovery
+NO F-04 dependency ≠ fully constructive R
+located-cut redesign ≠ unchanged frozen representation
+```
+
+The selected localized classical F-04 provider remains the Stage-I `R-DP-003` selection.
 
 ### Permanent verified alternative-construction records
 
@@ -146,7 +174,7 @@ mulComm, mulAssoc, mulOneLeft, distribRight,
 orderMulNonneg, inverseExists
 ```
 
-This refines a dependency edge; it does not create a fabricated Block or Junction.
+`ST2-EXP-004` removed exactly `orderTotal` for a controlled downstream sensitivity measurement. Seven C Claim families survived; current field/integration proof closures did not. That is current proof-closure sensitivity, not a theorem of necessity.
 
 ## Complex stage — ACCEPTED + PERMANENT VERIFIED ALTERNATIVE + GENERIC COMPARISON KNOWLEDGE
 
@@ -165,8 +193,6 @@ This refines a dependency edge; it does not create a fabricated Block or Junctio
 
 ### Canonical comparison dependency surface
 
-The permanent comparison-specific scalar surface learned by `ST2-EXP-011` is:
-
 ```text
 zero / one / neg / add / mul
 + coord
@@ -175,28 +201,22 @@ zero / one / neg / add / mul
 + coordinateNeg / coordinateAdd / coordinateMul
 ```
 
-This is narrower than—and distinct from—the sixteen-property production surface.
+This is narrower than—and distinct from—the sixteen-property production surface. `C-CL-COMPARE-001` also remains in the ST2-EXP-004 Gate-E survivor set after removing only production `orderTotal`.
 
-The accepted RBOMA adapter preserves old `Related` semantics definitionally.
-The same interface is verified natively over RCBOMA/H6 without H5/Dedekind
-implementation transport. Functional comparison still requires explicit
-`CoordinateExtractor` data.
-
-No accepted source, selected route, acceptance Junction, or accepted export is
-changed by the learning integration.
+No accepted source, selected route, acceptance Junction, or accepted export is changed by either learning integration.
 
 ## Closed Stage-Two provenance records
 
 | Record | Architectural origin | Lifecycle / integrated lesson |
 |---|---|---|
-| `STAGE-TWO-LAB` | controlled single-change experiment register | FOUR CLOSED / NO ACTIVE EXPERIMENT |
+| `STAGE-TWO-LAB` | controlled single-change experiment register | FIVE CLOSED / NO ACTIVE EXPERIMENT |
 | `ST2-EXP-001` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | CLOSED / PASS — production dependency lesson integrated |
 | `ST2-EXP-002` | `DECISION_POINT / C-DP-001` | CLOSED / PASS — Route Q + P/Q Junction integrated as permanent alternative architecture |
 | `ST2-EXP-003` | `DECISION_POINT / R-DP-001` | CLOSED / PASS / H1-H6 EXACT — Cauchy + R Junction integrated as permanent alternative architecture |
 | `ST2-EXP-011` | `BLOCK / C-COMPARE-BLOCK-001` | CLOSED / PASS — generic comparison dependency + relation/function firewall integrated |
+| `ST2-EXP-004` | `DECISION_POINT / R-DP-003` | CLOSED / PASS — F-04 impact + same-carrier totality boundary + C sensitivity integrated |
 
-The experiment records remain Learning-Graph provenance even when their verified
-results become permanent Construction-DAG knowledge.
+The experiment records remain Learning-Graph provenance even when verified results become permanent Construction-DAG knowledge.
 
 ## Current frontier
 
@@ -208,6 +228,7 @@ Z                                ACCEPTED
 post-Z reverse N                 CLOSED / COMPLETE
 Q                                ACCEPTED
 R-DP-001                         SELECTS R-ROUTE-D / DEDEKIND
+R-DP-003                         SELECTS LOCALIZED CLASSICAL COMPARABILITY / LESSON INTEGRATED
 R accepted                       R-BLOCK-001
 R permanent alternative          R-ROUTE-C / Cauchy
 R alternative Junction           ST2-EXP-003-R-J-001
@@ -217,9 +238,10 @@ C comparison dependency          five scalar ops + coordinate laws
 C accepted                       C-BLOCK-002 / CA-20
 C permanent alternative          C-ROUTE-Q
 C alternative Junction           ST2-EXP-002-PQ-J-001
-ST2-EXP-001..003 + 011           CLOSED / PASS / LESSONS INTEGRATED
+ST2-EXP-001..004 + 011           CLOSED / PASS / LESSONS INTEGRATED
 ACTIVE EXPERIMENT                NONE
-NEXT OWNER-SEQUENCED             ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
+NEXT EXPERIMENT                  NOT AUTHORIZED
+REQUIRED NEXT ACT                STOP / OWNER AUTHORIZATION REQUIRED
 ```
 
 Integration authorities:
@@ -227,4 +249,5 @@ Integration authorities:
 ```text
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
+LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
 ```
