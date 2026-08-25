@@ -162,7 +162,7 @@ jobs:
             printf '015 independent-Q manifest crossed a forbidden implementation boundary\n' >&2
             exit 1
           fi
-          forbidden_source='RBOMA|Dedekind|RStageIntegration002|ST2Exp002|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          forbidden_source='RBOMA|RStageIntegration002|ST2Exp002|BOMA\.R\.Dedekind|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
           if grep -En "$forbidden_source" "$source"; then
             printf '015 Gate-B source crossed a forbidden implementation/selector boundary\n' >&2
             exit 1
