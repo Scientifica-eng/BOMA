@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   repair_and_verify:
-    name: apply verified closed-state provenance repair
+    name: apply verified non-workflow provenance repair
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - name: Render, verify, and stage bounded repair
+      - name: Render and verify bounded non-workflow repair
         shell: bash
         run: |
           set -euo pipefail
@@ -77,11 +77,14 @@ jobs:
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_007_CLOSED_STATE_011_AUDIT_BASELINE_UNIT_EXPECTATION.md',
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_008_CLOSED_STATE_LEDGER_HISTORICAL_PROVENANCE_REGRESSION.md',
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_009_REPAIR_JOB_PYCACHE_FALSE_POSITIVE.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_010_GITHUB_APP_WORKFLOW_PUSH_PERMISSION.md',
           ):
               if rel not in failures:
                   failures.append(rel)
           rec004['failure_records'] = failures
-          rec004['post_study_failure_runs'] = [32837301674, 32837451796, 32837451803, 32841161796]
+          rec004['post_study_failure_runs'] = [
+              32837301674, 32837451796, 32837451803, 32841161796, 32841397381
+          ]
           repaired['records'] = [copy.deepcopy(hist[e]) for e in protected] + [rec004]
 
           check = {r['experiment_id']: r for r in repaired['records']}
@@ -101,7 +104,7 @@ jobs:
           p004 = Path('LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py')
           s004 = p004.read_text(encoding='utf-8')
           replacements = {
-              'for i in range(1, 7)': 'for i in range(1, 10)',
+              'for i in range(1, 7)': 'for i in range(1, 11)',
               '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT")': '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized")',
               '''        for rel in (STATUS, REGISTER):\n            text = read(root, rel)\n            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''': '''        state_markers = {\n            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),\n            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),\n        }\n        for rel, markers in state_markers.items():\n            text = read(root, rel)\n            for marker in markers:\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''',
           }
@@ -115,25 +118,14 @@ jobs:
           assert '`ST2-EXP-004` preserves six execution failure records under' in text
           status.write_text(text.replace(
               '`ST2-EXP-004` preserves six execution failure records under',
-              '`ST2-EXP-004` preserves nine execution failure records under', 1), encoding='utf-8')
+              '`ST2-EXP-004` preserves ten execution failure records under', 1), encoding='utf-8')
 
           register = Path('LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md')
           text = register.read_text(encoding='utf-8')
           assert 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as' in text
           register.write_text(text.replace(
               'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as',
-              'Failure records `ST2-EXP-004_FAILURE_001` through `009` remain preserved as', 1), encoding='utf-8')
-
-          gate = Path('.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml')
-          text = gate.read_text(encoding='utf-8')
-          old = '''          assert d["active_experiment"] == "ST2-EXP-004", d["active_experiment"]\n          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          print("ST2_EXP_004_GATE0_ACTIVE_PASS")'''
-          new = '''          records = [r for r in d["records"] if r["experiment_id"] == "ST2-EXP-004"]\n          assert len(records) == 1\n          r = records[0]\n          assert r["origin_kind"] == "DECISION_POINT"\n          assert r["origin_id"] == "R-DP-003"\n          assert r["frozen_plan_commit"] == "89c9dc9154e7ca469e5c94c177be223205ee9dbd"\n          if d["active_experiment"] == "ST2-EXP-004":\n              assert str(r["status"]).startswith("ACTIVE / PLAN FROZEN")\n              print("ST2_EXP_004_GATE0_ACTIVE_PASS")\n          else:\n              assert d["active_experiment"] is None\n              assert str(r["status"]).startswith("CLOSED / PASS")\n              print("ST2_EXP_004_LIFECYCLE_CLOSED_GATE_REPLAY_PASS")'''
-          assert old in text
-          gate.write_text(text.replace(old, new, 1), encoding='utf-8')
-
-          renderer = Path('.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml')
-          if renderer.exists():
-              renderer.unlink()
+              'Failure records `ST2-EXP-004_FAILURE_001` through `010` remain preserved as', 1), encoding='utf-8')
           PY
 
           python3 -m py_compile \
@@ -148,12 +140,12 @@ jobs:
           grep -Fq 'ST2_EXP_001_003_HISTORICAL_CLOSURE_PASS' /tmp/historical.json
           rm -rf LAB/00_ARCHITECTURE/tools/__pycache__
 
-          allowed='^(LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json|LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py|LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py|LAB/PDSA/STATUS.md|LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md|\.github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml|\.github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml)$'
+          allowed='^(LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json|LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py|LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py|LAB/PDSA/STATUS.md|LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md)$'
           bad="$(git status --short | sed -E 's/^.. //' | grep -Ev "$allowed" || true)"
           test -z "$bad" || { printf 'Unexpected repair paths:\n%s\n' "$bad" >&2; exit 1; }
           git diff --check
 
-      - name: Commit and push exact-head repair
+      - name: Commit and push non-workflow repair
         shell: bash
         run: |
           set -euo pipefail
@@ -161,14 +153,12 @@ jobs:
           branch='feature/stage-two-st2-exp-004-r-total-order-logical-regime'
           git fetch origin "$branch"
           test "$(git rev-parse "origin/$branch")" = "$expected"
-          git add -A \
+          git add \
             LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json \
             LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py \
             LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py \
             LAB/PDSA/STATUS.md \
-            LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md \
-            .github/workflows/boma-st2-exp-004-r-total-order-logical-regime.yml \
-            .github/workflows/boma-st2-exp-004-provenance-repair-renderer.yml
+            LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
           git diff --cached --check
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
