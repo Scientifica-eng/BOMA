@@ -21,7 +21,7 @@ AUTONOMOUS RESEARCH PROGRAM: NO_ACTIVE_PROGRAM
 REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
 ```
 
-The owner-authorized sequence for `ST2-EXP-004` is complete in mathematical and architecture-content terms: research lifecycle closed, exact-head research PR merged, and the durable Learning-to-Construction lesson prepared on a separate maintenance branch. The maintenance branch must still pass exact-head CI and merge before its current-state documentation becomes `main` authority. No later experiment may be selected, branched, activated, planned, or frozen by this sequence.
+The owner-authorized `ST2-EXP-004` sequence is complete in both research and architecture-integration terms. Its research lifecycle closed, the exact-head research PR merged, the separate Learning-to-Construction maintenance integration passed exact-head CI, and that integration merged to `main` at `387434cbbbf074e3474d992316f73d132258d908`. No later experiment is selected, branched, activated, planned, or frozen by that completed sequence.
 
 ---
 
