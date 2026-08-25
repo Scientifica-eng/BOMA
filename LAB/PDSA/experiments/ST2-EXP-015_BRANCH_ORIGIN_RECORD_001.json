@@ -1,0 +1,40 @@
+{
+  "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
+  "experiment_id": "ST2-EXP-015",
+  "program_id": "ST2-RP-001",
+  "status": "PREPARING_EXPERIMENT",
+  "date": "2026-08-25",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "C-DP-001",
+  "synchronized_main_baseline": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
+  "transition_record": "LAB/PDSA/experiments/ST2-RP-001_TRANSITION_014_TO_015_001.md",
+  "previous_experiment": "ST2-EXP-014",
+  "previous_experiment_disposition": "CLOSED_PASS_RESEARCH_ONLY",
+  "research_branch": "feature/stage-two-st2-exp-015-cauchy-route-composition-square",
+  "single_changed_factor": "WITH_CAUCHY_RCBOMA_SCALAR_FIXED_C_REALIZATION_ROUTE_P_TO_ROUTE_Q",
+  "fixed_controls": [
+    "RCBOMA_CAUCHY_SCALAR_PRODUCER",
+    "QUADRATIC_EXTENSION_TARGET_MEANING",
+    "NINE_C_TARGET_MEANINGS_FROM_014_AS_COMPARISON_SURFACE_WHERE_APPLICABLE",
+    "NO_DEDEKIND_IMPLEMENTATION_TRANSPORT",
+    "ACCEPTED_C_ROUTE_P_REMAINS_CONTROL",
+    "R_DP_001_SELECTS_R_ROUTE_D_UNCHANGED",
+    "C_DP_001_SELECTS_C_ROUTE_P_UNCHANGED",
+    "ACCEPTED_R_C_SOURCES_AND_MANIFESTS_UNCHANGED",
+    "RELATION_FUNCTION_FIREWALL_PRESERVED",
+    "NO_SILENT_GLOBAL_CHOICE_SELECTOR"
+  ],
+  "affected_cone": [
+    "C_CARRIER_IDENTITY_OVER_RCBOMA",
+    "C_FIELD_OVER_RCBOMA",
+    "C_COORDINATES_OVER_RCBOMA",
+    "C_COMPARISON_OVER_RCBOMA"
+  ],
+  "baseline_route": "C_ROUTE_P_OVER_RCBOMA_VERIFIED_BY_ST2_EXP_014",
+  "experimental_route": "C_ROUTE_Q_OVER_RCBOMA_TO_BE_CONSTRUCTED_AND_VERIFIED",
+  "dedekind_route_q_control": "ST2_EXP_002_RESEARCH_EVIDENCE_ONLY",
+  "accepted_promotion": "NONE_NOT_AUTHORIZED",
+  "frozen_plan": null,
+  "frozen_plan_commit": null,
+  "do_started": false
+}

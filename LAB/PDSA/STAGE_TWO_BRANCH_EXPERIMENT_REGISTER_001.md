@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-014 STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 PREPARING_EXPERIMENT / NO FROZEN PLAN / NO DO`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
 **Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
@@ -12,42 +12,33 @@
 ```text
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
-ACTIVE EXPERIMENT: ST2-EXP-014
-ACTIVE STATE: CLOSING
-FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md
-FROZEN PLAN COMMIT: 788ae14649f3245fd8d6ccd43f90038ffba7762b
-FROZEN REFERENCE: fff2400b65b2c9a260fb28defd907ce24387cb80
-RESEARCH BRANCH: feature/stage-two-st2-exp-014-cauchy-native-full-c
-FINAL STUDY/ACT: LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md / PASS / VERIFIED HEAD 1e08cb127fc6aa5483706a913d24932f4d6a1f31
-LIFECYCLE CLOSURE: LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md / EFFECTIVE ONLY AFTER EXACT CLOSURE-HEAD PASS
-NEXT EXPERIMENT: ST2-EXP-015 / AUTHORIZED / QUEUED / WAITING 014 EXACT CLOSURE + TRANSITION GATE
+ACTIVE EXPERIMENT: ST2-EXP-015
+ACTIVE STATE: PREPARING_EXPERIMENT
+QUEUE CURSOR: 1 / ST2-EXP-015
+SYNCHRONIZED MAIN BASELINE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
+FROZEN PLAN: NONE YET
+RESEARCH BRANCH: feature/stage-two-st2-exp-015-cauchy-route-composition-square
+ORIGIN: DECISION_POINT / C-DP-001
+PREVIOUS TRANSITION: 014 → 015 / AUTO_CONTINUE PASS
+NEXT EXPERIMENT: ST2-EXP-016 / AUTHORIZED / QUEUED / WAITING 015 TRANSITION GATE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: exact 014 lifecycle-closure-head CI → routine merge exact verified head if all gates pass → re-read main → transition gate
+REQUIRED NEXT ACT: prepare and commit ST2-EXP-015 immutable Frozen Plan alone before Do
 ```
 
-`ST2-EXP-014` changes only the scalar producer supplied to selected C Route P:
-accepted Dedekind `RBOMA` is replaced by independently verified Cauchy `RCBOMA`.
-The C Route-P meaning, nine accepted C Claim meanings, accepted sources,
-relation/function firewall, witness-only inversion, and selected/accepted
-architecture remain controls.
+`ST2-EXP-014` is now closed `PASS`, exact-verified, merged, and integrated as
+bounded producer-substitutability knowledge. No accepted or selected architecture
+changed.
 
-The Frozen Plan was committed alone at `788ae14649f3245fd8d6ccd43f90038ffba7762b`
-before Do. The verified result reuses H6 seven-Claim mathematics and
-ST2-EXP-011 native comparison evidence, adding only a research-only full
-nine-Claim integration certificate. Native implementation closure excludes
-H5/Dedekind transport.
-
-Final Study/Act at `1e08cb127fc6aa5483706a913d24932f4d6a1f31` passed exact V5
-(run `32873847016`, job `97886976028`, artifact `9573108354`, digest
-`sha256:31259ff1547842f165be99ee8c913453df002b64eb49c34ae99561ad3fb92e73`).
-The lifecycle closure record remains fail-closed until the exact commit
-containing it passes independently.
+`ST2-EXP-015` is preparation-only. It must hold Cauchy `RCBOMA` fixed and change
+only C realization Route P → Route Q. Accepted C Route P remains the control.
+No Frozen Plan exists yet and no Do is authorized until one is independently
+prepared and committed.
 
 ### Immutable historical ST2-EXP-004 final sentinel
 
 The following literals describe the closed 004 lifecycle's own final frontier.
 Historical read-only 004 audits may match them; they do **not** override the
-later owner-authorized current program and active 014 state:
+later owner-authorized current program and active 015 state:
 
 ```text
 NEXT EXPERIMENT: NOT AUTHORIZED
@@ -66,9 +57,7 @@ AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
 | `ST2-EXP-003` | `DECISION_POINT / R-DP-001` | `PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md` | `CLOSED / PASS / INTEGRATED` | none; Dedekind remains selected, Cauchy evidence remains research-only |
 | `ST2-EXP-011` | `BLOCK / C-COMPARE-BLOCK-001` | `PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md` | `CLOSED / PASS / INTEGRATED` | no accepted refactor; comparison-interface lesson integrated |
 | `ST2-EXP-004` | `DECISION_POINT / R-DP-003` | `PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md` | `CLOSED / PASS / ARCHITECTURE LESSON INTEGRATED` | none; Stage-I localized classical totality provider retained |
-
-`ST2-EXP-014` is not moved into this completed table until exact closure-head
-verification succeeds and the exact verified research head is routine-merged.
+| `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | `PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md` | `CLOSED / PASS / INTEGRATED` | none; full C target reproduced over Cauchy with Route P fixed |
 
 ---
 
@@ -81,9 +70,9 @@ preserved and their IDs are not reused.
 
 | Order | ID | Architectural origin | Intended single change | State |
 | ---: | --- | --- | --- | --- |
-| 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING` |
-| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `OWNER_AUTHORIZED / QUEUED / WAITING 014 EXACT CLOSURE + TRANSITION` |
-| 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
+| 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `CLOSED / PASS / MERGED / INTEGRATED` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / PREPARING_EXPERIMENT / NO FROZEN PLAN / NO DO` |
+| 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING 015 TRANSITION` |
 | 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
 The exact objectives, controls, transition dependencies, merge authority, stop
@@ -92,25 +81,56 @@ authorization record.
 
 ---
 
-## ST2-EXP-014 authority — current closing experiment
+## ST2-EXP-015 authority — current preparation
+
+```text
+origin                         DECISION_POINT / C-DP-001
+synchronized main baseline     2a6c38af70e596c840ef2db4733421bde38f3ee5
+transition record              LAB/PDSA/experiments/ST2-RP-001_TRANSITION_014_TO_015_001.md
+origin record                  LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json
+research branch                feature/stage-two-st2-exp-015-cauchy-route-composition-square
+changed factor                 C realization over fixed Cauchy RCBOMA: Route P → Route Q
+fixed scalar producer          RCBOMA / Cauchy
+accepted control               C-DP-001 selected Route P / accepted C unchanged
+Frozen Plan                    NONE YET
+Do                             NOT STARTED
+accepted promotion             NONE / NOT AUTHORIZED
+```
+
+Target square:
+
+```text
+                    C-ROUTE-P          C-ROUTE-Q
+R-ROUTE-D/Dedekind     verified           verified
+R-ROUTE-C/Cauchy       verified by 014    015 target
+```
+
+Preparation may reuse mathematical learning from `ST2-EXP-002`, but may not copy
+its Frozen Plan or silently import Dedekind-specific implementation producers.
+The new Frozen Plan must independently freeze exact controls, success/failure
+criteria, source boundaries, and the affected cone before Do.
+
+---
+
+## ST2-EXP-014 authority — immutable closed record
 
 ```text
 origin                         DEPENDENCY_EDGE / BOMA-C-R-DEP-001
 frozen accepted reference      fff2400b65b2c9a260fb28defd907ce24387cb80
 Frozen Plan commit             788ae14649f3245fd8d6ccd43f90038ffba7762b
-Frozen Plan                    LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md
-origin record                  LAB/PDSA/experiments/ST2-EXP-014_BRANCH_ORIGIN_RECORD_001.json
-research branch                feature/stage-two-st2-exp-014-cauchy-native-full-c
-changed factor                 C Route-P scalar producer: Dedekind RBOMA → Cauchy RCBOMA
-Final Study/Act                LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md
-verified Study/Act head        1e08cb127fc6aa5483706a913d24932f4d6a1f31
-lifecycle closure              LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md
-mathematical result            PASS / NINE-CLAIM NATIVE CAUCHY SURFACE VERIFIED
-sequence-critical prerequisite NONE DISCOVERED / F14 NOT TRIGGERED
-accepted promotion             NONE / NOT AUTHORIZED
+Final Study/Act head           1e08cb127fc6aa5483706a913d24932f4d6a1f31
+final exact closure head       19cc6541457b3e8c58ea4607198d2474cd293dc9
+final V5 run                   32874585252
+final V5 job                   97889361868
+final artifact                 9573385989
+final artifact sha256          a1970dfdb989428d4e6cb95f80bab4a202d7ede123a6c6b3578919d610f5661f
+research/lifecycle merge       2a6c38af70e596c840ef2db4733421bde38f3ee5
+architecture integration       BOMA-ST2-LEARNING-INTEGRATION-004
+mathematical result            PASS / NINE-CLAIM CAUCHY-NATIVE SURFACE
+accepted promotion             NONE
 ```
 
-Verified Gate-A decomposition:
+Verified decomposition:
 
 ```text
 7 Claim families  H6_ALREADY_VERIFIED
@@ -118,12 +138,8 @@ Verified Gate-A decomposition:
 1 Claim family    014_INTEGRATION_ONLY
 ```
 
-The 014 native mathematical manifest consumes the independent Cauchy R manifest,
-H6, the 011 generic/native Cauchy comparison sources, and the 014 integration
-source. Exact verification excludes H5 `cToD/dToC`, selected Dedekind/RStage
-implementation producers, and the accepted-RBOMA 011 adapter.
-
-The exact closure head must re-establish these properties before routine merge.
+The integrated lesson is producer substitutability/compositionality at the exact
+tested C Claim surface, not a selection or acceptance change.
 
 ---
 
