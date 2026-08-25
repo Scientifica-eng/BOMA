@@ -1,0 +1,108 @@
+name: BOMA ST2-EXP-004 Lifecycle Closure
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.*'
+      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
+      - 'LAB/PDSA/STATUS.md'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py'
+      - '.github/workflows/boma-st2-exp-004-lifecycle-closure.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-004-*'
+
+concurrency:
+  group: boma-st2-exp-004-lifecycle-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  closure:
+    name: verify lifecycle-closed exact head
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact experiment head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact head and immutable experiment authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          test "$(git rev-parse HEAD)" = "$expected"
+          git merge-base --is-ancestor 50f3031b8d2657cbe0710e73e5935d997d40e49b HEAD
+          git merge-base --is-ancestor 89c9dc9154e7ca469e5c94c177be223205ee9dbd HEAD
+          git merge-base --is-ancestor 6779d028c49f73757ea838c163d3968a982559fe HEAD
+          git merge-base --is-ancestor 29fd8518e0cf03addac2b4436e7e917e201d7d73 HEAD
+          git diff --exit-code 89c9dc9154e7ca469e5c94c177be223205ee9dbd HEAD -- LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+          git diff --exit-code 6779d028c49f73757ea838c163d3968a982559fe HEAD -- LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
+          git diff --exit-code 29fd8518e0cf03addac2b4436e7e917e201d7d73 HEAD -- LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
+          printf 'verified_head=%s\n' "$expected" | tee /tmp/st2-exp-004-lifecycle-provenance.txt
+
+      - name: Prove accepted Q/R/C controls unchanged from frozen accepted reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline=50f3031b8d2657cbe0710e73e5935d997d40e49b
+          manifests=(
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          )
+          : > /tmp/st2-exp-004-accepted-controls.txt
+          for manifest in "${manifests[@]}"; do
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            printf 'manifest unchanged: %s\n' "$manifest" >> /tmp/st2-exp-004-accepted-controls.txt
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              git diff --exit-code "$baseline" HEAD -- "$src"
+              printf 'source unchanged: %s\n' "$src" >> /tmp/st2-exp-004-accepted-controls.txt
+            done < "$manifest"
+          done
+          cat /tmp/st2-exp-004-accepted-controls.txt
+
+      - name: Verify ST2-EXP-011 monotone historical closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_011_lifecycle_closure_audit.py --json-out /tmp/st2-exp-011-lifecycle-from-004.json
+          grep -Fq 'ST2_EXP_011_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-011-lifecycle-from-004.json
+          grep -Fq 'ST2_EXP_004_CLOSED_INTEGRATION_PENDING' /tmp/st2-exp-011-lifecycle-from-004.json
+
+      - name: Verify ST2-EXP-004 closed lifecycle state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py --json-out /tmp/st2-exp-004-lifecycle.json
+          grep -Fq 'ST2_EXP_004_LIFECYCLE_CLOSED_PASS' /tmp/st2-exp-004-lifecycle.json
+
+      - name: Verify autonomous-program governance remains fail-closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/PDSA/tools/autonomous_research_program_audit.py | tee /tmp/st2-exp-004-autonomous-governance.txt
+          grep -Fq 'state=NO_ACTIVE_PROGRAM' /tmp/st2-exp-004-autonomous-governance.txt
+
+      - name: Upload closure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-004-lifecycle-closure-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-004-lifecycle-provenance.txt
+            /tmp/st2-exp-004-accepted-controls.txt
+            /tmp/st2-exp-011-lifecycle-from-004.json
+            /tmp/st2-exp-004-lifecycle.json
+            /tmp/st2-exp-004-autonomous-governance.txt
+          if-no-files-found: warn
