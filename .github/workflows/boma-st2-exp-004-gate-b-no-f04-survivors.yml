@@ -102,10 +102,12 @@ jobs:
           python3 - <<'PY'
           import json
           d=json.load(open('/tmp/st2-exp-004-gate-b.json'))
-          assert d['lexical_f04_leaks'] == {}
+          assert d['executable_f04_leaks'] == {}
           assert d['status_counts'].get('SURVIVES_NO_F04',0) > 0
           print('status_counts=', d['status_counts'])
           print('survivor_manifest_entries=', d['survivor_manifest_entries'])
+          print('initially_blocked_sources=', d['initially_blocked_sources'])
+          print('pruned_sources=', [x['source'] for x in d['pruned_sources']])
           for row in d['rows']:
               print(row['gate_b_status'], row['claim_id'], row['target'], row['reason'])
           PY
