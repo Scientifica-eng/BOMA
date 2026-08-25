@@ -9,6 +9,9 @@ Read, in order:
 ```text
 README.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
@@ -30,6 +33,10 @@ LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
 LAB/00_ARCHITECTURE/TRUSTED_BASE.md
 LAB/00_ARCHITECTURE/BLOCK_CLAIM_MAP.md
 ```
+
+If an autonomous research program is active, then read its exact owner
+authorization record and the active experiment Frozen Plan after the policy and
+state files above.
 
 Then read stage-specific acceptance, Claim, closure, PDSA, and V5 records.
 Historical records preserve provenance; they do not override later synchronized authorities.
@@ -53,13 +60,18 @@ C alt Junction        ST2-EXP-002-PQ-J-001 / NON-ACCEPTANCE
 ST2-EXP-001..003+011  CLOSED / PASS / VERIFIED LESSONS INTEGRATED
 ACTIVE EXPERIMENT     NONE
 NEXT OWNER-SEQUENCED  ST2-EXP-004 / NOT ACTIVE / NO FROZEN PLAN
+AUTONOMOUS PROGRAM    NONE / NO_ACTIVE_PROGRAM
 ```
 
 ## 3. Learning-to-Construction rule
 
-A successful experiment may, after Study/Act, lifecycle closure, and explicit
-owner authorization, be integrated into the permanent Construction DAG as
-**verified knowledge**.
+A successful experiment may, after Study/Act and lifecycle closure, and only
+under applicable owner authority, be integrated into the permanent Construction
+DAG as **verified knowledge**.
+
+Owner authority may be either a specific explicit owner decision or an exact
+scope previously granted by an active owner-authorized research program. If the
+program does not explicitly cover the integration effect, set `OWNER_REQUIRED`.
 
 Allowed integration includes:
 
@@ -288,11 +300,19 @@ merge/verify BOMA-ST2-LEARNING-INTEGRATION-002
 
 Its intended single changed factor is the logical regime at `R-DP-003`.
 
-A new experiment always requires:
+A new experiment always requires authorization by one of exactly two routes:
 
 ```text
-explicit owner selection
-→ verify current main
+A. explicit owner selection of that experiment
+OR
+B. presence in an exact OWNER_AUTHORIZED research-program queue whose
+   transition gate remains valid
+```
+
+Then every experiment still requires:
+
+```text
+verify current main
 → exact typed architectural origin
 → one changed factor / fixed controls
 → affected Claim cone
@@ -300,10 +320,14 @@ explicit owner selection
 → separate branch
 → independent Do / exact V5 evidence
 → Study / Act
-→ separate lifecycle, integration, acceptance, and merge decisions as applicable
+→ lifecycle / integration / acceptance / merge decisions within exact authority
 ```
 
-Candidate documentation is not execution authority.
+Candidate documentation is not execution authority. A candidate outside an
+authorized queue remains `CANDIDATE / NOT AUTHORIZED`.
+
+The current autonomous state is `NO_ACTIVE_PROGRAM`; therefore this section does
+**not** authorize ST2-EXP-004 yet.
 
 ## 10. ST2-EXP-003 historical facts
 
@@ -390,6 +414,8 @@ When current-state documents conflict, prefer:
 
 ```text
 LAB/PDSA/STATUS.md
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json for autonomous execution state
+active owner-authorized research-program record for its exact execution scope
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_002.md
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
@@ -405,6 +431,9 @@ claim-level V5 evidence
 README.md / AGENTS.md
 historical checkpoints
 ```
+
+The autonomous state file may say what work is authorized; it may not override
+mathematical or architectural facts in higher governing authorities.
 
 ## 15. Method and topology
 
@@ -503,4 +532,67 @@ Lake packages: none
 
 Do not begin new research directly on `main`. Use a separate branch from a verified current main.
 
-Do not merge changes into `main` without the appropriate explicit user authority and exact-head verification.
+Do not merge changes into `main` without appropriate exact owner authority and
+exact-head verification. An active owner-authorized research program may supply
+conditional routine merge authority only when its record explicitly enables
+that authority and every declared gate passes. If any merge authority is
+ambiguous, set `OWNER_REQUIRED`.
+
+## 21. Autonomous research-program continuation rule
+
+The governing authority is:
+
+`LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`.
+
+Machine policy and state are:
+
+```text
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
+```
+
+When an owner-authorized program is active, autonomous execution may continue
+experiment-by-experiment without repeated owner prompts while the queue,
+prerequisites, Frozen Plans, and transition gates remain valid.
+
+Routine technical failures inside the declared recovery envelope are repaired,
+documented, and re-verified without owner interruption.
+
+A mathematical `INFORMATIVE FAIL` does not automatically stop the program; close
+it honestly and evaluate the next transition gate.
+
+New discoveries are classified as:
+
+```text
+non-sequence-critical
+  -> record CANDIDATE / NOT AUTHORIZED
+  -> continue
+
+sequence-critical or requires queue reordering
+  -> record evidence
+  -> set OWNER_REQUIRED
+  -> stop before changing the queue
+```
+
+The agent must also set `OWNER_REQUIRED` for any required Frozen Plan change,
+single-factor change, out-of-scope foundational/logical commitment, material
+canonical/acceptance decision, unresolved authority conflict, invalidated
+baseline, or ambiguous authority.
+
+Hard rule:
+
+```text
+AMBIGUOUS AUTHORITY => OWNER_REQUIRED
+```
+
+A scheduled continuation should execute all currently ready authorized work
+until a genuine blocking state is reached. The scheduled interval is only a
+wake-up mechanism; it is not a rule to stop after one subtask.
+
+Current state remains:
+
+```text
+NO_ACTIVE_PROGRAM
+ST2-EXP-004 NOT ACTIVE
+NO ROUTINE MERGE AUTHORITY
+```
