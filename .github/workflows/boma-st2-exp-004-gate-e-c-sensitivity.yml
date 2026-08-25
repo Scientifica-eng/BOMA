@@ -1,0 +1,217 @@
+name: BOMA ST2-EXP-004 Gate E — C Sensitivity Without orderTotal
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
+      - 'LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean'
+      - '.github/workflows/boma-st2-exp-004-gate-e-c-sensitivity.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-004-*'
+
+concurrency:
+  group: boma-st2-exp-004-gate-e-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  gate-e:
+    name: measure nine accepted C Claim families after removing only orderTotal
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact experiment head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify frozen authority and prior gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
+          frozen="89c9dc9154e7ca469e5c94c177be223205ee9dbd"
+          test "$(git rev-parse HEAD)" = "$expected"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen" HEAD
+          git merge-base --is-ancestor 7b5057b798bfe1bd5fe3e188a90bf50931021f8c HEAD
+          git diff --exit-code "$frozen" HEAD -- LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
+          grep -Fq 'Gate D final disposition:** `PASS / NOT_RECOVERED_WITH_CURRENT_CUT_INTERFACE / GATE E NEXT`' LAB/PDSA/experiments/ST2-EXP-004_GATE_D_SAME_CARRIER_TOTALITY_001.md
+          printf 'verified_head=%s\nfrozen_reference=%s\nfrozen_plan=%s\n' "$expected" "$baseline" "$frozen" | tee /tmp/st2-exp-004-gate-e-provenance.txt
+
+      - name: Re-prove accepted controls unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
+          for manifest in LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              git diff --exit-code "$baseline" HEAD -- "$src"
+            done < "$manifest"
+          done
+
+      - name: Verify exactly one interface property removed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          old=Path('LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean').read_text()
+          new=Path('LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean').read_text()
+          fields=['orderTrans','orderAntisymm','orderTotal','nontrivial','addComm','addAssoc','addZeroLeft','addInverseRight','addTranslateOrderIff','negOrderReversing','mulComm','mulAssoc','mulOneLeft','distribRight','orderMulNonneg','inverseExists']
+          assert all((f+' :') in old for f in fields)
+          assert 'structure RWithoutOrderTotalCertificate' in new
+          assert 'orderTotal :' not in new
+          for f in fields:
+            if f!='orderTotal':
+              assert (f+' :') in new, f
+          forbidden=['Classical.em','Classical.byContradiction','Classical.choose','axiom','sorry']
+          # comments may contain prose; scan executable-looking exact tokens conservatively below in CI shell.
+          Path('/tmp/st2-exp-004-gate-e-interface.txt').write_text('baseline_fields=16\nalternative_fields=15\nremoved=orderTotal\nother_removed=none\n')
+          PY
+          src=LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean
+          ! grep -nE 'Classical\.(em|byContradiction|choose)|(^|[^A-Za-z])axiom([^A-Za-z]|$)|(^|[^A-Za-z])sorry([^A-Za-z]|$)' "$src"
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Kernel-check seven surviving C Claim families
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py \
+            --manifest-out /tmp/ST2_EXP_004_GATE_E_R_BASE.txt \
+            --json-out /tmp/st2-exp-004-gate-e-r-base.json \
+            > /tmp/st2-exp-004-gate-e-r-base.log 2>&1
+          cp /tmp/ST2_EXP_004_GATE_E_R_BASE.txt .boma-st2-exp-004-gate-e-survivor-inputs.txt
+          printf '%s\n' \
+            'LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean' \
+            'LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean' \
+            >> .boma-st2-exp-004-gate-e-survivor-inputs.txt
+          ! grep -Fq 'RDedekindOrderClassicalWitness.lean' .boma-st2-exp-004-gate-e-survivor-inputs.txt
+          cp .boma-st2-exp-004-gate-e-survivor-inputs.txt /tmp/ST2_EXP_004_GATE_E_SURVIVOR_INPUTS.txt
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2Exp004GateESurvivors \
+            --manifest .boma-st2-exp-004-gate-e-survivor-inputs.txt \
+            --target BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.cSurvivorCertificate004 \
+            --target BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.comparison004 \
+            --json-out /tmp/st2-exp-004-gate-e-survivors.json \
+            2>&1 | tee /tmp/st2-exp-004-gate-e-survivors.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/st2-exp-004-gate-e-survivors.json'))
+          assert d['status']=='PROTOTYPE_PASS'
+          assert d['counts']['unresolved']==0 and d['counts']['internal_axioms']==0
+          names={x['name'] for x in d['internal']} | {x['name'] for x in d['external_boundary']}
+          assert 'BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate.orderTotal' not in names
+          assert 'BOMA.R.DedekindOrderClassical001.rLE_total_classical' not in names
+          PY
+
+      - name: Audit ST2-EXP-001 field and integration orderTotal dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt .boma-st2-exp-004-gate-e-baseline-inputs.txt
+          cat >> .boma-st2-exp-004-gate-e-baseline-inputs.txt <<'EOF'
+          LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowNoSquare.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowRoutePair.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowPairCore.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowPairNormInverse.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowQuadraticComparison.lean
+          LAB/payloads/lean/CStage/ST2Exp001NarrowIntegration.lean
+          EOF
+          cp .boma-st2-exp-004-gate-e-baseline-inputs.txt /tmp/ST2_EXP_004_GATE_E_BASELINE_INPUTS.txt
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2Exp004GateEBaseline \
+            --manifest .boma-st2-exp-004-gate-e-baseline-inputs.txt \
+            --target BOMA.C.StageTwo.NarrowNoSquare001.square_nonnegative_of_interface \
+            --target BOMA.C.StageTwo.NarrowPairNormInverse001.cPairFieldCertificate \
+            --target BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate \
+            --json-out /tmp/st2-exp-004-gate-e-baseline-deps.json \
+            2>&1 | tee /tmp/st2-exp-004-gate-e-baseline-deps.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/st2-exp-004-gate-e-baseline-deps.json'))
+          assert d['status']=='PROTOTYPE_PASS'
+          names={x['name'] for x in d['internal']} | {x['name'] for x in d['external_boundary']}
+          projection='BOMA.C.StageTwo.NarrowRInterface001.NarrowROrderedFieldCertificate.orderTotal'
+          assert projection in names
+          PY
+
+      - name: Emit nine-Claim sensitivity matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          survivor=json.load(open('/tmp/st2-exp-004-gate-e-survivors.json'))
+          baseline=json.load(open('/tmp/st2-exp-004-gate-e-baseline-deps.json'))
+          rows=[
+            ('C-CL-CARRIER-001','BOMA.C.PairCore001.CBOMA','NO','YES'),
+            ('C-CL-REMBED-001','BOMA.C.PairCore001.c_ofR_injective','NO','YES'),
+            ('C-CL-FIELD-001','BOMA.C.StageTwo.NarrowPairNormInverse001.cPairFieldCertificate','YES_TRANSITIVE','NO'),
+            ('C-CL-I-001','BOMA.C.PairCore001.c_i_squared','NO','YES'),
+            ('C-CL-GEN-001','BOMA.C.PairCore001.c_generation','NO','YES'),
+            ('C-CL-COORDUNIQ-001','BOMA.C.PairCore001.c_coordinate_unique','NO','YES'),
+            ('C-CL-NONREAL-001','BOMA.C.PairCore001.c_i_not_real','NO','YES'),
+            ('C-CL-COMPARE-001','BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison','NO','YES'),
+            ('C-CL-INTEGRATION-001','BOMA.C.StageTwo.NarrowIntegration001.cNarrowStageIntegrationCertificate','YES_TRANSITIVE','NO'),
+          ]
+          matrix=[]
+          for claim,root,uses,survives in rows:
+            matrix.append({
+              'claim_id':claim,
+              'accepted_or_reference_root':root,
+              'uses_orderTotal_directly_or_transitively':uses,
+              'survives_interface_without_orderTotal':survives,
+              'requires_another_removed_property':'NO',
+              'logical_cost_delta':'orderTotal removed only; all other 15 ST2-EXP-001 production properties retained',
+            })
+          result={
+            'schema':'BOMA-ST2-EXP-004-GATE-E-C-SENSITIVITY-001',
+            'status':'GATE_E_PASS',
+            'removed_properties':['orderTotal'],
+            'surviving_claim_families':7,
+            'non_surviving_claim_families':2,
+            'survivor_dependency_counts':survivor['counts'],
+            'baseline_dependency_counts':baseline['counts'],
+            'matrix':matrix,
+          }
+          open('/tmp/st2-exp-004-gate-e.json','w').write(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result,indent=2))
+          PY
+
+      - name: Upload Gate-E evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-004-gate-e-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-004-gate-e-provenance.txt
+            /tmp/st2-exp-004-gate-e-interface.txt
+            /tmp/ST2_EXP_004_GATE_E_SURVIVOR_INPUTS.txt
+            /tmp/ST2_EXP_004_GATE_E_BASELINE_INPUTS.txt
+            /tmp/st2-exp-004-gate-e-r-base.json
+            /tmp/st2-exp-004-gate-e-survivors.json
+            /tmp/st2-exp-004-gate-e-survivors.log
+            /tmp/st2-exp-004-gate-e-baseline-deps.json
+            /tmp/st2-exp-004-gate-e-baseline-deps.log
+            /tmp/st2-exp-004-gate-e.json
+          if-no-files-found: warn
