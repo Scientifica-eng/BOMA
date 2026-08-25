@@ -2,7 +2,7 @@
   "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
   "experiment_id": "ST2-EXP-015",
   "program_id": "ST2-RP-001",
-  "status": "PLAN_FROZEN",
+  "status": "DO",
   "date": "2026-08-25",
   "origin_kind": "DECISION_POINT",
   "origin_id": "C-DP-001",
@@ -41,5 +41,6 @@
   "accepted_promotion": "NONE_NOT_AUTHORIZED",
   "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md",
   "frozen_plan_commit": "1accee613630ae876b6ca9dcf820737ab89a168c",
-  "do_started": false
+  "gate_a_evidence": "LAB/PDSA/experiments/ST2-EXP-015_GATE_A_BASELINE_CLAIM_SQUARE_INVENTORY_001.md",
+  "do_started": true
 }
