@@ -1,0 +1,52 @@
+{
+  "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
+  "experiment_id": "ST2-EXP-014",
+  "program_id": "ST2-RP-001",
+  "status": "PLAN_FROZEN",
+  "date": "2026-08-25",
+  "origin_kind": "DEPENDENCY_EDGE",
+  "origin_id": "BOMA-C-R-DEP-001",
+  "origin_label": "real scalar producer supplied to the selected C Route-P construction",
+  "source_unit_id": "R-BLOCK-001",
+  "target_unit_id": "C-BLOCK-001",
+  "accepted_export_unit_id": "C-BLOCK-002",
+  "selected_real_baseline_route": "R-ROUTE-D / DEDEKIND",
+  "experimental_real_route": "R-ROUTE-C / CAUCHY",
+  "selected_complex_route_control": "C-ROUTE-P",
+  "changed_factor": "change only the scalar producer for selected C Route-P meaning from accepted Dedekind RBOMA to independently verified Cauchy RCBOMA",
+  "preserved_controls": [
+    "C-ROUTE-P quadratic/pair meaning",
+    "nine accepted C Claim meanings as target comparison surface",
+    "ST2-EXP-003 H6 seven-Claim Cauchy-native mathematics",
+    "ST2-EXP-011 generic/native Cauchy comparison semantics",
+    "relation/function firewall",
+    "witness-only inverse semantics",
+    "accepted Q/R/C manifests and accepted mathematical sources",
+    "R-DP-001 and C-DP-001 selections",
+    "accepted R-BLOCK-001 and C-BLOCK-002 / CA-20"
+  ],
+  "first_divergence": "BOMA-C-R-DEP-001 scalar producer identity before selected C Route-P construction",
+  "affected_cone": [
+    "C-CL-CARRIER-001",
+    "C-CL-REMBED-001",
+    "C-CL-FIELD-001",
+    "C-CL-I-001",
+    "C-CL-GEN-001",
+    "C-CL-COORDUNIQ-001",
+    "C-CL-NONREAL-001",
+    "C-CL-COMPARE-001",
+    "C-CL-INTEGRATION-001"
+  ],
+  "frozen_reference_commit": "fff2400b65b2c9a260fb28defd907ce24387cb80",
+  "frozen_plan_commit": "788ae14649f3245fd8d6ccd43f90038ffba7762b",
+  "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md",
+  "research_branch": "feature/stage-two-st2-exp-014-cauchy-native-full-c",
+  "experimental_product_status": "RESEARCH_ONLY",
+  "native_forbidden_implementation_dependencies": [
+    "ST2Exp003DedekindCauchyFieldIsomorphism.lean",
+    "H5 cToD/dToC transport",
+    "RStageIntegration002.lean",
+    "selected Dedekind implementation sources",
+    "accepted RBOMA comparison adapter"
+  ]
+}
