@@ -107,13 +107,13 @@ def inspect_target(target: str, block: str, ranges: list[lda.SourceRange]) -> di
         classification = "F04_FREE"
 
     target_sources = sorted({
-        d.source_path for d in internal
-        if d.name == target and d.source_path
+        d.source for d in internal
+        if d.name == target and d.source
     })
     if len(target_sources) != 1:
         raise ValueError(f"expected one source for {target}, got {target_sources}")
 
-    closure_sources = sorted({d.source_path for d in internal if d.source_path})
+    closure_sources = sorted({d.source for d in internal if d.source})
     return {
         "target": target,
         "classification": classification,
@@ -177,7 +177,6 @@ def main() -> int:
         if WITNESS_SOURCE in survivor_entries:
             raise ValueError("F-04 witness source leaked into survivor manifest")
 
-        # Fail closed on direct lexical references to the selected F-04 declarations.
         lexical_leaks: dict[str, list[str]] = {}
         for entry in survivor_entries:
             text = (root / entry).read_text(encoding="utf-8")
@@ -198,8 +197,6 @@ def main() -> int:
             and all(src in survivor_entries for src in info["closure_sources"])
         ]
 
-        # This compile is the Gate-B source-level test: no accepted F-04 witness file exists
-        # in the assembly at all.
         nof04_blocks, nof04_ranges = compile_and_extract(
             root, survivor_entries, testable, "NoF04Survivors"
         )
