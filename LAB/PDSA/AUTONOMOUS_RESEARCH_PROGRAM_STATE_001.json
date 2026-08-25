@@ -1,0 +1,30 @@
+{
+  "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
+  "status_date": "2026-08-25",
+  "state": "NO_ACTIVE_PROGRAM",
+  "active_program_id": null,
+  "owner_authorization_record": null,
+  "program_baseline_main_sha": null,
+  "authorized_experiment_queue": [],
+  "queue_cursor": null,
+  "active_experiment": null,
+  "active_experiment_branch": null,
+  "active_frozen_plan": null,
+  "active_frozen_plan_sha": null,
+  "last_verified_head": null,
+  "waiting_on": null,
+  "owner_required_reason": null,
+  "routine_merge_authorized": false,
+  "current_stage_two_frontier": {
+    "active_experiment": null,
+    "next_owner_sequenced_experiment": "ST2-EXP-004",
+    "next_experiment_status": "NOT_ACTIVE_NO_FROZEN_PLAN",
+    "activation_authorized_by_this_state": false
+  },
+  "next_legal_action": "CREATE_AND_EXPLICITLY_OWNER_AUTHORIZE_A_RESEARCH_PROGRAM_RECORD_BEFORE_AUTONOMOUS_RESEARCH_EXECUTION",
+  "safety": {
+    "fail_closed": true,
+    "ambiguous_authority_means": "OWNER_REQUIRED",
+    "main_research_writes_allowed": false
+  }
+}
