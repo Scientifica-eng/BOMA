@@ -21,7 +21,7 @@ AUTONOMOUS RESEARCH PROGRAM: NO_ACTIVE_PROGRAM
 REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
 ```
 
-The owner-authorized sequence for `ST2-EXP-004` is complete: research lifecycle closed, exact-head research PR merged, durable Learning-to-Construction lesson integrated on a separate maintenance branch, and the frontier returns to no active experiment. No later experiment may be selected, branched, activated, planned, or frozen by this sequence.
+The owner-authorized sequence for `ST2-EXP-004` is complete in mathematical and architecture-content terms: research lifecycle closed, exact-head research PR merged, and the durable Learning-to-Construction lesson prepared on a separate maintenance branch. The maintenance branch must still pass exact-head CI and merge before its current-state documentation becomes `main` authority. No later experiment may be selected, branched, activated, planned, or frozen by this sequence.
 
 ---
 
@@ -135,21 +135,29 @@ Gate E of `ST2-EXP-004` independently confirms the comparison Claim survives the
 
 ## Failure preservation
 
-`ST2-EXP-004` preserves thirteen execution failure records under `LAB/PDSA/experiments/`. They classify CI/tooling/elaboration/provenance defects separately from the mathematical result and are not rewritten after closure.
+`ST2-EXP-004` preserves fifteen execution/governance failure records under `LAB/PDSA/experiments/`. The two post-integration records are:
+
+```text
+ST2-EXP-004_FAILURE_014_POSTINTEGRATION_FINAL_STOP_NEXT_ACT_SCHEMA_MISMATCH.md
+ST2-EXP-004_FAILURE_015_POSTINTEGRATION_STOP_MARKER_LITERAL_MISMATCH.md
+```
+
+They classify final-stop/historical-sentinel compatibility defects separately from the mathematical result. Earlier failure records `001..013` remain immutable.
 
 ---
 
 ## Completed act and stop condition
 
-The authorized sequence completed:
+The authorized sequence is constrained to:
 
 1. lifecycle-closed exact-head verification of `ST2-EXP-004`;
 2. exact-head research/lifecycle merge as `61adb8589c803e95e1b96ef38902320c8aa5df19` with zero file drift from the verified research head;
 3. separate maintenance Learning-to-Construction integration;
-4. accepted route/export/source/manifests unchanged;
-5. no new Block, Decision Point, or Junction created.
+4. exact-head maintenance CI and merge;
+5. accepted route/export/source/manifests unchanged;
+6. no new Block, Decision Point, or Junction created.
 
-Required state:
+Required final state after maintenance merge:
 
 ```text
 ACTIVE STAGE-TWO EXPERIMENT: NONE
