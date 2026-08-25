@@ -1,0 +1,45 @@
+name: BOMA ST2-EXP-004 Gate E — C Sensitivity Without orderTotal
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-004-*'
+
+concurrency:
+  group: boma-st2-exp-004-historical-gate-e-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify_historical_gate:
+    name: verify immutable historical Gate E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify read-only historical Gate E
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_historical_gate_sentinel.py \
+            --gate E \
+            --expected-head '${{ github.event.pull_request.head.sha || github.sha }}' \
+            --json-out /tmp/st2-exp-004-historical-gate-e.json
+          test -z "$(git status --porcelain=v1)"
+
+      - name: Upload historical Gate E sentinel
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-004-historical-gate-e-${{ github.run_id }}
+          path: /tmp/st2-exp-004-historical-gate-e.json
+          if-no-files-found: warn
