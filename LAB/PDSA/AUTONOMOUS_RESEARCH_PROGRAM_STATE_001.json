@@ -1,7 +1,7 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
   "status_date": "2026-08-25",
-  "state": "PLAN_FROZEN",
+  "state": "WAITING_CI",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
   "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
@@ -19,13 +19,14 @@
   "active_frozen_plan_sha": "788ae14649f3245fd8d6ccd43f90038ffba7762b",
   "active_experiment_frozen_reference_sha": "fff2400b65b2c9a260fb28defd907ce24387cb80",
   "active_experiment_origin_record": "LAB/PDSA/experiments/ST2-EXP-014_BRANCH_ORIGIN_RECORD_001.json",
+  "active_work_head_before_ci_state_commit": "80e4b2ef33c05c37b1784fe59001fb66bfc1e923",
   "last_verified_head": "fff2400b65b2c9a260fb28defd907ce24387cb80",
-  "waiting_on": null,
+  "waiting_on": "BOMA ST2-EXP-014 Cauchy-Native Full C — V5",
   "owner_required_reason": null,
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": "ST2-EXP-014",
-    "active_experiment_status": "PLAN_FROZEN_DO_AUTHORIZED",
+    "active_experiment_status": "DO_COMPLETE_FOR_INITIAL_NATIVE_CLOSURE / WAITING_CI",
     "latest_completed_experiment": "ST2-EXP-004",
     "latest_completed_status": "CLOSED_PASS_LESSON_INTEGRATED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
@@ -39,7 +40,7 @@
     "sequence_critical_discovery_means": "OWNER_REQUIRED",
     "program_completion_requires_program_level_synthesis": true
   },
-  "next_legal_action": "EXECUTE_ST2_EXP_014_FROZEN_PLAN_GATES_A_THROUGH_G_WITHIN_SINGLE_CHANGED_FACTOR",
+  "next_legal_action": "OPEN_PR_AND_RUN_EXACT_ST2_EXP_014_CI_THEN_CLASSIFY_ANY_FAILURE_WITHIN_FROZEN_PLAN",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
