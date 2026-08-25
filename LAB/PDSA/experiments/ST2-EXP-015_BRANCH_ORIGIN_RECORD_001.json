@@ -2,7 +2,7 @@
   "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
   "experiment_id": "ST2-EXP-015",
   "program_id": "ST2-RP-001",
-  "status": "PREPARING_EXPERIMENT",
+  "status": "PLAN_FROZEN",
   "date": "2026-08-25",
   "origin_kind": "DECISION_POINT",
   "origin_id": "C-DP-001",
@@ -25,16 +25,21 @@
     "NO_SILENT_GLOBAL_CHOICE_SELECTOR"
   ],
   "affected_cone": [
-    "C_CARRIER_IDENTITY_OVER_RCBOMA",
-    "C_FIELD_OVER_RCBOMA",
-    "C_COORDINATES_OVER_RCBOMA",
-    "C_COMPARISON_OVER_RCBOMA"
+    "C-CL-CARRIER-001",
+    "C-CL-REMBED-001",
+    "C-CL-FIELD-001",
+    "C-CL-I-001",
+    "C-CL-GEN-001",
+    "C-CL-COORDUNIQ-001",
+    "C-CL-NONREAL-001",
+    "C-CL-COMPARE-001",
+    "C-CL-INTEGRATION-001"
   ],
   "baseline_route": "C_ROUTE_P_OVER_RCBOMA_VERIFIED_BY_ST2_EXP_014",
   "experimental_route": "C_ROUTE_Q_OVER_RCBOMA_TO_BE_CONSTRUCTED_AND_VERIFIED",
   "dedekind_route_q_control": "ST2_EXP_002_RESEARCH_EVIDENCE_ONLY",
   "accepted_promotion": "NONE_NOT_AUTHORIZED",
-  "frozen_plan": null,
-  "frozen_plan_commit": null,
+  "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md",
+  "frozen_plan_commit": "1accee613630ae876b6ca9dcf820737ab89a168c",
   "do_started": false
 }
