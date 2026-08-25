@@ -7,173 +7,39 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
-    paths:
-      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
-      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
-      - 'LAB/payloads/lean/RStage/ST2Exp004ConditionalComparability.lean'
-      - 'LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py'
-      - '.github/workflows/boma-st2-exp-004-gate-c-conditional-comparability.yml'
   push:
     branches:
       - 'feature/stage-two-st2-exp-004-*'
 
 concurrency:
-  group: boma-st2-exp-004-gate-c-${{ github.ref }}
+  group: boma-st2-exp-004-historical-gate-c-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  gate-c:
-    name: verify explicit CutComparability conditional interface
+  verify_historical_gate:
+    name: verify immutable historical Gate C
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout exact experiment head
+      - name: Checkout exact head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Verify frozen authority and prior gates
+      - name: Verify read-only historical Gate C
         shell: bash
         run: |
           set -euo pipefail
-          expected="${{ github.event.pull_request.head.sha || github.sha }}"
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          frozen="89c9dc9154e7ca469e5c94c177be223205ee9dbd"
-          plan=LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-          test "$(git rev-parse HEAD)" = "$expected"
-          git merge-base --is-ancestor "$baseline" HEAD
-          git merge-base --is-ancestor "$frozen" HEAD
-          git merge-base --is-ancestor 8cae5a858a50d3d374670a722a8b6e11c8d93d0e HEAD
-          git diff --exit-code "$frozen" HEAD -- "$plan"
-          grep -Fq 'Gate A final disposition:** `PASS / DEPENDENCY MAP VERIFIED / GATE B NEXT`' LAB/PDSA/experiments/ST2-EXP-004_GATE_A_DEPENDENCY_MAP_001.md
-          grep -Fq 'Gate B final disposition:** `PASS / SOURCE-LEVEL SURVIVOR ASSEMBLY VERIFIED / GATE C NEXT`' LAB/PDSA/experiments/ST2-EXP-004_GATE_B_NO_F04_SURVIVOR_ASSEMBLY_001.md
-          printf 'verified_head=%s\nfrozen_reference=%s\nfrozen_plan=%s\n' "$expected" "$baseline" "$frozen" | tee /tmp/st2-exp-004-gate-c-provenance.txt
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_historical_gate_sentinel.py \
+            --gate C \
+            --expected-head '${{ github.event.pull_request.head.sha || github.sha }}' \
+            --json-out /tmp/st2-exp-004-historical-gate-c.json
+          test -z "$(git status --porcelain=v1)"
 
-      - name: Re-prove accepted Q/R/C controls unchanged
-        shell: bash
-        run: |
-          set -euo pipefail
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          manifests=(
-            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
-            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
-            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
-          )
-          for manifest in "${manifests[@]}"; do
-            git diff --exit-code "$baseline" HEAD -- "$manifest"
-            while IFS= read -r src || [ -n "$src" ]; do
-              [ -z "$src" ] && continue
-              git diff --exit-code "$baseline" HEAD -- "$src"
-            done < "$manifest"
-          done
-          git diff --exit-code "$baseline" HEAD -- LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
-          echo ST2_EXP_004_GATE_C_ACCEPTED_CONTROLS_PASS
-
-      - name: Reject logical substitution in Gate-C source
-        shell: bash
-        run: |
-          set -euo pipefail
-          src=LAB/payloads/lean/RStage/ST2Exp004ConditionalComparability.lean
-          ! grep -nE 'Classical\.(em|byContradiction|choose)|(^|[^A-Za-z])axiom([^A-Za-z]|$)|(^|[^A-Za-z])sorry([^A-Za-z]|$)|cutComparability_classical|rLE_total_classical' "$src"
-          grep -Fq 'CONDITIONAL_ON_CUT_COMPARABILITY' "$src"
-          grep -Fq '(hComp : CutComparability)' "$src"
-
-      - name: Setup pinned Lean
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: false
-
-      - name: Regenerate Gate-B survivor base and append Gate-C probe
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py \
-            --manifest-out /tmp/ST2_EXP_004_GATE_C_BASE.txt \
-            --json-out /tmp/st2-exp-004-gate-c-base.json \
-            > /tmp/st2-exp-004-gate-c-base.log 2>&1
-          grep -Fq '"status": "GATE_B_PASS"' /tmp/st2-exp-004-gate-c-base.json
-          cp /tmp/ST2_EXP_004_GATE_C_BASE.txt .boma-st2-exp-004-gate-c-inputs.txt
-          printf '%s\n' 'LAB/payloads/lean/RStage/ST2Exp004ConditionalComparability.lean' >> .boma-st2-exp-004-gate-c-inputs.txt
-          ! grep -Fq 'RDedekindOrderClassicalWitness.lean' .boma-st2-exp-004-gate-c-inputs.txt
-          cp .boma-st2-exp-004-gate-c-inputs.txt /tmp/ST2_EXP_004_GATE_C_INPUTS.txt
-
-      - name: Kernel and dependency audit Gate-C roots
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
-            --stage ST2Exp004GateC \
-            --manifest .boma-st2-exp-004-gate-c-inputs.txt \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rLE_total_conditional \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rPosNeg_decomposition_conditional \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.conditionalComparabilityCertificate \
-            --json-out /tmp/st2-exp-004-gate-c-deps.json \
-            2>&1 | tee /tmp/st2-exp-004-gate-c-deps.log
-          python3 - <<'PY'
-          import json
-          d=json.load(open('/tmp/st2-exp-004-gate-c-deps.json'))
-          assert d['status']=='PROTOTYPE_PASS'
-          assert d['counts']['unresolved']==0
-          assert d['counts']['internal_axioms']==0
-          names={x['name'] for x in d['internal']} | {x['name'] for x in d['external_boundary']}
-          assert 'BOMA.R.DedekindOrderConstructive001.CutComparability' in names
-          assert 'BOMA.R.DedekindOrderClassical001.cutComparability_classical' not in names
-          assert 'BOMA.R.DedekindOrderClassical001.rLE_total_classical' not in names
-          classical=sorted(n for n in names if n.startswith('Classical.'))
-          result={
-            'schema':'BOMA-ST2-EXP-004-GATE-C-CONDITIONAL-COMPARABILITY-001',
-            'status':'GATE_C_PASS',
-            'classification':'CONDITIONAL_ON_CUT_COMPARABILITY',
-            'targets':d['targets'],
-            'cut_comparability_present':True,
-            'selected_f04_present':False,
-            'other_classical_declarations':classical,
-            'internal_axioms':d['internal_axioms'],
-            'unresolved':d['unresolved'],
-            'counts':d['counts'],
-          }
-          open('/tmp/st2-exp-004-gate-c.json','w').write(json.dumps(result,indent=2)+'\n')
-          print(json.dumps(result,indent=2))
-          PY
-
-      - name: Print Gate-C logical axioms
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          out=Path('/tmp/ST2Exp004GateCCheck.lean')
-          chunks=[]
-          for raw in Path('.boma-st2-exp-004-gate-c-inputs.txt').read_text().splitlines():
-            p=raw.strip()
-            if p:
-              chunks.append(Path(p).read_text())
-          chunks.append('''
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rLE_total_conditional
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rPosNeg_decomposition_conditional
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.Conditional.conditionalComparabilityCertificate
-          ''')
-          out.write_text('\n'.join(chunks)+'\n')
-          PY
-          lake env lean /tmp/ST2Exp004GateCCheck.lean 2>&1 | tee /tmp/st2-exp-004-gate-c-axioms.txt
-
-      - name: Upload Gate-C evidence
+      - name: Upload historical Gate C sentinel
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-004-gate-c-${{ github.run_id }}
-          path: |
-            /tmp/st2-exp-004-gate-c-provenance.txt
-            /tmp/ST2_EXP_004_GATE_C_INPUTS.txt
-            /tmp/st2-exp-004-gate-c-base.json
-            /tmp/st2-exp-004-gate-c-deps.json
-            /tmp/st2-exp-004-gate-c-deps.log
-            /tmp/st2-exp-004-gate-c.json
-            /tmp/st2-exp-004-gate-c-axioms.txt
+          name: st2-exp-004-historical-gate-c-${{ github.run_id }}
+          path: /tmp/st2-exp-004-historical-gate-c.json
           if-no-files-found: warn

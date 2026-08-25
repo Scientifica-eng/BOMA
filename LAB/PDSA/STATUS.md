@@ -154,7 +154,7 @@ data.
 
 ## Failure preservation
 
-`ST2-EXP-004` preserves twelve execution failure records under
+`ST2-EXP-004` preserves thirteen execution failure records under
 `LAB/PDSA/experiments/`. They classify CI/tooling/elaboration/provenance defects
 separately from the mathematical result and are not rewritten after closure.
 

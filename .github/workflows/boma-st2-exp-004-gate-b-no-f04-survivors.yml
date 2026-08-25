@@ -7,132 +7,39 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
-    paths:
-      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
-      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
-      - 'LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_004_*'
-      - 'LAB/00_ARCHITECTURE/tools/st2_exp_004_*'
-      - '.github/workflows/boma-st2-exp-004-gate-b-no-f04-survivors.yml'
   push:
     branches:
       - 'feature/stage-two-st2-exp-004-*'
 
 concurrency:
-  group: boma-st2-exp-004-gate-b-${{ github.ref }}
+  group: boma-st2-exp-004-historical-gate-b-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  gate-b:
-    name: compile accepted survivor closures without selected F-04 source
+  verify_historical_gate:
+    name: verify immutable historical Gate B
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout exact experiment head
+      - name: Checkout exact head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Verify frozen authority and Gate-A record
+      - name: Verify read-only historical Gate B
         shell: bash
         run: |
           set -euo pipefail
-          expected="${{ github.event.pull_request.head.sha || github.sha }}"
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          frozen="89c9dc9154e7ca469e5c94c177be223205ee9dbd"
-          gate_a_head="0cc785c6a5b1b00c3c004796a23f82d6c1af1f0d"
-          plan=LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-          gate_a=LAB/PDSA/experiments/ST2-EXP-004_GATE_A_DEPENDENCY_MAP_001.md
-          test "$(git rev-parse HEAD)" = "$expected"
-          git merge-base --is-ancestor "$baseline" HEAD
-          git merge-base --is-ancestor "$frozen" HEAD
-          git merge-base --is-ancestor "$gate_a_head" HEAD
-          git diff --exit-code "$frozen" HEAD -- "$plan"
-          test -s "$gate_a"
-          grep -Fq 'Gate A final disposition:** `PASS / DEPENDENCY MAP VERIFIED / GATE B NEXT`' "$gate_a"
-          {
-            printf 'verified_head=%s\n' "$expected"
-            printf 'frozen_reference=%s\n' "$baseline"
-            printf 'frozen_plan=%s\n' "$frozen"
-            printf 'gate_a_verified_head=%s\n' "$gate_a_head"
-          } | tee /tmp/st2-exp-004-gate-b-provenance.txt
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_historical_gate_sentinel.py \
+            --gate B \
+            --expected-head '${{ github.event.pull_request.head.sha || github.sha }}' \
+            --json-out /tmp/st2-exp-004-historical-gate-b.json
+          test -z "$(git status --porcelain=v1)"
 
-      - name: Re-prove accepted controls unchanged
-        shell: bash
-        run: |
-          set -euo pipefail
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          manifests=(
-            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
-            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
-            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
-          )
-          for manifest in "${manifests[@]}"; do
-            git diff --exit-code "$baseline" HEAD -- "$manifest"
-            while IFS= read -r src || [ -n "$src" ]; do
-              [ -z "$src" ] && continue
-              git diff --exit-code "$baseline" HEAD -- "$src"
-            done < "$manifest"
-          done
-          git diff --exit-code "$baseline" HEAD -- LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md
-          echo ST2_EXP_004_GATE_B_ACCEPTED_CONTROLS_PASS
-
-      - name: Setup pinned Lean
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: false
-
-      - name: Build and kernel-check no-F04 survivor assembly
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py \
-            --manifest-out /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt \
-            --json-out /tmp/st2-exp-004-gate-b.json \
-            2>&1 | tee /tmp/st2-exp-004-gate-b.log
-          grep -Fq '"status": "GATE_B_PASS"' /tmp/st2-exp-004-gate-b.json
-          ! grep -Fq 'RDedekindOrderClassicalWitness.lean' /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
-          ! grep -Fq 'cutComparability_classical' /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
-          ! grep -Fq 'rLE_total_classical' /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
-          python3 - <<'PY'
-          import json
-          d=json.load(open('/tmp/st2-exp-004-gate-b.json'))
-          assert d['executable_f04_leaks'] == {}
-          assert d['status_counts'].get('SURVIVES_NO_F04',0) > 0
-          print('status_counts=', d['status_counts'])
-          print('survivor_manifest_entries=', d['survivor_manifest_entries'])
-          print('initially_blocked_sources=', d['initially_blocked_sources'])
-          print('pruned_sources=', [x['source'] for x in d['pruned_sources']])
-          for row in d['rows']:
-              print(row['gate_b_status'], row['claim_id'], row['target'], row['reason'])
-          PY
-
-      - name: Reject new experiment Lean logical substitutions
-        shell: bash
-        run: |
-          set -euo pipefail
-          base="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          mapfile -t changed_lean < <(git diff --name-only "$base" HEAD -- 'LAB/payloads/lean/**/*.lean' | grep 'ST2Exp004' || true)
-          if ((${#changed_lean[@]})); then
-            printf '%s\n' "${changed_lean[@]}"
-            ! grep -nE 'Classical\.(em|byContradiction|choose)|(^|[^A-Za-z])axiom([^A-Za-z]|$)|(^|[^A-Za-z])sorry([^A-Za-z]|$)' "${changed_lean[@]}"
-          else
-            echo 'No ST2-EXP-004 Lean source exists yet; Gate B uses unchanged accepted sources only.'
-          fi
-
-      - name: Upload Gate-B evidence
+      - name: Upload historical Gate B sentinel
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-004-gate-b-${{ github.run_id }}
-          path: |
-            /tmp/st2-exp-004-gate-b-provenance.txt
-            /tmp/ST2_EXP_004_NO_F04_R_SURVIVOR_INPUTS.txt
-            /tmp/st2-exp-004-gate-b.json
-            /tmp/st2-exp-004-gate-b.log
+          name: st2-exp-004-historical-gate-b-${{ github.run_id }}
+          path: /tmp/st2-exp-004-historical-gate-b.json
           if-no-files-found: warn

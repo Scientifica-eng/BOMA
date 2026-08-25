@@ -7,238 +7,39 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [main]
-    paths:
-      - 'LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md'
-      - 'LAB/PDSA/experiments/ST2-EXP-004_*'
-      - 'LAB/payloads/lean/RStage/ST2Exp004*.lean'
-      - 'LAB/payloads/lean/CStage/ST2Exp004*.lean'
-      - '.github/workflows/boma-st2-exp-004-gate-f-logical-cost.yml'
   push:
     branches:
       - 'feature/stage-two-st2-exp-004-*'
 
 concurrency:
-  group: boma-st2-exp-004-gate-f-${{ github.ref }}
+  group: boma-st2-exp-004-historical-gate-f-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  gate-f:
-    name: compare baseline and alternative logical costs
+  verify_historical_gate:
+    name: verify immutable historical Gate F
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact experiment head
+      - name: Checkout exact head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
 
-      - name: Verify frozen authority and Gate E
+      - name: Verify read-only historical Gate F
         shell: bash
         run: |
           set -euo pipefail
-          expected="${{ github.event.pull_request.head.sha || github.sha }}"
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          frozen="89c9dc9154e7ca469e5c94c177be223205ee9dbd"
-          test "$(git rev-parse HEAD)" = "$expected"
-          git merge-base --is-ancestor "$baseline" HEAD
-          git merge-base --is-ancestor "$frozen" HEAD
-          git merge-base --is-ancestor cf16d0e8f0285c69bc3b8af3da7659efe50f4ac6 HEAD
-          git diff --exit-code "$frozen" HEAD -- LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
-          grep -Fq 'Gate E final disposition:** `PASS / NINE C CLAIM FAMILIES CLASSIFIED / GATE F NEXT`' LAB/PDSA/experiments/ST2-EXP-004_GATE_E_C_SENSITIVITY_001.md
-          printf 'verified_head=%s\nfrozen_reference=%s\nfrozen_plan=%s\n' "$expected" "$baseline" "$frozen" | tee /tmp/st2-exp-004-gate-f-provenance.txt
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_historical_gate_sentinel.py \
+            --gate F \
+            --expected-head '${{ github.event.pull_request.head.sha || github.sha }}' \
+            --json-out /tmp/st2-exp-004-historical-gate-f.json
+          test -z "$(git status --porcelain=v1)"
 
-      - name: Re-prove accepted controls unchanged
-        shell: bash
-        run: |
-          set -euo pipefail
-          baseline="50f3031b8d2657cbe0710e73e5935d997d40e49b"
-          for manifest in LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt; do
-            git diff --exit-code "$baseline" HEAD -- "$manifest"
-            while IFS= read -r src || [ -n "$src" ]; do
-              [ -z "$src" ] && continue
-              git diff --exit-code "$baseline" HEAD -- "$src"
-            done < "$manifest"
-          done
-
-      - name: Setup pinned Lean
-        uses: leanprover/lean-action@v1
-        with:
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-          use-mathlib-cache: false
-
-      - name: Regenerate Gate-A baseline matrix and Gate-B R alternatives
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_a_dependency_matrix.py \
-            --json-out /tmp/st2-exp-004-gate-f-gate-a.json \
-            > /tmp/st2-exp-004-gate-f-gate-a.log 2>&1
-          python3 LAB/00_ARCHITECTURE/tools/st2_exp_004_gate_b_survivor_assembly.py \
-            --manifest-out /tmp/ST2_EXP_004_GATE_F_R_SURVIVORS.txt \
-            --json-out /tmp/st2-exp-004-gate-f-gate-b.json \
-            > /tmp/st2-exp-004-gate-f-gate-b.log 2>&1
-          grep -Fq '"status": "GATE_A_PASS"' /tmp/st2-exp-004-gate-f-gate-a.json
-          grep -Fq '"status": "GATE_B_PASS"' /tmp/st2-exp-004-gate-f-gate-b.json
-
-      - name: Audit conditional, boundary, and C-survivor alternatives
-        shell: bash
-        run: |
-          set -euo pipefail
-          cp /tmp/ST2_EXP_004_GATE_F_R_SURVIVORS.txt .boma-st2-exp-004-gate-f-c.txt
-          printf '%s\n' LAB/payloads/lean/RStage/ST2Exp004ConditionalComparability.lean >> .boma-st2-exp-004-gate-f-c.txt
-          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
-            --stage ST2Exp004GateFConditional \
-            --manifest .boma-st2-exp-004-gate-f-c.txt \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rLE_total_conditional \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rPosNeg_decomposition_conditional \
-            --json-out /tmp/st2-exp-004-gate-f-conditional.json \
-            > /tmp/st2-exp-004-gate-f-conditional.log 2>&1
-
-          cp /tmp/ST2_EXP_004_GATE_F_R_SURVIVORS.txt .boma-st2-exp-004-gate-f-d.txt
-          printf '%s\n' LAB/payloads/lean/RStage/ST2Exp004SameCarrierTotalityBoundary.lean >> .boma-st2-exp-004-gate-f-d.txt
-          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
-            --stage ST2Exp004GateFBoundary \
-            --manifest .boma-st2-exp-004-gate-f-d.txt \
-            --target BOMA.R.StageTwo.TotalOrderRegime004.SameCarrier.rLE_totality_iff_cutComparability004 \
-            --json-out /tmp/st2-exp-004-gate-f-boundary.json \
-            > /tmp/st2-exp-004-gate-f-boundary.log 2>&1
-
-          cp /tmp/ST2_EXP_004_GATE_F_R_SURVIVORS.txt .boma-st2-exp-004-gate-f-e.txt
-          printf '%s\n' LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean >> .boma-st2-exp-004-gate-f-e.txt
-          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
-            --stage ST2Exp004GateFCSurvivors \
-            --manifest .boma-st2-exp-004-gate-f-e.txt \
-            --target BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.cSurvivorCertificate004 \
-            --target BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.comparison004 \
-            --json-out /tmp/st2-exp-004-gate-f-c-survivors.json \
-            > /tmp/st2-exp-004-gate-f-c-survivors.log 2>&1
-
-      - name: Print representative logical axioms
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          entries=[x.strip() for x in Path('LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt').read_text().splitlines() if x.strip()]
-          extra=[
-            'LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean',
-            'LAB/payloads/lean/RStage/ST2Exp004ConditionalComparability.lean',
-            'LAB/payloads/lean/RStage/ST2Exp004SameCarrierTotalityBoundary.lean',
-            'LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean',
-          ]
-          chunks=[Path(p).read_text() for p in entries+extra]
-          chunks.append('''
-          #print axioms BOMA.R.DedekindOrderClassical001.rLE_total_classical
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rLE_total_conditional
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.Conditional.rPosNeg_decomposition_conditional
-          #print axioms BOMA.R.StageTwo.TotalOrderRegime004.SameCarrier.rLE_totality_iff_cutComparability004
-          #print axioms BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.cSurvivorCertificate004
-          #print axioms BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.comparison004
-          #print axioms BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison
-          ''')
-          Path('/tmp/ST2Exp004GateFLogicalAxioms.lean').write_text('\n'.join(chunks)+'\n')
-          PY
-          lake env lean /tmp/ST2Exp004GateFLogicalAxioms.lean 2>&1 | tee /tmp/st2-exp-004-gate-f-axioms.txt
-
-      - name: Emit consolidated logical-cost matrix
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import json
-          A=json.load(open('/tmp/st2-exp-004-gate-f-gate-a.json'))
-          B=json.load(open('/tmp/st2-exp-004-gate-f-gate-b.json'))
-          C=json.load(open('/tmp/st2-exp-004-gate-f-conditional.json'))
-          D=json.load(open('/tmp/st2-exp-004-gate-f-boundary.json'))
-          E=json.load(open('/tmp/st2-exp-004-gate-f-c-survivors.json'))
-          assert all(x['status']=='PROTOTYPE_PASS' for x in (C,D,E))
-          bmap={x['target']:x for x in B['rows']}
-          c_survive={'C-CL-CARRIER-001','C-CL-REMBED-001','C-CL-I-001','C-CL-GEN-001','C-CL-COORDUNIQ-001','C-CL-NONREAL-001','C-CL-COMPARE-001'}
-          rows=[]
-          for r in A['rows']:
-            row={
-              'group':r['group'],'claim_id':r['claim_id'],'target':r['target'],
-              'baseline_classification':r['classification'],
-              'baseline_selected_f04':bool(r['contains_cutComparability_classical'] or r['contains_rLE_total_classical']),
-              'baseline_other_classical':r['other_classical_declarations'],
-              'baseline_internal_axioms':r['internal_axioms'],
-              'formal_boundary':r['formal_boundary'],
-            }
-            if r['group']=='R_ACCEPTED' and r['target'] in bmap:
-              row['alternative_status']=bmap[r['target']]['gate_b_status']
-              row['alternative_other_classical']=bmap[r['target']]['other_classical_declarations']
-            elif r['group']=='C_ACCEPTED':
-              row['alternative_status']='SURVIVES_WITHOUT_ORDERTOTAL' if r['claim_id'] in c_survive else 'DOES_NOT_SURVIVE_WITHOUT_ORDERTOTAL'
-              row['alternative_other_classical']='MEASURED_BY_GATE_E_CLOSURE'
-            elif r['group']=='ST2_EXP_011_GENERIC_COMPARISON':
-              row['alternative_status']='SURVIVES_WITHOUT_ORDERTOTAL'
-              row['alternative_other_classical']=[]
-            else:
-              row['alternative_status']='CONTROL'
-              row['alternative_other_classical']='SEE_GATE_A'
-            rows.append(row)
-          namesC={x['name'] for x in C['internal']}|{x['name'] for x in C['external_boundary']}
-          namesD={x['name'] for x in D['internal']}|{x['name'] for x in D['external_boundary']}
-          namesE={x['name'] for x in E['internal']}|{x['name'] for x in E['external_boundary']}
-          f04={'BOMA.R.DedekindOrderClassical001.cutComparability_classical','BOMA.R.DedekindOrderClassical001.rLE_total_classical'}
-          result={
-            'schema':'BOMA-ST2-EXP-004-GATE-F-LOGICAL-COST-001',
-            'status':'GATE_F_PASS',
-            'baseline_target_reports':rows,
-            'conditional':{
-              'new_hypotheses':['CutComparability'],
-              'selected_f04_present':bool(namesC&f04),
-              'other_classical_declarations':sorted(n for n in namesC if n.startswith('Classical.')),
-              'internal_axioms':C['internal_axioms'],
-            },
-            'same_carrier_boundary':{
-              'new_hypotheses':[],
-              'selected_f04_present':bool(namesD&f04),
-              'other_classical_declarations':sorted(n for n in namesD if n.startswith('Classical.')),
-              'internal_axioms':D['internal_axioms'],
-            },
-            'c_without_orderTotal':{
-              'removed_properties':['orderTotal'],
-              'new_hypotheses':[],
-              'selected_f04_present':bool(namesE&f04),
-              'other_classical_declarations':sorted(n for n in namesE if n.startswith('Classical.')),
-              'internal_axioms':E['internal_axioms'],
-            },
-            'interpretation_firewall':[
-              'removing F-04 does not mean all classical commitments are absent',
-              'formal ancestry does not equal mathematical necessity',
-              'conditional CutComparability is not a constructive proof',
-              'failure of totality does not imply failure of the partial-order core',
-            ],
-            'axiom_evidence_file':'st2-exp-004-gate-f-axioms.txt',
-          }
-          assert result['conditional']['selected_f04_present'] is False
-          assert result['same_carrier_boundary']['selected_f04_present'] is False
-          assert result['c_without_orderTotal']['selected_f04_present'] is False
-          assert not C['internal_axioms'] and not D['internal_axioms'] and not E['internal_axioms']
-          open('/tmp/st2-exp-004-gate-f.json','w').write(json.dumps(result,indent=2)+'\n')
-          print('target_reports=',len(rows))
-          print(json.dumps({k:v for k,v in result.items() if k!='baseline_target_reports'},indent=2))
-          PY
-
-      - name: Upload Gate-F evidence
+      - name: Upload historical Gate F sentinel
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: st2-exp-004-gate-f-${{ github.run_id }}
-          path: |
-            /tmp/st2-exp-004-gate-f-provenance.txt
-            /tmp/st2-exp-004-gate-f-gate-a.json
-            /tmp/st2-exp-004-gate-f-gate-a.log
-            /tmp/st2-exp-004-gate-f-gate-b.json
-            /tmp/st2-exp-004-gate-f-gate-b.log
-            /tmp/st2-exp-004-gate-f-conditional.json
-            /tmp/st2-exp-004-gate-f-boundary.json
-            /tmp/st2-exp-004-gate-f-c-survivors.json
-            /tmp/st2-exp-004-gate-f-axioms.txt
-            /tmp/st2-exp-004-gate-f.json
+          name: st2-exp-004-historical-gate-f-${{ github.run_id }}
+          path: /tmp/st2-exp-004-historical-gate-f.json
           if-no-files-found: warn
