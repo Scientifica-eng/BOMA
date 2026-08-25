@@ -23,7 +23,7 @@ EXPECTED_PRECLOSURE_DIGEST = "e0920004e18db1e516b952ed49b7466f7939e72b0ccf0e6827
 EXPECTED_NEXT = "ST2-EXP-004 LEARNING-TO-CONSTRUCTION INTEGRATION THEN STOP / NO NEW EXPERIMENT"
 EXPECTED_ARCH = "REQUIRED / SEPARATE POST-CLOSURE ACT / NOT YET INTEGRATED"
 FAILURES = [
-    f"LAB/PDSA/experiments/ST2-EXP-004_FAILURE_{i:03d}_" for i in range(1, 7)
+    f"LAB/PDSA/experiments/ST2-EXP-004_FAILURE_{i:03d}_" for i in range(1, 11)
 ]
 
 
@@ -115,7 +115,7 @@ def main() -> int:
             if marker not in plan:
                 add(residuals, "frozen_plan_marker_missing", marker=marker)
         study = read(root, STUDY)
-        for marker in ("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT"):
+        for marker in ("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized"):
             if marker not in study:
                 add(residuals, "study_marker_missing", marker=marker)
         closure = read(root, CLOSURE)
@@ -128,9 +128,13 @@ def main() -> int:
             if len(matches) != 1:
                 add(residuals, "failure_record_missing_or_ambiguous", prefix=prefix, count=len(matches))
 
-        for rel in (STATUS, REGISTER):
+        state_markers = {
+            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),
+            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),
+        }
+        for rel, markers in state_markers.items():
             text = read(root, rel)
-            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):
+            for marker in markers:
                 if marker not in text:
                     add(residuals, "current_state_marker_missing", document=rel, marker=marker)
             if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:

@@ -113,7 +113,7 @@ def main() -> int:
             "origin_id": "C-COMPARE-BLOCK-001",
             "source_unit_id": "R-BLOCK-001",
             "target_unit_id": "C-COMPARE-BLOCK-001",
-            "baseline_producer_unit_id": "C-BLOCK-001",
+            "baseline_producer_unit_id": "C-COMPARE-BLOCK-001",
             "accepted_export_unit_id": "C-BLOCK-002",
             "selected_baseline_route": "C-ROUTE-P",
             "frozen_reference_commit": EXPECTED_BASELINE,

@@ -83,7 +83,7 @@ LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
 LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
 ```
 
-Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as
+Failure records `ST2-EXP-004_FAILURE_001` through `010` remain preserved as
 execution evidence.
 
 ---
