@@ -78,12 +78,14 @@ jobs:
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_008_CLOSED_STATE_LEDGER_HISTORICAL_PROVENANCE_REGRESSION.md',
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_009_REPAIR_JOB_PYCACHE_FALSE_POSITIVE.md',
               'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_010_GITHUB_APP_WORKFLOW_PUSH_PERMISSION.md',
+              'LAB/PDSA/experiments/ST2-EXP-004_FAILURE_011_NONWORKFLOW_REPAIR_STALE_011_ASSERTION.md',
           ):
               if rel not in failures:
                   failures.append(rel)
           rec004['failure_records'] = failures
           rec004['post_study_failure_runs'] = [
-              32837301674, 32837451796, 32837451803, 32841161796, 32841397381
+              32837301674, 32837451796, 32837451803, 32841161796,
+              32841397381, 32841640578
           ]
           repaired['records'] = [copy.deepcopy(hist[e]) for e in protected] + [rec004]
 
@@ -98,34 +100,56 @@ jobs:
           s011 = p011.read_text(encoding='utf-8')
           old011 = '"baseline_producer_unit_id": "C-BLOCK-001",'
           new011 = '"baseline_producer_unit_id": "C-COMPARE-BLOCK-001",'
-          assert s011.count(old011) == 1
-          p011.write_text(s011.replace(old011, new011, 1), encoding='utf-8')
+          if old011 in s011:
+              assert s011.count(old011) == 1
+              s011 = s011.replace(old011, new011, 1)
+          else:
+              assert new011 in s011
+          p011.write_text(s011, encoding='utf-8')
 
           p004 = Path('LAB/00_ARCHITECTURE/tools/st2_exp_004_lifecycle_closure_audit.py')
           s004 = p004.read_text(encoding='utf-8')
-          replacements = {
-              'for i in range(1, 7)': 'for i in range(1, 11)',
-              '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT")': '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized")',
-              '''        for rel in (STATUS, REGISTER):\n            text = read(root, rel)\n            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''': '''        state_markers = {\n            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),\n            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),\n        }\n        for rel, markers in state_markers.items():\n            text = read(root, rel)\n            for marker in markers:\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)''',
-          }
-          for old, new in replacements.items():
-              assert old in s004, old
-              s004 = s004.replace(old, new, 1)
+          old_range = 'for i in range(1, 7)'
+          new_range = 'for i in range(1, 12)'
+          if old_range in s004:
+              s004 = s004.replace(old_range, new_range, 1)
+          else:
+              assert new_range in s004
+
+          old_study = '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "NO NEXT EXPERIMENT")'
+          new_study = '("PASS / EXACT F-04 IMPACT CLASSIFIED", "NOT RECOVERED", "RETAIN R-DP-003", "No next experiment is authorized")'
+          if old_study in s004:
+              s004 = s004.replace(old_study, new_study, 1)
+          else:
+              assert new_study in s004
+
+          old_state = '''        for rel in (STATUS, REGISTER):\n            text = read(root, rel)\n            for marker in ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"):\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)'''
+          new_state = '''        state_markers = {\n            STATUS: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "NO_ACTIVE_PROGRAM", "INTEGRATION"),\n            REGISTER: ("ST2-EXP-004", "CLOSED", "PASS", "ACTIVE", "NONE", "INTEGRATION", "NEXT EXPERIMENT: NOT AUTHORIZED"),\n        }\n        for rel, markers in state_markers.items():\n            text = read(root, rel)\n            for marker in markers:\n                if marker not in text:\n                    add(residuals, "current_state_marker_missing", document=rel, marker=marker)\n            if "GATE B NEXT" in text or "ST2-EXP-004 ACTIVE / PLAN FROZEN" in text:\n                add(residuals, "stale_active_004_marker", document=rel)'''
+          if old_state in s004:
+              s004 = s004.replace(old_state, new_state, 1)
+          else:
+              assert new_state in s004
           p004.write_text(s004, encoding='utf-8')
 
           status = Path('LAB/PDSA/STATUS.md')
           text = status.read_text(encoding='utf-8')
-          assert '`ST2-EXP-004` preserves six execution failure records under' in text
-          status.write_text(text.replace(
-              '`ST2-EXP-004` preserves six execution failure records under',
-              '`ST2-EXP-004` preserves ten execution failure records under', 1), encoding='utf-8')
+          old_status = '`ST2-EXP-004` preserves six execution failure records under'
+          new_status = '`ST2-EXP-004` preserves eleven execution failure records under'
+          if old_status in text:
+              text = text.replace(old_status, new_status, 1)
+          else:
+              assert new_status in text
+          status.write_text(text, encoding='utf-8')
 
           register = Path('LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md')
           text = register.read_text(encoding='utf-8')
-          assert 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as' in text
-          register.write_text(text.replace(
-              'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as',
-              'Failure records `ST2-EXP-004_FAILURE_001` through `010` remain preserved as', 1), encoding='utf-8')
+          old_register = 'Failure records `ST2-EXP-004_FAILURE_001` through `006` remain preserved as'
+          new_register = 'Failure records `ST2-EXP-004_FAILURE_001` through `011` remain preserved as'
+          if old_register in text:
+              text = text.replace(old_register, new_register, 1)
+          else:
+              assert new_register in text
+          register.write_text(text, encoding='utf-8')
           PY
 
           python3 -m py_compile \
@@ -160,6 +184,10 @@ jobs:
             LAB/PDSA/STATUS.md \
             LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
           git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'Verified repair already present; no commit required.'
+            exit 0
+          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Apply verified ST2-EXP-004 closed-state provenance repair'
