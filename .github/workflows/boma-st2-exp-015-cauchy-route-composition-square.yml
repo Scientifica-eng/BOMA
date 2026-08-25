@@ -1,0 +1,270 @@
+name: BOMA ST2-EXP-015 Cauchy Route Composition Square — V5
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md'
+      - 'LAB/PDSA/experiments/ST2-EXP-015_*'
+      - 'LAB/payloads/lean/CStage/ST2Exp015*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_*'
+      - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
+      - 'AGENTS.md'
+      - '.github/workflows/boma-st2-exp-015-cauchy-route-composition-square.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-015-*'
+
+concurrency:
+  group: boma-st2-exp-015-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify Cauchy Route-Q composition square
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout exact experimental head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Verify exact head, frozen baseline, and immutable Plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          actual="$(git rev-parse HEAD)"
+          baseline="2a6c38af70e596c840ef2db4733421bde38f3ee5"
+          frozen="1accee613630ae876b6ca9dcf820737ab89a168c"
+          plan=LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
+          test "$actual" = "$expected"
+          git merge-base --is-ancestor "$baseline" HEAD
+          git merge-base --is-ancestor "$frozen" HEAD
+          git diff --exit-code "$frozen" HEAD -- "$plan"
+          test "$(git show "$frozen:$plan" | git hash-object --stdin)" = "$(git hash-object "$plan")"
+          {
+            printf 'expected_head=%s\n' "$expected"
+            printf 'verified_head=%s\n' "$actual"
+            printf 'baseline=%s\n' "$baseline"
+            printf 'frozen_plan_commit=%s\n' "$frozen"
+          } | tee /tmp/st2-exp-015-provenance.txt
+
+      - name: Verify owner program authority and active 015 state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee /tmp/st2-exp-015-program-state.txt
+          import json
+          from pathlib import Path
+          state = json.loads(Path('LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json').read_text())
+          manifest = json.loads(Path('LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json').read_text())
+          assert state['active_program_id'] == 'ST2-RP-001'
+          assert state['state'] in {'PLAN_FROZEN','DO','WAITING_CI','RECOVERY_ALLOWED','STUDY','ACT','CLOSING'}
+          assert state['active_experiment'] == 'ST2-EXP-015'
+          assert state['queue_cursor'] == 1
+          assert state['authorized_experiment_queue'] == ['ST2-EXP-014','ST2-EXP-015','ST2-EXP-016','ST2-EXP-017']
+          assert state['active_frozen_plan_sha'] == '1accee613630ae876b6ca9dcf820737ab89a168c'
+          assert state['active_experiment_frozen_reference_sha'] == '2a6c38af70e596c840ef2db4733421bde38f3ee5'
+          assert manifest['program_id'] == 'ST2-RP-001'
+          assert manifest['queue_order'] == state['authorized_experiment_queue']
+          rec = manifest['experiments'][1]
+          assert rec['experiment_id'] == 'ST2-EXP-015'
+          assert rec['origin_kind'] == 'DECISION_POINT'
+          assert rec['origin_id'] == 'C-DP-001'
+          print('program=ST2-RP-001')
+          print('active_experiment=ST2-EXP-015')
+          print('state=' + state['state'])
+          PY
+
+      - name: Prove accepted Q/R/C manifests and sources remain frozen controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline="2a6c38af70e596c840ef2db4733421bde38f3ee5"
+          manifests=(
+            LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
+            LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt
+            LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt
+          )
+          : > /tmp/st2-exp-015-accepted-immutability.txt
+          for manifest in "${manifests[@]}"; do
+            test -s "$manifest"
+            git diff --exit-code "$baseline" HEAD -- "$manifest"
+            printf 'manifest unchanged: %s\n' "$manifest" >> /tmp/st2-exp-015-accepted-immutability.txt
+            while IFS= read -r src || [ -n "$src" ]; do
+              [ -z "$src" ] && continue
+              test -f "$src"
+              git diff --exit-code "$baseline" HEAD -- "$src"
+              printf 'source unchanged: %s\n' "$src" >> /tmp/st2-exp-015-accepted-immutability.txt
+            done < "$manifest"
+          done
+          cat /tmp/st2-exp-015-accepted-immutability.txt
+
+      - name: Gate A — verify baseline, claims, and four-corner inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline=2a6c38af70e596c840ef2db4733421bde38f3ee5
+          registry=LAB/00_ARCHITECTURE/CLAIM_REGISTRY.md
+          gate=LAB/PDSA/experiments/ST2-EXP-015_GATE_A_BASELINE_CLAIM_SQUARE_INVENTORY_001.md
+          test -s "$registry"
+          test -s "$gate"
+          git diff --exit-code "$baseline" HEAD -- "$registry"
+          claims=(
+            C-CL-CARRIER-001
+            C-CL-REMBED-001
+            C-CL-FIELD-001
+            C-CL-I-001
+            C-CL-GEN-001
+            C-CL-COORDUNIQ-001
+            C-CL-NONREAL-001
+            C-CL-COMPARE-001
+            C-CL-INTEGRATION-001
+          )
+          : > /tmp/st2-exp-015-gate-a.txt
+          for claim in "${claims[@]}"; do
+            grep -Fq "$claim" "$registry"
+            grep -Fq "$claim" "$gate"
+            printf '%s PRESENT\n' "$claim" >> /tmp/st2-exp-015-gate-a.txt
+          done
+          grep -Fq 'D/P' "$gate"
+          grep -Fq 'D/Q' "$gate"
+          grep -Fq 'C/P' "$gate"
+          grep -Fq 'C/Q' "$gate"
+          grep -Fq 'OPEN_LOWER_RIGHT_CORNER_UNVERIFIED' "$gate"
+          cat /tmp/st2-exp-015-gate-a.txt
+
+      - name: Gate B — validate native Cauchy-Q manifest and firewall
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=LAB/20_FORMALIZATION/R_STAGE/ST2_EXP_003_CAUCHY_INDEPENDENT_INPUTS.txt
+          native=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_INDEPENDENT_INPUTS.txt
+          source=LAB/payloads/lean/CStage/ST2Exp015CauchyQRoute.lean
+          test -s "$base"
+          test -s "$native"
+          test -s "$source"
+          n="$(wc -l < "$base" | tr -d ' ')"
+          head -n "$n" "$native" > /tmp/st2-exp-015-base-prefix.txt
+          cmp -s "$base" /tmp/st2-exp-015-base-prefix.txt
+          test "$(sed -n "$((n+1))p" "$native")" = "$source"
+          test "$(wc -l < "$native" | tr -d ' ')" = "$((n+1))"
+
+          forbidden_manifest='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|ST2Exp003CauchyQuadraticRebuild|ST2Exp011|ST2Exp014'
+          if grep -En "$forbidden_manifest" "$native"; then
+            printf '015 independent-Q manifest crossed a forbidden implementation boundary\n' >&2
+            exit 1
+          fi
+          forbidden_source='RBOMA|Dedekind|RStageIntegration002|ST2Exp002|CauchyQuadratic003|CCBOMA|ST2Exp011|ST2Exp014|Classical\.choose|(^|[^[:alnum:]_])(sorry|axiom)([^[:alnum:]_]|$)'
+          if grep -En "$forbidden_source" "$source"; then
+            printf '015 Gate-B source crossed a forbidden implementation/selector boundary\n' >&2
+            exit 1
+          fi
+          grep -Fq 'def CauchyQBOMA : Type := Quotient exprSetoid' "$source"
+          grep -Fq 'def qNormal : CauchyQBOMA → CauchyQNormal' "$source"
+          grep -Fq 'theorem q_extract_sound' "$source"
+          {
+            printf 'base_manifest=%s\n' "$base"
+            printf 'independent_q_manifest=%s\n' "$native"
+            printf 'gate_b_source=%s\n' "$source"
+            printf 'forbidden implementation producers absent\n'
+          } | tee /tmp/st2-exp-015-source-boundary.txt
+
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Gate B — elaborate native Cauchy Route-Q quotient and extractor
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_INDEPENDENT_INPUTS.txt
+          target=/tmp/BOMAST2Exp015CauchyQGateB.lean
+          : > "$target"
+          while IFS= read -r src || [ -n "$src" ]; do
+            [ -z "$src" ] && continue
+            test -f "$src"
+            cat "$src" >> "$target"
+            printf '\n' >> "$target"
+          done < "$manifest"
+          cat >> "$target" <<'EOF'
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_ofR_injective
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_i_squared
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_generation
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_coordinate_unique
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_i_not_real
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.q_extract_sound
+          #print axioms BOMA.C.StageTwo.CauchyQRoute015.cauchyQRouteCertificate
+          EOF
+          lake env lean "$target" 2>&1 | tee /tmp/st2-exp-015-gate-b-lean.log
+
+      - name: Gate B — extract declaration closure and reject forbidden producers
+        shell: bash
+        run: |
+          set -euo pipefail
+          manifest=LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_Q_INDEPENDENT_INPUTS.txt
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage C --manifest "$manifest" \
+            --target BOMA.C.StageTwo.CauchyQRoute015.cauchyQRouteCertificate \
+            --json-out /tmp/st2-exp-015-gate-b-closure.json \
+            > /tmp/st2-exp-015-gate-b-dependency-audit.log
+          forbidden='RDedekind|RStageIntegration002|ST2Exp002|ST2Exp003DedekindCauchyFieldIsomorphism|CauchyQuadratic003|ST2Exp011|ST2Exp014|Classical\.choose'
+          if grep -En "$forbidden" /tmp/st2-exp-015-gate-b-closure.json; then
+            printf 'Gate-B declaration closure contains a forbidden implementation producer\n' >&2
+            exit 1
+          fi
+          cat /tmp/st2-exp-015-gate-b-closure.json
+
+      - name: Run autonomous-program and architecture regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 LAB/PDSA/tools/autonomous_research_program_audit.py \
+            | tee /tmp/st2-exp-015-autonomy-audit.txt
+          python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py \
+            | tee /tmp/st2-exp-015-architecture-audit.txt
+
+      - name: Publish exact 015 scope
+        if: always()
+        shell: bash
+        run: |
+          {
+            printf '## ST2-EXP-015 — Cauchy Route-Composition Square\n'
+            printf -- '- Exact head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- Frozen Plan: `1accee613630ae876b6ca9dcf820737ab89a168c`.\n'
+            printf -- '- Single factor: with RCBOMA fixed, C realization Route P -> Route Q.\n'
+            printf -- '- Current verified scope in this workflow revision: Gate A + Gate B native quotient/extractor.\n'
+            printf -- '- Independent Q manifest excludes Dedekind/002/H5/Route-P implementation producers.\n'
+            printf -- '- No SELECTS, accepted export, or acceptance contract is changed.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve ST2-EXP-015 exact evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-015-cauchy-route-square-${{ github.run_id }}
+          path: |
+            /tmp/st2-exp-015-provenance.txt
+            /tmp/st2-exp-015-program-state.txt
+            /tmp/st2-exp-015-accepted-immutability.txt
+            /tmp/st2-exp-015-gate-a.txt
+            /tmp/st2-exp-015-source-boundary.txt
+            /tmp/st2-exp-015-gate-b-lean.log
+            /tmp/st2-exp-015-gate-b-dependency-audit.log
+            /tmp/st2-exp-015-gate-b-closure.json
+            /tmp/st2-exp-015-autonomy-audit.txt
+            /tmp/st2-exp-015-architecture-audit.txt
+          if-no-files-found: ignore
