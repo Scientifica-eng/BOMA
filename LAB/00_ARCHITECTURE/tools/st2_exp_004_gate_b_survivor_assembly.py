@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""ST2-EXP-004 Gate B: source-level no-F-04 survivor assembly.
+"""ST2-EXP-004 Gate B: whole-source no-F-04 survivor assembly.
 
-Gate A measured theorem declaration closures. Gate B asks a stricter question:
-can the F-04-free R roots be assembled from the unchanged accepted sources when
-`RDedekindOrderClassicalWitness.lean` is physically absent?
+Gate A measured theorem declaration closures. Gate B asks the stricter source
+question: which unchanged accepted R source files and measured roots still
+elaborate when the selected F-04 witness source is physically absent?
 """
 
 from __future__ import annotations
@@ -13,6 +13,7 @@ import csv
 import json
 import os
 import re
+import subprocess
 import sys
 import tempfile
 from collections import Counter
@@ -26,6 +27,7 @@ WITNESS_SOURCE = "LAB/payloads/lean/RStage/RDedekindOrderClassicalWitness.lean"
 CUT = "BOMA.R.DedekindOrderClassical001.cutComparability_classical"
 TOTAL = "BOMA.R.DedekindOrderClassical001.rLE_total_classical"
 F04 = {CUT, TOTAL}
+F04_SHORT = {"cutComparability_classical", "rLE_total_classical"}
 
 
 def load_r_targets(root: Path) -> list[dict[str, str]]:
@@ -106,24 +108,136 @@ def inspect_target(target: str, block: str, ranges: list[lda.SourceRange]) -> di
     else:
         classification = "F04_FREE"
 
-    target_sources = sorted({
-        d.source for d in internal
-        if d.name == target and d.source
-    })
+    target_sources = sorted({d.source for d in internal if d.name == target and d.source})
     if len(target_sources) != 1:
         raise ValueError(f"expected one source for {target}, got {target_sources}")
 
-    closure_sources = sorted({d.source for d in internal if d.source})
     return {
         "target": target,
         "classification": classification,
         "target_source": target_sources[0],
-        "closure_sources": closure_sources,
         "other_classical_declarations": classical,
         "unresolved": sorted(set(unr)),
         "internal_axioms": sorted(d.name for d in internal if d.kind == "axiom"),
         "assembly_module": meta.get("MODULE"),
     }
+
+
+def source_for_line(ranges: list[lda.SourceRange], line: int) -> str | None:
+    for r in ranges:
+        if r.start_line <= line <= r.end_line:
+            return r.path
+    return None
+
+
+def compile_source_set_once(root: Path, entries: list[str], attempt: int) -> tuple[bool, list[lda.SourceRange], str]:
+    module = lda.legal_module_name(f"ST2Exp004GateBSourceAttempt{attempt}")
+    with tempfile.TemporaryDirectory(prefix=".boma-st2-exp-004-gateb-source-", dir=root) as td0:
+        td = Path(td0)
+        asm = td / f"{module}.lean"
+        olean = td / f"{module}.olean"
+        ranges = lda.build_assembly(root, entries, asm)
+        proc = subprocess.run(
+            ["lake", "env", "lean", "-o", str(olean), str(asm)],
+            cwd=root,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        return proc.returncode == 0, ranges, proc.stdout
+
+
+def first_error_source(ranges: list[lda.SourceRange], output: str) -> tuple[str | None, str]:
+    diagnostics = []
+    for line in output.splitlines():
+        if "error" not in line.lower():
+            continue
+        diagnostics.append(line)
+        m = re.search(r"\.lean:(\d+):\d+:.*error", line, re.IGNORECASE)
+        if not m:
+            continue
+        src = source_for_line(ranges, int(m.group(1)))
+        if src is not None:
+            return src, "\n".join(diagnostics[-8:])
+    return None, "\n".join(diagnostics[-20:])
+
+
+def prune_to_compilable_source_set(
+    root: Path,
+    accepted_entries: list[str],
+    initially_blocked: set[str],
+) -> tuple[list[str], list[dict[str, str]]]:
+    entries = [e for e in accepted_entries if e not in initially_blocked]
+    pruned: list[dict[str, str]] = []
+    attempt = 1
+    while True:
+        if not entries:
+            raise ValueError("no-F-04 source pruning removed every accepted source")
+        ok, ranges, output = compile_source_set_once(root, entries, attempt)
+        if ok:
+            return entries, pruned
+        bad_source, diagnostic = first_error_source(ranges, output)
+        if bad_source is None:
+            raise RuntimeError(
+                "whole-source assembly failed but no source-mapped Lean error was found:\n" + output[-8000:]
+            )
+        if bad_source not in entries:
+            raise RuntimeError(f"mapped failing source is not in candidate entries: {bad_source}")
+        pruned.append({
+            "source": bad_source,
+            "reason": "whole-source elaboration failed after selected F-04 / dependent source exclusion",
+            "diagnostic": diagnostic,
+            "attempt": str(attempt),
+        })
+        entries = [e for e in entries if e != bad_source]
+        attempt += 1
+        if attempt > len(accepted_entries) + 1:
+            raise RuntimeError("source pruning exceeded accepted-manifest size")
+
+
+def strip_lean_comments_and_strings(text: str) -> str:
+    out: list[str] = []
+    i = 0
+    block = 0
+    string = False
+    escaped = False
+    while i < len(text):
+        if block:
+            if text.startswith("/-", i):
+                block += 1; out.extend("  "); i += 2; continue
+            if text.startswith("-/", i):
+                block -= 1; out.extend("  "); i += 2; continue
+            out.append("\n" if text[i] == "\n" else " "); i += 1; continue
+        if string:
+            ch = text[i]
+            out.append("\n" if ch == "\n" else " ")
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == '"':
+                string = False
+            i += 1; continue
+        if text.startswith("--", i):
+            while i < len(text) and text[i] != "\n":
+                out.append(" "); i += 1
+            continue
+        if text.startswith("/-", i):
+            block = 1; out.extend("  "); i += 2; continue
+        if text[i] == '"':
+            string = True; out.append(" "); i += 1; continue
+        out.append(text[i]); i += 1
+    return "".join(out)
+
+
+def executable_f04_mentions(root: Path, entries: list[str]) -> dict[str, list[str]]:
+    leaks: dict[str, list[str]] = {}
+    for entry in entries:
+        code = strip_lean_comments_and_strings((root / entry).read_text(encoding="utf-8"))
+        hits = sorted(name for name in F04_SHORT if re.search(rf"\b{re.escape(name)}\b", code))
+        if hits:
+            leaks[entry] = hits
+    return leaks
 
 
 def main() -> int:
@@ -158,33 +272,17 @@ def main() -> int:
             info["target_source"] for info in inspected.values()
             if info["classification"] in {"F04_DIRECT", "F04_TRANSITIVE"}
         }
-        survivor_infos = [
-            info for info in inspected.values()
-            if info["classification"] in {"F04_FREE", "OTHER_CLASSICAL_ONLY"}
-        ]
-        needed_sources = {
-            src for info in survivor_infos for src in info["closure_sources"]
-        }
+        initially_blocked = set(sensitive_sources) | {WITNESS_SOURCE}
 
-        survivor_entries = [
-            entry for entry in accepted_entries
-            if entry in needed_sources
-            and entry != WITNESS_SOURCE
-            and entry not in sensitive_sources
-        ]
-        if not survivor_entries:
-            raise ValueError("generated no-F-04 survivor manifest is empty")
+        survivor_entries, pruned_sources = prune_to_compilable_source_set(
+            root, accepted_entries, initially_blocked
+        )
         if WITNESS_SOURCE in survivor_entries:
             raise ValueError("F-04 witness source leaked into survivor manifest")
 
-        lexical_leaks: dict[str, list[str]] = {}
-        for entry in survivor_entries:
-            text = (root / entry).read_text(encoding="utf-8")
-            hits = [name for name in F04 if name.split(".")[-1] in text]
-            if hits:
-                lexical_leaks[entry] = sorted(hits)
+        lexical_leaks = executable_f04_mentions(root, survivor_entries)
         if lexical_leaks:
-            raise ValueError(f"selected F-04 reference leaked into survivor sources: {lexical_leaks}")
+            raise ValueError(f"selected F-04 executable reference leaked into survivor sources: {lexical_leaks}")
 
         manifest_path = args.manifest_out if args.manifest_out.is_absolute() else root / args.manifest_out
         manifest_path.parent.mkdir(parents=True, exist_ok=True)
@@ -194,30 +292,36 @@ def main() -> int:
             t for t, info in inspected.items()
             if info["classification"] in {"F04_FREE", "OTHER_CLASSICAL_ONLY"}
             and info["target_source"] in survivor_entries
-            and all(src in survivor_entries for src in info["closure_sources"])
         ]
+        if not testable:
+            raise ValueError("no measured F-04-free roots survived source pruning")
 
         nof04_blocks, nof04_ranges = compile_and_extract(
             root, survivor_entries, testable, "NoF04Survivors"
         )
-
         nof04_inspected = {
             t: inspect_target(t, nof04_blocks[t], nof04_ranges)
             for t in testable
         }
 
+        pruned_by_source = {p["source"]: p for p in pruned_sources}
         output_rows = []
         for row in rows:
             t = row["target"]
             base = inspected[t]
             base_class = base["classification"]
+            source = base["target_source"]
             if base_class in {"F04_DIRECT", "F04_TRANSITIVE"}:
                 status = "DOES_NOT_SURVIVE_NO_F04"
                 reason = "formal declaration closure depends on selected F-04"
             elif t not in testable:
                 status = "DOES_NOT_SURVIVE_NO_F04"
-                missing = sorted(set(base["closure_sources"]) - set(survivor_entries))
-                reason = "current accepted source packaging requires excluded F-04-coupled source(s): " + ", ".join(missing)
+                if source in initially_blocked:
+                    reason = "whole source also contains a measured F-04-dependent target"
+                elif source in pruned_by_source:
+                    reason = "whole source failed elaboration after F-04-dependent source exclusion"
+                else:
+                    reason = "target source absent from final no-F-04 source assembly"
             else:
                 check = nof04_inspected[t]
                 if check["unresolved"]:
@@ -227,7 +331,7 @@ def main() -> int:
                 if check["classification"] in {"F04_DIRECT", "F04_TRANSITIVE"}:
                     raise ValueError(f"F-04 leaked into claimed survivor closure: {t}")
                 status = "SURVIVES_NO_F04"
-                reason = "kernel-checked in source assembly with F-04 witness file absent"
+                reason = "kernel-checked in whole-source assembly with selected F-04 witness absent"
 
             output_rows.append({
                 "claim_id": row["claim_id"],
@@ -235,7 +339,7 @@ def main() -> int:
                 "gate_a_classification": base_class,
                 "gate_b_status": status,
                 "reason": reason,
-                "target_source": base["target_source"],
+                "target_source": source,
                 "other_classical_declarations": base["other_classical_declarations"],
             })
 
@@ -247,12 +351,14 @@ def main() -> int:
         result = {
             "schema": "BOMA-ST2-EXP-004-GATE-B-NO-F04-SURVIVOR-ASSEMBLY-001",
             "status": "GATE_B_PASS",
+            "method": "whole-source accepted-manifest pruning followed by per-target kernel closure audit",
             "f04_witness_source": WITNESS_SOURCE,
             "f04_roots": sorted(F04),
             "accepted_manifest_entries": len(accepted_entries),
+            "initially_blocked_sources": sorted(initially_blocked),
+            "pruned_sources": pruned_sources,
             "survivor_manifest_entries": len(survivor_entries),
-            "sensitive_target_sources_excluded": sorted(sensitive_sources),
-            "lexical_f04_leaks": lexical_leaks,
+            "executable_f04_leaks": lexical_leaks,
             "status_counts": dict(sorted(status_counts.items())),
             "claim_status_counts": {
                 claim: dict(sorted(counts.items()))
