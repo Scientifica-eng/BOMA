@@ -15,7 +15,7 @@ NEXT EXPERIMENT: NOT AUTHORIZED / DO NOT START
 REQUIRED NEXT ACT: STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
 ```
 
-The owner-authorized ST2-EXP-004 sequence is complete: lifecycle closure, exact-head research merge, and separate Learning-to-Construction integration. No later experiment may be opened, activated, branched, or frozen in this sequence.
+The owner-authorized ST2-EXP-004 sequence has completed its scientific lifecycle and architecture-content act. The maintenance integration remains subject to exact-head CI and merge before becoming `main` authority. No later experiment may be opened, activated, branched, or frozen in this sequence.
 
 ---
 
@@ -108,7 +108,7 @@ LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
 LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
 ```
 
-Failure records `ST2-EXP-004_FAILURE_001` through `013` remain preserved as execution evidence.
+Failure records `ST2-EXP-004_FAILURE_001` through `015` remain preserved as execution/governance evidence. Failures `014` and `015` record post-integration final-stop schema/literal compatibility defects and do not alter the mathematical PASS result.
 
 Learning-to-Construction authority:
 
