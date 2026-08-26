@@ -2,6 +2,7 @@ name: BOMA Q Integration Gate — V5
 
 permissions:
   contents: write
+  pull-requests: write
 
 on:
   workflow_dispatch:
@@ -18,7 +19,7 @@ on:
       - 'lakefile.toml'
 
 concurrency:
-  group: boma-q-integration-evidence-main
+  group: boma-q-integration-evidence-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -72,29 +73,15 @@ jobs:
           done < LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt
           lake env lean /tmp/QIntegrationCertificate.lean
 
-      - name: Record evidence
-        id: evidence
+      - name: Check verification-input freshness
+        id: freshness
         if: always()
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
-          RESULT=PASS
-          for x in \
-            "${{ steps.setup.outcome }}" \
-            "${{ steps.manifest.outcome }}" \
-            "${{ steps.integration.outcome }}"
-          do
-            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
-          done
-
           VERIFIED_SHA="$GITHUB_SHA"
-          RUN_ID="$GITHUB_RUN_ID"
-          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
-
           git fetch origin main
-
-          # Never promote evidence onto a newer main if any verification input
-          # changed after the source state actually checked by this run.
           if ! git diff --quiet "$VERIFIED_SHA" origin/main -- \
             LAB/payloads/lean/NCore/NCoreRB001.lean \
             LAB/payloads/lean/NArithmetic \
@@ -109,13 +96,23 @@ jobs:
             exit 1
           fi
 
-          git checkout -B qintegration-evidence origin/main
-          mkdir -p LAB/20_FORMALIZATION/Q_STAGE/evidence
-          cat > LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_INTEGRATION_V5_LATEST.md <<EOF
+      - name: Generate evidence
+        id: evidence
+        if: always()
+        shell: bash
+        run: |
+          set -u
+          mkdir -p /tmp/boma-evidence
+          RESULT=PASS
+          for x in "${{ steps.setup.outcome }}" "${{ steps.manifest.outcome }}" "${{ steps.integration.outcome }}" "${{ steps.freshness.outcome }}"; do
+            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
+          done
+          TOOLCHAIN="$(cat lean-toolchain 2>/dev/null || echo UNKNOWN)"
+          cat > /tmp/boma-evidence/Q_INTEGRATION_V5_LATEST.md <<EOF
           # Q Final Integration V5 Evidence
           **Status:** ${RESULT}  
-          **Verified commit:** \`${VERIFIED_SHA}\`  
-          **Workflow run ID:** \`${RUN_ID}\`  
+          **Verified commit:** \`${GITHUB_SHA}\`  
+          **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
           **Pinned toolchain:** \`${TOOLCHAIN}\`  
           **Assembly manifest:** \`LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt\`
 
@@ -124,17 +121,39 @@ jobs:
           | Lean setup | ${{ steps.setup.outcome }} |
           | assembly manifest validation | ${{ steps.manifest.outcome }} |
           | complete N/Z/Q assembly + rational integration certificate | ${{ steps.integration.outcome }} |
+          | verification-input freshness | ${{ steps.freshness.outcome }} |
 
-          The verified source commit is the source state actually checked by this run. Evidence promotion is refused when verification inputs drift before the evidence commit is recorded on main.
+          The verified source commit is the source state actually checked by this run. Evidence promotion is refused when verification inputs drift before the evidence branch is created.
           EOF
 
+      - name: Upload immutable verification artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: q-integration-v5-evidence-${{ github.run_id }}
+          path: /tmp/boma-evidence/Q_INTEGRATION_V5_LATEST.md
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Promote evidence to dedicated branch and PR
+        id: promote
+        if: steps.setup.outcome == 'success' && steps.manifest.outcome == 'success' && steps.integration.outcome == 'success' && steps.freshness.outcome == 'success'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          BRANCH="evidence/q-integration-${GITHUB_RUN_ID}"
+          git fetch origin main
+          git checkout -B "$BRANCH" origin/main
+          mkdir -p LAB/20_FORMALIZATION/Q_STAGE/evidence
+          cp /tmp/boma-evidence/Q_INTEGRATION_V5_LATEST.md LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_INTEGRATION_V5_LATEST.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add LAB/20_FORMALIZATION/Q_STAGE/evidence/Q_INTEGRATION_V5_LATEST.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Record Q integration V5 run ${RUN_ID}"
-            git push origin HEAD:main
-          fi
+          git commit -m "Record Q integration V5 run ${GITHUB_RUN_ID}"
+          git push origin "HEAD:${BRANCH}"
+          gh pr create --base main --head "$BRANCH" --draft --title "Evidence: Q integration V5 run ${GITHUB_RUN_ID}" --body "Automated evidence promotion for verified commit ${GITHUB_SHA}. The evidence-promotion gate must confirm that all Q verification inputs remain unchanged on main before merge."
 
       - name: Enforce
         if: always()
@@ -144,4 +163,5 @@ jobs:
           test "${{ steps.setup.outcome }}" = success
           test "${{ steps.manifest.outcome }}" = success
           test "${{ steps.integration.outcome }}" = success
+          test "${{ steps.freshness.outcome }}" = success
           test "${{ steps.evidence.outcome }}" = success

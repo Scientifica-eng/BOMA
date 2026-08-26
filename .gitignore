@@ -1,0 +1,26 @@
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Lean / Lake generated state
+.lake/build/
+.lake/packages/
+
+# Local logs / temporary outputs
+*.log
+*.tmp
+/tmp/

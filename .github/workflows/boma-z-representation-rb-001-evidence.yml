@@ -1,6 +1,8 @@
 name: BOMA Z Representation — Evidence V5
+
 permissions:
-  contents: write
+  contents: read
+
 on:
   workflow_dispatch:
   push:
@@ -10,6 +12,7 @@ on:
       - '.github/workflows/boma-z-representation-rb-001-evidence.yml'
       - 'lean-toolchain'
       - 'lakefile.toml'
+
 jobs:
   verify-and-record:
     runs-on: ubuntu-latest
@@ -48,17 +51,19 @@ jobs:
         run: |
           cat LAB/payloads/lean/NCore/NCoreRB001.lean LAB/payloads/lean/NArithmetic/AddRight.lean LAB/payloads/lean/NArithmetic/AddLeft.lean LAB/payloads/lean/NArithmetic/AddConvergence.lean LAB/payloads/lean/NArithmetic/AddLaws.lean LAB/payloads/lean/ZStage/ZSigned.lean LAB/payloads/lean/ZStage/ZPairs.lean LAB/payloads/lean/ZStage/ZRepresentationConvergence.lean > /tmp/ZRepresentationConvergence.lean
           lake env lean /tmp/ZRepresentationConvergence.lean
-      - name: Record evidence
+      - name: Generate run evidence
         if: always()
         shell: bash
         run: |
+          set -u
+          mkdir -p /tmp/boma-evidence
           RESULT=PASS
-          for x in "${{ steps.setup.outcome }}" "${{ steps.signed.outcome }}" "${{ steps.pair.outcome }}" "${{ steps.convergence.outcome }}"; do if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi; done
-          git fetch origin main
-          git checkout -B zrep-evidence origin/main
-          mkdir -p LAB/20_FORMALIZATION/Z_STAGE/evidence
-          cat > LAB/20_FORMALIZATION/Z_STAGE/evidence/Z_REP_V5_LATEST.md <<EOF
+          for x in "${{ steps.setup.outcome }}" "${{ steps.signed.outcome }}" "${{ steps.pair.outcome }}" "${{ steps.convergence.outcome }}"; do
+            if [ "$x" != success ]; then RESULT=FAIL_OR_INCOMPLETE; fi
+          done
+          cat > /tmp/boma-evidence/Z_REP_V5_LATEST.md <<EOF
           # Integer Representation V5 Evidence
+
           **Status:** ${RESULT}  
           **Verified commit:** \`${GITHUB_SHA}\`  
           **Workflow run ID:** \`${GITHUB_RUN_ID}\`  
@@ -71,10 +76,16 @@ jobs:
           | Difference-pair route | ${{ steps.pair.outcome }} |
           | Representation convergence | ${{ steps.convergence.outcome }} |
           EOF
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add LAB/20_FORMALIZATION/Z_STAGE/evidence/Z_REP_V5_LATEST.md
-          if ! git diff --cached --quiet; then git commit -m "Record Z-representation V5 run ${GITHUB_RUN_ID}"; git push origin HEAD:main; fi
+
+      - name: Upload immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: z-representation-v5-evidence-${{ github.run_id }}
+          path: /tmp/boma-evidence/Z_REP_V5_LATEST.md
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Enforce
         if: always()
         run: |

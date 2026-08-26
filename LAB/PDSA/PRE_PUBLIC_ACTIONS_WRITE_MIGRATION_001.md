@@ -1,0 +1,5 @@
+# BOMA Pre-Public Actions Write Migration 001
+
+Batch A is artifact-first for N-Core, Addition, Multiplication, Order, and Z. Q/R retain only the permissions required to create dedicated evidence branches and Draft PRs; they do not push directly to `main`. A read-only evidence promotion gate validates exact verified commit ancestry and rejects stale verification inputs.
+
+Final migration requires protected `main`, up-to-date branches before merge, no broad Actions bypass, and review of privileged action pinning.
