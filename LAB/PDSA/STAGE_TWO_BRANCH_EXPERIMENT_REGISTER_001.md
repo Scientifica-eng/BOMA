@@ -1,6 +1,6 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE C EXACT PASS / WAITING_CI FOR DURABLE SYNC / GATE D NOT STARTED`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE E EXACT PASS / OWNER-AUTHORIZED FULL AUTHORITY SYNC CI PENDING / GATE F NOT STARTED`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
 **Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
@@ -23,27 +23,35 @@ ORIGIN: DECISION_POINT / C-DP-001
 GATE A: RECORDED
 GATE B: EXACT PASS
 GATE C: EXACT PASS
-GATE-C VERIFIED HEAD: 8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd
-STATE-SYNC VERIFIED HEAD: 19da18d02a5b5a8620671bdd39de1be8d149ec15
-DURABLE REGISTER/LEDGER SYNC: PRESENT IN CURRENT COMMIT / EXACT CI PENDING
-GATE D: NOT STARTED
+GATE D: EXACT PASS
+GATE-D VERIFIED HEAD: fb852fb48dd8b6da83c04b06e8c6ab5ce389f745
+GATE E: EXACT PASS
+GATE-E VERIFIED HEAD: 11addbc163f8e1c44c6e81ff15db2baadb58437a
+GATE-E STATE-SYNC VERIFIED HEAD: 3ae2841e1d3b1dae516e747c9193c52d19dd8992
+LAST EXACT-VERIFIED AUTHORITY-SYNC HEAD: 85d011ca0ed6d80abb7fa38658c70d53c599a271
+LAST EXACT-VERIFIED AUTHORITY-SYNC V5 RUN: 32934935380 / SUCCESS
+FULL AUTHORITY FRONTIER SYNC: PRESENT IN CURRENT COMMIT / EXACT CI PENDING
+GATE F: NOT STARTED
 PREVIOUS TRANSITION: 014 → 015 / AUTO_CONTINUE PASS
 NEXT EXPERIMENT: ST2-EXP-016 / AUTHORIZED / QUEUED / WAITING 015 TRANSITION GATE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: exact-verify this Gate-C durable synchronization head; begin Gate D only if clean
+REQUIRED NEXT ACT: exact-verify this owner-authorized full authority-frontier synchronization head; begin Gate F only in a later legal action if the exact verification is clean
 ```
 
 `ST2-EXP-014` is closed `PASS`, exact-verified, merged, and integrated as bounded
 producer-substitutability knowledge. No accepted or selected architecture changed.
 
-`ST2-EXP-015` has an immutable Frozen Plan and Do is active. Gate A is recorded;
-Gate B and Gate C are exact-verified `PASS`. Gate C established the independent
-Cauchy Route-Q field closure on exact head
-`8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd`. The current action is governance
-synchronization only: this register and the permanent origin ledger now record
-that exact result, but Gate D remains blocked until the synchronization head
-itself passes exact-head V5. The single scientific factor remains fixed Cauchy
-`RCBOMA` with C realization Route P → Q.
+`ST2-EXP-015` has an immutable Frozen Plan and Do remains bounded by it. Gates A
+through E are complete at their recorded exact heads. Gate D established the
+research-only nine-Claim Cauchy Route-Q semantic package independently of Route P;
+Gate E then established the Frozen-Plan-authorized post-completion Cauchy P↔Q
+reconvergence. The exact-verified authority-sync head
+`85d011ca0ed6d80abb7fa38658c70d53c599a271` passed V5 run `32934935380`.
+The owner has now explicitly authorized synchronization of STATUS, autonomous
+state, this register, and the permanent origin ledger to that frontier. Gate F
+remains not started until this four-file synchronization head itself passes exact
+V5. The single scientific factor remains fixed Cauchy `RCBOMA` with C realization
+Route P → Q.
 
 ### Immutable historical ST2-EXP-004 final sentinel
 
@@ -82,7 +90,7 @@ preserved and their IDs are not reused.
 | Order | ID | Architectural origin | Intended single change | State |
 | ---: | --- | --- | --- | --- |
 | 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `CLOSED / PASS / MERGED / INTEGRATED` |
-| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / GATE C EXACT PASS / DURABLE SYNC CI PENDING / GATE D NOT STARTED` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `ACTIVE / GATE E EXACT PASS / FULL AUTHORITY SYNC CI PENDING / GATE F NOT STARTED` |
 | 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING 015 TRANSITION` |
 | 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
@@ -92,57 +100,78 @@ authorization record.
 
 ---
 
-## ST2-EXP-015 authority — Gate-C exact PASS, durable synchronization pending exact CI
+## ST2-EXP-015 authority — Gate-E exact PASS, full authority-frontier synchronization pending exact CI
 
 ```text
-origin                         DECISION_POINT / C-DP-001
-synchronized main baseline     2a6c38af70e596c840ef2db4733421bde38f3ee5
-transition record              LAB/PDSA/experiments/ST2-RP-001_TRANSITION_014_TO_015_001.md
-origin record                  LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json
-research branch                feature/stage-two-st2-exp-015-cauchy-route-composition-square
-changed factor                 C realization over fixed Cauchy RCBOMA: Route P → Route Q
-fixed scalar producer          RCBOMA / Cauchy
-accepted control               C-DP-001 selected Route P / accepted C unchanged
-Frozen Plan                    LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
-Frozen Plan commit             1accee613630ae876b6ca9dcf820737ab89a168c
-Do                             STARTED
-Gate A                         RECORDED
-Gate B                         EXACT PASS
-Gate-B verified head           5282e9fcb9f5996d24e315ca71821bd812331622
-Gate-B V5 run                  32877801503
-Gate-B V5 job                  97899880320
-Gate-B artifact                9574581421
-Gate-B artifact sha256         b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02
-Gate C                         EXACT PASS
-Gate-C verified head           8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd
-Gate-C V5 run                  32890748451
-Gate-C V5 job                  97941857655
-Gate-C artifact                9579342082
-Gate-C artifact sha256         f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e
-Gate-C state-sync head         19da18d02a5b5a8620671bdd39de1be8d149ec15
-Gate-C state-sync V5 run       32894420292
-Gate-C state-sync V5 job       97953582697
-Gate-C state-sync artifact     9580672508
-Gate-C state-sync sha256       1e236121ed9ffc0e35b4300ba0649f82ab00a8bdb28f63290d57016b62852950
-Gate D                         NOT STARTED / BLOCKED PENDING DURABLE-SYNC EXACT CI
-accepted promotion             NONE / NOT AUTHORIZED
+origin                              DECISION_POINT / C-DP-001
+synchronized main baseline          2a6c38af70e596c840ef2db4733421bde38f3ee5
+transition record                   LAB/PDSA/experiments/ST2-RP-001_TRANSITION_014_TO_015_001.md
+origin record                       LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json
+research branch                     feature/stage-two-st2-exp-015-cauchy-route-composition-square
+changed factor                      C realization over fixed Cauchy RCBOMA: Route P → Route Q
+fixed scalar producer               RCBOMA / Cauchy
+accepted control                    C-DP-001 selected Route P / accepted C unchanged
+Frozen Plan                         LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
+Frozen Plan commit                  1accee613630ae876b6ca9dcf820737ab89a168c
+Do                                  STARTED
+Gate A                              RECORDED
+Gate B                              EXACT PASS
+Gate-B verified head                5282e9fcb9f5996d24e315ca71821bd812331622
+Gate-B V5 run                       32877801503
+Gate-B V5 job                       97899880320
+Gate-B artifact                     9574581421
+Gate-B artifact sha256              b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02
+Gate C                              EXACT PASS
+Gate-C verified head                8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd
+Gate-C V5 run                       32890748451
+Gate-C V5 job                       97941857655
+Gate-C artifact                     9579342082
+Gate-C artifact sha256              f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e
+Gate-C durable-sync verified head   1e5c21ae793280d48ec0647d1f918e81899c70aa
+Gate-C durable-sync V5 run          32895420594
+Gate D                              EXACT PASS
+Gate-D verified head                fb852fb48dd8b6da83c04b06e8c6ab5ce389f745
+Gate-D primary V5 run               32906033511
+Gate-D primary V5 job               97990236323
+Gate-D semantic V5 run              32906033601
+Gate-D semantic V5 job              97990236076
+Gate-D artifact                     9584823096
+Gate-D artifact sha256              346d0a6f5fbe78cfa36bef87400310bc8347d93c05b00f5af227412a7618d4ce
+Gate-D Study/Act                    LAB/PDSA/experiments/ST2-EXP-015_GATE_D_STUDY_ACT_001.md
+Gate E                              EXACT PASS
+Gate-E verified head                11addbc163f8e1c44c6e81ff15db2baadb58437a
+Gate-E V5 run                       32915082114
+Gate-E V5 job                       98017000117
+Gate-E artifact                     9587870015
+Gate-E artifact sha256              4fbba38577e26221ddc5be20fa65fa8472dcd66ed7a1c04e9d04adaf6af35e09
+Gate-E state-sync verified head     3ae2841e1d3b1dae516e747c9193c52d19dd8992
+Gate-E state-sync V5 run            32918751613
+Gate-E Study/Act                    LAB/PDSA/experiments/ST2-EXP-015_GATE_E_STUDY_ACT_001.md
+post-owner authority-sync head      85d011ca0ed6d80abb7fa38658c70d53c599a271
+post-owner authority-sync V5 run    32934935380 / SUCCESS
+full authority-frontier sync        PRESENT IN CURRENT COMMIT / EXACT CI PENDING
+Gate F                              NOT STARTED / BLOCKED PENDING FULL AUTHORITY-SYNC EXACT CI
+accepted promotion                  NONE / NOT AUTHORIZED
 ```
 
 Target square:
 
 ```text
-                    C-ROUTE-P          C-ROUTE-Q
-R-ROUTE-D/Dedekind     verified           verified
-R-ROUTE-C/Cauchy       verified by 014    native carrier/extractor + independent field exact PASS; nine-Claim Gate-D package pending
+                    C-ROUTE-P                           C-ROUTE-Q
+R-ROUTE-D/Dedekind     verified                            verified
+R-ROUTE-C/Cauchy       verified by 014                     native field + nine-Claim semantic package + post-completion P↔Q reconvergence exact PASS
 ```
 
 Gate B verified the independent Cauchy Route-Q carrier/normalization/extractor
 surface and its declaration closure without importing Dedekind/H5/002/Route-P
 implementation producers. Gate C then verified the native Route-Q ring/field
 closure on the same frozen Cauchy scalar producer, with no Route-P transport and
-no new ST2-EXP-015 global choice selector. The remaining Gate-D work is the
-research-only nine-Claim semantic package prescribed by the Frozen Plan; it may
-begin only after the present register/origin-ledger synchronization itself is
+no new ST2-EXP-015 global choice selector. Gate D packaged the full nine-Claim
+research semantic surface independently. Gate E performed reconvergence only
+after that native completion and therefore did not manufacture Route-Q field
+closure by transport from Route P. The remaining Gate-F work is classification
+of the four-corner route-composition square prescribed by the immutable Frozen
+Plan; it may begin only after the present four-file authority synchronization is
 exact-verified.
 
 Technical Gate-C failure provenance is preserved in:

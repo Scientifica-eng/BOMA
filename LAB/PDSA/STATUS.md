@@ -1,6 +1,6 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE E EXACT PASS / STUDY-ACT RECORDED / OWNER-AUTHORIZED STATUS SYNC / GATE F NOT STARTED`  
+**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE E EXACT PASS / STUDY-ACT RECORDED / OWNER-AUTHORIZED FULL AUTHORITY FRONTIER SYNC / WAITING_CI / GATE F NOT STARTED`  
 **Current status date:** `2026-08-26`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
@@ -15,7 +15,7 @@ AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 QUEUE CURSOR: 1 / ST2-EXP-015
 ACTIVE EXPERIMENT: ST2-EXP-015
-ACTIVE STATE: OWNER_REQUIRED / STATUS_SYNC_AUTHORIZED
+ACTIVE STATE: WAITING_CI
 FROZEN REFERENCE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
 FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
 FROZEN PLAN COMMIT: 1accee613630ae876b6ca9dcf820737ab89a168c
@@ -31,10 +31,13 @@ GATE E: EXACT PASS
 GATE-E VERIFIED HEAD: 11addbc163f8e1c44c6e81ff15db2baadb58437a
 GATE-E STATE-SYNC VERIFIED HEAD: 3ae2841e1d3b1dae516e747c9193c52d19dd8992
 GATE-E STUDY/ACT: RECORDED
+LAST EXACT-VERIFIED AUTHORITY-SYNC HEAD: 85d011ca0ed6d80abb7fa38658c70d53c599a271
+LAST EXACT-VERIFIED AUTHORITY-SYNC V5 RUN: 32934935380 / SUCCESS
+FULL AUTHORITY FRONTIER SYNC: PRESENT IN CURRENT COMMIT / EXACT CI PENDING
 GATE F: NOT STARTED
 NEXT QUEUED EXPERIMENT: ST2-EXP-016 / WAITING 015 TRANSITION GATE
-OWNER_REQUIRED: YES — owner authorization received specifically to synchronize STATUS.md with the exact-verified Gate-E state; AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json is intentionally unchanged by this status-only commit
-REQUIRED NEXT ACT: exact-verify this owner-authorized STATUS-only synchronization head; do not begin Gate F or modify any additional authority file unless the resulting exact-head verification and repository authority state make that action unambiguously legal
+OWNER_REQUIRED: NO — owner explicitly authorized synchronization of STATUS.md, AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json, Experiment Register, and Origin Ledger to the exact-verified Gate-E frontier
+REQUIRED NEXT ACT: exact-verify the current owner-authorized full authority-frontier synchronization head; if PASS, Gate F is the next legal scientific action under the unchanged Frozen Plan, but Gate F is not started by this synchronization commit
 ```
 
 The active immutable single changed scientific factor remains:
@@ -46,7 +49,7 @@ C realization: C-ROUTE-P → C-ROUTE-Q
 
 Accepted `C-ROUTE-P` remains selected at `C-DP-001`; `R-DP-001` remains Dedekind-selected. No accepted export, acceptance contract, canonical producer, SELECTS edge, Claim registry producer, logical regime, or queue entry is changed.
 
-Owner direction received on `2026-08-26` authorizes synchronization of `LAB/PDSA/STATUS.md`. This authorization does not by itself authorize Gate F, a queue transition, or changes to any other authority file. The program-state JSON remains at its pre-sync `OWNER_REQUIRED` value until a later legal action changes it.
+Owner direction received on `2026-08-26` explicitly authorizes synchronization of the complete current authority frontier consisting of `LAB/PDSA/STATUS.md`, `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json`, `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`, and `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` with the exact-verified Gate-E state. This authorization is synchronization-only: Gate F remains not started until this full-frontier synchronization itself passes exact-head V5.
 
 ---
 
@@ -113,15 +116,18 @@ Gate D is therefore `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`.
 Gate E performed the Frozen-Plan-authorized post-completion Cauchy Route-P ↔ Route-Q reconvergence only after native Route-Q field and semantic completion.
 
 ```text
-head               11addbc163f8e1c44c6e81ff15db2baadb58437a
-Gate-E V5 run      32915082114
-Gate-E V5 job      98017000117
-Gate-E artifact    9587870015
-artifact sha256    4fbba38577e26221ddc5be20fa65fa8472dcd66ed7a1c04e9d04adaf6af35e09
-Gate-E result      SUCCESS
-state-sync head    3ae2841e1d3b1dae516e747c9193c52d19dd8992
-state-sync V5 run  32918751613
-state-sync result  SUCCESS
+head                         11addbc163f8e1c44c6e81ff15db2baadb58437a
+Gate-E V5 run                32915082114
+Gate-E V5 job                98017000117
+Gate-E artifact              9587870015
+artifact sha256              4fbba38577e26221ddc5be20fa65fa8472dcd66ed7a1c04e9d04adaf6af35e09
+Gate-E result                SUCCESS
+state-sync head              3ae2841e1d3b1dae516e747c9193c52d19dd8992
+state-sync V5 run            32918751613
+state-sync result            SUCCESS
+authority-sync verified head 85d011ca0ed6d80abb7fa38658c70d53c599a271
+authority-sync V5 run        32934935380
+authority-sync result        SUCCESS
 ```
 
 The exact Gate-E verifier passed the frozen-baseline/Frozen-Plan check, accepted-source firewall, post-completion manifest-separation firewall, pinned Lean elaboration, declaration closure, selector-boundary audit, autonomous-program governance audit, architecture audit, and exact evidence preservation.
@@ -198,4 +204,4 @@ OWNER_REQUIRED
 STOP BEFORE UNAUTHORIZED CHANGE
 ```
 
-The prior current-state authority ambiguity has received owner direction only for synchronization of `STATUS.md`. This commit records that synchronization and no broader authority transition. Gate F remains not started. Exact-head verification of this status-only synchronization is required before any further action, and any residual authority conflict remains fail-closed.
+The material authority conflict was resolved by explicit owner authorization on `2026-08-26` to synchronize the complete four-file authority frontier. This synchronization does not itself begin Gate F. Exact-head V5 of the full-frontier synchronization is required before any Gate-F scientific Do.
