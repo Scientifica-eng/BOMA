@@ -1,7 +1,7 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE D EXACT PASS / STUDY-ACT RECORDED / WAITING_CI FOR STATE-SYNC EXACT VERIFICATION / GATE E NOT STARTED`  
-**Current status date:** `2026-08-25`  
+**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE E EXACT PASS / STUDY-ACT RECORDED / OWNER-AUTHORIZED STATUS SYNC / GATE F NOT STARTED`  
+**Current status date:** `2026-08-26`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
 **Program manifest:** `LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json`.
@@ -15,7 +15,7 @@ AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 QUEUE CURSOR: 1 / ST2-EXP-015
 ACTIVE EXPERIMENT: ST2-EXP-015
-ACTIVE STATE: WAITING_CI
+ACTIVE STATE: OWNER_REQUIRED / STATUS_SYNC_AUTHORIZED
 FROZEN REFERENCE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
 FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
 FROZEN PLAN COMMIT: 1accee613630ae876b6ca9dcf820737ab89a168c
@@ -26,11 +26,15 @@ GATE B: EXACT PASS
 GATE C: EXACT PASS
 GATE D: EXACT PASS
 GATE-D VERIFIED HEAD: fb852fb48dd8b6da83c04b06e8c6ab5ce389f745
-GATE-D STUDY/ACT: RECORDED IN CURRENT STATE-SYNC COMMIT
-GATE E: NOT STARTED
+GATE-D STUDY/ACT: RECORDED
+GATE E: EXACT PASS
+GATE-E VERIFIED HEAD: 11addbc163f8e1c44c6e81ff15db2baadb58437a
+GATE-E STATE-SYNC VERIFIED HEAD: 3ae2841e1d3b1dae516e747c9193c52d19dd8992
+GATE-E STUDY/ACT: RECORDED
+GATE F: NOT STARTED
 NEXT QUEUED EXPERIMENT: ST2-EXP-016 / WAITING 015 TRANSITION GATE
-OWNER_REQUIRED: NO
-REQUIRED NEXT ACT: exact-verify the current Gate-D Study/Act state-synchronization head; if PASS, begin Gate E post-completion Cauchy P↔Q reconvergence under the unchanged Frozen Plan
+OWNER_REQUIRED: YES — owner authorization received specifically to synchronize STATUS.md with the exact-verified Gate-E state; AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json is intentionally unchanged by this status-only commit
+REQUIRED NEXT ACT: exact-verify this owner-authorized STATUS-only synchronization head; do not begin Gate F or modify any additional authority file unless the resulting exact-head verification and repository authority state make that action unambiguously legal
 ```
 
 The active immutable single changed scientific factor remains:
@@ -41,6 +45,8 @@ C realization: C-ROUTE-P → C-ROUTE-Q
 ```
 
 Accepted `C-ROUTE-P` remains selected at `C-DP-001`; `R-DP-001` remains Dedekind-selected. No accepted export, acceptance contract, canonical producer, SELECTS edge, Claim registry producer, logical regime, or queue entry is changed.
+
+Owner direction received on `2026-08-26` authorizes synchronization of `LAB/PDSA/STATUS.md`. This authorization does not by itself authorize Gate F, a queue transition, or changes to any other authority file. The program-state JSON remains at its pre-sync `OWNER_REQUIRED` value until a later legal action changes it.
 
 ---
 
@@ -99,6 +105,32 @@ The semantic target covers carrier, faithful R embedding, field, `I²=-1`, gener
 Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_D_STUDY_ACT_001.md`.
 
 Gate D is therefore `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`.
+
+---
+
+## ST2-EXP-015 exact Gate-E evidence
+
+Gate E performed the Frozen-Plan-authorized post-completion Cauchy Route-P ↔ Route-Q reconvergence only after native Route-Q field and semantic completion.
+
+```text
+head               11addbc163f8e1c44c6e81ff15db2baadb58437a
+Gate-E V5 run      32915082114
+Gate-E V5 job      98017000117
+Gate-E artifact    9587870015
+artifact sha256    4fbba38577e26221ddc5be20fa65fa8472dcd66ed7a1c04e9d04adaf6af35e09
+Gate-E result      SUCCESS
+state-sync head    3ae2841e1d3b1dae516e747c9193c52d19dd8992
+state-sync V5 run  32918751613
+state-sync result  SUCCESS
+```
+
+The exact Gate-E verifier passed the frozen-baseline/Frozen-Plan check, accepted-source firewall, post-completion manifest-separation firewall, pinned Lean elaboration, declaration closure, selector-boundary audit, autonomous-program governance audit, architecture audit, and exact evidence preservation.
+
+The verified comparison supplies relation-level reconvergence between fixed Cauchy Route-P and independently completed Cauchy Route-Q. Functional reconvergence uses only the explicit extractors available on both completed routes. No new representative choice, global inverse selector, accepted-source modification, SELECTS edge, acceptance-contract change, Claim-producer promotion, logical/foundational commitment, or queue change was introduced.
+
+Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_E_STUDY_ACT_001.md`.
+
+Gate E is therefore `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`. It is evidence about the tested Route-P/Route-Q realizations over fixed Cauchy scalars; it is not a uniqueness theorem and has no acceptance effect.
 
 ---
 
@@ -166,4 +198,4 @@ OWNER_REQUIRED
 STOP BEFORE UNAUTHORIZED CHANGE
 ```
 
-No such condition is currently established. The active block is exact verification of the Gate-D Study/Act state-synchronization head. Gate E remains not started until that exact verification passes.
+The prior current-state authority ambiguity has received owner direction only for synchronization of `STATUS.md`. This commit records that synchronization and no broader authority transition. Gate F remains not started. Exact-head verification of this status-only synchronization is required before any further action, and any residual authority conflict remains fail-closed.
