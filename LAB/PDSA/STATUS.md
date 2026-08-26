@@ -1,6 +1,6 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE F CLASSIFIED SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE / STUDY-ACT RECORDED / WAITING GATE-G EXACT V5`  
+**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 CLOSED/PASS / SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE / DURABLE CLOSURE SYNC CI PENDING`  
 **Current status date:** `2026-08-26`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
@@ -14,8 +14,8 @@
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
 QUEUE CURSOR: 1 / ST2-EXP-015
-ACTIVE EXPERIMENT: ST2-EXP-015
-ACTIVE STATE: WAITING_CI
+ACTIVE EXPERIMENT: ST2-EXP-015 / CLOSED PASS / UNMERGED
+ACTIVE STATE: WAITING_CI / DURABLE CLOSURE SYNC
 FROZEN REFERENCE: 2a6c38af70e596c840ef2db4733421bde38f3ee5
 FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-015_CAUCHY_ROUTE_COMPOSITION_SQUARE.md
 FROZEN PLAN COMMIT: 1accee613630ae876b6ca9dcf820737ab89a168c
@@ -36,22 +36,29 @@ FULL AUTHORITY FRONTIER V5 RUN: 32940221635 / SUCCESS
 GATE F: SCIENTIFIC CLASSIFICATION RECORDED
 GATE-F RESULT: SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE
 GATE-F STUDY/ACT: RECORDED
-GATE G: WAITING EXACT-HEAD V5 OF GATE-F RECORD HEAD
-NEXT QUEUED EXPERIMENT: ST2-EXP-016 / WAITING 015 TRANSITION GATE
+GATE G: EXACT PASS
+GATE-G VERIFIED HEAD: e5eafb8fabef825693c7a0382de0dfd4c626c23f
+GATE-G V5 RUN: 32942956428 / SUCCESS
+LIFECYCLE CLOSURE: CLOSED / PASS
+LIFECYCLE CLOSURE HEAD: c7260cdcb11be17e1ed0a72cf94fa78d3f5e02a4
+LIFECYCLE CLOSURE V5 RUN: 32947445758 / SUCCESS
+LIFECYCLE CLOSURE GATE-D EXTENSION: 32947445764 / SUCCESS
+LIFECYCLE CLOSURE GATE-E EXTENSION: 32947445760 / SUCCESS
+NEXT QUEUED EXPERIMENT: ST2-EXP-016 / WAITING 015 ROUTINE MERGE + POST-MERGE TRANSITION GATE
 OWNER_REQUIRED: NO
-REQUIRED NEXT ACT: exact-verify the Gate-F classification + Study/Act head under Gate G; do not routine-merge or activate ST2-EXP-016 until that exact head passes and lifecycle closure gates are satisfied
+REQUIRED NEXT ACT: exact-verify this durable CLOSED/PASS state synchronization head; if clean, open or refresh the ST2-EXP-015 PR and apply routine-merge gates only on the exact expected PR head; do not activate or freeze ST2-EXP-016 before merge, synchronized-main re-read, and the 015→016 transition gate
 ```
 
-The active immutable single changed scientific factor remains:
+The immutable single changed scientific factor was:
 
 ```text
 Cauchy RCBOMA scalar producer fixed
 C realization: C-ROUTE-P → C-ROUTE-Q
 ```
 
-Accepted `C-ROUTE-P` remains selected at `C-DP-001`; `R-DP-001` remains Dedekind-selected. No accepted export, acceptance contract, canonical producer, SELECTS edge, Claim registry producer, logical regime, or queue entry is changed.
+Accepted `C-ROUTE-P` remains selected at `C-DP-001`; `R-DP-001` remains Dedekind-selected. No accepted export, acceptance contract, canonical producer, SELECTS edge, Claim registry producer, logical regime, or queue entry changed.
 
-Gate F is a bounded classification of already exact-verified evidence. It introduces no new mathematical producer and no new logical/foundational commitment. Its conclusion is limited to the exact tested semantic surface; strict Dedekind↔Cauchy diagram commutativity, uniqueness of C, generic `K[i]`, and route independence beyond the tested square are not claimed.
+The lifecycle closure is effective because the exact commit containing `LAB/PDSA/experiments/ST2-EXP-015_LIFECYCLE_CLOSURE_001.md`, namely `c7260cdcb11be17e1ed0a72cf94fa78d3f5e02a4`, passed the required exact-head V5 and applicable Gate-D/Gate-E regressions. This status synchronization itself must still pass exact-head verification before routine merge.
 
 ---
 
@@ -137,23 +144,19 @@ full-frontier sha256         9b400e67d27713bc34c5c595565dc8b5242250c322138e1ac04
 full-frontier result         SUCCESS
 ```
 
-The exact Gate-E verifier passed the frozen-baseline/Frozen-Plan check, accepted-source firewall, post-completion manifest-separation firewall, pinned Lean elaboration, declaration closure, selector-boundary audit, autonomous-program governance audit, architecture audit, and exact evidence preservation.
-
 The verified comparison supplies relation-level reconvergence between fixed Cauchy Route-P and independently completed Cauchy Route-Q. Functional reconvergence uses only the explicit extractors available on both completed routes. No new representative choice, global inverse selector, accepted-source modification, SELECTS edge, acceptance-contract change, Claim-producer promotion, logical/foundational commitment, or queue change was introduced.
 
 Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_E_STUDY_ACT_001.md`.
 
-Gate E is therefore `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`. It is evidence about the tested Route-P/Route-Q realizations over fixed Cauchy scalars; it is not a uniqueness theorem and has no acceptance effect.
+Gate E is `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`. It is evidence about the tested Route-P/Route-Q realizations over fixed Cauchy scalars; it is not a uniqueness theorem and has no acceptance effect.
 
 ---
 
-## ST2-EXP-015 Gate-F classification
+## ST2-EXP-015 Gate-F classification and Gate-G verification
 
 Durable classification record: `LAB/PDSA/experiments/ST2-EXP-015_GATE_F_ROUTE_COMPOSITION_SQUARE_CLASSIFICATION_001.md`.
 
 Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_F_STUDY_ACT_001.md`.
-
-Scientific result:
 
 ```text
 SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE
@@ -164,7 +167,39 @@ STRICT CROSS-REAL COMMUTATIVITY NOT CLAIMED
 UNIQUENESS NOT CLAIMED
 ```
 
-Gate F concludes that the exact Dedekind/Cauchy × Route-P/Route-Q square closes at the semantic surface actually measured by the Frozen Plan. This is direct compositional-robustness evidence for the tested factors. Gate G exact-head verification of the head containing this classification and Study/Act remains mandatory before lifecycle closure or routine merge.
+Gate-G exact evidence:
+
+```text
+head      e5eafb8fabef825693c7a0382de0dfd4c626c23f
+run       32942956428
+job       98097601571
+artifact  9597187850
+sha256    2d78587ed6f1ee85b6d99b7263cc4af9ff3c674bc4167625766263dbba9e4dfe
+result    SUCCESS
+```
+
+---
+
+## ST2-EXP-015 lifecycle closure
+
+Durable closure record: `LAB/PDSA/experiments/ST2-EXP-015_LIFECYCLE_CLOSURE_001.md`.
+
+Exact closure-head evidence:
+
+```text
+head                    c7260cdcb11be17e1ed0a72cf94fa78d3f5e02a4
+primary V5 run          32947445758 / SUCCESS
+Gate-D extension run    32947445764 / SUCCESS
+Gate-E extension run    32947445760 / SUCCESS
+classification          CLOSED / PASS
+scientific result       SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE
+acceptance effect       NONE
+SELECTS effect          NONE
+unresolved deviation    NONE
+OWNER_REQUIRED          NO
+```
+
+The Frozen-Plan 015→016 scientific transition premise is PASS: the accepted production dependency question at `orderTotal` remains separable from route identity, and no sequence-critical prerequisite was discovered. Transition is not yet activated; routine merge and synchronized-main transition verification still precede any 016 Plan freeze.
 
 ---
 
@@ -215,6 +250,7 @@ ST2-EXP-003  CLOSED / PASS / Cauchy-R verified research alternative; Dedekind re
 ST2-EXP-011  CLOSED / PASS / comparison-interface lesson integrated
 ST2-EXP-004  CLOSED / PASS / RTotality ↔ CutComparability lesson integrated
 ST2-EXP-014  CLOSED / PASS / merged / full nine-Claim C surface reproduced over Cauchy Route P
+ST2-EXP-015  CLOSED / PASS / exact tested Dedekind-Cauchy × P-Q square closed at tested semantic surface / UNMERGED
 ```
 
 ST2-EXP-014 exact closure head is `19cc6541457b3e8c58ea4607198d2474cd293dc9`; its routine merge is `2a6c38af70e596c840ef2db4733421bde38f3ee5`; its durable learning record is `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_004.md`.
@@ -232,4 +268,4 @@ OWNER_REQUIRED
 STOP BEFORE UNAUTHORIZED CHANGE
 ```
 
-Gate F has discovered no sequence-critical prerequisite before ST2-EXP-016. Nevertheless, ST2-EXP-016 must not activate until Gate G exact-head verification, ST2-EXP-015 lifecycle closure, any applicable routine-merge gate, synchronized-main re-read, and the fixed-queue transition gate all succeed.
+Gate F/Study/Act and the lifecycle closure discovered no sequence-critical prerequisite before ST2-EXP-016. Nevertheless, ST2-EXP-016 must not activate until this durable closure synchronization is exact-verified, ST2-EXP-015 routine merge succeeds on an exact expected PR head, synchronized `main` is re-read, and the fixed-queue 015→016 transition gate passes.
