@@ -14,20 +14,20 @@
   "active_frozen_plan_sha": "1accee613630ae876b6ca9dcf820737ab89a168c",
   "active_experiment_frozen_reference_sha": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
   "active_experiment_origin_record": "LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json",
-  "active_work_head_before_ci_state_commit": "bea9e48c01f7cc13bd4bfa1c727da4fa4cdfc5e0",
-  "last_verified_head": "85d011ca0ed6d80abb7fa38658c70d53c599a271",
-  "waiting_on": "Exact-head V5 verification of the owner-authorized full four-file authority-frontier synchronization after exact-verified Gate E; Gate F remains not started until this synchronization head passes",
+  "active_work_head_before_ci_state_commit": "258a7cb0684abe8d2df3e91e994300ce6cc80e2d",
+  "last_verified_head": "258a7cb0684abe8d2df3e91e994300ce6cc80e2d",
+  "waiting_on": "Gate G exact-head V5 verification of the Gate-F classification and objective Study/Act head; do not routine-merge or activate ST2-EXP-016 until this exact head passes and lifecycle closure gates are satisfied",
   "owner_required_reason": null,
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": "ST2-EXP-015",
-    "active_experiment_status": "GATE_E EXACT PASS / STUDY_ACT_RECORDED / OWNER_AUTHORIZED_FULL_AUTHORITY_SYNC / FULL_FRONTIER_SYNC_CI_PENDING / GATE_F_NOT_STARTED",
+    "active_experiment_status": "GATE_F CLASSIFIED SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE / STUDY_ACT_RECORDED / WAITING_GATE_G_EXACT_V5",
     "latest_completed_experiment": "ST2-EXP-014",
     "latest_completed_status": "CLOSED_PASS_RESEARCH_ONLY_MERGED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-004",
     "next_experiment": "ST2-EXP-016",
     "next_experiment_status": "OWNER_AUTHORIZED_QUEUED_WAITING_015_TRANSITION_GATE",
-    "activation_authorized_by_this_state": true
+    "activation_authorized_by_this_state": false
   },
   "gate_b_exact_verification": {"head":"5282e9fcb9f5996d24e315ca71821bd812331622","run":32877801503,"job":97899880320,"artifact":9574581421,"artifact_sha256":"b441b5f37d2d608111f362926aaf1cf243f05045601896e21a58ea17b0797d02","result":"PASS"},
   "gate_c_exact_verification": {"head":"8b8d8413a3638eb8f4f4d738d3cf1a2a12c866bd","run":32890748451,"job":97941857655,"artifact":9579342082,"artifact_sha256":"f393c585bbbc0ff438010b6d6d1dad2da434d3ad39a7676b0b7a2f67540b690e","result":"PASS","new_st2_exp_015_classical_choose_edges":0},
@@ -36,8 +36,10 @@
   "gate_e_exact_verification": {"head":"11addbc163f8e1c44c6e81ff15db2baadb58437a","gate_e_run":32915082114,"gate_e_job":98017000117,"artifact":9587870015,"artifact_sha256":"4fbba38577e26221ddc5be20fa65fa8472dcd66ed7a1c04e9d04adaf6af35e09","result":"PASS"},
   "gate_e_state_sync_exact_verification": {"head":"3ae2841e1d3b1dae516e747c9193c52d19dd8992","gate_e_run":32918751613,"result":"PASS"},
   "post_owner_authority_sync_exact_verification": {"head":"85d011ca0ed6d80abb7fa38658c70d53c599a271","primary_run":32934935380,"result":"PASS"},
+  "full_authority_frontier_sync_exact_verification": {"head":"258a7cb0684abe8d2df3e91e994300ce6cc80e2d","primary_run":32940221635,"artifact":9596260379,"artifact_sha256":"9b400e67d27713bc34c5c595565dc8b5242250c322138e1ac0447899e43fc9ab","result":"PASS"},
   "gate_e_product": {"source":"LAB/payloads/lean/CStage/ST2Exp015CauchyPQReconvergence.lean","manifest":"LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015_CAUCHY_PQ_COMPARISON_INPUTS.txt","evidence_record":"LAB/PDSA/experiments/ST2-EXP-015_GATE_E_CAUCHY_PQ_RECONVERGENCE_001.md","study_act":"LAB/PDSA/experiments/ST2-EXP-015_GATE_E_STUDY_ACT_001.md","scientific_factor_changed":false,"independent_q_manifest_contaminated":false,"global_selector_added":false,"result":"EXACT_PASS"},
+  "gate_f_product": {"classification":"SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE","evidence_record":"LAB/PDSA/experiments/ST2-EXP-015_GATE_F_ROUTE_COMPOSITION_SQUARE_CLASSIFICATION_001.md","study_act":"LAB/PDSA/experiments/ST2-EXP-015_GATE_F_STUDY_ACT_001.md","strict_cross_real_commutativity_claimed":false,"uniqueness_claimed":false,"acceptance_effect":"NONE","result":"SCIENTIFIC_CLASSIFICATION_RECORDED_WAITING_EXACT_V5"},
   "program_transition": {"queue_order_immutable_without_owner":true,"informative_fail_may_transition_if_prerequisites_hold":true,"sequence_critical_discovery_means":"OWNER_REQUIRED","program_completion_requires_program_level_synthesis":true},
-  "next_legal_action": "WAIT_FOR_OWNER_AUTHORIZED_FULL_AUTHORITY_FRONTIER_SYNC_EXACT_V5; IF_PASS_BEGIN_GATE_F_ROUTE_COMPOSITION_SQUARE_CLASSIFICATION_WITH_FROZEN_CONTROLS",
+  "next_legal_action": "RUN_GATE_G_EXACT_HEAD_V5_ON_GATE_F_CLASSIFICATION_STUDY_ACT_HEAD; IF_PASS_COMPLETE_015_LIFECYCLE_GATES_BEFORE_ANY_ROUTINE_MERGE_OR_016_ACTIVATION",
   "safety": {"fail_closed":true,"ambiguous_authority_means":"OWNER_REQUIRED","main_research_writes_allowed":false}
 }

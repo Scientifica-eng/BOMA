@@ -1,6 +1,6 @@
 # PDSA STATUS — Current Research Cycle Index
 
-**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE E EXACT PASS / STUDY-ACT RECORDED / OWNER-AUTHORIZED FULL AUTHORITY FRONTIER SYNC / WAITING_CI / GATE F NOT STARTED`  
+**Status:** `ST2-EXP-014 CLOSED/PASS/MERGED/INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-015 GATE F CLASSIFIED SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE / STUDY-ACT RECORDED / WAITING GATE-G EXACT V5`  
 **Current status date:** `2026-08-26`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
 **Program authorization:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`  
@@ -31,13 +31,15 @@ GATE E: EXACT PASS
 GATE-E VERIFIED HEAD: 11addbc163f8e1c44c6e81ff15db2baadb58437a
 GATE-E STATE-SYNC VERIFIED HEAD: 3ae2841e1d3b1dae516e747c9193c52d19dd8992
 GATE-E STUDY/ACT: RECORDED
-LAST EXACT-VERIFIED AUTHORITY-SYNC HEAD: 85d011ca0ed6d80abb7fa38658c70d53c599a271
-LAST EXACT-VERIFIED AUTHORITY-SYNC V5 RUN: 32934935380 / SUCCESS
-FULL AUTHORITY FRONTIER SYNC: PRESENT IN CURRENT COMMIT / EXACT CI PENDING
-GATE F: NOT STARTED
+FULL AUTHORITY FRONTIER EXACT-VERIFIED HEAD: 258a7cb0684abe8d2df3e91e994300ce6cc80e2d
+FULL AUTHORITY FRONTIER V5 RUN: 32940221635 / SUCCESS
+GATE F: SCIENTIFIC CLASSIFICATION RECORDED
+GATE-F RESULT: SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE
+GATE-F STUDY/ACT: RECORDED
+GATE G: WAITING EXACT-HEAD V5 OF GATE-F RECORD HEAD
 NEXT QUEUED EXPERIMENT: ST2-EXP-016 / WAITING 015 TRANSITION GATE
-OWNER_REQUIRED: NO — owner explicitly authorized synchronization of STATUS.md, AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json, Experiment Register, and Origin Ledger to the exact-verified Gate-E frontier
-REQUIRED NEXT ACT: exact-verify the current owner-authorized full authority-frontier synchronization head; if PASS, Gate F is the next legal scientific action under the unchanged Frozen Plan, but Gate F is not started by this synchronization commit
+OWNER_REQUIRED: NO
+REQUIRED NEXT ACT: exact-verify the Gate-F classification + Study/Act head under Gate G; do not routine-merge or activate ST2-EXP-016 until that exact head passes and lifecycle closure gates are satisfied
 ```
 
 The active immutable single changed scientific factor remains:
@@ -49,7 +51,7 @@ C realization: C-ROUTE-P → C-ROUTE-Q
 
 Accepted `C-ROUTE-P` remains selected at `C-DP-001`; `R-DP-001` remains Dedekind-selected. No accepted export, acceptance contract, canonical producer, SELECTS edge, Claim registry producer, logical regime, or queue entry is changed.
 
-Owner direction received on `2026-08-26` explicitly authorizes synchronization of the complete current authority frontier consisting of `LAB/PDSA/STATUS.md`, `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json`, `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`, and `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` with the exact-verified Gate-E state. This authorization is synchronization-only: Gate F remains not started until this full-frontier synchronization itself passes exact-head V5.
+Gate F is a bounded classification of already exact-verified evidence. It introduces no new mathematical producer and no new logical/foundational commitment. Its conclusion is limited to the exact tested semantic surface; strict Dedekind↔Cauchy diagram commutativity, uniqueness of C, generic `K[i]`, and route independence beyond the tested square are not claimed.
 
 ---
 
@@ -128,6 +130,11 @@ state-sync result            SUCCESS
 authority-sync verified head 85d011ca0ed6d80abb7fa38658c70d53c599a271
 authority-sync V5 run        32934935380
 authority-sync result        SUCCESS
+full-frontier verified head  258a7cb0684abe8d2df3e91e994300ce6cc80e2d
+full-frontier V5 run         32940221635
+full-frontier artifact       9596260379
+full-frontier sha256         9b400e67d27713bc34c5c595565dc8b5242250c322138e1ac0447899e43fc9ab
+full-frontier result         SUCCESS
 ```
 
 The exact Gate-E verifier passed the frozen-baseline/Frozen-Plan check, accepted-source firewall, post-completion manifest-separation firewall, pinned Lean elaboration, declaration closure, selector-boundary audit, autonomous-program governance audit, architecture audit, and exact evidence preservation.
@@ -137,6 +144,27 @@ The verified comparison supplies relation-level reconvergence between fixed Cauc
 Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_E_STUDY_ACT_001.md`.
 
 Gate E is therefore `EXACT PASS / RESEARCH-ONLY / NO ACCEPTANCE EFFECT`. It is evidence about the tested Route-P/Route-Q realizations over fixed Cauchy scalars; it is not a uniqueness theorem and has no acceptance effect.
+
+---
+
+## ST2-EXP-015 Gate-F classification
+
+Durable classification record: `LAB/PDSA/experiments/ST2-EXP-015_GATE_F_ROUTE_COMPOSITION_SQUARE_CLASSIFICATION_001.md`.
+
+Objective Study/Act: `LAB/PDSA/experiments/ST2-EXP-015_GATE_F_STUDY_ACT_001.md`.
+
+Scientific result:
+
+```text
+SQUARE_CLOSED_AT_TESTED_SEMANTIC_SURFACE
+RESEARCH-ONLY
+NO ACCEPTANCE EFFECT
+NO SELECTS EFFECT
+STRICT CROSS-REAL COMMUTATIVITY NOT CLAIMED
+UNIQUENESS NOT CLAIMED
+```
+
+Gate F concludes that the exact Dedekind/Cauchy × Route-P/Route-Q square closes at the semantic surface actually measured by the Frozen Plan. This is direct compositional-robustness evidence for the tested factors. Gate G exact-head verification of the head containing this classification and Study/Act remains mandatory before lifecycle closure or routine merge.
 
 ---
 
@@ -204,4 +232,4 @@ OWNER_REQUIRED
 STOP BEFORE UNAUTHORIZED CHANGE
 ```
 
-The material authority conflict was resolved by explicit owner authorization on `2026-08-26` to synchronize the complete four-file authority frontier. This synchronization does not itself begin Gate F. Exact-head V5 of the full-frontier synchronization is required before any Gate-F scientific Do.
+Gate F has discovered no sequence-critical prerequisite before ST2-EXP-016. Nevertheless, ST2-EXP-016 must not activate until Gate G exact-head verification, ST2-EXP-015 lifecycle closure, any applicable routine-merge gate, synchronized-main re-read, and the fixed-queue transition gate all succeed.
